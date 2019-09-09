@@ -1,0 +1,418 @@
+PRENATAL DIAGNOSIS
+Prenat Diagn 2002; 22: 645–648.
+Published online in Wiley InterScience (www.interscience.wiley.com). DOI: 10.1002 / pd.354
+
+Prenatal detection of structural abnormalities of chromosome
+18: associations with interphase ﬂuorescence in situ
+hybridization (FISH) and maternal serum screening
+
+Michael D. Graf1*, Prabhcharan Gill2, Michael Krew2 and Stuart Schwartz1
+1Department of Genetics and Center for Human Genetics Laboratory, Case Western Reserve University and University
+Hospitals of Cleveland, Cleveland, OH, USA
+2Department of Obstetrics and Gynecology, Aultman Hospital, Canton, OH, USA
+
+We describe two cases of prenatally ascertained isochromosome 18. Case 1 included both an isochro-
+mosome 18p and an isochromosome 18q, while Case 2 involved only an isochromosome 18q. Both of these
+cases were associated with a positive maternal serum triple screen trisomy 18 risk (greater than 1 in 100
+risk). In addition, ﬂuorescence in situ hybridization (FISH) was performed on uncultured amniotic ﬂuid
+interphase cells in both cases looking for aneuploidy for chromosomes 13, 18, 21, X and Y. The results of
+the interphase analyses support the common knowledge that careful interpretation of interphase FISH
+analysis is necessary and that results should be followed by full cytogenetic analysis. To our knowledge these
+are the ﬁrst reported cases of structurally abnormal chromosomes 18 being associated with a positive
+maternal serum triple screen for trisomy 18. Copyright # 2002 John Wiley & Sons, Ltd.
+
+KEY WORDS: isochromosome 18; prenatal screening; cytogenetics; trisomy 18; interphase FISH
+
+INTRODUCTION
+
+The maternal serum triple screen is a routine prenatal
+screening test performed between 15 and 25 weeks’
+gestation used to estimate a pregnant woman’s risk of
+having a child with trisomy 21 (Down syndrome),
+trisomy 18 (Edward’s syndrome), open neural tube
+defects and open abdominal wall defects (Ormond,
+1997). The maternal serum triple screen is not designed
+to detect structural chromosome abnormalities, or
+other genetic abnormalities than those listed above. As
+the maternal serum triple screen is a screening test,
+false-positive results can occur; thus, a positive screen
+should be followed by genetic counseling and an
+amniocentesis should be offered.
+
+When expedited results of an amniocentesis are
+required, interphase ﬂuorescence in situ hybridization
+(FISH) can be ordered along with routine cytogenetic
+analysis. Interphase FISH results are typically avail-
+able in 1–2 days in contrast to the 6–10 days that a full
+cytogenetic analysis takes to complete (Weremowicz
+et al., 2001). In the case of the Aneuvysion assay (Vysis
+Inc., Downer’s Grove, IL, USA),
+interphase FISH
+uses a set of two mixtures of DNA probes speciﬁc for
+either the centromere or single-site locus (SSL) of
+chromosomes 13, 18, 21, X and Y (Weremowicz et al.,
+2001).
+
+This interphase FISH analysis restricted to these
+probes will detect almost two-thirds of all chromo-
+somal abnormalities detected at the time of amnio-
+centesis and 95% of the chromosomal abnormalities
+causing birth defects in newborns (Rhoads et al., 1989;
+
+Robinson et al., 1991; Whiteman and Klinger, 1991).
+Typically 50 interphase cells using each probe mix (100
+cells total) are counted. To minimize excessive false-
+positive results, more than 10% of the interphase cells
+are required to be aneuploid to qualify as a positive
+result. Should results
+in the 11–89% range,
+mosaicism or poor probe hybridization is suggested.
+This supplemental FISH analysis is often requested in
+cases of later gestational age, elevated maternal serum
+triple screen risks for trisomy 18 or 21, abnormal
+ultrasound ﬁndings, or parental anxiety (Cheong
+Leung et al., 2001).
+
+fall
+
+PATIENTS AND METHODS
+
+Sample preparation
+
+Interphase FISH was performed using 3 cc whole
+amniotic ﬂuid according to the manufacturer’s (Vysis
+Inc.) instructions (Weremowicz et al., 2001). Fifty
+nuclei for each set of probes were observed under the
+microscope. The laboratory standard for equivocal
+results for identifying aneuploidy was set at >10% of
+the cells.
+
+Six primary cultures from each amniotic ﬂuid
+sample were established. Cytogenetic analyses of
+G-banded chromosomes were compared using the
+in situ technique. Fifteen cells were analyzed from 15
+different colonies in at least two different primary
+cultures for chromosome number.
+
+Case 1
+
+*Correspondence to: M. D. Graf, Center for Human Genetics
+Laboratory, 10524 Euclid Avenue, 6th ﬂoor, Cleveland, OH 44106,
+USA. E-mail: michael.graf@uhhs.com
+
+A 20-year-old, African American woman was referred
+for genetic counseling at 21.6 weeks’ gestation because
+
+Copyright # 2002 John Wiley & Sons, Ltd.
+
+Received: 15 June 2001
+Revised: 4 January 2002
+Accepted: 7 January 2002
+
+646
+
+M. D. GRAF ET AL.
+
+a maternal serum triple screen resulted in a trisomy
+18 risk estimate of 1 in 14 (maternal serum alpha-
+fetoprotein (MSAFP)=2.35 MoM, human chorionic
+gonadotrophin (hCG)=0.35 MoM, unconjugated oes-
+triol (uE3)=0.41 MoM). In addition, a fetal sonogram
+revealed bilateral dilated ventricles, bilateral choroid
+plexus cysts, open neural tube defect, bilateral club
+feet, a ventricular septal defect, endocardial cushion
+defect, Dandy Walker malformation, omphalocele,
+and overlapping ﬁngers with clenched ﬁsts.
+
+An amniocentesis was performed at 23 weeks and
+interphase FISH analysis was performed in addition to
+the routine amniotic ﬂuid AFP and karyotype. Amnio-
+tic ﬂuid AFP was elevated at 11.84 MoM. Due to the
+obvious neural tube defect and omphalocele, acetyl-
+cholinesterase analysis was not requested.
+
+Interphase FISH analysis showed two signals for
+both chromosomes 13 and 21 in 49/50 cells while a
+single cell showed two signals for chromosome 13 and
+three signals for chromosome 21. In addition, 45
+interphase cells showed three signals for chromosome
+18 and one signal each for the X and Y chromosome.
+The three chromosome 18 signals appeared to be
+identical
+in size. Five cells showed two signals for
+chromosome 18 and one signal each for the X and Y
+chromosome. These results suggested that the male
+fetus had three copies of chromosome 18 and no
+aneuploidy for chromosomes 13, 21, X or Y.
+
+Full cytogenetic analysis on amniotic ﬂuid cells
+revealed 47,XY,x18,+i(18)(q10),+i(18)(p10). In addi-
+tion to one normal chromosome 18, there was a
+chromosome that consisted of two long arms from
+chromosome 18 and another chromosome that con-
+sisted of two short arms from chromosome 18. This
+results in the fetus having clinical trisomy 18 due to
+the presence of two isochromosomes.
+
+The pregnancy was terminated at 23.8 weeks and
+the parents declined an autopsy. Fetal tissue was
+obtained at the time of termination for conﬁrmation of
+the amniocentesis results, but the sample failed to
+grow in culture. Peripheral blood from the parents has
+not been examined.
+
+Case 2
+
+A 21-year-old, gravida one, African American woman
+was referred for genetic counseling at 17.3 weeks’
+gestation because a maternal serum triple screen
+resulted in a trisomy 18 risk estimate of 1 in 44 (MSAFP=
+0.37 MoM, hCG=0.50 MoM, uE3=0.33 MoM). In
+addition, a fetal sonogram revealed holoprosence-
+phaly, omphalocele, and bilateral hypoplastic fore-
+arms with radial deviation of hands. Interphase FISH
+analysis was done in addition to the routine cytoge-
+netic analysis. The family history was non-contributory.
+Amniotic ﬂuid AFP was 2.14 MoM with no acetyl-
+cholinesterase band detected. This ﬁnding is consist-
+ent with a ventral wall defect.
+
+Interphase FISH analysis showed two signals for
+both chromosomes 13 and 21 in 49 cells while a single
+cell showed two signals for chromosome 13 and three
+
+Figure 1—Interphase FISH analysis with probes for the X, Y and
+18 centromeres. This analysis showed two signals from both the 18
+probes. However, one centromere signal is signiﬁcantly smaller than
+the other one
+
+signals for chromosome 21. In addition, 46 interphase
+cells showed two signals for both the X chromosome
+and chromosome 18 while four cells showed two sig-
+nals for the X chromosome and three signals for chro-
+mosome 18. These results were well within normal
+limits for the analysis. However, in all cells there was a
+size discrepancy for the signals speciﬁc for chromo-
+some 18 as one chromosome 18 signal was signiﬁ-
+cantly smaller than the other chromosome 18 signal
+(Figure 1).
+
+Full cytogenetic analysis revealed 46,XX,i(18)(q10)
+(Figure 2). In addition to one normal chromosome 18,
+there was a chromosome that consisted of two long
+arms from chromosome 18 resulting in the fetus
+having monosomy 18p and trisomy 18q. Subsequent
+FISH studies on metaphase cells with a probe (D18Z1)
+speciﬁc for the centromeric region of chromosome 18
+showed signals on both the normal chromosome 18
+and the isochromosome 18q (Figure 3). However, the
+signal on the isochromosome 18q was signiﬁcantly
+smaller in all cells examined.
+
+The pregnancy was terminated at 21 weeks and an
+autopsy was not available. Peripheral bloods from the
+parents were requested to rule out the possibility that
+the isochromosome 18 was a result of a balanced
+parental rearrangement. The mother’s karyotype was
+46,XX. The father was unavailable for study.
+
+Figure 2—A partial G-banded metaphase showing both the normal
+18 and the I(18)(q10)(denoted by an arrow)
+
+Copyright # 2002 John Wiley & Sons, Ltd.
+
+Prenat Diagn 2002; 22: 645–648.
+
+PRENATAL DETECTION OF STRUCTURAL ABNORMALITIES OF CHROMOSOME 18
+
+647
+
+The present cases are also interesting in regards to
+the results of the interphase FISH tests performed
+looking for aneuploidy of chromosomes 13, 18, 21, X
+and Y. Although in Case 2 the results indicated there
+was no aneuploidy for any of those chromosomes, one
+chromosome 18 signal was smaller than the other
+chromosome 18 signal. On two other occasions, inter-
+phase studies in this laboratory revealed altered size of
+the 18 signals, both resulting in cytogenetically normal
+fetuses, suggesting that there may have been reduced
+amounts of chromosome 18 alpha satellite in these two
+cases. In the present case, however, there was a strong
+suspicion that this fetus may have an abnormality
+involving chromosome 18 because of the maternal
+serum triple screen results and ultrasound ﬁndings.
+Therefore, the laboratory was concerned about the
+size discrepancy of these signals since it seemed logical
+that the discrepant signals could be the result of a
+structural abnormality of one chromosome 18. There-
+fore, the results of the interphase FISH test were
+described to the referring physician as being within
+normal limits, but the laboratory suggested to inter-
+pret the normal interphase FISH results with caution
+until a full cytogenetic analysis was available. FISH
+analysis on metaphase cells using a probe (D18Z1)
+speciﬁc for the centromere of chromosome 18 showed
+a smaller sized signal
+for the isochromosome as
+compared to the normal chromosome 18, suggesting
+the centromeres of these two chromosomes to be
+different.
+
+In Case 1, the interphase FISH results were not
+unusual, but they still point out the importance of
+carefully interpreting such results. The interphase
+FISH results showed three chromosome 18 signals,
+and although it would be easy to conclude that the
+fetus had trisomy 18 which, while phenotypically
+correct, would not be cytogenetically accurate. Full
+cytogenetic analysis indicated that the fetus had one
+normal chromosome 18, one isochromosome 18p
+and one isochromosome 18q. Although a trisomy 18
+phenotype would be expected, it would be important
+to explain the difference between trisomy 18 and the
+actual cytogenetic ﬁndings of this case. In the present
+case it is possible, although unlikely, that a parent
+could carry a structural abnormality of chromosome
+18 that could lead to the occurrence of isochromo-
+somes, which would increase the recurrence risk. This
+conﬁrms the importance of following interphase FISH
+results with full cytogenetic analysis.
+
+Additional reports are needed to determine whether
+there is a relationship between the maternal serum
+triple screen and structural abnormalities of chromo-
+some 18, such as isochromosome 18q. In addition,
+although the interphase FISH analysis used in pre-
+natal cases is not designed to detect structural chromo-
+somal abnormalities, perhaps it is possible to detect
+certain structural abnormalities of chromosome 18
+and 21. Finally,
+interphase FISH probe signal size
+discrepancy needs to be interpreted with caution,
+especially if using probes from regions of the genome
+containing repetitive DNA.
+
+Figure 3—A metaphase showing hybridisation to both the normal
+and isochromosome 18. The isochromosome 18 demonstrates a
+reduced signal with the alpha-satellite chromosome 18 probe
+(D18Z1)
+
+DISCUSSION
+
+As the critical region for trisomy 18 has been demon-
+strated to be localized to the long arm of chromosome
+18 (Turleau and deGrouchy, 1977), individuals with a
+normal chromosome 18 and an isochromosome 18q
+(Case 2) will typically have a phenotype similar to that
+of trisomy 18, but may also have features of 18p
+monosomy (Wurster-Hill et al., 1991; Bohosioan-Sell
+et al., 1994).
+
+There have been only two other cases involving both
+an isochromosome 18p and an isochromosome 18q
+reported in the literature (Muller et al., 1972; Larson
+et al., 1978). It is assumed and has been shown in these
+cases that the phenotype of these individuals mimics
+that of individuals with three number 18 chromo-
+somes.
+
+The two cases presented here are interesting for two
+reasons. First, these cases are, to our knowledge, the
+ﬁrst reported cases involving structural abnormalities
+of chromosome 18 associated with a positive maternal
+serum triple screen risk for trisomy 18. Second, Case 2
+raises the role of atypical interphase FISH results in
+possibly indicating the presence of a chromosomal
+rearrangement and both cases conﬁrm the need for
+caution when making interpretations of interphase
+FISH results.
+
+Although there has been no reported association
+between an isochromosome 18 and a trisomy 18 risk
+by maternal serum triple screen, there is a report of a
+fetus with Down syndrome caused by an isochromo-
+some 21, as well as a report of several undetermined
+D;G and G;G translocations, having positive results
+for Down syndrome by maternal serum triple screen
+(Cheng et al., 1993; Meyers et al., 1997). However, as
+the critical region for trisomy 18 is located in the long
+arm, it can be speculated that an isochromosome 18q
+would probably cause the same maternal serum triple
+screen pattern as full trisomy 18 since the phenotypes
+are similar.
+
+Copyright # 2002 John Wiley & Sons, Ltd.
+
+Prenat Diagn 2002; 22: 645–648.
+
+648
+
+M. D. GRAF ET AL.
+
+REFERENCES
+
+Bohosioan-Sell L, Mewar R, Harrison W, et al. 1994. Molecular
+mapping of the Edwards syndrome phenotype to two noncontigu-
+ous regions on chromosome 18. Am J Hum Genet 55: 476–483.
+
+Cheng E, Luthy D, Zebelman A, Williams M, Lieppman R,
+Hickok D. 1993. A prospective evaluation of a second-trimester
+screening test for fetal Down syndrome using maternal serum
+alpha-fetoprotein, hCG, and unconjugated estriol. Obstet Gynecol
+81: 72–77.
+
+Cheong Leung W, Chitayat D, Seaward G, et al. 2001. Role of
+amniotic ﬂuid interphase ﬂuorescence in situ hybridization (FISH)
+analysis in patient management. Prenat Diagn 21: 327–332.
+
+Larson LM, Wasdahl WA, Saumur JH, Coleman ML, Jalal SM.
+1978. Trisomy 18 syndrome with an unusual karyotype: possible
+double isochromosome. J Med Genet 15: 73–76.
+
+Meyers C, Ghori S, Roberson A, Blitzer M, Cohen M. 1997.
+46,XY,i(21q) identiﬁed by maternal serum screening. Md Med J
+46: 88–89.
+
+Muller HJ, Buhler EM, Signer E, Egli F, Stalder GR. 1972. Trisomy
+18 syndrome caused by translocation or isochromosome forma-
+tion. J Med Genet 9: 462–466.
+
+Ormond K. 1997. Update and review: maternal serum screening.
+
+J Genet Couns 6: 395–417.
+
+Rhoads G, Jackson L, Schlesselman S, et al. 1989. The safety and
+efﬁcacy of chorionic villus sampling for early prenatal diagnosis of
+cytogenetic abnormalities. N Engl J Med 320: 609–617.
+
+Robinson A, Bender B, Linden M, Salbenblatt JA. 1990. Sex
+chromosome aneuploidy: the Denver Prospective Study. Birth
+Defects Orig Artic Ser 26: 59–115.
+
+Turleau C, deGrouchy J. 1977. Trisomy 18qter and trisomy mapping
+
+of chromosome 18. Clin Genet 12: 361–371.
+
+Weremowicz S, Sandstrom D, Morton C, Niedzwiecki C, Sandstrom
+M, Bieber F. 2001. Fluorescence in situ hybridization (FISH) for
+rapid detection of aneuploidy: experience in 911 prenatal cases.
+Prenat Diagn 21: 262–269.
+
+Whiteman D, Klinger K. 1991. Efﬁciency of
+
+rapid in situ
+hybridization methods for prenatal diagnosis of chromosome
+abnormalities causing birth defects. Am J Hum Genet 49 (Suppl.):
+A1279.
+
+Wurster-Hill D, Marin-Padilla M, Moeschler J, Park J, McDermet
+M. 1991. Trisomy 18 and 18p- features in a case of isochromo-
+some 18q [46,XY,i(18q)]: prenatal diagnosis and autopsy report.
+Clin Genet 39: 142–148.
+
+Copyright # 2002 John Wiley & Sons, Ltd.
+
+Prenat Diagn 2002; 22: 645–648.
+
+

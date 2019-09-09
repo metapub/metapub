@@ -1,0 +1,77 @@
+====
+link:  http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2265.2009.03757.x/pdf
+title:  A novel de novo germ?line V292M mutation in the extracellular ...
+potential dois:  10.1111/j.1365-2265.2009.03757.x
+predicted pmid:  AMBIGUOUS (7 citations)
+====
+link:  http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2265.2009.03757.x/abstract
+title:  A novel de novo germ-line V292M mutation in the extracellular ...
+potential dois:  10.1111/j.1365-2265.2009.03757.x
+predicted pmid:  AMBIGUOUS (7 citations)
+====
+link:  http://online.liebertpub.com/doi/pdf/10.1089/thy.2012.0134
+title:  RET Proto-Oncogene Genetic Screening of Families with Multiple ...
+potential dois:  10.1089/thy.2012.0134, 10.5376/ijccr.2013.03.0016
+predicted pmid:  23210566
+====
+link:  http://www.plosone.org/article/info:doi/10.1371/journal.pone.0020353
+title:  RET Germline Mutations Identified by Exome Sequencing in a ...
+potential dois:  10.1371/journal.pone.0020353
+predicted pmid:  21655256
+====
+link:  http://www.hindawi.com/journals/jtr/2011/678357/
+title:  How to Treat a Signal? Current Basis for RET-Genotype-Oriented ...
+potential dois:  10.4061/2011/678357
+predicted pmid:  NOT_FOUND
+====
+link:  http://link.springer.com/article/10.3275%2F8997
+title:  Comprehensive analysis of RET gene should be performed in ...
+potential dois:  10.3275/8997
+predicted pmid:  NOT_FOUND
+====
+link:  http://online.liebertpub.com/doi/abs/10.1089/thy.2012.0134
+title:  RET Proto-Oncogene Genetic Screening of Families with Multiple ...
+potential dois:  10.1089/thy.2012.0134, 10.5376/ijccr.2013.03.0016
+predicted pmid:  23210566
+====
+link:  http://www.plosone.org/article/fetchSingleRepresentation.action?uri=info:doi/10.1371/journal.pone.0028986.s005
+title:  Table S4.
+potential dois:  10.1371/journal.pone.0028986.s005, 10.7717/peerj.732/supp-8
+predicted pmid:  NOT_FOUND
+====
+link:  http://link.springer.com/content/pdf/10.3275/8997.pdf
+title:  Comprehensive analysis of RET gene should be performed in ...
+potential dois:  10.3275/8997
+predicted pmid:  NOT_FOUND
+====
+link:  http://www.sciencedirect.com/science/article/pii/S0022346812003909
+title:  Screening of the RET gene of Vietnamese Hirschsprung patients ...
+potential dois:  10.1016/j.jpedsurg.2012.05.020
+predicted pmid:  23084198
+====
+link:  http://jmg.bmj.com/content/42/4/322.full
+title:  Ancestral RET haplotype associated with Hirschsprung's disease ...
+potential dois:  10.1136/jmg.2004.023960
+predicted pmid:  15805159
+====
+link:  http://www.jbc.org/content/273/3/1269.full
+title:  Mammalian RGS Proteins: Barbarians at the Gate
+potential dois:  10.1074/jbc.273.3.1269
+predicted pmid:  9430654
+====
+link:  http://journal.frontiersin.org/Journal/10.3389/fgene.2015.00017/pdf
+title:  Provisional PDF
+potential dois:  10.3389/fgene.2015.00017, 10.15845/voices.v13i2.723.s189
+predicted pmid:  NOT_FOUND
+====
+link:  http://jasn.asnjournals.org/content/14/5/1164.full.pdf
+title:  Genotype-Renal Function Correlation in Type 2 Autosomal ...
+potential dois:  10.1097/01.asn.0000061774.90975.25
+predicted pmid:  12707387
+====
+link:  http://www.researchgate.net/profile/Isabelle_Thiffault/publication/269170669_Effectiveness_of_exome_and_genome_sequencing_guided_by_acuity_of_illness_for_diagnosis_of_neurodevelopmental_disorders/links/5489e15d0cf2d1800d7aa461.pdf
+title:  Soden 1..13
+potential dois:  10.1163/1877-5888_rpp_com_024883
+predicted pmid:  NOT_FOUND
+====
+

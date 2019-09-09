@@ -1,0 +1,2929 @@
+Nucleic Acids Research Advance Access published September 15, 2010
+ 
+
+Nucleic Acids Research, 2010, 1–12
+doi:10.1093/nar/gkq776
+
+Human box C/D snoRNAs with miRNA
+like functions: expanding the range of
+regulatory RNAs
+Markus Brameier1,*, Astrid Herwig1, Richard Reinhardt2, Lutz Walter1 and
+Jens Gruber1,*
+
+1Primate Genetics Laboratory, German Primate Center, 37077 Go¨ ttingen and 2Max-Planck-Institute for
+Molecular Genetics, Berlin, 14195 Germany
+
+Received February 10, 2010; Revised August 14, 2010; Accepted August 18, 2010
+
+ABSTRACT
+
+INTRODUCTION
+
+Small nucleolar RNAs (snoRNAs) and microRNAs
+are two classes of non-protein-coding RNAs with
+functions in RNA modification or post-
+distinct
+transcriptional gene silencing.
+In this study, we
+insights to RNA-induced gene
+introduce novel
+activity adjustments in human cells by identifying
+numerous snoRNA-derived molecules with miRNA-
+like function,
+including H/ACA box snoRNAs and
+C/D box snoRNAs. In particular, we demonstrate
+that several C/D box snoRNAs give rise to gene
+regulatory RNAs, named sno-miRNAs here. Our
+data are complementing the increasing number of
+studies in the field of small RNAs with regulatory
+functions. In massively deep sequencing of small
+RNA fractions we identified high copy numbers
+of sub-sequences from >30 snoRNAs with lengths
+of 18 nt. RNA secondary structure prediction
+indicated for a majority of candidates a location in
+predicted stem regions. Experimental analysis
+revealed efficient gene silencing for 11 box C/D
+sno-miRNAs,
+indicating cytoplasmic processing
+and recruitment to the RNA silencing machinery.
+Assays in four different human cell lines indicated
+variations in both the snoRNA levels and their pro-
+cessing to active sno-miRNAs. In addition we show
+that box D elements are predominantly flanking
+at least one of the sno-miRNA strands, while the
+box C element locates within the sequence of the
+sno-miRNA guide strand.
+
+A variety of small non-protein coding RNAs (npcRNAs),
+including microRNAs (miRNAs), small interfering RNAs
+(siRNAs) and Piwi-interacting RNAs (piRNAs) are im-
+portant mediators of gene regulation (1–3). piRNAs
+control retrotransposition (4,5) and are expressed in
+testes only (3). siRNAs and miRNAs are targeting
+mRNAs in a sequence-speciﬁc manner and guide transla-
+tional
+inhibition, degradation or deadenylation of
+target-mRNAs (6–9). A role in transcriptional regulation
+for an endogenous miRNA was recently discovered
+(10,11) and previously shown for exogenously delivered
+siRNAs (12,13). Furthermore, a general transcriptional
+regulation mechanism was recently postulated for tran-
+scription start site (TSS) associated tiny RNAs, called
+tiRNAs
+the RNA induced
+silencing
+the Ago
+proteins, act in concert with small npcRNAs to regulate
+gene expression at the various levels mentioned earlier.
+
+(14,15). Components of
+
+in particular
+
+complex
+
+(RISC),
+
+(rRNAs) or
+
+A new source of regulatory npcRNAs was recently
+discovered to originate from small nucleolar RNAs
+(snoRNAs) (14,16). SnoRNAs are ubiquitously expressed
+small npcRNAs (also named sRNAs here) that function in
+maturation and modiﬁcation of other npcRNAs such as
+ribosomal RNAs
+small nuclear RNAs
+(snRNAs) (17). Box H/ACA snoRNAs trigger the site
+speciﬁc synthesis of pseudouridines in a broad variety of
+ribosomal and spliceosomal RNAs (18). In addition these
+snoRNAs play a role in nucleolytic processing of precur-
+sor rRNA (pre-rRNA) and also function in synthesis of
+telomeric DNA (19). Box C/D snoRNAs, which are the
+primary source of sno-miRNAs in this study, contain
+conserved Box C (UGAUGA) and Box D (CUGA)
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+n
+a
+r
+.
+
+ 
+
+o
+x
+f
+
+j
+
+o
+r
+d
+o
+u
+r
+n
+a
+s
+.
+
+l
+
+o
+r
+g
+b
+y
+ 
+
+ 
+
+g
+u
+e
+s
+t
+ 
+
+ 
+
+o
+n
+N
+o
+v
+e
+m
+b
+e
+r
+ 
+
+9
+
+,
+ 
+
+2
+0
+1
+0
+
+*To whom correspondence should be addressed. Tel: +49 551 3851 418; Fax: +49 551 3851 372; Email: brameier@dpz.gwdg.eu
+Correspondence may also be addressed to Jens Gruber. Tel: +49 551 3851 481; Fax: +49 551 3851 372; Email: jgruber@dpz.eu
+
+ß The Author(s) 2010. Published by Oxford University Press.
+This is an Open Access article distributed under the terms of the Creative Commons Attribution Non-Commercial License (http://creativecommons.org/licenses/
+by-nc/2.5), which permits unrestricted non-commercial use, distribution, and reproduction in any medium, provided the original work is properly cited.
+
+2 Nucleic Acids Research, 2010
+
+‘work-environment’. Ender et al.
+
+elements located closely to the 50- and 30-ends, respective-
+ly. Internal copies of these elements are termed Box C0 and
+Box D0
+(20,21). An interaction between the 50- and
+30-termini allows the formation of a stem bringing the
+Boxes C and D elements together to form a hairpin struc-
+ture. Box C/D snoRNAs serve as guides for 20-O-ribose
+methylation of
+ribosomal RNA. Pseudouridylation
+and 20O-ribose methylation are important steps during
+maturation of ribosomal RNAs, thus playing a fundamen-
+tal role in key processes of all cells. With exception of U3
+all box C/D snoRNAs presented in this study are
+intron-encoded, as it is the general pathway for the bio-
+genesis of this class of snoRNAs (22). However, apparent-
+ly some snoRNAs have an additional function outside
+their normal
+(16)
+demonstrated processing of the cajal body speciﬁc RNA
+ACA45 to cytoplasmic, Ago protein associated 20- to
+25-nt RNAs with gene silencing activity. The identiﬁcation
+of CDC2L6 as a target mRNA, which is down-regulated
+by the miRNA function of ACA45 underlined the physio-
+logical relevance of the dual function. Independence of
+nuclear micro-processing by Drosha/DGCR8 indicates
+that the mechanism is distinct from the classic miRNA
+pathway that was formulated in the early years of
+miRNA research (23) and processing factors and their
+regulations are constantly being reﬁned (24,25). Today
+we know more about alternative processing of
+the
+primary miRNA transcripts (pri-miRNAs) in a Drosha-
+independent fashion (26,27) and regulation of the micro-
+processor complex itself (25,28,29). Recently, the possibil-
+ity of processing box C/D snoRNAs to small RNA
+molecules with miRNA-like features and functions was
+postulated from intensive analysis of deep sequencing
+data and predicted for numerous candidates (30). The
+box C/D snoRNA MBII-52 was shown to give rise to
+shorter RNAs with a regulatory function in alternative
+splice site selection (31). We addressed the crucial task
+of providing further experimental evidences for regulatory
+snoRNA- mechanisms in human cells. In the ancient eu-
+karyote Giardia lamblia a box C/D snoRNA was shown
+to be processed by Dicer and performed gene silencing in
+reporter gene assays (32) and similar snoRNA effects were
+postulated for humans (33).
+
+By second generation sequencing of small RNA frac-
+tions (up to 40 nt)
+from human T lymphocytes we
+identiﬁed 22 fragments of C/D box snoRNAs by bioinfor-
+matics analysis. These may serve as substrates for Dicer
+processing as described in ref. (27) and may enter the
+RNA silencing machinery as it is usually observed for
+(pre-)miRNAs (34). For these candidate sequences we
+functionally characterized the putative miRNA-like
+activity by in vitro experiments. Two small RNAs
+snoRNA HBII-99b and
+derived from C/D box
+SNORD126 are reported as miRNAs
+in the latest
+release of the miRNA database (miRBase).
+
+Furthermore, we identiﬁed miRNAs in miRBase, which
+de facto are box H/ACA snoRNA-derived RNAs
+(sdRNAs). These snoRNAs, i.e. ACA34, ACA36b and
+HBI-61, share common features in terms of predicted
+structures, processing and silencing capacity as was
+described for
+cajal body speciﬁc RNA
+
+small
+
+the
+
+(scaRNA) ACA45 (16) and additional box H/ACA
+sdRNAs (35). Based on the striking similarity shared by
+the two RNA species the theory was introduced that some
+miRNAs may have evolved from ancient box H/ACA
+snoRNAs (35). In their study Scott et al. (35) provide a
+list of 14 snoRNAs, which give rise of sdRNAs, including
+the three miRBase listed candidates (miR-1291/ACA34,
+miR-1248/HBI-61, miR-664/ACA36b). ACA36b was
+already predicted to have a miRNA-like activity that
+may compare to the miRNA-activity of ACA45 (16) and
+we provide experimental data for this function in three
+human cell lines. In this study we present an expanded
+range of candidate npcRNAs with putative miRNA-
+features,
+silencing
+activity of human box C/D sno-miRNAs. In addition,
+we show functional data for three previously discovered
+box H/ACA sno-miRNAs. Moreover, we provide experi-
+mental evidence for cell
+type speciﬁc activities of
+sno-miRNAs, suggesting a general and controlled par-
+ticipation of snoRNAs in gene regulation in a cell type
+dependent manner.
+
+including evidence
+
+the gene
+
+for
+
+In a detailed analysis of snoRNA-derived sequences
+from our small RNA libraries we identiﬁed an interesting
+feature. In 15 out of 17 box C/D snoRNAs at least one
+of the sequenced (and functionally tested) sno-miRNA
+candidates was ﬂanked by the box D element (CUGA)
+at the 30-end and/or a box D0 element close to the
+50-end. The box C element (UGAUGA) was identiﬁed in
+12 snoRNA sequences and located within the sequence of
+11 sno-miRNAs. This pattern could be conﬁrmed more
+frequently for 107 snoRNAs that express sequences from
+our sRNA libraries. Our ﬁndings indicate a relation of
+the functional snoRNA elements to the processing and
+activity of sno-miRNAs.
+
+MATERIALS AND METHODS
+
+Small npcRNA cloning and sequencing
+
+(PAA)
+
+denaturing
+
+15% polyacrylamide
+
+Small RNA cloning was
+carried out by Vertis
+Biotechnology (Weihenstephan, Germany) and has been
+described earlier (36). The small RNA species were
+isolated from total RNAs using the mirVana miRNA
+isolation kit (Ambion). The small RNAs were separated
+on
+gels.
+Oligonucleotides of 18- to 40-nt size were poly(A)-tailed
+using poly(A) polymerase, and an adaptor was ligated to
+the 50-phosphate of the miRNAs: 50-end adaptor GCCTC
+CCTCGCGCCATCAGCTNNNNGACCTTGGCTGTC
+ACTCA. Next, ﬁrst-strand cDNA synthesis was per-
+formed using an oligo(dT)-linker primer and M-MLV-
+RNaseH reverse transcriptase 30-end adaptor GCCGGG
+GCGATGTCTCGTCTGAGCGGGCTGGCAAGGC.
+The resulting cDNAs were PCR ampliﬁed in 16 cycles
+using the high-ﬁdelity Phusion polymerase (Finnzymes).
+The 120–135-bp ampliﬁcation products were conﬁrmed
+by polyacrylamide gel electrophoresis (PAGE) analysis.
+sRNA library sequencing was performed in a Roche
+FLX System (Roche Diagnostics, Mannheim, Germany)
+and yielded 550 000 reads in total.
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+n
+a
+r
+.
+
+ 
+
+o
+x
+f
+
+j
+
+o
+r
+d
+o
+u
+r
+n
+a
+s
+.
+
+l
+
+o
+r
+g
+b
+y
+ 
+
+ 
+
+g
+u
+e
+s
+t
+ 
+
+ 
+
+o
+n
+N
+o
+v
+e
+m
+b
+e
+r
+ 
+
+9
+
+,
+ 
+
+2
+0
+1
+0
+
+sRNA extraction from library
+
+sno-miRNA identiﬁcation
+
+Nucleic Acids Research, 2010 3
+
+Each library sequence (read) comes with a unique identi-
+ﬁer and is composed of a ﬁxed-length 50-adaptor,
+a transcribed sRNA sequence of maximum 40 nt,
+a variable-length poly(A)
+sequence A+NA+, and a
+30-adaptor (see above). The following protocol is used to
+extract the sRNA sequences from the library:
+
+(i) The start position is simply found by removing the
+ﬁxed-length 50-primer. Only in a few cases the
+precise position may be missed in this way due to
+single nucleotide deletions (or insertions) inside the
+adaptor as a result of sequencing errors.
+
+(ii) The identiﬁcation of
+
+the sequences at
+
+the end position is more
+challenging due to the poly(A) string that precedes
+the 30-primer. To cope with its variable length and
+patterns, we used Perl regular expression matching.
+In >99% of
+the
+subexpressions AA+NA+, A+NAA+, AAA+N,
+NAAA+ or AAAAAA+ matches. Here, we have
+to accept
+sRNAs ending on
+A+, cutting at the matching position is imprecise.
+together
+The non-matching reads are discarded,
+with all
+that are
+empty or
+further
+processing (<5%).
+
+extracted sRNA sequences
+just
+
+least one of
+
+too short
+
+(<15 nt)
+
+for
+
+that at
+
+least
+
+for
+
+for
+
+candidates
+
+To discover both (i) expressed/transcribed fragments
+of known snoRNAs in the short RNA library and
+(ii) novel
+snoRNA-derived RNAs
+(sno-miRNAs), we aligned all extracted sRNA sequences
+against all 402 known snoRNAs from snoRNABase (37)
+using the ofﬂine version of NCBI BLAST. Only perfect
+alignments (without gaps or mismatches) are accepted
+which cover at least 17 nt. This is the minimum length
+found for mature human miRNAs. From the BLAST
+analysis a snoRNA-expression proﬁle was
+created
+counting the frequencies of matching sequences from the
+library (9500 in total). From this proﬁle we selected suf-
+ﬁciently expressed snoRNAs which include a subsequence
+that (i) is minimum 25-nt long; (ii) is covered by a signiﬁ-
+cant number of expressed snoRNA fragments; and (iii)
+whose most conserved part
+is located in a
+hairpin stem of the snoRNA folding. Secondary structure
+folding was calculated with RNAfold (rna.tbi.univie.ac.at/
+cgi-bin/RNAfold.cgi) and sRNA sequences were aligned
+with ClustalW2 (38). Table 1 lists all C/D box snoRNAs,
+which were identiﬁed in this way for further functional
+(miRNA) analysis. To test whether
+some known
+miRNAs may actually be derived from snoRNAs all 718
+mature human miRNAs from miRBase (39) (release 14.0,
+www.mirbase.org) are matched against
+the ﬁltered
+
+(20 nt)
+
+Table 1. snoRNA derived sRNAs (sno-miRs), positions on original snoRNA sequences and miRNA-like activity
+
+snoRNA
+
+ACA45
+snR39b
+U3
+U3-3
+U3-4
+U78
+HBII-336
+HBI-43
+HBII-142
+U48
+U51
+U21
+U27
+
+U44
+HBII-429
+U59b
+U83a
+U15a
+U74
+U45AC
+
+HGNC symbol
+(host gene)
+
+SCARNA15 (Hs.513091)
+SNORD2 (EIF4A2)
+X14945
+SNORD3
+SNORD3
+SNORD78 (GAS5)
+SNORD93 (EST cluster)
+SNORD17 (SNX5)
+SNORD66 (EIF4G1)
+SNORD48 (C6orf48)
+SNORD51 (EEF1B2)
+SNORD21 (RPL5)
+SNORD27 (U22 Host
+
+Gene, UHG)
+
+SNORD44 (AL110141)
+SNORD100 (RPS12)
+SNORD59b (ATP5B)
+SNORD83a (RPL3)
+SNORD15a (RPS3)
+SNORD74 (GAS5)
+SNORD45aSNORD45c
+
+(RABGGTB)
+
+Type
+
+H/ACA
+C/D
+C/D
+C/D
+C/D
+C/D
+C/D
+C/D
+C/D
+C/D
+C/D
+C/D
+C/D
+
+C/D
+C/D
+C/D
+C/D
+C/D
+C/D
+C/D
+
+miRbase listed snoRNAs
+ACA34 hsa-miR-1291
+HBI-61 hsa-miR-1248
+ACA36b hsa-miR-664
+HBII-99b hsa-miR-1259
+SNORD126
+
+hsa-miR-1201
+
+SNORA34 (FLJ20436)
+SNORA81 (EIF4A2)
+SNORA36b
+SNORD12b (C20orf199)
+SNORD126 (CCNB1IP1)
+
+H/ACA
+H/ACA
+H/ACA
+C/D
+C/D
+
+Sno-miR
+pos. (major)
+
+Sno-miR
+*pos. (minor)
+
+miRNA activity
+(H/J/R)
+
+References
+
+64–85
+2–29
+193–214
+45–66
+75–96
+32–61
+40–62
+207–233
+47–70
+1–25
+41–65
+2–27
+43–67
+
+2–26
+4–36
+44–67
+4–26
+2–27
+40–68
+57–73
+
+2–25
+1–27
+106–128
+16–36
+52–75
+
+102–127
+36–63
+(93–127)
+
+1–24
+2–23
+2–29
+1–23
+40–61
+2–39
+52–86
+2–24
+
+28–57
+37–70
+6–25
+n.d.
+114–137
+3–30
+1–29
+
+(39–63)
+n.d.
+68–91
+n.d.
+n.d.
+
++/+/O
++/+/ 
++/O/+
+ /O/n
+O/+/+
++/+/O
+ /+/+
+O/–/n
+O/+/n
+ /O/n
+ /O/n
+ / /n
+ /+/ 
+ /O/n
++/O/n
+ /O/n
+ /+/+
++/+/n
+ /+/n
+O/ /n
+
++/+/+
++/+/+
++/O/ 
+n.d.
+n.d.
+
+(16)
+
+This study
+
+Identiﬁed
+(35)
+
+This study
+
+Host gene, pre-mRNA source of intron-encoded snoRNA; sno-miR, small RNA originating from snoRNAs; major, dominant sRNA, found in high
+copy numbers by deep sequencing; minor, sRNA found in signiﬁcantly lower copy numbers; var., various minor sRNAs; n.d., not detected; miRNA
+activity: HeLa, Jurkat, RPMI8866 +, <60% remaining Renilla luciferase activity; O, 60–80%;  , no reduction.
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+n
+a
+r
+.
+
+ 
+
+o
+x
+f
+
+j
+
+o
+r
+d
+o
+u
+r
+n
+a
+s
+.
+
+l
+
+o
+r
+g
+b
+y
+ 
+
+ 
+
+g
+u
+e
+s
+t
+ 
+
+ 
+
+o
+n
+N
+o
+v
+e
+m
+b
+e
+r
+ 
+
+9
+
+,
+ 
+
+2
+0
+1
+0
+
+4 Nucleic Acids Research, 2010
+
+snoRNA fragments. The ﬁve matches found are also listed
+in Table 1.
+
+RESULTS
+
+Pool of ncRNAs in human T lymphocytes
+
+Cell culture
+Human CD4+ T cells (Jurkat) and B cells (RPMI8866)
+were maintained in RPMI 1640 Medium supplemented
+with 10% FCS and 1% antibiotics solution (Pen/Strep).
+Human HeLa and MCF7 cells were maintained in
+DMEM (Dulbecco’s modiﬁed Eagle’s Medium) supple-
+mented with 10% FCS and antibiotics. RNA preparation
+was performed with TRIzol reagent (Invitrogen, Carlsbad,
+CA, USA) according to manufacturer’s guidelines.
+
+Reporter gene assays
+
+snoRNA derived sRNA was
+Silencing activity of
+measured in the dual
+luciferase reporter gene system
+psiCHECK-2 (Promega, Madison, WI, USA). Fully com-
+plementary target sites for sRNAs were synthesized with
+ﬂanking overhangs for NotI and XhoI restriction sites,
+annealed in isostoichiometric ratio in annealing buffer
+(10 mM Tris–HCl, pH 7.5, 100 mM NaCl, 1 mM EDTA)
+and ligated into the 30-UTR of the Renilla luciferase gene
+in the XhoI/NotI-digested psiCHECK-2 vector. For a
+complete list of ligated target site oligonucleotides see
+the Supplementary data. Transient
+transfection of
+human cell lines was performed with either nucleofection
+(suspension cell lines Jurkat and RPMI8866) according to
+manufacturer’s protocols (Amaxa) or with lipofection
+(adherent HeLa and MCF7 cells) utilizing FuGENE HD
+transfection reagent
+(Roche Diagnostics, Mannheim,
+Germany). Luciferase activities were determined with
+either the Dual-Glo Luciferase Assay or the two individ-
+ual assays for Renilla and Fireﬂy luciferase (all Promega).
+psiCHECK-2 transfected cells were treated in accordance
+to manufacturer’s protocols and luminescence was
+assayed on a Victor2 microplate reader (Perkin Elmer).
+Luminescence
+sno-miRNA-target
+associated Renilla luciferase were normalized against the
+simultaneously examined ﬁreﬂy luciferase values
+to
+minimize the risk of transfection and assay artefacts.
+Normalized R/F values were standardized with two
+negative controls,
+i.e. the empty dual luciferase vector
+and a scrambled, non-cognate target sequence.
+
+intensities
+
+the
+
+for
+
+Northern blot analysis
+
+onto
+
+transferred
+
+Total RNA was isolated from cell cultures by the TRIzol
+method (Invitrogen Life Technologies). An amount of
+10 mg of total RNA were size-separated on denaturing
+8% acrylamide/bisacrylamide (19:1; 7 M Urea) gels
+(Invitrogen),
+nylon membranes
+(BrightStar-Plus, Ambion), UV- crosslinked (Stratagene
+crosslinker) and pre-hybridized for 1 h at 40C in 1M
+sodium phosphate
+7% SDS.
+Hybridizations to 32P-ATP, end-labelled oligonucleotides
+complementary to the respective npcRNAs
+(Supple-
+mentary Data) were performed in 1 M sodium phosphate
+(pH 6.2), 7% SDS for 12 h at 38C. Membranes were
+washed twice for 30 min at room temperature in 2
+SSC, 0.05% SDS buffer and exposed to Kodak MS-1
+ﬁlms for 3 h–2 days.
+
+(pH 6.2),
+
+buffer
+
+240 000
+
+sequences
+
+originating
+
+Interestingly,
+
+the previously
+
+Small RNA fractions (up to 40 nt) were generated from
+RNA extracts of human CD4+ T lymphocytes and sub-
+jected to massive parallel pyrosequencing. We identiﬁed
+approximately
+from
+known human miRNAs, reﬂecting >60% of all small
+RNAs in the deeply sequenced library. In addition we
+identiﬁed more than 9000 RNAs of 18–28 nt in length
+that originate from bona ﬁde snoRNAs. Among these
+sequences 20 box C/D snoRNAs were selected using the
+procedure described in ‘Materials and Methods’ section
+and are enriched in human Jurkat cells (Table 1),
+besides
+characterized H/ACA box
+snoRNA (ACA45).
+the majority of
+sno-miRNAs with increased frequencies match perfectly
+in regions of 18-nt and display only minor differences
+in containing additional 1- to 5-nt in the 30- or 50-ﬂanking
+region. When compared to secondary structure predic-
+tions we found most of
+the sno-miRNA sequences
+located in regions that are likely to form stem-loops
+when thermodynamics is the sole folding determinant.
+Three structurally distinct C/D box snoRNAs and their
+corresponding sno-miRNAs are shown in Figure 1. For
+U48 we include the alignment of sno-miRNA sequences,
+the dominant or guide strand is highlighted with a red bar,
+the aligned minority or passenger strand is marked with a
+blue bar. The location of sno-miRNAs on predicted
+snoRNA structures of U15a, U48 and U21 is indicated,
+red marks the major, blue the minor sno-miRNA-strand.
+The RNAfold-predicted structures of all 20 snoRNAs
+with embedded candidate sno-miRNAs are provided in
+Supplementary Figure S1. We frequently identiﬁed the
+sno-miRNA guide strand to contain the box C element
+of the snoRNA, while guides as well as the passenger
+strands that were only present in very low copy numbers
+in the small RNA libraries were in most cases ﬂanked by
+the box D element in their 30-end (compare Table 2).
+
+Functional characterization of candidate sno-miRNA
+sequences
+
+Selected candidates were tested for their gene silencing
+capabilities in dual luciferase based reporter gene assays.
+Fully complementary target sites for putative sno-miRNA
+guide strands were cloned into the 30-UTR of the Renilla
+luciferase gene of the psiCHECK-2 reporter vector. The
+second luciferase gene (Fireﬂy, Photinus pyralis) remained
+unaffected and served as an internal control for subse-
+quent normalization of the data obtained. Data variations
+due to different transfection efﬁciencies can be excluded,
+since the reporter gene and the control gene for normal-
+ization of the data are encoded on the same plasmid.
+Upon RISC incorporation of sno-miRNAs the transcripts
+were recognized and subjected to ago2 cleavage and sub-
+sequent degradation. A target for the previously described
+H/ACA box snoRNA ACA45 served as positive control,
+the unmodiﬁed (empty) psiCHECK-2 vector or insertion
+of a non-cognate target site as negative control.
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+n
+a
+r
+.
+
+ 
+
+o
+x
+f
+
+j
+
+o
+r
+d
+o
+u
+r
+n
+a
+s
+.
+
+l
+
+o
+r
+g
+b
+y
+ 
+
+ 
+
+g
+u
+e
+s
+t
+ 
+
+ 
+
+o
+n
+N
+o
+v
+e
+m
+b
+e
+r
+ 
+
+9
+
+,
+ 
+
+2
+0
+1
+0
+
+Nucleic Acids Research, 2010 5
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+n
+a
+r
+.
+
+ 
+
+o
+x
+f
+
+j
+
+o
+r
+d
+o
+u
+r
+n
+a
+s
+.
+
+l
+
+o
+r
+g
+b
+y
+ 
+
+ 
+
+g
+u
+e
+s
+t
+ 
+
+ 
+
+o
+n
+N
+o
+v
+e
+m
+b
+e
+r
+ 
+
+9
+
+,
+ 
+
+2
+0
+1
+0
+
+Figure 1. Box C/D snoRNA derived sno-miRnas. Predicted secondary structures of the snoRNAs U48, U15a and U21 were calculated with
+RNAfold. Secondary structure sequences are given in dot-bracket notation with base pairings represented by two complementary parentheses ‘(’
+and ‘)’ and non-pairing bases by dots ‘.’. A multiple sequence alignment of U48 derived sequences that were identiﬁed by 454 sequencing displays
+multiple copies of 23–25 nt of the 50-region of U48, a minority of sequences was identiﬁed as 30-fragments or full length U48. The positions of high
+frequency sequences from snoRNAs U15a, U48 and U21 are indicated with red bars, the corresponding low frequency strand positions are marked
+with blue bars. Box C and D elements are given in bold in the sequences.
+
+6 Nucleic Acids Research, 2010
+
+Table 2. Sequences of box C/D snoRNAs with indicated sno-miRNAs that were functionally tested
+
+snoRNA
+
+HGNC
+
+Sequence (50!30-direction)
+
+ACA45
+
+SCARNA15
+
+CUGGAGACUAAGAAAAUAGAGUCCUUGAAAUCAAGCUGACUCUGCUUUUAGCCUCCUAAAUGAAAAGGUAGAUAGAACAGGUC
+
+snR39b
+U3
+
+SNORD2
+X14945
+
+U78
+U74
+HBII-336
+HBI-43
+
+SNORD78
+SNORD74
+SNORD93
+SNORD17
+
+HBII-142
+U48
+U51
+U21
+
+U27
+U44
+HBII-429
+U59b
+U83a
+
+SNORD66
+SNORD48
+SNORD51
+SNORD21
+
+SNORD27
+SNORD44
+SNORD100
+SNORD59b
+SNORD83a
+
+UUGUUUGCAAAAUAAAUUCAAGACCUACUUAUCUACCAACAGCA
+
+AAGUGAAAUGAUGGCAAUCAUCUUUCGGGACUGACCUGAAAUGAAGAGAAUACUCAUUGCUGAUCACUUG
+AAGACUAUACUUUCAGGGAUCAUUUCUAUAGUGUGUUACUAGAGAAGUUUCUCUGAACGUGUAGAGCACCGAAAACCACGAGGA
+AGAGAGGUAGCGUUUUCUCCUGAGCGUGAAGCCGGCUUUCUGGCGUUGCUUGGCUGCAACUGCCGUCAGCCAUUGAUGAUCG
+UUCUUCUCUCCGUAUUGGGGAGUGAGAGGGAGAGAACGCGGUCUGAGUGGU
+
+GUGUAAUGAUGUUGAUCAAAUGUCUGACCUGAAAUGAGCAUGUAGACAAAGGUAACACUGAAGAA
+CUGCCUCUGAUGAAGCCUGUGUUGGUAGGGACAUCUGAGAGUAAUGAUGAAUGCCAACCGCUCUGAUGGUGG
+UGGCCAAGGAUGAGAACUCUAAUCUGAUUUUAUGUGCUUCUGCUGUGAUGGAUUAAAGGAUUUACCUGAGGCCA
+GUGAAAUGAUGAUUCAGUUUAUCCAUUCGCUGAGUGCGCUGCACUGACCUUCUUCCAAGCCUCAGUUCCUGUUCUAGGAACUUG
+AGGCUAUGUAGCCUGAAAAUGCCCUGCAGUCUGCAGUGUUCUACUGUGAACUGCUUGUGUGUUGGCAGGCUACCGGUAAGAA
+UGGUUGGUGUCAGCAGGGACGGGGCCCUCUGAGACCCAUCUCACAAAGAUGAGUGGUGAAAAUCUGAUCAC
+
+CUGCCACGUGUCUGGGCCACUGAGACACCAUGAUGGAACUGAGGAUCUGAGGAA
+AGUGAUGAUGACCCCAGGUAACUCUUGAGUGUGUCGCUGAUGCCAUCACCGCAGCGCUCUGACC
+GUUGCAUGAUGAAUAAAAUCAAAUCACCAUCUUUCGGCUGAGUUCGUGAUGGAUUUGCUUUUUUCUGAUU
+GCUGAAUGAUGAUAUCCCACUAACUGAGCAGUCAGUAGUUGGUCCUUUGGUUGCAUAUGAUGCGAUAAUUGUUUCAAGACGGGA
+
+CUGAUGGCAGC
+
+ACUCCAUGAUGAACACAAAAUGACAAGCAUAUGGCUGAACUUUCAAGUGAUGUCAUCUUACUACUGAGAAGU
+CCUGGAUGAUGAUAAGCAAAUGCUGACUGAACAUGAAGGUCUUAAUUAGCUCUAACUGACUAA
+GCUGUACAUGAUGACAACUGGCUCCCUCUACUGAACUGCCAUGAGGAAACUGCCAUGUCACCCUUCUGAUUACAGC
+UAUUCCUCACUGAUGAGUACGUUCUGACUUUCGUUCUUCUGAGUUUGCUGAAGCCAGAUGCAAUUUCUGAGAAGG
+GCUGUUCGUUGAUGAGGCUCAGAGUGAGCGCUGGGUACAGCGCCCGAAUCGGACAGUGUAGAACCAUUCUCUACUGCCUUCC
+
+UUCUGAGAACAGC
+
+U15a
+
+SNORD15a
+
+CUUCGAUGAAGAGAUGAUGACGAGUCUGACUUGGGGAUGUUCUCUUUGCCCAGGUGGCCUACUCUGUGCUGCGUUCUGUGGCAC
+
+AGUUUAAAGAGCCCUGGUUGAAGUAAUUUCCUAAAGAUGACUUAGAGGCAUUUGUCUGAGAAGG
+
+U45A
+
+SNORD45a
+
+GGUCAAUGAUGUGUUGGCAUGUAUUAUCUGAAUCUAUUGCUGAUGUGUAAUAACACUUUAGCUCUAGAAUUACUCUGAGACCU
+
+Sequences that were found in small RNA libraries are shown in bold, the putative guide strand (higher frequencies) is underlined. Blue indicates
+possible box C and C0 consensus sequences, red indicates consensus box D and D0 elements.
+
+Figure 2 displays the general exemplar for the combined
+results of analysing the C/D box snoRNA HBII-336. The
+RNAfold-predicted secondary structure of HBII-336 is
+shown in Figure 2A. The major sno-miRNA strand, as
+was determined by frequencies in deep sequencing of
+small RNA libraries from human T cells is highlighted
+in red in (Figure 2B), nucleotides of the minority strand
+(sno-miRNA*) are shown in blue colour. Sequence
+alignments of deep-sequenced small RNAs are shown in
+Figure 2B, the 30-ﬂanking box D element is indicated with
+an arrow. The high degree of sequence stability taken
+together with the putative location in stable stem regions
+of the source-snoRNA and their abundance in small RNA
+libraries were selection criteria for functional analysis of
+the candidates. RISC incorporation and RNA silencing
+activity of the candidate sequences were determined in
+luciferase assays. The HBII-336 sno-miRNA was efﬁcient
+in silencing the reporter gene upon transfection into
+Jurkat cells and displayed miRNA activity that was
+directly comparable to that of the ACA45 sno-miRNA
+(Figure 2C).
+
+Total RNA extracts from human HeLa and Jurkat
+cells were analyzed by northern blots with probes
+against sno-miRNAs U74, U3, U78, U21 and HBI-43
+(Figure 3). The snoRNAs were processed to sno-
+miRNAs in a cell type speciﬁc manner, e.g. U74 was pro-
+cessed only in Jurkat, but not in HeLa cells. Reporter gene
+assays for the sno-miRNA activities indicated a possible
+correlation between presence of the sno-miRNA and gene
+silencing activity (Figure 3A). The snoRNA U21 was
+not detected as a corresponding sno-miRNA and gene
+silencing was not observed in Jurkat and HeLa cells.
+
+A correlation of the expression level of the host snoRNA
+to the sno-miRNA activity could not be concluded from
+the results. U78 was the most abundant snoRNA that was
+present as a sno-miRNA but still the silencing efﬁciency
+was lower when compared to the U3 sno-miRNA.
+
+miRNA-activity assays for 22 snoRNA derived
+small RNAs
+
+types,
+
+We tested 21 putative sno-miRNAs, including 18 box C/D
+and three box H/ACA snoRNA-derived, in dual luciferase
+assays in three human cell
+i.e. HeLa (cervix
+carcinoma) line, Jurkat (T cells) and RPMI8866 (B cell).
+Eleven of the box C/D sno-miRNA candidates tested
+showed miRNA activity, which was directly comparable
+to that of the ACA45 sno-miRNA in at least one of the
+cell lines. All three box H/ACA sno-miRNAs were efﬁ-
+cient in gene silencing. A summary for all sno-miRs,
+including positions within the parental snoRNAs and
+gene silencing efﬁciencies is given in Table 1. A more
+detailed view on the
+sequences of box C/D
+sno-miRNAs and the relevant box C and D elements is
+provided in Table 2.
+
+full
+
+Interestingly we identiﬁed the functional box C element
+within the guide sequences of many sno-miRNAs that were
+capable of gene silencing. The corresponding passenger
+strands were in most cases stopped prior to or after the
+ﬁrst two nucleotides of the box D element. Some passenger
+strands were in addition ﬂanked by a box D0 element on the
+50-end. Guide and passenger strand positions are shown in
+Table 2, guides are shown in bold and underlined, passen-
+gers only in bold. Box C elements are highlighted in blue,
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+n
+a
+r
+.
+
+ 
+
+o
+x
+f
+
+j
+
+o
+r
+d
+o
+u
+r
+n
+a
+s
+.
+
+l
+
+o
+r
+g
+b
+y
+ 
+
+ 
+
+g
+u
+e
+s
+t
+ 
+
+ 
+
+o
+n
+N
+o
+v
+e
+m
+b
+e
+r
+ 
+
+9
+
+,
+ 
+
+2
+0
+1
+0
+
+Nucleic Acids Research, 2010 7
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+n
+a
+r
+.
+
+ 
+
+o
+x
+f
+
+j
+
+o
+r
+d
+o
+u
+r
+n
+a
+s
+.
+
+l
+
+Figure 2. Structural and functional analysis of the box C/D snoRNA HBII-336 sno-miRNA. (A) Secondary structure prediction for HBII-336 was
+calculated using RNAfold. A dashed red line marks the guide-sno-miRNA strand, the dashed blue line indicates the positions of the passenger
+strands. (B) The dominant sno-miRNA sequence found in deep sequencing of Jurkat small RNAs is highlighted in red, the minor sequence is marked
+with a blue bar. The sno-miRNA is located in a very stably base paired stem that can possibly be recognized and processed by Dicer. ClustalW
+alignments of the guide and passenger HBII-336- sno-miRNAs show homogenous distributions of the sequences found in small RNA libraries. The
+guide sno-miRNA (red) shows length variability of 21- to 27-nt, while the length distribution for the minor species (or the passenger-strand, blue) is
+from 17- to 27-nt. (C) Functional investigation of the HBII-336 sno-miRNA in human HeLa cells by the dual luciferase assay shows similar silencing
+effects when compared to the previously described ACA45 sno-miRNA. Insertion of a scrambled target site sequence into the Renilla luciferase gene
+did not lead to signiﬁcant luciferase reduction when compared to the unmanipulated vector. Data represent normalized outcomes of three individual
+experiments.
+
+o
+r
+g
+b
+y
+ 
+
+ 
+
+g
+u
+e
+s
+t
+ 
+
+ 
+
+o
+n
+N
+o
+v
+e
+m
+b
+e
+r
+ 
+
+9
+
+,
+ 
+
+2
+0
+1
+0
+
+box C and C0 elements in red colour. To conﬁrm that this
+feature is a general property, we scanned all 402 snoRNAs
+in snoRNABase version 3 (37) and found 107 candidates
+where (i) the box C element (UGUGUA) occurs inside an
+expressed subsequence and/or (ii) the box D element
+(CUGA) is ﬂanking (and often partly contained in) the
+small RNA on the 30-end (Table 3). Appropriate folding
+of the intron-borne box C/D snoRNAs seems to be crucial
+for processing of sno-miRNAs. Expression of full length
+snoRNAs from a H1 polymerase III promotor did not
+further
+endogenous
+sno-miRNA activity. Five box C/D snoRNAs were
+tested in overexpression assays combined with the corres-
+ponding psiCHECK-2-vectors and resulted in a mild cyto-
+toxicity in HeLa cells without increasing silencing of the
+Renilla luciferase gene (Supplementary Figure S2).
+
+increase
+
+effects
+
+the
+
+of
+
+the
+
+lines. Apparently some of
+
+Figure 4 displays the relative silencing activity of the
+C/D box snoRNA-derived sRNAs in comparison to
+controls in four cell
+the
+sno-miRs were active only in some, hardly ever in all
+cell types. Examples are snR39b, which is silencing in
+HeLa and Jurkat, but not in RPMI8866, or U83a and
+U27, which were silencing well
+in Jurkat but did not
+show signiﬁcant silencing effects in HeLa and MCF7
+cells. However, some of the candidates that appeared
+like promising Dicer substrates (e.g. U21) were incapable
+of miRNA activity and did not interfere with their com-
+plementary targets (Table 1 and Figure 3).
+
+Functional characterization of box H/ACA sno-miRNAs
+
+Three miRNA entries in the Sanger miRBase were dis-
+covered to originate
+from H/ACA box snoRNAs
+
+8 Nucleic Acids Research, 2010
+
+Figure 3. Sno-miRNA analysis in human HeLa and Jurkat cells. Five
+individual snoRNAs were probed for expression and processing via
+northern blots with total RNA extracts from HeLa and Jurkat cells
+as shown in (B). Processed sno-miRNAs can be identiﬁed in both cell
+types. In Hela extracts sno-miRNAs from U3, U78 and HBI-43 can
+be seen, in Jurkat cell extracts the sno-miRNAs U74 and U78 were
+identiﬁed. The total sizes of
+length snoRNAs are indicated.
+Reporter gene assays with complementary target sites for the sno-
+miRNAs indicate a correlation of snoRNA processing to gene silencing
+activity as displayed in (A). A randomized non-cognate target sequence
+served as negative control,
+the ACA45 sno-miRNA as a positive
+control. The empty psiCHECK-2 vector was used for normalization.
+Data represent the average outcome of four (HeLa, Jurkat) or three
+(RPMI8866, MCF7) individual experiments.
+
+full
+
+with very similar features when compared to ACA45
+(Figure 5A). Arrows indicate the location of mature
+miRNA guide strands. In contrast to previous ﬁndings
+(35) the sno-miRNA guide strands locate either to 30- or
+50-terminal
+the snoRNAs. We addressed
+luciferase targets to the described mature miRNA se-
+quences of miRs 664, 1248 and 1291 and found all of
+them to be expressed and active in RPMI8866 and HeLa
+cells (Figure 5B). Sno-miRNA ACA34 performed well
+only in RPMI8866 cells.
+
+regions of
+
+Which known miRNAs are actually sno-miRNA?
+
+We also tested whether some known miRNAs are actually
+derived from snoRNAs. Therefore, the mature human
+miRNAs in miRBase were matched against the ﬁltered
+snoRNA fragments (‘Materials and Methods’ section).
+Among these, we found three miRNAs
+located in
+H/ACA box snoRNAs [previously reported in ref. (35)
+and two in C/D box snoRNAs (Table 1). In all cases,
+the corresponding precursor sequences in miRBase fully
+matched the snoRNA sequences, providing additional
+evidence that these miRNA are misclassiﬁed. The pre-
+dicted secondary structures of
+two C/D box
+snoRNAs represent rather atypical miRNA-precursors
+or unstable hairpins among the snoRNAs tested here,
+when comparing global binding patterns
+(compare
+Supplementary Figure S1A).
+
+the
+
+Table 3. snoRNAs with box C sequence (completely) inside and/or
+box D sequence (right) ﬂanking sequences from the small RNA
+libraries
+
+snoRNA
+
+C box
+inside
+sRNA
+
+D box
+Flanking
+sRNA
+
+snoRNA
+
+C box
+inside
+sRNA
+
+D box
+ﬂanking
+sRNA
+
+HBI-43
+HBII-108B
+HBII-13
+HBII-135
+HBII-142
+HBII-180B
+HBII-180C
+HBII-202
+HBII-210
+HBII-251
+HBII-276
+HBII-289
+HBII-295
+HBII-296B
+HBII-336
+HBII-419
+HBII-429
+HBII-436
+HBII-85-12
+HBII-85-16
+HBII-85-17
+HBII-85-18
+HBII-85-19
+HBII-85-21
+HBII-85-22
+HBII-95
+HBII-99B
+SNORD119
+SNORD121B
+U101
+U102
+U104
+U105
+U105B
+U106
+U15A
+U15B
+U16
+U18A
+U18B
+U20
+U21
+U22
+U24
+U25
+U26
+U27
+U28
+U29
+U3
+U3-2
+U3-2B
+U3-3
+U3-4
+U30
+
+x
+x
+x
+x
+x
+
+x
+x
+x
+x
+x
+x
+
+x
+x
+x
+
+x
+x
+x
+
+x
+x
+x
+x
+x
+x
+x
+x
+
+x
+x
+x
+x
+
+x
+x
+
+x
+
+x
+x
+x
+x
+x
+x
+x
+
+x
+
+x
+x
+x
+x
+x
+
+x
+x
+
+x
+x
+x
+x
+x
+
+x
+x
+x
+x
+x
+x
+
+x
+x
+x
+x
+
+x
+x
+x
+x
+x
+
+x
+
+x
+x
+x
+
+x
+x
+x
+x
+
+x
+x
+x
+x
+x
+x
+
+x
+
+x
+x
+
+x
+x
+
+x
+x
+
+x
+x
+
+x
+x
+x
+x
+x
+
+x
+x
+
+x
+x
+x
+x
+x
+x
+x
+x
+
+x
+x
+x
+
+x
+x
+x
+
+x
+
+U31
+U35A
+U36B
+U36C
+U37
+U38A
+U38B
+U42B
+U43
+U44
+U45B
+U45C
+U48
+U49A
+U50
+U50B
+U51
+U52
+U55
+U58A
+U58C
+U59B
+U60
+U62A
+U62B
+U63
+U65
+U74
+U76
+U77
+U78
+U79
+U8
+U80
+U81
+U82
+U83A
+U83B
+U84
+U86
+U87
+U88
+U96a
+Z17B
+mgU2-19
+mgU6-47
+mgU6-53B
+mgh18S-121
+snR38A
+snR38B
+snR38C
+snR39B
+
+x
+x
+x
+x
+x
+x
+x
+x
+
+x
+x
+x
+x
+x
+x
+x
+x
+x
+
+x
+
+x
+x
+x
+x
+x
+x
+x
+
+x
+x
+x
+x
+x
+x
+x
+x
+
+x
+x
+x
+
+x
+x
+
+x
+x
+x
+x
+x
+
+The expressed subsequences may act as guide or passenger strands of
+putative sno-miRNAs.
+
+DISCUSSION
+
+We identiﬁed numerous so far undiscovered box C/D
+sno-miRNAs that exhibit processing, and in particular,
+mRNA silencing features similar to those of miRNA
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+n
+a
+r
+.
+
+ 
+
+o
+x
+f
+
+j
+
+o
+r
+d
+o
+u
+r
+n
+a
+s
+.
+
+l
+
+o
+r
+g
+b
+y
+ 
+
+ 
+
+g
+u
+e
+s
+t
+ 
+
+ 
+
+o
+n
+N
+o
+v
+e
+m
+b
+e
+r
+ 
+
+9
+
+,
+ 
+
+2
+0
+1
+0
+
+Nucleic Acids Research, 2010 9
+
+Figure 4. Functional analysis of snoRNA generated sdRNAs in different human cell lines. Reporter gene assays were performed on human HeLa
+(light grey), Jurkat T (black), RPMI8866 B (white) and mammary carcinoma cell line MCF7 (dark grey). The snoRNA ACA45 served as positive
+control, non-cognate target and empty dual luciferase as negative control and for normalization. General gene silencing can be seen for ACA45,
+U3 and U3-4. HBII-336 and U83a did not induce any reduction of the Rluc gene in HeLa cells, but were very efﬁciently silencing the same target in
+both Jurkat and RPMI8866 cells. Note the differences of some sno-miRNA target sensors on the different cell types (U27, HBII-336, U83a, snR39b).
+Data for HeLa, Jurkat and RPMI8866 cells are from three individual experiments.
+
+its
+
+functions
+
+in pre-rRNA processing,
+
+molecules. These sno-miRNAs originate from relatively
+short snoRNAs, such as U27 or HBII-336 as well as
+from structurally more complex snoRNAs with >150 nt
+in length, e.g. U3. The latter is particularly interesting
+since U3 is a very well characterized snoRNA in terms
+of
+including
+the shuttling of U3–snRNP
+pre-rRNA capping (40),
+complex between cytoplasm and nucleoli (41) and also
+the post-transcriptional regulation of the snoRNA U3
+itself
+and experimental
+determination of U3 snoRNP (43,44) characterize the
+U3 snoRNA as complex and highly structured RNA
+molecule (compare also Supplementary Figure S1B),
+assembling into the U3 snoRNP complex. However, we
+ﬁnd sequences of the U3 30-hairpin structure that are, at
+least in HeLa and RPMI8866 cells, capable of targeting
+complementary sequences for efﬁcient RNA silencing.
+
+(42). Structure predictions
+
+sequences
+
+In functional analysis we demonstrate that in total
+11 candidate
+from C/D box snoRNAs
+snR39b, U3 (2 sno-miRNAs), U78, HBII-336, HBII-429,
+HBII-142, U27, U83a, U74 and U15a, are capable of
+entering the silencing machinery and perform efﬁcient
+gene silencing on reporter-gene mRNAs (Table 1). Our
+results are indicating that snoRNA-derived small RNAs
+can function like miRNAs and may therefore be termed
+sno-miRNAs. We tested a broad variety of human cell
+lines, including T- and B-lymphocytes, HeLa cells and
+the mammary carcinoma cell line MCF7 and observed
+general gene-silencing activity for 14 sno-miRNAs
+including box H/ACA sno-miRNAs. In some cases we
+observed a positive regulation of the target gene. This
+effect may be due to an increased stability of
+the
+transcribed mRNA after insertion of the target site. In
+absence of a loaded RISC attacking this mRNA R/F
+values >1 may occur (compare Figure 4). However, a
+
+number of the candidate sno-miRNAs tested were only
+active in some cell types such as sno-miRNA U3-1 only
+in HeLa and RPMI8866, sno-miRNA U83a in Jurkat
+and RPMI8866 cells or sno-miR U27 only in Jurkat
+(Figure 3).
+
+The silencing activity differs among cell types, indicat-
+ing discrete processing of snoRNAs that resembles the
+post-transcriptional regulation of pre-miRNAs described
+for rodent miRNAs (45). Differential snoRNA expression
+among different cell types and tissues was shown for 5S
+snoRNA genes (46) and regulation can be linked to host
+genes in which the snoRNA are located. One example for
+this effect is the increased level of U14 snoRNA that can
+be observed upon co-expression of its host gene HSC70
+during stress response in Chinese hamster ovary cells (47).
+In general snoRNAs appear to have an extremely high
+degree of expression ﬂexibility considering the modes of
+transcription (individual and intronic), genomic organiza-
+tion and processivity (48). A proﬁling of the expression
+levels of box C/D snoRNAs in 11 different human tissues
+was recently published and displayed strong variations of
+copy numbers for some snoRNAs/sno-miRNAs from our
+study (including snR39b and U3) (49). By testing total
+RNA samples from human cells on northern blots with
+radioactively labelled probes for different sno-miRNA
+guide strands we see indications of different expression
+levels of the snoRNAs between human HeLa and Jurkat
+cells. Also, we succeeded in correlating existence of the
+sno-miRNA to its function in RNA silencing. Due to
+the low abundance of snoRNAs when compared to e.g.
+miRNAs the signals are rather faint and only slightly
+above the detection threshold. However, determinants
+for generating sno-miRNAs
+remain
+elusive and will be subjected to future studies. Minimum
+free energy based secondary structure predictions for all
+
+from snoRNAs
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+n
+a
+r
+.
+
+ 
+
+o
+x
+f
+
+j
+
+o
+r
+d
+o
+u
+r
+n
+a
+s
+.
+
+l
+
+o
+r
+g
+b
+y
+ 
+
+ 
+
+g
+u
+e
+s
+t
+ 
+
+ 
+
+o
+n
+N
+o
+v
+e
+m
+b
+e
+r
+ 
+
+9
+
+,
+ 
+
+2
+0
+1
+0
+
+10 Nucleic Acids Research, 2010
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+n
+a
+r
+.
+
+ 
+
+o
+x
+f
+
+j
+
+o
+r
+d
+o
+u
+r
+n
+a
+s
+.
+
+l
+
+o
+r
+g
+b
+y
+ 
+
+ 
+
+g
+u
+e
+s
+t
+ 
+
+ 
+
+o
+n
+N
+o
+v
+e
+m
+b
+e
+r
+ 
+
+9
+
+,
+ 
+
+2
+0
+1
+0
+
+Figure 5. Box H/ACA originating miRNAs in functional analysis. (A) The predicted secondary structures of three miRbase listed snoRNAs
+(miR-664/ACA36b, miR-1291/ACA34 and miR-1248/HBI-61, top right) share similar features with ACA45, shown top left. Two rather stable
+hairpins are connected via a ﬂexible hinge loop, one of the hairpins is giving rise to a sno-miRNA (arrows). Sno-miRNA guide strand positions
+are marked with dashed red lines and locate to the 30-stem of ACA45 and ACA36b, but to the 50-stems of ACA34 and HBI-64. (B) Target sites for
+the sno-miRNA guide strands were checked in RPMI8866 (grey), Jurkat (black) and Hela (white) cells and compared to silencing activity of
+ACA45-sdRNA. The most efﬁcient silencing on all cell types was observed for miR-664/ACA36b-sdRNA, miR-1291/ACA34 and miR-1248/
+HBI-61 displayed only mild silencing, in particular in Jurkat cells. Values represent normalized data from two individual experiments.
+
+snoRNAs that were tested for miRNA activity are
+provided in the Supplementary data. These structures
+are indicating possible alternatives to the functional
+snoRNAs, which may be structurally different in their
+native nucleolar environment. Increasing the expression
+levels of the ‘naked’ snoRNAs by plasmid driven polymer-
+ase III transcription did not lead to additional processing
+of sno-miRNAs and an increase of the gene silencing
+activity. This ﬁnding indicates that native processing of
+the naturally intron-borne box C/D snoRNAs is a
+crucial pre-requisite for sno-miRNA production.
+
+early
+
+evolved
+
+from the
+
+It is still very likely, that both snoRNAs and miRNAs
+share a common ancestor, or even more plausible that
+miRNAs
+‘housekeeping’-
+snoRNAs, as was claimed by Scott et al.
+(35). An
+overview on
+ancestral RNA-silencing mechanisms
+is provided in (50) and is indicating common origins
+for various classes of regulatory non-protein coding
+small RNAs. The miRNA function of a sno-miRNA
+(miRNA2) originating from the box C/D snoRNA
+GlsR17 in the ancient Giardia lamblia is supporting the
+idea that biogenesis and processing of both snoRNAs
+and miRNAs is performed by the same machinery (32).
+
+export of
+
+subsequent
+
+However, mammalian miRNA biogenesis is rather
+restricted when considering secondary structural features
+of pri-miRNAs and pre-miRNAs. MiRNA function
+through accurate RISC loading is dependent on successful
+processing in the nucleus by Drosha/Pasha as already
+described in 2004 (23),
+the
+pre-miRNA to the cytoplasm followed by Dicer process-
+ing prior to RISC loading (51). The processing of the
+H/ACA box sno-miRNA ACA45 is Drosha-independent
+(16), indicating alternative routes for the biogenesis of
+small RNAs with miRNA-like functions. Box C/D
+sno-miRNAs display a variety of predicted structures,
+including
+(Supplementary
+Figure S1). A proper Dicer processing remains question-
+able since the preferred structure for the ribonuclease III is
+a stable RNA stem (52,53) and structural requirements for
+accurate miRNA processing are well deﬁned in mammals
+(54). Recently a novel processing scheme for miRNA
+biogenesis was introduced and could probably explain
+processing and RISC loading of snoRNAs. Processing
+of
+the human miR-451 resulted in overlapping and
+loop-spanning mature miRNAs in a presumably ago2
+mediated and Dicer independent mechanism (55,56).
+
+rather unstable
+
+hairpins
+
+MiRNA biogenesis in plants harbours some principle
+differences and the secondary structure of appropriately
+processed miRNA precursors is much more diverse
+when compared to animal miRNAs (57,58). A link
+from snoRNA structure to a miRNA-like function in
+gene silencing cannot be concluded from our data.
+Nevertheless, we provide an alternative, which is based
+on the location of box D elements (CUGA) right
+ﬂanking one mature sno-miRNA strand in most of the
+snoRNAs tested here (Table 2). Box C elements with the
+consensus sequence UGAUGA are often located within
+the other mature sno-miRNA sequence. The same
+pattern could be identiﬁed in 107 from 402 snoRNA se-
+quences which are currently contained in snoRNABase
+(Table 3). This may indicate a controlled RNA processing
+based on recognition of the functional elements of box C/
+D snoRNAs rather than on structural elements as it is the
+case for miRNA biogenesis. We ﬁnd some sno-miRs
+originating from RNA hairpin regions; some do not at
+all display this feature. However, for both types of second-
+ary structures in the parental snoRNAs we identiﬁed can-
+didates with and without miRNA like functions.
+
+Carefully observing the recent literature the reader will
+ﬁnd numerous publications on the rapidly growing
+number of novel non-coding RNA species with regulatory
+or so far unknown function (59). New members of this
+family are tiRNAs, which apparently are involved in
+promoter transcriptional gene regulation via TSS inter-
+action (14) or, very recently, tRNA transcript-derived
+RNA fragments, or tRFs, which are not yet functionally
+characterized, but aberrantly induce proliferative defects
+when lost (60). Our study is now adding an additional
+class of dual-action non-coding RNAs by introducing
+the gene regulatory effects of human box C/D snoRNAs.
+The spectra of novel ncRNA, the bandwidth of their
+functions,
+their abundance through the kingdoms of
+life and the ever increasing range of new discoveries
+is implying a Kuhnian revolution in understanding the
+molecular processes in life sciences.
+
+SUPPLEMENTARY DATA
+
+Supplementary Data are available at NAR Online.
+
+ACKNOWLEDGEMENTS
+
+The authors thank Dr Timofey Rhozdestvensky and
+Prof. Ju¨ rgen Brosius for fruitful discussion. Christina
+Albrecht and Meike Hermes
+contributed valuable
+comments on the article and hands-on help. Ellen
+Eckermann-Felkl contributed expert technical assistance,
+Martina Reitz, Alexandra Juckert and Michaela Micke
+contributed to experimental work.
+
+FUNDING
+
+Funding for open access charges: German Federal
+Ministry of Education and Research joint
+research
+project ‘RNomics in Infectious Diseases’ in the frame of
+the National Genome Research Net (NGFN-Plus).
+
+Nucleic Acids Research, 2010 11
+
+Conﬂict of interest statement. None declared.
+
+REFERENCES
+
+1. Filipowicz,W., Jaskiewicz,L., Kolb,F.A. and Pillai,R.S. (2005)
+
+Post-transcriptional gene silencing by siRNAs and miRNAs.
+Curr. Opin. Struct. Biol., 15, 331–341.
+
+2. Meister,G. and Tuschl,T. (2004) Mechanisms of gene silencing by
+
+double-stranded RNA. Nature, 431, 343–349.
+
+3. Seto,A.G., Kingston,R.E. and Lau,N.C. (2007) The coming of
+
+age for Piwi proteins. Mol. Cell., 26, 603–609.
+
+4. Aravin,A.A., Hannon,G.J. and Brennecke,J. (2007) The
+
+Piwi-piRNA pathway provides an adaptive defense in the
+transposon arms race. Science, 318, 761–764.
+
+5. Aravin,A.A., Sachidanandam,R., Girard,A., Fejes-Toth,K. and
+Hannon,G.J. (2007) Developmentally regulated piRNA clusters
+implicate MILI in transposon control. Science, 316, 744–747.
+
+6. Chen,K. and Rajewsky,N. (2007) The evolution of gene
+
+regulation by transcription factors and microRNAs. Nat. Rev.
+Genet., 8, 93–103.
+
+7. Lagos-Quintana,M., Rauhut,R., Lendeckel,W. and Tuschl,T.
+
+(2001) Identiﬁcation of novel genes coding for small expressed
+RNAs. Science, 294, 853–858.
+
+8. Elbashir,S.M., Harborth,J., Lendeckel,W., Yalcin,A., Weber,K.
+and Tuschl,T. (2001) Duplexes of 21-nucleotide RNAs mediate
+RNA interference in cultured mammalian cells. Nature, 411,
+494–498.
+
+9. Elbashir,S.M., Lendeckel,W. and Tuschl,T. (2001) RNA
+interference is mediated by 21- and 22-nucleotide RNAs.
+Genes Dev., 15, 188–200.
+
+10. Kim,D.H. and Rossi,J.J. (2009) Transcriptional gene silencing
+
+using small RNAs. Methods Mol. Biol., 555, 119–125.
+
+11. Kim,D.H., Saetrom,P., Snove,O. Jr and Rossi,J.J. (2008)
+
+MicroRNA-directed transcriptional gene silencing in mammalian
+cells. Proc. Natl Acad. Sci. USA, 105, 16230–16235.
+
+12. Kawasaki,H. and Taira,K. (2004) Induction of DNA methylation
+
+and gene silencing by short interfering RNAs in human cells.
+Nature, 431, 211–217.
+
+13. Kawasaki,H., Taira,K. and Morris,K.V. (2005) siRNA induced
+transcriptional gene silencing in mammalian cells. Cell Cycle, 4,
+442–448.
+
+14. Taft,R.J., Glazov,E.A., Cloonan,N., Simons,C., Stephen,S.,
+Faulkner,G.J., Lassmann,T., Forrest,A.R., Grimmond,S.M.,
+Schroder,K. et al. (2009) Tiny RNAs associated with
+transcription start sites in animals. Nat. Genet., 41, 572–578.
+
+15. Taft,R.J., Kaplan,C.D., Simons,C. and Mattick,J.S. (2009)
+
+Evolution, biogenesis and function of promoter-associated RNAs.
+Cell Cycle, 8, 2332–2338.
+
+16. Ender,C., Krek,A., Friedlander,M.R., Beitzinger,M.,
+
+Weinmann,L., Chen,W., Pfeffer,S., Rajewsky,N. and Meister,G.
+(2008) A human snoRNA with microRNA-like functions.
+Mol Cell, 32, 519–528.
+
+17. Matera,A.G., Terns,R.M. and Terns,M.P. (2007) Non-coding
+
+RNAs: lessons from the small nuclear and small nucleolar RNAs.
+Nat. Rev. Mol. Cell. Biol., 8, 209–220.
+
+18. Kiss,T., Fayet-Lebaron,E. and Jady,B.E. (2010) Box H/ACA
+
+small ribonucleoproteins. Mol. Cell., 37, 597–606.
+
+19. Kiss,A.M., Jady,B.E., Bertrand,E. and Kiss,T. (2004) Human
+
+box H/ACA pseudouridylation guide RNA machinery.
+Mol. Cell. Biol., 24, 5797–5807.
+
+20. Eliceiri,G.L. (1999) Small nucleolar RNAs. Cell Mol. Life Sci.,
+
+56, 22–31.
+
+21. Bachellerie,J.P., Cavaille,J. and Huttenhofer,A. (2002)
+
+The expanding snoRNA world. Biochimie, 84, 775–790.
+
+22. Hirose,T., Shu,M.D. and Steitz,J.A. (2003) Splicing-dependent
+
+and -independent modes of assembly for intron-encoded box
+C/D snoRNPs in mammalian cells. Mol. Cell., 12, 113–123.
+
+23. Denli,A.M., Tops,B.B., Plasterk,R.H., Ketting,R.F. and
+
+Hannon,G.J. (2004) Processing of primary microRNAs by the
+Microprocessor complex. Nature, 432, 231–235.
+
+24. Han,J., Pedersen,J.S., Kwon,S.C., Belair,C.D., Kim,Y.K.,
+
+Yeom,K.H., Yang,W.Y., Haussler,D., Blelloch,R. and Kim,V.N.
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+n
+a
+r
+.
+
+ 
+
+o
+x
+f
+
+j
+
+o
+r
+d
+o
+u
+r
+n
+a
+s
+.
+
+l
+
+o
+r
+g
+b
+y
+ 
+
+ 
+
+g
+u
+e
+s
+t
+ 
+
+ 
+
+o
+n
+N
+o
+v
+e
+m
+b
+e
+r
+ 
+
+9
+
+,
+ 
+
+2
+0
+1
+0
+
+12 Nucleic Acids Research, 2010
+
+(2009) Posttranscriptional crossregulation between Drosha and
+DGCR8. Cell, 136, 75–84.
+
+25. Heo,I., Joo,C., Kim,Y.K., Ha,M., Yoon,M.J., Cho,J.,
+
+Yeom,K.H., Han,J. and Kim,V.N. (2009) TUT4 in concert with
+Lin28 suppresses microRNA biogenesis through pre-microRNA
+uridylation. Cell, 138, 696–708.
+
+26. Ruby,J.G., Jan,C.H. and Bartel,D.P. (2007) Intronic microRNA
+
+precursors that bypass Drosha processing. Nature, 448, 83–86.
+
+27. Winter,J., Jung,S., Keller,S., Gregory,R.I. and Diederichs,S.
+
+(2009) Many roads to maturity: microRNA biogenesis pathways
+and their regulation. Nat. Cell. Biol., 11, 228–234.
+
+28. Triboulet,R., Chang,H.M., Lapierre,R.J. and Gregory,R.I. (2009)
+
+Post-transcriptional control of DGCR8 expression by the
+Microprocessor. RNA, 15, 1005–1011.
+
+29. Gan,J., Tropea,J.E., Austin,B.P., Court,D.L., Waugh,D.S. and
+
+Ji,X. (2006) Structural insight into the mechanism of
+double-stranded RNA processing by ribonuclease III. Cell., 124,
+355–366.
+
+30. Taft,R.J., Glazov,E.A., Lassmann,T., Hayashizaki,Y., Carninci,P.
+
+and Mattick,J.S. (2009) Small RNAs derived from snoRNAs.
+RNA, 15, 1233–1240.
+
+31. Kishore,S., Khanna,A., Zhang,Z., Hui,J., Balwierz,P.J., Stefan,M.,
+
+Beach,C., Nicholls,R.D., Zavolan,M. and Stamm,S. (2010)
+The snoRNA MBII-52 (SNORD 115) is processed into smaller
+RNAs and regulates alternative splicing. Hum. Mol. Genet., 19,
+1153–1164.
+
+32. Saraiya,A.A. and Wang,C.C. (2008) snoRNA, a novel
+
+precursor of microRNA in Giardia lamblia. PLoS Pathog., 4,
+e1000224.
+
+33. Kolev,N.G. and Ullu,E. (2009) snoRNAs in Giardia lamblia: a
+
+novel role in RNA silencing? Trends Parasitol., 25, 348–350.
+
+34. Maniataki,E. and Mourelatos,Z. (2005) A human,
+
+ATP-independent, RISC assembly machine fueled by pre-miRNA.
+Genes Dev., 19, 2979–2990.
+
+35. Scott,M.S., Avolio,F., Ono,M., Lamond,A.I. and Barton,G.J.
+(2009) Human miRNA precursors with box H/ACA snoRNA
+features. PLoS Comput. Biol., 5, e1000507.
+
+36. Tarasov,V., Jung,P., Verdoodt,B., Lodygin,D., Epanchintsev,A.,
+
+Menssen,A., Meister,G. and Hermeking,H. (2007) Differential
+regulation of microRNAs by p53 revealed by massively parallel
+sequencing: miR-34a is a p53 target that induces apoptosis and
+G1-arrest. Cell Cycle, 6, 1586–1593.
+
+37. Lestrade,L. and Weber,M.J. (2006) snoRNA-LBME-db, a
+comprehensive database of human H/ACA and C/D box
+snoRNAs. Nucleic Acids Res., 34, D158–D162.
+
+38. Larkin,M.A., Blackshields,G., Brown,N.P., Chenna,R.,
+
+McGettigan,P.A., McWilliam,H., Valentin,F., Wallace,I.M.,
+Wilm,A., Lopez,R. et al. (2007) Clustal W and Clustal X version
+2.0. Bioinformatics, 23, 2947–2948.
+
+39. Grifﬁths-Jones,S., Grocock,R.J., van Dongen,S., Bateman,A. and
+
+Enright,A.J. (2006) miRBase: microRNA sequences, targets and
+gene nomenclature. Nucleic Acids Res., 34, D140–D144.
+40. Culver,G.M. (2002) Sno-capped: 50 ends of preribosomal RNAs
+
+are decorated with a U3 SnoRNP. Chem. Biol., 9, 777–779.
+41. Leary,D.J., Terns,M.P. and Huang,S. (2004) Components of
+
+U3 snoRNA-containing complexes shuttle between nuclei and
+the cytoplasm and differentially localize in nucleoli: implications
+for assembly and function. Mol. Biol. Cell., 15, 281–293.
+
+42. Nabavi,S., Nellimarla,S. and Nazar,R.N. (2008)
+
+Post-transcriptional regulation of the U3 small nucleolar RNA.
+J. Biol. Chem., 283, 21404–21410.
+
+43. Antal,M., Mougin,A., Kis,M., Boros,E., Steger,G., Jakab,G.,
+
+Solymosy,F. and Branlant,C. (2000) Molecular characterization
+
+at the RNA and gene levels of U3 snoRNA from a unicellular
+green alga, Chlamydomonas reinhardtii. Nucleic Acids Res., 28,
+2959–2968.
+
+44. Clery,A., Senty-Segault,V., Leclerc,F., Raue,H.A. and Branlant,C.
+
+(2007) Analysis of sequence and structural features that identify
+the B/C motif of U3 small nucleolar RNA as the recognition site
+for the Snu13p-Rrp9p protein pair. Mol. Cell. Biol., 27,
+1191–1206.
+
+45. Obernosterer,G., Leuschner,P.J., Alenius,M. and Martinez,J.
+
+(2006) Post-transcriptional regulation of microRNA expression.
+RNA, 12, 1161–1167.
+
+46. Chang,L.S., Lin,S.Y., Lieu,A.S. and Wu,T.L. (2002) Differential
+expression of human 5S snoRNA genes. Biochem. Biophys. Res.
+Commun., 299, 196–200.
+
+47. Chen,M.S., Goswami,P.C. and Laszlo,A. (2002) Differential
+accumulation of U14 snoRNA and hsc70 mRNA in Chinese
+hamster cells after exposure to various stress conditions. Cell
+Stress Chaperones, 7, 65–72.
+
+48. Dieci,G., Preti,M. and Montanini,B. (2009) Eukaryotic snoRNAs:
+
+a paradigm for gene expression ﬂexibility. Genomics, 94, 83–88.
+
+49. Castle,J.C., Armour,C.D., Lower,M., Haynor,D., Biery,M.,
+
+Bouzek,H., Chen,R., Jackson,S., Johnson,J.M., Rohl,C.A. et al.
+(2010) Digital genome-wide ncRNA expression, including
+SnoRNAs, across 11 human tissues using polyA-neutral
+ampliﬁcation. PLoS ONE, 5, e11779.
+
+50. Shabalina,S.A. and Koonin,E.V. (2008) Origins and evolution of
+
+eukaryotic RNA interference. Trends Ecol. Evol., 23, 578–587.
+
+51. Saito,K., Ishizuka,A., Siomi,H. and Siomi,M.C. (2005) Processing
+
+of pre-microRNAs by the Dicer-1-Loquacious complex in
+Drosophila cells. PLoS Biol., 3, e235.
+
+52. Soifer,H.S., Sano,M., Sakurai,K., Chomchan,P., Saetrom,P.,
+
+Sherman,M.A., Collingwood,M.A., Behlke,M.A. and Rossi,J.J.
+(2008) A role for the Dicer helicase domain in the processing of
+thermodynamically unstable hairpin RNAs. Nucleic Acids Res.,
+36, 6511–6522.
+
+53. Collingwood,M.A., Rose,S.D., Huang,L., Hillier,C.,
+
+Amarzguioui,M., Wiiger,M.T., Soifer,H.S., Rossi,J.J. and
+Behlke,M.A. (2008) Chemical modiﬁcation patterns compatible
+with high potency Dicer-substrate small interfering RNAs.
+Oligonucleotides, 18, 187–200.
+
+54. Saetrom,P., Snove,O., Nedland,M., Grunfeld,T.B., Lin,Y.,
+
+Bass,M.B. and Canon,J.R. (2006) Conserved microRNA
+characteristics in mammals. Oligonucleotides, 16, 115–144.
+
+55. Chelouﬁ,S., Dos Santos,C.O., Chong,M.M. and Hannon,G.J.
+(2010) A Dicer-independent miRNA biogenesis pathway that
+requires Ago catalysis. Nature, 465, 584–589.
+
+56. Cifuentes,D., Xue,H., Taylor,D.W., Patnode,H., Mishima,Y.,
+
+Chelouﬁ,S., Ma,E., Mane,S., Hannon,G.J., Lawson,N.D. et al.
+(2010) A novel miRNA processing pathway independent of Dicer
+requires Argonaute2 catalytic activity. Science, 328, 1694–1698.
+57. Werner,S., Wollmann,H., Schneeberger,K. and Weigel,D. (2009)
+
+Structure determinants for accurate processing of miR172a in
+Arabidopsis thaliana. Curr. Biol., 20, 42–48.
+
+58. Song,L., Axtell,M.J. and Fedoroff,N.V. (2009) RNA secondary
+
+structural determinants of miRNA precursor processing in
+Arabidopsis. Curr. Biol., 20, 37–41.
+
+59. Mattick,J.S. (2009) The genetic signatures of noncoding RNAs.
+
+PLoS Genet., 5, e1000459.
+
+60. Lee,Y.S., Shibata,Y., Malhotra,A. and Dutta,A. (2009) A novel
+
+class of small RNAs: tRNA-derived RNA fragments (tRFs).
+Genes Dev., 23, 2639–2649.
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+n
+a
+r
+.
+
+ 
+
+o
+x
+f
+
+j
+
+o
+r
+d
+o
+u
+r
+n
+a
+s
+.
+
+l
+
+o
+r
+g
+b
+y
+ 
+
+ 
+
+g
+u
+e
+s
+t
+ 
+
+ 
+
+o
+n
+N
+o
+v
+e
+m
+b
+e
+r
+ 
+
+9
+
+,
+ 
+
+2
+0
+1
+0
+
+

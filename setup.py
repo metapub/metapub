@@ -4,11 +4,11 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'metapub',
-    version = '0.5.3-beta',
+    version = '0.5.4a',
     description = 'Pubmed / NCBI / eutils interaction library, handling the metadata of pubmed papers.',
-    long_description = open('README').read(), 
+    long_description = open('README.rst').read(), 
     long_description_content_type = 'text/x-rst',
-    url = 'https://bitbucket.org/metapub/metapub',
+    url = 'https://github.com/metapub/metapub',
     author = 'Naomi Most',
     maintainer = 'Naomi Most',
     author_email = 'naomi@nthmost.com',

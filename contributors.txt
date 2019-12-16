@@ -1,1 +1,1 @@
-See commit logs at https://bitbucket.org/metapub/metapub
+See commit logs at https://github.com/metapub/metapub

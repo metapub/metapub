@@ -1,6 +1,6 @@
 import unittest, os
 
-from metapub import PubMedFetcher 
+from metapub import PubMedFetcher
 from metapub.pubmedfetcher import parse_related_pmids_result
 from metapub.pubmedcentral import *
 
@@ -53,7 +53,8 @@ class TestPubmedFetcher(unittest.TestCase):
         """
 
         expected_keys = ['pubmed', 'citedin', 'five', 'reviews', 'combined']
-        xmlstr = open('tests/data/sample_related_pmids_result.xml').read()
+        with open('tests/data/sample_related_pmids_result.xml') as f:
+            xmlstr = f.read()
         resd = parse_related_pmids_result(xmlstr)
         for key in resd.keys():
             assert key in expected_keys

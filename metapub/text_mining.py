@@ -4,7 +4,7 @@ import requests
 
 from .utils import remove_html_markup
 
-# examples of real DOIs: 
+# examples of real DOIs:
 #         10.1002/(SICI)1098-1004(1999)14:1<91::AID-HUMU21>3.0.CO;2-B
 #         10.1007/s12020-014-0368-x
 #         10.1101/gad.14.3.278
@@ -19,8 +19,10 @@ re_doi_ws = re.compile(r'(10[.][0-9]{2,}(?:[.][0-9]+)*\s+/\s+(?:(?!["&\'])\S)+)'
 re_pmid = re.compile('\d+')
 re_numbers = re_pmid    # for now, until there's a better idea about parsing PMIDs...
 
+re_matching_quotes = re.compile(r"\"([^\"]+)\"|\'([^\']+)\'")
+
 # other IDs
-re_ncbi_bookID = re.compile('NBK[0-9]+') 
+re_ncbi_bookID = re.compile('NBK[0-9]+')
 re_pmcID = re.compile('PMC[0-9]+')
 
 def findall_ncbi_bookIDs(text):

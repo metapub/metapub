@@ -37,12 +37,18 @@ class TestPubmedFetcher(unittest.TestCase):
         article = fetch.article_by_pmid(pmid)
         assert str(article.pmid) == pmid
 
+    def test_article_by_pmid_with_html(self):
+        pmid = '30109010'
+        title = b'Discovery of a tetrazolyl \xce\xb2-carboline with in vitro and in vivo osteoprotective activity under estrogen-deficient conditions.'.decode('utf-8')
+        article = fetch.article_by_pmid(pmid)
+        assert str(article.pmid) == pmid
+        assert article.title == title
     # Doesn't work...
     #def test_article_by_pmid_with_bookID(self):
     #    bookID = 'NBK2040'
     #    fetch = PubMedFetcher()
     #    article = fetch.article_by_pmid(bookID)
-    #    assert article.pubmed_type == 'book'        
+    #    assert article.pubmed_type == 'book'
 
     def test_related_pmids(self):
         """ * pubmed    (all related links)

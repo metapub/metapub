@@ -7,12 +7,12 @@ import eutils
 import logging
 
 from .eutils_common import get_eutils_client
-from .cache_utils import get_cache_path 
+from .cache_utils import get_cache_path
 from .pubmedarticle import PubMedArticle
 from .pubmedcentral import get_pmid_for_otherid
 from .pubmed_clinicalqueries import *
 from .utils import kpick, parameterize, lowercase_keys, remove_chars
-from .text_mining import re_pmid, is_ncbi_bookID
+from .text_mining import re_pmid, is_ncbi_bookID, re_matching_quotes
 from .exceptions import MetaPubError, InvalidPMID, InvalidBookID
 from .base import Borg
 from .config import DEFAULT_EMAIL, API_KEY
@@ -37,17 +37,17 @@ def parse_related_pmids_result(xmlstr):
             outd[heading].append(Id.text)
     return outd
 
-class PubMedFetcher(Borg): 
+class PubMedFetcher(Borg):
     '''PubMedFetcher (a Borg singleton object backed by an optional SQLite cache)
 
     An interaction layer for querying via specified method to return PubMedArticle objects.
-    
+
     Currently available methods: eutils
 
     Basic Usage:
 
         fetch = PubMedFetcher()
-    
+
     To specify a service method (more coming soon):
 
         fetch = PubMedFetcher('eutils')
@@ -65,7 +65,7 @@ class PubMedFetcher(Borg):
     Finally, you can search for PMIDs via citation details by using the pmids_for_citation
     method, for which you usually only need 3 out of 5 details to triangulate on a good result.
 
-        pmids = fetch.pmids_for_citation(journal='Science', year='2008', volume='4', 
+        pmids = fetch.pmids_for_citation(journal='Science', year='2008', volume='4',
                 first_page='7', author_name='Grant')
     '''
 
@@ -103,7 +103,7 @@ class PubMedFetcher(Borg):
         return pma
 
     def _eutils_article_by_pmcid(self, pmcid):
-        # if user submitted a bare number, prepend "PMC" to make sure it is submitted correctly 
+        # if user submitted a bare number, prepend "PMC" to make sure it is submitted correctly
         # the conversion API at pubmedcentral.
         pmcid = str(pmcid)
         # if this was a flat number (use re_pmid to cheat this), try prepending "PMC" to it.
@@ -114,7 +114,7 @@ class PubMedFetcher(Borg):
         if pmid is None:
             raise MetaPubError('No PMID available for PubMedCentral id %s' % pmcid)
         return self._eutils_article_by_pmid(pmid)
-    
+
     def _eutils_article_by_doi(self, doi):
         pmid = get_pmid_for_otherid(doi)
         if pmid is None:
@@ -126,8 +126,8 @@ class PubMedFetcher(Borg):
         '''returns list of pmids for given freeform query string plus keyword arguments.
 
         Freeform queries encased in quotes will be considered "exact match" queries.
-            
-        All Pubmed Advanced Query tokens (e.g. "TI" for title) are supported, plus many 
+
+        All Pubmed Advanced Query tokens (e.g. "TI" for title) are supported, plus many
         "soft" keywords that will, when parsed, map to the correct token for you. For example,
         you can supply journal name with any of the following keywords:
 
@@ -152,20 +152,25 @@ class PubMedFetcher(Borg):
         kwargs = lowercase_keys(kwargs)
 
         q = {}
-        
+
         query = query.strip()
         # if we find brackets in the query string, assume they are query keyword tags.
         # otherwise, submit the query string with an "ALL" keyword tag.
         if query.find('[') == -1 and not kwargs.get('clinical_query', False):
-            # if this query is surrounded in quotation marks, consider it an "exact match" 
+            # if this query is surrounded in quotation marks, consider it an "exact match"
             # search against "ALL" fields. Otherwise, leave it untouched.
-            if query and query[0] in ['"', "'"]:
-                q['ALL'] = query.replace('"', '').replace("'", '')
+            # Useful to keep in a list in you run into other unicode quotes being used
+            quotes = ['\"', '\'']
+            if query and query[0] in quotes:
+                # Allow for multiple quoted terms
+                matches = [x.group(1) for x in re_matching_quotes.finditer(query)]
+                for m in matches:
+                    query += ' "%s"[ALL]' % m
 
         # Search within date range (since / until)
-        # 
+        #
         # working examples. search by creation date only works within defined ranges (not "< X" or "> Y")
-        # ("2015/3/1"[Date - Create] : "2015/3/3"[Date - Create]) 
+        # ("2015/3/1"[Date - Create] : "2015/3/3"[Date - Create])
         # ("2015/2/14"[CRDT] : "2015/3/14"[CRDT])
         created_date_template = '"%s"[CRDT]'
         date_range_template = " (%s : %s)"
@@ -180,7 +185,7 @@ class PubMedFetcher(Borg):
 
         # unique ID referents.
         q['PMID'] = kpick(kwargs, options=['pmid', 'uid', 'pubmed_id'])
-        q['AID'] = kpick(kwargs, options=['aid', 'doi']) 
+        q['AID'] = kpick(kwargs, options=['aid', 'doi'])
         q['book'] = kwargs.get('book', None)
         q['JID'] = kpick(kwargs, options=['jid', 'nlm uid', 'nlm unique id'])
         q['ISBN'] = kwargs.get('ISBN', None)
@@ -217,12 +222,12 @@ class PubMedFetcher(Borg):
         # Content characteristics
         q['LA'] = kpick(kwargs, options=['la', 'language'])
         q['TW'] = kpick(kwargs, options=['tw', 'text'])
-        q['PS'] = kpick(kwargs, options=['ps', 'personal name as subject']) 
+        q['PS'] = kpick(kwargs, options=['ps', 'personal name as subject'])
         q['PA'] = kpick(kwargs, options=['pa', 'pharmacological action'])
         q['SB'] = kpick(kwargs, options=['sb', 'subset'])
         q['NM'] = kpick(kwargs, options=['nm', 'supplementary concept'])
 
-        # MeSH characteristics 
+        # MeSH characteristics
         q['MHDA'] = kpick(kwargs, options=['mhda', 'mesh date'])
         q['MH'] = kpick(kwargs, options=['mh', 'mesh', 'mesh terms'])
         q['MAJR'] = kpick(kwargs, options=['majr', 'mesh major topic', 'mesh major'])
@@ -237,15 +242,15 @@ class PubMedFetcher(Borg):
         q['PL'] = kpick(kwargs, options=['pl', 'place of publication'])
 
         # Miscellaneous, alphabetized by Medline feature tag.
-        q['AD'] = kpick(kwargs, options=['ad', 'affiliation']) 
+        q['AD'] = kpick(kwargs, options=['ad', 'affiliation'])
         q['OT'] = kpick(kwargs, options=['ot', 'other term'])
         q['NM'] = kpick(kwargs, options=['nm', 'substance name'])
-        q['SI'] = kpick(kwargs, options=['si', 'secondary source id']) 
+        q['SI'] = kpick(kwargs, options=['si', 'secondary source id'])
 
         for feature in q.keys():
             if q[feature] != None:
                 query += ' "%s"[%s]' % (q[feature], feature)
-        
+
         # option to query pubmed central only:
         # pubmed pmc[sb]
         if pmc_only:
@@ -253,15 +258,15 @@ class PubMedFetcher(Borg):
 
         log.debug('pmids_for_query: querying %s', query)
 
-        result = self.qs.esearch({ 'db': 'pubmed', 'term': query, 
+        result = self.qs.esearch({ 'db': 'pubmed', 'term': query,
                                    'retmax': retmax, 'retstart': retstart })
         return get_uids_from_esearch_result(result)
 
-    def pmids_for_clinical_query(self, query, category, optimization='broad', 
+    def pmids_for_clinical_query(self, query, category, optimization='broad',
             since=None, until=None, retstart=0, retmax=250, pmc_only=False, **kwargs):
         '''Takes a query and a category (required, see below) and returns a list
         of pubmed IDs returned by NCBI for that query.
-            
+
         See also PubMedFetcher.pmids_for_query for other parameters.
 
             available categories:
@@ -271,7 +276,7 @@ class PubMedFetcher(Borg):
                 etiology
                 prognosis
                 prediction
-        
+
            available optimizations:
                 broad   (default)
                 narrow
@@ -279,7 +284,7 @@ class PubMedFetcher(Borg):
         :param: query (string)
         :param: category (string)
         :param: optimization (string) [default: broad]
-        :return: list of pubmed IDs 
+        :return: list of pubmed IDs
         '''
 
         key = '%s_%s' % (category, optimization)
@@ -290,8 +295,8 @@ class PubMedFetcher(Borg):
 
         kwargs['clinical_query'] = True
         return self.pmids_for_query(query, retstart=retstart, retmax=retmax, since=since, until=until, **kwargs)
-        
-        
+
+
     def pmids_for_medical_genetics_query(self, query, category='all', since=None, until=None,
                     retstart=0, retmax=250, pmc_only=False, **kwargs):
         '''Takes a query and category (see below) and returns a list of pubmed IDs.
@@ -311,7 +316,7 @@ class PubMedFetcher(Borg):
 
         :param: query (string)
         :param: category (string) [default: all]
-        :return: list of pubmed IDs 
+        :return: list of pubmed IDs
         '''
         if query:
             query += ' '+ medical_genetics_query_map[category]
@@ -319,7 +324,7 @@ class PubMedFetcher(Borg):
             raise MetaPubError('Query string required for Medical Genetics query.')
 
         kwargs['clinical_query'] = True
-        return self.pmids_for_query(query, retstart=retstart, retmax=retmax, since=since, until=until, **kwargs) 
+        return self.pmids_for_query(query, retstart=retstart, retmax=retmax, since=since, until=until, **kwargs)
 
     def pmids_for_citation(self, **kwargs):
         '''returns list of pmids for given citation. requires at least 3/5 of these keyword arguments:
@@ -338,13 +343,13 @@ class PubMedFetcher(Borg):
 
         kwargs = lowercase_keys(kwargs)
         journal_title = remove_chars(kpick(kwargs, options=['jtitle', 'journal', 'journal_title'], default=''), urldecode=True)
-        author_name = _reduce_author_string(kpick(kwargs, 
+        author_name = _reduce_author_string(kpick(kwargs,
                         options=['aulast', 'author1_last_fm', 'author', 'authors'], default=''))
         first_page = kpick(kwargs, options=['spage', 'first_page'], default='')
         year = kpick(kwargs, options=['year', 'date', 'pdat'], default='')
         volume = kpick(kwargs, options=['volume'], default='')
 
-        inp_dict = { 'journal_title': parameterize(journal_title, '+'), 
+        inp_dict = { 'journal_title': parameterize(journal_title, '+'),
                      'year': str(year),
                      'volume': str(volume),
                      'first_page': str(first_page),
@@ -367,7 +372,7 @@ class PubMedFetcher(Borg):
                 pmid = item.split('|')[-1]
                 pmids.append(pmid.strip())
         return pmids
-                
+
     def related_pmids(self, pmid):
         '''For supplied pmid, return related ids of related pubmed articles,
         organized into a dictionary keyed by type of relation.  The keys include:
@@ -388,7 +393,7 @@ class PubMedFetcher(Borg):
 
     def pmid_for_bookID(self, book_id):
         '''For supplied NCBI Book ID, use the pubmed advanced query API to find its PMID.
-        
+
         Not all NCBI Books have PMIDs.  If there is no associated PMID, this returns None.
 
         :param book_id: (str) e.g. "NBK2020"
@@ -415,7 +420,7 @@ def _reduce_author_string(author_string):
 
 
 
-""" 
+"""
 Search Field Descriptions and Tags
 
 from https://www.ncbi.nlm.nih.gov/books/NBK3827/

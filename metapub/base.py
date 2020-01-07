@@ -1,4 +1,5 @@
 from lxml import etree
+from lxml.html.clean import Cleaner
 
 from .exceptions import MetaPubError, BaseXMLError
 
@@ -79,9 +80,16 @@ class MetaPubObject(object):
         '''Returns content of named XML element, or None if not found.'''
         elem = self.content.find(tag)
         if elem is not None:
+            if len(elem.getchildren()):
+                return self.__clean_html(elem)
             return elem.text
         return None
 
+    def __clean_html(self, elem):
+        '''Removes HTML elements like i, b, and a'''
+        cleaner = Cleaner(remove_tags = ['a', 'i', 'b', 'em'])
+        return cleaner.clean_html(etree.tostring(elem).decode("utf-8"))\
+            .replace("<div>", "").replace("</div>", "").strip() # This part seems hacky to me
 
 # singleton class used by the fetchers.
 class Borg(object):

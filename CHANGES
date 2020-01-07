@@ -109,3 +109,4 @@
 8/11/2019, 0.5.1, Added to text_mining regexp and wrapper functions for finding NCBI Books (NBK*) and PMC IDs.
 8/15/2019, 0.5.2, Added PubMedFetcher.pmid_for_bookID and convert.bookid2pmid (latter is interface to former).
 8/15/2019, 0.5.3, MedGenConcept: fixed OMIM property. Added .synonyms as magic property.  .uid and .medgen_uid both work to source Medgen UID (.uid is the "real" property). 
+12/6/2020, 0.5.5, PubMedArticle/PubMedFetcher edge-case fixes courtesy of @jvansan.

@@ -19,14 +19,6 @@ CHANGES!  NEW in 0.5:
 * Widespread use of Logging so you can see what's going on under the hood.
 * SUPER NEW!  Command line utilities -- see Getting Started below.
 
-HELP NEEDED WITH:
-
-* Logging more consistently -- if you have a logging "philosophy" I'd love to hear from you.
-* Test coverage -- especially clever testing strategies to handle data that change all the time.
-* Getting better at following Semantic Versioning (https://semver.org/)
-
-Email inquiries to the maintainer address in this package. Or just submit a pull request.
-
 Getting Started
 ===============
 
@@ -413,8 +405,8 @@ used, and what they look like.
 http://www.biosciencewriters.com/Digital-identifiers-of-scientific-literature-PMID-PMCID-NIHMS-DOI-and-how-to-use-them.aspx
 
 
-About, and a Disclaimer
------------------------
+About
+-----
 
 Metapub relies on the very neat eutils package created by Reece
 Hart, which you can check out here:
@@ -422,19 +414,34 @@ Hart, which you can check out here:
 http://bitbucket.org/biocommons/eutils
 
 Metapub has been in development since November 15, 2014, and has come quite a long
-way in a short time. Metapub has been deployed in production at many bioinformatics 
+way since then. Metapub has been deployed in production at many bioinformatics 
 facilities (please tell me your story if you are among them!).
 
-Feel free to use the library with confidence that each released version is well tested 
-and battle-hardened from extensive use, but until (say) version 0.5, don't expect 
-total consistency between versions.
+As of version 0.5.5, Metapub follows reasonably-strict Semantic Versioning which you 
+can read about at https://semver.org/
 
-YMMV, At your own risk, etc.  Please do report bugs and bring your comments and 
-suggestions to the bitbucket home for metapub at:
+Metapub is developed and maintained by a small group of volunteers based out of 
+San Francisco, CA.  You are warmly welcome to contribute.  Please read the 
+Contributing section carefully, and feel free to contact the main author (Naomi Most, 
+@nthmost) directly with questions, comments, suggestions, and swear words.
 
-https://bitbucket.org/metapub/metapub
+Contributing: Help Wanted!
+--------------------------
 
---Naomi Most (@nthmost)
+The Metapub project consists of a small handful of committed volunteers (primarily the original author, @nthmost) tracking bugs and making contributions through GitHub.
+
+We welcome all contributions big and small, from ambitious new features all the way down to a thumbs-up on a bug or improvement.  Metapub is a highly detailed-oriented project that thrives with critical feedback.
+
+If you'd like to contribute a new feature or bug fix, we ask that you open an issue at https://github.com/metapub/metapub/issues and give it as much detail as you can.  
+
+Please submit examples of the data that breaks your code and/or the new type of data or API that you wish Metapub would support.   Examples are often crucial for reproducing bugs and for creating tests in the wake of a bug fix.
+
+Extra special help is requested with the following items:
+
+* Logging more consistently -- if you have a logging "philosophy" I'd love to hear from you.
+* Test coverage -- especially clever testing strategies to handle data that change all the time.
+
+Email inquiries to the maintainer address in this package. Or just submit a pull request.
 
 
 About Python 2 and Python 3 Support
@@ -442,4 +449,3 @@ About Python 2 and Python 3 Support
 *Alert*: Metapub supports Python 3.x only from version 0.5.x onwards.
 
 The LAST version of metapub to support Python 2.7 was 0.4.3.6 (2017)
-

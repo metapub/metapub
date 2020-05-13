@@ -81,11 +81,11 @@ class MetaPubObject(object):
         elem = self.content.find(tag)
         if elem is not None:
             if len(elem.getchildren()):
-                return self.__clean_html(elem)
+                return self._clean_html(elem)
             return elem.text
         return None
 
-    def __clean_html(self, elem):
+    def _clean_html(self, elem):
         '''Removes HTML elements like i, b, and a'''
         cleaner = Cleaner(remove_tags = ['a', 'i', 'b', 'em'])
         return cleaner.clean_html(etree.tostring(elem).decode("utf-8"))\

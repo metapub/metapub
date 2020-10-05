@@ -219,7 +219,7 @@ class CrossRefFetcher(Borg):
         :rtype: CrossRefWork
         """
         # Try with Title and Journal only
-        res = self.cr.works(query_title=pma.title, query_container_title=pma.journal, limit=5)
+        res = self.cr.works(query_bibliographic=pma.title, query_container_title=pma.journal, limit=5)
         self.log.debug('PMID %s: Crossref Title/Journal query got %i results', pma.pmid, res['message']['total-results'])
 
         bestcandidate = get_most_similar_work_from_crossref_results(pma.title, 'title', res)
@@ -234,7 +234,7 @@ class CrossRefFetcher(Borg):
         # Run our last candidate (if we got one) in the next pageont.
 
         # Try with Title and Author
-        res = self.cr.works(query_title=pma.title, query_author=pma.author1_lastfm, limit=5)
+        res = self.cr.works(query_bibliographic=pma.title, query_author=pma.author1_lastfm, limit=5)
         self.log.debug('PMID %s: Crossref Title/Author query got %i results', pma.pmid, res['message']['total-results'])
 
         if res['message']['total-results'] > 0:
@@ -260,7 +260,7 @@ class CrossRefFetcher(Borg):
         :param title: str
         :rtype: CrossRefWork or None (if no results)
         """
-        res = self.cr.works(query_title=title, limit=1)
+        res = self.cr.works(query_bibliographic=title, limit=1)
         if res['message']['total-results'] > 0:
             item = res['message']['items'][0]
             return CrossRefWork(**item)

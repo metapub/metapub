@@ -42,13 +42,13 @@ class MedGenFetcher(Borg):
 
     _cache_filename = 'medgenfetcher.db'
 
-    def __init__(self, method='eutils', cachedir='default'):
+    def __init__(self, method='eutils', cachedir='default', cache=None):
         self.method = method
         self._cache_path = None
 
         if method == 'eutils':
             self._cache_path = get_cache_path(cachedir, self._cache_filename)
-            self.qs = get_eutils_client(self._cache_path) 
+            self.qs = get_eutils_client(self._cache_path, cache=cache)
             self.uids_by_term = self._eutils_uids_by_term
             self.concept_by_uid = self._eutils_concept_by_uid
             self.concept_by_cui = self._eutils_concept_by_cui

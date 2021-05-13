@@ -77,6 +77,7 @@ class PubMedArticle(MetaPubObject):
         self.authors_str = self._get_authors_str()
         self.author1_last_fm = self._get_author1_last_fm()
         self.author1_lastfm = self._get_author1_lastfm()
+        self.keywords = self._get_keywords()
 
         # 'article' only (not shared):
         self.pages = None if pmt == 'book' else self._get_pages()
@@ -326,6 +327,10 @@ class PubMedArticle(MetaPubObject):
         if self.author1_last_fm is not None:
             return self.author1_last_fm.replace(' ', '')
         return None
+
+    def _get_keywords(self):
+        keyword_list = [kw.text for kw in self.content.findall(self._root+'/KeywordList/Keyword')]
+        return keyword_list
 
     def _get_journal(self):
         j = self._get(self._root+'/Article/Journal/ISOAbbreviation')

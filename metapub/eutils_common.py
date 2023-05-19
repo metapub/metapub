@@ -19,6 +19,6 @@ def get_eutils_client(cache_path, cache=None):
     :return: eutils Client object
     """
     import eutils
-    return eutils.QueryService(cache_path, api_key=API_KEY, cache=cache)
+    return eutils.QueryService(cache=cache_path, api_key=API_KEY)
 
 

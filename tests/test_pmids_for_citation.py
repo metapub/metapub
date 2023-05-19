@@ -1,7 +1,10 @@
 import unittest
 
 from metapub import PubMedFetcher
-fetch = PubMedFetcher()
+from metapub.cache_utils import cleanup_dir
+from tests.common import TEST_CACHEDIR
+
+fetch = PubMedFetcher(cachedir=TEST_CACHEDIR)
 
 # fixtures
 NOT_FOUND_INVALID_JOURNAL_params = {'jtitle': 'Computers',

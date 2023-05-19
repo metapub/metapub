@@ -1,8 +1,11 @@
 import unittest
+from metapub.cache_utils import cleanup_dir
 from metapub.exceptions import *
 from metapub import PubMedArticle, PubMedFetcher
 
 import random
+
+from tests.common import TEST_CACHEDIR
 
 xml_str1 = '''<?xml version="1.0"?>
 <!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2015//EN" "http://www.ncbi.nlm.nih.gov/corehtml/query/DTD/pubmed_150101.dtd">
@@ -295,7 +298,7 @@ xml_str2 = '''
 class TestPubMedArticle(unittest.TestCase):
 
     def setUp(self):
-        self.fetch = PubMedFetcher()
+        self.fetch = PubMedFetcher(cachedir=TEST_CACHEDIR)
 
     def tearDown(self):
         pass

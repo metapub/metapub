@@ -1,7 +1,9 @@
 import unittest
 
 from metapub import PubMedFetcher
+from metapub.cache_utils import cleanup_dir
 from metapub.pubmedcentral import *
+from tests.common import TEST_CACHEDIR
 
 # List of Book IDs that should give us back singular PMIDs when we search for them.
 NCBI_BOOKS = [
@@ -14,7 +16,7 @@ NCBI_BOOKS = [
 class TestPubmedFetcher(unittest.TestCase):
 
     def setUp(self):
-        self.fetch = PubMedFetcher()
+        self.fetch = PubMedFetcher(cachedir=TEST_CACHEDIR)
 
     def tearDown(self):
         pass

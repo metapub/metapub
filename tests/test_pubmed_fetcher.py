@@ -1,32 +1,15 @@
 import unittest, os
 
 from metapub import PubMedFetcher
+from metapub.cache_utils import cleanup_dir
 from metapub.pubmedfetcher import parse_related_pmids_result
 from metapub.pubmedcentral import *
+from tests.common import TEST_CACHEDIR
 
+fetch = PubMedFetcher(cachedir=TEST_CACHEDIR)
 
-TEST_CACHEDIR = 'tests/cachedir'
-try:
-    for item in os.listdir(TEST_CACHEDIR):
-        os.unlink(os.path.join(TEST_CACHEDIR, item))
-except OSError:
-    pass
-
-try:
-    os.rmdir(TEST_CACHEDIR)
-except OSError:
-    pass
-
-
-fetch = PubMedFetcher()
 
 class TestPubmedFetcher(unittest.TestCase):
-
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
 
     def test_article_by_pmid(self):
         pmid = '4'

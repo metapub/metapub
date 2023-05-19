@@ -62,3 +62,14 @@ def _require_dir(targetdir):
     except OSError:
         return False
 
+def cleanup_dir(cachedir):
+    try:
+        for item in os.listdir(cachedir):
+            os.unlink(os.path.join(cachedir, item))
+    except OSError:
+        pass
+
+    try:
+        os.rmdir(cachedir)
+    except OSError:
+        pass

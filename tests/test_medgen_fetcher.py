@@ -1,13 +1,12 @@
 import unittest, os
 
 from metapub import MedGenFetcher
+from metapub.cache_utils import cleanup_dir
+from tests.common import TEST_CACHEDIR
 
 hugos = ['ACVRL1', 'FOXP3', 'ATM']
 
-TEST_CACHEDIR = 'tests/testcachedir'
-
-fetch = MedGenFetcher()
-
+fetch = MedGenFetcher(cachedir=TEST_CACHEDIR)
 
 class TestMedGenFetcher(unittest.TestCase):
 

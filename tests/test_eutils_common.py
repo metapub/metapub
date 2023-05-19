@@ -19,4 +19,3 @@ class TestGetEutilsClient(unittest.TestCase):
     def test_get_eutils_client_no_caching(self):
         client = get_eutils_client(None)
         assert client._cache is None
-

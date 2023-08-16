@@ -227,7 +227,7 @@ class PubMedArticle(MetaPubObject):
     def _get_book_abstracts(self):
         abd = OrderedDict()
         for item in self.content.findall('BookDocument/Abstract/AbstractText'):
-            abd[item.get('Label')] = item.text
+            abd[item.get('Label')] = self._extract_text(item)
         return abd
 
     def _get_book_sections(self):
@@ -290,15 +290,13 @@ class PubMedArticle(MetaPubObject):
             return self._get(self._root+'/Article/Abstract/AbstractText')
 
         if len(abstracts) == 1:
-            elem = abstracts[0]
-            if len(elem.getchildren()):
-                return self._clean_html(elem)
-            return elem.text
+            return self._extract_text(abstracts[0])
 
-        # this is a type of PMA with several AbstractText listings (like a Book)
+        # This is a type of PMA with several AbstractText listings
+        # for a structured abstract, see https://www.nlm.nih.gov/bsd/policy/structured_abstracts.html 
         abd = OrderedDict()
         for ab in abstracts:
-            abd[ab.get('Label')] = ab.text
+            abd[ab.get('Label')] = self._extract_text(ab)
         return '\n'.join(['%s: %s' % (key, val) for key, val in abd.items()])
 
     def _get_authors(self):

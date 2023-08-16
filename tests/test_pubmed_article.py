@@ -331,3 +331,24 @@ class TestPubMedArticle(unittest.TestCase):
     def test_to_dict(self):
         article = PubMedArticle(xml_str1)
         self.assertTrue(isinstance(article.to_dict(), dict))
+
+    def test_embedded_xml_tags(self):
+        """
+        Some articles have xml tags embedded in their title or abstract.
+        Example: "Exploring the effect of vitamin D<sub>3</sub> supplementation"
+        Naive parsing with elem.text will truncate the contents at the first tag.
+        Instead, we want to keep the whole contents, including any embedded XML tags.
+        """
+        with open('tests/data/pmid_28731372.xml') as f:
+            xml = f.read()
+        article = PubMedArticle(xml)
+        expected_title = 'Exploring the effect of vitamin D<sub>3</sub> supplementation ' \
+        'on the anti-EBV antibody response in relapsing-remitting multiple sclerosis.'
+        self.assertEqual(article.title, expected_title)
+        abstract = article.abstract
+        expected_objectives = 'OBJECTIVES: To investigate the effect of high-dose vitamin D<sub>3</sub> supplements'
+        self.assertTrue(expected_objectives in abstract)
+        expected_conclusion = 'CONCLUSION: High-dose vitamin D<sub>3</sub> supplementation selectively reduces anti-EBNA-1 antibody levels'
+        self.assertTrue(expected_conclusion in abstract)
+        self.assertTrue(abstract.startswith('BACKGROUND: Epstein-Barr virus (EBV) infection and vitamin D insufficiency'))
+        self.assertTrue(abstract.endswith('do not implicate a promoted immune response against EBV as the underlying mechanism.'))

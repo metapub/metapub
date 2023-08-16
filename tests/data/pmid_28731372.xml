@@ -1,0 +1,501 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2023//EN" "https://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_230101.dtd">
+<PubmedArticleSet>
+    <PubmedArticle>
+        <MedlineCitation Status="MEDLINE" Owner="NLM">
+            <PMID Version="1">28731372</PMID>
+            <DateCompleted>
+                <Year>2019</Year>
+                <Month>09</Month>
+                <Day>09</Day>
+            </DateCompleted>
+            <DateRevised>
+                <Year>2021</Year>
+                <Month>01</Month>
+                <Day>09</Day>
+            </DateRevised>
+            <Article PubModel="Print-Electronic">
+                <Journal>
+                    <ISSN IssnType="Electronic">1477-0970</ISSN>
+                    <JournalIssue CitedMedium="Internet">
+                        <Volume>24</Volume>
+                        <Issue>10</Issue>
+                        <PubDate>
+                            <Year>2018</Year>
+                            <Month>Sep</Month>
+                        </PubDate>
+                    </JournalIssue>
+                    <Title>Multiple sclerosis (Houndmills, Basingstoke, England)</Title>
+                    <ISOAbbreviation>Mult Scler</ISOAbbreviation>
+                </Journal>
+                <ArticleTitle>Exploring the effect of vitamin D<sub>3</sub> supplementation on the anti-EBV antibody response in relapsing-remitting multiple sclerosis.</ArticleTitle>
+                <Pagination>
+                    <StartPage>1280</StartPage>
+                    <EndPage>1287</EndPage>
+                    <MedlinePgn>1280-1287</MedlinePgn>
+                </Pagination>
+                <ELocationID EIdType="doi" ValidYN="Y">10.1177/1352458517722646</ELocationID>
+                <Abstract>
+                    <AbstractText Label="BACKGROUND">Epstein-Barr virus (EBV) infection and vitamin D insufficiency are potentially interacting risk factors for multiple sclerosis (MS).</AbstractText>
+                    <AbstractText Label="OBJECTIVES">To investigate the effect of high-dose vitamin D<sub>3</sub> supplements on antibody levels against the EBV nuclear antigen-1 (EBNA-1) in patients with relapsing-remitting multiple sclerosis (RRMS) and to explore any underlying mechanism affecting anti-EBNA-1 antibody levels.</AbstractText>
+                    <AbstractText Label="METHODS">This study utilized blood samples from a randomized controlled trial in RRMS patients receiving either vitamin D<sub>3</sub> (14,000&#x2009;IU/day; n&#x2009;=&#x2009;30) or placebo ( n&#x2009;=&#x2009;23) over 48&#x2009;weeks. Circulating levels of 25-hydroxyvitamin-D, and anti-EBNA-1, anti-EBV viral capsid antigen (VCA), and anti-cytomegalovirus (CMV) antibodies were measured. EBV load in leukocytes, EBV-specific cytotoxic T-cell responses, and anti-EBNA-1 antibody production in vitro were also explored.</AbstractText>
+                    <AbstractText Label="RESULTS">The median antibody levels against EBNA-1, but not VCA and CMV, significantly reduced in the vitamin D<sub>3</sub> group (526 (368-1683) to 455 (380-1148) U/mL) compared to the placebo group (432 (351-1280) to 429 (297-1290) U/mL; p&#x2009;=&#x2009;0.023). EBV load and cytotoxic T-cell responses were unaffected. Anti-EBNA-1 antibody levels remained below detection limits in B-cell cultures.</AbstractText>
+                    <AbstractText Label="CONCLUSION">High-dose vitamin D<sub>3</sub> supplementation selectively reduces anti-EBNA-1 antibody levels in RRMS patients. Our exploratory studies do not implicate a promoted immune response against EBV as the underlying mechanism.</AbstractText>
+                </Abstract>
+                <AuthorList CompleteYN="Y">
+                    <Author ValidYN="Y">
+                        <LastName>Rolf</LastName>
+                        <ForeName>Linda</ForeName>
+                        <Initials>L</Initials>
+                        <AffiliationInfo>
+                            <Affiliation>School for Mental Health and Neuroscience, Maastricht University Medical Centre, Maastricht, The Netherlands/Academic MS Center Limburg, Zuyderland Medical Center, Sittard, The Netherlands/Central Diagnostic Laboratory, Maastricht University Medical Centre, Maastricht, The Netherlands.</Affiliation>
+                        </AffiliationInfo>
+                    </Author>
+                    <Author ValidYN="Y">
+                        <LastName>Muris</LastName>
+                        <ForeName>Anne-Hilde</ForeName>
+                        <Initials>AH</Initials>
+                        <AffiliationInfo>
+                            <Affiliation>School for Mental Health and Neuroscience, Maastricht University Medical Centre, Maastricht, The Netherlands/Academic MS Center Limburg, Zuyderland Medical Center, Sittard, The Netherlands.</Affiliation>
+                        </AffiliationInfo>
+                    </Author>
+                    <Author ValidYN="Y">
+                        <LastName>Mathias</LastName>
+                        <ForeName>Amandine</ForeName>
+                        <Initials>A</Initials>
+                        <AffiliationInfo>
+                            <Affiliation>Laboratory of Neuroimmunology, Center of Research in Neurosciences, Department of Clinical Neurosciences, Lausanne University Hospital, Lausanne, Switzerland.</Affiliation>
+                        </AffiliationInfo>
+                    </Author>
+                    <Author ValidYN="Y">
+                        <LastName>Du Pasquier</LastName>
+                        <ForeName>Renaud</ForeName>
+                        <Initials>R</Initials>
+                        <AffiliationInfo>
+                            <Affiliation>Laboratory of Neuroimmunology, Center of Research in Neurosciences, Department of Clinical Neurosciences, Lausanne University Hospital, Lausanne, Switzerland.</Affiliation>
+                        </AffiliationInfo>
+                    </Author>
+                    <Author ValidYN="Y">
+                        <LastName>Koneczny</LastName>
+                        <ForeName>Inga</ForeName>
+                        <Initials>I</Initials>
+                        <AffiliationInfo>
+                            <Affiliation>School for Mental Health and Neuroscience, Maastricht University Medical Center, Maastricht, The Netherlands.</Affiliation>
+                        </AffiliationInfo>
+                    </Author>
+                    <Author ValidYN="Y">
+                        <LastName>Disanto</LastName>
+                        <ForeName>Giulio</ForeName>
+                        <Initials>G</Initials>
+                        <AffiliationInfo>
+                            <Affiliation>Neurocenter of Southern Switzerland (NSI), Ospedale Civico, Lugano, Switzerland.</Affiliation>
+                        </AffiliationInfo>
+                    </Author>
+                    <Author ValidYN="Y">
+                        <LastName>Kuhle</LastName>
+                        <ForeName>Jens</ForeName>
+                        <Initials>J</Initials>
+                        <AffiliationInfo>
+                            <Affiliation>Neurologic Clinic and Policlinic, Departments of Medicine, Biomedicine, and Clinical Research, University Hospital Basel, University of Basel, Basel, Switzerland.</Affiliation>
+                        </AffiliationInfo>
+                    </Author>
+                    <Author ValidYN="Y">
+                        <LastName>Ramagopalan</LastName>
+                        <ForeName>Sreeram</ForeName>
+                        <Initials>S</Initials>
+                        <AffiliationInfo>
+                            <Affiliation>Evidera, London, UK.</Affiliation>
+                        </AffiliationInfo>
+                    </Author>
+                    <Author ValidYN="Y">
+                        <LastName>Damoiseaux</LastName>
+                        <ForeName>Jan</ForeName>
+                        <Initials>J</Initials>
+                        <AffiliationInfo>
+                            <Affiliation>Central Diagnostic Laboratory, Maastricht University Medical Center, Maastricht, The Netherlands.</Affiliation>
+                        </AffiliationInfo>
+                    </Author>
+                    <Author ValidYN="Y">
+                        <LastName>Smolders</LastName>
+                        <ForeName>Joost</ForeName>
+                        <Initials>J</Initials>
+                        <AffiliationInfo>
+                            <Affiliation>Academic MS Center Limburg, Zuyderland Medical Center, Sittard, The Netherlands/Department of Neurology, Canisius-Wilhelmina Hospital, Nijmegen, The Netherlands.</Affiliation>
+                        </AffiliationInfo>
+                    </Author>
+                    <Author ValidYN="Y">
+                        <LastName>Hupperts</LastName>
+                        <ForeName>Raymond</ForeName>
+                        <Initials>R</Initials>
+                        <AffiliationInfo>
+                            <Affiliation>School for Mental Health and Neuroscience, Maastricht University Medical Centre, Maastricht, The Netherlands/Academic MS Center Limburg, Zuyderland Medical Center, Sittard, The Netherlands.</Affiliation>
+                        </AffiliationInfo>
+                    </Author>
+                </AuthorList>
+                <Language>eng</Language>
+                <GrantList CompleteYN="Y">
+                    <Grant>
+                        <GrantID>J 3545</GrantID>
+                        <Acronym>FWF_</Acronym>
+                        <Agency>Austrian Science Fund FWF</Agency>
+                        <Country>Austria</Country>
+                    </Grant>
+                </GrantList>
+                <PublicationTypeList>
+                    <PublicationType UI="D016428">Journal Article</PublicationType>
+                    <PublicationType UI="D016449">Randomized Controlled Trial</PublicationType>
+                    <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+                </PublicationTypeList>
+                <ArticleDate DateType="Electronic">
+                    <Year>2017</Year>
+                    <Month>07</Month>
+                    <Day>21</Day>
+                </ArticleDate>
+            </Article>
+            <MedlineJournalInfo>
+                <Country>England</Country>
+                <MedlineTA>Mult Scler</MedlineTA>
+                <NlmUniqueID>9509185</NlmUniqueID>
+                <ISSNLinking>1352-4585</ISSNLinking>
+            </MedlineJournalInfo>
+            <ChemicalList>
+                <Chemical>
+                    <RegistryNumber>0</RegistryNumber>
+                    <NameOfSubstance UI="D000914">Antibodies, Viral</NameOfSubstance>
+                </Chemical>
+                <Chemical>
+                    <RegistryNumber>0</RegistryNumber>
+                    <NameOfSubstance UI="D019309">Epstein-Barr Virus Nuclear Antigens</NameOfSubstance>
+                </Chemical>
+                <Chemical>
+                    <RegistryNumber>1C6V77QF41</RegistryNumber>
+                    <NameOfSubstance UI="D002762">Cholecalciferol</NameOfSubstance>
+                </Chemical>
+                <Chemical>
+                    <RegistryNumber>O5GA75RST7</RegistryNumber>
+                    <NameOfSubstance UI="C417029">EBV-encoded nuclear antigen 1</NameOfSubstance>
+                </Chemical>
+            </ChemicalList>
+            <CitationSubset>IM</CitationSubset>
+            <MeshHeadingList>
+                <MeshHeading>
+                    <DescriptorName UI="D000328" MajorTopicYN="N">Adult</DescriptorName>
+                </MeshHeading>
+                <MeshHeading>
+                    <DescriptorName UI="D000914" MajorTopicYN="N">Antibodies, Viral</DescriptorName>
+                    <QualifierName UI="Q000097" MajorTopicYN="Y">blood</QualifierName>
+                </MeshHeading>
+                <MeshHeading>
+                    <DescriptorName UI="D002762" MajorTopicYN="N">Cholecalciferol</DescriptorName>
+                    <QualifierName UI="Q000494" MajorTopicYN="Y">pharmacology</QualifierName>
+                </MeshHeading>
+                <MeshHeading>
+                    <DescriptorName UI="D019587" MajorTopicYN="Y">Dietary Supplements</DescriptorName>
+                </MeshHeading>
+                <MeshHeading>
+                    <DescriptorName UI="D020031" MajorTopicYN="N">Epstein-Barr Virus Infections</DescriptorName>
+                    <QualifierName UI="Q000150" MajorTopicYN="Y">complications</QualifierName>
+                </MeshHeading>
+                <MeshHeading>
+                    <DescriptorName UI="D019309" MajorTopicYN="N">Epstein-Barr Virus Nuclear Antigens</DescriptorName>
+                    <QualifierName UI="Q000097" MajorTopicYN="N">blood</QualifierName>
+                </MeshHeading>
+                <MeshHeading>
+                    <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+                </MeshHeading>
+                <MeshHeading>
+                    <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+                </MeshHeading>
+                <MeshHeading>
+                    <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+                </MeshHeading>
+                <MeshHeading>
+                    <DescriptorName UI="D008875" MajorTopicYN="N">Middle Aged</DescriptorName>
+                </MeshHeading>
+                <MeshHeading>
+                    <DescriptorName UI="D020529" MajorTopicYN="N">Multiple Sclerosis, Relapsing-Remitting</DescriptorName>
+                    <QualifierName UI="Q000821" MajorTopicYN="Y">virology</QualifierName>
+                </MeshHeading>
+            </MeshHeadingList>
+            <KeywordList Owner="NOTNLM">
+                <Keyword MajorTopicYN="N">Antibodies</Keyword>
+                <Keyword MajorTopicYN="N">EBNA-1</Keyword>
+                <Keyword MajorTopicYN="N">Epstein&#x2013;Barr virus</Keyword>
+                <Keyword MajorTopicYN="N">multiple sclerosis</Keyword>
+                <Keyword MajorTopicYN="N">supplementation</Keyword>
+                <Keyword MajorTopicYN="N">vitamin D</Keyword>
+            </KeywordList>
+            <CoiStatement>
+                <b>Declaration of Conflicting Interests:</b> The author(s) declared the following potential conflicts of interest with respect
+to the research, authorship, and/or publication of this article: L.R., A.-H.M.,
+A.M., I.K., G.D., and J.D. report no disclosures. R.D.P. has served on
+scientific advisory boards and/or received funding for travel or speaker
+honoraria from Biogen, Merck, Novartis, Roche, and Sanofi-Genzyme. J.K.&#x2019;s
+institution (University Hospital Basel) received and used exclusively for
+research support: consulting fees from Genzyme, Novartis, Protagen AG, Roche,
+and Teva; speaker fees from the Swiss MS Society, Biogen, Novartis, Roche, and
+Genzyme; travel expenses from Genzyme, Merck, Novartis, and Roche; and grants
+from ECTRIMS Research Fellowship Programme, University of Basel, Swiss MS
+Society, Swiss National Research Foundation, Bayer AG, Biogen, Genzyme, Merck,
+Novartis, and Roche. S.R. was a full-time employee at Evidera at the time of
+this study. J.S. received lecture and/or consultancy fees from Biogen, Merck,
+Sanofi-Genzyme, and Novartis. R.H. received honoraria for lectures and advisory
+boards and Research Grants from Merck, Biogen, Sanofi-Genzyme, Novartis, and
+Teva.</CoiStatement>
+        </MedlineCitation>
+        <PubmedData>
+            <History>
+                <PubMedPubDate PubStatus="pubmed">
+                    <Year>2017</Year>
+                    <Month>7</Month>
+                    <Day>22</Day>
+                    <Hour>6</Hour>
+                    <Minute>0</Minute>
+                </PubMedPubDate>
+                <PubMedPubDate PubStatus="medline">
+                    <Year>2019</Year>
+                    <Month>9</Month>
+                    <Day>10</Day>
+                    <Hour>6</Hour>
+                    <Minute>0</Minute>
+                </PubMedPubDate>
+                <PubMedPubDate PubStatus="entrez">
+                    <Year>2017</Year>
+                    <Month>7</Month>
+                    <Day>22</Day>
+                    <Hour>6</Hour>
+                    <Minute>0</Minute>
+                </PubMedPubDate>
+            </History>
+            <PublicationStatus>ppublish</PublicationStatus>
+            <ArticleIdList>
+                <ArticleId IdType="pubmed">28731372</ArticleId>
+                <ArticleId IdType="pmc">PMC6108041</ArticleId>
+                <ArticleId IdType="doi">10.1177/1352458517722646</ArticleId>
+            </ArticleIdList>
+            <ReferenceList>
+                <Reference>
+                    <Citation>Santiago O, Gutierrez J, Sorlozano A, et al. Relation between Epstein-Barr virus and multiple sclerosis: Analytic study of scientific production. Eur J Clin Microbiol Infect Dis 2010; 29: 857&#x2013;866.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">20428908</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Hochberg D, Souza T, Catalina M, et al. Acute infection with Epstein-Barr virus targets and overwhelms the peripheral memory B-cell compartment with resting, latently infected cells. J Virol 2004; 78: 5194&#x2013;5204.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pmc">PMC400374</ArticleId>
+                        <ArticleId IdType="pubmed">15113901</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Handel AE, Williamson AJ, Disanto G, et al. An updated meta-analysis of risk of multiple sclerosis following infectious mononucleosis. PLoS ONE 2010; 5: e12496.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pmc">PMC2931696</ArticleId>
+                        <ArticleId IdType="pubmed">20824132</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Pender MP, Burrows SR. Epstein-Barr virus and multiple sclerosis: Potential opportunities for immunotherapy. Clin Transl Immunology 2014; 3: e27.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pmc">PMC4237030</ArticleId>
+                        <ArticleId IdType="pubmed">25505955</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Ascherio A, Munger KL, Lennette ET, et al. Epstein-Barr virus antibodies and risk of multiple sclerosis: A prospective study. JAMA 2001; 286: 3083&#x2013;3088.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">11754673</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Lunemann JD, Tintore M, Messmer B, et al. Elevated Epstein-Barr virus-encoded nuclear antigen-1 immune responses predict conversion to multiple sclerosis. Ann Neurol 2010; 67: 159&#x2013;169.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pmc">PMC2848293</ArticleId>
+                        <ArticleId IdType="pubmed">20225269</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Munger KL, Fitzgerald KC, Freedman MS, et al. No association of multiple sclerosis activity and progression with EBV or tobacco use in BENEFIT. Neurology 2015; 85: 1694&#x2013;1701.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pmc">PMC4653109</ArticleId>
+                        <ArticleId IdType="pubmed">26453645</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Farrell RA, Antony D, Wall GR, et al. Humoral immune response to EBV in multiple sclerosis is associated with disease activity on MRI. Neurology 2009; 73: 32&#x2013;38.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pmc">PMC2848585</ArticleId>
+                        <ArticleId IdType="pubmed">19458321</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Kvistad S, Myhr KM, Holmoy T, et al. Antibodies to Epstein-Barr virus and MRI disease activity in multiple sclerosis. Mult Scler 2014; 20: 1833&#x2013;1840.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">24842958</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Zivadinov R, Cerza N, Hagemeier J, et al. Humoral response to EBV is associated with cortical atrophy and lesion burden in patients with MS. Neurol Neuroimmunol Neuroinflamm 2016; 3: e190.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pmc">PMC4708926</ArticleId>
+                        <ArticleId IdType="pubmed">26770996</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Munger KL, Levin LI, Hollis BW, et al. Serum 25-hydroxyvitamin D levels and risk of multiple sclerosis. JAMA 2006; 296: 2832&#x2013;2838.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">17179460</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Simpson S, Jr, Taylor B, Blizzard L, et al. Higher 25-hydroxyvitamin D is associated with lower relapse risk in multiple sclerosis. Ann Neurol 2010; 68: 193&#x2013;203.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">20695012</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Van der Mei IA, Ponsonby AL, Dwyer T, et al. Vitamin D levels in people with multiple sclerosis and community controls in Tasmania, Australia. J Neurol 2007; 254: 581&#x2013;590.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">17426912</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Ascherio A, Munger KL, White R, et al. Vitamin D as an early predictor of multiple sclerosis activity and progression. JAMA Neurol 2014; 71: 306&#x2013;314.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pmc">PMC4000029</ArticleId>
+                        <ArticleId IdType="pubmed">24445558</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Mowry EM, Waubant E, McCulloch CE, et al. Vitamin D status predicts new brain magnetic resonance imaging activity in multiple sclerosis. Ann Neurol 2012; 72: 234&#x2013;240.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pmc">PMC3430977</ArticleId>
+                        <ArticleId IdType="pubmed">22926855</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Chen S, Sims GP, Chen XX, et al. Modulatory effects of 1,25-dihydroxyvitamin D3 on human B cell differentiation. J Immunol 2007; 179: 1634&#x2013;1647.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">17641030</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Sotirchos ES, Bhargava P, Eckstein C, et al. Safety and immunologic effects of high- vs low-dose cholecalciferol in multiple sclerosis. Neurology 2016; 86: 382&#x2013;390.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pmc">PMC4776090</ArticleId>
+                        <ArticleId IdType="pubmed">26718578</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Muris AH, Smolders J, Rolf L, et al. Immune regulatory effects of high dose vitamin D3 supplementation in a randomized controlled trial in relapsing remitting multiple sclerosis patients receiving IFNbeta; the SOLARIUM study. J Neuroimmunol 2016; 300: 47&#x2013;56.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">27806875</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>
+Smolders J, Hupperts R, Vieth R, et al. 
+High dose cholecalciferol (vitamin D3) oil as
+add-on therapy in subjects with relapsing-remitting multiple sclerosis
+receiving subcutaneous interferon b-1a.
+ECTRIMS, 16
+September
+2016, https://www.charcot-ms.org/gallery/multi_seauton-events/www.charcot-ms.org/documents/abstracts/smolders_solar_cholecalciferol_add-on_therapy_in_rrms.pdf</Citation>
+                </Reference>
+                <Reference>
+                    <Citation>Munger K, Ascherio A. Understanding the joint effects of EBV and vitamin D in MS. Mult Scler 2013; 19: 1554&#x2013;1555.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">24132000</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Decard BF, Von AN, Grunwald T, et al. Low vitamin D and elevated immunoreactivity against Epstein-Barr virus before first clinical manifestation of multiple sclerosis. J Neurol Neurosurg Psychiatry 2012; 83: 1170&#x2013;1173.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">22888143</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Wergeland S, Myhr KM, Loken-Amsrud KI, et al. Vitamin D, HLA-DRB1 and Epstein-Barr virus antibody levels in a prospective cohort of multiple sclerosis patients. Eur J Neurol 2016; 23: 1064&#x2013;1070.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">26998820</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Disanto G, Handel AE, Damoiseaux J, et al. Vitamin D supplementation and antibodies against the Epstein-Barr virus in multiple sclerosis patients. Mult Scler 2013; 19: 1679&#x2013;1680.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">23828870</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Rosjo E, Lossius A, Abdelmagid N, et al. Effect of high-dose vitamin D3 supplementation on antibody responses against Epstein-Barr virus in relapsing-remitting multiple sclerosis. Mult Scler 2017; 23: 395&#x2013;402.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">27325604</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Polman CH, Reingold SC, Edan G, et al. Diagnostic criteria for multiple sclerosis: 2005 revisions to the &#x201c;McDonald Criteria.&#x201d; Ann Neurol 2005; 58: 840&#x2013;846.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">16283615</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Dennert R, Velthuis S, Westermann D, et al. Parvovirus-B19-associated fulminant myocarditis successfully treated with immunosuppressive and antiviral therapy. Antivir Ther 2010; 15: 681&#x2013;685.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">20587861</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Jilek S, Schluep M, Meylan P, et al. Strong EBV-specific CD8+ T-cell response in patients with early multiple sclerosis. Brain 2008; 131: 1712&#x2013;1721.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">18550621</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Nogales-Gadea G, Saxena A, Hoffmann C, et al. Generation of recombinant human IgG monoclonal antibodies from immortalized sorted B cells. J Vis Exp 2015; 100: e52830.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pmc">PMC4545184</ArticleId>
+                        <ArticleId IdType="pubmed">26132628</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Knippenberg S, Smolders J, Thewissen M, et al. Effect of vitamin D(3) supplementation on peripheral B cell differentiation and isotype switching in patients with multiple sclerosis. Mult Scler 2011; 17: 1418&#x2013;1423.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">21690147</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Ramien C, Pachnio A, Sisay S, et al. Hypovitaminosis-D and EBV: No interdependence between two MS risk factors in a healthy young UK autumn cohort. Mult Scler 2014; 20: 751&#x2013;753.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">24192216</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Yenamandra SP, Hellman U, Kempkes B, et al. Epstein-Barr virus encoded EBNA-3 binds to vitamin D receptor and blocks activation of its target genes. Cell Mol Life Sci 2010; 67: 4249&#x2013;4256.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">20593215</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Beard JA, Bearden A, Striker R. Vitamin D and the anti-viral state. J Clin Virol 2011; 50: 194&#x2013;200.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pmc">PMC3308600</ArticleId>
+                        <ArticleId IdType="pubmed">21242105</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Rolf L, Muris AH, Hupperts R, et al. Illuminating vitamin D effects on B-cells&#x2014;the multiple sclerosis perspective. Immunology 2016; 147: 275&#x2013;284.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pmc">PMC4754614</ArticleId>
+                        <ArticleId IdType="pubmed">26714674</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+                <Reference>
+                    <Citation>Serafini B, Rosicarelli B, Magliozzi R, et al. Detection of ectopic B-cell follicles with germinal centers in the meninges of patients with secondary progressive multiple sclerosis. Brain Pathol 2004; 14: 164&#x2013;174.</Citation>
+                    <ArticleIdList>
+                        <ArticleId IdType="pubmed">15193029</ArticleId>
+                    </ArticleIdList>
+                </Reference>
+            </ReferenceList>
+        </PubmedData>
+    </PubmedArticle>
+</PubmedArticleSet>

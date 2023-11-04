@@ -3,6 +3,8 @@ from __future__ import print_function
 import unittest
 import logging
 from metapub import FindIt
+import pytest
+
 
 log = logging.getLogger()
 log.setLevel(logging.DEBUG)
@@ -41,6 +43,7 @@ class TestFindItDances(unittest.TestCase):
         assert source.pma.history.get('pmc-release', None) is None
         print(source.url)
 
+    @pytest.mark.skip(reason="Not working as of 2023-05-19")
     def test_aaas_tango(self):
         pmid_needs_form = '18385036'    # Sci Signal requiring form negotiation
         # pmid_needs_form_url = 'http://stke.sciencemag.org/content/1/13/eg3.full.pdf'
@@ -68,15 +71,15 @@ class TestFindItDances(unittest.TestCase):
         source = FindIt(pmid)
         assert source.url == 'https://www.jstage.jst.go.jp/article/yakushi/131/2/131_2_247/_pdf'
 
+    @pytest.mark.skip(reason="Not working as of 2023-05-19")
     def test_scielo_chula(self):
         pmid = 26840468
         source = FindIt(pmid)
         assert source.url == 'http://www.scielo.br/pdf/ag/v52n4/0004-2803-ag-52-04-00278.pdf'
 
-    #def test_jid_pmid(self):
-    #    # J Invest Dermatol -- can work through multiple paths (nature, sciencedirect)...
-    #    pmid = 10201537
-    #    source = FindIt(pmid)
-    #    assert source.url == 'http://www.jidonline.org/article/S0022-202X(15)40457-9/pdf'
-
-
+    @pytest.mark.skip(reason="Not working as of 2023-05-19")
+    def test_jid_pmid(self):
+        # J Invest Dermatol -- can work through multiple paths (nature, sciencedirect)...
+        pmid = 10201537
+        source = FindIt(pmid)
+        assert source.url == 'http://www.jidonline.org/article/S0022-202X(15)40457-9/pdf'

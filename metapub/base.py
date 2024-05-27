@@ -1,5 +1,5 @@
 from lxml import etree
-from lxml.html.clean import Cleaner
+from lxml_html_clean.clean import Cleaner
 
 from .exceptions import MetaPubError, BaseXMLError
 
@@ -29,7 +29,7 @@ def parse_elink_response(xmlstr):
         for item in idlist_elem.getchildren():
             if item.find('Id') is not None:
                 ids.append(link.find('Id').text)
-        if len(ids)==1 and ids[0]=='0':
+        if len(ids) == 1 and ids[0] == '0':
             return []
         else:
             return ids
@@ -43,12 +43,13 @@ class MetaPubObject(object):
     def __init__(self, xml, root=None, *args, **kwargs):
         '''Instantiate with "xml" as string or bytes containing valid XML.
 
-        Supply name of root element (string) to set virtual top level. (optional).''' 
- 
+        Supply name of root element (string) to set virtual top level. (optional).'''
+
         if not xml:
             if xml == '':
                 xml = 'empty'
-            raise MetaPubError('Cannot build MetaPubObject; xml string was %s' % xml)
+            raise MetaPubError(
+                'Cannot build MetaPubObject; xml string was %s' % xml)
         self.xml = xml
         self.content = self.parse_xml(xml, root)
 
@@ -83,17 +84,17 @@ class MetaPubObject(object):
 
     def _clean_html(self, elem):
         '''Removes HTML elements like i, b, and a'''
-        cleaner = Cleaner(remove_tags = ['a', 'i', 'b', 'em'])
+        cleaner = Cleaner(remove_tags=['a', 'i', 'b', 'em'])
         return cleaner.clean_html(etree.tostring(elem).decode("utf-8"))\
-            .replace("<div>", "").replace("</div>", "").strip() # This part seems hacky to me
-    
+            .replace("<div>", "").replace("</div>", "").strip()  # This part seems hacky to me
+
     def _extract_text(self, elem):
         if elem is None:
             return None
         if len(elem.getchildren()):
             return self._clean_html(elem)
         return elem.text
-    
+
 
 # singleton class used by the fetchers.
 class Borg(object):
@@ -102,4 +103,3 @@ class Borg(object):
 
     def __init__(self):
         self.__dict__ = self._shared_state
-

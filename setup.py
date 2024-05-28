@@ -21,15 +21,12 @@ setup(
         'convert = metapub.convert:main',
     ]
     },
-<<<<<<< HEAD
-=======
     extras_require={
         'test': [
             'tox',
             'pytest',
         ],
     },
->>>>>>> master
     install_requires=[
         'setuptools',
         'lxml',

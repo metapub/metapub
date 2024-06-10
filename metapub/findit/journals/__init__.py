@@ -37,6 +37,7 @@ najms_journals = ('N Am J Med Sci')
 paywall_journals = schattauer_journals + thieme_journals + \
                    weird_paywall_publishers + RSC_journals
 
+
 # TODO
 # doiserbia (Library of Serbia) articles can be grabbed by doing the_doi_2step,
 # then ...?
@@ -55,6 +56,8 @@ doi2step_journals = (
     # http://www.palgrave-journals.com/jphp/journal/v36/n2/pdf/jphp201453a.pdf
     'J Public Health Policy'
 )
+
+SUPPORTED_JOURNALS = []
 
 todo_journals = {
     'Pharmacol Rep': {'example': 'https://www.ncbi.nlm.nih.gov/pubmed/?term=23238479[uid] --> www.if-pan.krakow.pl/pjp/pdf/2012/5_1234.pdf'},

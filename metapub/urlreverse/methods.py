@@ -16,37 +16,37 @@ OFFICIAL_PII_FORMAT = '{pt1}-{pt2}({pt3}){pt4}-{pt5}'
 
 
 # VIP (volume-issue-page)
-re_vip = re.compile('(?P<hostname>.*?)\/content(\/\w+)?\/(?P<volume>\d+)\/(?P<issue>\w+)\/(?P<first_page>\w+)', re.I)
+re_vip = re.compile(r'(?P<hostname>.*?)\/content(\/\w+)?\/(?P<volume>\d+)\/(?P<issue>\w+)\/(?P<first_page>\w+)', re.I)
 
 # PMID in url
-re_pmidlookup = re.compile('.*?(\?|&)pmid=(?P<pmid>\d+)', re.I)
-re_pubmed_pmid = re.compile('.*?ncbi.nlm.nih.gov\/pubmed\/(?P<pmid>\d+)')
+re_pmidlookup = re.compile(r'.*?(\?|&)pmid=(?P<pmid>\d+)', re.I)
+re_pubmed_pmid = re.compile(r'.*?ncbi.nlm.nih.gov\/pubmed\/(?P<pmid>\d+)')
 
 # PMCID in url
-re_pmcid = re.compile('.*?(?P<hostname>ncbi.nlm.nih.gov|europepmc.org)\/.*?(?P<pmcid>PMC\d+)', re.I)
+re_pmcid = re.compile(r'.*?(?P<hostname>ncbi.nlm.nih.gov|europepmc.org)\/.*?(?P<pmcid>PMC\d+)', re.I)
 
 # PII -- see http://en.wikipedia.org/wiki/Publisher_Item_Identifier
-pii_official = '(?P<pii>S\d{4}-\d{4}\(\d{2}\)\d{5}-\w{1})'
-re_sciencedirect_pii_simple = re.compile('.*?(?P<hostname>sciencedirect\.com)\/science\/article\/pii\/(?P<pii>S\d+\w?)', re.I)
-re_sciencedirect_pii_official = re.compile('.*?(?P<hostname>sciencedirect\.com)\/science\/article\/pii\/' + pii_official, re.I)
-re_cell_pii_simple = re.compile('.*?(?P<hostname>cell\.com)\/(?P<journal_abbrev>.*?)\/(pdf|abstract|fulltext|pdfExtended)\/(?P<pii>S\d+)', re.I)
-re_cell_pii_official = re.compile('.*?cell.com\/((?P<journal_abbrev>.*?)\/)?(pdf|abstract|fulltext|pdfExtended)\/' + pii_official, re.I)
-re_cell_old_style = re.compile('.*?(?P<hostname>cell\.com)\/(pdf|abstract|fulltext)\/(?P<pii>\d+)', re.I)
+pii_official = r'(?P<pii>S\d{4}-\d{4}\(\d{2}\)\d{5}-\w{1})'
+re_sciencedirect_pii_simple = re.compile(r'.*?(?P<hostname>sciencedirect\.com)\/science\/article\/pii\/(?P<pii>S\d+\w?)', re.I)
+re_sciencedirect_pii_official = re.compile(r'.*?(?P<hostname>sciencedirect\.com)\/science\/article\/pii\/' + pii_official, re.I)
+re_cell_pii_simple = re.compile(r'.*?(?P<hostname>cell\.com)\/(?P<journal_abbrev>.*?)\/(pdf|abstract|fulltext|pdfExtended)\/(?P<pii>S\d+)', re.I)
+re_cell_pii_official = re.compile(r'.*?cell.com\/((?P<journal_abbrev>.*?)\/)?(pdf|abstract|fulltext|pdfExtended)\/' + pii_official, re.I)
+re_cell_old_style = re.compile(r'.*?(?P<hostname>cell\.com)\/(pdf|abstract|fulltext)\/(?P<pii>\d+)', re.I)
 
 # Unique
-re_jstage = re.compile('.*?(?P<hostname>jstage\.jst\.go\.jp)\/article\/(?P<journal_abbrev>.*?)\/(?P<volume>\d+)\/(?P<issue>.*?)\/(?P<info>).*?\/', re.I)
-re_jci = re.compile('.*?jci\.org\/articles\/view\/(?P<jci_id>\d+)', re.I)
-re_karger = re.compile('.*?(?P<hostname>karger\.com)\/Article\/(Abstract|Pdf)\/(?P<kid>\d+)', re.I)
+re_jstage = re.compile(r'.*?(?P<hostname>jstage\.jst\.go\.jp)\/article\/(?P<journal_abbrev>.*?)\/(?P<volume>\d+)\/(?P<issue>.*?)\/(?P<info>).*?\/', re.I)
+re_jci = re.compile(r'.*?jci\.org\/articles\/view\/(?P<jci_id>\d+)', re.I)
+re_karger = re.compile(r'.*?(?P<hostname>karger\.com)\/Article\/(Abstract|Pdf)\/(?P<kid>\d+)', re.I)
 #re_ahajournals = re.compile('\/(?P<doi_suffix>\w+\.\d+\.\d+\.\w+)', re.I)
-re_ahajournals = re.compile('\/(?P<doi_suffix>[a-z0-9]+\.\d+\.\d+\.[a-z0-9]+)', re.I)
-re_elifesciences = re.compile('(^|http?:\/\/)elifesciences.org\/content\/(?P<volume>\d+)\/e(?P<ident>\d+)', re.I)
-re_elifesciences_figures = re.compile('elifesciences\.org\/elife-articles\/(?P<ident>\d+)\/figures-pdf\/', re.I)
+re_ahajournals = re.compile(r'\/(?P<doi_suffix>[a-z0-9]+\.\d+\.\d+\.[a-z0-9]+)', re.I)
+re_elifesciences = re.compile(r'(^|http?:\/\/)elifesciences.org\/content\/(?P<volume>\d+)\/e(?P<ident>\d+)', re.I)
+re_elifesciences_figures = re.compile(r'elifesciences\.org\/elife-articles\/(?P<ident>\d+)\/figures-pdf\/', re.I)
 
-re_bmj = re.compile('(^|http?:\/\/)(?P<subdomain>\w+)\.bmj.com\/content\/(?P<volume>\d+)\/(?P<doi_suffix>bmj.\w+)', re.I)
-re_bmj_vip_to_doi = re.compile('(^|http?:\/\/)(?P<subdomain>\w+).bmj.com\/content\/(?P<volume>\d+)\/(?P<issue>\d+)\/(?P<first_page>\w+)', re.I)
+re_bmj = re.compile(r'(^|http?:\/\/)(?P<subdomain>\w+)\.bmj.com\/content\/(?P<volume>\d+)\/(?P<doi_suffix>bmj.\w+)', re.I)
+re_bmj_vip_to_doi = re.compile(r'(^|http?:\/\/)(?P<subdomain>\w+).bmj.com\/content\/(?P<volume>\d+)\/(?P<issue>\d+)\/(?P<first_page>\w+)', re.I)
 
 # Early release formats
-re_early_release = re.compile('(^|(http?):\/\/)(?P<hostname>.*?)\/content(\/\w+)?\/early\/(?P<year>\d+)\/(?P<month>\d+)\/(?P<day>\d+)\/(?P<doi_suffix>.*?)(\.full|\.pdf|\.abstract|$)')
+re_early_release = re.compile(r'(^|(http?):\/\/)(?P<hostname>.*?)\/content(\/\w+)?\/early\/(?P<year>\d+)\/(?P<month>\d+)\/(?P<day>\d+)\/(?P<doi_suffix>.*?)(\.full|\.pdf|\.abstract|$)')
 
 
 # TODO: Common supplement URL format
@@ -55,7 +55,7 @@ re_early_release = re.compile('(^|(http?):\/\/)(?P<hostname>.*?)\/content(\/\w+)
 # http://www.pnas.org/content/suppl/2013/07/08/1305207110.DCSupplemental/sapp.pdf
 # http://jmg.bmj.com/content/suppl/2015/07/17/jmedgenet-2015-103132.DC1/jmedgenet-2015-103132supp.pdf
 
-re_pnas_supplement = re.compile('.*?pnas.org\/content\/suppl\/(?P<year>\d+)\/(?P<month>\d+)\/(?P<day>\d+)\/(?P<ident>.*?)\/', re.I)
+re_pnas_supplement = re.compile(r'.*?pnas.org\/content\/suppl\/(?P<year>\d+)\/(?P<month>\d+)\/(?P<day>\d+)\/(?P<ident>.*?)\/', re.I)
 
 # dx.doi.org self-cacheing lookup engine.
 DXDOI_INSTANCE = None

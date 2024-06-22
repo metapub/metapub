@@ -133,6 +133,27 @@ class PubMedArticle(MetaPubObject):
         return self.__dict__
 
     @property
+    def pubdate(self):
+        """Unified publication date across the disparate date storage types represented in Entrez."""
+        out = {"year": self.year,
+               "month": None,
+               "day": None,
+              }
+
+        # From https://www.nlm.nih.gov/bsd/licensee/elements_descriptions.html :
+        #
+        # <PubDate> contains the full date on which the issue of the journal was published. The 
+        # standardized format consists of elements for a 4-digit year, a 3-character abbreviated month, 
+        # and a 1 or 2-digit day. Every record does not contain all of these elements; the data are taken 
+        # as they are published in the journal issue, with minor alterations by NLM such as abbreviating months.
+
+
+        # The date of publication of the article will be found in <MedlineDate> when parsing for the separate 
+        # fields is not possible; i.e., cases where dates do not fit the Year, Month, or Day pattern.
+
+
+
+    @property
     def citation(self):
         """ Returns a formatted citation string built from this article's author(s), title,
         journal, year, volume, pages, and doi.
@@ -149,6 +170,7 @@ class PubMedArticle(MetaPubObject):
         if self.book_accession_id:
             return cite.book(self)
         return cite.article(**self.to_dict())
+
 
     @property
     def citation_html(self):

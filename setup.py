@@ -21,6 +21,12 @@ setup(
         'convert = metapub.convert:main',
     ]
     },
+    extras_require={
+        'test': [
+            'tox',
+            'pytest',
+        ],
+    },
     install_requires=[
         'setuptools',
         'lxml',
@@ -33,8 +39,6 @@ setup(
         'unidecode',
         'docopt',
         'six',
-        'tox',
-        'pytest',
         'coloredlogs',
         'python-Levenshtein',
     ],

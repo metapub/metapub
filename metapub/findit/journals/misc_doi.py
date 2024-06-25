@@ -76,6 +76,7 @@ simple_formats_doi = {
     'Biosci Biotechnol Biochem': doi_templates['taylor_francis'],
     'Cancer Biol Ther': doi_templates['taylor_francis'],
     'Cell Cycle': doi_templates['taylor_francis'],
+    'Crit Rev Food Sci Nutr': doi_templates['taylor_francis'],
     'Drug Metab Rev': doi_templates['taylor_francis'],
     'Environ Technol': doi_templates['taylor_francis'],
     'Health Commun': doi_templates['taylor_francis'],

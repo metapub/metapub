@@ -1,6 +1,7 @@
 __author__ = 'nthmost'
 
 from urllib.parse import urlsplit, urljoin
+from datetime import datetime
 
 import requests
 from lxml.html import HTMLParser
@@ -540,7 +541,8 @@ def the_pmc_twist(pma, verify=True, use_nih=False):
          :return: url
          :raises: NoPDFLink
     '''
-    if pma.history.get('pmc-release', None):
+    embargo_date = pma.history.get('pmc-release', None)
+    if embargo_date and embargo_date > datetime.now():
         # marked "PAYWALL" here because FindIt will automatically retry such cached entries
         raise NoPDFLink('PAYWALL: pmc article in embargo until %s' % pma.history['pmc-release'].strftime('%Y-%m-%d'))
 

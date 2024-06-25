@@ -679,6 +679,7 @@ sciencedirect_journals = [
         'Sleep Med Rev',
         'Soc Sci Med',
         'Solid State Nucl Magn Reson',
+        'Span J Psychiatry Ment Health',
         'Spectrochim Acta A Mol Biomol Spectrosc',
         'Spine J',
         'Steroids',

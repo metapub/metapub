@@ -42,3 +42,5 @@ download_file(url, local_file_path)
 # Parse the downloaded file and create CSV
 parse_journal_info(local_file_path)
 
+print("Journal spreadsheet outputted to", output_file)
+

@@ -1,121 +1,56 @@
 import csv
-import logging
-import time
-from datetime import datetime
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from metapub import PubMedFetcher, FindIt
-from metapub.exceptions import MetaPubError
-from eutils.exceptions import EutilsRequestError
+from metapub import PubMedFetcher
+from metapub import FindIt
+from metapub.findit import SUPPORTED_JOURNALS
 
-# Setup logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s %(message)s', handlers=[
-    logging.FileHandler("journal_inventory.log"),
-    logging.StreamHandler()
-])
+MEDLINE_JOURNAL_LIST = "/tmp/journals.csv"
 
-fetcher = PubMedFetcher()
+OUTPUT_CSV = "/tmp/findit_journal_coverage.csv"
 
-# Predefined list of journal abbreviations
-journal_abbrs = [
-    "Cell", "Cancer Cell", "Cell Chem. Biol.", "Cell Host Microbe",
-    "Cell Metab.", "Cell Rep.", "Cell Stem Cell", "Curr. Biol.",
-    "Dev. Cell", "Immunity", "Mol. Cell", "Neuron", "Structure",
-    "Trends Biochem. Sci.", "Trends Biotechnol.", "Trends Cancer",
-    "Trends Cell Biol.", "Trends Cogn. Sci.", "Trends Ecol. Evol.",
-    "Trends Endocrinol. Metab.", "Trends Genet.", "Trends Immunol.",
-    "Trends Microbiol.", "Trends Mol. Med.", "Trends Neurosci.",
-    "Trends Parasitol.", "Trends Pharmacol. Sci.", "Trends Plant Sci.",
-    "Heliyon", "iScience", "Med", "One Earth", "Patterns", "Star Protoc."
-]
+def fetch_pmids_for_years(journal_abbrev, years):
+    fetcher = PubMedFetcher()
+    pmids = []
+    
+    for year in years:
+        try:
+            pmids_for_year = fetcher.pmids_for_query(f'{journal_abbrev}[TA] AND {year}[DP]', retmax=1)
+            if pmids_for_year:
+                pmids.append(pmids_for_year[0])
+            else:
+                pmids.append(None)
+        except Exception as e:
+            pmids.append(None)
+            print(f"Error fetching PMIDs for {journal_abbrev} in {year}: {e}")
 
-def get_num_pmids(journal_abbr):
-    query = f'{journal_abbr}[ta]'
-    pmids = fetcher.pmids_for_query(query)
     return pmids
 
-def get_article_by_pmid_with_retry(pmid, retries=5, delay=1):
-    for attempt in range(retries):
-        try:
-            return fetcher.article_by_pmid(pmid)
-        except (MetaPubError, EutilsRequestError) as e:
-            if attempt < retries - 1:
-                time.sleep(delay * (2 ** attempt))
-            else:
-                raise e
-
-def get_sample_pmids(pmids):
-    sample_pmids = {}
-    current_year = datetime.now().year
-    ten_years_ago = current_year - 10
-    last_year = current_year - 1
-
-    oldest_pmid = None
-    oldest_year = current_year
-
-    for pmid in pmids:
-        article = get_article_by_pmid_with_retry(pmid)
-        article_year = int(article.year)
-
-        if article_year < oldest_year:
-            oldest_year = article_year
-            oldest_pmid = pmid
-
-        if article_year == ten_years_ago:
-            sample_pmids['ten_years_ago'] = pmid
-        if article_year == last_year:
-            sample_pmids['last_year'] = pmid
-
-        if 'ten_years_ago' in sample_pmids and 'last_year' in sample_pmids and oldest_pmid:
-            break
-
-    sample_pmids['oldest'] = oldest_pmid
-
-    return sample_pmids
-
-def check_findit_support(pmid):
-    src = FindIt(pmid)
-    if src.reason.startswith("NOFORMAT"):
-        return False
-    return True
-
-def process_journal(journal):
-    pmids = get_num_pmids(journal)
-    num_pmids = len(pmids)
+def create_output_csv(input_file_path, output_file_path):
+    years = [2024, 2018, 2008]
     
-    if num_pmids == 0:
-        sample_pmids = {}
-        findit_support = None
-    else:
-        sample_pmids = get_sample_pmids(pmids)
-        if sample_pmids:
-            pmid_to_check = sample_pmids.get('last_year') or sample_pmids.get('ten_years_ago') or sample_pmids.get('oldest')
-            findit_support = check_findit_support(pmid_to_check) if pmid_to_check else None
-        else:
-            findit_support = None
-    
-    logging.info(f"Processed {journal}: num_pmids={num_pmids}, sample_pmids={sample_pmids}, findit_support={findit_support}")
-    return {
-        'jrnl_abbrev': journal,
-        'num_pmids': num_pmids,
-        'sample_pmids': ', '.join(sample_pmids.values()) if sample_pmids else '',
-        'findit_support': findit_support
-    }
-
-def main():
-    output_file = 'journal_support.csv'
-    
-    with ThreadPoolExecutor(max_workers=10) as executor:
-        futures = {executor.submit(process_journal, journal): journal for journal in journal_abbrs}
-        results = []
-        for future in as_completed(futures):
-            results.append(future.result())
-    
-    with open(output_file, 'w', newline='') as csvfile:
-        fieldnames = ['jrnl_abbrev', 'num_pmids', 'sample_pmids', 'findit_support']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+    with open(input_file_path, newline='') as infile, open(output_file_path, 'w', newline='') as outfile:
+        reader = csv.DictReader(infile)
+        fieldnames = ['journal_abbrev', 'PMIDs', 'FindIt_coverage']
+        writer = csv.DictWriter(outfile, fieldnames=fieldnames)
         writer.writeheader()
-        writer.writerows(results)
+        
+        for row in reader:
+            journal_abbrev = row['MedAbbr']
+            if journal_abbrev in SUPPORTED_JOURNALS:
+                 writer.writerow({
+                    'journal_abbrev': journal_abbrev,
+                    'PMIDs': None,
+                    'FindIt_coverage': True,
+                  })
 
-if __name__ == '__main__':
-    main()
+            else:
+                pmids = fetch_pmids_for_years(journal_abbrev, years)
+
+                writer.writerow({
+                    'journal_abbrev': journal_abbrev,
+                    'PMIDs': ','.join([str(pmid) if pmid else 'None' for pmid in pmids]),
+                    'FindIt_coverage': False
+                })
+
+create_output_csv(MEDLINE_JOURNAL_LIST, OUTPUT_CSV)
+
 

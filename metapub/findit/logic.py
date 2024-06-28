@@ -5,6 +5,7 @@ from ..convert import doi2pmid
 from ..exceptions import MetaPubError
 
 from .dances import *
+from .journals.todo import todo_journals
 
 
 PUBMED_SWITCHBOARD = {

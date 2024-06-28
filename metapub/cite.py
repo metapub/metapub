@@ -2,6 +2,7 @@ __doc__ = "Common functions for the formatting of academic reference citations."
 
 article_cit_fmt = '{author}. {title}. {journal}. {year}; {volume}:{pages}.{doi}'
 book_cit_fmt = '{author}. {book.title}. {cdate} (Update {mdate}). In: {editors}, editors. {book.journal} (Internet). {book.book_publisher}'
+bibtex_fmt='@{entrytype}{{{citeID},{author}{doi}{title}{abstract}{journal}{year}{volume}{pages}{url}}}'
 
 
 def author_str(author_list_or_string, as_html=False):
@@ -136,4 +137,77 @@ def book(book, **kwargs):
             editors += '.'
         return book_cit_fmt.format(editors=editors, author=author, book=book,
                                    mdate=mdate, cdate=cdate)
+
+
+def bibtex(**kwargs):
+    """ Returns a BibTex formatted citation string built from the book or article author(s), title,
+    journal, year, volume, pages, and doi if the fields exist
+
+    see cite.article and cite.book for more specific use cases.
+
+    see https://ctan.org/tex-archive/biblio/bibtex/contrib/doc/ for more on the BibTex format
+
+    Note that "authors" (as list) will be used preferentially over "author" (as str).
+
+    Keywords:
+        isbook: (bool) returns citation with standard entry type as 'book'
+        author: (str) -- prints author as-is without modification
+        authors: (list) -- prints as author1 (first in list) as "Lastname_FirstInitials, et al"
+        title: (str)
+        journal: (str)
+        year: (str or int)
+        volume: (str or int)
+        pages: (str) should be formatted "nn-mm", e.g. "55-58"
+        doi: (str)
+        
+    Returns:
+        bibtex citation (str)
+    """
+
+    entrytype= 'article' if not kwargs.get('isbook', False) else 'book'
+    print(entrytype)
+
+
+    # Citation ID
+    if not kwargs.get('author1_lastfm', None) or not kwargs.get('year', None):
+        citeID = kwargs.get('pmid', None)
+    else:
+        citeID= kwargs.get('author1_lastfm', ' ') + kwargs.get('year', ' ') 
+
+    # Author(s)
+    if kwargs.get('authors', None):
+        authorlist= list(map(lambda x: x.replace(" ",", "), kwargs.get('authors', None)))
+        author= 'author= {%s}, \n'% " and  ".join(authorlist)
+    else:
+        author = '' if not kwargs.get('author', None) else 'author= {%s}, \n' % kwargs['author']
+
+    #DOI
+    doi_str = '' if not kwargs.get('doi', None) else 'doi = {%s}, ' % kwargs['doi']
+
+    #Title
+    title = '' if not kwargs.get('title', None) else 'title = {%s}, ' % kwargs['title'].strip('.')
+
+    #Abstract 
+    abstract = '' if not kwargs.get('abstract', None) else 'abstract = {%s}, ' % kwargs['abstract'].strip('.')
+
+    #Journal
+    journal = '' if not kwargs.get('journal', None) else 'journal = {%s}, ' % kwargs['journal'].strip('.')
+    # Year
+    year = '' if not kwargs.get('year', None) else 'year = {%s}, ' % kwargs['year']
+
+    # Volume
+    volume = '' if not kwargs.get('volume', None) else 'volume = {%s}, ' % str(kwargs['volume'])
+    # Pages
+    pages = '' if not kwargs.get('pages', None) else 'pages = {%s}, ' % kwargs['pages']
+
+    #url
+    url = '' if not kwargs.get('url', None) else 'url = {%s}, ' % kwargs['url'].strip('.')
+
+
+    # bibtex_fmt = '@{entrytype}{{{citeID},\n{author}{doi_str}{title}{abstract}{journal}{year}{volume}{pages}{url}}}'
+    return bibtex_fmt.format(author=author, volume=volume, pages=pages, year=year, abstract=abstract, citeID=citeID,
+                                  entrytype=entrytype, title=title, journal=journal, doi=doi_str, url=url)
+
+
+ 
 

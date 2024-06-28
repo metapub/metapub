@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='metapub',
-    version='0.5.5',
+    version='0.5.8',
     description='Pubmed / NCBI / eutils interaction library, handling the metadata of pubmed papers.',
     long_description=open('README.rst').read(),
     long_description_content_type='text/x-rst',
@@ -21,6 +21,15 @@ setup(
         'convert = metapub.convert:main',
     ]
     },
+<<<<<<< HEAD
+=======
+    extras_require={
+        'test': [
+            'tox',
+            'pytest',
+        ],
+    },
+>>>>>>> master
     install_requires=[
         'setuptools',
         'lxml',
@@ -33,8 +42,6 @@ setup(
         'unidecode',
         'docopt',
         'six',
-        'tox',
-        'pytest',
         'coloredlogs',
         'python-Levenshtein',
     ],

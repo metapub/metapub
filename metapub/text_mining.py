@@ -16,14 +16,14 @@ from .utils import remove_html_markup
 re_doi = re.compile(r'(10[.][0-9]{2,}(?:[.][0-9]+)*/(?:(?!["&\'])\S)+)')
 re_doi_ws = re.compile(r'(10[.][0-9]{2,}(?:[.][0-9]+)*\s+/\s+(?:(?!["&\'])\S)+)')
 
-re_pmid = re.compile('\d+')
+re_pmid = re.compile(r'\d+')
 re_numbers = re_pmid    # for now, until there's a better idea about parsing PMIDs...
 
 re_matching_quotes = re.compile(r"\"([^\"]+)\"|\'([^\']+)\'")
 
 # other IDs
-re_ncbi_bookID = re.compile('NBK[0-9]+')
-re_pmcID = re.compile('PMC[0-9]+')
+re_ncbi_bookID = re.compile(r'NBK[0-9]+')
+re_pmcID = re.compile(r'PMC[0-9]+')
 
 def findall_ncbi_bookIDs(text):
     """ GeneReviews books look like this: NBK1210  (see https://www.ncbi.nlm.nih.gov/pubmed/?term=NBK1210 )

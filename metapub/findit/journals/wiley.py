@@ -281,6 +281,7 @@ wiley_journals = [
         'J Cell Mol Med',
         'J Cell Physiol',
         'J Chem Technol Biotechnol',
+        'J Child Adolesc Ment Health',
         'J Child Psychol Psychiatry',
         'J Clin Apher',
         'J Clin Hypertens (Greenwich)',

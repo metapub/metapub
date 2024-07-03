@@ -84,10 +84,10 @@ class MetaPubObject(object):
 
     def _clean_html(self, elem):
         '''Removes HTML elements like i, b, and a'''
-        cleaner = Cleaner(remove_tags=['a', 'i', 'b', 'em'])
+        cleaner = Cleaner(remove_tags = ['a', 'i', 'b', 'em', 'sup'])
         return cleaner.clean_html(etree.tostring(elem).decode("utf-8"))\
-            .replace("<div>", "").replace("</div>", "").strip()  # This part seems hacky to me
-
+            .replace("<div>", "").replace("</div>", "").strip() 
+    
     def _extract_text(self, elem):
         if elem is None:
             return None

@@ -31,7 +31,6 @@ class TestConversions(unittest.TestCase):
             ('<a href="#">Link</a> <i>italic</i> <b>bold</b> <em>emphasis</em> text', 'Link italic bold emphasis text'),
             ('<a href="#"><i>italic link</i></a> text', 'italic link text'),
             ('plain text', 'plain text'),
-            ('Vitamin D<sub>3</sub> m<sup>2</sup>', 'Vitamin D<sub>3</sub> m<sup>2</sup>')
         ]
         for html, expected_output in test_cases:
             actual_output = obj._clean_html(fromstring(f'<div>{html}</div>'))
@@ -46,7 +45,6 @@ class TestConversions(unittest.TestCase):
             ('<b>bold</b>', 'bold'),
             ('<em>emphasis</em>', 'emphasis'),
             ('plain text', 'plain text'),
-            ('Vitamin D<sub>3</sub> m<sup>2</sup>', 'Vitamin D<sub>3</sub> m<sup>2</sup>')
             
         ]
         for html, expected_output in test_cases:

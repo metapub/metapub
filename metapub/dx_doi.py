@@ -1,6 +1,6 @@
 import logging
-
 import requests
+import certifi
 
 from .cache_utils import SQLiteCache, get_cache_path
 from .base import Borg
@@ -62,12 +62,27 @@ class DxDOI(Borg):
         return doi
 
     def _query_api(self, doi):
-        response = requests.get(DX_DOI_URL % doi)
-        if response.status_code in [200, 401, 301, 302, 307, 308, 416]:
-            return response.url
-        else:
-            raise DxDOIError('dx.doi.org lookup failed for doi "%s" (HTTP %i returned)' %
-                            (doi, response.status_code))
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+            'Referer': 'http://dx.doi.org'
+        }
+
+        session = requests.Session()
+        session.headers.update(headers)
+
+        try:
+            response = session.get(DX_DOI_URL % doi, allow_redirects=True, verify=certifi.where())
+            # Ship the result from 404 and 403 "Forbidden" since this is a positive result.
+            # We just can't continue reading from this URL due to bot detection or publisher dumbness.
+            if response.status_code in [200, 301, 302, 307, 308, 403, 404]:
+                return response.url
+            response.raise_for_status()
+        except requests.RequestException as e:
+            raise DxDOIError(f'dx.doi.org lookup failed for doi "{doi}" (Exception: {str(e)})')
 
     def resolve(self, doi, check_doi=True, whitespace=False, skip_cache=False):
         """ Takes a doi (string), returns a url to article page on journal website.

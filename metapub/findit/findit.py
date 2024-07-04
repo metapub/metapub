@@ -18,6 +18,7 @@ from ..cache_utils import get_cache_path, SQLiteCache, datetime_to_timestamp
 
 from .logic import find_article_from_pma
 from .dances import the_sciencedirect_disco, the_doi_2step, the_wiley_shuffle, the_wolterskluwer_volta
+from .journals import SUPPORTED_JOURNALS
 
 log = logging.getLogger('metapub.findit')
 
@@ -62,11 +63,13 @@ pm_fetch = None
 def _start_engines():
     global pm_fetch
     if not pm_fetch:
-        log.debug('Started PubMedFetcher engine.')
+        log.debug('Started FindIt engine.')
         pm_fetch = PubMedFetcher()
 
 def _get_findit_cache(cachedir):
     global FINDIT_CACHE
+    # allow swap of cache directory without restarting process.
+    # this is mostly for testing but also a few limited use cases.
     if not FINDIT_CACHE:
         _cache_path = get_cache_path(cachedir, CACHE_FILENAME)
         FINDIT_CACHE = SQLiteCache(_cache_path)

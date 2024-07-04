@@ -27,21 +27,19 @@ class TestFindItDances(unittest.TestCase):
         assert source.url is not None
 
     def test_pmc_twist(self):
-        #TODO: get a new embargoed PMID
         embargoed = '25554792'      # Science / pmc-release = Jan 2, 2016 / PMC4380271
-        embargoed_url = 'http://sciencemag.org/content/347/6217/1258522.full.pdf'
-
         nonembargoed = '26106273'   # Saudi Pharm / pmc-release = None / PMC4475813
 
+        # test that even if we find an embargo date, if date is passed, we get a PMC url.
         source = FindIt(pmid=embargoed)
         assert source.pma.pmc == '4380271'
-        #assert source.pma.history['pmc-release'] is not None
-        #assert source.url == embargoed_url
+        assert source.pma.history['pmc-release'] is not None
+        assert "pmc" in source.url
 
         source = FindIt(pmid=nonembargoed)
         assert source.pma.pmc == '4475813'
-        assert source.pma.history.get('pmc-release', None) is None
-        print(source.url)
+        assert source.pma.history.get('pmc-release', None) is not None
+        assert "pmc" in source.url
 
     @pytest.mark.skip(reason="Not working as of 2023-05-19")
     def test_aaas_tango(self):

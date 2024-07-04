@@ -4,4 +4,5 @@ from pkgutil import extend_path
 __path__ = extend_path(__path__, __name__)
 
 from .findit import FindIt
+from .journals import SUPPORTED_JOURNALS
 

@@ -70,9 +70,8 @@ def _get_findit_cache(cachedir):
     global FINDIT_CACHE
     # allow swap of cache directory without restarting process.
     # this is mostly for testing but also a few limited use cases.
-    if not FINDIT_CACHE or cachedir not in FINDIT_CACHE:
+    if not FINDIT_CACHE:
         _cache_path = get_cache_path(cachedir, CACHE_FILENAME)
-        print(_cache_path)
         FINDIT_CACHE = SQLiteCache(_cache_path)
         log.info('FindIt Cache initialized at %s', _cache_path)
     return FINDIT_CACHE

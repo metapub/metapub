@@ -1,5 +1,4 @@
 import logging
-
 import requests
 
 from .cache_utils import SQLiteCache, get_cache_path
@@ -70,12 +69,21 @@ class DxDOI(Borg):
             'Upgrade-Insecure-Requests': '1',
             'Referer': 'http://dx.doi.org'
         }
-        response = requests.get(DX_DOI_URL % doi, headers=headers)
-        if response.status_code in [200, 401, 403, 301, 302, 307, 308, 416]:
-            return response.url
-        else:
-            raise DxDOIError('dx.doi.org lookup failed for doi "%s" (HTTP %i returned)' %
-                            (doi, response.status_code))
+
+        session = requests.Session()
+        session.headers.update(headers)
+
+        try:
+            response = session.get(DX_DOI_URL % doi, allow_redirects=True)
+            response.raise_for_status()
+            if response.status_code in [200, 301, 302, 307, 308]:
+                return response.url
+        except requests.RequestException as e:
+            if response.status_code == 403:
+                # Ship the result from 403 "Forbidden" since this is a positive result.
+                # We just can't continue reading from this URL due to bot detection.
+                return response.url
+            raise DxDOIError(f'dx.doi.org lookup failed for doi "{doi}" (Exception: {str(e)})')
 
     def resolve(self, doi, check_doi=True, whitespace=False, skip_cache=False):
         """ Takes a doi (string), returns a url to article page on journal website.

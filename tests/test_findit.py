@@ -2,7 +2,8 @@ import unittest
 import os
 
 from metapub import FindIt
-from metapub.findit import SUPPORTED_JOURNALS
+from metapub.findit import SUPPORTED_JOURNALS 
+from metapub.findit.findit import CACHE_FILENAME
 
 SAMPLE_PMIDS = {'embargoed': ['25575644', '25700512', '25554792', '25146281', '25766237', '25370453'],
                 'nonembargoed': ['26098888'],
@@ -40,8 +41,10 @@ class TestFindIt(unittest.TestCase):
         fresh_src = FindIt(pmid=SAMPLE_PMIDS['nonembargoed'][0])
         
         assert cached_src.url == fresh_src.url
-        assert os.path.exists(os.path.join(TEST_CACHEDIR, "findit.db"))
+        assert os.path.exists(os.path.join(TEST_CACHEDIR, CACHE_FILENAME))
+
         #cleanup the test cache
+        os.remove(os.path.join(TEST_CACHEDIR, CACHE_FILENAME))
         os.rmdir(TEST_CACHEDIR)
 
     def test_backup_url(self):

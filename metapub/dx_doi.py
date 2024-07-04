@@ -62,8 +62,16 @@ class DxDOI(Borg):
         return doi
 
     def _query_api(self, doi):
-        response = requests.get(DX_DOI_URL % doi)
-        if response.status_code in [200, 401, 301, 302, 307, 308, 416]:
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+            'Referer': 'http://dx.doi.org'
+        }
+        response = requests.get(DX_DOI_URL % doi, headers=headers)
+        if response.status_code in [200, 401, 403, 301, 302, 307, 308, 416]:
             return response.url
         else:
             raise DxDOIError('dx.doi.org lookup failed for doi "%s" (HTTP %i returned)' %

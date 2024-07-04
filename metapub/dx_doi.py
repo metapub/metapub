@@ -2,6 +2,7 @@ import logging
 import requests
 import certifi
 from requests.adapters import HTTPAdapter
+import urllib3
 from urllib3.util import Retry
 
 from .cache_utils import SQLiteCache, get_cache_path
@@ -48,7 +49,8 @@ class DxDOI(Borg):
             total=3,  # Total number of retries
             backoff_factor=1,  # Wait 1, 2, 4 seconds between retries
             status_forcelist=[429, 500, 502, 503, 504],  # Retry on these status codes
-            allowed_methods=["HEAD", "GET", "OPTIONS"]
+            allowed_methods=["HEAD", "GET", "OPTIONS"],
+            raise_on_status=False,
         )
         adapter = HTTPAdapter(max_retries=retry_strategy)
         session.mount("https://", adapter)
@@ -86,29 +88,20 @@ class DxDOI(Borg):
         try:
             response = session.get(DX_DOI_URL % doi, allow_redirects=True, verify=certifi.where(), timeout=10)
             response.raise_for_status()
-            if response.status_code in [200, 301, 302, 307, 308, 403] or (400 <= response.status_code < 600):
-                self._log_url_accessibility(response.url, session)
+            if response.status_code in [200, 301, 302, 307, 308, 402, 403]:
+                self._log.info(f'URL is accessible: {response.url} (Status code: {response.status_code})')
                 self._cache[doi] = response.url
                 return response.url
-        except requests.RequestException as e:
-            if response.status_code in [403, 404]:
-                self._log_url_accessibility(response.url, session)
+        except requests.exceptions.RequestException as e:
+            if response is not None and response.status_code in [402, 403]:
+                self._log.info(f'URL returned status code {response.status_code}: {response.url}')
                 self._cache[doi] = response.url
                 return response.url
-            raise DxDOIError(f'dx.doi.org lookup failed for doi "{doi}" (Exception: {str(e)})')
+            elif isinstance(e, requests.exceptions.ConnectionError):
+                self._log.error(f'Connection error for URL: {DX_DOI_URL % doi}')
+            raise DxDOIError(f'Error processing DOI {doi}: {str(e)}')
         finally:
             session.close()
-
-    def _log_url_accessibility(self, url, session):
-        try:
-            response = session.get(url, headers={'User-Agent': 'Mozilla/5.0'}, verify=certifi.where(), timeout=10)
-            acceptable_statuses = [200, 204, 206, 301, 302, 307, 308]   # 401, 402, 405, 410, 429]
-            if response.status_code in acceptable_statuses:
-                self._log.info(f'URL is accessible: {url} (Status code: {response.status_code})')
-            else:
-                self._log.info(f'URL is not accessible: {url} (Status code: {response.status_code})')
-        except requests.RequestException as e:
-            self._log.info(f'URL is not accessible: {url} (Exception: {str(e)})')
 
     def resolve(self, doi, check_doi=True, whitespace=False, skip_cache=False):
         """ Takes a doi (string), returns a url to article page on journal website.
@@ -174,3 +167,6 @@ class DxDOI(Borg):
         else:
             self._log.debug('cache disabled (self._cache is None)')
             return None
+
+
+

@@ -63,7 +63,7 @@ pm_fetch = None
 def _start_engines():
     global pm_fetch
     if not pm_fetch:
-        log.debug('Started PubMedFetcher engine.')
+        log.debug('Started FindIt engine.')
         pm_fetch = PubMedFetcher()
 
 def _get_findit_cache(cachedir):

@@ -1,6 +1,8 @@
 import logging
 import requests
 import certifi
+from requests.adapters import HTTPAdapter
+from urllib3.util import Retry
 
 from .cache_utils import SQLiteCache, get_cache_path
 from .base import Borg
@@ -33,16 +35,33 @@ class DxDOI(Borg):
                                 raises BadDOI if not good.
     """
 
-    _log = logging.getLogger('metapub.DxDOI')
-
     def __init__(self, **kwargs):
-        if kwargs.get('debug', False):
-            self._log.setLevel(logging.DEBUG)
-        else:
-            self._log.setLevel(logging.INFO)
+        self._log = logging.getLogger('metapub.DxDOI')
+        self._log.setLevel(logging.INFO)
 
         cachedir = kwargs.get('cachedir', DEFAULT_CACHE_DIR)
         self._cache = _get_dx_doi_cache(cachedir)
+
+    def _create_session(self):
+        session = requests.Session()
+        retry_strategy = Retry(
+            total=3,  # Total number of retries
+            backoff_factor=1,  # Wait 1, 2, 4 seconds between retries
+            status_forcelist=[429, 500, 502, 503, 504],  # Retry on these status codes
+            allowed_methods=["HEAD", "GET", "OPTIONS"]
+        )
+        adapter = HTTPAdapter(max_retries=retry_strategy)
+        session.mount("https://", adapter)
+        session.mount("http://", adapter)
+        session.headers.update({
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+            'Referer': 'http://dx.doi.org'
+        })
+        return session
 
     def check_doi(self, doi, whitespace=False):
         """ Checks validity of supplied doi.
@@ -62,27 +81,34 @@ class DxDOI(Borg):
         return doi
 
     def _query_api(self, doi):
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-            'Accept-Language': 'en-US,en;q=0.5',
-            'Connection': 'keep-alive',
-            'Upgrade-Insecure-Requests': '1',
-            'Referer': 'http://dx.doi.org'
-        }
-
-        session = requests.Session()
-        session.headers.update(headers)
-
+        session = self._create_session()
+        response = None
         try:
-            response = session.get(DX_DOI_URL % doi, allow_redirects=True, verify=certifi.where())
-            # Ship the result from 404 and 403 "Forbidden" since this is a positive result.
-            # We just can't continue reading from this URL due to bot detection or publisher dumbness.
-            if response.status_code in [200, 301, 302, 307, 308, 403, 404]:
-                return response.url
+            response = session.get(DX_DOI_URL % doi, allow_redirects=True, verify=certifi.where(), timeout=10)
             response.raise_for_status()
+            if response.status_code in [200, 301, 302, 307, 308, 403] or (400 <= response.status_code < 600):
+                self._log_url_accessibility(response.url, session)
+                self._cache[doi] = response.url
+                return response.url
         except requests.RequestException as e:
+            if response.status_code in [403, 404]:
+                self._log_url_accessibility(response.url, session)
+                self._cache[doi] = response.url
+                return response.url
             raise DxDOIError(f'dx.doi.org lookup failed for doi "{doi}" (Exception: {str(e)})')
+        finally:
+            session.close()
+
+    def _log_url_accessibility(self, url, session):
+        try:
+            response = session.get(url, headers={'User-Agent': 'Mozilla/5.0'}, verify=certifi.where(), timeout=10)
+            acceptable_statuses = [200, 204, 206, 301, 302, 307, 308]   # 401, 402, 405, 410, 429]
+            if response.status_code in acceptable_statuses:
+                self._log.info(f'URL is accessible: {url} (Status code: {response.status_code})')
+            else:
+                self._log.info(f'URL is not accessible: {url} (Status code: {response.status_code})')
+        except requests.RequestException as e:
+            self._log.info(f'URL is not accessible: {url} (Exception: {str(e)})')
 
     def resolve(self, doi, check_doi=True, whitespace=False, skip_cache=False):
         """ Takes a doi (string), returns a url to article page on journal website.

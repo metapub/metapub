@@ -18,7 +18,7 @@ TITLE_SIMILARITY_MIN_SCORE = .8     # throw out results that fall below .8 thres
 
 
 def get_most_similar_work_from_crossref_results(qstring, qname, cr_results):
-    """Uses Levanshtein distance on result title to rank CrossRef results. 
+    """Uses Levenshtein distance on result title to rank CrossRef results. 
     Returns top candidate for a match from these items based on comparison title.
 
     :param qstring: (str) original query string for search
@@ -211,7 +211,7 @@ class CrossRefFetcher(Borg):
         2nd attempt: Title + First Author.  Same process as 1st attempt but with any candidates
                      found in 1st attempt submitted for comparison.
 
-        Finally: Return CrossRefWork from best candidate that exceeds min_ld requirement.
+        Finally: Return None or CrossRefWork from best candidate that exceeds min_ld requirement.
 
         :param pma: PubMedArticle object
         :param ideal_ld: (float) [default: set in global at top of crossref.py]
@@ -229,9 +229,15 @@ class CrossRefFetcher(Borg):
             self.log.debug('PMID %s: Best candidate had Levanshtein title similarity %f', pma.pmid, bestcandidate['title_ld'])
             return CrossRefWork(**bestcandidate['work'])
 
-        self.log.debug('PMID %s: OK candidate with title_ld %f (title: %s)', pma.pmid, bestcandidate['title_ld'], bestcandidate['work']['title'][0])
-        # No/insufficient results, try different combo of details.
+        # If our only candidate is an empty work, we're just hosed, so cut it here.
+        if bestcandidate['work'] is None:
+            self.log.debug('PMID %s: No results found in CrossRef.', pma.pmid)
+            return None
+
+        # Insufficient results, try different combo of details.
         # Run our last candidate (if we got one) in the next pageont.
+
+        self.log.debug('PMID %s: OK candidate with title_ld %f (title: %s)', pma.pmid, bestcandidate['title_ld'], bestcandidate['work']['title'][0])
 
         # Try with Title and Author
         res = self.cr.works(query_bibliographic=pma.title, query_author=pma.author1_lastfm, limit=5)
@@ -248,9 +254,8 @@ class CrossRefFetcher(Borg):
                             pma.pmid, bestcandidate['title_ld'], min_ld, bestcandidate['work']['title'][0])
             return CrossRefWork(**bestcandidate['work'])
             
-        else:
-            self.log.debug('PMID %s: No suitable CrossRefWork found.', pma.pmid)
-            return None
+        self.log.debug('PMID %s: No suitable CrossRefWork found.', pma.pmid)
+        return None
 
     def article_by_title(self, title, **kwargs):
         """Use CrossRef to find a work by its title. Returns first item in the list.

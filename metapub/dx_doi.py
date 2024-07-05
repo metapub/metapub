@@ -36,17 +36,17 @@ class DxDOI(Borg):
                                 raises BadDOI if not good.
     """
 
-    def __init__(self, **kwargs):
+    def __init__(self, retries=1, **kwargs):
         self._log = logging.getLogger('metapub.DxDOI')
         self._log.setLevel(logging.INFO)
-
+        self.retries = retries
         cachedir = kwargs.get('cachedir', DEFAULT_CACHE_DIR)
         self._cache = _get_dx_doi_cache(cachedir)
 
     def _create_session(self):
         session = requests.Session()
         retry_strategy = Retry(
-            total=3,  # Total number of retries
+            total=self.retries,  # Total number of retries
             backoff_factor=1,  # Wait 1, 2, 4 seconds between retries
             status_forcelist=[429, 500, 502, 503, 504],  # Retry on these status codes
             allowed_methods=["HEAD", "GET", "OPTIONS"],
@@ -93,7 +93,7 @@ class DxDOI(Borg):
                 self._cache[doi] = response.url
                 return response.url
         except requests.exceptions.RequestException as e:
-            if response is not None and response.status_code in [402, 403]:
+            if response is not None and response.status_code in [402, 403, 408, 429]:
                 self._log.info(f'URL returned status code {response.status_code}: {response.url}')
                 self._cache[doi] = response.url
                 return response.url

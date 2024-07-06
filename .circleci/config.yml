@@ -1,0 +1,25 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@2.1.1
+
+jobs:
+  build-and-test:
+    docker:
+      - image: cimg/python:3.8  # Specify the Python version you desire
+
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: Install pytest
+          command: pip install pytest
+      - run:
+          name: Run tests
+          command: pytest tests/
+
+workflows:
+  test:
+    jobs:
+      - build-and-test

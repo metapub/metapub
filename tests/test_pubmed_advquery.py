@@ -1,4 +1,5 @@
 import unittest
+import os
 
 from metapub import PubMedFetcher
 from metapub.cache_utils import cleanup_dir
@@ -16,6 +17,7 @@ NCBI_BOOKS = [
 class TestPubmedFetcher(unittest.TestCase):
 
     def setUp(self):
+        assert 'NCBI_API_KEY' in os.environ
         self.fetch = PubMedFetcher(cachedir=TEST_CACHEDIR)
 
     def tearDown(self):

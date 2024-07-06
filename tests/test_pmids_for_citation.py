@@ -1,4 +1,5 @@
 import unittest
+import os
 
 from metapub import PubMedFetcher
 from metapub.cache_utils import cleanup_dir
@@ -33,7 +34,8 @@ AMBIGUOUS_params = {'jtitle': 'PNAS', 'year': 2008, 'aulast': 'An'}
 class TestPubmedCitationMatch(unittest.TestCase):
 
     def setUp(self):
-        pass
+        assert 'NCBI_API_KEY' in os.environ
+        #pass
 
     def tearDown(self):
         pass

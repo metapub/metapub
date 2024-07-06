@@ -19,13 +19,18 @@ jobs:
           name: Install pytest
           command: pip install pytest
       - run:
-          name: Ensure NCBI_API_KEY in environment
-          command: export NCBI_API_KEY="$NCBI_API_KEY"
+          name: Setup NCBI_API_KEY
+          command: echo 'export NCBI_API_KEY=$NCBI_API_KEY' >> $BASH_ENV
+      - run:
+          name: Print NCBI_API_KEY
+          command: |
+            source $BASH_ENV
+            echo "NCBI_API_KEY: $NCBI_API_KEY"
       - run:
           name: Run tests
-          command: pytest tests/
-          environment:
-            NCBI_API_KEY: $NCBI_API_KEY
+          command: |
+            source $BASH_ENV
+            pytest tests/
 
 workflows:
   test:

@@ -6,20 +6,29 @@ orbs:
 jobs:
   build-and-test:
     docker:
-      - image: cimg/python:3.8  # Specify the Python version you desire
+      - image: cimg/python:3.8
 
     steps:
       - checkout
-      - python/install-packages:
-          pkg-manager: pip
+      - run:
+          name: Install dependencies
+          command: |
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
       - run:
           name: Install pytest
           command: pip install pytest
       - run:
+          name: Print NCBI_API_KEY
+          command: echo $NCBI_API_KEY
+      - run:
           name: Run tests
           command: pytest tests/
+          environment:
+            NCBI_API_KEY: $NCBI_API_KEY
 
 workflows:
   test:
     jobs:
       - build-and-test
+

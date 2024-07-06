@@ -71,8 +71,9 @@ class PubMedFetcher(Borg):
 
     _cache_filename = 'pubmedfetcher.db'
 
-    def __init__(self, method='eutils', cachedir='default'):
+    def __init__(self, method='eutils', **kwargs):
         self.method = method
+        cachedir = kwargs.get("cachedir")
 
         if method=='eutils':
             self._cache_path = get_cache_path(cachedir, self._cache_filename)
@@ -82,7 +83,7 @@ class PubMedFetcher(Borg):
             self.article_by_doi = self._eutils_article_by_doi
             self.pmids_for_query = self._eutils_pmids_for_query
         else:
-            raise NotImplementedError('coming soon: fetch from local pubmed via medgen-mysql or filesystem cache.')
+            raise NotImplementedError('Planned future options: "mysql", "cache-only"')
 
     def _eutils_article_by_pmid(self, pmid):
         pmid = str(pmid)

@@ -47,7 +47,7 @@ class DxDOI(Borg):
         session = requests.Session()
         retry_strategy = Retry(
             total=self.retries,  # Total number of retries
-            backoff_factor=1,  # Wait 1, 2, 4 seconds between retries
+            backoff_factor=0.1,  # Don't wait long for retries
             status_forcelist=[429, 500, 502, 503, 504],  # Retry on these status codes
             allowed_methods=["HEAD", "GET", "OPTIONS"],
             raise_on_status=False,
@@ -86,7 +86,7 @@ class DxDOI(Borg):
         session = self._create_session()
         response = None
         try:
-            response = session.get(DX_DOI_URL % doi, allow_redirects=True, verify=certifi.where(), timeout=10)
+            response = session.get(DX_DOI_URL % doi, allow_redirects=True, verify=certifi.where(), timeout=5)
             response.raise_for_status()
             if response.status_code in [200, 301, 302, 307, 308, 402, 403]:
                 self._log.info(f'URL is accessible: {response.url} (Status code: {response.status_code})')

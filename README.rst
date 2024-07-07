@@ -2,7 +2,7 @@
 Metapub
 =======
 
-![PyPI - Downloads](https://img.shields.io/pypi/dt/metapub)
+![PyPI - Monthly Downloads](https://img.shields.io/pypi/dm/metapub)
 
 Metapub is a Python library that provides python objects fetched via eutils 
 that represent Pubmed papers and concepts found within the NCBI databases.

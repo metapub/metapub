@@ -117,7 +117,7 @@ class FindIt(object):
         self.url = kwargs.get('url', None)
         self.reason = None
         self.use_nih = kwargs.get('use_nih', False)
-        self.use_crossref = kwargs.get('use_crossref', True)
+        self.use_crossref = kwargs.get('use_crossref', False)
 
         if self.use_crossref:
             self.crfetch = CrossRefFetcher()
@@ -301,7 +301,9 @@ class FindIt(object):
         if self.pma.doi:
             self.doi = self.pma.doi
             self.doi_score = 100
+            return
 
+        # if desired, try to learn the DOI using CrossRef
         if self.pma.doi == None:
             if self.use_crossref:
                 self._log.debug('Using CrossRef to find DOI for PMID %s', self.pmid)

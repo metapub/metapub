@@ -61,7 +61,7 @@ Output:
 Here\'s another example, converting an NCBI Book ID to its PMID (if it
 has one):
 
-[convert bookid2pmid NBK201366]{.title-ref}
+    convert bookid2pmid NBK201366
 
 Output:
 

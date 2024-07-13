@@ -114,4 +114,5 @@ Pipfile
 # mypy
 .mypy_cache/
 
-
+# OS X effluvia
+.DS_Store

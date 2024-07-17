@@ -61,7 +61,9 @@ simple_formats_doi = {
 # Function to load journal names from a text file
 def load_journals_from_file(publisher):
     resource_package = __name__  # Name of the current package
-    resource_path = f'../../publisher_lists/{publisher}.txt'  # Relative path to the resource
+    #resource_path = f'../../publisher_lists/{publisher}.txt'  # Relative path to the resource
+    resource_path = f'publisher_lists/{publisher}.txt'  # Relative path to the resource
+    print(resource_path)
 
     try:
         # Check if the file exists in the package

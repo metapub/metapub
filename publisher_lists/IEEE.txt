@@ -1,0 +1,402 @@
+... Int Conf Ind Instrum Control
+10th IEEE Int Conf Big Knowl (2019)
+2013 IEEE 26th Int Conf Micro Electro Mech Syst MEMS 2013 (2013)
+2015 IEEE Signal Process Signal Process Educ Workshop SP SPE (2015)
+2017 IEEE Sens Appl Symp (SAS) (2017)
+2018 IEEE Int Conf Healthc Inform Workshop (2018)
+2018 Int Symp Big Data Vis Immers Analyt (BDVA) (2018)
+ACHI Int Conf Adv Comput Hum Interact
+Ann Hist Comput
+Annu Int Conf IEEE Eng Med Biol Soc
+Annu ORNL Biomed Sci Eng Cent Conf
+Asian Conf Pattern Recognit
+BIBE 2004
+Bell Labs Tech J
+Comput Cardiol (2010)
+Comput Sci Eng
+Computer (Long Beach Calif)
+Conf Comput Vis Pattern Recognit Workshops
+Conf Human Syst Interact
+Conf Proc (Midwest Symp Circuits Syst)
+Conf Proc IEEE Eng Med Biol Soc
+Conf Proc IEEE Int Conf Signal Image Process Appl
+Conf Proc IEEE Int Conf Syst Man Cybern
+Conf Rec Asilomar Conf Signals Syst Comput
+Control Conf ECC Eur
+DASC PICom DataCom CyberSciTech 2017 (2017)
+DICTA
+Dig Tech Pap IEEE Int Solid State Circuits Conf
+Dig Tech Papers
+Genet Evol Comput Conf
+Health Innov Point Care Conf
+Healthc Inform
+Healthcom
+IBM J Res Dev
+ICCAD IEEE ACM Int Conf Comput Aided Des
+ICCAS
+IEEE ACM Int Symp Clust Cloud Grid Comput
+IEEE ACM Trans Netw
+IEEE ASME Int Conf Adv Intell Mechatron
+IEEE ASME Trans Mechatron
+IEEE Access
+IEEE Antennas Propag Mag
+IEEE Antennas Wirel Propag Lett
+IEEE Appl Imag Pattern Recognit Workshop
+IEEE Biomed Circuits Syst Conf
+IEEE China Summit Int Conf Signal Inf Process
+IEEE Commun Lett
+IEEE Commun Mag
+IEEE Comput Graph Appl
+IEEE Comput Intell Mag
+IEEE Conf Collab Internet Comput
+IEEE Conf Commun Netw Secur
+IEEE Conf Games 2019 (2019)
+IEEE Conf High Perform Extreme Comput
+IEEE Control Syst Lett
+IEEE Des Test
+IEEE EMBS Int Conf Biomed Health Inform
+IEEE Electromagn Compat Mag
+IEEE Electron Device Lett
+IEEE Embed Syst Lett
+IEEE Eng Med Biol Mag
+IEEE Geosci Remote Sens Lett
+IEEE Geosci Remote Sens Mag
+IEEE Glob Conf Signal Inf Process
+IEEE Haptics Symp
+IEEE Instrum Meas Mag
+IEEE Int Conf Autom Face Gesture Recognit Workshops
+IEEE Int Conf Automation Sci Eng (CASE)
+IEEE Int Conf Bioinform Biomed Workshops
+IEEE Int Conf Comput Adv Bio Med Sci
+IEEE Int Conf Comput Vis Workshops
+IEEE Int Conf Control Autom
+IEEE Int Conf Data Min Workshops
+IEEE Int Conf Dev Learn
+IEEE Int Conf Dev Learn Epigenetic Robot
+IEEE Int Conf Electro Inf Technol
+IEEE Int Conf Healthc Inform
+IEEE Int Conf Multimed Expo Workshops
+IEEE Int Conf RFID
+IEEE Int Conf Rehabil Robot
+IEEE Int Conf Robot Autom
+IEEE Int Conf Softw Qual Reliab Secur
+IEEE Int Conf Systems Biol
+IEEE Int Geosci Remote Sens Symp Proc
+IEEE Int Interdiscip Conf Cogn Methods Situat Aware Decis Support
+IEEE Int Symp Circuits Syst Proc
+IEEE Int Symp Med Meas Appl
+IEEE Int Symp Parallel Distrib Process Workshops Phd Forum
+IEEE Int Symp Precis Clock Synchron Meas Control Commun
+IEEE Int Symp Technol Homel Security HST
+IEEE Int Ultrason Symp
+IEEE Int Vac Electron Conf
+IEEE Int Workshop Biomed Circuits Syst
+IEEE Int Workshop Genomic Signal Process Stat
+IEEE Int Workshop Mach Learn Signal Process
+IEEE Intell Syst
+IEEE Internet Comput
+IEEE Internet Things J
+IEEE J Biomed Health Inform
+IEEE J Electromagn RF Microw Med Biol
+IEEE J Emerg Sel Top Circuits Syst
+IEEE J Emerg Sel Top Power Electron
+IEEE J Multiscale Multiphys Comput Tech
+IEEE J Photovolt
+IEEE J Quantum Electron
+IEEE J Sel Areas Commun
+IEEE J Sel Top Appl Earth Obs Remote Sens
+IEEE J Sel Top Quantum Electron
+IEEE J Sel Top Signal Process
+IEEE J Solid-State Circuits
+IEEE J Transl Eng Health Med
+IEEE Lett Comput Soc
+IEEE Life Sci Conf
+IEEE Life Sci Lett
+IEEE MTT-S 2019 Int Microw Biomed Conf IMBioC 2019 (2019)
+IEEE MTTS Int Microw Symp
+IEEE Magn Lett
+IEEE Microw Mag
+IEEE Microw Wirel Compon Lett
+IEEE NIH Life Sci Syst Appl Workshop
+IEEE NPSS Real Time Conf
+IEEE Nanotechnol Mag
+IEEE Nucl Sci Symp Conf Rec (1997)
+IEEE Open J Eng Med Biol
+IEEE Pac Vis Symp
+IEEE Pervasive Comput
+IEEE Photonics Conf
+IEEE Photonics J
+IEEE Photonics Technol Lett
+IEEE PhotonicsGlob Singap
+IEEE Point Care Healthc Technol
+IEEE Pulse
+IEEE ROBIO
+IEEE Rev Biomed Eng
+IEEE Robot Autom Lett
+IEEE Robot Autom Mag
+IEEE SICE RSJ Int Conf Multisens Fusion Integr Intell Syst
+IEEE Sarnoff Symp
+IEEE Secur Priv
+IEEE Sens J
+IEEE Sens Lett
+IEEE Signal Process Lett
+IEEE Signal Process Mag
+IEEE Signal Process Med Biol Symp
+IEEE Softw
+IEEE Solid State Circuits Lett
+IEEE Spectr
+IEEE Stat Signal Processing Workshop
+IEEE Symp Comput Intell Data Min
+IEEE Syst J
+IEEE Syst Man Cybern Mag
+IEEE Trans Acoust
+IEEE Trans Affect Comput
+IEEE Trans Antennas Propag
+IEEE Trans Appl Supercond
+IEEE Trans Audio Speech Lang Process
+IEEE Trans Autom Sci Eng
+IEEE Trans Automat Contr
+IEEE Trans Auton Ment Dev
+IEEE Trans Big Data
+IEEE Trans Biom Behav Identity Sci
+IEEE Trans Biomed Circuits Syst
+IEEE Trans Biomed Eng
+IEEE Trans Circuits Syst I Regul Pap
+IEEE Trans Circuits Syst II Express Briefs
+IEEE Trans Circuits Syst Video Technol
+IEEE Trans Cogn Commun Netw
+IEEE Trans Cogn Dev Syst
+IEEE Trans Commun
+IEEE Trans Compon Packaging Manuf Technol
+IEEE Trans Comput Imaging
+IEEE Trans Comput Intell AI Games
+IEEE Trans Comput Soc Syst
+IEEE Trans Control Netw Syst
+IEEE Trans Control Syst Technol
+IEEE Trans Cybern
+IEEE Trans Dependable Secure Comput
+IEEE Trans Device Mater Reliab
+IEEE Trans Dielectr Electr Insul
+IEEE Trans Electromagn Compat
+IEEE Trans Electron Devices
+IEEE Trans Emerg Top Comput
+IEEE Trans Emerg Top Comput Intell
+IEEE Trans Eng Manag
+IEEE Trans Evol Comput
+IEEE Trans Fuzzy Syst
+IEEE Trans Games
+IEEE Trans Geosci Remote Sens
+IEEE Trans Haptics
+IEEE Trans Hum Mach Syst
+IEEE Trans Image Process
+IEEE Trans Ind Appl
+IEEE Trans Ind Electron
+IEEE Trans Industr Inform
+IEEE Trans Inf Technol Biomed
+IEEE Trans Inf Theory
+IEEE Trans Instrum Meas
+IEEE Trans Knowl Data Eng
+IEEE Trans Med Imaging
+IEEE Trans Med Robot Bionics
+IEEE Trans Microw Theory Tech
+IEEE Trans Mob Comput
+IEEE Trans Mol Biol Multiscale Commun
+IEEE Trans Multimedia
+IEEE Trans Nanobioscience
+IEEE Trans Nanotechnol
+IEEE Trans Netw Sci Eng
+IEEE Trans Neural Netw
+IEEE Trans Neural Netw Learn Syst
+IEEE Trans Neural Syst Rehabil Eng
+IEEE Trans Nucl Sci
+IEEE Trans Parallel Distrib Syst
+IEEE Trans Pattern Anal Mach Intell
+IEEE Trans Plasma Sci IEEE Nucl Plasma Sci Soc
+IEEE Trans Power Electron
+IEEE Trans Power Syst
+IEEE Trans Prof Commun
+IEEE Trans Radiat Plasma Med Sci
+IEEE Trans Rehabil Eng
+IEEE Trans Reliab
+IEEE Trans Rob Autom
+IEEE Trans Robot
+IEEE Trans Serv Comput
+IEEE Trans Signal Inf Process Netw
+IEEE Trans Signal Process
+IEEE Trans Smart Grid
+IEEE Trans Sustain Energy
+IEEE Trans Syst Man Cybern
+IEEE Trans Syst Man Cybern A Syst Hum
+IEEE Trans Syst Man Cybern B Cybern
+IEEE Trans Syst Man Cybern C Appl Rev
+IEEE Trans Syst Man Cybern Syst
+IEEE Trans Terahertz Sci Technol
+IEEE Trans Ultrason Ferroelectr Freq Control
+IEEE Trans Veh Technol
+IEEE Trans Very Large Scale Integr VLSI Syst
+IEEE Trans Vis Comput Graph
+IEEE Trans Wirel Commun
+IEEE Winter Conf Appl Comput Vis
+IEEE Wirel Commun
+IEEE Workshop Microelectron Electron Devices
+IEEE Workshop Multimed Signal Proc
+IEEE trans Intell Transp Syst
+IEEE/ACM Trans Audio Speech Lang Process
+IEEE/ACM Trans Comput Biol Bioinform
+IRE Trans Med Electron
+ISI
+ISM
+ISSCS 2013 (2013)
+IT Prof
+ITAB Corfu Greece (2010)
+Int Conf Affect Comput Intell Interact Workshops
+Int Conf Bioinform Biomed Eng
+Int Conf Commun Syst Netw
+Int Conf Comput Netw Commun
+Int Conf Dependable Syst Netw Workshops
+Int Conf Digit Signal Process Proc
+Int Conf Distrib Comput Sens Syst Workshops
+Int Conf Electromagn Adv Appl
+Int Conf Geoinform
+Int Conf Infrared Millim Terahertz Waves
+Int Conf Sampl Theory Appl SampTA
+Int Conf Signal Process Commun
+Int Conf Signal Process Proc
+Int Conf Speech Database Assess
+Int Conf Virtual Rehabil
+Int Conf Wearable Implant Body Sens Netw
+Int IEEE EMBS Conf Neural Eng
+Int Solid State Sens Actuators Microsyst Conf
+Int Symp Med Robot
+Int Symp Mix Augment Real
+Int Workshop Comput Adv Multisens Adapt Process
+Int Workshop Magn Part Imaging
+Int Workshop Pattern Recognit Neuroimaging
+Int Workshop Softw Eng Health Care
+Int Workshop databases Expert Syst Appl
+Ire Trans Biomed Electron
+J Lightwave Technol
+J Microelectromech Syst
+Joint Eurohaptics Conf Symp Haptic Interfaces Virtual Environ Teleoper Syst
+Mediterr Conf Control Automation
+N Y Sci Data Summit NYSDS
+Optoelectron Commun Conf
+Optomechatron Technol ISOT 2010 Int Symp (2010)
+Proc (IEEE Int Conf Multimed Expo)
+Proc 2014 6th Int Adv Res Workshop In Silico Oncol Cancer Investig (2014)
+Proc 2015 Resil Week RSW (2015)
+Proc ACM SIGCHI
+Proc Am Control Conf
+Proc Annu Hawaii Int Conf Syst Sci
+Proc COMPSAC
+Proc Can Conf Comput Robot Vis
+Proc Conf Comput Robot Vis
+Proc Conf Inf Sci Syst
+Proc Congr Evol Comput
+Proc Cust Integr Circuits Conf
+Proc Data Compress Conf
+Proc Des Autom Conf
+Proc Eur Signal Process Conf EUSIPCO
+Proc Euromicro Int Conf Parallel Distrib Netw Based Process
+Proc Front Converg Biosci Inf Technol (2007)
+Proc IAPR Int Conf Pattern Recogn
+Proc IEEE Annu Northeast Bioeng Conf
+Proc IEEE Comput Soc Conf Comput Vis Pattern Recognit
+Proc IEEE Comput Syst Bioinform Conf
+Proc IEEE Conf Decis Control
+Proc IEEE Conf Nanotechnol
+Proc IEEE Conf Virtual Real 3D User Interfaces
+Proc IEEE Glob Humanit Technol Conf
+Proc IEEE Inst Electr Electron Eng
+Proc IEEE Int Autom Softw Eng Conf
+Proc IEEE Int Conf Acoust Speech Signal Process
+Proc IEEE Int Conf Big Data
+Proc IEEE Int Conf Cloud Eng
+Proc IEEE Int Conf Clust Comput
+Proc IEEE Int Conf Comput Vis
+Proc IEEE Int Conf Data Min
+Proc IEEE Int Conf Escience
+Proc IEEE Int Conf Healthc Inform Imaging Syst Biol
+Proc IEEE Int Conf Inf Reuse Integr
+Proc IEEE Int Conf Micro Electro Mech Syst
+Proc IEEE Int Conf Pervasive Comput Commun
+Proc IEEE Int Conf Pervasive Comput Commun Workshops
+Proc IEEE Int Conf Prog Inform Comput
+Proc IEEE Int Conf Semant Comput
+Proc IEEE Int Congr Big Data
+Proc IEEE Int Requir Eng Conf
+Proc IEEE Int Symp Bioinformatics Bioeng
+Proc IEEE Int Symp Biomed Imaging
+Proc IEEE Int Symp Comput Based Med Syst
+Proc IEEE Int Symp Field Program Cust Comput Mach
+Proc IEEE Int Symp High Assur Syst Eng
+Proc IEEE Int Symp Policies Distrib Syst Netw
+Proc IEEE Int Symp Signal Proc Inf Tech
+Proc IEEE RAS EMBS Int Conf Biomed Robot Biomechatron
+Proc IEEE Radio Wirel Symp
+Proc IEEE Sens
+Proc IEEE Southeastcon
+Proc IEEE Southwest Symp Image Anal Interpret
+Proc IEEE Swarm Intell Symp
+Proc IEEE Symp 3D User Interfaces
+Proc IEEE Symp Biol Data Vis
+Proc IEEE Symp Comput Commun
+Proc IEEE Symp Comput Intell Bioinforma Comput Biol
+Proc IEEE Symp Comput Intell Healthc Ehealth
+Proc IEEE Symp Large Scale Data Anal Vis
+Proc IEEE Symp Secur Priv
+Proc IEEE Symp Secur Priv Workshops
+Proc IEEE Symp Vis Anal Sci Technol
+Proc IEEE Syst Inf Eng Des Symp
+Proc IEEE Ultrason Symp
+Proc IEEE Virtual Real Conf
+Proc IEEE WIC ACM Int Conf Web Intell Intell Agent Technol
+Proc IEEE West N Y Image Signal Process Workshop
+Proc IEEE Workshop Appl Comput Vis
+Proc IEEE Workshop Autom Speech Recognit Underst
+Proc IEEE/ACM Int Conf Grid Computing
+Proc IFSA World Congr
+Proc IPDPS (Conf)
+Proc Inf Theory Workshop
+Proc Int Conf 3D Vis
+Proc Int Conf Adv Robot
+Proc Int Conf Autom Face Gesture Recognit
+Proc Int Conf Availab Reliab Secur
+Proc Int Conf Biomed Eng Inform
+Proc Int Conf Data Eng
+Proc Int Conf Data Sci Adv Anal
+Proc Int Conf Distrib Comput Syst
+Proc Int Conf Doc Anal Recognit
+Proc Int Conf Image Proc
+Proc Int Conf Inf Technol New Gener
+Proc Int Conf MEMS NANO Smart Syst
+Proc Int Conf Mach Learn Appl
+Proc Int Conf Mach Learn Cybern
+Proc Int Conf Qual Softw
+Proc Int Conf Smart Comput SMARTCOMP
+Proc Int Joint Conf Bioinforma Syst Biol Intell Comput
+Proc Int Jt Conf Neural Netw
+Proc Int Symp Symb Numer Algorithms Sci Comput
+Proc Int Wirel Commun Mob Comput Conf
+Proc Ohio Collab Conf Bioinform
+Proc Pac Conf Comput Graph Appl
+Proc South Biomed Eng Conf
+Proc Symp Comput Archit High Perform Comput
+Proc Symp Haptic Interface Virtual Env Teleoperator Syst
+Proc Winter Simul Conf
+Proc Workshop Math Methods Biomed Image Analysis
+Proceedings (IEEE Int Conf Bioinformatics Biomed)
+ROMAN
+RTSI
+Rep U S
+SLT Workshop Spok Lang Technol
+SeGAH IEEE Int Conf Serious Games Appl Health
+Sist Tecnol Inf (2017)
+Symp VLSI Circuits
+Tech Dig Int Electron Devices Meet
+Third IEEE Int Conf Big Data Secur Cloud IEEE BigDataSecur 2017 (2017)
+Tsinghua Sci Technol
+Ubiquitous Comput Electron Mob Commun Conf (UEMCON) IEEE Annu
+WOCC
+Workshops Poster Abstr
+World Wirel Mob Multimed Netw

@@ -8,7 +8,6 @@ import os
 #                  having "More than 25 sessions created in 5 minutes"
 #
 
-
 doi_templates = {
     'acs': 'http://pubs.acs.org/doi/pdf/{a.doi}',
     'akademii': 'http://www.akademiai.com/content/{a.pii}/fulltext.pdf',
@@ -140,3 +139,12 @@ simple_formats_doi = {
     'PLoS ONE': doi_templates['plos'],
     'PLoS Pathog': doi_templates['plos'],
 }
+
+
+
+# Ingest all of the journals contained in the publisher_list/*.txt files.  
+# Add them into the directory according to the templates they require.
+
+
+
+

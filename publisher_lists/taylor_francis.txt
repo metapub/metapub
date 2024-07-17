@@ -20,6 +20,7 @@ Acta Orthop Suppl
 Acta Otolaryngol
 Acta Otolaryngol Case Rep
 Acta Otolaryngol Suppl
+Acta Otorhinolaryngol Belg
 Acta Radiol Oncol
 Acta Radiol Oncol Radiat Phys Biol
 Acta Radiol Ther Phys Biol
@@ -192,6 +193,7 @@ Biomater Investig Dent
 Biomater Med Devices Artif Organs
 Biomatter
 Bioremediat J
+Biosci Biotechnol Biochem
 Biostat Epidemiol
 Biotech Histochem
 Biotechniques

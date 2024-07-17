@@ -6,5 +6,6 @@ PLoS Comput Biol
 PLoS Genet
 PLoS Med
 PLoS Negl Trop Dis
+PLoS ONE
 PLoS One
 PLoS Pathog

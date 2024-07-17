@@ -31,6 +31,10 @@ with open('embargo_check_results.csv', 'w', newline='') as csvfile:
         print(f"{pmid}")
 
         src = FindIt(pmid, use_nih=True)
+        print("Journal:", src.pma.journal)
+        print("Title:", src.pma.title)
+        print("Keywords:", src.pma.keywords)
+        print()
         print(f"Embargo date:", src.pma.history.get('pmc-release', None))
 
         is_embargoed = False

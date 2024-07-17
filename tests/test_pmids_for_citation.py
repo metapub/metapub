@@ -7,11 +7,11 @@ from tests.common import TEST_CACHEDIR
 fetch = PubMedFetcher(cachedir=TEST_CACHEDIR)
 
 # fixtures
-NOT_FOUND_INVALID_JOURNAL_params = {'jtitle': 'Computers',
-                                    'year': 2000,
-                                    'volume': 40,
-                                    'spage': 885
-                                    }
+NOT_FOUND_params = {'jtitle': 'Computers',
+                    'year': 2000,
+                    'volume': 40,
+                    'spage': 885
+                   }
 
 many_authors_params = {'jtitle': 'American Journal of Medical Genetics',
                        'year': 1996,
@@ -51,8 +51,9 @@ class TestPubmedCitationMatch(unittest.TestCase):
     #    assert result[0] == u'NOT_FOUND'
 
     def test_citation_match_not_found_invalid_journal(self):
-        result = fetch.pmids_for_citation(**NOT_FOUND_INVALID_JOURNAL_params)
-        assert result[0] == u'NOT_FOUND;INVALID_JOURNAL'
+        "Test an expected result of a list containing only 1 element returned when zero PMIDs found."
+        result = fetch.pmids_for_citation(**NOT_FOUND_params)
+        assert result[0] == u'NOT_FOUND'
 
     def test_citation_match_ambiguous(self):
         result = fetch.pmids_for_citation(**AMBIGUOUS_params)

@@ -62,11 +62,13 @@ pm_fetch = None
 def _start_engines():
     global pm_fetch
     if not pm_fetch:
-        log.debug('Started PubMedFetcher engine.')
+        log.debug('Started FindIt engine.')
         pm_fetch = PubMedFetcher()
 
 def _get_findit_cache(cachedir):
     global FINDIT_CACHE
+    # allow swap of cache directory without restarting process.
+    # this is mostly for testing but also a few limited use cases.
     if not FINDIT_CACHE:
         _cache_path = get_cache_path(cachedir, CACHE_FILENAME)
         FINDIT_CACHE = SQLiteCache(_cache_path)
@@ -114,7 +116,7 @@ class FindIt(object):
         self.url = kwargs.get('url', None)
         self.reason = None
         self.use_nih = kwargs.get('use_nih', False)
-        self.use_crossref = kwargs.get('use_crossref', True)
+        self.use_crossref = kwargs.get('use_crossref', False)
 
         if self.use_crossref:
             self.crfetch = CrossRefFetcher()
@@ -298,7 +300,9 @@ class FindIt(object):
         if self.pma.doi:
             self.doi = self.pma.doi
             self.doi_score = 100
+            return
 
+        # if desired, try to learn the DOI using CrossRef
         if self.pma.doi == None:
             if self.use_crossref:
                 self._log.debug('Using CrossRef to find DOI for PMID %s', self.pmid)

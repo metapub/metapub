@@ -2,22 +2,27 @@
 Metapub
 =======
 
+![PyPI - Monthly Downloads](https://img.shields.io/pypi/dm/metapub)
+
 Metapub is a Python library that provides python objects fetched via eutils 
-that represent papers and concepts found within the NLM.
+that represent Pubmed papers and concepts found within the NCBI databases.
 
-These objects abstract some interactions with pubmed, and intends to 
-encompass as many types of database lookups and summaries as can be 
-provided via Eutils / Entrez.
+Metapub currently provides abstraction layers over Medgen, Pubmed, ClinVar, 
+and CrossRef, and intends to encompass as many types of database lookups and 
+summaries as can be provided via Eutils / Entrez.
 
-CHANGES!  NEW in 0.5:
+Metapub can also help build scholarly paper libraries through the use of the
+FindIt class.
 
-* NCBI_API_KEY supported as environment variable. Now you can send up to 10 queries per second to NCBI!
-* CrossRef API overhaul.  CrossRefFetcher objects source from newest Crossref API!
-* CrossRefWork object made to parallel PubMedArticle object.
-* Logic of building citations is now in citation.py and abstracted for multiple uses.
-* Python3 support only!  Python2 stuff completely ripped out!
+MetaPub features include:
+
+* Build formatted citations easily from lists of PMIDs.
+* Generate valid LEGAL links to paper PDFs using FindIt, given a PMID or DOI.
+* Common text mining "batteries included" such as finding DOIs in text.
+* NCBI_API_KEY supported as environment variable (see below).
+* PubMedArticle object is a privileged class across Metapub -- use it to instantiate CrossRef lookups, for example.
 * Widespread use of Logging so you can see what's going on under the hood.
-* SUPER NEW!  Command line utilities -- see Getting Started below.
+* Command line utilities -- see Getting Started below.
 
 Getting Started
 ===============

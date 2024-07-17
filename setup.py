@@ -18,7 +18,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     package_data={
-        '': ['publisher_lists/*.txt'],
+        'metapub': ['publisher_lists/*.txt'],
     },
     entry_points={'console_scripts': [
         'pubmed_article = metapub.pubmedfetcher_cli:main',

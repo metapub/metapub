@@ -1,0 +1,1889 @@
+3 Biotech
+AAPS J
+AAPS Open
+AAPS PharmSci
+AI Soc
+AIDS Behav
+AMB Express
+Abdom Imaging
+Abdom Imaging (2013)
+Abdom Imaging (2014)
+Abdom Radiol (NY)
+Acad Psychiatry
+Acoust Aust
+Acoust Phys
+Act Nerv Super (2007)
+Acta Acad Med Wuhan
+Acta Anal
+Acta Appl Math
+Acta Biotheor
+Acta Chir Austriaca
+Acta Endoscopica
+Acta Ethol
+Acta Geochimica
+Acta Geotech
+Acta Inform
+Acta Math Appl Sin
+Acta Math Sci
+Acta Math Sin Engl Ser
+Acta Mech
+Acta Mech Sin
+Acta Neurochir Suppl (Wien)
+Acta Neuropathol Suppl
+Acta Neuroveg (Wien)
+Acta Parasitol
+Acta Theriol (Warsz)
+Adapt Human Behav Physiol
+Adm Ment Health
+Adm Policy Ment Health
+Adolesc Res Rev
+Adsorption (Boston)
+Adv Anat Embryol Cell Biol
+Adv Appl Clifford Algebr
+Adv Artif Intell
+Adv Atmos Sci
+Adv Behav Biol
+Adv Biochem Eng Biotechnol
+Adv Cell Biol
+Adv Compos Hybrid Mater
+Adv Comput Math
+Adv Contracept
+Adv Cryog Eng
+Adv Data Anal Classif
+Adv Data Min
+Adv Differ Equ
+Adv Health Sci Educ Theory Pract
+Adv Image Video Technol
+Adv Immun Cancer Ther
+Adv Intell Data Anal
+Adv Manuf
+Adv Microb Ecol
+Adv Model Simul Eng Sci
+Adv Multimed Inf Process - PCM 2013 (2013)
+Adv Neurobiol
+Adv Neurodev Disord
+Adv Nutr Res
+Adv Polym Sci
+Adv Stat Anal
+Adv Struct Chem Imaging
+Adv Tech Stand Neurosurg
+Adv Tracer Methodol
+Adv Vis Comput
+Advers Resil Sci
+Adverse Drug React Toxicol Rev
+Aequ Math
+Aerobiologia (Bologna)
+Aesthetic Plast Surg
+Affect Sci
+Afr Archaeol Rev
+Afr J Urol
+Age
+Age (Dordr)
+Age (Omaha)
+Ageing Int
+Agents Actions Suppl
+Aging (Milano)
+Agric Human Values
+Agron Sustain Dev
+Air Qual Atmos Health
+Algorithmica
+Allergo J
+Allergo J Int
+Alp Bot
+Alternative Lifestyles
+Am J Cardiovasc Drugs
+Am J Crim Justice
+Am J Cult Sociol
+Am J Dance Ther
+Am J Dig Dis
+Am J Potato Res
+Am J Psychoanal
+Am J Respir Med
+Am Potato J
+Ambio
+Anaesthesist
+Anal Math Phys
+Anal Verbal Behav
+Analog Integr Circuits Signal Process
+Anat Clin
+Anat Embryol (Berl)
+Anat Sci Int
+Ann Comb
+Ann Glob Anal Geom (Dordr)
+Ann Henri Poincare
+Ann Inst Stat Math
+Ann Intensive Care
+Ann LGBTQ Public Popul Health
+Ann Mat Pura Appl
+Ann Math Artif Intell
+Ann Microbiol
+Ann Oper Res
+Ann PDE
+Ann Reg Sci
+Annu Rev Gerontol Geriatr
+Apidologie
+Appl Biochem Microbiol
+Appl Bioinformatics
+Appl Biol Chem
+Appl Entomol Zool
+Appl Evol Comput (2014)
+Appl Health Econ Health Policy
+Appl Hum Factors Ergon Conf
+Appl Inform (Berl)
+Appl Magn Reson
+Appl Math
+Appl Math Mech
+Appl Math Optim
+Appl Microsc
+Appl Nanosci
+Appl Netw Sci
+Appl Petrochem Res
+Appl Phys A Mater Sci Process
+Appl Psychophysiol Biofeedback
+Appl Res Qual Life
+Appl Spat Anal Policy
+Appl Water Sci
+Aquac Int
+Aquat Ecol
+Aquat Geochem
+Aquat Sci
+Arab J Sci Eng
+Arch Appl Mech
+Arch Comput Methods Eng
+Arch Dermatol Forsch
+Arch Dermatol Res (1975)
+Arch Gesamte Virusforsch
+Arch Gynakol
+Arch Gynecol
+Arch Hist Exact Sci
+Arch Int Hist Idees
+Arch Klin Exp Dermatol
+Arch Math
+Arch Math Log
+Arch Meteorol Geophys Bioklimatol B
+Arch Mikrobiol
+Arch Orthop Trauma Surg (1978)
+Arch Orthop Unfallchir
+Arch Otorhinolaryngol
+Arch Psychiatr Nervenkr
+Arch Psychiatr Nervenkr (1970)
+Arch Psychiatr Nervenkr Z Gesamte Neurol Psychiatr
+Arch Ration Mech Anal
+Arch Toxicol Suppl
+Arch Toxikol
+Archaeol Anthropol Sci
+Arktos
+Artery
+Arthropod Plant Interact
+Artif Intell Health (2018)
+Artif Intell Law (Dordr)
+Artif Intell Med Conf Artif Intell Med (2005-)
+Artif Intell Rev
+Artif Life Robot
+Arzneimittelforschung
+Asia Eur J
+Asia Pac J Atmos Sci
+Asian Bioeth Rev
+Asian J Criminol
+Asian J Gambl Issues Public Health
+Atl Econ J
+Atten Percept Psychophys
+Augment Environ Comput Assist Interv (2014)
+Aust Educ Res
+Australas Phys Eng Sci Med
+Australas Plant Pathol
+Auton Agent Multi Agent Syst
+Av Commun Rev
+BIT Numer Math
+BMC Clin Pharmacol
+BMC Pharmacol
+Banach J Math Anal
+Behav Anal
+Behav Anal Pract
+Behav Ecol Sociobiol
+Behav Res Methods
+Behav Res Methods Instrum Comput
+Behaviormetrika
+Beitr Algebra Geom
+Beni Suef Univ J Basic Appl Sci
+Berg Huttenmannische Monatshefte
+Berl J Soziol
+Big Data Anal Knowl Discov (2017)
+Bijblijven (Amst)
+Bioanal Rev
+Biochem (Mosc) Suppl Ser A Membr Cell Biol
+Biochem Mosc Suppl B Biomed Chem
+Biochemistry
+Biochemistry (Mosc)
+Biochip J
+Biocontrol (Dordr)
+Biodes Manuf
+Biodivers Conserv
+Bioenergy Res
+Bioeth News
+Bioethics Q
+Biofeedback Self Regul
+Biogeochemistry
+Bioinform Biomed Eng (2019)
+Biol Bull Russ Acad Sci
+Biol Cybern
+Biol Fertil Soils
+Biol Futur
+Biol Invasions
+Biol Magn Reson
+Biol Met
+Biol Philos
+Biol Theory
+Biol Ther
+Biologia
+Biologia (Bratisl)
+Biomass Convers Biorefin
+Biomed Data Manag Graph Online Querying (2015)
+Biomed Eng (NY)
+Biomed Eng Educ
+Biomed Eng Lett
+Biomed Image Regist Proc
+Biomed Image Registration
+Bionanoscience
+Biophys Rev
+Biophys Struct Mech
+Biophysics (Oxf)
+Biophysik
+Bioresour Bioprocess
+Biosemiotics
+Bioseparation
+Biosocieties
+Biospektrum (Heidelb)
+Biotechnol Bioprocess Eng
+Biotherapy
+Blood Res
+Bol Soc Mat Mex
+Boll Unione Mat Ital (2008)
+Bot Rev
+Bot Stud
+Boundary Layer Meteorol
+Brain Cell Biol
+Brain Imaging Behav
+Brain Inform
+Brain Inform (2018)
+Brain Inform Health (2015)
+Brainlesion
+Braz J Microbiol
+Brittonia
+Build Simul
+Bull Math Biophys
+Bull Math Sci
+Bull Natl Res Cent
+Bull Psychon Soc
+Bull Volcanol
+Bus Econ
+CEN Case Rep
+CJEM
+CME (Berl)
+CVIR Endovasc
+Cah Annee Gerontol
+Calc Var Partial Differ Equ
+Calcif Tissue Res
+Calif School Psychol
+Can J Public Health
+Can Stud Popul
+Cancer Microenviron
+Cancer Treat Res
+Carbonates Evaporites
+Card Electrophysiol Rev
+Cardiol Ther
+Cardiovasc Eng Technol
+Cardiovasc Interv Ther
+Cardiovasc Radiol
+Cardiovasc Toxicol
+Care Manag J
+Carlsberg Res Commun
+Catal Ind
+Catal Letters
+Celest Mech Dyn Astron
+Cell Mol Bioeng
+Cell Muscle Motil
+Cell Regen
+Cell Tissue Bank
+Cell tissue biol
+Cellulose (Lond)
+Cent Eur J Oper Res
+Cereal Res Commun
+Chem Heterocycl Compd (N Y)
+Chem Nat Compd
+Chem Res Chin Univ
+Chem Zvesti
+ChemTexts
+Chemoecology
+Chemosens Percept
+Child Adolesc Social Work J
+Child Care Q
+Child Indic Res
+Child Psychiatry Hum Dev
+Child Youth Care Forum
+Chin Geogr Sci
+Chin J Acad Radiol
+Chin J Geochem
+Chin J Oceanol Limnol
+Chin Sci Bull
+China Popul Dev Stud
+Chir Organi Mov
+Chirurgie
+Chromatographia
+Circuits Syst Signal Process
+Clean Technol Environ Policy
+Clim Change
+Clim Dyn
+Clin Child Fam Psychol Rev
+Clin Hematol Int
+Clin Image Based Proced
+Clin Immunother
+Clin J Gastroenterol
+Clin Lact (Amarillo)
+Clin Neuroradiol
+Clin Res Cardiol Suppl
+Clin Rev Allergy
+Clin Rev Bone Miner Metab
+Clin Sch Rev
+Clin Transl Imaging
+Cliometrica (Berl)
+Cluster Comput
+Cogn Neurodyn
+Cogn Process
+Cogn Res Princ Implic
+Cogn Technol Work
+Cognit Comput
+Cognit Ther Res
+Coloproctology
+Combust Explos Shock Waves
+Commun Math Phys
+Commun Math Stat
+Comp Clin Path
+Comp Econ Stud
+Comp Genom
+Comp Migr Stud
+Complex Anal Oper Theory
+Complex Netw XI (2020)
+Compr Immunol
+Compr Ther
+Comput Anal Images Patterns
+Comput Assist Robot Endosc (2014)
+Comput Assist Robot Endosc Clin Image Based Proced (2017)
+Comput Astrophys Cosmol
+Comput Biomech Med Algorithms Models Appl (2017)
+Comput Biomech Med Personal Valid Ther (2019)
+Comput Biomech Med Soft Tiss Musculoskelet Syst
+Comput Brain Behav
+Comput Cogn Sci
+Comput Diffus MRI Brain Connect (2013)
+Comput Econ
+Comput Geosci
+Comput Help People Spec Needs
+Comput Hum
+Comput Math Organ Theory
+Comput Mech
+Comput Methods Appl Sci
+Comput Methods Clin Appl Musculoskelet Imaging (2017)
+Comput Model Objects Present Images (2014)
+Comput Optim Appl
+Comput Part Mech
+Comput Pathol Ophthalmic Med Image Anal (2018)
+Comput Sci (Berl)
+Comput Sci Appl
+Comput Sci ICCS
+Comput Soc Netw
+Comput Softw Big Sci
+Comput Stat
+Comput Topol Image Context (2016)
+Comput Vis Biomed Image Appl (2005)
+Comput Vis ECCV
+Comput Vis Media (Beijing)
+Comput Vis Sci
+Cond Reflex
+Connect Neuroimaging (2018)
+Connect Neuroimaging (2019)
+Conserv Genet
+Conserv Genet Resour
+Constr Approx
+Constraints
+Cont Philos Rev
+Contemp Crisis
+Contemp Fam Ther
+Contemp Jew
+Contemp Probl Ecol
+Contemp Sch Psychol
+Contemp Top Immunobiol
+Contemp Top Mol Immunol
+Coral Reefs
+Corpus Pragmat
+Crim Law Forum
+Crim Law Philos
+Crit Care (Houten)
+Crit Criminol
+Crit Rev Neurosurg
+Crit Ultrasound J
+Cryptogr Commun
+Cult Brain
+Cult Med Psychiatry
+Cult Stud Sci Educ
+Curr Addict Rep
+Curr Allergy Rep
+Curr Anesthesiol Rep
+Curr Behav Neurosci Rep
+Curr Bladder Dysfunct Rep
+Curr Breast Cancer Rep
+Curr Cardiol Rep
+Curr Cardiovasc Imaging Rep
+Curr Cardiovasc Risk Rep
+Curr Clim Change Rep
+Curr Clin Microbiol Rep
+Curr Colorectal Cancer Rep
+Curr Dermatol Rep
+Curr Dev Disord Rep
+Curr Dev Psychopharmacol
+Curr Emerg Hosp Med Rep
+Curr Environ Health Rep
+Curr Epidemiol Rep
+Curr Fungal Infect Rep
+Curr Genet Med Rep
+Curr Geriatr Rep
+Curr HIV/AIDS Rep
+Curr Heart Fail Rep
+Curr Hepat Rep
+Curr Hepatol Rep
+Curr Infect Dis Rep
+Curr Med Sci
+Curr Mol Biol Rep
+Curr Neurol Neurosci Rep
+Curr Nutr Rep
+Curr Obes Rep
+Curr Obstet Gynecol Rep
+Curr Ophthalmol Rep
+Curr Oral Health Rep
+Curr Osteoporos Rep
+Curr Otorhinolaryngol Rep
+Curr Pathobiol Rep
+Curr Pediatr Rep
+Curr Pharmacol Rep
+Curr Phys Med Rehabil Rep
+Curr Pollut Rep
+Curr Prostate Rep
+Curr Psychol
+Curr Psychol Cogn
+Curr Psychos Ther Rep
+Curr Pulmonol Rep
+Curr Radiol Rep
+Curr Respir Care Rep
+Curr Rev Musculoskelet Med
+Curr Rev Pain
+Curr Sex Health Rep
+Curr Sleep Med Rep
+Curr Stem Cell Rep
+Curr Surg Rep
+Curr Tissue Microenviron Rep
+Curr Top Behav Neurosci
+Curr Top Med Mycol
+Curr Top Mol Endocrinol
+Curr Top Pathol
+Curr Transl Geriatr Exp Gerontol Rep
+Curr Transplant Rep
+Curr Trauma Rep
+Curr Treat Options Allergy
+Curr Treat Options Gastroenterol
+Curr Treat Options Infect Dis
+Curr Treat Options Neurol
+Curr Treat Options Pediatr
+Curr Treat Options Psychiatry
+Curr Treatm Opt Rheumatol
+Curr Trop Med Rep
+Curr Urol Rep
+Cybern Syst Anal
+Cytol Genet
+Dairy Sci Technol
+Daru
+Data Appl Secur Priv XXXII (2018)
+Data Integr Life Sci
+Data Min Knowl Discov
+Data Sci Eng
+Datenbank Spektrum
+Deep Learn Data Label Med Appl (2016)
+Deep Learn Med Image Anal Multimodal Learn Clin Decis Support (2017)
+Deep Learn Med Image Anal Multimodal Learn Clin Decis Support (2018)
+Dermatol Ther (Heidelb)
+Des Codes Cryptogr
+Des User Exp Usability
+Dev Biol (N Y 1985)
+Dev Health Econ Public Policy
+Development (Rome)
+Diabetes Ther
+Diabetol Int
+Dialect Anthropol
+Differ Equ Dyn Syst
+Digit Finance
+Digit Libraries Cult Herit Knowl Dissem Future Creat (2011)
+Digit Pathol (2019)
+Discret Event Dyn Syst
+Discrete Comput Geom
+Discrete Math Algorithms Appl
+Distrib Comput
+Distrib Parallel Databases
+Dokl Biochem Biophys
+Dokl Biol Sci
+Dokl Biophys
+Domain Adapt Represent Transf Med Image Learn Less Labels Imperfect Data (2019)
+Domain Decompos Method Sci Eng XX (2011)
+Drug Deliv Transl Res
+Drug Inf J
+Drug Investig
+Drug Saf Case Rep
+Drugs Real World Outcomes
+Drugs Ther Perspect
+Dtsch Vierteljahresschr Litt Wiss Geistesgesch
+Dyn Games Appl
+Dysphagia
+EJNMMI Phys
+EJNMMI Radiopharm Chem
+EJNMMI Res
+EPJ Data Sci
+EPJ Quantum Technol
+EPJ Tech Instrum
+EPMA J
+EURASIP J Adv Signal Process
+EURASIP J Appl Signal Processing
+EURASIP J Audio Speech Music Process
+EURASIP J Bioinform Syst Biol
+EURASIP J Image Video Process
+EURASIP J Inf Secur
+EURASIP J Wirel Commun Netw
+EUROPAR
+Early Child Educ J
+Earth Moon Planets
+Earth Planets Space
+Earth Sci Inform
+East Asia (Piscataway)
+East Econ J
+Eat Weight Disord
+Ecol Process
+Econ Bot
+Econ Disaster Clim Chang
+Econ Theory
+Economist (Leiden)
+Ecosystems
+Educ Assess Eval Account
+Educ Inf Technol (Dordr)
+Educ Psychol Rev
+Educ Technol Res Dev
+Educ Treat Children
+Egypt Heart J
+Egypt J Forensic Sci
+Egypt J Intern Med
+Egypt J Neurol Psychiatr Neurosurg
+Electrocatalysis (N Y)
+Emerg Radiol
+Emerg Themes Epidemiol
+Emergent Mater
+Empir Econ
+Empir Softw Eng
+Energy Ecol Environ
+Energy Effic
+Energy Minimization Methods Comput Vis Pattern Recognit
+Eng Comput
+Environ Biol Fishes
+Environ Chem Lett
+Environ Dev Sustain
+Environ Earth Sci
+Environ Ecol Stat
+Environ Fluid Mech (Dordr)
+Environ Geochem Health
+Environ Manage
+Environ Resour Econ (Dordr)
+Environ Sci Eur
+Environ Syst Decis
+Environmentalist
+Ergeb Biol
+Ergeb Inn Med Kinderheilkd
+Ergeb Mikrobiol Immunitatsforsch Exp Ther
+Ergeb Physiol
+Erkenntnis
+Ernst Schering Found Symp Proc
+Ernst Schering Res Found Workshop
+Esophagus
+Estuaries Coast
+Ethical Hum Psychol Psychiatry
+Ethics Inf Technol
+Ethik Med
+Euphytica
+Eur Actuar J
+Eur Arch Paediatr Dent
+Eur Arch Psychiatry Neurol Sci
+Eur Food Res Technol
+Eur Geriatr Med
+Eur J Ageing
+Eur J Clin Microbiol
+Eur J Crim Pol Res
+Eur J Dev Res
+Eur J For Res
+Eur J Hybrid Imaging
+Eur J Intensive Care Med
+Eur J Math
+Eur J Orthop Surg Traumatol
+Eur J Philos Sci
+Eur J Phys
+Eur J Plant Pathol
+Eur J Plast Surg
+Eur J Popul
+Eur J Trauma Emerg Surg
+Eur J Wildl Res
+Eur Orthop Traumatol
+Eur Phys J A Hadron Nucl
+Eur Phys J B
+Eur Phys J C Part Fields
+Eur Phys J D At Mol Opt Phys
+Eur Phys J Plus
+Eur Phys J Spec Top
+Eur Radiol Exp
+Eur Spine J
+Eur Surg
+EuroMediterr J Environ Integr
+Europ Demogr Inf Bull
+Evol Biol
+Evol Comput Mach Learn Data Min Bioinform
+Evol Ecol
+Evol Intell
+Evol Psychol Sci
+Exp Astron (Dordr)
+Exp Comput Multiph Flow
+Exp Econ
+Exp Fluids
+Exp IR Meets Multilinguality Multimodality Interact (2017)
+Exp Mech
+Exp Suppl
+Exp Tech
+Experientia Suppl
+Expo Health
+Extremes (Boston)
+Facies
+Families Child Health
+Fem Issues
+Fem Leg Stud
+Fetal Infant Ophthalmic Med Image Anal (2017)
+Few Body Syst
+Fire Sci Rev
+Fire Technol
+Fish Sci
+Flex Serv Manuf J
+Flow Turbul Combust
+Folia Geobot
+Food Anal Methods
+Food Biophys
+Food Bioproc Tech
+Food Dig
+Food Ethics
+Food Sci Biotechnol
+Food Secur
+For Ecosyst
+For Stud China
+Forensic Toxicol
+Form Methods Syst Des
+Forsch Ingenieurwes
+Fortpflanz Besamung Aufzucht Haustiere
+Fortschr Arzneimittelforsch
+Fortschr Kieferorthop
+Found Chem
+Found Comut Math
+Found Mol Model Simul (2015)
+Found Phys
+Found Sci
+Fract Calc Appl Anal
+Freie Zahnarzt
+Front Agric China
+Front Biol (Beijing)
+Front Biol China
+Front Chem China
+Front Chem Sci Eng
+Front Comput Sci
+Front Comput Sci China
+Front Earth Sci
+Front Environ Sci Eng
+Front Mater Sci
+Front Mater Sci China
+Front Math China
+Front Phys (Beijing)
+Front Phys China
+Funct Imaging Model Heart
+Fungal Divers
+Futur J Pharm Sci
+GEM
+Gastroenterol Jpn
+Gastroenterologe
+Gastrointest Radiol
+Gefasschirurgie
+Gen Relativ Gravit
+Gender Issues
+Genes Genomics
+Genet Eng (N Y)
+Genet Program Evolvable Mach
+Genet Resour Crop Evol
+Geneva Pap Risk Insur Issues Pract
+Geneva Risk Insur Rev
+Genome Dyn Stab
+Genomic Med
+Genus
+GeoJournal
+Geoenvironmental Disasters
+Geoinformatica
+Geol Rundsch
+Geom Dedic
+Geom Model Process
+Geom Sci Inf (2013)
+Geosci Lett
+Geriatr Nephrol Urol
+Geroscience
+Glob Soc Welf
+Gold Bull
+Granul Matter
+Graph Learn Med Imaging (2019)
+Graphene Technol
+Graphs Biomed Image Anal Comput Anat Imaging Genet (2017)
+Graphs Biomed Image Anal Integr Med Imaging Nonimaging Modalities (2018)
+Graphs Comb
+Group Decis Negot
+Grundwasser (Berl)
+Gynakol Endokrinol
+Gynakologe
+Gynecol Surg
+HCI Int 2018 Posters Ext Abstr (2018)
+HCI Int 2019 Posters (2019)
+HEC Forum
+HNO Nachr
+Hai Yang Xue Bao
+Hamatol Bluttransfus
+Handb Exp Pharmacol
+Haptics (2010)
+Haptics (2014)
+Haptics (2018)
+Head Neck Pathol
+Health Care Anal
+Health Care Manag Sci
+Health Inf Sci Syst
+Health Serv Outcomes Res Methodol
+Health Stat Q
+Health Technol (Berl)
+Heart Fail Rev
+Heart Vessels Suppl
+Heat Mass Transf
+Heilberufe
+HeilberufeScience
+Hell Cheirourgike
+Hematol Cell Ther
+Her Russ Acad Sci
+Herit Sci
+Herzschrittmacherther Elektrophysiol
+High Blood Press Cardiovasc Prev
+High Dimens Probab
+High Educ (Dordr)
+High Perform Comput (2016)
+Hist Archaeol
+Hist Philos Life Sci
+Histochemie
+Hormones
+Hormones (Athens)
+Hortic Environ Biotechnol
+Hugo J
+Huisarts Wet
+Hum Asp IT Aged Popul (2015)
+Hum Brain Artif Intell (2019)
+Hum Cell
+Hum Ecol
+Hum Ecol Interdiscip J
+Hum Evol
+Hum Genet Suppl
+Hum Nat
+Hum Physiol
+Human Asp IT Aged Popul (2016)
+Husserl Stud
+Hydrogeol J
+Hyperfine Interact
+ICT Syst Secur Priv Prot (2017)
+IFIP Adv Inf Commun Technol
+IFMBE Proc
+IIC Int Rev Ind Prop Copyr Law
+ISSS J Micro Smart Syst
+IZA J Labor Econ
+IZA J Labor Policy
+Ichthyol Res
+Image Anal Mov Organ Breast Thorac Images (2018)
+Image Anal Recognit
+In Silico Cell Tissue Sci
+In Silico Pharmacol
+In Vitro Cell Dev Biol Plant
+Ind Health Care
+Indian Econ Rev
+Indian J Clin Biochem
+Indian J Gynecol Oncol
+Indian J Hematol Blood Transfus
+Indian J Labour Econ
+Indian J Microbiol
+Indian J Orthop
+Indian J Otolaryngol
+Indian J Otolaryngol Head Neck Surg
+Indian J Phys Proc Indian Assoc Cultiv Sci (2004)
+Indian J Plant Physiol
+Indian J Surg
+Indian J Surg Oncol
+Indian J Thorac Cardiovasc Surg
+Indian J Virol
+Indian Phytopathol
+Inductive Log Program
+Inf Contemp Soc (2019)
+Inf Process Comput Assist Interv (2012)
+Inf Process Med Imaging
+Inf Retr Boston
+Inf Syst Front
+Infect Dis Ther
+Inflammopharmacology
+Inform Secur Appl (2013)
+Inland Water Biol
+Innov High Educ
+Innov Syst Softw Eng
+Insectes Soc
+Insights Imaging
+Instr Sci
+Int Arch Arbeitsmed
+Int Cancer Conf J
+Int Environ Agreem
+Int J Adv Couns
+Int J Adv Eng Sci Appl Math
+Int J Adv Manuf Technol
+Int J Anthropol
+Int J Anthropol Ethnol
+Int J Appl Comput Math
+Int J Appl Posit Psychol
+Int J Artif Intell Educ
+Int J Behav Med
+Int J Bipolar Disord
+Int J Bullying Prev
+Int J Card Imaging
+Int J Child Maltreat
+Int J Childbirth
+Int J Coal Sci Technol
+Int J Cogn Ther
+Int J Comput Support Collab Learn
+Int J Comput Vis
+Int J Concr Struct Mater
+Int J Control Autom Syst
+Int J Data Sci Anal
+Int J Diabetes Dev Ctries
+Int J Doc Anal Recognit
+Int J Dyn Control
+Int J Early Child
+Int J Earth Sci
+Int J Educ Vocat Guid
+Int J Environ Res
+Int J Environ Sci Technol (Tehran)
+Int J Fract
+Int J Health Care Finance Econ
+Int J Health Econ Manag
+Int J Hist Archaeol
+Int J Implant Dent
+Int J Inf Secur
+Int J Inf Technol
+Int J Infrared Millimeter Waves
+Int J Intell Robot Appl
+Int J Ion Mobil Spectrom
+Int J Life Cycle Assess
+Int J Ment Health Addict
+Int J Multimed Inf Retr
+Int J Parallel Program
+Int J Pept Res Ther
+Int J Plant Prod
+Int J Polit Cult Soc
+Int J STEM Educ
+Int J Sci Math Educ
+Int J Semiot Law
+Int J Soc Robot
+Int J Softw Tools Technol Transf
+Int J Speech Technol
+Int J Stomatol Occlusion Med
+Int J Technol Des Educ
+Int J Thermophys
+Int J Trop Insect Sci
+Int J Wirel Inf Netw
+Int Microbiol
+Int Nano Lett
+Int Rev Econ
+Int Rev Educ
+Int Tax Public Financ
+Int Work Conf Interp Nat Artif Comput
+Int Z Angew Physiol
+Integr Mater Manuf Innov
+Integr Physiol Behav Sci
+Integr Psychol Behav Sci
+Intell Sci Big Data Eng (2013)
+Intell Serv Robot
+Intell Virtual Agents
+Intensive Care Med Exp
+Intensivmed Notfallmed
+Inter Econ
+Interchange (Tor : 1984)
+Internist
+Invent Math
+Ion Channels
+Ionics (Kiel)
+Iran J Sci Technol Trans A Sci
+Iranian J Environ Health Sci Eng
+Irrig Sci
+Ital J Neurol Sci
+J Acad Ethics
+J Adult Dev
+J Afr Am Stud (New Brunsw)
+J Agric Biol Environ Stat
+J Agric Ethics
+J Am Aging Assoc
+J Ambient Intell Humaniz Comput
+J Anal Sci Technol
+J Anal Test
+J Appl Comput Topol
+J Appl Electrochem
+J Appl Math Comput
+J Appl Phycol
+J Appl Spectrosc
+J Archaeol Method Theory
+J Arid Land
+J Artif Organs
+J Assoc Res Otolaryngol
+J Asthet Chir
+J Astronaut Sci
+J Aust Popul Assoc
+J Autism Child Schizophr
+J Autom Reason
+J Basic Appl Zool
+J Behav Assess
+J Behav Educ
+J Behav Health Serv Res
+J Big Data
+J Bio Tribocorros
+J Bioenerg
+J Bioeth
+J Bioeth Inq
+J Biol Phys
+J Bionic Eng
+J Bus Psychol
+J Cancer Surviv
+J Cell Commun Signal
+J Cent South Univ
+J Chem Biol
+J Chem Crystallogr
+J Chem Sci (Bangalore)
+J Child Adolesc Trauma
+J Child Fam Stud
+J Chin Polit Sci
+J Classif
+J Clin Monit
+J Clin Monit Comput
+J Clin Psychol Med Settings
+J Clust Sci
+J Coast Conserv
+J Coat Technol Res
+J Cogn Educ Psychol
+J Cogn Enhanc
+J Cogn Psychother
+J Comb Optim
+J Community Genet
+J Community Health
+J Comp Physiol
+J Comp Physiol A
+J Comp Physiol B
+J Comput Electron
+J Comput High Educ
+J Comput Neurosci
+J Comput Sci Technol
+J Comput Soc Sci
+J Comput Surg
+J Consum Policy (Dordr)
+J Contemp Psychother
+J Crop Sci Biotechnol
+J Cross Cult Gerontol
+J Cryptogr Eng
+J Cult Cogn Sci
+J Data Semant
+J Dev Life Course Criminol
+J Dev Phys Disabil
+J Diabetes Metab Disord
+J Digit Imaging
+J Dr Nurs Pract
+J Dyn Control Syst
+J Dyn Differ Equ
+J East Asian Ling
+J Echocardiogr
+J Econ Growth (Boston)
+J Econ Inequal
+J Econ Interact Coord
+J Econ Sci Assoc
+J Econ Struct
+J Egypt Public Health Assoc
+J Electron Mater
+J Elliptic Parabol Equ
+J Eng Math
+J Environ Health Sci Eng
+J Environ Stud Sci
+J Epidemiol Glob Health
+J Ethics
+J Ethol
+J Eur Opt Soc Rapid Publ
+J Evol Biochem Physiol
+J Evol Econ
+J Evol Equ
+J Exp Criminol
+J Fam Econ Issues
+J Fam Violence
+J Flow Chem
+J Food Sci Technol
+J For Res (Harbin)
+J Form Des Learn
+J Fourier Anal Appl
+J Frailty Aging
+J Gastroenterol Hepatol Erkrank
+J Gay Lesbian Med Assoc
+J Gen Intern Med
+J Gen Philos Sci
+J Gen Plant Pathol
+J Geod
+J Geogr Syst
+J Geom Anal
+J Glob Optim
+J Grid Comput
+J Gynakol Endokrinol
+J Happiness Stud
+J Health Serv Psychol
+J Healthc Inform Res
+J Hematop
+J High Energy Phys
+J Hist Biol
+J Hous Built Environ
+J Huazhong Univ Sci Technolog Med Sci
+J Hum Rights Soc Work
+J Hydrodynam B
+J Immigr Health
+J Immigr Minor Health
+J In Vitro Fert Embryo Transf
+J Incl Phenom Macrocycl Chem
+J Indian Inst Sci
+J Indian Philos
+J Inequal Appl
+J Infrared Millim Terahertz Waves
+J Innov Entrep
+J Inorg Organomet Polym Mater
+J Insect Behav
+J Insect Conserv
+J Int Bus Stud
+J Int Migr Integr
+J Int Relat Dev (Ljubl)
+J Intell Inf Syst
+J Intell Manuf
+J Intell Robot Syst
+J Interact Sci
+J Klin Endokrinol Stoffwechs
+J Korean Phys Soc
+J Korean Soc Appl Biol Chem
+J Korean Stat Soc
+J Labor Res
+J Labour Mark Res
+J Logic Lang Inf
+J Mamm Evol
+J Mammary Gland Biol Neoplasia
+J Mar Sci Technol
+J Mater Cycles Waste Manag
+J Mater Eng Perform
+J Mater Sci
+J Mater Sci Lett
+J Math Chem
+J Math Imaging Vis
+J Math Ind
+J Math Neurosci
+J Maxillofac Oral Surg
+J Med Biol Eng
+J Med Humanit
+J Med Humanit Bioeth
+J Med Person
+J Med Syst
+J Med Toxicol
+J Med Ultrason (2001)
+J Ment Health Adm
+J Microbio Robot
+J Mt Sci
+J Nanopart Res
+J Nanostructure Chem
+J Nat Med
+J Neural Transm (Vienna)
+J Neural Transm Park Dis Dement Sect
+J Neurovisc Relat
+J Nondestr Eval
+J Nonlinear Sci
+J Nonverbal Behav
+J Nurs Law
+J Nurs Meas
+J Obstet Gynaecol India
+J Occup Rehabil
+J Ocean Eng Mar Energy
+J Ocean Univ China
+J Oceanogr
+J Oceanol Limnol
+J Ocul Biol Dis Infor
+J Ophthalmic Inflamm Infect
+J Optim Theory Appl
+J Ornithol
+J Orofac Orthop
+J Orthop Traumatol
+J Packag Technol Res
+J Parasit Dis
+J Patient Rep Outcomes
+J Pediatr Neuropsychol
+J Perinat Educ
+J Pers Eval Educ
+J Pest Sci (2004)
+J Pet Explor Prod Technol
+J Pharm Innov
+J Pharm Investig
+J Pharmacokinet Biopharm
+J Pharmacokinet Pharmacodyn
+J Phase Equilibria Diffus
+J Philos Logic
+J Plant Biochem Biotechnol
+J Plant Biol
+J Plant Dis Prot (2006)
+J Plant Growth Regul
+J Plant Pathol
+J Police Crim Psychol
+J Polym Environ
+J Popul
+J Popul Ageing
+J Popul Econ
+J Popul Res (Canberra)
+J Prev Alzheimers Dis
+J Prim Prev
+J Proteins Proteom
+J Pseudodiffer Oper Appl
+J Psycholinguist Res
+J Psychopathol Behav Assess
+J Psychosoc Rehabil Ment Health
+J Public Health (Bangkok)
+J Public Health Policy
+J Quant Criminol
+J Quant Econ
+J Racial Ethn Health Disparities
+J Radiat Oncol
+J Radioanal Nucl Chem
+J Ration Emot Cogn Behav Ther
+J Real Time Image Process
+J Regul Econ
+J Reliab Intell Environ
+J Risk Uncertain
+J Robot Surg
+J Rubber Res
+J STEM Educ Res
+J Sci Comput
+J Sci Educ Technol
+J Seismol
+J Shanghai Jiaotong Univ Sci
+J Shanghai Univ
+J Signal Process Syst
+J Soil Sci Plant Nutr
+J Soils Sediments
+J Solgel Sci Technol
+J Solid State Electrochem
+J Solution Chem
+J Stat Distrib Appl
+J Stat Phys
+J Stat Theory Appl
+J Stat Theory Pract
+J Struct Funct Genomics
+J Supercomput
+J Supercond Nov Magn
+J Syst Chem
+J Syst Sci Complex
+J Syst Sci Syst Eng
+J Technol Behav Sci
+J Technol Transf
+J Theor Probab
+J Therm Anal Calorim
+J Tissue Cult Methods
+J Ultrasound
+J Urban Health
+J Urol Urogynakologie
+J VLSI Signal Process Syst Signal Image Video Technol
+J Verbrauch Lebensm
+J Vis (Tokyo)
+J World Prehist
+J Wuhan Univ Technol Mater Sci Ed
+J Youth Adolesc
+J Zhejiang Univ Sci
+J Zhejiang Univ Sci B
+JA Clin Rep
+JETP Lett
+JOM (1989)
+Jpn Econ Rev (Oxf)
+Jpn J Ind Appl Math
+Jpn J Surg
+Jpn J Thorac Cardiovasc Surg
+KN J Cartogr Geogr Inf
+Kew Bull
+Klin Neuroradiol
+Knowl Inf Syst
+Kolner Z Soz Sozpsychol
+Korean J Chem Eng
+Kulturpflanze
+Kunstliche Intell (Oldenbourg)
+Kybernetik
+Landsc Ecol
+Landslides
+Lang Policy
+Lang Resour Eval
+Large Scale Annot Biomed Data Export Label Synth Hardw Aware Learn Med Imaging Comput Assist Interv (2019)
+Large Scale Assess Educ
+Lasers Dent Sci
+Lat Am Econ Rev
+Lat Stud
+Learn Environ Res
+Lett Mat Pristem
+Lett Math Phys
+Lett Pept Sci
+Lett Spat Resour Sci
+Lifetime Data Anal
+Limnology (Tokyo)
+Linguist Philos
+Liverp Law Rev
+Living Rev Comput Astrophys
+Living Rev Relativ
+Living Rev Sol Phys
+MMW Fortschr Med
+MRS Adv
+MRS Commun
+Mach Learn
+Mach Learn Interpret Neuroimaging (2011)
+Mach Learn Interpret Neuroimaging (2014)
+Mach Learn Knowl Discov Databases
+Mach Learn Med Eng Cardiovasc Health Intravasc Imaging Comput Assist Stenting (2019)
+Mach Learn Med Imaging
+Mach Learn Multimodal Interact
+Mach Transl
+Mach Vis Appl
+Macromol Res
+Mamm Biol
+Mamm Res
+Manag Int Rev
+Manuscr Math
+Mar Biodivers
+Mar Biol
+Mar Biotechnol (NY)
+Mar Geophys Res (Dordr)
+Mar Life Sci Technol
+Mark Lett
+Mater Renew Sustain Energy
+Mater Res Soc Symp Proc
+Mater Struct
+Math Ann
+Math Geol
+Math Geosci
+Math Ind Case Stud
+Math Methods Oper Res (Heidelb)
+Math Program
+Math Program Comput
+Math Vis
+Maxillofac Plast Reconstr Surg
+Mech Adv Mater Mod Process
+Mech Time Depend Mater
+Med Biol Eng
+Med Chem Res
+Med Comput Vis (2013)
+Med Comput Vis (2015)
+Med Electron Biol Eng
+Med Electron Microsc
+Med Farm Meded
+Med Health Care Philos
+Med Image Comput Comput Assist Interv
+Med Image Underst Anal Conf (2017)
+Med Imaging Augment Real (2016)
+Med Klin Intensivmed Notfmed
+Med Oncol Tumor Pharmacother
+Med Sci Educ
+Med Stud
+Med Toxicol
+Med Toxicol Adverse Drug Exp
+Med Ultrasound Preterm Perinat Paediatr Image Anal (2020)
+Medizinrecht
+Memet Comput
+Memo
+Ment Health Serv Res
+Met Ions Life Sci
+Metabolomics
+Metacogn Learn
+Metall Mater Trans A Phys Metall Mater Sci
+Metamedicine
+Metascience
+Methodol Comput Appl Probab
+Methods Cell Sci
+Metrika
+Metron
+Microbiology (N Y)
+Microfluid Nanofluidics
+Microgravity Sci Technol
+Microsyst Technol
+Middle East Fertil Soc J
+Mikrochim Acta
+Mikrochim Ichnoanal Acta
+Min Intell Knowl Explor (2015)
+Min Metall Explor
+Mindfulness (N Y)
+Minds Mach (Dordr)
+Mine Water Environ
+Mineral Petrol
+Minerva
+Mitig Adapt Strateg Glob Chang
+Model Earth Syst Environ
+Mol Biol
+Mol Biol Biochem Biophys
+Mol Breed
+Mol Cell Biol Hum Dis Ser
+Mol Cell Pediatr
+Mol Cell Ther
+Mol Cell Toxicol
+Mol Chem Neuropathol
+Mol Gen Microbiol Virol
+Mol Imaging Reconstr Anal Mov Body Organs Stroke Imaging Treat (2017)
+Mon Hefte Math
+Monash Bioeth Rev
+Monatsh Chem
+Monatsschr Kinderheilkd
+Monogr Endocrinol
+Morphology (Dordr)
+Moscow Univ Biol Sci Bull
+Motiv Emot
+Multiagent Based Simul
+Multidimens Syst Signal Process
+Multimed Model
+Multimed Syst
+Multimed Tools Appl
+Multimodal Brain Image Anal (2011)
+Multimodal Brain Image Anal (2012)
+Multimodal Brain Image Anal (2013)
+Multimodal Brain Image Anal Math Found Comput Anat (2019)
+Mund Kiefer Gesichtschir
+Musculoskelet Surg
+Mycol Prog
+Mycopathol Mycol Appl
+NTM
+Nano Converg
+Nano Res
+Nanoethics
+Nanomicro Lett
+Nanoscale Res Lett
+Nanotechnol Russ
+Nat Comput
+Nat Hazards (Dordr)
+Nat Lang Linguist Theory
+Nat Lang Process Inf Syst
+Nat Prod Bioprospect
+Natl Acad Sci Lett
+Natl Conf Comput Vis Pattern Recognit Image Process Graph
+Naturwissenschaften
+Naunyn Schmiedebergs Arch Pharmakol
+Nebr Symp Motiv
+Neirofiziologiia
+Neonatal Netw
+Neotrop Entomol
+Nephrologe
+Neth Heart J
+Neth J Psychol
+Netw Model Anal Health Inform Bioinform
+Netw Spat Econ
+Neue Polit Lit
+Neural Comput Appl
+Neural Process Lett
+NeuroRx
+Neurochem Pathol
+Neurocrit Care
+Neuroethics
+Neuroinformatics
+Neurol Ther
+Neuromethods
+Neuropsychiatr
+Neuropsychol Rev
+Neurosci Behav Physiol
+New For (Dordr)
+New Gener Comput
+New Trends Image Anal Process ICIAP 2015 Workshops (2015)
+Nexus Netw J
+Nihon Kyobu Geka Gakkai Zasshi
+Nonlinear Dyn
+Notf Rett Med
+Nouv Rev Fr Hematol Blood Cells
+Nucl Med Mol Imaging
+Nucl Recept
+Nucleic Acids Mol Biol
+Nucleus (Calcutta)
+Numer Algorithms
+Numer Math
+Numer Math (Heidelb)
+Nuovo Cimento C
+Nurs Hist Rev
+Nursing (Maarssen)
+Nutr Cycl Agroecosyst
+OZS Osterr Z Soziol
+Obere Extrem
+Occup Health Sci
+Ocean Dyn
+Ocean Sci J
+Oceanology (Wash D C)
+Oecologia
+On Move Meaningful Internet Syst
+Oncol Ther
+Oncologie (Paris)
+Onkologe (Berl)
+Oper Orthop Traumatol
+Ophthalmic Med Image Anal (2019)
+Ophthalmol Ther
+Opt Nanoscopy
+Opt Quantum Electron
+Opt Rev
+Opt Spectrosc
+Optim Lett
+Optoelectron Lett
+Oral Radiol
+Order (Dordr)
+Org Divers Evol
+Org Med Chem Lett
+Orient Pharm Exp Med
+Orig Life
+PMC Biophys
+Padiatr Padol
+Pain Ther
+Palaontol Z
+Paleobiodivers Paleoenviron
+Pap Reg Sci Assoc
+Partner Abuse
+Pastoral Psychol
+Pastoralism
+Patch Based Tech Med Imaging (2015)
+Patch Based Tech Med Imaging (2016)
+Patch Based Tech Med Imaging (2017)
+Patch Based Tech Med Imaging (2018)
+Patient
+Pattern Anal Appl
+Pattern Recognit DAGM
+Pavlov J Biol Sci
+Peer Peer Netw Appl
+Period Math Hung
+Pers Ubiquitous Comput
+Perspect Behav Sci
+Perspect Drug Discov Des
+Pet Sci
+Pflege Z
+Pharm Biotechnol
+Pharm Chem J
+Pharm Diagn Innov
+Pharmaceut Med
+PharmacoEcon Outcomes News
+Pharmacoecon Open
+Pharmacol Rep
+Phenomenol Cogn Sci
+Philos Manag
+Philos Technol
+Philosophia (Ramat Gan)
+Photochem Photobiol Sci
+Photosynth Res
+Phys Chem Miner
+Phys Eng Sci Med
+Phys Perspect
+Physiol Mol Biol Plants
+Phytochem Rev
+Phytoparasitica
+Phytotherapie (Paris)
+Planet Sci
+Plant Biotechnol Rep
+Plant Cell Tissue Organ Cult
+Plant Ecol
+Plant Foods Hum Nutr
+Plant Growth Regul
+Plant Mol Biol Report
+Plant Reprod
+Plant Soil
+Plant Syst Evol
+Plasmonics
+Pneumo News
+Pneumologe (Berl)
+Pneumonologie
+Poiesis Prax
+Polar Biol
+Polit Behav
+Polit Vierteljahresschr
+Polym Bull (Berl)
+Polym Sci Ser A Chem Phys
+Popul Environ
+Popul Res Policy Rev
+Popul Trends
+Positivity (Dordr)
+Postmedieval
+Potato Res
+Pramana
+Predict Intell Med
+Prev Sci
+Primates
+Priv Stat Databases
+Probab Theory Relat Fields
+Probab Uncertain Quant Risk
+Probiotics Antimicrob Proteins
+Proc Annu Conf GeoComput
+Proc IEEE Int Conf Inf Reuse Integr
+Proc Int Conf Health Care Syst Eng (2013)
+Proc Int Conf Image Anal Process
+Proc Int Conf Web Inf Syst Eng
+Proc Int Meshing Roundtable
+Proc Int Workshop Soc Inform
+Proc Natl Acad Sci India Sect B Biol Sci
+Proc WRI World Congr Comput Sci Inf Eng
+Proc Zool Soc
+Procare
+Prog Biomater
+Prog Bot
+Prog Cell Cycle Res
+Prog Chem Org Nat Prod
+Prog Colloid Polym Sci
+Prog Drug Res
+Prog Earth Planet Sci
+Prog Mol Subcell Biol
+Prog Pediatr Surg
+Promed Komplement
+Prospects
+Prospects (Paris)
+Prostate Cancer Imaging (2011)
+Psicol Reflex Crit
+Psychiatr Q
+Psychobiology (Austin, Tex)
+Psychol Forsch
+Psychol Inj Law
+Psychol Stud (Mysore)
+Psychol Well Being
+Psychometrika
+Psychon Bull Rev
+Psychon Sci
+Psychopharmacol Ser
+Psychopharmacology Suppl
+Psychosom Konsiliarpsychiatr
+Psychotherapeut (Berl)
+Pulm Ther
+Pure Appl Geophys
+Purinergic Signal
+Qual Life Res
+Qual Quant
+Qual Sociol
+Qual Theory Dyn Syst
+Qual User Exp
+Quantum Inf Process
+Quantum Mach Intell
+Queueing Syst
+Race Soc Probl
+Radiol Med
+Radiol Phys Technol
+Ramanujan J
+Rare Cancers Ther
+Rare Metals
+Read Writ
+Reanimation
+Recent Adv Biol Psychiatry
+Recent Adv Phytochem
+Recent Dev Alcohol
+Rechtsmedizin (Berl)
+Reg Environ Change
+Regen Eng Transl Med
+Remote Sens Earth Syst Sci
+Rend Lincei Sci Fis Nat
+Renew Wind Water Sol
+Reprod Sci
+Requir Eng
+Res Child Adolesc Psychopathol
+Res Comput Mol Biol
+Res Eng Des
+Res Exp Med (Berl)
+Res High Educ
+Res Math Sci
+Res Number Theory
+Res Pract Technol Enhanc Learn
+Res Publica
+Res Sci Educ
+Res Theory Nurs Pract
+Residue Rev
+Results Math
+Rev Bras Bot
+Rev Bras Farmacogn
+Rev Econ Househ
+Rev Environ Contam Toxicol
+Rev Environ Sci Biotechnol
+Rev Fish Biol Fish
+Rev Fluoresc
+Rev Ind Organ
+Rev J Autism Dev Disord
+Rev J Chem
+Rev Mat Complut
+Rev Mod Plasma Phys
+Rev Philos Psychol
+Rev R Acad Cienc Exactas Fis Nat A Mat
+Rheol Acta
+Rheuma Plus
+Rheumatol Ther
+Ric Clin Lab
+Rice (N Y)
+Robot Mechatron (2015)
+Robotics Biomim
+Rock Mech Rock Eng
+Rouxs Arch Dev Biol
+Russ Agric Sci
+Russ Chem Bull
+Russ J Biol Invasions
+Russ J Bioorg Chem
+Russ J Dev Biol
+Russ J Ecol
+Russ J Gen Chem
+Russ J Genet
+Russ J Genet Appl Res
+Russ J Mar Biol
+Russ J Plant Physiol
+SERIEs (Berl)
+SN Appl Sci
+SN Compr Clin Med
+SN Comput Sci
+SN Partial Differ Equ Appl
+Sankhya
+Sankhya B (2008)
+Sankhya Ser A
+School Ment Health
+Sci China B Chem
+Sci China C Life Sci
+Sci China Chem
+Sci China Earth Sci
+Sci China Mater
+Sci China Math
+Sci China Phys Mech Astron
+Sci China Ser A Math
+Sci China Ser A Math Phys Astron
+Sci China Ser D Earth Sci
+Sci China Technol Sci
+Sci Educ (Dordr)
+Sci Eng Ethics
+Scientometrics
+Secur Inform
+Sel Areas Cryptogr
+Semant Web ISWC
+Semin Immunopathol
+Sens Imaging
+Sens Instrum Food Qual Saf
+Sepsis (Boston)
+Set Valued Var Anal
+Sex Cult
+Sex Disabil
+Sex Res Social Policy
+Sex Roles
+Shape Med Imaging (2018)
+Shape Med Imaging (2020)
+Shi Yan Li Xue
+Shock Waves
+Signal Image Video Process
+Similarity Search Appl
+Simul Synth Med Imaging
+Singmul Hakhoe Chi
+Sleep Biol Rhythms
+Sleep Vigil
+Soc Choice Welfare
+Soc Comput Behav Cult Model Predict (2015)
+Soc Cult Behav Model (2016)
+Soc Indic Res
+Soc Inform (2016)
+Soc Netw Anal Min
+Soc Psychiatry
+Soc Psychiatry Psychiatr Epidemiol
+Soc Psychol Educ
+Soc Theory Health
+Society
+Socioecol Pract Res
+Soft comput
+Softw Syst Model
+Sol Phys
+Somnologie (Berl)
+Soz Praventivmed
+Space Life Sci
+Space Sci Rev
+Spat Demogr
+Spatiotemporal Image Anal Longitud Time Ser Image Data (2012)
+Spatiotemporal Image Anal Longitud Time Ser Image Data (2014)
+Spectr Shape Anal Med Imaging (2016)
+Spektrum Augenheilkd
+Spine Deform
+Sport Sci Health
+Sports Med Open
+Springer Sci Rev
+Springer Semin Immunopathol
+Springer Ser Biophys
+Springerplus
+Stat Biosci
+Stat Comput
+Stat Methods Appt
+Stat Pap (Berl)
+Stem Cell Rev Rep
+Stoch Environ Res Risk Assess
+Stoch Partial Differ Equ
+Struct Bond
+Struct Chem
+Struct Multidiscipl Optim
+Stud Comp Int Dev
+Stud Log
+Stud Russ Econ Dev
+Stud Sov Thought
+Subjectivity
+Sugar Tech
+Surg Case Rep
+Surg Radiol Anat
+Surv Geophys
+Surv Immunol Res
+Sustain Sci
+Sustain Water Resour Manag
+Swiss J Econ Stat
+Swiss J Geosci
+Swiss J Palaeontol
+Symbiosis
+Synthese
+Syst Parasitol
+Syst Pract Action Res
+Syst Synth Biol
+TSG
+Tandartspraktijk
+Tech Coloproctol
+TechTrends
+Telecommun Syst
+Test (Madr)
+Text Speech Dialog
+Thalassas
+Theor Appl Climatol
+Theor Chem Acc
+Theor Chim Acta
+Theor Comput Fluid Dyn
+Theor Ecol
+Theor Exp Plant Physiol
+Theor Med
+Theor Med Bioeth
+Theory Comput Syst
+Theory Soc
+Ther Innov Regul Sci
+Tijdschr Bedr Verzekeringsgeneeskd
+Tijdschr Kindergeneeskd
+Tijdschr Verzorg
+Tissue Eng Regen Med
+Tools Algorithms Constr Anal Syst I (2020)
+Top Catal
+Top Curr Chem
+Top Curr Chem (Cham)
+Top Curr Genet
+Top Heterocycl Chem
+Top Organomet Chem
+Topoi (Dordr)
+Toxicol Environ Health Sci
+Toxicol Res
+Toxicol Rev
+Trans Action
+Transform Digit Worlds (2018)
+Transl Respir Med
+Transl Stroke Res
+Transp Porous Media
+Transportation (Amst)
+Trauma Berufskrankh
+Treat Endocrinol
+Treat Respir Med
+Tree Genet Genomes
+Trees (Berl West)
+Trends Organ Crime
+Tribol Lett
+Triple Helix (Heidelb)
+Trop Ecol
+Trop Plant Biol
+Trop Plant Pathol
+Trust Eternal Syst Via Evol Softw Data Knowl (2012)
+Ultrasound J
+Uncertain Safe Util Mach Learn Med Imaging Graph Biomed Image Anal (2020)
+Uncertain Safe Util Machine Learn Med Imaging Clin Image Based Proced (2019)
+Underst Complex Syst
+Underst Interpret Mach Learn Med Image Comput Appl (2018)
+Unfallchirurgie
+Univers Access Hum Comput Interact (2009)
+Univers Access Hum Comput Interact (2017)
+Univers Access Inf Soc
+Urban Ecosyst
+Urban Rail Transit
+Urban Rev
+Urban Soc Work
+Urol Radiol
+Urolithiasis
+User Model User-adapt Interact
+VB News
+VLDB J
+Veg Hist Archaeobot
+Vegetos
+Vet Sci Commun
+Vietnam J Math
+Violence Vict
+VipIMAGE 2017 (2017)
+VipIMAGE 2019 (2019)
+Virchows Arch A Pathol Anat Histopathol
+Virchows Arch A Pathol Pathol Anat
+Virchows Arch B Cell Pathol
+Virchows Arch B Cell Pathol Incl Mol Pathol
+Virchows Arch Pathol Anat Physiol Klin Med
+Virol Monogr
+Virtual Real
+Virusdisease
+Vis Comput
+Vis Comput Ind Biomed Art
+Voluntas
+WASA
+Waste Biomass Valorization
+Waste Dispos Sustain Energy
+Water Air Soil Pollut
+Water Hist
+Water Qual Expo Health
+Weltwirtsch Arch
+Wetl Ecol Manag
+Wetlands (Wilmington)
+Wien Klin Mag
+Wien Klin Wochenschr Educ
+Wien Med Wochenschr
+Wien Med Wochenschr Suppl
+Wilehm Roux Arch Dev Biol
+Wilhelm Roux Arch Entwickl Mech Org
+Wirel Pers Commun
+Wirtschaftsdienst
+Wissen Kompakt (Heidelb)
+Wood Sci Technol
+World Wide Web
+Z Allg Wissenschaftstheor
+Z Anat Entwicklungsgesch
+Z Angew Math Phys
+Z Arbeitswiss
+Z Ernahrungswiss
+Z Ernahrungswiss Suppl
+Z Erziehwiss
+Z Gesamte Exp Med
+Z Gesundh Wiss
+Z Herz Thorax Gefasschir
+Z Indukt Abstamm Vererbungsl
+Z Jagdwiss
+Z Kinderheilkd
+Z Krebsforsch Klin Onkol Cancer Res Clin Oncol
+Z Lebensm Unters Forsch
+Z Neurol
+Z Phys A At Nucl
+Z Rechtsmed
+Z Zellforch Microsk Anat Histochem
+Z Zellforsch Mikrosk Anat
+ZDM
+ZFA (Stuttgart)
+Zentralbl Arbeitsmed Arbeitsschutz Ergon
+Zorg Welz
+Zorgvisie

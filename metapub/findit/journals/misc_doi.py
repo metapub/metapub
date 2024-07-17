@@ -4,6 +4,8 @@
 #                  having "More than 25 sessions created in 5 minutes"
 #
 
+ACS_JOURNAL_LIST = 'acs_journals.txt'
+
 doi_templates = {
     'acs': 'http://pubs.acs.org/doi/pdf/{a.doi}',
     'akademii': 'http://www.akademiai.com/content/{a.pii}/fulltext.pdf',
@@ -93,3 +95,12 @@ simple_formats_doi = {
     'PLoS Pathog': doi_templates['plos'],
     'N Engl J Med':  'http://www.nejm.org/doi/pdf/{a.doi}',
 }
+
+
+
+# Ingest all of the journals contained in the publisher_list/*.txt files.  
+# Add them into the directory according to the templates they require.
+
+
+
+

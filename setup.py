@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='metapub',
-    version='0.5.12',
+    version='0.6.0a',
     description='Pubmed / NCBI / eutils interaction library, handling the metadata of pubmed papers.',
     long_description=open('README.rst').read(),
     long_description_content_type='text/x-rst',
@@ -16,6 +16,10 @@ setup(
     maintainer_email='naomi@nthmost.com',
     license='Apache 2.0',
     packages=find_packages(),
+    include_package_data=True,
+    package_data={
+        '': ['publisher_lists/*.txt'],
+    },
     entry_points={'console_scripts': [
         'pubmed_article = metapub.pubmedfetcher_cli:main',
         'convert = metapub.convert:main',

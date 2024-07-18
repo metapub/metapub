@@ -1,17 +1,26 @@
 AACE Clin Case Rep
 AWHONN Lifelines
 Acad Pathol
+Acad Pediatr
 Acad Radiol
 Accid Anal Prev
 Accid Emerg Nurs
 Acta Anaesthesiol Taiwan
+Acta Astronaut
+Acta Biomater
+Acta Cardiol
 Acta Geogr Geol Meteorol Debr Geol Gemorfol Termeszfoldr Sor
 Acta Haematol Pol
+Acta Histochem
 Acta Mater
 Acta Oecol (Montrouge)
 Acta Otorrinolaringol Esp
 Acta Pharm Sin B
 Acta Psychol (Amst)
+Acta Reumatol Port
+Acta Trop
+Actas Dermosifiliogr
+Actas Urol Esp
 Actual Pharm
 Actual Pharm Hosp
 Ad Hoc Netw
@@ -26,18 +35,24 @@ Adv Appl Math
 Adv Appl Microbiol
 Adv Biol Med Phys
 Adv Biol Regul
+Adv Biophys
 Adv Biosci
 Adv Bot Res
+Adv Cancer Res
 Adv Carbohydr Chem
 Adv Carbohydr Chem Biochem
 Adv Chemother
 Adv Child Dev Behav
 Adv Chronic Kidney Dis
+Adv Clin Chem
+Adv Colloid Interface Sci
 Adv Comp Physiol Biochem
 Adv Dermatol
 Adv Dev Biol
+Adv Drug Deliv Rev
 Adv Ecol Res
 Adv Eng Softw
+Adv Enzyme Regul
 Adv Exp Biol
 Adv Exp Soc Psychol
 Adv Food Nutr Res
@@ -53,6 +68,7 @@ Adv Life Course Res
 Adv Lipid Res
 Adv Mar Biol
 Adv Math (N Y)
+Adv Med Sci
 Adv Metab Disord
 Adv Microb Physiol
 Adv Morphog
@@ -71,6 +87,7 @@ Adv Pharmacol Chemother
 Adv Phys Org Chem
 Adv Planar Lipid Bilayers Liposomes
 Adv Powder Technol
+Adv Protein Chem
 Adv Protein Chem Struct Biol
 Adv Radiat Biol
 Adv Radiat Oncol
@@ -83,42 +100,62 @@ Adv Study Behav
 Adv Surg
 Adv Vet Med
 Adv Vet Sci Comp Med
+Adv Virus Res
 Adv Water Resour
 Aeolian Res
 Aerosp Sci Technol
 Afr J Emerg Med
+Ageing Res Rev
 Aggress Violent Behav
 Aging Health Res
 Agric Ecosyst Environ
 Agric For Meteorol
 Agric Sci China
 Agric Water Manag
+Air Med J
+Alcohol
 Algal Res
 Alkaloids Chem Biol
 Alkohol Narkom
+Allergol Immunopathol (Madr)
+Allergol Int
 Alter
+Alzheimers Dement
 Am Heart J
 Am J Cardiol
 Am J Clin Nutr
+Am J Emerg Med
 Am J Geriatr Pharmacother
+Am J Geriatr Psychiatry
 Am J Infect Control
+Am J Kidney Dis
 Am J Med
+Am J Obstet Gynecol
 Am J Obstet Gynecol MFM
 Am J Ophthalmol
 Am J Ophthalmol Case Rep
 Am J Orthod
+Am J Orthod Dentofacial Orthop
 Am J Orthod Oral Surg
 Am J Otol
+Am J Otolaryngol
+Am J Pathol
 Am J Pharm Educ
 Am J Prev Cardiol
+Am J Prev Med
+Am J Surg
 Am Pharm
+Ambul Pediatr
 Ambul Surg
 Ampersand (Oxford)
 An Bras Dermatol
+An Pediatr (Barc)
 An Pediatr (Engl Ed)
 Anaerobe
 Anaesth Crit Care Pain Med
+Anal Biochem
 Anal Chem Res
+Anal Chim Acta
 Anal Chim Acta X
 Anal Methods Accid Res
 Anesthesiol Clin
@@ -126,36 +163,56 @@ Anesthesiol Clin North Am
 Anim Behav
 Anim Feed Sci Technol
 Anim Nutr
+Anim Reprod Sci
 Animal
+Ann Acad Med Singap
+Ann Allergy Asthma Immunol
 Ann Anat
 Ann Cardiol Angeiol (Paris)
 Ann Chir
+Ann Chir Gynaecol
 Ann Chir Main
 Ann Chir Main Memb Super
 Ann Chir Plast Esthet
 Ann Dermatol Venereol
+Ann Diagn Pathol
+Ann Emerg Med
+Ann Endocrinol (Paris)
+Ann Epidemiol
 Ann Fr Anesth Reanim
+Ann Genet
+Ann Hepatol
 Ann Immunol (Paris)
 Ann Inst Pasteur Actual
+Ann Inst Pasteur Immunol
 Ann Inst Pasteur Immunol (1985)
+Ann Inst Pasteur Microbiol
 Ann Inst Pasteur Microbiol (1985)
 Ann Inst Pasteur Virol
+Ann Intern Med
 Ann Med Psychol (Paris)
 Ann Microbiol (Paris)
 Ann Nucl Energy
 Ann Otolaryngol Chir Cervicofac
+Ann Pathol
 Ann Pharm Fr
 Ann Phys (N Y)
 Ann Phys Rehabil Med
 Ann Readapt Med Phys
+Ann Thorac Surg
 Ann Tour Res
+Ann Transplant
 Ann Urol (Paris)
+Ann Vasc Surg
 Annu Rep Comput Chem
 Annu Rep Med Chem
 Annu Rep NMR Spectrosc
 Annu Rev Control
 Annu Rev Fish Dis
 Antibiotiques (Paris)
+Antivir Ther (Lond)
+Antiviral Res
+Appetite
 Appl Acoust
 Appl Anim Behav Sci
 Appl Behav Sci Rev
@@ -172,6 +229,7 @@ Appl Math Lett
 Appl Numer Math
 Appl Nurs Res
 Appl Prev Psychol
+Appl Radiat Isot
 Appl Res Ment Retard
 Appl Soft Comput
 Appl Soil Ecol
@@ -183,17 +241,28 @@ Aquac Rep
 Aquaculture
 Aquat Bot
 Aquat Procedia
+Aquat Toxicol
 Arab J Gastroenterol
 Arch Biochem
+Arch Biochem Biophys
+Arch Bronconeumol
+Arch Cardiovasc Dis
+Arch Gerontol Geriatr
+Arch Gerontol Geriatr Suppl
 Arch Mal Coeur Vaiss Pratique
+Arch Med Res
+Arch Oral Biol
+Arch Pediatr
 Arch Phys Med
 Arch Phys Med Rehabil
 Arch Psychiatr Nurs
 Arch Rehabil Res Clin Transl
+Arch Soc Esp Oftalmol
 Arthroplast Today
 Arthropod Struct Dev
 Arthrosc Sports Med Rehabil
 Arthrosc Tech
+Arthroscopy
 Artif Intell
 Artif Intell Med
 Arts Psychother
@@ -202,27 +271,39 @@ Asia Pac J Oncol Nurs
 Asia Pac J Ophthalmol (Phila)
 Asia Pac J Sports Med Arthrosc Rehabil Technol
 Asian J Pharm Sci
+Asian J Psychiatr
 Asian J Soc Sci
+Asian J Surg
 Asian J Urol
 Asian Nurs Res (Korean Soc Nurs Sci)
 Asian Pac J Trop Biomed
 Asian Pac J Trop Dis
+Asian Pac J Trop Med
 At Data Nucl Data Tables
+Aten Primaria
+Atheroscler Suppl
+Atherosclerosis
 Atlas Oral Maxillofac Surg Clin North Am
 Atmos Environ
 Atmos Environ (1994)
 Atmos Environ X
 Atmos Pollut Res
 Atmos Res
+Auris Nasus Larynx
 Aust Coll Midwives Inc J
 Aust Crit Care
 Aust Infect Control
 Aust J Midwifery
+Aust J Physiother
 Aust N Z J Public Health
 Australas Emerg Care
 Australas Emerg Nurs J
+Autoimmun Rev
 Automatica (Oxf)
+Auton Neurosci
 Avian Res
+Avon)
+B
 BBA Clin
 BJA Educ
 Baillieres Best Pract Res Clin Endocrinol Metab
@@ -239,18 +320,33 @@ Baillieres Clin Rheumatol
 Basal Ganglia
 Basic Appl Ecol
 Behav Biol
+Behav Brain Res
+Behav Neural Biol
+Behav Processes
 Behav Res Ther
 Behav Ther
+Beijing Da Xue Xue Bao
 Beitr Pathol
 Best Pract Res Clin Anaesthesiol
 Best Pract Res Clin Endocrinol Metab
+Best Pract Res Clin Gastroenterol
+Best Pract Res Clin Haematol
 Best Pract Res Clin Obstet Gynaecol
+Best Pract Res Clin Rheumatol
 Bibl Laeger
+BioSystems
 Bioact Mater
 Biocatal Agric Biotechnol
 Biochem Biophys Rep
+Biochem Biophys Res Commun
 Biochem Eng J
+Biochem Med
+Biochem Med Metab Biol
+Biochem Mol Biol
+Biochem Mol Med
+Biochem Pharmacol
 Biochem Syst Ecol
+Biochim Biophys Acta
 Biochim Biophys Acta Bioenerg
 Biochim Biophys Acta Biomembr
 Biochim Biophys Acta Gen Subj
@@ -261,73 +357,129 @@ Biochim Biophys Acta Mol Cell Res
 Biochim Biophys Acta Proteins Proteom
 Biochim Biophys Acta Rev Cancer
 Biochim Open
+Biochimie
 Biocybern Biomed Eng
+Bioelectrochem Bioenerg
+Bioelectrochemistry
 Bioenergetics
 Biofilm
+Bioinorg Chem
+Biol
+Biol Blood Marrow Transplant
 Biol Conserv
 Biol Control
 Biol Psychiatry
 Biol Psychiatry Cogn Neurosci Neuroimaging
+Biol Psychol
+Biologicals
 Biomark Neuropsychiatry
 Biomass Bioenergy
+Biomaterials
+Biomed Appl
+Biomed Environ Sci
 Biomed J
+Biomed Pharmacother
 Biomed Signal Process Control
 Biomembranes
 Biomol Detect Quantif
+Biomol Eng
+Bioorg Chem
+Bioorg Med Chem
+Bioorg Med Chem Lett
+Biophys Chem
 Bioprinting
+Bioresour Technol
 Bioresour Technol Rep
 Biosaf Health
 Biosci Hypotheses
+Biosens Bioelectron
 Biosens Bioelectron X
 Biosurf Biotribol
 Biosyst Eng
 Biosystems
+Biotechnol Adv
 Biotechnol Annu Rev
 Biotechnol Rep (Amst)
 Biotribology (Oxf)
+Blood Cells Mol Dis
+Blood Rev
 Body Image
 Bone
+Bone Miner
 Bone Rep
 Botany
 Br J Dis Chest
+Br J Oral Maxillofac Surg
 Br J Oral Surg
+Br J Plast Surg
 Br J Tuberc Dis Chest
+Br Vet J
 Brachytherapy
+Brain Behav Immun
 Brain Behav Immun Health
+Brain Cogn
 Brain Dev
 Brain Hemorrhages
 Brain Lang
+Brain Res
+Brain Res Brain Res Protoc
+Brain Res Brain Res Rev
+Brain Res Bull
 Brain Res Cogn Brain Res
+Brain Res Dev Brain Res
+Brain Res Gene Expr Patterns
+Brain Res Mol Brain Res
 Brain Res Rev
+Brain Stimul
+Braz J Anesthesiol
+Braz J Infect Dis
+Braz J Otorhinolaryngol
 Braz J Phys Ther
+Breast
 Build Environ
 Bull Acad Natl Med
 Bull Anesth Hist
+Bull Cancer
 Bull Inst Pasteur
 Burn Res
+Burns
 Burns Incl Therm Inj
 Burns Open
 Bus Horiz
 C R Acad Sci II
 C R Acad Sci III
+C R Biol
 CALPHAD
 CASE (Phila)
 CIRP Ann Manuf Technol
 CIRP J Manuf Sci Technol
 CJC Open
+Can J Cardiol
+Can J Diabetes
+Can J Ophthalmol
 Cancer Chemother Biol Response Modif
+Cancer Detect Prev
+Cancer Epidemiol
+Cancer Genet
 Cancer Genet Cytogenet
 Cancer Lett
+Cancer Radiother
 Cancer Treat Commun
 Cancer Treat Res Commun
+Cancer Treat Rev
 Carbohydr Chem
+Carbohydr Polym
+Carbohydr Res
 Carbon N Y
 Card Electrophysiol Clin
 Cardiol Clin
 Cardiooncology
 Cardiovasc Digit Health J
+Cardiovasc Pathol
 Cardiovasc Radiat Med
 Cardiovasc Revasc Med
+Cardiovasc Surg
+Cas Lek Cesk
 Case Manager
 Case Rep Womens Health
 Case Stud Eng Fail Anal
@@ -335,11 +487,16 @@ Case Stud Transp Policy
 Catal Commun
 Catal Today
 Catena (Amst)
+Cell Calcium
 Cell Chem Biol
 Cell Differ
+Cell Differ Dev
+Cell Immunol
 Cell Mol Gastroenterol Hepatol
+Cell Rep
 Cell Rep Med
 Cell Rep Phys Sci
+Cell Signal
 Cell Surf
 Cell Syst
 Cem Concr Compos
@@ -347,18 +504,28 @@ Cem Concr Res
 Ceram Int
 Chaos Solitons Fractals
 Chem
+Chem Biol Interact
 Chem Eng J
 Chem Eng Process
 Chem Eng Res Des
 Chem Eng Sci
+Chem Phys
+Chem Phys Lett
+Chem Phys Lipids
 Chemometr Intell Lab Syst
+Chemosphere
 Chest
 Chest Surg Clin N Am
+Child Abuse Negl
+Child Adolesc Psychiatr Clin N Am
 Child Youth Serv Rev
 Chin Chem Lett
 Chin Herb Med
 Chin J Chem Eng
+Chin J Nat Med
 Chin J Traumatol
+Chin Med J
+Chin Med Sci J
 Chir Main
 Chromatogr Rev
 Cir Esp
@@ -366,29 +533,49 @@ Cities
 Clim Risk Manag
 Clim Serv
 Clin Appl Immunol Rev
+Clin Biochem
+Clin Biomech (Bristol
+Clin Breast Cancer
 Clin Chest Med
+Clin Chim Acta
+Clin Colorectal Cancer
 Clin Cornerstone
 Clin Dermatol
 Clin Diagn Virol
 Clin Eff Nurs
 Clin Endocrinol Metab
 Clin Epidemiol Glob Health
+Clin Exp Rheumatol
 Clin Eye Vis Care
+Clin Gastroenterol Hepatol
+Clin Genitourin Cancer
 Clin Geriatr Med
 Clin Imaging
+Clin Immunol
+Clin Immunol Immunopathol
 Clin Infect Pract
 Clin Invest Ginecol Obstet
+Clin Investig Arterioscler
+Clin Lab Med
+Clin Lab Sci
 Clin Liver Dis
+Clin Lung Cancer
 Clin Lymphoma
+Clin Lymphoma Myeloma
+Clin Lymphoma Myeloma Leuk
 Clin Mass Spectrom
 Clin Mater
 Clin Med (Lond)
+Clin Microbiol Infect
 Clin Microbiol Newsl
 Clin Neurol Neurosurg
+Clin Neurophysiol
 Clin Neurophysiol Pract
+Clin Nutr
 Clin Nutr ESPEN
 Clin Nutr Exp
 Clin Occup Environ Med
+Clin Oncol (R Coll Radiol)
 Clin Ovarian Cancer Other Gynecol Malig
 Clin Park Relat Disord
 Clin Pediatr Emerg Med
@@ -398,11 +585,14 @@ Clin Plast Surg
 Clin Podiatr Med Surg
 Clin Positron Imaging
 Clin Prostate Cancer
+Clin Psychol Rev
 Clin Radiol
+Clin Res Hepatol Gastroenterol
 Clin Simul Nurs
 Clin Skin Cancer
 Clin Sports Med
 Clin Tech Small Anim Pract
+Clin Ther
 Clin Transl Radiat Oncol
 Clin Trials Regul Sci Cardiol
 Clinics
@@ -418,6 +608,7 @@ Coll Rev
 Collegian
 Colloid Interface Sci Commun
 Colloids Surf A Physicochem Eng Asp
+Colloids Surf B Biointerfaces
 Colorectal Cancer
 Columbia J World Bus
 Combust Flame
@@ -430,13 +621,17 @@ Comp Biochem Physiol A Physiol
 Comp Biochem Physiol B
 Comp Biochem Physiol B Biochem Mol Biol
 Comp Biochem Physiol Biochem Mol Biol
+Comp Biochem Physiol C
 Comp Biochem Physiol C Comp Pharmacol
 Comp Biochem Physiol C Comp Pharmacol Toxicol
 Comp Biochem Physiol C Pharmacol Toxicol Endocrinol
+Comp Biochem Physiol C Toxicol Pharmacol
 Comp Biochem Physiol Comp Physiol
+Comp Biochem Physiol Part D Genomics Proteomics
 Comp Biochem Physiol Pharmacol Toxicol Endocrinol
 Comp Biochem Physiol Physiol
 Comp Gen Pharmacol
+Comp Immunol Microbiol Infect Dis
 Complement Ther Clin Pract
 Complement Ther Med
 Complement Ther Nurs Midwifery
@@ -444,9 +639,13 @@ Compos B Eng
 Compos Part A Appl Sci Manuf
 Compos Sci Technol
 Compos Struct
+Compr Psychiatry
 Comput Aided Des
 Comput Aided Geom Des
+Comput Biol Chem
+Comput Biol Med
 Comput Biomed Res
+Comput Chem
 Comput Chem Eng
 Comput Commun
 Comput Compos
@@ -467,9 +666,11 @@ Comput Mater Sci
 Comput Math Appl
 Comput Med Imaging Graph
 Comput Methods Appl Mech Eng
+Comput Methods Programs Biomed
 Comput Oper Res
 Comput Phys Commun
 Comput Programs Biomed
+Comput Radiol
 Comput Sci Rev
 Comput Secur
 Comput Speech Lang
@@ -484,17 +685,23 @@ Comput Vis Image Underst
 Confed Aust Crit Care Nurses J
 Conscious Cogn
 Constr Build Mater
+Cont Lens Anterior Eye
 Cont Shelf Res
+Contemp Clin Trials
 Contemp Clin Trials Commun
 Contemp Educ Psychol
 Contracept X
+Contraception
 Contrib Sens Physiol
 Control Clin Trials
 Coord Chem Rev
 Corros Sci
+Cortex
 Cretac Res
+Crit Care Clin
 Crit Care Nurs Clin North Am
 Crit Care Resusc
+Crit Rev Oncol Hematol
 Crop Prot
 Cryobiology
 Cryogenics (Guildf)
@@ -506,7 +713,9 @@ Curr Mod Biol
 Curr Obstet Gynaecol
 Curr Opin Behav Sci
 Curr Opin Biomed Eng
+Curr Opin Biotechnol
 Curr Opin Cell Biol
+Curr Opin Chem Biol
 Curr Opin Chem Eng
 Curr Opin Colloid Interface Sci
 Curr Opin Electrochem
@@ -514,6 +723,8 @@ Curr Opin Endocr Metab Res
 Curr Opin Environ Sci Health
 Curr Opin Environ Sustain
 Curr Opin Food Sci
+Curr Opin Gastroenterol
+Curr Opin Genet Dev
 Curr Opin Green Sustain Chem
 Curr Opin Immunol
 Curr Opin Insect Sci
@@ -521,16 +732,20 @@ Curr Opin Microbiol
 Curr Opin Neurobiol
 Curr Opin Pharmacol
 Curr Opin Physiol
+Curr Opin Plant Biol
 Curr Opin Psychol
 Curr Opin Solid State Mater Sci
+Curr Opin Struct Biol
 Curr Opin Syst Biol
 Curr Opin Toxicol
+Curr Opin Virol
 Curr Orthop
 Curr Pharm Teach Learn
 Curr Plant Biol
 Curr Probl Cancer
 Curr Probl Cardiol
 Curr Probl Diagn Radiol
+Curr Probl Pediatr
 Curr Probl Pediatr Adolesc Health Care
 Curr Probl Surg
 Curr Res Biotechnol
@@ -548,7 +763,12 @@ Curr Top Comp Pathobiol
 Curr Top Dev Biol
 Curr Top Membr
 Curr Top Membr Transp
+Cytokine
+Cytokine Growth Factor Rev
 Cytokine X
+Cytotherapy
+D
+DNA Repair (Amst)
 Data Brief
 Data Inf Manag
 Data Knowl Eng
@@ -559,19 +779,27 @@ Deep Sea Res A
 Dendrochronologia (Verona)
 Dent Abstr
 Dent Clin North Am
+Dent Mater
 Dermatol Clin
 Des Stud
 Desalination
+Dev Biol
 Dev Clay Sci
 Dev Cogn Neurosci
+Dev Comp Immunol
 Dev Eng
 Dev Rev
+Development
 Diabete Metab
+Diabetes Metab
+Diabetes Metab Syndr
 Diabetes Res Clin Pract
 Diagn Histopathol (Oxf)
 Diagn Interv Imaging
+Diagn Microbiol Infect Dis
 Diam Relat Mater
 Differ Geom Appl
+Dig Liver Dis
 Digit Investig
 Digit Signal Process
 Dis Chest
@@ -580,12 +808,15 @@ Disabil Health J
 Disaster Manag Response
 Discrete Appl Math
 Discrete Math
+Domest Anim Endocrinol
+Drug Alcohol Depend
 Drug Discov Today
 Drug Discov Today Biosilico
 Drug Discov Today Dis Mech
 Drug Discov Today Dis Models
 Drug Discov Today Technol
 Drug Discov Today Ther Strateg
+Drug Resist Updat
 Dyes Pigm
 E Spen Eur E J Clin Nutr Metab
 EBioMedicine
@@ -597,6 +828,7 @@ EMC Pediatr
 ESCAPE
 ESPEN J
 Early Child Res Q
+Early Hum Dev
 Earth Planet Sci Lett
 Earth Sci Rev
 Eat Behav
@@ -612,10 +844,12 @@ Econ Lett
 Econ Model
 Econom Stat
 Ecosyst Serv
+Ecotoxicol Environ Saf
 Egypt J Chest Dis Tuberc
 Elect Stud
 Electrochem commun
 Electrochim Acta
+Electroencephalogr Clin Neurophysiol
 Electron Commer Res Appl
 Electron J Biotechnol
 Electron Microsc Rev
@@ -623,9 +857,12 @@ Electron Notes Theor Comput Sci
 Emerg Contam
 Emerg Med Clin North Am
 Emot Space Soc
+Encephale
 Endeavour
 Endocr Pract
 Endocrinol Diabetes Nutr
+Endocrinol Metab Clin North Am
+Endocrinol Nutr
 Energy (Oxf)
 Energy Build
 Energy Convers Manag
@@ -635,6 +872,7 @@ Energy Res Soc Sci
 Energy Storage Mater
 Energy Sustain Dev
 Enferm Clin
+Enferm Infecc Microbiol Clin
 Enferm Intensiva
 Eng Anal Bound Elem
 Eng Appl Artif Intell
@@ -647,12 +885,18 @@ Entertain Comput
 Environ Exp Bot
 Environ Impact Assess Rev
 Environ Innov Soc Transit
+Environ Int
 Environ Model Softw
 Environ Nanotechnol Monit Manag
+Environ Pollut
+Environ Res
 Environ Sci Policy
 Environ Technol Innov
+Environ Toxicol Pharmacol
+Enzyme Microb Technol
 Enzymes
 Epidemics
+Epilepsy Behav
 Epilepsy Behav Case Rep
 Epilepsy Behav Rep
 Epilepsy Res
@@ -661,26 +905,45 @@ Ethics Med Public Health
 Ethique Sante
 Ethol Sociobiol
 EuPA Open Proteom
+Eur Ann Otorhinolaryngol Head Neck Dis
 Eur Econ Rev
 Eur J Agron
+Eur J Cancer
 Eur J Cancer (1965)
 Eur J Cancer B Oral Oncol
+Eur J Cancer Clin Oncol
+Eur J Cell Biol
 Eur J Comb
 Eur J Control
+Eur J Gynaecol Oncol
 Eur J Integr Med
+Eur J Intern Med
 Eur J Mech A Solids
 Eur J Mech B Fluids
+Eur J Med Chem
+Eur J Med Genet
+Eur J Obstet Gynecol Reprod Biol
 Eur J Obstet Gynecol Reprod Biol X
 Eur J Oncol Nurs
 Eur J Paediatr Neurol
+Eur J Pharm Biopharm
+Eur J Pharm Sci
+Eur J Pharmacol
 Eur J Polit Econ
 Eur J Protistol
 Eur J Psychiatry
+Eur J Radiol
 Eur J Radiol Open
 Eur J Soil Biol
+Eur J Surg Oncol
+Eur J Ultrasound
+Eur J Vasc Endovasc Surg
 Eur J Vasc Surg
+Eur Neuropsychopharmacol
 Eur Polym J
+Eur Psychiatry
 Eur Rev Appl Psychol
+Eur Urol
 Eur Urol Focus
 Eur Urol Oncol
 Eur Urol Open Sci
@@ -689,10 +952,18 @@ Eval Pract
 Eval Program Plann
 Evid Based Cardiovasc Med
 Evol Psychiatr (Paris)
+Exp Cell Res
+Exp Eye Res
+Exp Gerontol
 Exp Hematol
+Exp Mol Pathol
 Exp Mycol
+Exp Neurol
+Exp Parasitol
 Exp Pathol
+Exp Pathol (Jena)
 Exp Therm Fluid Sci
+Exp Toxicol Pathol
 Expert Syst Appl
 Explor Econ Hist
 Explore (NY)
@@ -702,8 +973,12 @@ Extreme Mech Lett
 F S Rep
 F S Rev
 F S Sci
+FEBS Lett
 FMC
 Facial Plast Surg Clin North Am
+Fam Pract
+Farm Hosp
+Farmaco
 Fertil Steril
 Fibrinolysis
 Field Crops Res
@@ -712,14 +987,20 @@ Financ Res Lett
 Finite Elem Anal Des
 Fire Saf J
 Fish Res
+Fish Shellfish Immunol
+Fitoterapia
 Flora
 Flow Meas Instrum
 Fluid Phase Equilib
+Fold Des
 Food Biosci
+Food Chem
+Food Chem Toxicol
 Food Chem X
 Food Control
 Food Cosmet Toxicol
 Food Hydrocoll
+Food Microbiol
 Food Packag Shelf Life
 Food Policy
 Food Qual Prefer
@@ -732,28 +1013,49 @@ For Ecol Manage
 For Policy Econ
 Forensic Chem
 Forensic Sci
+Forensic Sci Int
+Forensic Sci Int Genet
 Forensic Sci Int Genet Suppl Ser
 Forensic Sci Int Synerg
+Free Radic Biol Med
 Front Neuroendocrinol
 Fuel (Lond)
+Fundam Appl Toxicol
+Fungal Biol
 Fungal Biol Rev
 Fungal Ecol
+Fungal Genet Biol
 Future Gener Comput Syst
 Future Healthc J
 Future Hosp J
 Futures
 Fuzzy Sets Syst
+Gac Sanit
+Gait Posture
 Games Econ Behav
+Gastroenterol Clin Biol
+Gastroenterol Clin North Am
+Gastroenterol Hepatol
 Gastroenterology
+Gastrointest Endosc
 Gastrointest Endosc Clin N Am
 Gaz Egypt Paediatr Assoc
+Gen Comp Endocrinol
 Gen Cytochem Methods
 Gen Hosp Psychiatry
+Gen Pharmacol
+Gend Med
+Gene
 Gene Anal Tech
+Gene Expr Patterns
 Gene Rep
 Gene X
 Genes Dis
+Genet Anal
+Genet Anal Tech Appl
 Genom Data
+Genomics
+Genomics Proteomics Bioinformatics
 GeoResJ
 Geochim Cosmochim Acta
 Geod Geodyn
@@ -777,41 +1079,57 @@ Gov Publ Rev
 Gov Publ Rev (1982)
 Graph Models
 Groundw Sustain Dev
+Growth Horm IGF Res
+Gynecol Obstet Fertil
 Gynecol Obstet Fertil Senol
 Gynecol Oncol
 Gynecol Oncol Case Rep
 Gynecol Oncol Rep
+HBPD INT
 HGG Adv
 HPB (Oxford)
 Habitat Int
 Hand Clin
 Hand Surg Rehabil
 Handb Behav Neurosci
+Handb Clin Neurol
 HardwareX
 Harmful Algae
 Hayati
 Health Outcomes Res Med
 Health Place
+Health Policy
 Health Policy Educ
 Health Policy Open
 Health Policy Technol
 Healthc (Amst)
 Healthc Infect
+Hear Res
 Heart Fail Clin
+Heart Lung
+Heart Lung Circ
 Heart Rhythm
 Heart Rhythm O2
 HeartRhythm Case Rep
 Heliyon
 Hellenic J Cardiol
+Hematol Oncol Clin North Am
+Hematol Oncol Stem Cell Ther
 Hematol Transfus Cell Ther
 Hepatobiliary Pancreat Dis Int
+Hepatol Res
 High Energy Density Phys
 Hipertens Riesgo Vasc
 Home Care Provid
+Homeopathy
+Homo
+Horm Behav
 Hosp Aviat
 Hosp Med Clin
+Hum Immunol
 Hum Microb J
 Hum Mov Sci
+Hum Pathol
 Hum Pathol (N Y)
 IBRO Rep
 ICS
@@ -819,8 +1137,16 @@ IDCases
 IJC Metab Endocr
 ISA Trans
 ISPRS J Photogramm Remote Sens
+Icarus
 Image Vis Comput
+Immunobiology
+Immunochemistry
 Immunol Allergy Clin North Am
+Immunol Lett
+Immunol Today
+Immunomethods
+Immunopharmacology
+Immunotechnology
 Ind Crops Prod
 Indian Heart J
 Indian J Med Microbiol
@@ -837,28 +1163,37 @@ Infect Dis Clin North Am
 Infect Dis Health
 Infect Dis Model
 Infect Dis Newsl (N Y)
+Infect Genet Evol
 Infectio
 Inform Med Unlocked
 Infrared Phys
 Infrared Phys Technol
 Ing Rech Biomed
+Injury
 Inmunologia
 Innov Food Sci Emerg Technol
 Innovation (Camb)
 Inorg Chem Commun
 Inorganica Chim Acta
+Insect Biochem Mol Biol
 Insur Math Econ
+Int Angiol
 Int Biodeterior Biodegradation
 Int Bus Rev
 Int Congr Ser
 Int Contact Lens Clin
 Int Dairy J
 Int Emerg Nurs
+Int Immunopharmacol
 Int J Adhes Adhes
 Int J Afr Nurs Sci
+Int J Antimicrob Agents
 Int J Appl Earth Obs Geoinf
 Int J Appl Radiat Isot
 Int J Approx Reason
+Int J Biochem
+Int J Biochem Cell Biol
+Int J Biol Macromol
 Int J Biomed Comput
 Int J Cardiol
 Int J Cardiol Heart Vasc
@@ -867,6 +1202,7 @@ Int J Cardiol Hypertens
 Int J Child Comput Interact
 Int J Clin Health Psychol
 Int J Coal Geol
+Int J Dev Neurosci
 Int J Diabetes Mellit
 Int J Disaster Risk Reduct
 Int J Drug Policy
@@ -876,16 +1212,21 @@ Int J Electrochem Sci
 Int J Electron Commun
 Int J Eng Sci
 Int J Fatigue
+Int J Food Microbiol
 Int J Forecast
 Int J Gastron Food Sci
 Int J Gerontol
+Int J Gynaecol Obstet
 Int J Heat Fluid Flow
 Int J Heat Mass Transf
 Int J Hosp Manag
 Int J Hydrogen Energy
+Int J Hyg Environ Health
+Int J Immunopharmacol
 Int J Impact Eng
 Int J Ind Organ
 Int J Inf Manage
+Int J Infect Dis
 Int J Intercult Relat
 Int J Law Crime Justice
 Int J Law Psychiatry
@@ -895,6 +1236,7 @@ Int J Mass Spectrom
 Int J Mass Spectrom Ion Process
 Int J Mech Sci
 Int J Med Inform
+Int J Med Microbiol
 Int J Min Sci Technol
 Int J Miner Process
 Int J Neuropharmacol
@@ -903,18 +1245,27 @@ Int J Nucl Med Biol
 Int J Nurs Sci
 Int J Nurs Stud
 Int J Nurs Stud Adv
+Int J Obstet Anesth
+Int J Oral Maxillofac Surg
 Int J Oral Surg
 Int J Orthop Trauma Nurs
 Int J Osteopath Med
 Int J Paleopathol
+Int J Parasitol
 Int J Parasitol Drugs Drug Resist
 Int J Parasitol Parasites Wildl
 Int J Part Ther
+Int J Pediatr Otorhinolaryngol
 Int J Pediatr Otorhinolaryngol Extra
+Int J Pharm
 Int J Pharm X
 Int J Plast
 Int J Prod Econ
+Int J Psychophysiol
+Int J Rad Appl Instrum A
+Int J Rad Appl Instrum B
 Int J Rad Appl Instrum D
+Int J Radiat Oncol Biol Phys
 Int J Refract Metals Hard Mater
 Int J Refrig
 Int J Rock Mech Min Sci (1997)
@@ -925,8 +1276,10 @@ Int J Trauma Nurs
 Int Orthod
 Int Rev Cell Mol Biol
 Int Rev Connect Tissue Res
+Int Rev Cytol
 Int Rev Cytol Suppl
 Int Rev Law Econ
+Int Rev Neurobiol
 Int Rev Res Dev Disabil
 Int Rev Res Ment Retard
 Int Ser Monogr Oral Biol
@@ -944,9 +1297,15 @@ Internet High Educ
 Internet Interv
 Interv Cardiol Clin
 Isot Geosci
+J AAPOS
+J Acad Nutr Diet
+J Acupunct Meridian Stud
+J Adolesc
+J Adolesc Health
 J Adolesc Health Care
 J Adv Res
 J Aerosol Sci
+J Affect Disord
 J Affect Disord Rep
 J Afr Earth Sci
 J Aging Stud
@@ -954,12 +1313,20 @@ J Air Med Transp
 J Air Transp Manag
 J Algebra
 J Allergy
+J Allergy Clin Immunol
+J Allergy Clin Immunol Pract
 J Alloys Compd
+J Am Acad Child Adolesc Psychiatry
 J Am Acad Child Psychiatry
+J Am Acad Dermatol
 J Am Assoc Gynecol Laparosc
 J Am Col Certif Wound Spec
+J Am Coll Cardiol
 J Am Coll Clin Wound Spec
 J Am Coll Radiol
+J Am Coll Surg
+J Am Dent Assoc
+J Am Diet Assoc
 J Am Intraocul Implant Soc
 J Am Med Dir Assoc
 J Am Pharm Assoc
@@ -968,10 +1335,12 @@ J Am Pharm Assoc (Wash)
 J Am Pharm Assoc Am Pharm Assoc
 J Am Pharm Assoc Am Pharm Assoc (Baltim)
 J Am Soc Cytopathol
+J Am Soc Echocardiogr
 J Am Soc Hypertens
 J Anal Appl Pyrolysis
 J Anesth Hist
 J Anthropol Archaeol
+J Antibiot
 J Anxiety Disord
 J Appl Dev Psychol
 J Appl Geophy
@@ -981,12 +1350,15 @@ J Approx Theory
 J Archaeol Sci
 J Archaeol Sci Rep
 J Arid Environ
+J Arthroplasty
 J Asia Pac Biodivers
 J Asia Pac Entomol
 J Asian Earth Sci
 J Asian Econ
 J Atheroscler Res
 J Atmos Sol Terr Phys
+J Autoimmun
+J Auton Nerv Syst
 J Ayurveda Integr Med
 J Bank Financ
 J Behav Cogn Ther
@@ -994,42 +1366,67 @@ J Behav Econ
 J Behav Exp Econ
 J Behav Exp Finance
 J Behav Ther Exp Psychiatry
+J Biochem Biophys Methods
 J Biol Stand
+J Biomech
 J Biomed Eng
 J Biomed Inform
 J Biomed Inform X
 J Biomol Screen
 J Biosaf Biosecur
+J Biosci Bioeng
+J Biotechnol
 J Bodyw Mov Ther
 J Bone Oncol
 J Bus Res
 J Bus Ventur
 J Cancer Policy
+J Card Fail
+J Cardiol
 J Cardiol Cases
 J Cardiothorac Anesth
+J Cardiothorac Vasc Anesth
 J Cardiovasc Comput Tomogr
 J Cardiovasc Dis Res
 J Cardiovasc Magn Reson
 J Catal
+J Cataract Refract Surg
 J Cereal Sci
+J Chem Neuroanat
+J Chin Med Assoc
 J Chir (Paris)
 J Chir Visc
 J Chiropr Humanit
 J Chiropr Med
+J Chromatogr
+J Chromatogr A
+J Chromatogr B
+J Chromatogr B Analyt Technol Biomed Life Sci
 J Chromatogr B Biomed Appl
+J Chromatogr B Biomed Sci Appl
 J Chromatogr Suppl
 J Chronic Dis
 J Clean Prod
+J Clin Anesth
+J Clin Densitom
+J Clin Epidemiol
 J Clin Exp Hepatol
 J Clin Forensic Med
+J Clin Gastroenterol
+J Clin Lipidol
+J Clin Neurosci
 J Clin Nutr
 J Clin Orthop Trauma
+J Clin Psychopharmacol
 J Clin Transl Endocrinol
 J Clin Transl Endocrinol Case Rep
 J Clin Tuberc Other Mycobact Dis
+J Clin Virol
+J Colloid Interface Sci
 J Colloid Sci
 J Commun Disord
 J Comp Econ
+J Comp Pathol
 J Complex
 J Comput Appl Math
 J Comput Phys
@@ -1037,14 +1434,23 @@ J Comput Sci
 J Comput Syst Sci
 J Comput Tomogr
 J Constr Steel Res
+J Contam Hydrol
 J Contextual Behav Sci
+J Control Release
+J Craniomaxillofac Surg
 J Crim Justice
 J Crit Care
 J Cryst Growth
 J Cult Herit
+J Cyst Fibros
+J Dairy Res
+J Dairy Sci
+J Dent
 J Dent Sci
+J Dermatol Sci
 J Dev Econ
 J Diabet Complications
+J Diabetes Complicat
 J Diabetes Complications
 J Differ Equ
 J Discrete Algorithms (Amst)
@@ -1057,21 +1463,28 @@ J Econ Dyn Control
 J Econ Psychol
 J Econ Theory
 J Econom
+J Egypt Natl Canc Inst
 J Electroanal Chem (Lausanne)
 J Electroanal Chem Interfacial Electrochem
+J Electrocardiol
 J Electromyogr Kinesiol
 J Electron Spectros Relat Phenomena
 J Electrostat
+J Emerg Med
 J Emerg Nurs
 J Empir Finance
+J Endod
 J Energy Storage
 J Engl Acad Purp
 J Environ Chem Eng
 J Environ Econ Manage
+J Environ Manage
 J Environ Psychol
 J Environ Radioact
+J Environ Sci (China)
 J Epilepsy
 J Equine Vet Sci
+J Ethnopharmacol
 J Eur Ceram Soc
 J Evid Based Dent Pract
 J Exerc Sci Fit
@@ -1088,13 +1501,17 @@ J Fluor Chem
 J Food Compost Anal
 J Food Eng
 J Food Prot
+J Foot Ankle Surg
 J Forensic Leg Med
 J Forensic Sci Soc
+J Formos Med Assoc
+J Fr Ophtalmol
 J Franklin Inst
 J Free Radic Biol Med
 J Funct Anal
 J Funct Foods
 J Genet Eng Biotechnol
+J Genet Genomics
 J Geochem Explor
 J Geodyn
 J Geriatr Oncol
@@ -1102,40 +1519,59 @@ J Ginseng Res
 J Glob Antimicrob Resist
 J Gov Inf
 J Great Lakes Res
+J Gynecol Obstet Biol Reprod (Paris)
 J Gynecol Obstet Hum Reprod
 J Hand Microsurg
 J Hand Surg Am
 J Hand Surg Glob Online
+J Hand Ther
+J Hazard Mater
+J Health Econ
 J Healthc Qual Res
+J Heart Lung Transplant
+J Hepatol
 J Herb Med
 J Hist Geogr
+J Hosp Infect
 J Hosp Leis Sport Tour Educ
 J Hous Econ
+J Hum Evol
 J Hydrol (Amst)
 J Hydrol Reg Stud
 J Hydrol X
+J Immunol Methods
 J Immunol Regen Med
 J Ind Eng Chem
 J Ind Inf Integr
+J Infect
+J Infect Chemother
 J Infect Public Health
 J Informetr
+J Inorg Biochem
+J Insect Physiol
 J Int Econ
 J Int Money Finance
 J Integr Agric
 J Integr Med
 J Interprof Educ Pract
+J Invertebr Pathol
+J Invest Dermatol
 J Investig Dermatol Symp Proc
 J Jpn Int Econ
 J King Saud Univ Sci
 J Korean Stat Soc
 J Lab Autom
+J Lab Clin Med
 J Lipid Mediat Cell Signal
 J Loss Prev Process Ind
 J Lumin
 J Macroecon
 J Magn Magn Mater
+J Magn Reson
 J Magn Reson A
+J Magn Reson B
 J Magn Reson Open
+J Mal Vasc
 J Manipulative Physiol Ther
 J Manuf Process
 J Manuf Syst
@@ -1147,32 +1583,47 @@ J Math Econ
 J Math Psychol
 J Math Pures Appl
 J Maxillofac Surg
+J Mech Behav Biomed Mater
 J Mech Phys Solids
+J Mechanochem Cell Motil
 J Med Bord
+J Med Dent Sci
 J Med Imaging Radiat Sci
 J Med Vasc
 J Mem Lang
+J Microbiol Immunol Infect
+J Microbiol Methods
+J Minim Invasive Gynecol
+J Mol Biol
 J Mol Catal A Chem
 J Mol Catal B Enzym
 J Mol Cell Cardiol
 J Mol Diagn
 J Mol Graph
+J Mol Graph Model
 J Mol Liq
+J Mol Spectrosc
 J Mol Struct
 J Monet Econ
 J Multivar Anal
+J Mycol Med
 J Nat Conserv
 J Nat Gas Sci Eng
 J Natl Med Assoc
 J Neonatal Nurs
+J Neuroimmunol
+J Neurol Sci
 J Neurolinguistics
 J Neuroradiol
+J Neurosci Methods
 J Non Cryst Solids
 J Nonnewton Fluid Mech
 J Nucl Mater
 J Number Theory
 J Nurs Regul
+J Nurse Midwifery
 J Nurse Pract
+J Nutr Biochem
 J Nutr Educ
 J Nutr Educ Behav
 J Nutr Intermed Metab
@@ -1182,25 +1633,33 @@ J Obstet Gynecol Neonatal Nurs
 J Optom
 J Oral Biol Craniofac Res
 J Oral Biosci
+J Oral Maxillofac Surg
 J Oral Maxillofac Surg Med Pathol
 J Organomet Chem
 J Orthop
 J Orthop Translat
 J Otol
+J Pain
 J Pain Symptom Manage
 J Parallel Distrib Comput
 J Pathol Inform
+J Pediatr
 J Pediatr (Rio J)
 J Pediatr Adolesc Gynecol
+J Pediatr Health Care
 J Pediatr Nurs
 J Pediatr Pueric
+J Pediatr Surg
 J Pediatr Surg Case Rep
 J Pediatr Urol
 J Pediatr X
 J Perianesth Nurs
 J Pet Sci Eng
 J Pharm Anal
+J Pharm Biomed Anal
 J Pharmacol Methods
+J Pharmacol Sci
+J Pharmacol Toxicol Methods
 J Phon
 J Photochem Photobiol
 J Photochem Photobiol A Chem
@@ -1209,6 +1668,7 @@ J Phys Chem Solids
 J Physiol (Paris)
 J Physiol Paris
 J Physiother
+J Plant Physiol
 J Plast Reconstr Aesthet Surg
 J Policy Model
 J Post Anesth Nurs
@@ -1216,21 +1676,33 @@ J Power Sources
 J Pragmat
 J Process Control
 J Prof Nurs
+J Prosthet Dent
+J Prosthodont Res
+J Protein Chem
+J Proteomics
+J Psychiatr Res
+J Psychosom Res
 J Public Econ
 J Public Trans
 J Pure Appl Algebra
 J Quant Spectrosc Radiat Transf
+J Radiat Res
 J Radiol
 J Radiol Nurs
+J Ren Nutr
 J Reprod Health Med
+J Reprod Immunol
 J Res Pers
 J Rural Stud
 J SOGC
 J Safety Res
 J Sch Psychol
+J Sci Med Sport
 J Sea Res
 J Second Lang Writ
+J Shoulder Elbow Surg
 J Soc Biol Struct
+J Soc Gynecol Investig
 J Socio Econ
 J Solid State Chem
 J Sound Vib
@@ -1239,8 +1711,12 @@ J Southeast Asian Earth Sci
 J Space Saf Eng
 J Sport Health Sci
 J Stat Plan Inference
+J Steroid Biochem
+J Steroid Biochem Mol Biol
 J Stomatol Oral Maxillofac Surg
 J Stored Prod Res
+J Stroke Cerebrovasc Dis
+J Struct Biol
 J Struct Biol X
 J Struct Geol
 J Subst Abuse
@@ -1248,13 +1724,18 @@ J Subst Abuse Treat
 J Supercrit Fluids
 J Support Oncol
 J Surg Educ
+J Surg Res
 J Symb Comput
 J Syst Softw
 J Taibah Univ Med Sci
 J Taiwan Inst Chem Eng
 J Terramech
+J Theor Biol
 J Therm Biol
+J Thorac Cardiovasc Surg
 J Tissue Viability
+J Trace Elem Med Biol
+J Tradit Chin Med
 J Tradit Complement Med
 J Transl Autoimmun
 J Transp Geogr
@@ -1262,13 +1743,17 @@ J Transp Health
 J Ultrastruct Mol Struct Res
 J Ultrastruct Res
 J Urban Econ
+J Urol
 J Vasc Interv Radiol
 J Vasc Nurs
+J Vasc Surg
 J Vasc Surg Cases
 J Vasc Surg Cases Innov Tech
 J Vasc Surg Venous Lymphat Disord
 J Verbal Learning Verbal Behav
 J Vet Behav
+J Vet Cardiol
+J Virol Methods
 J Virus Erad
 J Vis Commun Image Represent
 J Vis Lang Comput
@@ -1280,6 +1765,8 @@ J financ econ
 JAAD Case Rep
 JACC Basic Transl Sci
 JACC CardioOncol
+JACC Cardiovasc Imaging
+JACC Cardiovasc Interv
 JACC Case Rep
 JACC Clin Electrophysiol
 JACC Heart Fail
@@ -1293,17 +1780,23 @@ JTCVS Tech
 JTO Clin Res Rep
 JVS Vasc Sci
 Japan World Econ
+Joint Bone Spine
 Joule
 Jpn Dent Sci Rev
+Jpn J Ophthalmol
 Jt Comm J Qual Improv
 Jt Comm J Qual Patient Saf
 Jt Comm J Qual Saf
+Kaohsiung J Med Sci
 Kidney Int Rep
 Kidney Int Suppl
 Kidney Int Suppl (2011)
 Kidney Med
+Klin Oczna
+Knee
 Knowl Based Syst
 Krankenhaushyg Infektionsverhut
+Lab Invest
 Labour Econ
 Lancet Child Adolesc Health
 Lancet Digit Health
@@ -1324,8 +1817,11 @@ Learn Individ Differ
 Learn Instr
 Learn Motiv
 Lebensm Wiss Technol
+Leg Med (Tokyo)
+Leuk Res
 Leuk Res Rep
 Libr Inf Sci Res
+Life Sci
 Life Sci (1962)
 Life Sci I
 Life Sci II
@@ -1336,17 +1832,23 @@ Linear Algebra Appl
 Lingua
 Lithos
 Liver Res
+Liver Transpl Surg
 Livest Prod Sci
 Livest Sci
 Long Range Plann
+Lung Cancer
+MAGMA
+Magn Reson Imaging
 Magn Reson Imaging Clin N Am
 Man Ther
 Manuf Lett
 Mar Chem
+Mar Environ Res
 Mar Genomics
 Mar Micropaleontol
 Mar Pet Geol
 Mar Policy
+Mar Pollut Bull
 Mater Charact
 Mater Chem Phys
 Mater Des
@@ -1355,6 +1857,7 @@ Mater Res Bull
 Mater Sci Eng A Struct Mater
 Mater Sci Eng B Solid State Mater Adv Technol
 Mater Sci Eng C Biomim Supramol Syst
+Mater Sci Eng C Mater Biol Appl
 Mater Sci Eng R Rep
 Mater Sci Semicond Process
 Mater Today (Kidlington)
@@ -1366,13 +1869,21 @@ Mater Today Energy
 Mater Today Nano
 Mater Today Proc
 Materialia (Oxf)
+Math Biosci
 Math Comput Model
 Math Comput Simul
 Math Soc Sci
+Matrix
+Matrix Biol
 Matter
+Maturitas
+Mayo Clin Proc
 Mayo Clin Proc Innov Qual Outcomes
 Measurement ( Mahwah N J)
 Measurement (Lond)
+Meat Sci
+Mech Ageing Dev
+Mech Dev
 Mech Mach Theory
 Mech Mater
 Mech Res Commun
@@ -1382,6 +1893,7 @@ Med
 Med Clin (Barc)
 Med Clin (Engl Ed)
 Med Clin North Am
+Med Dosim
 Med Drug Discov
 Med Eng Phys
 Med Hypotheses
@@ -1389,88 +1901,149 @@ Med Image Anal
 Med Intensiva
 Med J Armed Forces India
 Med Laser Appl
+Med Mal Infect
 Med Mycol Case Rep
 Med Nov Technol Devices
+Medicina (Kaunas)
 Medicine (Abingdon)
 Medicine (Madr)
 Ment Health Phys Act
 Ment Health Prev
 Meta Gene
 Metab Bone Dis Relat Res
+Metab Eng
 Metab Eng Commun
 Metabol Open
 Metabolism
+Meth Enzymol
+Methods
 Methods Cell Biol
 Methods Enzymol
+Methods Mol Med
 MethodsX
+Microb Pathog
 Microb Risk Anal
+Microbes Infect
+Microbiol Res
 Microelectron Eng
 Microelectronics J
 Micron
 Microprocess Microsyst
+Microvasc Res
 Midwifery
+Mikrobiyol Bul
 Mindfulness Compassion
+Mitochondrion
+Mol Aspects Med
 Mol Astrophys
+Mol Biochem Parasitol
+Mol Cell Biol Res Commun
+Mol Cell Endocrinol
+Mol Cell Neurosci
+Mol Cell Probes
 Mol Cell Proteomics
 Mol Cells
+Mol Diagn
+Mol Gen Genet
 Mol Genet Med
+Mol Genet Metab
 Mol Genet Metab Rep
+Mol Immunol
 Mol Med Today
 Mol Metab
+Mol Oncol
+Mol Phylogenet Evol
+Mol Plant
 Mol Ther
 Mol Ther Methods Clin Dev
 Mol Ther Nucleic Acids
 Mol Ther Oncolytics
 Morphologie
 Mucosal Immunol
+Mult Scler Relat Disord
 Musculoskelet Sci Pract
+Mutat Res
+Mutat Res Genet Toxicol Environ Mutagen
+Mutat Res Rev Mutat Res
+Mycol Res
+N Biotechnol
 NDT E Int
 Nano Commun Netw
 Nano Energy
 Nano Today
 NanoImpact
+Nanomedicine
 Nefrologia
 Neoplasia
+Nephrol Ther
+Neth J Med
+Neural Netw
 Neurobiol Aging
+Neurobiol Dis
+Neurobiol Learn Mem
 Neurobiol Pain
 Neurobiol Sleep Circadian Rhythms
 Neurobiol Stress
 Neurobiology
+Neurochem Int
+Neurochirurgie
 Neurocirugia
 Neurocirugia (Astur)
 Neurocomputing (Amst)
 Neurodegeneration
 Neuroepigenetics
+Neuroimage
 Neuroimage Clin
 Neuroimaging Clin N Am
 Neurol Clin
+Neurol Neurochir Pol
 Neurol Psychiatry Brain Res
+Neurologia
 Neuromodulation
+Neuromuscul Disord
+Neuropeptides
+Neuropharmacology
 Neurophysiol Clin
 Neuropsychiatr Enfance Adolesc
+Neuropsychologia
+Neurosci Biobehav Rev
+Neurosci Lett
+Neurosci Res
 Neurosci Res (N Y)
 Neurosci Res Suppl
+Neuroscience
 Neurosurg Clin N Am
 Neurotherapeutics
+Neurotoxicol Teratol
+Neurotoxicology
 New Ideas Psychol
 New Microbes New Infect
 New Sci
 Newborn Infant Nurs Rev
+Nippon Rinsho
+Nitric Oxide
 Noncoding RNA Res
 Nonlinear Anal Real World Appl
 Nonlinear Anal Theory Methods Appl
 Nucl Eng Des/Fusion
 Nucl Instrum Methods Phys Res A
 Nucl Instrum Methods Phys Res B
+Nucl Med Biol
 Nucl Phys B
 Nucl Phys B Proc Suppl
 Nucl Tracks Radiat Meas
+Nucleic Acids Res Suppl
 Nurs Clin North Am
 Nurs Outlook
 Nurs Womens Health
 Nurse Educ Pract
 Nurse Educ Today
 Nurse Lead
+Nutr Hosp
+Nutr Metab Cardiovasc Dis
+Nutr Res
+Nutrition
+Obes Res Clin Pract
 Obstet Gynaecol Reprod Med
 Obstet Gynecol Clin North Am
 Ocean Coast Manag
@@ -1494,7 +2067,11 @@ Opt Mater (Amst)
 Optik (Stuttg)
 Oral Maxillofac Surg Cases
 Oral Maxillofac Surg Clin North Am
+Oral Oncol
 Oral Surg
+Oral Surg Oral Med Oral Pathol
+Oral Surg Oral Med Oral Pathol Oral Radiol
+Oral Surg Oral Med Oral Pathol Oral Radiol Endod
 Orbis
 Ore Geol Rev
 Org Electron
@@ -1504,32 +2081,49 @@ Organ Behav Hum Perform
 Organ Dyn
 Orthop Clin North Am
 Orthop Trauma
+Orthop Traumatol Surg Res
+Osteoarthr Cartil
 Osteoarthr Cartil Open
 Osteoarthritis Cartilage
 Osteoporos Sarcopenia
 Otolaryngol Clin North Am
+Otolaryngol Pol
 PET Clin
 Paediatr Child Health (Oxford)
+Paediatr Respir Rev
 Pain Manag Nurs
 Palaeogeogr Palaeoclimatol Palaeoecol
+Pancreas
+Pancreatology
 Pap Reg Sci
 Pap Reg Sci Assoc
 Papillomavirus Res
 Parallel Comput
 Parasite Epidemiol Control
+Parasitol Int
 Parasitol Today
+Parkinsonism Relat Disord
+Part A Mol Integr Physiol
+Pathol Biol
 Pathol Biol (Paris)
+Pathol Res Pract
 Pathology
+Pathophysiology
 Patient Couns Health Educ
+Patient Educ Couns
 Pattern Recognit
 Pattern Recognit Lett
 Patterns (N Y)
 Pediatr Clin North Am
 Pediatr Dent J
+Pediatr Neonatol
 Pediatr Neurol
+Pediatr Nurs
 Pediatr Pol
+Pediatr Pulmonol
 Pedobiologia (Jena)
 Pedosphere
+Peptides
 Perform Enhanc Health
 Perioper Care Oper Room Manag
 Pers Individ Dif
@@ -1538,46 +2132,66 @@ Perspect Ecol Conserv
 Perspect Plant Ecol Evol Syst
 Perspect Sci (Neth)
 Pervasive Mob Comput
+Pestic Biochem Physiol
 Pharm Acta Helv
 Pharm Sci Technol Today
 PharmaNutrition
+Pharmacol Biochem Behav
+Pharmacol Res
 Pharmacol Res Commun
+Pharmacol Ther
 Pharmacol Ther B
+Pharmacol Toxicol Endocrinol
 Photoacoustics
+Photodiagnosis Photodyn Ther
 Photonics Nanostruct
 Phys Chem Earth (2002)
 Phys Imaging Radiat Oncol
 Phys Lett A
 Phys Lett B
 Phys Life Rev
+Phys Med
 Phys Med Rehabil Clin N Am
 Phys Procedia
 Phys Rep
+Phys Rev
 Phys Ther Sport
 Physica B Condens Matter
 Physica C Supercond
 Physica D
 Physica E Low Dimens Syst Nanostruct
 Physician Assist Clin
+Physiol Behav
 Physiol Mol Plant Pathol
 Physiotherapy
 Phytochem Lett
+Phytochemistry
+Phytomedicine
 Placenta
 Plant Commun
 Plant Divers
 Plant Gene
+Plant Physiol Biochem
+Plant Sci
+Plasmid
 Poetics (Amst)
 Polit Geogr
 Polyhedron
 Polym Degrad Stab
 Polym Test
+Postepy Hig Med Dosw (Online)
 Poult Sci
 Powder Technol
 Pract Lab Med
+Pract Radiat Oncol
 Prat Anesth Reanim
 Precambrian Res
 Precis Eng
+Pregnancy Hypertens
+Presse Med
+Prev Med
 Prev Med Rep
+Prev Vet Med
 Prim Care
 Prim Care Diabetes
 Prim Care Update Ob Gyns
@@ -1598,6 +2212,8 @@ Process Biochem
 Process Saf Environ Prot
 Prof Anim Sci
 Profiles Drug Subst Excip Relat Methodol
+Prog Biophys Mol Biol
+Prog Brain Res
 Prog Cardiovasc Dis
 Prog Chem Fats Other Lipids
 Prog Chem Toxicol
@@ -1611,9 +2227,12 @@ Prog Mol Biol Transl Sci
 Prog Nat Sci
 Prog Neurobiol
 Prog Neuropsychopharmacol
+Prog Neuropsychopharmacol Biol Psychiatry
 Prog Nucl Magn Reson Spectrosc
+Prog Nucleic Acid Res Mol Biol
 Prog Oceanogr
 Prog Org Coat
+Prog Orthod
 Prog Part Nucl Phys
 Prog Pediatr Cardiol
 Prog Plann
@@ -1622,16 +2241,26 @@ Prog Quantum Electron
 Prog Retin Eye Res
 Prog Surf Sci
 Prog Urol
+Prostaglandins
+Prostaglandins Leukot Essent Fatty Acids
+Prostaglandins Leukot Med
 Prostaglandins Med
+Prostaglandins Other Lipid Mediat
 Prostate Int
+Protein Expr Purif
+Protist
+Prz Lek
 Psychiatr Clin North Am
 Psychiatry
 Psychiatry (Abingdon)
+Psychiatry Res
 Psychiatry Res Neuroimaging
 Psychol Learn Motiv
 Psychol Sport Exerc
+Psychoneuroendocrinology
 Psychosomatics
 Public Relat Rev
+Pulm Pharmacol
 Pulm Pharmacol Ther
 Pulmonology
 Q Rev Econ Finance
@@ -1640,6 +2269,8 @@ Quat Geochronol
 Quat Int
 Quat Sci Rev
 Race Soc
+Radiat Meas
+Radiat Med
 Radiat Med Prot
 Radiat Phys Chem Oxf Engl 1993
 Radiography
@@ -1648,51 +2279,73 @@ Radiol Case Rep
 Radiol Clin North Am
 Radiol Infect Dis
 Radiologia
+Radiother Oncol
 Rangel Ecol Manag
 React Funct Polym
 Redox Biol
 Reg Sci Urban Econ
 Reg Stud Mar Sci
 Regen Ther
+Regul Pept
 Regul Pept Suppl
+Regul Toxicol Pharmacol
 Rehabilitacion (Madr)
 Reliab Eng Syst Saf
 Remote Sens Appl
 Remote Sens Environ
 Renew Energy
+Reprod Biol
+Reprod Biomed Online
 Reprod Biomed Soc Online
+Reprod Toxicol
 Res Autism Spectr Disord
+Res Dev Disabil
 Res Econ
 Res Immunol
+Res Microbiol
 Res Organ Behav
 Res Policy
 Res Pract Thromb Haemost
 Res Soc Stratif Mobil
 Res Social Adm Pharm
+Res Vet Sci
+Res Virol
 Resour Conserv Recycl
 Resour Energy Econ
 Respir Care Clin N Am
+Respir Investig
+Respir Med
 Respir Med CME
 Respir Med Case Rep
 Respir Med Res
 Respir Med X
+Respir Physiol
+Respir Physiol Neurobiol
 Results Chem
 Results Immunol
 Results Pharma Sci
 Results Phys
+Resuscitation
 Retina
+Reumatol Clin
 Rev Andal Med Deport
+Rev Argent Microbiol
+Rev Bras Anestesiol
 Rev Bras Hematol Hemoter
 Rev Bras Ortop
+Rev Bras Reumatol
 Rev Bras Reumatol Engl Ed
 Rev Calid Asist
 Rev Chir Orthop Reparatrice Appar Mot
+Rev Clin Esp
 Rev Clin Esp (Barc)
 Rev Colomb Psiquiatr
 Rev Econ Dyn
 Rev Electroencephalogr Neurophysiol Clin
+Rev Epidemiol Sante Publique
 Rev Esp Anestesiol Reanim
 Rev Esp Cardiol
+Rev Esp Cardiol (Engl Ed)
 Rev Esp Cir Ortop Traumatol
 Rev Esp Geriatr Gerontol
 Rev Esp Med Nucl
@@ -1706,13 +2359,21 @@ Rev Fr Transfus Hemobiol
 Rev Fr Transfus Immunohematol
 Rev Francoph Lab
 Rev Gastroenterol Mex
+Rev Iberoam Micol
 Rev Infirm
 Rev Int Androl
+Rev Mal Respir
 Rev Malad Respir Actual
+Rev Med Inst Mex Seguro Soc
+Rev Med Interne
+Rev Neurol
+Rev Neurol (Paris)
 Rev Palaeobot Palynol
+Rev Pneumol Clin
 Rev Port Cardiol
 Rev Port Pneumol
 Rev Port Pneumol (2006)
+Rev Psiquiatr Salud Ment
 Rev Rhum Ed Fr
 Rev Stomatol Chir Maxillofac
 Rev Stomatol Chir Maxillofac Chir Orale
@@ -1722,6 +2383,7 @@ Rhizosphere
 Rob Auton Syst
 Robot Comput Integr Manuf
 Rontgenpraxis
+Ross Fiziol Zh Im I M Sechenova
 S Afr J Bot
 S Afr J Chem Eng
 SLAS Discov
@@ -1741,20 +2403,34 @@ Sci Comput Program
 Sci Iran D Comput Sci Eng Electr Eng
 Sci Justice
 Sci Sports
+Sci Total Environ
+Sci Vie
 Scr Mater
 Screening
+Seizure
 Semergen
+Semin Arthritis Rheum
 Semin Arthroplasty
 Semin Breast Dis
+Semin Cancer Biol
+Semin Cell Biol
+Semin Cell Dev Biol
 Semin Clin Neuropsychiatry
 Semin Colon Rectal Surg
+Semin Diagn Pathol
+Semin Fetal Neonatal Med
+Semin Hematol
 Semin Immunol
 Semin Neonatol
+Semin Nephrol
 Semin Nucl Med
+Semin Oncol
 Semin Oncol Nurs
 Semin Orthod
 Semin Pediatr Infect Dis
+Semin Pediatr Neurol
 Semin Pediatr Surg
+Semin Perinatol
 Semin Radiat Oncol
 Semin Respir Infect
 Semin Roentgenol
@@ -1763,6 +2439,7 @@ Semin Thorac Cardiovasc Surg
 Semin Thorac Cardiovasc Surg Pediatr Card Surg Annu
 Semin Ultrasound CT MR
 Semin Urol Oncol
+Semin Vasc Surg
 Semin Vet Med Surg Small Anim
 Semin Virol
 Sens Actuators (Warrendale Pa)
@@ -1771,17 +2448,21 @@ Sens Actuators B Chem
 Sens Biosensing Res
 Sep Purif Technol
 Sex Reprod Healthc
+Sheng Wu Gong Cheng Xue Bao
 Signal Process Image Commun
 Signal Processing
 Simul Model Pract Theory
 Singapore Dent J
 Sleep Health
+Sleep Med
 Sleep Med Clin
+Sleep Med Rev
 Small Rumin Res
 Smart Health (Amst)
 Smart Mater Med
 Soc Networks
 Soc Sci Inf Stud
+Soc Sci Med
 Soc Sci Med A
 Soc Sci Med B
 Soc Sci Med C
@@ -1805,34 +2486,44 @@ Sol Energy Mater Sol Cells
 Solid State Commun
 Solid State Electron
 Solid State Ion
+Solid State Nucl Magn Reson
 Solid State Sci
 Space Policy
+Span J Psychiatry Ment Health
 Spat Spatiotemporal Epidemiol
 Spat Stat
 Spectrochim Acta A
+Spectrochim Acta A Mol Biomol Spectrosc
 Spectrochim Acta Part B At Spectrosc
 Speech Commun
+Spine J
 Stat Methodol
 Stat Probab Lett
 Stem Cell Reports
 Stem Cell Res
+Steroids
 Stoch Process Their Appl
 Struct Heart
 Stud Hist Philos Biol Biomed Sci
 Stud Hist Philos Sci
 Stud Surf Sci Catal
 Superlattices Microstruct
+Suppl Clin Neurophysiol
 Support Cancer Ther
 Surf Coat Technol
 Surf Sci
 Surf Sci Rep
 Surg Clin North Am
 Surg Neurol
+Surg Obes Relat Dis
+Surg Oncol
 Surg Oncol Clin N Am
 Surg Open Sci
 Surg Pathol Clin
 Surgeon
+Surgery
 Surgery (Oxf)
+Surv Ophthalmol
 Sustain Chem Pharm
 Sustain Cities Soc
 Sustain Prod Consum
@@ -1840,7 +2531,10 @@ Swarm Evol Comput
 Symp Soc Dev Biol
 Synth Met
 Synth Syst Biotechnol
+Syst Appl Microbiol
 Syst Control Lett
+Taiwan J Obstet Gynecol
+Talanta
 Teach Learn Nurs
 Teach Teach Educ
 Tech Gastrointest Endosc
@@ -1853,10 +2547,12 @@ Tectonophysics
 Telecomm Policy
 Tetrahedron
 Tetrahedron Asymmetry
+Tetrahedron Lett
 Theochem
 Theor Comput Sci
 Theor Popul Biol
 Therapie
+Theriogenology
 Thermochim Acta
 Thin Solid Films
 Think Skills Creat
@@ -1868,54 +2564,85 @@ Top Companion Anim Med
 Topol Appl
 Tour Manag
 Tour Manag Perspect
+Toxicol Appl Pharmacol
+Toxicol In Vitro
+Toxicol Lett
 Toxicol Rep
+Toxicol Sci
+Toxicology
+Toxicon
 Toxicon X
+Transfus Apher Sci
+Transfus Clin Biol
 Transfus Med Rev
 Transfus Sci
 Transfusion (Paris)
 Transl Med Aging
 Transl Oncol
 Transl Proteom
+Transl Res
 Transp Policy (Oxf)
 Transp Res D Transp Environ
 Transp Res E Logist Transp Rev
 Transp Res Part A Policy Pract
 Transp Res Part C Emerg Technol
 Transp Res Part F Traffic Psychol Behav
+Transpl Immunol
+Transplant Proc
 Transplant Rev (Orlando)
 Trastor Adict
 Trauma Case Rep
 Travel Behav Soc
+Travel Med Infect Dis
 Trends Analyt Chem
+Trends Biochem Sci
 Trends Biotechnol
 Trends Cancer
+Trends Cardiovasc Med
 Trends Cell Biol
 Trends Chem
 Trends Cogn Sci
 Trends Ecol Evol
+Trends Endocrinol Metab
 Trends Food Sci Technol
+Trends Genet
+Trends Immunol
+Trends Microbiol
+Trends Neurosci
 Trends Neurosci Educ
+Trends Parasitol
 Trends Pharmacol Sci
 Trends Plant Sci
 Trials Vaccinol
 Tribol Int
+Tuber Lung Dis
 Tubercle
+Tuberculosis (Edinb)
 UCLA Forum Med Sci
+Ultramicroscopy
+Ultrason Sonochem
+Ultrasonics
 Ultrasound Clin
+Ultrasound Med Biol
 Update Cancer Ther
 Urban Clim
 Urban For Urban Green
 Urine (Amst)
 Urol Case Rep
 Urol Clin North Am
+Urol Oncol
 Urol Video J
+Urology
 Util Policy
+Vaccine
 Vaccine Rep
 Vaccine X
 Vacunas
 Vacuum
 Value Health
 Value Health Reg Issues
+Vasc Med
+Vascul Pharmacol
 Vet Anim Sci
 Vet Clin North Am
 Vet Clin North Am Equine Pract
@@ -1923,12 +2650,22 @@ Vet Clin North Am Exot Anim Pract
 Vet Clin North Am Food Anim Pract
 Vet Clin North Am Large Anim Pract
 Vet Clin North Am Small Anim Pract
+Vet Immunol Immunopathol
+Vet J
+Vet Microbiol
+Vet Parasitol
 Vet Parasitol Reg Stud Reports
 Vet Parasitol X
 Vib Spectrosc
 VideoGIE
 Virol Rep
+Virology
+Virus Res
 Vis J Emerg Med
+Vision Res
+Vitam Horm
+Waste Manag
+Water Res
 Water Res X
 Water Resour Econ
 Water Secur
@@ -1936,6 +2673,8 @@ Wave Motion
 Wear
 Weather Clim Extrem
 Web Semant
+Wei Sheng Yan Jiu
+Wilderness Environ Med
 Women Birth
 Womens Health Issues
 Womens Stud Int Forum
@@ -1947,13 +2686,20 @@ World Dev Perspect
 World J Acupunct Moxibustion
 World Neurosurg
 World Neurosurg X
+Yi Chuan
+Yi Chuan Xue Bao
 Z Arztl Fortbild Qualitatssich
 Z Evid Fortbild Qual Gesundhwes
 Z Med Phys
+Zentralbl Bakteriol
 Zentralbl Bakteriol Mikrobiol Hyg A
 Zentralbl Bakteriol Mikrobiol Hyg A Med Mikrobiol Infekt Parasitol
 Zentralbl Bakteriol Naturwiss
 Zentralbl Bakteriol Parasitenkd Infektionskr Hyg
+Zh Nevrol Psikhiatr Im S S Korsakova
+Zhonghua Fu Chan Ke Za Zhi
+Zhonghua Yan Ke Za Zhi
+Zhonghua Yi Xue Za Zhi
 Zool Anz
 Zoology (Jena)
 eNeurologicalSci

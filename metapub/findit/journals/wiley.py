@@ -1,6 +1,14 @@
 from __future__ import absolute_import, unicode_literals
 
-wiley_journals = [
+from .utils import load_journals_from_file
+
+wiley_journals = load_journals_from_file("wiley")
+
+
+
+
+"""
+[
         'APMIS',
         'Acad Emerg Med',
         'Acta Anaesthesiol Scand',
@@ -520,3 +528,5 @@ wiley_journals = [
         'Zhonghua Yan Ke Za Zhi',
         'Zoonoses Public Health',
 ]
+
+"""

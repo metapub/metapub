@@ -6,6 +6,9 @@ from __future__ import absolute_import, unicode_literals
 # {kid} comes from the final nonzero numbers of the article's DOI.
 karger_format = 'http://www.karger.com/Article/Pdf/{kid}'
 
+karger_journals = load_journals_from_file("karger")
+
+"""
 karger_journals = [
         'Acta Cytol',
         'Acta Genet Stat Med',
@@ -91,3 +94,4 @@ karger_journals = [
         'Zhonghua Er Ke Za Zhi',
         'Zhonghua Yan Ke Za Zhi',
 ]
+"""

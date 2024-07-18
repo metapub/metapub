@@ -1,6 +1,8 @@
 import pkg_resources
 import os
 
+from .utils import load_journals_from_file
+
 
 # DOI simple formats are used for URLs that can be deduced from PubMedArticle XML
 #
@@ -58,32 +60,12 @@ simple_formats_doi = {
 }
 
 
-# Function to load journal names from a text file
-def load_journals_from_file(publisher):
-    resource_package = 'metapub' # Name of the current package
-    resource_path = f'publisher_lists/{publisher}.txt'  # Relative path to the resource
-    # print(resource_path)
-
-    try:
-        # Check if the file exists in the package
-        if not pkg_resources.resource_exists(resource_package, resource_path):
-            print(f"File {publisher}.txt not found in the package.")
-            return
-
-        journal_names = pkg_resources.resource_string(resource_package, resource_path).decode('utf-8')
-        for line in journal_names.splitlines():
-            journal_name = line.strip()
-            if journal_name:
-                simple_formats_doi[journal_name] = doi_templates[publisher]
-    except FileNotFoundError:
-        print(f"File {publisher}.txt not found.")
-        return
-
-
-
 # Ingest all of the journals contained in the publisher_list/*.txt files.  
 # Add them into the directory according to the templates they require.
-for key in doi_templates:
-    load_journals_from_file(key)
+for publisher in doi_templates:
+    journals = load_journals_from_file(publisher)
+    for journal in journals:
+        simple_formats_doi[journal] = doi_templates[publisher]
+
 
 

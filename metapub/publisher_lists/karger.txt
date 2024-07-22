@@ -1,211 +1,212 @@
-AMA Arch Ophthalmol
-Acta Anat (Basel)
-Acta Anat Suppl (Basel)
-Acta Cytol
-Acta Genet Stat Med
-Acta Haematol
-Adv Cardiol
-Adv Otorhinolaryngol
-Adv Psychosom Med
-Am J Nephrol
-Angiologica
-Ann Nestle Eng
-Ann Nutr Metab
-Antibiot Chemother
-Antibiot Chemother (1971)
-Appl Neurophysiol
-Audiol Neurootol
-Audiol Neurotol Extra
-Bibl Haematol
-Bibl Nutr Dieta
-Bibl Psychiatr
-Biol Neonat
-Biol Neonate
-Biol Signals
-Biomed Hub
-Blood Purif
-Blood Vessels
-Brain Behav Evol
-Breast Care (Basel)
-Cardiologia (Basel)
-Cardiology
-Cardiorenal Med
-Caries Res
-Case Rep Dermatol
-Case Rep Gastroenterol
-Case Rep Nephrol Dial
-Case Rep Nephrol Urol
-Case Rep Neurol
-Case Rep Oncol
-Case Rep Ophthalmol
-Cell Physiol Biochem
-Cells Tissues Organs
-Cells Tissues Organs (Print)
-Cerebrovasc Dis
+
 Cerebrovasc Dis Extra
-Chem Immunol
-Chem Immunol Allergy
-Chemotherapia (Basel)
-Chemotherapy
-Childs Brain
-Community Genet
-Complement
-Complement Med Res
-Complex Psychiatry
-Contrib Gynecol Obstet
-Contrib Hum Dev
-Contrib Microbiol
-Contrib Nephrol
-Curr Dir Autoimmun
-Curr Probl Dermatol
-Curr Stud Hematol Blood Transfus
-Cytogenet Cell Genet
-Cytogenet Genome Res
-Cytogenetics
-Dement Geriatr Cogn Dis Extra
-Dement Geriatr Cogn Disord
-Dermatologica
-Dermatology
-Dermatology (Basel)
-Dev Biol (Basel)
-Dev Neurosci
-Dev Ophthalmol
-Dev Pharmacol Ther
-Dig Dis
-Dig Surg
-Digestion
-Digit Biomark
-Endocr Dev
-Enzyme Protein
-Enzymol Biol Clin (Basel)
-Eur Addict Res
-Eur Neurol
-Eur Surg Res
-Exp Cell Biol
-Exp Clin Immunogenet
-Fetal Diagn Ther
-Fetal Ther
-Folia Phoniatr (Basel)
-Folia Phoniatr Logop
-Forsch Komplementarmed
-Forsch Komplementarmed Klass Naturheilkd
-Forsch Komplementmed
-Fortschr Hals Nasen Ohrenheilkd
-Fortschr Kardiol
-Fortschr Psychosom Med
-Forum Nutr
-Front Gastrointest Res
-Front Horm Res
-Front Neurol Neurosci
-Front Oral Physiol
-Front Radiat Ther Oncol
-GE Port J Gastroenterol
-Gastrointest Tumors
-Genome Dyn
-Gerontol Clin (Basel)
-Gerontology
-Gynaecologia
-Gynakol Geburtshilfliche Rundsch
-Gynecol Invest
-Gynecol Obstet Invest
-Haemostasis
-Heartdrug
-Horm Res
-Horm Res Paediatr
-Hum Dev
-Hum Hered
-Inflamm Intest Dis
-Infusionsther Klin Ernahr
-Infusionsther Transfusionsmed
-Int Arch Allergy Appl Immunol
-Int Arch Allergy Immunol
-Int J Microcirc Clin Exp
-Integr Med Int
-Interdiscip Top Gerontol
-Interdiscip Top Gerontol Geriatr
-Interv Neurol
-Intervirology
-Invasion Metastasis
-J Biomed Sci
-J Innate Immun
-J Mol Microbiol Biotechnol
-J Nutrigenet Nutrigenomics
-J Vasc Res
-Kidney Blood Press Res
-Kidney Dis (Basel)
-Lifestyle Genom
-Liver Cancer
-Med Cannabis Cannabinoids
-Med Epigenet
-Med Exp Int J Exp Med
-Med Princ Pract
 Med Sport Sci
-Med Thorac
-Microb Physiol
-Miner Electrolyte Metab
 Mod Probl Pharmacopsychiatry
-Mod Trends Pharmacopsychiatry
-Mod Trends Psychiatry
-Mol Neuropsychiatry
-Mol Syndromol
-Monogr Clin Cytol
-Monogr Hum Genet
-Monogr Oral Sci
-Nat Immun
-Neonatology
-Nephron
-Nephron Clin Pract
-Nephron Exp Nephrol
-Nephron Extra
-Nephron Physiol
-Nestle Nutr Inst Workshop Ser
-Nestle Nutr Workshop Ser Clin Perform Programme
-Nestle Nutr Workshop Ser Pediatr Program
 Neurodegener Dis
-Neuroendocrinology
-Neuroepidemiology
-Neuroimmunomodulation
-Neuropsychobiology
-Neurosignals
-Nutr Metab
-ORL J Otorhinolaryngol Relat Spec
-Obes Facts
-Ocul Oncol Pathol
-Oncol Res Treat
-Oncology
-Onkologie
-Ophthalmic Res
-Ophthalmologica
-Pathobiology
-Pathol Microbiol (Basel)
-Pathophysiol Haemost Thromb
-Pediatr Neurosci
-Pediatr Neurosurg
-Pharmacology
-Prog Allergy
-Prog Exp Tumor Res
-Prog Neurol Surg
-Prog Surg
-Prog Tumor Res
-Psychiatr Neurol (Basel)
-Psychopathology
-Psychother Psychosom
-Public Health Genomics
-Pulse (Basel)
-Ren Physiol Biochem
-Respiration
-Sex Dev
-Skin Appendage Disord
+Cytogenet Genome Res
+Gynecol Obstet Invest
+Dig Surg
+Miner Electrolyte Metab
+Contrib Gynecol Obstet
+Folia Phoniatr (Basel)
+Mol Syndromol
+Fortschr Hals Nasen Ohrenheilkd
+Chemotherapy
+Forsch Komplementmed
 Skin Pharmacol
-Skin Pharmacol Physiol
-Stereotact Funct Neurosurg
+Neonatology
+Horm Res Paediatr
+J Vasc Res
+Respiration
+Dement Geriatr Cogn Dis Extra
+Integr Med Int
+Breast Care (Basel)
+GE Port J Gastroenterol
+Nephron Physiol
+Neuropsychobiology
+Biol Neonat
+Prog Neurol Surg
+Biol Neonate
+Neuroepidemiology
+Endocr Dev
+Ocul Oncol Pathol
+Infusionsther Klin Ernahr
+J Nutrigenet Nutrigenomics
 Surv Synth Pathol Res
-Transfus Med Hemother
-Urol Int
-Verh Dtsch Ges Pathol
-Vestn Akad Med Nauk SSSR
-Visc Med
+Psychopathology
+Chem Immunol Allergy
+Curr Dir Autoimmun
+Gynakol Geburtshilfliche Rundsch
+Community Genet
+Fortschr Kardiol
+Childs Brain
+Infusionsther Transfusionsmed
+Appl Neurophysiol
+Genome Dyn
+Liver Cancer
+Antibiot Chemother (1971)
+Cardiology
 World Rev Nutr Diet
+Mod Trends Pharmacopsychiatry
+Horm Res
+Contrib Microbiol
+Cytogenet Cell Genet
+Front Gastrointest Res
+Monogr Clin Cytol
+Complex Psychiatry
+Inflamm Intest Dis
+Angiologica
+Fortschr Psychosom Med
+Int Arch Allergy Appl Immunol
+Front Oral Physiol
+Acta Anat (Basel)
+Prog Surg
+Gastrointest Tumors
+Case Rep Oncol
+Case Rep Gastroenterol
+Gynecol Invest
+Ann Nutr Metab
+Biol Signals
+Complement
+Pathophysiol Haemost Thromb
+Prog Exp Tumor Res
+Curr Probl Dermatol
+Verh Dtsch Ges Pathol
+Microb Physiol
+Ann Nestle Eng
+Acta Anat Suppl (Basel)
+Hum Hered
+Prog Allergy
+Acta Cytol
+Mol Neuropsychiatry
+Adv Psychosom Med
+Ren Physiol Biochem
+Bibl Nutr Dieta
+Blood Purif
+Case Rep Neurol
 Yan ke xue shu hui kan
-Zhonghua Er Ke Za Zhi
+Int J Microcirc Clin Exp
+Cerebrovasc Dis
+Nestle Nutr Workshop Ser Pediatr Program
+Pathol Microbiol (Basel)
+Skin Pharmacol Physiol
+Complement Med Res
+Dev Pharmacol Ther
+Sex Dev
+Invasion Metastasis
+Med Thorac
+Case Rep Nephrol Dial
+Caries Res
+Dermatology
+Ophthalmic Res
+Case Rep Nephrol Urol
+Med Exp Int J Exp Med
+Neuroendocrinology
+Front Horm Res
+Psychiatr Neurol (Basel)
+Cell Physiol Biochem
+Blood Vessels
+Dement Geriatr Cogn Disord
+Urol Int
+Antibiot Chemother
+Med Cannabis Cannabinoids
+Visc Med
+Monogr Oral Sci
+Interv Neurol
+Pharmacology
+Med Princ Pract
+Fetal Ther
+Front Radiat Ther Oncol
+Curr Stud Hematol Blood Transfus
+Ophthalmologica
+Digestion
+Brain Behav Evol
+Eur Neurol
+Kidney Blood Press Res
+Cytogenetics
+Dev Biol (Basel)
+Dermatologica
+Acta Haematol
+Fetal Diagn Ther
+Pediatr Neurosci
+Vestn Akad Med Nauk SSSR
+Cardiorenal Med
+Bibl Haematol
+Interdiscip Top Gerontol Geriatr
+Chemotherapia (Basel)
+Enzymol Biol Clin (Basel)
+Neuroimmunomodulation
 Zhonghua Yan Ke Za Zhi
+Acta Genet Stat Med
+Exp Clin Immunogenet
+Forsch Komplementarmed
+Dev Neurosci
+Audiol Neurootol
+Interdiscip Top Gerontol
+Haemostasis
+Case Rep Dermatol
+Stereotact Funct Neurosurg
+Biomed Hub
+Audiol Neurotol Extra
+Intervirology
+Oncol Res Treat
+Mod Trends Psychiatry
+Dev Ophthalmol
+Contrib Hum Dev
+Exp Cell Biol
+Nephron Clin Pract
+ORL J Otorhinolaryngol Relat Spec
+Nestle Nutr Workshop Ser Clin Perform Programme
+Obes Facts
+Am J Nephrol
+Gerontology
+Contrib Nephrol
+Gynaecologia
+Kidney Dis (Basel)
+Monogr Hum Genet
+Public Health Genomics
+Pathobiology
+Psychother Psychosom
+Med Epigenet
+J Innate Immun
+Bibl Psychiatr
+Dermatology (Basel)
+Digit Biomark
+Forum Nutr
+Neurosignals
+AMA Arch Ophthalmol
+Int Arch Allergy Immunol
+J Mol Microbiol Biotechnol
+Nephron Exp Nephrol
+Nephron
+Pulse (Basel)
+Case Rep Ophthalmol
+Folia Phoniatr Logop
+Oncology
+Chem Immunol
+Lifestyle Genom
+Adv Otorhinolaryngol
+Heartdrug
+Nephron Extra
+Nestle Nutr Inst Workshop Ser
+Nutr Metab
+Adv Cardiol
+Eur Surg Res
+Pediatr Neurosurg
+Cells Tissues Organs (Print)
+Eur Addict Res
+Skin Appendage Disord
+Enzyme Protein
+Onkologie
+Cells Tissues Organs
+Front Neurol Neurosci
+Hum Dev
+Gerontol Clin (Basel)
+Dig Dis
+Nat Immun
+Transfus Med Hemother
+Prog Tumor Res
+Forsch Komplementarmed Klass Naturheilkd
+Zhonghua Er Ke Za Zhi
+Cardiologia (Basel)
+J Biomed Sci

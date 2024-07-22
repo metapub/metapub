@@ -1,5 +1,9 @@
-from __future__ import absolute_import, unicode_literals
+from .utils import load_journals_from_file
 
+springer_journals = load_journals_from_file("springer")
+
+
+"""
 springer_journals = [
         'AAPS PharmSciTech',
         'Acta Clin Croat',
@@ -466,4 +470,4 @@ springer_journals = [
         'Zhonghua Fu Chan Ke Za Zhi',
         'Zhonghua Xue Ye Xue Za Zhi',
 ]
-
+"""

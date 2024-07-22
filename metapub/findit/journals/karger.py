@@ -1,4 +1,4 @@
-from __future__ import absolute_import, unicode_literals
+from .utils import load_journals_from_file
 
 # karger: mostly paywalled, but sometimes...
 # http://www.karger.com/Article/Pdf/351538

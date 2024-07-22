@@ -1,10 +1,6 @@
-from __future__ import absolute_import, unicode_literals
-
 from .utils import load_journals_from_file
 
 wiley_journals = load_journals_from_file("wiley")
-
-
 
 
 """
@@ -528,5 +524,4 @@ wiley_journals = load_journals_from_file("wiley")
         'Zhonghua Yan Ke Za Zhi',
         'Zoonoses Public Health',
 ]
-
 """

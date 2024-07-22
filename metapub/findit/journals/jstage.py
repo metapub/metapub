@@ -35,12 +35,12 @@ jstage_journals = [
         'J Nutr Sci Vitaminol',
         'J Occup Health',
         'J Oleo Sci',
-        'J Pharmacobio-dyn',# bpb1978
-        'J Reprod Dev',     # jrd
-        'J Toxicol Sci',    # jts
-        'J Vet Med Sci',    # jvms
-        'Jpn Circ J',       # jcj
-        'Jpn Heart J',      # jhj
+        'J Pharmacobio-dyn', # bpb1978
+        'J Reprod Dev',      # jrd
+        'J Toxicol Sci',     # jts
+        'J Vet Med Sci',     # jvms
+        'Jpn Circ J',        # jcj
+        'Jpn Heart J',       # jhj
         'Jpn J Infect Dis',
         'Jpn J Med',
         'Jpn J Med Sci Biol',

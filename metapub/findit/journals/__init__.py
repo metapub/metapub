@@ -10,17 +10,14 @@ from .dustri import dustri_journals
 from .endo import endo_journals
 from .jama import jama_journals
 from .jstage import jstage_journals
-from .karger import karger_journals, karger_format
 from .lancet import lancet_journals
 from .nature import nature_journals, nature_format
 from .misc_doi import doi_templates, simple_formats_doi
 from .misc_pii import simple_formats_pii
 from .misc_vip import vip_format, vip_journals, vip_journals_nonstandard
+from .publishers import sciencedirect_journals, sciencedirect_url, wiley_journals, karger_journals, karger_format, springer_journals
 from .scielo import scielo_journals, scielo_format
-from .sciencedirect import sciencedirect_journals, sciencedirect_url
-from .springer import springer_journals
 from .spandidos import spandidos_format, spandidos_journals
-from .wiley import wiley_journals
 from .wolterskluwer import wolterskluwer_journals
 
 from .cantdo_list import JOURNAL_CANTDO_LIST

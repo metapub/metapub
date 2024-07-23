@@ -15,10 +15,9 @@ from .nature import nature_journals, nature_format
 from .misc_doi import doi_templates, simple_formats_doi
 from .misc_pii import simple_formats_pii
 from .misc_vip import vip_format, vip_journals, vip_journals_nonstandard
-from .publishers import sciencedirect_journals, sciencedirect_url, wiley_journals, karger_journals, karger_format, springer_journals
+from .publishers import sciencedirect_journals, sciencedirect_url, wiley_journals, karger_journals, karger_format, springer_journals, wolterskluwer_journals
 from .scielo import scielo_journals, scielo_format
 from .spandidos import spandidos_format, spandidos_journals
-from .wolterskluwer import wolterskluwer_journals
 
 from .cantdo_list import JOURNAL_CANTDO_LIST
 

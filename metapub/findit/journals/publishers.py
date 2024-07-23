@@ -22,3 +22,11 @@ springer_journals = load_journals_from_file("springer")
 
 wiley_journals = load_journals_from_file("wiley")
 
+# Wolters Kluwer
+#
+# Some of this stuff is Free and/or Open Access.
+#
+# http://journals.lww.com/pain/Fulltext/2015/07000/Social_communication_model_of_pain.7.aspx
+
+wolterskluwer_journals = load_journals_from_file("wolterskluwer")
+

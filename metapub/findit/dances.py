@@ -50,19 +50,21 @@ def standardize_journal_name(journal_name):
     '''Returns a "standardized" journal name with periods stripped out.'''
     return remove_chars(journal_name, '.')
 
-def verify_pdf_url(pdfurl, publisher_name=''):
+def verify_pdf_url(pdfurl, publisher=''):
     res = requests.get(pdfurl)
     if res.status_code==401:
-        raise NoPDFLink('DENIED: %s url (%s) requires login.' % (publisher_name, pdfurl))
+        raise NoPDFLink(f'DENIED: {publisher} url {pdfurl} requires login.')
+
+    elif res.status_code==403:
+        raise NoPDFLink(f'DENIED: {publisher} url {pdfurl} seems to be paywalled.')
 
     if not res.ok:
-        raise NoPDFLink('TXERROR: %i status returned from %s url (%s)' % (res.status_code, 
-                            publisher_name, pdfurl))
+        raise NoPDFLink(f'TXERROR: {res.status_code} status returned from {publisher} url {pdfurl}')
 
     if res.status_code in OK_STATUS_CODES and 'pdf' in res.headers['content-type']:
         return pdfurl
     else:
-        raise NoPDFLink('DENIED: %s url (%s) did not result in a PDF' % (publisher_name, pdfurl))
+        raise NoPDFLink(f'DENIED: {publisher} url {pdfurl} did not result in a PDF')
 
 def rectify_pma_for_vip_links(pma):
     '''takes a PubMedArticle object and "squares" the volume/issue/page info (sometimes there

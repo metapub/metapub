@@ -63,7 +63,7 @@ def citation(**kwargs):
     #Title
     title = '(None)' if not kwargs.get('title', None) else kwargs['title'].strip('.')
     #Journal
-    journal = '(None)' if not kwargs.get('journal', None) else kwargs['title'].strip('.')
+    journal = '(None)' if not kwargs.get('journal', None) else kwargs['journal'].strip('.')
     # Year
     year = '(unknown year)' if not kwargs.get('year', None) else kwargs['year']
 

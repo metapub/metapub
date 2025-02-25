@@ -1,6 +1,6 @@
 """ metapub.clinvarfetcher: tools for interacting with ClinVar data """
 
-#TODO: Add logging
+# TODO: Add logging
 
 from lxml import etree
 
@@ -96,14 +96,21 @@ class ClinVarFetcher(Borg):
         # equivalent esearch:
         # https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=FGFR3[gene]&retmax=500
 
-        result = self.qs.esearch({'db': 'clinvar', 'term': gene + '[gene]', 'single_gene': single_gene})
+        result = self.qs.esearch(
+            {
+                "db": "clinvar",
+                "term": gene + "[gene]",
+                "single_gene": single_gene,
+                "sort": "relevance",
+            }
+        )
         dom = etree.fromstring(result)
         ids = []
         idlist = dom.find('IdList')
         for item in idlist.findall('Id'):
             ids.append(item.text.strip())
         return ids
-    
+
     def _eutils_pmids_for_id(self, clinvar_id):
         """
         example:
@@ -121,7 +128,9 @@ class ClinVarFetcher(Borg):
         :param: hgvs_c (string)
         :return: list of pubmed IDs (strings)
         """
-        result = self.qs.esearch({'db': 'clinvar', 'term': '"%s"' % hgvs_c})
+        result = self.qs.esearch(
+            {"db": "clinvar", "term": '"%s"' % hgvs_c, "sort": "relevance"}
+        )
         dom = etree.fromstring(result)
         ids = []
         idlist = dom.find('IdList')
@@ -142,4 +151,3 @@ class ClinVarFetcher(Borg):
         for clinvar_id in ids:
             pmids.add(self._eutils_pmids_for_id(clinvar_id))
         return list(pmids)
-

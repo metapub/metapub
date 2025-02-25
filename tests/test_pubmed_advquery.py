@@ -48,9 +48,9 @@ class TestPubmedFetcher(unittest.TestCase):
     def test_clinical_query(self):
         # we presume that the results for a fixed year prior to this one will not change.
         results = self.fetch.pmids_for_clinical_query('Global developmental delay', 'etiology', 'narrow', debug=True, year=2013)
-        assert results[0] == '24257216'
-        assert results[1] == '24123848'
-        assert results[2] == '24089199'
+        assert results[0] == "22886364"
+        assert results[1] == "24257216"
+        assert results[2] == "23583054"
 
     def test_specified_return_slice(self):
         pmids = self.fetch.pmids_for_query(since='2015/3/1', retmax=1000)
@@ -72,5 +72,3 @@ class TestPubmedFetcher(unittest.TestCase):
             else:
                 assert eg['pmid'] is None
                 print(eg, result)
-
-

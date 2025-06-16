@@ -352,3 +352,82 @@ class TestPubMedArticle(unittest.TestCase):
         self.assertTrue(expected_conclusion in abstract)
         self.assertTrue(abstract.startswith('BACKGROUND: Epstein-Barr virus (EBV) infection and vitamin D insufficiency'))
         self.assertTrue(abstract.endswith('do not implicate a promoted immune response against EBV as the underlying mechanism.'))
+
+    def test_mesh_heading_parsing_detailed(self):
+        """
+        Tests the parsing of MeSH headings, specifically checking the new structure
+        with a list of qualifiers and their major topic statuses, using PMID 34558640.
+        """
+        pmid = "34558640"
+        article = self.fetch.article_by_pmid(pmid)
+        self.assertIsNotNone(article, f"Failed to fetch article for PMID {pmid}")
+
+        mesh_data = article.mesh
+        # Based on the provided XML for PMID 34558640:
+        # <MeshHeadingList>
+        #     <MeshHeading>
+        #         <DescriptorName UI="D000072224" MajorTopicYN="N">Bcl-2-Like Protein 11</DescriptorName>
+        #         <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        #     </MeshHeading>
+        #     <MeshHeading>
+        #         <DescriptorName UI="D002289" MajorTopicYN="N">Carcinoma, Non-Small-Cell Lung</DescriptorName>
+        #         <QualifierName UI="Q000188" MajorTopicYN="Y">drug therapy</QualifierName>
+        #         <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        #         <QualifierName UI="Q000473" MajorTopicYN="N">pathology</QualifierName>
+        #     </MeshHeading>
+        #     <MeshHeading>
+        #         <DescriptorName UI="D019008" MajorTopicYN="N">Drug Resistance, Neoplasm</DescriptorName>
+        #     </MeshHeading>
+        #     <MeshHeading>
+        #         <DescriptorName UI="D066246" MajorTopicYN="N">ErbB Receptors</DescriptorName>
+        #         <QualifierName UI="Q000037" MajorTopicYN="Y">antagonists & inhibitors</QualifierName>
+        #         <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        #         <QualifierName UI="Q000502" MajorTopicYN="N">physiology</QualifierName>
+        #     </MeshHeading>
+        # ... and others
+        # </MeshHeadingList>
+
+        self.assertIn("D002289", mesh_data, "Descriptor D002289 not found in MeSH data.")
+        d002289 = mesh_data["D002289"]
+        self.assertEqual(d002289['descriptor_name'], 'Carcinoma, Non-Small-Cell Lung')
+        self.assertFalse(d002289['descriptor_major_topic'])
+        self.assertEqual(len(d002289['qualifiers']), 3)
+
+        # Check qualifiers for D002289
+        expected_qual_d002289_dt = {'qualifier_name': 'drug therapy', 'qualifier_ui': 'Q000188', 'qualifier_major_topic': True}
+        expected_qual_d002289_ge = {'qualifier_name': 'genetics', 'qualifier_ui': 'Q000235', 'qualifier_major_topic': False}
+        expected_qual_d002289_pa = {'qualifier_name': 'pathology', 'qualifier_ui': 'Q000473', 'qualifier_major_topic': False}
+
+        self.assertIn(expected_qual_d002289_dt, d002289['qualifiers'])
+        self.assertIn(expected_qual_d002289_ge, d002289['qualifiers'])
+        self.assertIn(expected_qual_d002289_pa, d002289['qualifiers'])
+
+        self.assertIn("D019008", mesh_data, "Descriptor D019008 not found in MeSH data.")
+        d019008 = mesh_data["D019008"]
+        self.assertEqual(d019008['descriptor_name'], 'Drug Resistance, Neoplasm')
+        self.assertFalse(d019008['descriptor_major_topic'])
+        self.assertEqual(len(d019008['qualifiers']), 0, "D019008 should have no qualifiers.")
+
+        self.assertIn("D066246", mesh_data, "Descriptor D066246 not found in MeSH data.")
+        d066246 = mesh_data["D066246"]
+        self.assertEqual(d066246['descriptor_name'], 'ErbB Receptors')
+        self.assertFalse(d066246['descriptor_major_topic'])
+        self.assertEqual(len(d066246['qualifiers']), 3)
+
+        # Check qualifiers for D066246
+        expected_qual_d066246_ai = {'qualifier_name': 'antagonists & inhibitors', 'qualifier_ui': 'Q000037', 'qualifier_major_topic': True}
+        expected_qual_d066246_ge = {'qualifier_name': 'genetics', 'qualifier_ui': 'Q000235', 'qualifier_major_topic': False}
+        expected_qual_d066246_ph = {'qualifier_name': 'physiology', 'qualifier_ui': 'Q000502', 'qualifier_major_topic': False}
+
+        self.assertIn(expected_qual_d066246_ai, d066246['qualifiers'])
+        self.assertIn(expected_qual_d066246_ge, d066246['qualifiers'])
+        self.assertIn(expected_qual_d066246_ph, d066246['qualifiers'])
+
+        # Check D000072224
+        self.assertIn("D000072224", mesh_data, "Descriptor D000072224 not found in MeSH data.")
+        d000072224 = mesh_data["D000072224"]
+        self.assertEqual(d000072224['descriptor_name'], 'Bcl-2-Like Protein 11')
+        self.assertFalse(d000072224['descriptor_major_topic'])
+        self.assertEqual(len(d000072224['qualifiers']), 1)
+        expected_qual_d000072224_ge = {'qualifier_name': 'genetics', 'qualifier_ui': 'Q000235', 'qualifier_major_topic': False}
+        self.assertIn(expected_qual_d000072224_ge, d000072224['qualifiers'])

@@ -50,6 +50,22 @@ class ClinVarFetcher(Borg):
     _cache_filename = 'clinvarfetcher.db'
 
     def __init__(self, method='eutils', cachedir='default'):
+        """Initialize ClinVarFetcher for clinical variant data retrieval.
+        
+        Args:
+            method (str, optional): Service method to use. Currently only 'eutils'
+                is supported. Defaults to 'eutils'.
+            cachedir (str, optional): Directory for caching responses. Use 'default'
+                for system cache directory. Defaults to 'default'.
+        
+        Raises:
+            NotImplementedError: If an unsupported method is specified.
+        
+        Note:
+            This is a Borg singleton - all instances share the same state.
+            Provides access to NCBI's ClinVar database for clinical significance
+            of genetic variants, gene-disease relationships, and variant literature.
+        """
         self.method = method
         self._cache_path = None
 

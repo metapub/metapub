@@ -109,6 +109,33 @@ class FindIt(object):
     """
 
     def __init__(self, pmid=None, cachedir=DEFAULT_CACHE_DIR, **kwargs):
+        """Initialize FindIt to locate full-text PDFs for academic papers.
+        
+        Args:
+            pmid (str or int, optional): PubMed ID of the article to find.
+            cachedir (str, optional): Directory for caching results. Defaults to 
+                system cache directory. Set to None to disable caching.
+            **kwargs: Additional keyword arguments:
+                doi (str): DOI of the article (alternative to pmid).
+                url (str): Pre-existing URL (for testing/validation).
+                use_nih (bool): Use NIH access when available. Defaults to False.
+                use_crossref (bool): Enable CrossRef fallback for missing DOIs. 
+                    Defaults to False.
+                doi_min_score (int): Minimum CrossRef confidence score for DOI 
+                    matches. Defaults to 60.
+                verify (bool): Verify URLs by testing HTTP response. Defaults to True.
+                retry_errors (bool): Retry if cached result has error reasons. 
+                    Defaults to False.
+                debug (bool): Enable debug logging. Defaults to False.
+                tmpdir (str): Temporary directory for downloads. Defaults to '/tmp'.
+        
+        Raises:
+            MetaPubError: If neither pmid nor doi is provided.
+            
+        Note:
+            After initialization, access results via the `url` and `reason` attributes.
+            If url is None, check `reason` for explanation of why PDF wasn't found.
+        """
 
         _start_engines()
 
@@ -162,39 +189,48 @@ class FindIt(object):
             self.reason = 'TXERROR: %r' % error
 
     def load(self, verify=True):
-        """ Interface to logic.find_article_from_pma; uses self.pma to return
-        a (url, reason) tuple.
-
-        If `verify`, actually test the link to ensure that a file could be downloaded
-        from the calculated link. (Setting this to False usually speeds up FindIt considerably.)
-
-        If url is None, reason should have a string.  If url is not None, there may
-        or may not be a reason string (usually not).
-
-        If a ConnectionError prevented lookup, returns (None, "TXERROR: <info>")
-
-        :param verify: (bool) default: True
-        :return: (url, reason) (string or None, string or None)
+        """Find full-text PDF URL for the loaded article.
+        
+        This method performs the core FindIt logic using publisher-specific 
+        strategies to locate downloadable PDFs.
+        
+        Args:
+            verify (bool, optional): Test URLs by making HTTP requests to ensure
+                files are downloadable. Setting to False speeds up processing
+                significantly. Defaults to True.
+        
+        Returns:
+            Tuple[Optional[str], Optional[str]]: A tuple of (url, reason).
+                - url: Direct link to PDF if found, None otherwise.
+                - reason: Explanation if PDF not found (e.g., "PAYWALL", "NOFORMAT").
+                  May be None if URL was successfully found.
+        
+        Note:
+            If a ConnectionError occurs during lookup, returns (None, "TXERROR: <details>").
         """
         return find_article_from_pma(self.pma, use_nih=self.use_nih, verify=verify)
 
     def load_from_cache(self, verify=True, retry_errors=False):
-        """ Using preloaded identifiers (self.pmid, self.doi, etc), check cache
-        for article lookup results. If it's not in the cache, call self.load()
-        and store the results in the cache.
-
-        If url is None, reason should have a string.  If url is not None, there may
-        or may not be a reason string (usually not).
-
-        If self.load() comes up as a ConnectionError (usually indicating a problem
-        with the internet connection), no result will be cached.
-
-        If cache result has reason like "NOFORMAT", "TODO", "PAYWALL", or "CANTDO",
-        try a fresh load; there are new formats added to FindIt all the time. :)
-
-        :param verify: (bool) default: True
-        :param retry_errors: (bool) default: False
-        :return: (url, reason) (string or None, string or None)
+        """Load article URL from cache, with fallback to fresh lookup.
+        
+        Checks cache for previously computed results using article identifiers.
+        If not cached or retry_errors is True for error reasons, performs fresh
+        lookup and caches the result.
+        
+        Args:
+            verify (bool, optional): Verify URLs by testing HTTP response. 
+                Defaults to True.
+            retry_errors (bool, optional): Force fresh lookup if cached result
+                has error reasons like "NOFORMAT", "TODO", "PAYWALL", or "CANTDO".
+                Useful as new publisher support is frequently added. Defaults to False.
+        
+        Returns:
+            Tuple[Optional[str], Optional[str]]: A tuple of (url, reason).
+                - url: Direct link to PDF if found, None otherwise. 
+                - reason: Explanation if PDF not found, None if successful.
+        
+        Note:
+            Connection errors are not cached to avoid persisting temporary network issues.
         """
         retry_reasons = ['PAYWALL', 'TODO', 'NOFORMAT', 'CANTDO']
         if retry_errors:

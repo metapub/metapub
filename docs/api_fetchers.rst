@@ -3,6 +3,25 @@ Data Fetcher Classes
 
 The core of Metapub consists of several fetcher classes that provide access to different biomedical databases. All fetchers use the Borg singleton pattern and include comprehensive caching.
 
+**🔄 Borg Singleton Pattern**
+
+Metapub fetchers use the Borg pattern, which means all instances of the same fetcher class share the same state (cache, configuration, etc.). This provides several benefits:
+
+- **Shared cache:** Multiple ``PubMedFetcher()`` instances automatically share cached data
+- **Consistent configuration:** API keys and settings apply across all instances  
+- **Memory efficiency:** No duplicate caches or redundant API calls
+- **Thread safety:** Safe to use across different parts of your application
+
+.. code-block:: python
+
+   # These two fetchers share the same cache and configuration
+   fetch1 = PubMedFetcher()
+   fetch2 = PubMedFetcher()
+   
+   # Article cached by fetch1 is immediately available to fetch2
+   article = fetch1.article_by_pmid('12345678')
+   same_article = fetch2.article_by_pmid('12345678')  # Uses cache, no API call
+
 PubMedFetcher
 ------------
 
@@ -12,12 +31,14 @@ PubMedFetcher
    :members:
    :show-inheritance:
 
-The PubMedFetcher is the primary interface for accessing PubMed literature. It provides methods for:
+The PubMedFetcher is the primary interface for accessing PubMed literature via NCBI's E-utilities API. It provides methods for:
 
 * **Article retrieval** by PMID, DOI, or PMC ID
 * **Literature searches** with complex query support
 * **Citation-based lookups** for bibliographic matching
 * **Related article discovery** using NCBI's eLink service
+
+**NCBI E-utilities Documentation:** `PubMed E-utilities <https://www.ncbi.nlm.nih.gov/books/NBK25501/>`_ | `PubMed Search Field Descriptions <https://pubmed.ncbi.nlm.nih.gov/help/>`_
 
 Key Methods
 ~~~~~~~~~~
@@ -77,6 +98,8 @@ MedGenFetcher
 
 The MedGenFetcher provides access to NCBI's MedGen database for medical genetics concepts and disease-gene relationships.
 
+**NCBI MedGen Documentation:** `MedGen Database <https://www.ncbi.nlm.nih.gov/medgen/>`_ | `MedGen Help <https://www.ncbi.nlm.nih.gov/books/NBK159970/>`_
+
 Key Methods
 ~~~~~~~~~~
 
@@ -125,6 +148,8 @@ ClinVarFetcher
 
 The ClinVarFetcher provides access to NCBI's ClinVar database for clinical significance of genetic variants.
 
+**NCBI ClinVar Documentation:** `ClinVar Database <https://www.ncbi.nlm.nih.gov/clinvar/>`_ | `ClinVar API Guide <https://www.ncbi.nlm.nih.gov/clinvar/docs/api/>`_
+
 Key Methods
 ~~~~~~~~~~
 
@@ -172,6 +197,8 @@ CrossRefFetcher
 
 The CrossRefFetcher provides access to CrossRef's API for DOI resolution and publication metadata when PubMed data is incomplete.
 
+**CrossRef API Documentation:** `CrossRef REST API <https://github.com/CrossRef/rest-api-doc>`_ | `Works API Reference <https://api.crossref.org/swagger-ui/index.html>`_
+
 Example Usage
 ~~~~~~~~~~~~
 
@@ -209,18 +236,42 @@ Custom Cache Directory
    # Or specify per-fetcher
    fetch = PubMedFetcher(cachedir='/custom/cache/path')
 
-API Key Configuration
-~~~~~~~~~~~~~~~~~~~
+NCBI API Key Setup
+~~~~~~~~~~~~~~~~~
+
+**📈 Why Use an API Key?**
+
+NCBI provides free API keys that increase your rate limits from 3 to 10 requests per second, essential for production applications and large-scale data collection.
+
+**🔑 Getting Your API Key**
+
+1. **Apply for a key:** `NCBI API Key Registration <https://ncbiinsights.ncbi.nlm.nih.gov/2017/11/02/new-api-keys-for-the-e-utilities/>`_
+2. **No approval needed** - keys are issued immediately
+3. **Free for academic and commercial use**
+
+**⚙️ Configuration Options**
 
 .. code-block:: python
 
    import os
    
-   # Set NCBI API key for higher rate limits
+   # Method 1: Environment variable (recommended)
    os.environ['NCBI_API_KEY'] = 'your_api_key_here'
    
-   # All fetchers will automatically use the API key
-   fetch = PubMedFetcher()
+   # Method 2: Direct parameter
+   fetch = PubMedFetcher(api_key='your_api_key_here')
+   
+   # Method 3: Config file
+   # Create ~/.metapub/config with:
+   # [DEFAULT]
+   # ncbi_api_key = your_api_key_here
+
+**🚀 Rate Limit Benefits**
+
+- **Without API key:** 3 requests/second
+- **With API key:** 10 requests/second
+- **Large datasets:** 3x faster processing
+- **Production reliability:** Reduced throttling errors
 
 Error Handling Patterns
 ~~~~~~~~~~~~~~~~~~~~~~

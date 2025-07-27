@@ -20,6 +20,7 @@ setup(
         "console_scripts": [
             "pubmed_article = metapub.pubmedfetcher_cli:main",
             "convert = metapub.convert:main",
+            "ncbi_health_check = metapub.ncbi_health_check:main",
         ]
     },
     extras_require={

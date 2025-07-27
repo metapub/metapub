@@ -66,14 +66,14 @@ class MedGenFetcher(Borg):
         :rtype: list
         """
         # http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=medgen&term=OCRL
-        result = self.qs.esearch({'db': 'medgen', 'term': term})
+        result = self.qs.esearch({"db": "medgen", "term": term, "sort": "relevance"})
         dom = etree.fromstring(result)
         uids = []
         idlist = dom.find('IdList')
         for item in idlist.findall('Id'):
             uids.append(item.text.strip())
         return uids
-    
+
     def _eutils_uid_for_cui(self, cui):
         """ Given a ConceptID (cui), return a medgen ID.
 
@@ -85,7 +85,7 @@ class MedGenFetcher(Borg):
         if not cui.startswith('C'):
             raise MetaPubError('Invalid CUID: must start with C (e.g. C0000039)')
 
-        result = self.qs.esearch({'db': 'medgen', 'term': cui})
+        result = self.qs.esearch({"db": "medgen", "term": cui, "sort": "relevance"})
         root = etree.fromstring(result).getroottree()
         try:
             uid = root.find('IdList').find('Id').text.strip()

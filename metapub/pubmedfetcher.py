@@ -95,7 +95,7 @@ class PubMedFetcher(Borg):
         if result is None:
             return None
 
-        #if result.find('ERROR') > -1:
+        # if result.find('ERROR') > -1:
         #    raise MetaPubError('PMID %s returned ERROR; cannot construct PubMedArticle' % pmid)
 
         pma = PubMedArticle(result)
@@ -259,8 +259,15 @@ class PubMedFetcher(Borg):
 
         log.debug('pmids_for_query: querying %s', query)
 
-        result = self.qs.esearch({ 'db': 'pubmed', 'term': query,
-                                   'retmax': retmax, 'retstart': retstart })
+        result = self.qs.esearch(
+            {
+                "db": "pubmed",
+                "term": query,
+                "retmax": retmax,
+                "retstart": retstart,
+                "sort": "relevance",
+            }
+        )
         return get_uids_from_esearch_result(result)
 
     def pmids_for_clinical_query(self, query, category, optimization='broad',
@@ -296,7 +303,6 @@ class PubMedFetcher(Borg):
 
         kwargs['clinical_query'] = True
         return self.pmids_for_query(query, retstart=retstart, retmax=retmax, since=since, until=until, **kwargs)
-
 
     def pmids_for_medical_genetics_query(self, query, category='all', since=None, until=None,
                     retstart=0, retmax=250, pmc_only=False, **kwargs):
@@ -418,7 +424,6 @@ def _reduce_author_string(author_string):
     author1 = authors[0]
     # presume last name is at the end of the string
     return author1.split(' ')[-1]
-
 
 
 """

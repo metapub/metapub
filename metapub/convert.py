@@ -10,6 +10,7 @@ from urllib.error import HTTPError
 from .pubmedfetcher import PubMedFetcher
 from .crossref import CrossRefFetcher
 from .exceptions import *
+from .ncbi_errors import NCBIServiceError
 
 log = logging.getLogger('metapub.convert')
 
@@ -91,14 +92,36 @@ def pmid2doi(pmid):
 
     Raises:
         InvalidPMID (if pmid is invalid)
+        NCBIServiceError (if NCBI services are down)
     '''
-    # let MetaPubError pass back to the caller if pmid is not for realz..
-    _start_engines()
-    pma = pm_fetch.article_by_pmid(pmid)
-    if pma.doi:
-        log.debug('PMID %s: Found DOI in MedLine XML.', pmid)
-        return pma.doi
-    return PubMedArticle2doi(pma)
+    try:
+        # let MetaPubError pass back to the caller if pmid is not for realz..
+        _start_engines()
+        pma = pm_fetch.article_by_pmid(pmid)
+        if pma.doi:
+            log.debug('PMID %s: Found DOI in MedLine XML.', pmid)
+            return pma.doi
+        return PubMedArticle2doi(pma)
+    except NCBIServiceError:
+        # Re-raise NCBI service errors with enhanced context
+        raise
+    except Exception as e:
+        # Check if this might be a service issue
+        if any(keyword in str(e).lower() for keyword in [
+            'connection', 'timeout', 'server error', 'xml', 'parse'
+        ]):
+            raise NCBIServiceError(
+                f"Unable to convert PMID {pmid} to DOI due to service issues.",
+                'conversion_error',
+                [
+                    'Check NCBI service status with: ncbi_health_check --quick',
+                    'Try again in a few minutes',
+                    'Verify the PMID is correct',
+                    'Check your internet connection'
+                ]
+            ) from e
+        else:
+            raise
 
 
 def doi2pmid(doi):
@@ -115,32 +138,55 @@ def doi2pmid(doi):
 
     :param pmid: (str or int)
     :return doi: (str) if found; 'AMBIGUOUS' if citation count > 1; None if no results.
+    :raises: NCBIServiceError if NCBI services are down
     '''
-    # for PMA, skip the validation; some pubmed XML has weird partial strings for DOI.
-    # We should allow people to search using these oddball strings.
-    _start_engines()
-    doi = doi.strip()
     try:
-        pma = pm_fetch.article_by_doi(doi)
-        log.debug('doi2pmid: Found PubMedArticle for DOI %s via eutils fetch', doi)
-        return pma.pmid
-    except:
-        pass
-
-    # Try doing a DOI lookup right in an advanced query string. Sometimes works and has
-    # benefit of being a cached query so it is quick to do again, should we need.
-    pmids = pm_fetch.pmids_for_query(doi)
-    if len(pmids) == 1:
-        # we need to cross-check; pubmed sometimes screws us over by giving us an article
-        # with a SIMILAR doi. *facepalm*
-        pma = pm_fetch.article_by_pmid(pmids[0])
-        if pma.doi == doi:
-            log.debug('doi2pmid: Found PMID via PubMed advanced query for DOI %s', doi)
+        # for PMA, skip the validation; some pubmed XML has weird partial strings for DOI.
+        # We should allow people to search using these oddball strings.
+        _start_engines()
+        doi = doi.strip()
+        try:
+            pma = pm_fetch.article_by_doi(doi)
+            log.debug('doi2pmid: Found PubMedArticle for DOI %s via eutils fetch', doi)
             return pma.pmid
+        except NCBIServiceError:
+            raise  # Re-raise service errors
+        except:
+            pass
 
-        log.debug('Pubmed advanced query gave us a problematic result...')
-        log.debug('\tSearch: %s' % doi)
-        log.debug('\tReturn: %s' % pma.doi)
+        # Try doing a DOI lookup right in an advanced query string. Sometimes works and has
+        # benefit of being a cached query so it is quick to do again, should we need.
+        pmids = pm_fetch.pmids_for_query(doi)
+        if len(pmids) == 1:
+            # we need to cross-check; pubmed sometimes screws us over by giving us an article
+            # with a SIMILAR doi. *facepalm*
+            pma = pm_fetch.article_by_pmid(pmids[0])
+            if pma.doi == doi:
+                log.debug('doi2pmid: Found PMID via PubMed advanced query for DOI %s', doi)
+                return pma.pmid
+
+            log.debug('Pubmed advanced query gave us a problematic result...')
+    except NCBIServiceError:
+        # Re-raise NCBI service errors
+        raise
+    except Exception as e:
+        # Check if this might be a service issue
+        if any(keyword in str(e).lower() for keyword in [
+            'connection', 'timeout', 'server error', 'xml', 'parse'
+        ]):
+            raise NCBIServiceError(
+                f"Unable to convert DOI {doi} to PMID due to service issues.",
+                'conversion_error',
+                [
+                    'Check NCBI service status with: ncbi_health_check --quick',
+                    'Try again in a few minutes',
+                    'Verify the DOI is correct',
+                    'Check your internet connection'
+                ]
+            ) from e
+        else:
+            # Continue with normal error handling for non-service issues
+            pass
 
     # Try Looking up DOI in CrossRef, then feeding results to pubmed citation query tool...
     try:
@@ -154,12 +200,32 @@ def doi2pmid(doi):
         log.debug(error)
         return None
 
-    pmids = pm_fetch.pmids_for_citation(**work.to_citation())
+    try:
+        pmids = pm_fetch.pmids_for_citation(**work.to_citation())
 
-    if pmids:
-        return interpret_pmids_for_citation_results(pmids)
-    else:
-        return None
+        if pmids:
+            return interpret_pmids_for_citation_results(pmids)
+        else:
+            return None
+    except NCBIServiceError:
+        # Re-raise NCBI service errors from citation search
+        raise
+    except Exception as e:
+        # Handle citation search errors
+        if any(keyword in str(e).lower() for keyword in [
+            'connection', 'timeout', 'server error', 'xml', 'parse'
+        ]):
+            raise NCBIServiceError(
+                f"Unable to search PubMed citations for DOI {doi} due to service issues.",
+                'conversion_error',
+                [
+                    'Check NCBI service status with: ncbi_health_check --quick',
+                    'Try again in a few minutes',
+                    'Check your internet connection'
+                ]
+            ) from e
+        else:
+            raise
 
 
 def bookid2pmid(book_id):

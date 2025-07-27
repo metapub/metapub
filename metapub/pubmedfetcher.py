@@ -16,26 +16,52 @@ from .text_mining import re_pmid, is_ncbi_bookID, re_matching_quotes
 from .exceptions import MetaPubError, InvalidPMID, InvalidBookID
 from .base import Borg
 from .config import DEFAULT_EMAIL, API_KEY
+from .ncbi_errors import diagnose_ncbi_error, NCBIServiceError, handle_ncbi_request_error
 
 log = logging.getLogger('metapub.pubmedfetcher')
 
 def get_uids_from_esearch_result(xmlstr):
-    dom = etree.fromstring(xmlstr)
-    uids = []
-    idlist = dom.find('IdList')
-    for item in idlist.findall('Id'):
-        uids.append(item.text.strip())
-    return uids
+    try:
+        dom = etree.fromstring(xmlstr)
+        uids = []
+        idlist = dom.find('IdList')
+        if idlist is not None:
+            for item in idlist.findall('Id'):
+                uids.append(item.text.strip())
+        return uids
+    except Exception as e:
+        # Handle XML parsing errors that might indicate service issues
+        diagnosis = diagnose_ncbi_error(e)
+        if diagnosis['is_service_issue']:
+            raise NCBIServiceError(
+                f"Error parsing search results: {diagnosis['user_message']}", 
+                diagnosis['error_type'], 
+                diagnosis['suggested_actions']
+            ) from e
+        else:
+            raise
 
 def parse_related_pmids_result(xmlstr):
-    outd = {}
-    dom = etree.fromstring(xmlstr)
-    for linkset in dom.findall('LinkSet/LinkSetDb'):
-        heading = linkset.find('LinkName').text.split('_')[-1]
-        outd[heading] = []
-        for Id in linkset.findall('Link/Id'):
-            outd[heading].append(Id.text)
-    return outd
+    try:
+        outd = {}
+        dom = etree.fromstring(xmlstr)
+        for linkset in dom.findall('LinkSet/LinkSetDb'):
+            heading = linkset.find('LinkName').text.split('_')[-1]
+            outd[heading] = []
+            for Id in linkset.findall('Link/Id'):
+                outd[heading].append(Id.text)
+        return outd
+    except Exception as e:
+        # Handle XML parsing errors that might indicate service issues
+        diagnosis = diagnose_ncbi_error(e)
+        if diagnosis['is_service_issue']:
+            raise NCBIServiceError(
+                f"Error parsing related articles: {diagnosis['user_message']}", 
+                diagnosis['error_type'], 
+                diagnosis['suggested_actions']
+            ) from e
+        else:
+            raise
 
 class PubMedFetcher(Borg):
     '''PubMedFetcher (a Borg singleton object backed by an optional SQLite cache)
@@ -89,19 +115,48 @@ class PubMedFetcher(Borg):
         pmid = str(pmid)
         try:
             result = self.qs.efetch({'db': 'pubmed', 'id': pmid})
-        except eutils.EutilsRequestError:
-            raise MetaPubError('Invalid ID "%s" (rejected by Eutils); please check the number and try again.' % pmid)
+        except eutils.EutilsRequestError as e:
+            # Try to provide better error diagnosis
+            diagnosis = diagnose_ncbi_error(e, 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi')
+            if diagnosis['is_service_issue']:
+                raise NCBIServiceError(
+                    diagnosis['user_message'], 
+                    diagnosis['error_type'], 
+                    diagnosis['suggested_actions']
+                ) from e
+            else:
+                raise MetaPubError('Invalid ID "%s" (rejected by Eutils); please check the number and try again.' % pmid) from e
+        except Exception as e:
+            # Handle other potential errors (XML parsing, network issues, etc.)
+            diagnosis = diagnose_ncbi_error(e, 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi')
+            if diagnosis['is_service_issue']:
+                raise NCBIServiceError(
+                    f"Unable to fetch PMID {pmid}: {diagnosis['user_message']}", 
+                    diagnosis['error_type'], 
+                    diagnosis['suggested_actions']
+                ) from e
+            else:
+                raise
 
         if result is None:
             return None
 
-        # if result.find('ERROR') > -1:
-        #    raise MetaPubError('PMID %s returned ERROR; cannot construct PubMedArticle' % pmid)
-
-        pma = PubMedArticle(result)
-        if pma.pmid is None:
-            raise InvalidPMID('Pubmed ID "%s" not found' % pmid)
-        return pma
+        try:
+            pma = PubMedArticle(result)
+            if pma.pmid is None:
+                raise InvalidPMID('Pubmed ID "%s" not found' % pmid)
+            return pma
+        except Exception as e:
+            # Handle XML parsing errors that might indicate service issues
+            diagnosis = diagnose_ncbi_error(e)
+            if diagnosis['is_service_issue']:
+                raise NCBIServiceError(
+                    f"Error processing PMID {pmid}: {diagnosis['user_message']}", 
+                    diagnosis['error_type'], 
+                    diagnosis['suggested_actions']
+                ) from e
+            else:
+                raise
 
     def _eutils_article_by_pmcid(self, pmcid):
         # if user submitted a bare number, prepend "PMC" to make sure it is submitted correctly
@@ -259,16 +314,28 @@ class PubMedFetcher(Borg):
 
         log.debug('pmids_for_query: querying %s', query)
 
-        result = self.qs.esearch(
-            {
-                "db": "pubmed",
-                "term": query,
-                "retmax": retmax,
-                "retstart": retstart,
-                "sort": "relevance",
-            }
-        )
-        return get_uids_from_esearch_result(result)
+        try:
+            result = self.qs.esearch(
+                {
+                    "db": "pubmed",
+                    "term": query,
+                    "retmax": retmax,
+                    "retstart": retstart,
+                    "sort": "relevance",
+                }
+            )
+            return get_uids_from_esearch_result(result)
+        except Exception as e:
+            # Handle search errors with intelligent diagnosis
+            diagnosis = diagnose_ncbi_error(e, 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi')
+            if diagnosis['is_service_issue']:
+                raise NCBIServiceError(
+                    f"Unable to search PubMed: {diagnosis['user_message']}", 
+                    diagnosis['error_type'], 
+                    diagnosis['suggested_actions']
+                ) from e
+            else:
+                raise
 
     def pmids_for_clinical_query(self, query, category, optimization='broad',
             since=None, until=None, retstart=0, retmax=250, pmc_only=False, **kwargs):
@@ -392,11 +459,25 @@ class PubMedFetcher(Borg):
 
         query example:
         https://eutils.ncbi.nlm.nih.gov/entrez/eutils/elink.fcgi?retmode=xml&dbfrom=pubmed&id=14873513&cmd=neighbor
+        
+        :raises: NCBIServiceError if NCBI ELink service is down
         '''
-        outd = { }
-        xmlstr = self.qs.elink( { 'dbfrom': 'pubmed', 'id': pmid, 'cmd': 'neighbor' } )
-        outd = parse_related_pmids_result(xmlstr)
-        return outd
+        try:
+            outd = { }
+            xmlstr = self.qs.elink( { 'dbfrom': 'pubmed', 'id': pmid, 'cmd': 'neighbor' } )
+            outd = parse_related_pmids_result(xmlstr)
+            return outd
+        except Exception as e:
+            # Handle ELink errors with intelligent diagnosis
+            diagnosis = diagnose_ncbi_error(e, 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/elink.fcgi')
+            if diagnosis['is_service_issue']:
+                raise NCBIServiceError(
+                    f"Unable to fetch related articles for PMID {pmid}: {diagnosis['user_message']}", 
+                    diagnosis['error_type'], 
+                    diagnosis['suggested_actions']
+                ) from e
+            else:
+                raise
 
     def pmid_for_bookID(self, book_id):
         '''For supplied NCBI Book ID, use the pubmed advanced query API to find its PMID.

@@ -132,13 +132,27 @@ def scrape_doi_from_article_page(url):
 
     :param url: (str)
     :return: doi or None
+    :raises: Exception for network/connection issues
     """
-    response = requests.get(url)
-    if response.ok:
-        dois = findall_dois_in_text(response.text)
-        if dois:
-            return remove_html_markup(dois[0])
-    return None
+    try:
+        response = requests.get(url, timeout=30)
+        if response.ok:
+            dois = findall_dois_in_text(response.text)
+            if dois:
+                return remove_html_markup(dois[0])
+        return None
+    except Exception as e:
+        # Add context for web scraping errors
+        if any(keyword in str(e).lower() for keyword in [
+            'connection', 'timeout', 'network', 'dns'
+        ]):
+            raise Exception(
+                f"Unable to scrape DOI from URL '{url}' due to network issues. "
+                f"Check your internet connection and verify the URL is accessible. "
+                f"Original error: {str(e)}"
+            ) from e
+        else:
+            raise
 
 
 # NOT TESTED and probably not working #####

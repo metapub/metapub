@@ -10,6 +10,7 @@ from .exceptions import MetaPubError
 from .medgenconcept import MedGenConcept
 from .base import Borg, parse_elink_response
 from .config import DEFAULT_EMAIL
+from .ncbi_errors import diagnose_ncbi_error, NCBIServiceError
 
 
 class MedGenFetcher(Borg):
@@ -64,15 +65,29 @@ class MedGenFetcher(Borg):
         :param term: (str)
         :return uids: list of medgen uids
         :rtype: list
+        :raises: NCBIServiceError if MedGen service is down
         """
-        # http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=medgen&term=OCRL
-        result = self.qs.esearch({"db": "medgen", "term": term, "sort": "relevance"})
-        dom = etree.fromstring(result)
-        uids = []
-        idlist = dom.find('IdList')
-        for item in idlist.findall('Id'):
-            uids.append(item.text.strip())
-        return uids
+        try:
+            # http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=medgen&term=OCRL
+            result = self.qs.esearch({"db": "medgen", "term": term, "sort": "relevance"})
+            dom = etree.fromstring(result)
+            uids = []
+            idlist = dom.find('IdList')
+            if idlist is not None:
+                for item in idlist.findall('Id'):
+                    uids.append(item.text.strip())
+            return uids
+        except Exception as e:
+            # Handle MedGen search errors with intelligent diagnosis
+            diagnosis = diagnose_ncbi_error(e, 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi')
+            if diagnosis['is_service_issue']:
+                raise NCBIServiceError(
+                    f"Unable to search MedGen for term '{term}': {diagnosis['user_message']}", 
+                    diagnosis['error_type'], 
+                    diagnosis['suggested_actions']
+                ) from e
+            else:
+                raise
 
     def _eutils_uid_for_cui(self, cui):
         """ Given a ConceptID (cui), return a medgen ID.
@@ -80,18 +95,35 @@ class MedGenFetcher(Borg):
         :param cui: (str)
         :return uid: (str)
         :rtype: str
+        :raises: NCBIServiceError if MedGen service is down
         """
         # http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=medgen&term=C0000039
         if not cui.startswith('C'):
             raise MetaPubError('Invalid CUID: must start with C (e.g. C0000039)')
 
-        result = self.qs.esearch({"db": "medgen", "term": cui, "sort": "relevance"})
-        root = etree.fromstring(result).getroottree()
         try:
-            uid = root.find('IdList').find('Id').text.strip()
-        except AttributeError:
-            raise MetaPubError('Invalid CUID: did not return MedGen id.')
-        return uid
+            result = self.qs.esearch({"db": "medgen", "term": cui, "sort": "relevance"})
+            root = etree.fromstring(result).getroottree()
+            try:
+                uid = root.find('IdList').find('Id').text.strip()
+            except AttributeError:
+                raise MetaPubError('Invalid CUID: did not return MedGen id.')
+            return uid
+        except NCBIServiceError:
+            raise  # Re-raise service errors
+        except MetaPubError:
+            raise  # Re-raise validation errors
+        except Exception as e:
+            # Handle MedGen CUI lookup errors
+            diagnosis = diagnose_ncbi_error(e, 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi')
+            if diagnosis['is_service_issue']:
+                raise NCBIServiceError(
+                    f"Unable to lookup MedGen CUI '{cui}': {diagnosis['user_message']}", 
+                    diagnosis['error_type'], 
+                    diagnosis['suggested_actions']
+                ) from e
+            else:
+                raise
 
     def _eutils_concept_by_uid(self, uid):
         """ Returns MedGenConcept result of lookup of medgen uid.
@@ -99,11 +131,24 @@ class MedGenFetcher(Borg):
         :param uid: (string or int) medgen uid
         :return: MedGenConcept or None
         :rtype: MedGenConcept object
+        :raises: NCBIServiceError if MedGen service is down
         """
-        # http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=medgen&id=336867
-        uid = str(uid)
-        result = self.qs.esummary({'db': 'medgen', 'id': uid})
-        return MedGenConcept(result)
+        try:
+            # http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=medgen&id=336867
+            uid = str(uid)
+            result = self.qs.esummary({'db': 'medgen', 'id': uid})
+            return MedGenConcept(result)
+        except Exception as e:
+            # Handle MedGen concept lookup errors
+            diagnosis = diagnose_ncbi_error(e, 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi')
+            if diagnosis['is_service_issue']:
+                raise NCBIServiceError(
+                    f"Unable to fetch MedGen concept for UID '{uid}': {diagnosis['user_message']}", 
+                    diagnosis['error_type'], 
+                    diagnosis['suggested_actions']
+                ) from e
+            else:
+                raise
 
     def _eutils_concept_by_cui(self, cui):
         """ Returns MedGenConcept result of lookup of CUI.

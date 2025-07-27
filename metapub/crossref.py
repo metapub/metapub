@@ -9,6 +9,7 @@ import Levenshtein
 from .base import Borg
 from .config import DEFAULT_EMAIL
 from . import cite
+from .ncbi_errors import NCBIServiceError
 
 log = logging.getLogger('metapub.crossref')
 
@@ -193,9 +194,22 @@ class CrossRefFetcher(Borg):
         :param doi: (str)
         :rtype: CrossRefWork
         :raises: HTTPError (404) if DOI not found.
+        :raises: Exception for network/service issues
         """
-        res = self.cr.works(doi)
-        return CrossRefWork(**res['message'])
+        try:
+            res = self.cr.works(doi)
+            return CrossRefWork(**res['message'])
+        except Exception as e:
+            # Add context for CrossRef errors but don't use NCBI-specific handling
+            if any(keyword in str(e).lower() for keyword in [
+                'connection', 'timeout', 'network', 'service unavailable'
+            ]):
+                raise Exception(
+                    f"Unable to fetch CrossRef data for DOI '{doi}' due to network/service issues. "
+                    f"Check your internet connection and try again. Original error: {str(e)}"
+                ) from e
+            else:
+                raise
 
     def article_by_pma(self, pma, ideal_ld=TITLE_SIMILARITY_IDEAL_SCORE, 
                                   min_ld=TITLE_SIMILARITY_MIN_SCORE):

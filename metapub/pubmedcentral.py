@@ -3,6 +3,7 @@ from lxml import etree
 import requests
 
 from .config import PKGNAME, DEFAULT_EMAIL
+from .ncbi_errors import diagnose_ncbi_error, NCBIServiceError
 
 PMC_ID_CONVERSION_URI = 'https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/?tool='+PKGNAME+'&email='+DEFAULT_EMAIL+'&ids=%s'
 
@@ -26,8 +27,20 @@ __doc__="""An assortment of functions providing access to various web APIs.
 """
 
 def _pmc_id_conversion_api(input_id):
-    xml = requests.get(PMC_ID_CONVERSION_URI % input_id).content
-    root = etree.fromstring(xml)
+    try:
+        xml = requests.get(PMC_ID_CONVERSION_URI % input_id).content
+        root = etree.fromstring(xml)
+    except Exception as e:
+        # Handle PMC ID conversion API errors
+        diagnosis = diagnose_ncbi_error(e, PMC_ID_CONVERSION_URI % input_id)
+        if diagnosis['is_service_issue']:
+            raise NCBIServiceError(
+                f"Unable to convert ID '{input_id}' via PMC API: {diagnosis['user_message']}", 
+                diagnosis['error_type'], 
+                diagnosis['suggested_actions']
+            ) from e
+        else:
+            raise
     record = root.find('record')
     return record
 

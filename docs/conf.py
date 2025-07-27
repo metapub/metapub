@@ -40,8 +40,16 @@ autodoc_default_options = {
     'member-order': 'bysource',
     'special-members': '__init__',
     'undoc-members': True,
-    'exclude-members': '__weakref__'
+    'exclude-members': '__weakref__',
+    'show-inheritance': True,
+    'inherited-members': True
 }
+
+# Autodoc settings
+autodoc_typehints = 'description'
+autodoc_typehints_description_target = 'documented'
+autodoc_class_signature = 'mixed'
+autodoc_member_order = 'bysource'
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output

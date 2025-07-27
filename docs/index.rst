@@ -42,22 +42,27 @@ Basic usage::
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: User Guide:
 
    installation
    quickstart
    examples
    advanced
    tutorials
-   api/modules
-   changelog
-
-API Reference
-=============
 
 .. toctree::
-   :maxdepth: 3
-   :caption: API Documentation:
-   
-   api/metapub
+   :maxdepth: 2
+   :caption: API Reference:
+
+   api_overview
+   api_fetchers
+   api_models
+   api_findit
+   api/modules
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Additional Information:
+
+   changelog
 

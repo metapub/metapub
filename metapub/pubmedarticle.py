@@ -432,15 +432,21 @@ class PubMedArticle(MetaPubObject):
         outd = {}
         for mesh in meshtags:
             descript = mesh.find('DescriptorName')  # should always be present
-            qual = mesh.find('QualifierName')       # may not be present
-
             dui = descript.get('UI')
+
+            qualifiers_list = []
+            for qual in mesh.findall('QualifierName'):
+                qualifiers_list.append({
+                    'qualifier_name': qual.text,
+                    'qualifier_ui': qual.get('UI'),
+                    'qualifier_major_topic': True if qual.get('MajorTopicYN') == 'Y' else False,
+                })
+
             outd[dui] = {
-                    'descriptor_name': descript.text,
-                    'major_topic': True if descript.get('MajorTopicYN') == 'Y' else False,
-                    'qualifier_name': None if qual is None else qual.text,
-                    'qualifier_ui': None if qual is None else qual.get('UI'),
-                }
+                'descriptor_name': descript.text,
+                'descriptor_major_topic': True if descript.get('MajorTopicYN') == 'Y' else False,
+                'qualifiers': qualifiers_list,
+            }
         return outd
 
     def _get_chemicals(self):

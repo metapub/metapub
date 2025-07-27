@@ -459,11 +459,25 @@ class PubMedFetcher(Borg):
 
         query example:
         https://eutils.ncbi.nlm.nih.gov/entrez/eutils/elink.fcgi?retmode=xml&dbfrom=pubmed&id=14873513&cmd=neighbor
+        
+        :raises: NCBIServiceError if NCBI ELink service is down
         '''
-        outd = { }
-        xmlstr = self.qs.elink( { 'dbfrom': 'pubmed', 'id': pmid, 'cmd': 'neighbor' } )
-        outd = parse_related_pmids_result(xmlstr)
-        return outd
+        try:
+            outd = { }
+            xmlstr = self.qs.elink( { 'dbfrom': 'pubmed', 'id': pmid, 'cmd': 'neighbor' } )
+            outd = parse_related_pmids_result(xmlstr)
+            return outd
+        except Exception as e:
+            # Handle ELink errors with intelligent diagnosis
+            diagnosis = diagnose_ncbi_error(e, 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/elink.fcgi')
+            if diagnosis['is_service_issue']:
+                raise NCBIServiceError(
+                    f"Unable to fetch related articles for PMID {pmid}: {diagnosis['user_message']}", 
+                    diagnosis['error_type'], 
+                    diagnosis['suggested_actions']
+                ) from e
+            else:
+                raise
 
     def pmid_for_bookID(self, book_id):
         '''For supplied NCBI Book ID, use the pubmed advanced query API to find its PMID.

@@ -26,7 +26,7 @@ What Metapub Does
 🔓 **PDF Discovery**
    The FindIt module locates downloadable PDFs using publisher-specific strategies for major academic publishers.
 
-⚙️ **Research Tools**
+⚙️  **Research Tools**
    - Intelligent caching with SQLite backends
    - Comprehensive error handling and diagnostics
    - Rate limiting that respects NCBI guidelines
@@ -96,12 +96,12 @@ What You Can Do in Minutes
    
    # Find clinical variants
    cv = ClinVarFetcher()
-   variants = cv.variants_for_gene('SCN5A')
+   variant_ids = cv.ids_by_gene('SCN5A')
    
    # Get supporting literature for each variant
-   for variant in variants[:5]:
-       pmids = cv.pmids_for_id(variant.accession)
-       print(f"Variant {variant.hgvs_c}: {len(pmids)} supporting papers")
+   for var_id in variant_ids[:5]:
+       pmids = cv.pmids_for_id(var_id)
+       print(f"Variant {var_id}: {len(pmids)} supporting papers")
 
 Core Features
 ------------
@@ -207,15 +207,6 @@ Who Uses Metapub
 **📊 Institutions** including pharmaceutical companies, academic institutions, and government research agencies.
 
 For peer-reviewed academic citations, see `metapub.org/citations <https://metapub.org/citations>`_.
-
-Getting Started
---------------
-
-**Installation**
-
-.. code-block:: bash
-
-   pip install metapub
 
 **Documentation Navigation**
 

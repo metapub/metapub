@@ -10,7 +10,7 @@ Metapub fetchers use the Borg pattern, which means all instances of the same fet
 - **Shared cache:** Multiple ``PubMedFetcher()`` instances automatically share cached data
 - **Consistent configuration:** API keys and settings apply across all instances  
 - **Memory efficiency:** No duplicate caches or redundant API calls
-- **Thread safety:** Safe to use across different parts of your application
+- **Consistency:** Safe to use across different parts of your application
 
 .. code-block:: python
 

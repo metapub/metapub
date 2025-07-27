@@ -9,6 +9,7 @@ from .exceptions import MetaPubError, BaseXMLError
 from .eutils_common import get_eutils_client
 from .cache_utils import get_cache_path 
 from .base import Borg, parse_elink_response
+from .ncbi_errors import diagnose_ncbi_error, NCBIServiceError
 
 class ClinVarFetcher(Borg):
     """ ClinVarFetcher (a Borg singleton object)
@@ -69,9 +70,22 @@ class ClinVarFetcher(Borg):
 
         :param: accession_id (integer or string)
         :return: dictionary
+        :raises: NCBIServiceError if ClinVar service is down
         """
-        result = self.qs.esummary({'db': 'clinvar', 'id': accession_id, 'retmode': 'json'})
-        return result
+        try:
+            result = self.qs.esummary({'db': 'clinvar', 'id': accession_id, 'retmode': 'json'})
+            return result
+        except Exception as e:
+            # Handle ClinVar accession lookup errors
+            diagnosis = diagnose_ncbi_error(e, 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi')
+            if diagnosis['is_service_issue']:
+                raise NCBIServiceError(
+                    f"Unable to fetch ClinVar accession '{accession_id}': {diagnosis['user_message']}", 
+                    diagnosis['error_type'], 
+                    diagnosis['suggested_actions']
+                ) from e
+            else:
+                raise
 
     def _eutils_get_variant_summary(self, accession_id):
         """ returns variant summary XML (<ClinVarResult-Set>) for given ClinVar accession ID.

@@ -46,7 +46,18 @@ Basic usage::
 
    installation
    quickstart
-   api/modules
    examples
+   advanced
+   tutorials
+   api/modules
    changelog
+
+API Reference
+=============
+
+.. toctree::
+   :maxdepth: 3
+   :caption: API Documentation:
+   
+   api/metapub
 

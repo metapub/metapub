@@ -1,0 +1,13 @@
+setuptools
+lxml
+lxml_html_clean
+requests
+eutils
+habanero
+tabulate
+cssselect
+unidecode
+docopt
+six
+coloredlogs
+python-Levenshtein

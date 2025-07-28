@@ -18,6 +18,10 @@ def check_ncbi_service():
             timeout=10
         )
 
+        # Check for rate limiting (429 status code)
+        if response.status_code == 429:
+            return False
+
         # Check for server errors (5xx status codes)
         if response.status_code >= 500:
             return False
@@ -31,6 +35,16 @@ def check_ncbi_service():
         if len(response.content) == 0:
             return False
 
+        # Check for JSON error responses (rate limiting)
+        if 'json' in content_type or response.content.strip().startswith(b'{'):
+            try:
+                import json
+                error_data = json.loads(response.content)
+                if 'error' in error_data and 'rate limit' in error_data.get('error', '').lower():
+                    return False
+            except (json.JSONDecodeError, AttributeError):
+                pass
+
         # Try to parse as XML
         try:
             etree.XML(response.content)
@@ -38,6 +52,9 @@ def check_ncbi_service():
         except etree.XMLSyntaxError:
             # Check if we got the "down_bethesda.html" page
             if b'down_bethesda' in response.content or b'<html' in response.content.lower():
+                return False
+            # Check if response looks like a JSON error
+            if response.content.strip().startswith(b'{') and b'error' in response.content:
                 return False
             # Other XML errors might be OK (like invalid PMID response)
             return True
@@ -124,10 +141,11 @@ def pytest_collection_modifyitems(config, items):
         skipped_count = 0
         for item in items:
             # Skip tests that contain network-related keywords
+            # Note: ncbi_health_check tests are excluded because they use mocked responses
             if any(keyword in item.nodeid.lower() for keyword in [
                 'pmid', 'doi', 'fetch', 'pubmed', 'medgen', 'citation',
                 'advquery', 'findit', 'convert', 'mesh_heading', 'random_efetch'
-            ]):
+            ]) and 'ncbi_health_check' not in item.nodeid.lower():
                 item.add_marker(skip_network)
                 skipped_count += 1
 

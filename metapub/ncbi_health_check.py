@@ -224,7 +224,7 @@ class NCBIHealthChecker:
             )
 
     def check_all_services(self, quick: bool = False) -> List[ServiceResult]:
-        """Check all services concurrently."""
+        """Check all services with conservative rate limiting."""
         services_to_check = {
             k: v for k, v in self.services.items()
             if not quick or v.get('essential', False)
@@ -232,28 +232,21 @@ class NCBIHealthChecker:
         
         results = []
         
-        # Use concurrent execution since eutils client handles rate limiting
-        from concurrent.futures import ThreadPoolExecutor, as_completed
-        with ThreadPoolExecutor(max_workers=5) as executor:
-            future_to_service = {
-                executor.submit(self.check_service, service_id, config): service_id
-                for service_id, config in services_to_check.items()
-            }
-            
-            for future in as_completed(future_to_service):
-                try:
-                    result = future.result()
-                    results.append(result)
-                except Exception as e:
-                    service_id = future_to_service[future]
-                    config = services_to_check[service_id]
-                    results.append(ServiceResult(
-                        name=config['name'],
-                        url=config['url'],
-                        status='error',
-                        response_time=0.0,
-                        error_message=f"Check failed: {str(e)}"
-                    ))
+        # Use sequential execution with delays to be extra conservative about rate limiting
+        for service_id, config in services_to_check.items():
+            try:
+                result = self.check_service(service_id, config)
+                results.append(result)
+                # Small delay between checks to avoid overwhelming NCBI
+                time.sleep(0.1)
+            except Exception as e:
+                results.append(ServiceResult(
+                    name=config['name'],
+                    url=config.get('url', f"eutils:{config.get('eutils_method', 'unknown')}"),
+                    status='error',
+                    response_time=0.0,
+                    error_message=f"Check failed: {str(e)}"
+                ))
         
         # Sort results with NCBI Main Website first, then alphabetically
         def sort_key(result):

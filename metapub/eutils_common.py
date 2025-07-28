@@ -11,7 +11,7 @@ logging.getLogger('requests').setLevel(logging.ERROR)
 import functools
 
 
-@functools.lru_cache(maxsize=1)
+@functools.lru_cache(maxsize=1)  
 def get_eutils_client(cache_path, cache=None):
     """
     :param cache_path: valid filesystem path to SQLite cache file

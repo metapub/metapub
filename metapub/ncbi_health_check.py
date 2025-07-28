@@ -47,11 +47,17 @@ class NCBIHealthChecker:
         cache_path = get_cache_path('ncbi_health_check.db')
         self.eutils_client = get_eutils_client(cache_path, cache=False)  # No cache for health checks
         self.services = {
+            'ncbi_main': {
+                'name': 'NCBI Main Website',
+                'method': 'http',
+                'url': 'https://www.ncbi.nlm.nih.gov/',
+                'essential': False
+            },
             'efetch': {
                 'name': 'EFetch (PubMed Articles)',
                 'method': 'eutils',
                 'eutils_method': 'efetch',
-                'params': {'db': 'pubmed', 'id': '123456'},
+                'params': {'db': 'pubmed', 'id': '33157158'},  # Real PMID
                 'essential': True
             },
             'esearch': {
@@ -65,14 +71,14 @@ class NCBIHealthChecker:
                 'name': 'ELink (Related Articles)',
                 'method': 'eutils',
                 'eutils_method': 'elink',
-                'params': {'dbfrom': 'pubmed', 'db': 'pubmed', 'id': '123456'},
+                'params': {'dbfrom': 'pubmed', 'db': 'pubmed', 'id': '33157158'},  # Real PMID
                 'essential': True
             },
             'esummary': {
                 'name': 'ESummary (Article Summaries)',
                 'method': 'eutils',
                 'eutils_method': 'esummary',
-                'params': {'db': 'pubmed', 'id': '123456'},
+                'params': {'db': 'pubmed', 'id': '33157158'},  # Real PMID
                 'essential': True
             },
             'einfo': {
@@ -80,33 +86,13 @@ class NCBIHealthChecker:
                 'method': 'eutils',
                 'eutils_method': 'einfo',
                 'params': {'db': 'pubmed'},
-                'essential': False
+                'essential': True
             },
             'medgen_search': {
                 'name': 'MedGen Search',
                 'method': 'eutils',
                 'eutils_method': 'esearch',
                 'params': {'db': 'medgen', 'term': 'diabetes', 'retmax': '1'},
-                'essential': False
-            },
-            'pmc_fetch': {
-                'name': 'PMC Article Fetch',
-                'method': 'eutils',
-                'eutils_method': 'efetch',
-                'params': {'db': 'pmc', 'id': '123456'},
-                'essential': False
-            },
-            'books_search': {
-                'name': 'NCBI Books Search',
-                'method': 'eutils',
-                'eutils_method': 'esearch',
-                'params': {'db': 'books', 'term': 'genetics', 'retmax': '1'},
-                'essential': False
-            },
-            'ncbi_main': {
-                'name': 'NCBI Main Website',
-                'method': 'http',
-                'url': 'https://www.ncbi.nlm.nih.gov/',
                 'essential': False
             }
         }
@@ -269,7 +255,13 @@ class NCBIHealthChecker:
                         error_message=f"Check failed: {str(e)}"
                     ))
         
-        return sorted(results, key=lambda x: x.name)
+        # Sort results with NCBI Main Website first, then alphabetically
+        def sort_key(result):
+            if result.name == 'NCBI Main Website':
+                return '0'  # Force to top
+            return result.name
+        
+        return sorted(results, key=sort_key)
 
 
 def print_status_icon(status: str) -> str:

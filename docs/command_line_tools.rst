@@ -41,13 +41,11 @@ The health checker is included with metapub. After installing metapub with ``pip
    - **ESearch** - PubMed search functionality  
    - **ELink** - Related articles lookup
    - **ESummary** - Article summary data
+   - **EInfo** - Database information
 
 *Additional Services (full check)*
-   - **EInfo** - Database information
-   - **MedGen Search** - Medical genetics database
-   - **PMC Fetch** - PubMed Central articles
-   - **NCBI Books** - Books database
    - **NCBI Main Website** - General availability
+   - **MedGen Search** - Medical genetics database
 
 **Command Line Options**
 
@@ -70,16 +68,17 @@ The health checker is included with metapub. After installing metapub with ``pip
    🏥 NCBI SERVICE HEALTH CHECK REPORT
    ================================================================================
    
-   📊 SUMMARY: 4 services checked
-      ✅ UP: 4
+   📊 SUMMARY: 5 services checked (quick mode)
+      ✅ UP: 5
    
    📋 DETAILED RESULTS:
    --------------------------------------------------------------------------------
    ✅ EFetch (PubMed Articles)
-      URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi
+      URL: eutils:efetch
       Status: UP
       HTTP: 200
-      Response Time: 0.45s
+      Response Time: 0.26s
+      Details: Response time: 0.26s (with API key)
 
 *Service Outage:*
 

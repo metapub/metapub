@@ -177,6 +177,8 @@ Ready to transform your biomedical research workflow? Start with our comprehensi
    examples
    advanced
    tutorials
+   command_line_tools
+   error_handling
 
 .. toctree::
    :maxdepth: 2

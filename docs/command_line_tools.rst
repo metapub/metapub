@@ -15,7 +15,7 @@ The following command-line tools are available after installing metapub:
 NCBI Health Check
 -----------------
 
-A diagnostic tool to check the status of NCBI services that metapub depends on.
+A diagnostic tool to check the status of NCBI services that metapub depends on. Uses metapub's existing eutils client with built-in rate limiting and automatic NCBI_API_KEY support for reliable results.
 
 **Quick Start**
 

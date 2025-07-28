@@ -129,26 +129,60 @@ def pytest_configure(config):
         "markers", "network: mark test as requiring network/NCBI connectivity"
     )
 
+def pytest_addoption(parser):
+    """Add custom command line options."""
+    parser.addoption(
+        "--skip-network",
+        action="store_true", 
+        default=False,
+        help="Skip all tests that require network/NCBI API calls (useful for offline development)"
+    )
+
 def pytest_collection_modifyitems(config, items):
-    """Skip network tests if NCBI service is down."""
-    import os
+    """Add network coordination marker and handle --skip-network option."""
+    skip_network = config.getoption("--skip-network")
+    
+    for item in items:
+        # Mark network-dependent tests for coordination
+        # Note: ncbi_health_check tests are excluded because they use mocked responses  
+        if any(keyword in item.nodeid.lower() for keyword in [
+            'pmid', 'doi', 'fetch', 'pubmed', 'medgen', 'citation',
+            'advquery', 'findit', 'convert', 'mesh_heading', 'random_efetch'
+        ]) and 'ncbi_health_check' not in item.nodeid.lower():
+            item.add_marker(pytest.mark.network)
+            
+            # Skip network tests if --skip-network flag is used
+            if skip_network:
+                item.add_marker(pytest.mark.skip(reason="Skipped network test due to --skip-network flag"))
 
-    # Allow forcing network tests with environment variable
-    force_network_tests = os.environ.get('FORCE_NETWORK_TESTS', '').lower() in ('1', 'true', 'yes')
 
-    if not get_ncbi_service_status() and not force_network_tests:
-        skip_network = pytest.mark.skip(reason="NCBI service unavailable - use FORCE_NETWORK_TESTS=1 to run anyway")
-        skipped_count = 0
-        for item in items:
-            # Skip tests that contain network-related keywords
-            # Note: ncbi_health_check tests are excluded because they use mocked responses
-            if any(keyword in item.nodeid.lower() for keyword in [
-                'pmid', 'doi', 'fetch', 'pubmed', 'medgen', 'citation',
-                'advquery', 'findit', 'convert', 'mesh_heading', 'random_efetch'
-            ]) and 'ncbi_health_check' not in item.nodeid.lower():
-                item.add_marker(skip_network)
-                skipped_count += 1
+# Global coordination for network tests
+import threading
+import time
+_network_test_lock = threading.Lock()
+_last_network_request = 0
 
-        if skipped_count > 0:
-            print(f"\n🚫 Skipping {skipped_count} network-dependent tests due to NCBI service issues.")
-            print("   Use FORCE_NETWORK_TESTS=1 to run them anyway (they will likely fail).\n")
+
+@pytest.fixture(autouse=True)
+def coordinate_network_tests(request):
+    """Coordinate network tests to prevent rate limiting."""
+    global _last_network_request
+    
+    # Check if this test is marked as network-dependent
+    if request.node.get_closest_marker('network'):
+        with _network_test_lock:
+            current_time = time.time()
+            time_since_last = current_time - _last_network_request
+            
+            # Ensure at least 0.5 seconds between network tests
+            if time_since_last < 0.5:
+                sleep_time = 0.5 - time_since_last
+                time.sleep(sleep_time)
+            
+            _last_network_request = time.time()
+    
+    yield  # Run the test
+    
+    # Small delay after network tests to be extra conservative
+    if request.node.get_closest_marker('network'):
+        time.sleep(0.1)

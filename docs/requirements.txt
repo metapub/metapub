@@ -1,0 +1,4 @@
+# Documentation build requirements
+sphinx>=8.0
+sphinx-rtd-theme>=3.0
+sphinx-autodoc-typehints

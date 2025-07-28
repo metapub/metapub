@@ -44,6 +44,22 @@ class MedGenFetcher(Borg):
     _cache_filename = 'medgenfetcher.db'
 
     def __init__(self, method='eutils', cachedir='default'):
+        """Initialize MedGenFetcher for medical genetics concept retrieval.
+        
+        Args:
+            method (str, optional): Service method to use. Currently only 'eutils'
+                is supported. Defaults to 'eutils'.
+            cachedir (str, optional): Directory for caching responses. Use 'default'
+                for system cache directory. Defaults to 'default'.
+        
+        Raises:
+            NotImplementedError: If an unsupported method is specified.
+        
+        Note:
+            This is a Borg singleton - all instances share the same state.
+            Provides access to NCBI's MedGen database for medical genetics concepts,
+            diseases, and gene-phenotype relationships.
+        """
         self.method = method
         self._cache_path = None
 

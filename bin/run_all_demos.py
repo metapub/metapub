@@ -10,6 +10,7 @@ import subprocess
 import argparse
 import json
 import logging
+import time
 from pathlib import Path
 from typing import Dict, List, Optional, Any
 
@@ -61,7 +62,7 @@ class DemoRunner:
                 "description": "Get conditions associated with a gene"
             },
             "demo_get_MedGen_uid_for_CUI.py": {
-                "args": ["C0011860"],  # CUI for diabetes
+                "args": ["C0039445"],  # CUI for HHT (her. hem. telang.)
                 "description": "Get MedGen UID for a CUI"
             },
             "demo_get_concepts_for_medgen_term.py": {
@@ -77,11 +78,11 @@ class DemoRunner:
                 "description": "Get related PMIDs"
             },
             "demo_get_pmids_for_medgen_cui.py": {
-                "args": ["C0011860"],
+                "args": ["C1306557"],  # CUI for chronic venous insufficiency
                 "description": "Get PMIDs for a MedGen CUI"
             },
             "demo_findit_backup_url.py": {
-                "args": ["23456789"],
+                "args": ["33157158"],  # Use valid PMID instead
                 "description": "Test FindIt backup URL functionality"
             },
             "demo_findit_nonverified.py": {
@@ -112,6 +113,10 @@ class DemoRunner:
 
     def _create_sample_files(self):
         """Create sample input files if they don't exist."""
+        # Create output directory
+        output_dir = self.bin_dir.parent / "output"
+        output_dir.mkdir(exist_ok=True)
+        
         sample_pmids_file = self.bin_dir / "sample_pmids.txt"
         if not sample_pmids_file.exists():
             sample_pmids = ["33157158", "32187540", "31653314", "30982822", "29977293"]
@@ -130,7 +135,7 @@ class DemoRunner:
             return False
 
     def run_single_script(self, script_path: Path, custom_args: List[str] = None,
-                         timeout: int = 30, capture_output: bool = True) -> Dict[str, Any]:
+                         timeout: int = 60, capture_output: bool = True) -> Dict[str, Any]:
         """Run a single script and return results."""
         script_name = script_path.name
 
@@ -141,10 +146,23 @@ class DemoRunner:
         elif script_name in self.default_args:
             args = self.default_args[script_name]["args"]
 
+        # Adjust timeout for known slow scripts
+        slow_scripts = {
+            "demo_findit.py": 120,  # Tests many journal URLs
+            "demo_preload_FindIt.py": 120,  # Processes multiple PMIDs
+            "demo_preload_pmids_for_CrossRef.py": 120,  # CrossRef API calls
+            "demo_query_list_of_pmids_with_crossref.py": 120,  # CrossRef queries
+            "demo_get_pmids_for_medgen_cui.py": 90,  # MedGen API calls
+            "demo_get_related_pmids.py": 90,  # PubMed API calls
+        }
+        
+        if script_name in slow_scripts:
+            timeout = max(timeout, slow_scripts[script_name])
+
         # Build command
         cmd = [sys.executable, str(script_path)] + args
 
-        logger.info(f"Running {script_name} with args: {args}")
+        logger.info(f"Running {script_name} with args: {args} (timeout: {timeout}s)")
 
         try:
             # Run the script
@@ -189,10 +207,30 @@ class DemoRunner:
                 "description": self.default_args.get(script_name, {}).get("description", "")
             }
 
-    def run_all_scripts(self, timeout: int = 30, continue_on_error: bool = True,
-                       exclude: List[str] = None) -> List[Dict[str, Any]]:
+    def run_all_scripts(self, timeout: int = 60, continue_on_error: bool = True,
+                       exclude: List[str] = None, delay_between_scripts: float = 1.0,
+                       quick_test: bool = False) -> List[Dict[str, Any]]:
         """Run all discovered scripts."""
         exclude = exclude or []
+        
+        # Add problematic scripts to exclusion list in quick test mode
+        if quick_test:
+            problematic_scripts = [
+                # ClinVar demos are now optimized and fast
+                "demo_dx_doi_cache.py",  # DOI cache operations
+                "demo_findit_backup_url.py",  # Network timeouts
+                "demo_findit_nonverified.py",  # Network timeouts
+                "demo_findit.py",  # Tests many journal URLs
+                "demo_preload_FindIt.py",  # Processes multiple PMIDs
+                "demo_preload_pmids_for_CrossRef.py",  # CrossRef API calls
+                "demo_query_list_of_pmids_with_crossref.py",  # CrossRef queries
+                "demo_get_pmids_for_medgen_cui.py",  # Slow MedGen queries
+                "demo_get_related_pmids.py",  # Slow PubMed queries
+                "embargo_data_checker.py",  # Long-running embargo checks
+            ]
+            exclude = list(set(exclude + problematic_scripts))
+            logger.info(f"Quick test mode: excluding {len(problematic_scripts)} slow scripts")
+        
         results = []
 
         # Create sample files first
@@ -212,6 +250,10 @@ class DemoRunner:
                     break
             else:
                 logger.info(f"Script {script_path.name} completed successfully")
+            
+            # Add delay between scripts to avoid overwhelming external APIs
+            if delay_between_scripts > 0:
+                time.sleep(delay_between_scripts)
 
         return results
 
@@ -248,9 +290,13 @@ class DemoRunner:
         }
 
         if output_file:
-            with open(output_file, 'w') as f:
+            # Ensure output goes to output directory
+            output_dir = self.bin_dir.parent / "output"
+            output_dir.mkdir(exist_ok=True)
+            output_path = output_dir / output_file
+            with open(output_path, 'w') as f:
                 json.dump(report, f, indent=2)
-            logger.info(f"Report saved to {output_file}")
+            logger.info(f"Report saved to {output_path}")
 
         # Print summary
         print("\n" + "=" * 50)
@@ -272,12 +318,14 @@ def main():
     parser.add_argument("--list", action="store_true", help="List all available scripts")
     parser.add_argument("--script", help="Run a specific script by name")
     parser.add_argument("--args", nargs="*", help="Arguments to pass to the script")
-    parser.add_argument("--timeout", type=int, default=30, help="Timeout per script in seconds")
+    parser.add_argument("--timeout", type=int, default=60, help="Timeout per script in seconds")
     parser.add_argument("--exclude", nargs="*", default=[], help="Scripts to exclude from execution")
     parser.add_argument("--report", help="Save results report to JSON file")
     parser.add_argument("--continue-on-error", action="store_true", default=True,
                        help="Continue running other scripts if one fails")
     parser.add_argument("--verbose", action="store_true", help="Show script output in real-time")
+    parser.add_argument("--delay", type=float, default=1.0, help="Delay between scripts in seconds")
+    parser.add_argument("--quick-test", action="store_true", help="Run only fast, reliable scripts")
 
     args = parser.parse_args()
 
@@ -312,7 +360,9 @@ def main():
     results = runner.run_all_scripts(
         timeout=args.timeout,
         continue_on_error=args.continue_on_error,
-        exclude=args.exclude
+        exclude=args.exclude,
+        delay_between_scripts=args.delay,
+        quick_test=args.quick_test
     )
 
     runner.generate_report(results, args.report)

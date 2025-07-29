@@ -291,20 +291,158 @@ Network Error Recovery
 Performance Optimization
 ------------------------
 
-Caching Strategies
-~~~~~~~~~~~~~~~~
+Caching System Overview
+~~~~~~~~~~~~~~~~~~~~~~
+
+Metapub includes a sophisticated caching system designed to minimize API requests and improve performance. The system has evolved to use SQLite-based persistent storage with thread-safe operations.
+
+**Key Features:**
+
+- **Persistent Storage**: SQLite database for responses that survive process restarts
+- **Thread Safety**: All cache operations are thread-safe using locks
+- **NCBI Compliance**: Automatic rate limiting respects NCBI guidelines (3 req/sec without API key, 10 req/sec with)
+- **Response Validation**: Only valid XML responses are cached; HTML error pages are rejected
+- **Legacy Compatibility**: Works with existing cache files from previous versions
+
+Cache Configuration
+~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
    import os
+   from metapub import PubMedFetcher
+   from metapub.ncbi_client import NCBIClient
    
-   # Set custom cache directory
+   # Method 1: Environment variables (traditional)
    os.environ['METAPUB_CACHE_DIR'] = '/path/to/large/cache'
-   
-   # Enable API key for higher rate limits
    os.environ['NCBI_API_KEY'] = 'your_api_key_here'
    
    fetch = PubMedFetcher()
+   
+   # Method 2: Direct NCBIClient usage (new system)
+   client = NCBIClient(
+       api_key='your_api_key_here',
+       cache_path='/path/to/cache/ncbi_cache.db',
+       requests_per_second=10,  # Will be capped to NCBI limits
+       tool='my_research_tool',
+       email='researcher@university.edu'
+   )
+
+Understanding Cache Behavior
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+   from metapub.ncbi_client import SimpleCache
+   
+   # Direct cache manipulation
+   cache = SimpleCache('/path/to/cache.db')
+   
+   # Cache uses URL + parameters as keys
+   url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
+   params = {'db': 'pubmed', 'id': '12345678', 'retmode': 'xml'}
+   
+   # Check if response is cached
+   cached_response = cache.get(url, params)
+   if cached_response:
+       print("Response found in cache")
+   else:
+       print("Fresh API request needed")
+   
+   # Manual cache storage (normally done automatically)
+   cache.set(url, params, xml_response_string)
+
+Rate Limiting and Performance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+   from metapub.ncbi_client import RateLimiter
+   import time
+   
+   # Understanding rate limits
+   rate_limiter = RateLimiter(requests_per_second=3)  # Without API key
+   
+   start_time = time.time()
+   for i in range(5):
+       rate_limiter.wait_if_needed()
+       print(f"Request {i+1} at {time.time() - start_time:.2f}s")
+       # Your API request here
+   
+   # Output shows requests spaced by ~0.33 seconds (3 per second)
+
+Cache Database Schema
+~~~~~~~~~~~~~~~~~~~~
+
+The cache uses a simple SQLite schema compatible with existing cache files:
+
+.. code-block:: sql
+   
+   CREATE TABLE cache (
+       key BLOB PRIMARY KEY,      -- URL + sorted parameters
+       value BLOB,                -- Cached response data
+       created INTEGER,           -- Unix timestamp
+       value_compressed BOOL DEFAULT 0  -- Legacy compression flag
+   );
+
+Advanced Cache Management
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+   import sqlite3
+   import os
+   from metapub.cache_utils import get_cache_path, cleanup_dir
+   
+   # Inspect cache contents
+   cache_path = get_cache_path()
+   if cache_path and os.path.exists(cache_path):
+       with sqlite3.connect(cache_path) as conn:
+           # Count cached entries
+           count = conn.execute("SELECT COUNT(*) FROM cache").fetchone()[0]
+           print(f"Cache contains {count} entries")
+           
+           # Find oldest entries
+           oldest = conn.execute(
+               "SELECT created FROM cache ORDER BY created LIMIT 1"
+           ).fetchone()
+           if oldest:
+               import datetime
+               oldest_date = datetime.datetime.fromtimestamp(oldest[0])
+               print(f"Oldest entry: {oldest_date}")
+   
+   # Clear entire cache directory
+   if cache_path:
+       cache_dir = os.path.dirname(cache_path)
+       cleanup_dir(cache_dir)
+       print("Cache cleared")
+
+Traditional vs Modern Caching System
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Traditional System:**
+- Dictionary-style access with pickle serialization
+- Backward compatible with existing cache files
+- Used by PubMedFetcher and other high-level classes
+
+**Modern System (NCBIClient):**
+- URL-based caching with parameter normalization
+- JSON serialization for complex objects
+- Better thread safety and error handling
+- Validation prevents caching of error responses
+
+.. code-block:: python
+
+   # Traditional style (still supported)
+   from metapub import PubMedFetcher
+   fetch = PubMedFetcher()  # Uses traditional caching
+   
+   # Modern style (recommended for new code)
+   from metapub.ncbi_client import NCBIClient
+   client = NCBIClient(cache_path='/path/to/cache.db')
+   response = client.efetch(db='pubmed', id='12345678')
+
+Caching Strategies
 
 Batch Processing Optimization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~

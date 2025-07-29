@@ -24,7 +24,25 @@ log = logging.getLogger('metapub.ncbi_client')
 
 
 class RateLimiter:
-    """Simple rate limiter to respect NCBI API limits."""
+    """Thread-safe rate limiter to respect NCBI API limits.
+    
+    NCBI E-utilities enforces rate limits:
+    - 3 requests per second without API key
+    - 10 requests per second with API key
+    
+    This rate limiter ensures compliance by enforcing minimum intervals
+    between requests using thread-safe locking.
+    
+    Args:
+        requests_per_second (int): Maximum requests allowed per second. 
+            Defaults to 10 (assumes API key usage).
+    
+    Attributes:
+        requests_per_second (int): Configured rate limit
+        min_interval (float): Minimum time between requests in seconds
+        last_request_time (float): Timestamp of last request
+        lock (threading.Lock): Thread synchronization lock
+    """
     
     def __init__(self, requests_per_second: int = 10):
         self.requests_per_second = requests_per_second
@@ -33,6 +51,14 @@ class RateLimiter:
         self.lock = Lock()
     
     def wait_if_needed(self):
+        """Block execution if minimum interval hasn't elapsed since last request.
+        
+        Thread-safe method that enforces rate limiting by sleeping if needed.
+        Updates last_request_time after any required wait period.
+        
+        Returns:
+            None
+        """
         with self.lock:
             now = time.time()
             time_since_last = now - self.last_request_time
@@ -43,7 +69,31 @@ class RateLimiter:
 
 
 class SimpleCache:
-    """Simple SQLite cache compatible with existing cache files."""
+    """Thread-safe SQLite-based cache for NCBI API responses.
+    
+    This cache provides persistent storage for API responses to reduce
+    network requests and improve performance. It maintains compatibility
+    with existing metapub cache files and provides both URL-based caching
+    and dictionary-style access patterns.
+    
+    The cache stores responses with timestamps but does not implement TTL
+    expiration - responses are cached indefinitely unless manually cleared.
+    
+    Features:
+    - Thread-safe operations using locks
+    - Automatic database initialization
+    - Compatible with existing cache schema
+    - Supports both binary and text data
+    - JSON serialization for complex objects
+    - Dictionary-style access (__getitem__, __setitem__, __contains__)
+    
+    Args:
+        cache_path (str): Path to SQLite database file for cache storage
+    
+    Attributes:
+        cache_path (str): Path to the SQLite database
+        lock (threading.Lock): Thread synchronization lock
+    """
     
     def __init__(self, cache_path: str):
         self.cache_path = cache_path
@@ -51,8 +101,19 @@ class SimpleCache:
         self._init_db()
     
     def _init_db(self):
+        """Initialize SQLite database with cache table.
+        
+        Creates the cache table if it doesn't exist, using a schema
+        compatible with existing cache files.
+        
+        Table schema:
+        - key: BLOB PRIMARY KEY - Cache key (URL + parameters)  
+        - value: BLOB - Cached response data
+        - created: INTEGER - Unix timestamp of cache entry
+        - value_compressed: BOOL - Whether value is compressed (legacy field)
+        """
         with sqlite3.connect(self.cache_path) as conn:
-            # Create table - compatible with existing eutils cache schema
+            # Create table - compatible with existing cache schema
             conn.execute("""
                 CREATE TABLE IF NOT EXISTS cache (
                     key BLOB PRIMARY KEY,
@@ -63,13 +124,36 @@ class SimpleCache:
             """)
     
     def _make_key(self, url: str, params: Dict) -> bytes:
-        """Generate cache key from URL and parameters."""
+        """Generate deterministic cache key from URL and parameters.
+        
+        Creates a reproducible cache key by combining the URL with sorted
+        parameters. This ensures that requests with identical parameters
+        (regardless of order) use the same cache entry.
+        
+        Args:
+            url (str): Base URL for the request
+            params (Dict): Request parameters dictionary
+            
+        Returns:
+            bytes: UTF-8 encoded cache key
+        """
         sorted_params = sorted(params.items())
         key_string = f"{url}?{urlencode(sorted_params)}"
         return key_string.encode()
     
     def get(self, url: str, params: Dict) -> Optional[str]:
-        """Get cached response if still valid."""
+        """Retrieve cached response for URL and parameters.
+        
+        Thread-safe method to fetch cached API responses. Returns None
+        if no cached response is found.
+        
+        Args:
+            url (str): Base URL that was cached
+            params (Dict): Request parameters used for the cached request
+            
+        Returns:
+            Optional[str]: Cached response as string, or None if not found
+        """
         with self.lock:
             key = self._make_key(url, params)
             
@@ -88,7 +172,19 @@ class SimpleCache:
                 return None
     
     def set(self, url: str, params: Dict, value: str):
-        """Store response in cache."""
+        """Store API response in cache.
+        
+        Thread-safe method to cache API responses with current timestamp.
+        Uses INSERT OR REPLACE to handle both new entries and updates.
+        
+        Args:
+            url (str): Base URL to cache
+            params (Dict): Request parameters for the cached request  
+            value (str): API response content to cache
+            
+        Returns:
+            None
+        """
         with self.lock:
             key = self._make_key(url, params)
             now = int(time.time())
@@ -162,7 +258,34 @@ class SimpleCache:
 
 
 class NCBIClient:
-    """Lightweight NCBI E-utilities client with caching and rate limiting."""
+    """Lightweight NCBI E-utilities client with caching and rate limiting.
+    
+    This client provides a modern interface to NCBI APIs with:
+    - Automatic rate limiting respecting NCBI guidelines
+    - Persistent SQLite-based response caching
+    - Comprehensive error handling and diagnostics
+    - Support for all major E-utilities endpoints
+    - API key support for higher rate limits
+    
+    The client automatically detects API key usage and adjusts rate limiting
+    accordingly (3 req/sec without key, 10 req/sec with key).
+    
+    Args:
+        api_key (Optional[str]): NCBI API key for higher rate limits
+        cache_path (Optional[str]): Path to SQLite cache file. If None, no caching
+        requests_per_second (int): Maximum requests per second (capped by NCBI limits)
+        tool (str): Tool identifier for NCBI logging
+        email (str): Email address for NCBI contact (recommended)
+    
+    Attributes:
+        BASE_URL (str): Base URL for NCBI E-utilities
+        api_key (Optional[str]): Configured API key
+        tool (str): Tool identifier
+        email (str): Contact email
+        rate_limiter (RateLimiter): Rate limiting handler
+        cache (Optional[SimpleCache]): Response cache if enabled
+        session (requests.Session): HTTP session for requests
+    """
     
     BASE_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
     

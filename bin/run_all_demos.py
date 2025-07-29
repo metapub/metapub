@@ -108,6 +108,10 @@ class DemoRunner:
             "import_dois.py": {
                 "args": ["sample_pmids.txt"],
                 "description": "Import DOIs from file"
+            },
+            "demo_medgen_comprehensive_workflow.py": {
+                "args": ["breast cancer"],
+                "description": "Comprehensive MedGen+ClinVar workflow: medical term → genes → variants → literature"
             }
         }
 
@@ -116,7 +120,7 @@ class DemoRunner:
         # Create output directory
         output_dir = self.bin_dir.parent / "output"
         output_dir.mkdir(exist_ok=True)
-        
+
         sample_pmids_file = self.bin_dir / "sample_pmids.txt"
         if not sample_pmids_file.exists():
             sample_pmids = ["33157158", "32187540", "31653314", "30982822", "29977293"]
@@ -155,7 +159,7 @@ class DemoRunner:
             "demo_get_pmids_for_medgen_cui.py": 90,  # MedGen API calls
             "demo_get_related_pmids.py": 90,  # PubMed API calls
         }
-        
+
         if script_name in slow_scripts:
             timeout = max(timeout, slow_scripts[script_name])
 
@@ -212,11 +216,10 @@ class DemoRunner:
                        quick_test: bool = False) -> List[Dict[str, Any]]:
         """Run all discovered scripts."""
         exclude = exclude or []
-        
+
         # Add problematic scripts to exclusion list in quick test mode
         if quick_test:
             problematic_scripts = [
-                # ClinVar demos are now optimized and fast
                 "demo_dx_doi_cache.py",  # DOI cache operations
                 "demo_findit_backup_url.py",  # Network timeouts
                 "demo_findit_nonverified.py",  # Network timeouts
@@ -230,7 +233,7 @@ class DemoRunner:
             ]
             exclude = list(set(exclude + problematic_scripts))
             logger.info(f"Quick test mode: excluding {len(problematic_scripts)} slow scripts")
-        
+
         results = []
 
         # Create sample files first
@@ -250,7 +253,7 @@ class DemoRunner:
                     break
             else:
                 logger.info(f"Script {script_path.name} completed successfully")
-            
+
             # Add delay between scripts to avoid overwhelming external APIs
             if delay_between_scripts > 0:
                 time.sleep(delay_between_scripts)

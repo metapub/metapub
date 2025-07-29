@@ -23,12 +23,12 @@ logger = logging.getLogger(__name__)
 
 class DemoRunner:
     """Main class for running all demo scripts with appropriate arguments."""
-    
+
     def __init__(self, bin_dir: str = None):
         self.bin_dir = Path(bin_dir) if bin_dir else Path(__file__).parent
         self.scripts = self._discover_scripts()
         self.default_args = self._setup_default_arguments()
-    
+
     def _discover_scripts(self) -> List[Path]:
         """Discover all Python scripts in the bin directory."""
         scripts = []
@@ -36,7 +36,7 @@ class DemoRunner:
             if script_path.name != "run_all_demos.py":  # Exclude this script
                 scripts.append(script_path)
         return sorted(scripts)
-    
+
     def _setup_default_arguments(self) -> Dict[str, Dict[str, Any]]:
         """Define default arguments for scripts that require them."""
         return {
@@ -81,7 +81,7 @@ class DemoRunner:
                 "description": "Get PMIDs for a MedGen CUI"
             },
             "demo_findit_backup_url.py": {
-                "args": ["33157158"],
+                "args": ["23456789"],
                 "description": "Test FindIt backup URL functionality"
             },
             "demo_findit_nonverified.py": {
@@ -89,7 +89,7 @@ class DemoRunner:
                 "description": "Test FindIt with non-verified sources"
             },
             "demo_dx_doi_cache.py": {
-                "args": ["33157158"],
+                "args": ["30000000"],
                 "description": "Test DOI cache functionality"
             },
             "demo_preload_FindIt.py": {
@@ -109,7 +109,7 @@ class DemoRunner:
                 "description": "Import DOIs from file"
             }
         }
-    
+
     def _create_sample_files(self):
         """Create sample input files if they don't exist."""
         sample_pmids_file = self.bin_dir / "sample_pmids.txt"
@@ -118,7 +118,7 @@ class DemoRunner:
             with open(sample_pmids_file, 'w') as f:
                 f.write('\n'.join(sample_pmids) + '\n')
             logger.info(f"Created {sample_pmids_file}")
-    
+
     def _check_script_requirements(self, script_path: Path) -> bool:
         """Check if a script requires arguments by examining its source."""
         try:
@@ -128,24 +128,24 @@ class DemoRunner:
         except Exception as e:
             logger.warning(f"Could not read {script_path}: {e}")
             return False
-    
-    def run_single_script(self, script_path: Path, custom_args: List[str] = None, 
+
+    def run_single_script(self, script_path: Path, custom_args: List[str] = None,
                          timeout: int = 30, capture_output: bool = True) -> Dict[str, Any]:
         """Run a single script and return results."""
         script_name = script_path.name
-        
+
         # Determine arguments
         args = []
         if custom_args:
             args = custom_args
         elif script_name in self.default_args:
             args = self.default_args[script_name]["args"]
-        
+
         # Build command
         cmd = [sys.executable, str(script_path)] + args
-        
+
         logger.info(f"Running {script_name} with args: {args}")
-        
+
         try:
             # Run the script
             result = subprocess.run(
@@ -155,7 +155,7 @@ class DemoRunner:
                 capture_output=capture_output,
                 text=True
             )
-            
+
             return {
                 "script": script_name,
                 "args": args,
@@ -165,7 +165,7 @@ class DemoRunner:
                 "success": result.returncode == 0,
                 "description": self.default_args.get(script_name, {}).get("description", "")
             }
-            
+
         except subprocess.TimeoutExpired:
             logger.error(f"Script {script_name} timed out after {timeout} seconds")
             return {
@@ -188,55 +188,55 @@ class DemoRunner:
                 "success": False,
                 "description": self.default_args.get(script_name, {}).get("description", "")
             }
-    
-    def run_all_scripts(self, timeout: int = 30, continue_on_error: bool = True, 
+
+    def run_all_scripts(self, timeout: int = 30, continue_on_error: bool = True,
                        exclude: List[str] = None) -> List[Dict[str, Any]]:
         """Run all discovered scripts."""
         exclude = exclude or []
         results = []
-        
+
         # Create sample files first
         self._create_sample_files()
-        
+
         for script_path in self.scripts:
             if script_path.name in exclude:
                 logger.info(f"Skipping excluded script: {script_path.name}")
                 continue
-            
+
             result = self.run_single_script(script_path, timeout=timeout)
             results.append(result)
-            
+
             if not result["success"]:
                 logger.warning(f"Script {script_path.name} failed: {result['stderr']}")
                 if not continue_on_error:
                     break
             else:
                 logger.info(f"Script {script_path.name} completed successfully")
-        
+
         return results
-    
+
     def list_scripts(self) -> None:
         """List all available scripts with their descriptions."""
         print("Available demo scripts:")
         print("=" * 50)
-        
+
         for script_path in self.scripts:
             script_name = script_path.name
             info = self.default_args.get(script_name, {})
             description = info.get("description", "No description available")
             args = info.get("args", [])
-            
+
             print(f"• {script_name}")
             print(f"  Description: {description}")
             if args:
                 print(f"  Default args: {args}")
             print()
-    
+
     def generate_report(self, results: List[Dict[str, Any]], output_file: str = None) -> None:
         """Generate a summary report of script execution results."""
         successful = [r for r in results if r["success"]]
         failed = [r for r in results if not r["success"]]
-        
+
         report = {
             "summary": {
                 "total_scripts": len(results),
@@ -246,12 +246,12 @@ class DemoRunner:
             },
             "results": results
         }
-        
+
         if output_file:
             with open(output_file, 'w') as f:
                 json.dump(report, f, indent=2)
             logger.info(f"Report saved to {output_file}")
-        
+
         # Print summary
         print("\n" + "=" * 50)
         print("EXECUTION SUMMARY")
@@ -260,7 +260,7 @@ class DemoRunner:
         print(f"Successful: {report['summary']['successful']}")
         print(f"Failed: {report['summary']['failed']}")
         print(f"Success rate: {report['summary']['success_rate']}")
-        
+
         if failed:
             print("\nFailed scripts:")
             for result in failed:
@@ -275,46 +275,46 @@ def main():
     parser.add_argument("--timeout", type=int, default=30, help="Timeout per script in seconds")
     parser.add_argument("--exclude", nargs="*", default=[], help="Scripts to exclude from execution")
     parser.add_argument("--report", help="Save results report to JSON file")
-    parser.add_argument("--continue-on-error", action="store_true", default=True, 
+    parser.add_argument("--continue-on-error", action="store_true", default=True,
                        help="Continue running other scripts if one fails")
     parser.add_argument("--verbose", action="store_true", help="Show script output in real-time")
-    
+
     args = parser.parse_args()
-    
+
     runner = DemoRunner()
-    
+
     if args.list:
         runner.list_scripts()
         return
-    
+
     if args.script:
         # Run single script
         script_path = runner.bin_dir / args.script
         if not script_path.exists():
             logger.error(f"Script not found: {args.script}")
             sys.exit(1)
-        
+
         result = runner.run_single_script(
-            script_path, 
-            custom_args=args.args, 
+            script_path,
+            custom_args=args.args,
             timeout=args.timeout,
             capture_output=not args.verbose
         )
-        
+
         if not args.verbose:
             print(result["stdout"])
             if result["stderr"]:
                 print("STDERR:", result["stderr"], file=sys.stderr)
-        
+
         sys.exit(0 if result["success"] else 1)
-    
+
     # Run all scripts
     results = runner.run_all_scripts(
         timeout=args.timeout,
         continue_on_error=args.continue_on_error,
         exclude=args.exclude
     )
-    
+
     runner.generate_report(results, args.report)
 
 

@@ -15,12 +15,15 @@ import argparse
 import json
 import sys
 import time
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from typing import Dict, List, Optional
 
 import requests
 from lxml import etree
+
+from .eutils_common import get_eutils_client
+from .cache_utils import get_cache_path
+from .config import API_KEY
 
 
 @dataclass
@@ -40,59 +43,56 @@ class NCBIHealthChecker:
     
     def __init__(self, timeout: int = 10):
         self.timeout = timeout
+        # Use existing eutils client with proper rate limiting and API key support
+        cache_path = get_cache_path('ncbi_health_check.db')
+        self.eutils_client = get_eutils_client(cache_path, cache=False)  # No cache for health checks
         self.services = {
+            'ncbi_main': {
+                'name': 'NCBI Main Website',
+                'method': 'http',
+                'url': 'https://www.ncbi.nlm.nih.gov/',
+                'essential': False
+            },
             'efetch': {
                 'name': 'EFetch (PubMed Articles)',
-                'url': 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi',
-                'params': {'db': 'pubmed', 'id': '123456', 'retmode': 'xml'},
+                'method': 'eutils',
+                'eutils_method': 'efetch',
+                'params': {'db': 'pubmed', 'id': '33157158'},  # Real PMID
                 'essential': True
             },
             'esearch': {
                 'name': 'ESearch (PubMed Search)',
-                'url': 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi',
+                'method': 'eutils',
+                'eutils_method': 'esearch',
                 'params': {'db': 'pubmed', 'term': 'cancer[title]', 'retmax': '1'},
                 'essential': True
             },
             'elink': {
                 'name': 'ELink (Related Articles)',
-                'url': 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/elink.fcgi',
-                'params': {'dbfrom': 'pubmed', 'db': 'pubmed', 'id': '123456'},
+                'method': 'eutils',
+                'eutils_method': 'elink',
+                'params': {'dbfrom': 'pubmed', 'db': 'pubmed', 'id': '33157158'},  # Real PMID
                 'essential': True
             },
             'esummary': {
                 'name': 'ESummary (Article Summaries)',
-                'url': 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi',
-                'params': {'db': 'pubmed', 'id': '123456'},
+                'method': 'eutils',
+                'eutils_method': 'esummary',
+                'params': {'db': 'pubmed', 'id': '33157158'},  # Real PMID
                 'essential': True
             },
             'einfo': {
                 'name': 'EInfo (Database Info)',
-                'url': 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/einfo.fcgi',
+                'method': 'eutils',
+                'eutils_method': 'einfo',
                 'params': {'db': 'pubmed'},
-                'essential': False
+                'essential': True
             },
             'medgen_search': {
                 'name': 'MedGen Search',
-                'url': 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi',
+                'method': 'eutils',
+                'eutils_method': 'esearch',
                 'params': {'db': 'medgen', 'term': 'diabetes', 'retmax': '1'},
-                'essential': False
-            },
-            'pmc_fetch': {
-                'name': 'PMC Article Fetch',
-                'url': 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi',
-                'params': {'db': 'pmc', 'id': '123456'},
-                'essential': False
-            },
-            'books_search': {
-                'name': 'NCBI Books Search',
-                'url': 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi',
-                'params': {'db': 'books', 'term': 'genetics', 'retmax': '1'},
-                'essential': False
-            },
-            'ncbi_main': {
-                'name': 'NCBI Main Website',
-                'url': 'https://www.ncbi.nlm.nih.gov/',
-                'params': {},
                 'essential': False
             }
         }
@@ -102,113 +102,106 @@ class NCBIHealthChecker:
         start_time = time.time()
         
         try:
-            response = requests.get(
-                config['url'],
-                params=config['params'],
-                timeout=self.timeout,
-                headers={'User-Agent': 'metapub-health-check/1.0'}
-            )
-            
-            response_time = time.time() - start_time
-            
-            # Determine status based on response
-            if response.status_code >= 500:
-                return ServiceResult(
-                    name=config['name'],
-                    url=config['url'],
-                    status='down',
-                    response_time=response_time,
-                    status_code=response.status_code,
-                    error_message=f"Server error: {response.status_code} {response.reason}"
-                )
-            
-            if response.status_code >= 400:
-                return ServiceResult(
-                    name=config['name'],
-                    url=config['url'],
-                    status='error',
-                    response_time=response_time,
-                    status_code=response.status_code,
-                    error_message=f"Client error: {response.status_code} {response.reason}"
-                )
-            
-            # Check content for issues
-            content_type = response.headers.get('content-type', '').lower()
-            
-            # For eutils APIs, we expect XML
-            if 'eutils' in config['url']:
-                if 'html' in content_type:
+            if config['method'] == 'eutils':
+                # Use eutils client with built-in rate limiting and API key support
+                eutils_method = getattr(self.eutils_client, config['eutils_method'])
+                result = eutils_method(config['params'])
+                
+                response_time = time.time() - start_time
+                
+                # Check if we got valid XML response
+                if result is None or len(result) == 0:
                     return ServiceResult(
                         name=config['name'],
-                        url=config['url'],
+                        url=f"eutils:{config['eutils_method']}",
                         status='down',
                         response_time=response_time,
-                        status_code=response.status_code,
-                        error_message="Received HTML instead of XML (likely down page)"
+                        error_message="Empty response from eutils"
                     )
                 
-                if len(response.content) == 0:
-                    return ServiceResult(
-                        name=config['name'],
-                        url=config['url'],
-                        status='down',
-                        response_time=response_time,
-                        status_code=response.status_code,
-                        error_message="Empty response"
-                    )
-                
-                # Try to parse XML
+                # Try to parse XML to ensure it's valid
                 try:
-                    root = etree.XML(response.content)
+                    root = etree.fromstring(result)
                     # Check for error messages in XML
                     error_elem = root.find('.//ERROR')
                     if error_elem is not None:
                         return ServiceResult(
                             name=config['name'],
-                            url=config['url'],
+                            url=f"eutils:{config['eutils_method']}",
                             status='error',
                             response_time=response_time,
-                            status_code=response.status_code,
                             error_message=f"API error: {error_elem.text}"
                         )
                 except etree.XMLSyntaxError as e:
-                    # Check if we got the bethesda down page
-                    if b'down_bethesda' in response.content or b'<html' in response.content.lower():
-                        return ServiceResult(
-                            name=config['name'],
-                            url=config['url'],
-                            status='down',
-                            response_time=response_time,
-                            status_code=response.status_code,
-                            error_message="Service maintenance page detected"
-                        )
-                    else:
-                        return ServiceResult(
-                            name=config['name'],
-                            url=config['url'],
-                            status='error',
-                            response_time=response_time,
-                            status_code=response.status_code,
-                            error_message=f"XML parsing error: {str(e)}"
-                        )
-            
-            # Service is up
-            status = 'slow' if response_time > 5.0 else 'up'
-            details = f"Response time: {response_time:.2f}s"
-            
-            return ServiceResult(
-                name=config['name'],
-                url=config['url'],
-                status=status,
-                response_time=response_time,
-                status_code=response.status_code,
-                details=details
-            )
-            
+                    return ServiceResult(
+                        name=config['name'],
+                        url=f"eutils:{config['eutils_method']}",
+                        status='error',
+                        response_time=response_time,
+                        error_message=f"Invalid XML response: {str(e)}"
+                    )
+                
+                # Service is up
+                status = 'slow' if response_time > 5.0 else 'up'
+                api_key_status = " (with API key)" if API_KEY else " (no API key)"
+                details = f"Response time: {response_time:.2f}s{api_key_status}"
+                
+                return ServiceResult(
+                    name=config['name'],
+                    url=f"eutils:{config['eutils_method']}",
+                    status=status,
+                    response_time=response_time,
+                    status_code=200,  # eutils success
+                    details=details
+                )
+                
+            elif config['method'] == 'http':
+                # Direct HTTP check for non-eutils services
+                response = requests.get(
+                    config['url'],
+                    timeout=self.timeout,
+                    headers={'User-Agent': 'metapub-health-check/1.0'}
+                )
+                
+                response_time = time.time() - start_time
+                
+                if response.status_code >= 500:
+                    return ServiceResult(
+                        name=config['name'],
+                        url=config['url'],
+                        status='down',
+                        response_time=response_time,
+                        status_code=response.status_code,
+                        error_message=f"Server error: {response.status_code} {response.reason}"
+                    )
+                
+                if response.status_code >= 400:
+                    return ServiceResult(
+                        name=config['name'],
+                        url=config['url'],
+                        status='error',
+                        response_time=response_time,
+                        status_code=response.status_code,
+                        error_message=f"Client error: {response.status_code} {response.reason}"
+                    )
+                
+                # Service is up
+                status = 'slow' if response_time > 5.0 else 'up'
+                details = f"Response time: {response_time:.2f}s"
+                
+                return ServiceResult(
+                    name=config['name'],
+                    url=config['url'],
+                    status=status,
+                    response_time=response_time,
+                    status_code=response.status_code,
+                    details=details
+                )
+                
         except requests.exceptions.Timeout:
             return ServiceResult(
                 name=config['name'],
-                url=config['url'],
+                url=config.get('url', f"eutils:{config.get('eutils_method', 'unknown')}"),
                 status='down',
                 response_time=self.timeout,
                 error_message=f"Timeout after {self.timeout}s"
@@ -216,7 +209,7 @@ class NCBIHealthChecker:
         except requests.exceptions.ConnectionError as e:
             return ServiceResult(
                 name=config['name'],
-                url=config['url'],
+                url=config.get('url', f"eutils:{config.get('eutils_method', 'unknown')}"),
                 status='down',
                 response_time=time.time() - start_time,
                 error_message=f"Connection error: {str(e)}"
@@ -224,14 +217,14 @@ class NCBIHealthChecker:
         except Exception as e:
             return ServiceResult(
                 name=config['name'],
-                url=config['url'],
+                url=config.get('url', f"eutils:{config.get('eutils_method', 'unknown')}"),
                 status='error',
                 response_time=time.time() - start_time,
                 error_message=f"Unexpected error: {str(e)}"
             )
 
     def check_all_services(self, quick: bool = False) -> List[ServiceResult]:
-        """Check all services concurrently."""
+        """Check all services with conservative rate limiting."""
         services_to_check = {
             k: v for k, v in self.services.items()
             if not quick or v.get('essential', False)
@@ -239,28 +232,29 @@ class NCBIHealthChecker:
         
         results = []
         
-        with ThreadPoolExecutor(max_workers=5) as executor:
-            future_to_service = {
-                executor.submit(self.check_service, service_id, config): service_id
-                for service_id, config in services_to_check.items()
-            }
-            
-            for future in as_completed(future_to_service):
-                try:
-                    result = future.result()
-                    results.append(result)
-                except Exception as e:
-                    service_id = future_to_service[future]
-                    config = services_to_check[service_id]
-                    results.append(ServiceResult(
-                        name=config['name'],
-                        url=config['url'],
-                        status='error',
-                        response_time=0.0,
-                        error_message=f"Check failed: {str(e)}"
-                    ))
+        # Use sequential execution with delays to be extra conservative about rate limiting
+        for service_id, config in services_to_check.items():
+            try:
+                result = self.check_service(service_id, config)
+                results.append(result)
+                # Small delay between checks to avoid overwhelming NCBI
+                time.sleep(0.1)
+            except Exception as e:
+                results.append(ServiceResult(
+                    name=config['name'],
+                    url=config.get('url', f"eutils:{config.get('eutils_method', 'unknown')}"),
+                    status='error',
+                    response_time=0.0,
+                    error_message=f"Check failed: {str(e)}"
+                ))
         
-        return sorted(results, key=lambda x: x.name)
+        # Sort results with NCBI Main Website first, then alphabetically
+        def sort_key(result):
+            if result.name == 'NCBI Main Website':
+                return '0'  # Force to top
+            return result.name
+        
+        return sorted(results, key=sort_key)
 
 
 def print_status_icon(status: str) -> str:

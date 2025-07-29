@@ -52,6 +52,19 @@ class PubMedArticle(MetaPubObject):
     """
 
     def __init__(self, xmlstr, *args, **kwargs):
+        """Initialize PubMedArticle from NCBI XML data.
+        
+        Args:
+            xmlstr (str): XML string from NCBI containing PubmedArticle or 
+                PubmedBookArticle data.
+            *args: Additional positional arguments passed to parent class.
+            **kwargs: Additional keyword arguments passed to parent class.
+        
+        Note:
+            The XML type is automatically detected to handle both regular articles
+            and book chapters. The `pubmed_type` attribute will be set to 'article'
+            or 'book' accordingly, and appropriate attributes will be populated.
+        """
         self.pubmed_type = determine_pubmed_xml_type(xmlstr)
 
         if self.pubmed_type=='book':
@@ -127,6 +140,16 @@ class PubMedArticle(MetaPubObject):
         self.history = self._get_article_history()
 
     def to_dict(self):
+        """Convert PubMedArticle to dictionary representation.
+        
+        Returns:
+            Dict[str, Any]: Dictionary containing all article attributes except
+                internal XML content and processing attributes.
+        
+        Note:
+            Excludes 'content', 'xml', and '_root' attributes from the output
+            to provide a clean data representation suitable for serialization.
+        """
         outd = self.__dict__.copy()
         outd.pop('content')
         outd.pop('xml')

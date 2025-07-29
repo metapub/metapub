@@ -21,6 +21,17 @@ from .ncbi_errors import diagnose_ncbi_error, NCBIServiceError, handle_ncbi_requ
 log = logging.getLogger('metapub.pubmedfetcher')
 
 def get_uids_from_esearch_result(xmlstr):
+    """Extract unique identifiers from an ESearch XML result.
+    
+    Args:
+        xmlstr (str): XML string returned from NCBI ESearch query.
+        
+    Returns:
+        List[str]: List of PMID strings extracted from the XML.
+        
+    Raises:
+        NCBIServiceError: If XML parsing fails due to NCBI service issues.
+    """
     try:
         dom = etree.fromstring(xmlstr)
         uids = []
@@ -42,6 +53,18 @@ def get_uids_from_esearch_result(xmlstr):
             raise
 
 def parse_related_pmids_result(xmlstr):
+    """Parse XML results from ELink query for related PMIDs.
+    
+    Args:
+        xmlstr (str): XML string returned from NCBI ELink query.
+        
+    Returns:
+        Dict[str, List[str]]: Dictionary mapping relationship types to lists of PMIDs.
+            Common keys include 'pubmed', 'reviews', 'cited', etc.
+            
+    Raises:
+        NCBIServiceError: If XML parsing fails due to NCBI service issues.
+    """
     try:
         outd = {}
         dom = etree.fromstring(xmlstr)
@@ -98,6 +121,21 @@ class PubMedFetcher(Borg):
     _cache_filename = 'pubmedfetcher.db'
 
     def __init__(self, method='eutils', **kwargs):
+        """Initialize PubMedFetcher with specified service method.
+        
+        Args:
+            method (str, optional): Service method to use. Currently only 'eutils' 
+                is supported. Defaults to 'eutils'.
+            **kwargs: Additional keyword arguments.
+                cachedir (str, optional): Custom directory for caching responses.
+                    If not provided, uses default cache directory.
+        
+        Raises:
+            NotImplementedError: If an unsupported method is specified.
+        
+        Note:
+            This is a Borg singleton - all instances share the same state.
+        """
         self.method = method
         cachedir = kwargs.get("cachedir")
 

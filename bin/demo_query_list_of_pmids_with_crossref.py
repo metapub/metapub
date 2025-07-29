@@ -43,30 +43,30 @@ if __name__=='__main__':
             except:
                 pma = None
                 #print("%s: Could not fetch" % pmid)
-        if pma:
-            work = CR.article_by_pma(pma)
+            
+            work = None
+            if pma:
+                work = CR.article_by_pma(pma)
 
-        if work and pma:
-            results_table['pma_title'].append(asciify(pma.title))
-            results_table['pma_journal'].append(asciify(pma.journal))
-            results_table['pma_aulast'].append(asciify(pma.author1_last_fm))
-            results_table['cr_title'].append(asciify(work.title[0]))
-            results_table['doi'].append(work.doi)
-            results_table['score'].append(work.score)
-            results_table['cr_aulast'].append(work.author1_last_fm)
-            results_table['cr_journal'].append(work.to_citation()['journal'])
+            if work and pma:
+                results_table['pma_title'].append(asciify(pma.title))
+                results_table['pma_journal'].append(asciify(pma.journal))
+                results_table['pma_aulast'].append(asciify(pma.author1_last_fm))
+                results_table['cr_title'].append(asciify(work.title[0]))
+                results_table['doi'].append(work.doi)
+                results_table['score'].append(work.score)
+                results_table['cr_aulast'].append(work.author1_last_fm)
+                results_table['cr_journal'].append(work.to_citation()['journal'])
 
-        else:
-            results = None
-            top_result = None
-            results_table['pma_aulast'].append('NA')
-            results_table['pma_journal'].append('NA')
-            results_table['pma_title'].append('NA')
-            results_table['doi'].append('NA')
-            results_table['score'].append('NA')
-            results_table['cr_journal'].append('NA')
-            results_table['cr_aulast'].append('NA')
-            results_table['cr_title'].append('NA')
+            else:
+                results_table['pma_aulast'].append('NA')
+                results_table['pma_journal'].append('NA')
+                results_table['pma_title'].append('NA')
+                results_table['doi'].append('NA')
+                results_table['score'].append('NA')
+                results_table['cr_journal'].append('NA')
+                results_table['cr_aulast'].append('NA')
+                results_table['cr_title'].append('NA')
 
         #print(pmid, top_result['doi'], top_result['score'], sep='\t')
 

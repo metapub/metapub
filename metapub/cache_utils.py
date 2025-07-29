@@ -4,9 +4,7 @@ __author__ = "nthmost"
 import os, logging
 from datetime import datetime
 
-# this is kinda ugh. we shouldn't be using an "internal" module, but the
-# eutils package structure changed suddenly. Replace with bespoke...?
-from eutils._internal.sqlitecache import SQLiteCache
+from .ncbi_client import SimpleCache as SQLiteCache
 
 from .config import PKGNAME, DEFAULT_CACHE_DIR
 from .exceptions import MetaPubError
@@ -30,7 +28,7 @@ def get_cache_path(cachedir=DEFAULT_CACHE_DIR, filename='metapub-cache.db'):
     raises MetaPubError if it can't be created.
 
         if cachedir is None, returns None.
-    
+
         Default: DEFAULT_CACHE_DIR set in config.py (~/.cache)
 
         Supports expansion of user directory shortcut '~' to full path.

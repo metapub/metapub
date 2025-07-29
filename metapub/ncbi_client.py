@@ -1,17 +1,16 @@
 """
 Lightweight NCBI E-utilities client - replacement for eutils library.
-Provides direct HTTP interface to NCBI APIs with caching and rate limiting.
+Provides direct HTTP interface to NCBI APIs with rate limiting and caching.
 """
 
 import time
 import sqlite3
 import hashlib
-import json
 import logging
-from urllib.parse import urlencode
-from typing import Dict, List, Optional, Union, Any
 import requests
 from threading import Lock
+from urllib.parse import urlencode
+from typing import Dict, List, Optional, Union
 
 from .exceptions import MetaPubError
 from .ncbi_errors import diagnose_ncbi_error, NCBIServiceError
@@ -20,7 +19,6 @@ try:
     from lxml import etree
 except ImportError:
     import xml.etree.ElementTree as etree
-
 
 log = logging.getLogger('metapub.ncbi_client')
 
@@ -44,8 +42,8 @@ class RateLimiter:
             self.last_request_time = time.time()
 
 
-class SQLiteCache:
-    """SQLite-based cache for NCBI API responses."""
+class SimpleCache:
+    """Simple SQLite cache compatible with existing cache files."""
     
     def __init__(self, cache_path: str):
         self.cache_path = cache_path
@@ -54,64 +52,117 @@ class SQLiteCache:
     
     def _init_db(self):
         with sqlite3.connect(self.cache_path) as conn:
+            # Create table - compatible with existing eutils cache schema
             conn.execute("""
                 CREATE TABLE IF NOT EXISTS cache (
-                    key TEXT PRIMARY KEY,
-                    value TEXT,
-                    timestamp REAL,
-                    expires_at REAL
+                    key BLOB PRIMARY KEY,
+                    value BLOB,
+                    created INTEGER,
+                    value_compressed BOOL DEFAULT 0
                 )
             """)
-            conn.execute("CREATE INDEX IF NOT EXISTS idx_expires ON cache(expires_at)")
     
-    def _make_key(self, url: str, params: Dict) -> str:
+    def _make_key(self, url: str, params: Dict) -> bytes:
         """Generate cache key from URL and parameters."""
         sorted_params = sorted(params.items())
         key_string = f"{url}?{urlencode(sorted_params)}"
-        return hashlib.md5(key_string.encode()).hexdigest()
+        return key_string.encode()
     
-    def get(self, url: str, params: Dict, ttl: int = 3600) -> Optional[str]:
+    def get(self, url: str, params: Dict) -> Optional[str]:
         """Get cached response if still valid."""
         with self.lock:
             key = self._make_key(url, params)
-            now = time.time()
             
             with sqlite3.connect(self.cache_path) as conn:
                 result = conn.execute(
-                    "SELECT value FROM cache WHERE key = ? AND expires_at > ?",
-                    (key, now)
+                    "SELECT value FROM cache WHERE key = ?",
+                    (key,)
                 ).fetchone()
                 
                 if result:
-                    log.debug(f"Cache hit for {key}")
-                    return result[0]
+                    value = result[0]
+                    if isinstance(value, bytes):
+                        return value.decode('utf-8')
+                    return str(value)
                 
-                log.debug(f"Cache miss for {key}")
                 return None
     
-    def set(self, url: str, params: Dict, value: str, ttl: int = 3600):
+    def set(self, url: str, params: Dict, value: str):
         """Store response in cache."""
         with self.lock:
             key = self._make_key(url, params)
-            now = time.time()
-            expires_at = now + ttl
+            now = int(time.time())
             
             with sqlite3.connect(self.cache_path) as conn:
                 conn.execute(
-                    "INSERT OR REPLACE INTO cache (key, value, timestamp, expires_at) VALUES (?, ?, ?, ?)",
-                    (key, value, now, expires_at)
+                    "INSERT OR REPLACE INTO cache (key, value, created, value_compressed) VALUES (?, ?, ?, ?)",
+                    (key, value.encode('utf-8'), now, 0)
                 )
     
-    def cleanup_expired(self):
-        """Remove expired entries from cache."""
+    def __getitem__(self, key):
+        """Dictionary-style access for compatibility."""
         with self.lock:
-            now = time.time()
+            # Handle both string keys and byte keys
+            if isinstance(key, str):
+                key = key.encode('utf-8')
+                
             with sqlite3.connect(self.cache_path) as conn:
-                conn.execute("DELETE FROM cache WHERE expires_at < ?", (now,))
+                result = conn.execute(
+                    "SELECT value FROM cache WHERE key = ?",
+                    (key,)
+                ).fetchone()
+                
+                if result:
+                    value = result[0]
+                    if isinstance(value, bytes):
+                        value = value.decode('utf-8')
+                    else:
+                        value = str(value)
+                    
+                    # Try to deserialize as JSON for findit compatibility
+                    try:
+                        import json
+                        return json.loads(value)
+                    except (json.JSONDecodeError, ValueError):
+                        # If not JSON, return as string
+                        return value
+                else:
+                    raise KeyError(key)
+    
+    def __setitem__(self, key, value):
+        """Dictionary-style setting for compatibility."""
+        with self.lock:
+            # Handle both string keys and byte keys
+            if isinstance(key, str):
+                key = key.encode('utf-8')
+            
+            now = int(time.time())
+            
+            with sqlite3.connect(self.cache_path) as conn:
+                # Handle different value types (string, dict, etc.)
+                if isinstance(value, str):
+                    stored_value = value.encode('utf-8')
+                else:
+                    # For complex objects, store as string representation
+                    import json
+                    stored_value = json.dumps(value).encode('utf-8')
+                
+                conn.execute(
+                    "INSERT OR REPLACE INTO cache (key, value, created, value_compressed) VALUES (?, ?, ?, ?)",
+                    (key, stored_value, now, 0)
+                )
+    
+    def __contains__(self, key):
+        """Dictionary-style 'in' operator for compatibility."""
+        try:
+            self[key]
+            return True
+        except KeyError:
+            return False
 
 
 class NCBIClient:
-    """Lightweight NCBI E-utilities client."""
+    """Lightweight NCBI E-utilities client with caching and rate limiting."""
     
     BASE_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
     
@@ -126,7 +177,7 @@ class NCBIClient:
         self.rate_limiter = RateLimiter(min(requests_per_second, rps))
         
         # Setup caching
-        self.cache = SQLiteCache(cache_path) if cache_path else None
+        self.cache = SimpleCache(cache_path) if cache_path else None
         
         # Setup HTTP session
         self.session = requests.Session()
@@ -174,7 +225,7 @@ class NCBIClient:
         
         # Try to parse as XML
         try:
-            etree.fromstring(content.encode('utf-8'))
+            etree.fromstring(content)
             return True
         except (etree.XMLSyntaxError, Exception):
             return False
@@ -199,6 +250,13 @@ class NCBIClient:
             response.raise_for_status()
             
             content = response.text
+            
+            # Strip XML encoding declaration to avoid issues with lxml
+            # NCBI returns UTF-8 encoded responses, so this is safe
+            if content.strip().startswith('<?xml'):
+                # Find the end of the XML declaration and remove it
+                declaration_end = content.find('?>') + 2
+                content = content[declaration_end:].lstrip()
             
             # Cache successful responses - but only if they contain valid XML
             if self.cache and response.status_code == 200:

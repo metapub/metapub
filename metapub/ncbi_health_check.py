@@ -22,7 +22,6 @@ import requests
 from lxml import etree
 
 from .eutils_common import get_eutils_client
-from .cache_utils import get_cache_path
 from .config import API_KEY
 
 
@@ -44,8 +43,8 @@ class NCBIHealthChecker:
     def __init__(self, timeout: int = 10):
         self.timeout = timeout
         # Use existing eutils client with proper rate limiting and API key support
-        cache_path = get_cache_path('ncbi_health_check.db')
-        self.eutils_client = get_eutils_client(cache_path, cache=False)  # No cache for health checks
+        # No cache for health checks - we want live requests to check actual service status
+        self.eutils_client = get_eutils_client(None, cache=False)
         self.services = {
             'ncbi_main': {
                 'name': 'NCBI Main Website',

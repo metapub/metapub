@@ -16,6 +16,11 @@ from threading import Lock
 from .exceptions import MetaPubError
 from .ncbi_errors import diagnose_ncbi_error, NCBIServiceError
 
+try:
+    from lxml import etree
+except ImportError:
+    import xml.etree.ElementTree as etree
+
 
 log = logging.getLogger('metapub.ncbi_client')
 
@@ -153,6 +158,27 @@ class NCBIClient:
         
         return params
     
+    def _is_valid_xml_response(self, content: str, response: requests.Response) -> bool:
+        """Validate that response content is actually XML, not HTML error pages."""
+        # Check content type first
+        content_type = response.headers.get('content-type', '').lower()
+        if 'html' in content_type:
+            return False
+        
+        # Check for obvious HTML markers
+        content_lower = content.lower().strip()
+        if (content_lower.startswith('<!doctype html') or 
+            content_lower.startswith('<html') or
+            'down_bethesda' in content_lower):
+            return False
+        
+        # Try to parse as XML
+        try:
+            etree.fromstring(content.encode('utf-8'))
+            return True
+        except (etree.XMLSyntaxError, Exception):
+            return False
+    
     def _make_request(self, endpoint: str, **params) -> str:
         """Make HTTP request to NCBI with caching and rate limiting."""
         url = f"{self.BASE_URL}/{endpoint}.fcgi"
@@ -174,9 +200,13 @@ class NCBIClient:
             
             content = response.text
             
-            # Cache successful responses
+            # Cache successful responses - but only if they contain valid XML
             if self.cache and response.status_code == 200:
-                self.cache.set(url, request_params, content)
+                # Validate that response is actually XML before caching
+                if self._is_valid_xml_response(content, response):
+                    self.cache.set(url, request_params, content)
+                else:
+                    log.warning(f"Skipping cache for non-XML response from {endpoint}")
             
             return content
             

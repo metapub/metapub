@@ -101,7 +101,7 @@
         "journal": "Test Journal",
         "year": 2023
       },
-      "generated_bibtex": "@article{Van2023,\nauthor = {Van Der Berg, JH and De La Cruz, M},\ntitle = {Test Article with Multi-word Names},\njournal = {Test Journal},\nyear = {2023},\n}"
+      "generated_bibtex": "@article{VanDerBerg2023,\nauthor = {Van Der Berg, JH and De La Cruz, M},\ntitle = {Test Article with Multi-word Names},\njournal = {Test Journal},\nyear = {2023},\n}"
     },
     {
       "description": "Special characters",

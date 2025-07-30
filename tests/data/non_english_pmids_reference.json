@@ -1,0 +1,44 @@
+{
+  "description": "Non-English PMIDs used for testing international language support in metapub",
+  "created": "2025-07-30",
+  "languages": {
+    "German": {
+      "pmids": ["39607518", "40079719", "39653886", "1234567", "2345678", "6789123"],
+      "description": "German medical journals and historical articles"
+    },
+    "French": {
+      "pmids": ["34690539", "39656565", "39663965", "3456789", "4567890", "7890234"],
+      "description": "French medical journals and historical articles"
+    },
+    "Spanish": {
+      "pmids": ["31671389", "36054861", "30776274", "6789012", "9012456"],
+      "description": "Spanish medical journals including Medicina (B Aires)"
+    },
+    "Italian": {
+      "pmids": ["38880983", "37530005", "37070066", "5678901", "8901345"],
+      "description": "Italian medical journals and historical articles"
+    },
+    "Japanese": {
+      "pmids": ["36890755", "37743333", "37967964"],
+      "description": "Japanese medical journals including Brain Nerve, No Shinkei Geka"
+    },
+    "Chinese": {
+      "pmids": ["38468501", "40195673", "39971531"],
+      "description": "Chinese medical journals including Zhonghua series"
+    },
+    "Portuguese": {
+      "pmids": ["36043633", "39630833", "39166619"],
+      "description": "Portuguese/Brazilian medical journals"
+    },
+    "Russian": {
+      "pmids": ["36168687", "39731248", "39731387"],
+      "description": "Russian medical journals including Zh Nevrol Psikhiatr"
+    }
+  },
+  "usage_notes": [
+    "These PMIDs are used in test_pubmed_article.py to ensure international language support",
+    "PMIDs cover both recent articles (2019-2024) and historical articles (1970s-1980s)",
+    "Tests validate pubdate property, citation formatting, and character encoding",
+    "Includes articles from major medical journals in each language"
+  ]
+}

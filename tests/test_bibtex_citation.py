@@ -368,6 +368,5 @@ class TestBibTexCitation(unittest.TestCase):
         except Exception as e:
             self.skipTest(f"Network test skipped due to: {e}")
 
-
 if __name__ == '__main__':
     unittest.main()

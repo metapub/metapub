@@ -117,7 +117,7 @@ wolterskluwer_journals = [
     'Optom Vis Sci',
     'Otol Neurotol',
     'Pain',
-    'Pathology'
+    'Pathology',
     'Pediatr Crit Care Med',
     'Pediatr Emerg Care',
     'Pediatr Infect Dis J',

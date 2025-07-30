@@ -18,7 +18,7 @@ except:
     print("supply filename of PMID list as argument to this script")
     sys.exit()
 
-re_pmid = re.compile('^\d+$')
+re_pmid = re.compile(r'^\d+$')
 def validate_pmid(pmid):
     pmid = pmid.strip()
     if re_pmid.findall(pmid):

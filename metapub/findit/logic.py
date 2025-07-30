@@ -1,31 +1,54 @@
 __author__ = 'nthmost'
 
+import logging
 from ..pubmedfetcher import PubMedFetcher
 from ..convert import doi2pmid
 from ..exceptions import MetaPubError
 
 from .dances import *
+from .registry import JournalRegistry, standardize_journal_name
+from .handlers import RegistryBackedLookupSystem
 from .journals.todo import todo_journals
 
+log = logging.getLogger('metapub.findit.logic')
 
-PUBMED_SWITCHBOARD = {
-    'jstage':   {'journals': jstage_journals, 'dance': the_jstage_dive,     },
-    'springer': {'journals': springer_journals, 'dance': the_springer_shag, },
-    'wiley':    {'journals': wiley_journals, 'dance': the_wiley_shuffle,    },
-    'jama':     {'journals': jama_journals, 'dance': the_jama_dance,        },
-    'aaas':     {'journals': aaas_journals, 'dance': the_aaas_tango,        },
-    'spandidos': {'journals': spandidos_journals, 'dance': the_spandidos_lambada, },
-    'jci':      {'journals': jci_journals, 'dance': the_jci_jig,            },
-    'scielo':   {'journals': scielo_journals, 'dance': the_scielo_chula,    },
-    'najms':    {'journals': najms_journals, 'dance': the_najms_mazurka,    },
-    'biomchemsoc': {'journals': biochemsoc_journals, 'dance': the_biochemsoc_saunter,   },
-    'nature':   {'journals': nature_journals, 'dance': the_nature_ballet,   },
-    'cell':     {'journals': cell_journals, 'dance': the_cell_pogo,         },
-    'lancet':   {'journals': lancet_journals, 'dance': the_lancet_tango,    },
-    'sciencedirect': {'journals': sciencedirect_journals, 'dance': the_sciencedirect_disco, },
-    'karger':   {'journals': karger_journals, 'dance': the_karger_conga,    },
-    'wolterskluwer': {'journals': wolterskluwer_journals, 'dance': the_wolterskluwer_volta, },
-}
+# Global registry instances - cache by directory to respect user cachedir settings
+_registries = {}
+_lookup_systems = {}
+
+def _get_lookup_system(cachedir=None):
+    """Get or create the lookup system for the specified cache directory.
+    
+    Args:
+        cachedir: Cache directory path. If None, uses DEFAULT_CACHE_DIR.
+        
+    Returns:
+        RegistryBackedLookupSystem instance for the specified cache directory.
+    """
+    global _registries, _lookup_systems
+    
+    from ..config import DEFAULT_CACHE_DIR
+    
+    # Use default if not specified
+    if cachedir is None:
+        cachedir = DEFAULT_CACHE_DIR
+    
+    # Convert to string for consistent cache key
+    cache_key = str(cachedir) if cachedir else 'default'
+    
+    if cache_key not in _lookup_systems:
+        if cachedir is None or cache_key == 'None':
+            # Disable caching - create in-memory database
+            _registries[cache_key] = JournalRegistry(db_path=':memory:')
+        else:
+            from ..cache_utils import get_cache_path
+            db_path = get_cache_path(cachedir, 'journal_registry.db')
+            _registries[cache_key] = JournalRegistry(db_path=db_path)
+        
+        _lookup_systems[cache_key] = RegistryBackedLookupSystem(_registries[cache_key])
+        log.debug("Initialized registry-backed lookup system for cachedir: %s", cache_key)
+    
+    return _lookup_systems[cache_key]
 
 
 """ findit/logic.py
@@ -60,11 +83,14 @@ PUBMED_SWITCHBOARD = {
         using any FindIt functionality.
 """
 
-def find_article_from_pma(pma, verify=True, use_nih=False):
+def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None):
     """ The real workhorse of FindIt.
 
         Based on the contents of the supplied PubMedArticle object, this function
         returns the best possible download link for a Pubmed PDF.
+
+        This version uses the new registry-based lookup system for scalable
+        journal handling.
 
         Be aware that this function no longer performs doi lookups; if you want
         this handled for you, use the FindIt object (which will also record the
@@ -86,6 +112,7 @@ def find_article_from_pma(pma, verify=True, use_nih=False):
         :param pma: PubMedArticle object)
         :param verify: (bool) default: True
         :param use_nih: (bool) default: False
+        :param cachedir: (str) cache directory for registry database
         :return: (url, reason)
     """
     reason = ''
@@ -108,6 +135,7 @@ def find_article_from_pma(pma, verify=True, use_nih=False):
             reason = str(error)
 
     # === IDENTIFIER-BASED LISTS === #
+    # These are still handled by the old system for now
 
     if jrnl in simple_formats_pii.keys():
         try:
@@ -151,20 +179,28 @@ def find_article_from_pma(pma, verify=True, use_nih=False):
         except MetaPubError as error:
             reason = str(error)
 
-    for publisher in list(PUBMED_SWITCHBOARD.keys()):
-        if jrnl in PUBMED_SWITCHBOARD[publisher]['journals']:
-            try:
-                url = PUBMED_SWITCHBOARD[publisher]['dance'](pma)
-            except MetaPubError as error:
-                reason = str(error)
-
     if url:
         return (url, reason)
 
-    #if jrnl in paywall_journals:
-    #    reason = 'PAYWALL: this journal has been marked in a list as "never free"'
+    # === NEW REGISTRY-BASED LOOKUP === #
+    # This replaces the old PUBMED_SWITCHBOARD lookup
+    
+    try:
+        lookup_system = _get_lookup_system(cachedir=cachedir)
+        registry_url, registry_reason = lookup_system.find_pdf_url(pma, verify=verify)
+        
+        if registry_url:
+            return (registry_url, registry_reason)
+        elif registry_reason:
+            reason = registry_reason
+            
+    except Exception as error:
+        log.error("Registry lookup failed for journal '%s': %s", jrnl, error)
+        reason = f'REGISTRY_ERROR: {error}'
 
-    elif jrnl in todo_journals:
+    # === FALLBACK CHECKS === #
+
+    if jrnl in todo_journals:
         reason = 'TODO: format example: %s' % todo_journals[jrnl]['example']
 
     elif jrnl in JOURNAL_CANTDO_LIST:
@@ -177,14 +213,15 @@ def find_article_from_pma(pma, verify=True, use_nih=False):
     return (url, reason)
 
 
-def find_article_from_doi(doi, verify=True, use_nih=False):
+def find_article_from_doi(doi, verify=True, use_nih=False, cachedir=None):
     """ Pull a PubMedArticle based on CrossRef lookup (using doi2pmid),
     then run it through find_article_from_pma.
 
     :param doi: (string)
+    :param cachedir: (str) cache directory for registry database
     :return: (url, reason)
     """
     fetch = PubMedFetcher()
     pma = fetch.article_by_pmid(doi2pmid(doi))
-    return find_article_from_pma(pma, verify=verify, use_nih=use_nih)
+    return find_article_from_pma(pma, verify=verify, use_nih=use_nih, cachedir=cachedir)
 

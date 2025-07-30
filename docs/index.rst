@@ -175,6 +175,7 @@ Ready to transform your biomedical research workflow? Start with our comprehensi
    installation
    quickstart
    examples
+   citation_formatting
    advanced
    tutorials
    command_line_tools

@@ -258,6 +258,21 @@ class PubMedArticle(MetaPubObject):
                     # item is None
                     pass
         
+        # Check for Season element if no Month was found
+        if found_structured_date and parts['month'] == 1:  # Only override default month
+            season_elem = d.find('Season')
+            if season_elem is not None and season_elem.text:
+                season_text = season_elem.text.strip().lower()
+                season_to_month = {
+                    'spring': 3,   # March
+                    'summer': 6,   # June  
+                    'fall': 9,     # September
+                    'autumn': 9,   # September
+                    'winter': 12   # December
+                }
+                if season_text in season_to_month:
+                    parts['month'] = season_to_month[season_text]
+        
         # If we found structured dates, use them
         if found_structured_date:
             try:

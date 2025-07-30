@@ -10,8 +10,6 @@ from .exceptions import MetaPubError, BaseXMLError
 
 #TODO: Logging
 
-#TODO: Check against recent Clinvar DB changes.
-
 class ClinVarVariant(MetaPubObject):
 
     def __init__(self, xmlstr, *args, **kwargs):
@@ -20,7 +18,7 @@ class ClinVarVariant(MetaPubObject):
             # Parse the full XML document first to determine format
             from lxml import etree
             dom = etree.fromstring(xmlstr)
-            
+
             if dom.tag == 'ClinVarResult-Set':
                 # New VCV format
                 self._is_vcv_format = True
@@ -47,7 +45,7 @@ class ClinVarVariant(MetaPubObject):
 
         if self._get('error'):
             raise MetaPubError('Supplied XML for ClinVarVariant contained explicit error: %s' % self._get('error'))
-    
+
         # VariationReport basic details
         self.variation_id = self._get_variation_id()
         self.variation_name = self._get_variation_name()
@@ -77,30 +75,30 @@ class ClinVarVariant(MetaPubObject):
         self.date_last_evaluated = self._get_date_last_evaluated()
         self.number_of_submissions = self._get_number_of_submissions()
         self.number_of_submitters = self._get_number_of_submitters()
-        
+
         # VCV record metadata (new in VCV format)
         self.vcv_accession = self._get_vcv_accession()
         self.record_type = self._get_record_type()
         self.most_recent_submission = self._get_most_recent_submission()
-        
+
         # Associated conditions/diseases (new in VCV format)
         self.associated_conditions = self._get_associated_conditions()
-        
+
         # Enhanced molecular consequences (new in VCV format)
         self.molecular_consequences_detailed = self._get_molecular_consequences_detailed()
-        
+
         # Enhanced sequence details (new in VCV format)
         self.sequence_details = self._get_sequence_details()
-        
+
         # Enhanced gene information (new in VCV format)
         self.gene_dosage_info = self._get_gene_dosage_info()
-        
+
         # Protein change summary (new in VCV format)
         self.protein_change = self._get_protein_change()
-        
+
         # Clinical assertions (new in VCV format)
         self.clinical_assertions = self._get_clinical_assertions()
-        
+
         # Enhanced citations (new in VCV format)
         self.citations = self._get_citations()
 
@@ -130,7 +128,7 @@ class ClinVarVariant(MetaPubObject):
             else:
                 return []
         except KeyError:
-            # example of missing Change: ClinVar ID 409 
+            # example of missing Change: ClinVar ID 409
             # example of missing AccessionVersion:  ClinVar ID 11344
             return []
 
@@ -151,7 +149,7 @@ class ClinVarVariant(MetaPubObject):
             if hgvsdict['Type'].find('genomic') > -1:
                 strlist = strlist + self._get_hgvs_or_empty_list(hgvsdict)
         return strlist
-    
+
     @property
     def hgvs_p(self):
         """ Returns a list of all protein effect HGVS strings from the Allelle data. """
@@ -195,7 +193,7 @@ class ClinVarVariant(MetaPubObject):
             datestr = self.variation_archive.get('DateCreated')
         else:
             datestr = self.content.get('DateCreated')
-        
+
         if datestr:
             return datetime.strptime(datestr, '%Y-%m-%d')
         else:
@@ -206,7 +204,7 @@ class ClinVarVariant(MetaPubObject):
             datestr = self.variation_archive.get('DateLastUpdated')
         else:
             datestr = self.content.get('DateLastUpdated')
-        
+
         if datestr:
             return datetime.strptime(datestr, '%Y-%m-%d')
         else:
@@ -217,7 +215,7 @@ class ClinVarVariant(MetaPubObject):
             count_attr = self.variation_archive.get('NumberOfSubmitters')
         else:
             count_attr = self.content.get('SubmitterCount')
-        
+
         try:
             return int(count_attr) if count_attr else None
         except (TypeError, ValueError):
@@ -259,11 +257,11 @@ class ClinVarVariant(MetaPubObject):
                         omim_elem = gene_elem.find('OMIM')
                         if omim_elem is not None:
                             gene_dict['OMIM'] = omim_elem.text
-                        
+
                         property_elem = gene_elem.find('Property')
                         if property_elem is not None:
                             gene_dict['Property'] = property_elem.text
-                            
+
                         genes.append(gene_dict)
         else:
             # Old format: VariationReport/GeneList/Gene
@@ -271,10 +269,10 @@ class ClinVarVariant(MetaPubObject):
             if genelist is not None:
                 for gene_elem in genelist.getchildren():
                     genes.append(dict(gene_elem.items()))
-        
+
         return genes
-            
-    
+
+
     ### ALLELE INFORMATION
 
     def _get_allele_id(self):
@@ -284,7 +282,7 @@ class ClinVarVariant(MetaPubObject):
         else:
             allele_elem = self.content.find('Allele')
             return allele_elem.get('AlleleID') if allele_elem is not None else None
-    
+
     def _get_cytogenic_location(self):
         if self._is_vcv_format:
             simple_allele = self.variation_archive.find('ClassifiedRecord/SimpleAllele')
@@ -297,7 +295,7 @@ class ClinVarVariant(MetaPubObject):
 
     def _get_sequence_locations(self):
         seqlocs = []
-        
+
         if self._is_vcv_format:
             simple_allele = self.variation_archive.find('ClassifiedRecord/SimpleAllele')
             if simple_allele is not None:
@@ -306,12 +304,12 @@ class ClinVarVariant(MetaPubObject):
         else:
             for elem in self.content.findall('Allele/SequenceLocation'):
                 seqlocs.append(dict(elem.items()))
-        
+
         return seqlocs
 
     def _get_hgvs_list(self):
         hgvs = []
-        
+
         if self._is_vcv_format:
             # In VCV format: VariationArchive/ClassifiedRecord/SimpleAllele/HGVSlist/HGVS
             simple_allele = self.variation_archive.find('ClassifiedRecord/SimpleAllele')
@@ -320,19 +318,19 @@ class ClinVarVariant(MetaPubObject):
                 if hgvs_list is not None:
                     for hgvs_elem in hgvs_list.findall('HGVS'):
                         hgvs_dict = dict(hgvs_elem.items())
-                        
+
                         # Get NucleotideExpression details
                         nuc_expr = hgvs_elem.find('NucleotideExpression')
                         if nuc_expr is not None:
                             hgvs_dict['AccessionVersion'] = nuc_expr.get('sequenceAccessionVersion', '')
                             hgvs_dict['Change'] = nuc_expr.get('change', '')
-                        
+
                         # Get ProteinExpression details if available
                         prot_expr = hgvs_elem.find('ProteinExpression')
                         if prot_expr is not None:
                             hgvs_dict['ProteinAccessionVersion'] = prot_expr.get('sequenceAccessionVersion', '')
                             hgvs_dict['ProteinChange'] = prot_expr.get('change', '')
-                        
+
                         hgvs.append(hgvs_dict)
         else:
             # Old format: VariationReport/Allele/HGVSlist
@@ -341,12 +339,12 @@ class ClinVarVariant(MetaPubObject):
                     hgvs.append(dict(elem.items()))
             except AttributeError:
                 return []
-        
+
         return hgvs
 
     def _get_xref_list(self):
         xrefs = []
-        
+
         if self._is_vcv_format:
             simple_allele = self.variation_archive.find('ClassifiedRecord/SimpleAllele')
             if simple_allele is not None:
@@ -359,12 +357,12 @@ class ClinVarVariant(MetaPubObject):
             if xref_list is not None:
                 for elem in xref_list.getchildren():
                     xrefs.append(dict(elem.items()))
-        
+
         return xrefs
 
     def _get_molecular_consequence_list(self):
         molcons = []
-        
+
         if self._is_vcv_format:
             simple_allele = self.variation_archive.find('ClassifiedRecord/SimpleAllele')
             if simple_allele is not None:
@@ -380,12 +378,12 @@ class ClinVarVariant(MetaPubObject):
                         molcons.append(dict(elem.items()))
             except AttributeError:
                 return []
-        
+
         return molcons
 
     def _get_allele_frequency_list(self):
         freqs = []
-        
+
         if self._is_vcv_format:
             simple_allele = self.variation_archive.find('ClassifiedRecord/SimpleAllele')
             if simple_allele is not None:
@@ -401,16 +399,16 @@ class ClinVarVariant(MetaPubObject):
                         freqs.append(dict(elem.items()))
             except AttributeError:
                 return []
-        
+
         return freqs
 
     ### NEW VCV FORMAT ENHANCEMENTS ###
-    
+
     def _get_clinical_significance(self):
         """Get the clinical significance classification (e.g., 'Pathogenic', 'Benign')"""
         if not self._is_vcv_format:
             return None
-            
+
         # Look in Classifications/GermlineClassification/Description
         classifications = self.variation_archive.find('.//Classifications')
         if classifications is not None:
@@ -419,12 +417,12 @@ class ClinVarVariant(MetaPubObject):
                 desc_elem = germline_class.find('Description')
                 return desc_elem.text if desc_elem is not None else None
         return None
-    
+
     def _get_review_status(self):
         """Get the review status (e.g., 'criteria provided, multiple submitters, no conflicts')"""
         if not self._is_vcv_format:
             return None
-            
+
         classifications = self.variation_archive.find('.//Classifications')
         if classifications is not None:
             germline_class = classifications.find('GermlineClassification')
@@ -432,12 +430,12 @@ class ClinVarVariant(MetaPubObject):
                 review_elem = germline_class.find('ReviewStatus')
                 return review_elem.text if review_elem is not None else None
         return None
-    
+
     def _get_date_last_evaluated(self):
         """Get the date when the clinical significance was last evaluated"""
         if not self._is_vcv_format:
             return None
-            
+
         classifications = self.variation_archive.find('.//Classifications')
         if classifications is not None:
             germline_class = classifications.find('GermlineClassification')
@@ -449,46 +447,46 @@ class ClinVarVariant(MetaPubObject):
                     except ValueError:
                         return None
         return None
-    
+
     def _get_number_of_submissions(self):
         """Get the number of submissions for this variant"""
         if not self._is_vcv_format:
             return None
-            
+
         num_str = self.variation_archive.get('NumberOfSubmissions')
         try:
             return int(num_str) if num_str else None
         except (ValueError, TypeError):
             return None
-    
+
     def _get_number_of_submitters(self):
         """Get the number of submitters for this variant"""
         if not self._is_vcv_format:
             return None
-            
+
         num_str = self.variation_archive.get('NumberOfSubmitters')
         try:
             return int(num_str) if num_str else None
         except (ValueError, TypeError):
             return None
-    
+
     def _get_vcv_accession(self):
         """Get the VCV accession number (e.g., 'VCV000012397')"""
         if not self._is_vcv_format:
             return None
         return self.variation_archive.get('Accession')
-    
+
     def _get_record_type(self):
         """Get the record type (e.g., 'classified')"""
         if not self._is_vcv_format:
             return None
         return self.variation_archive.get('RecordType')
-    
+
     def _get_most_recent_submission(self):
         """Get the date of the most recent submission"""
         if not self._is_vcv_format:
             return None
-            
+
         date_str = self.variation_archive.get('MostRecentSubmission')
         if date_str:
             try:
@@ -501,7 +499,7 @@ class ClinVarVariant(MetaPubObject):
         """Get list of associated conditions/diseases with their MedGen IDs"""
         if not self._is_vcv_format:
             return []
-            
+
         conditions = []
         rcv_list = self.variation_archive.find('.//RCVList')
         if rcv_list is not None:
@@ -525,7 +523,7 @@ class ClinVarVariant(MetaPubObject):
         """Get detailed molecular consequences with Sequence Ontology terms"""
         if not self._is_vcv_format:
             return []
-            
+
         consequences = []
         simple_allele = self.variation_archive.find('ClassifiedRecord/SimpleAllele')
         if simple_allele is not None:
@@ -546,7 +544,7 @@ class ClinVarVariant(MetaPubObject):
         """Get enhanced sequence location details including VCF coordinates"""
         if not self._is_vcv_format:
             return []
-            
+
         details = []
         simple_allele = self.variation_archive.find('ClassifiedRecord/SimpleAllele')
         if simple_allele is not None:
@@ -568,7 +566,7 @@ class ClinVarVariant(MetaPubObject):
         """Get gene dosage sensitivity information"""
         if not self._is_vcv_format:
             return []
-            
+
         dosage_info = []
         simple_allele = self.variation_archive.find('ClassifiedRecord/SimpleAllele')
         if simple_allele is not None:
@@ -576,7 +574,7 @@ class ClinVarVariant(MetaPubObject):
             if gene_list is not None:
                 for gene in gene_list.findall('Gene'):
                     gene_dosage = {'symbol': gene.get('Symbol')}
-                    
+
                     haplo_elem = gene.find('Haploinsufficiency')
                     if haplo_elem is not None:
                         gene_dosage['haploinsufficiency'] = {
@@ -584,7 +582,7 @@ class ClinVarVariant(MetaPubObject):
                             'last_evaluated': haplo_elem.get('last_evaluated'),
                             'clingen_url': haplo_elem.get('ClinGen')
                         }
-                    
+
                     triplo_elem = gene.find('Triplosensitivity')
                     if triplo_elem is not None:
                         gene_dosage['triplosensitivity'] = {
@@ -592,7 +590,7 @@ class ClinVarVariant(MetaPubObject):
                             'last_evaluated': triplo_elem.get('last_evaluated'),
                             'clingen_url': triplo_elem.get('ClinGen')
                         }
-                    
+
                     if len(gene_dosage) > 1:  # Only add if we have dosage info
                         dosage_info.append(gene_dosage)
         return dosage_info
@@ -601,7 +599,7 @@ class ClinVarVariant(MetaPubObject):
         """Get the simple protein change notation (e.g., 'R611Q')"""
         if not self._is_vcv_format:
             return None
-            
+
         simple_allele = self.variation_archive.find('ClassifiedRecord/SimpleAllele')
         if simple_allele is not None:
             protein_change = simple_allele.find('ProteinChange')
@@ -612,7 +610,7 @@ class ClinVarVariant(MetaPubObject):
         """Get citation information from the clinical classifications"""
         if not self._is_vcv_format:
             return []
-            
+
         citations = []
         classifications = self.variation_archive.find('.//Classifications')
         if classifications is not None:
@@ -623,18 +621,18 @@ class ClinVarVariant(MetaPubObject):
                         'type': citation.get('Type'),
                         'ids': []
                     }
-                    
+
                     for id_elem in citation.findall('ID'):
                         citation_info['ids'].append({
                             'source': id_elem.get('Source'),
                             'id': id_elem.text
                         })
-                    
+
                     # Also check for URLs
                     url_elem = citation.find('URL')
                     if url_elem is not None:
                         citation_info['url'] = url_elem.text
-                        
+
                     citations.append(citation_info)
         return citations
 
@@ -642,7 +640,7 @@ class ClinVarVariant(MetaPubObject):
         """Get individual clinical assertions from submitters"""
         if not self._is_vcv_format:
             return []
-            
+
         assertions = []
         assertion_list = self.variation_archive.find('.//ClinicalAssertionList')
         if assertion_list is not None:
@@ -653,7 +651,7 @@ class ClinVarVariant(MetaPubObject):
                     'date_created': assertion.get('DateCreated'),
                     'date_last_updated': assertion.get('DateLastUpdated')
                 }
-                
+
                 # Get submitter information
                 clinvar_accession = assertion.find('ClinVarAccession')
                 if clinvar_accession is not None:
@@ -662,31 +660,31 @@ class ClinVarVariant(MetaPubObject):
                         'submitter_name': clinvar_accession.get('SubmitterName'),
                         'organization_category': clinvar_accession.get('OrganizationCategory')
                     })
-                
+
                 # Get classification
                 classification = assertion.find('Classification')
                 if classification is not None:
                     assertion_info['classification'] = {}
-                    
+
                     review_status = classification.find('ReviewStatus')
                     if review_status is not None:
                         assertion_info['classification']['review_status'] = review_status.text
-                        
+
                     germline_class = classification.find('GermlineClassification')
                     if germline_class is not None:
                         assertion_info['classification']['clinical_significance'] = germline_class.text
-                        
+
                     date_evaluated = classification.get('DateLastEvaluated')
                     if date_evaluated:
                         assertion_info['classification']['date_last_evaluated'] = date_evaluated
-                
+
                 # Get observed data
                 observed_list = assertion.find('ObservedInList')
                 if observed_list is not None:
                     assertion_info['observed_in'] = []
                     for observed in observed_list.findall('ObservedIn'):
                         obs_info = {}
-                        
+
                         sample = observed.find('Sample')
                         if sample is not None:
                             obs_info['sample'] = {
@@ -694,7 +692,7 @@ class ClinVarVariant(MetaPubObject):
                                 'species': sample.find('Species').text if sample.find('Species') is not None else None,
                                 'affected_status': sample.find('AffectedStatus').text if sample.find('AffectedStatus') is not None else None
                             }
-                            
+
                             # Number tested
                             num_tested = sample.find('NumberTested')
                             if num_tested is not None:
@@ -702,19 +700,19 @@ class ClinVarVariant(MetaPubObject):
                                     obs_info['sample']['number_tested'] = int(num_tested.text)
                                 except (ValueError, TypeError):
                                     obs_info['sample']['number_tested'] = num_tested.text
-                        
+
                         method = observed.find('Method')
                         if method is not None:
                             method_type = method.find('MethodType')
                             if method_type is not None:
                                 obs_info['method_type'] = method_type.text
-                        
+
                         assertion_info['observed_in'].append(obs_info)
-                
+
                 assertions.append(assertion_info)
-        
+
         return assertions
 
-    ### OBSERVATIONS 
+    ### OBSERVATIONS
 
 

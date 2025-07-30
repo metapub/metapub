@@ -1114,3 +1114,78 @@ class TestPubMedArticle(unittest.TestCase):
                     
                 except Exception as e:
                     self.fail(f"Multilingual integration test failed for PMID {pmid}: {e}")
+
+    def test_seasonal_date_handling(self):
+        """
+        Test that articles with seasonal publication dates are handled correctly.
+        
+        Some PubMed articles have <Season> elements instead of specific months.
+        These should be mapped to appropriate months: Spring=March, Summer=June, Fall/Autumn=September, Winter=December.
+        """
+        # PMID 28139132 is known to have <Season>Winter</Season> in 2016
+        article = self.fetch.article_by_pmid('28139132')
+        
+        # Verify the article loads correctly
+        self.assertIsNotNone(article, "Article should load successfully")
+        self.assertEqual(article.year, '2016', "Article year should be 2016")
+        
+        # Test that pubdate correctly maps Winter to December
+        self.assertIsNotNone(article.pubdate, "Article should have a pubdate")
+        self.assertEqual(article.pubdate.year, 2016, "Pubdate year should be 2016")
+        self.assertEqual(article.pubdate.month, 12, "Winter should map to December (month 12)")
+        self.assertEqual(article.pubdate.day, 1, "Day should default to 1")
+        
+        # Additional verification with XML examination
+        pubdate_elem = article.content.find(article._root + '/Article/Journal/JournalIssue/PubDate')
+        self.assertIsNotNone(pubdate_elem, "PubDate element should exist")
+        
+        # Verify that the XML indeed contains a Season element
+        season_elem = pubdate_elem.find('Season')
+        self.assertIsNotNone(season_elem, "Season element should exist in XML")
+        self.assertEqual(season_elem.text, 'Winter', "Season should be Winter")
+        
+        # Test that our _construct_datetime method properly handles this
+        constructed_date = article._construct_datetime(pubdate_elem)
+        self.assertIsNotNone(constructed_date, "_construct_datetime should handle seasonal dates")
+        self.assertEqual(constructed_date.month, 12, "_construct_datetime should map Winter to December")
+        
+        print(f"✓ Seasonal date test passed: PMID 28139132 Winter 2016 → {article.pubdate}")
+
+    def test_seasonal_mapping_logic(self):
+        """
+        Test the seasonal to month mapping used in _construct_datetime.
+        """
+        # Create a test article to access the method
+        test_article = self.fetch.article_by_pmid('1000')  # Any valid PMID
+        
+        # Test data - simulate XML elements with different seasons
+        from xml.etree.ElementTree import Element, SubElement
+        
+        # Test each season mapping
+        season_cases = [
+            ('Spring', 3, 'March'),
+            ('Summer', 6, 'June'), 
+            ('Fall', 9, 'September'),
+            ('Autumn', 9, 'September'),
+            ('Winter', 12, 'December'),
+        ]
+        
+        for season_name, expected_month, expected_month_name in season_cases:
+            with self.subTest(season=season_name):
+                # Create mock XML structure
+                pubdate_elem = Element('PubDate')
+                year_elem = SubElement(pubdate_elem, 'Year')
+                year_elem.text = '2020'
+                season_elem = SubElement(pubdate_elem, 'Season')
+                season_elem.text = season_name
+                
+                # Test the _construct_datetime method
+                result = test_article._construct_datetime(pubdate_elem)
+                
+                self.assertIsNotNone(result, f"Should handle {season_name} season")
+                self.assertEqual(result.year, 2020, f"Year should be 2020 for {season_name}")
+                self.assertEqual(result.month, expected_month, 
+                    f"{season_name} should map to {expected_month_name} (month {expected_month})")
+                self.assertEqual(result.day, 1, f"Day should default to 1 for {season_name}")
+                
+                print(f"✓ {season_name} → {expected_month_name} (month {expected_month})")

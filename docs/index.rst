@@ -176,6 +176,7 @@ Ready to transform your biomedical research workflow? Start with our comprehensi
    quickstart
    examples
    citation_formatting
+   pubmedarticle_properties
    advanced
    tutorials
    command_line_tools

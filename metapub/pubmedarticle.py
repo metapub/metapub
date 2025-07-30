@@ -197,14 +197,54 @@ class PubMedArticle(MetaPubObject):
             return cite.bibtex(isbook=True, **self.to_dict())
         return cite.bibtex(**self.to_dict())
     
+    @property
+    def pubdate(self):
+        """Normalized publication date as datetime object.
+        
+        Returns the best available publication date from PubMed XML in order of preference:
+        1. Article PubDate (Year/Month/Day or MedlineDate)
+        2. Book contribution date  
+        3. History dates (pubmed, entrez, etc.)
+        
+        Returns:
+            datetime or None: Publication date as datetime object, or None if no date found
+            
+        Example:
+            article = fetch.article_by_pmid('12345')
+            if article.pubdate:
+                print(f"Published: {article.pubdate.strftime('%Y-%m-%d')}")
+        """
+        if self.pubmed_type == 'book':
+            # For books, use contribution date
+            return self.book_contribution_date
+        
+        # For articles, try to construct from PubDate elements
+        pubdate_element = self.content.find(self._root + '/Article/Journal/JournalIssue/PubDate')
+        if pubdate_element is not None:
+            constructed_date = self._construct_datetime(pubdate_element)
+            if constructed_date:
+                return constructed_date
+        
+        # Fallback to history dates if available
+        if self.history:
+            # Try common PubMed history statuses in order of preference
+            for status in ['pubmed', 'entrez', 'received', 'accepted']:
+                if status in self.history and self.history[status]:
+                    return self.history[status]
+        
+        return None
 
     def _construct_datetime(self, d):
         names = ['Year', 'Month', 'Day']
         # if any part is missing, python will default to setting it to 1 anyway.
         parts = {'year': 1, 'month': 1, 'day': 1}
+        
+        # First try to parse structured date elements (Year, Month, Day)
+        found_structured_date = False
         for name in names:
             if d.find(name) is not None:
                 item = d.find(name).text
+                found_structured_date = True
                 try:
                     parts[name.lower()] = int(item)
                 except ValueError:
@@ -217,12 +257,76 @@ class PubMedArticle(MetaPubObject):
                 except TypeError:
                     # item is None
                     pass
-        try:
-            return datetime(**parts)
-        except ValueError:
-            # one of the values didn't parse, or maybe it was like pmid 17924334
-            # where the "accepted" year was "20007". at any rate, forget it.
+        
+        # If we found structured dates, use them
+        if found_structured_date:
+            try:
+                return datetime(**parts)
+            except ValueError:
+                # one of the values didn't parse, or maybe it was like pmid 17924334
+                # where the "accepted" year was "20007". at any rate, forget it.
+                return None
+        
+        # If no structured date, try MedlineDate
+        medline_elem = d.find('MedlineDate')
+        if medline_elem is not None and medline_elem.text:
+            return self._parse_medlinedate(medline_elem.text)
+        
+        # No date information found
+        return None
+    
+    def _parse_medlinedate(self, medline_text):
+        """Parse MedlineDate strings like '2007 Spring', '1999-2000', '2007 Mar-Apr'"""
+        import re
+        
+        if not medline_text:
             return None
+        
+        # Clean the text
+        text = medline_text.strip()
+        
+        # Extract 4-digit year - look for first occurrence
+        year_match = re.search(r'\b(19|20)\d{2}\b', text)
+        if not year_match:
+            return None
+        
+        year = int(year_match.group())
+        
+        # Default to January 1st
+        month = 1
+        day = 1
+        
+        # Try to extract month information
+        month_patterns = [
+            # Full month names
+            (r'\b(January|Jan)\b', 1), (r'\b(February|Feb)\b', 2), (r'\b(March|Mar)\b', 3),
+            (r'\b(April|Apr)\b', 4), (r'\b(May)\b', 5), (r'\b(June|Jun)\b', 6),
+            (r'\b(July|Jul)\b', 7), (r'\b(August|Aug)\b', 8), (r'\b(September|Sep)\b', 9),
+            (r'\b(October|Oct)\b', 10), (r'\b(November|Nov)\b', 11), (r'\b(December|Dec)\b', 12),
+            # Seasons (map to approximate months)
+            (r'\b(Spring)\b', 3), (r'\b(Summer)\b', 6), (r'\b(Fall|Autumn)\b', 9), (r'\b(Winter)\b', 12),
+        ]
+        
+        for pattern, month_num in month_patterns:
+            if re.search(pattern, text, re.IGNORECASE):
+                month = month_num
+                break
+        
+        # Try to extract day if present
+        day_match = re.search(r'\b(\d{1,2})\b', text)
+        if day_match:
+            try:
+                potential_day = int(day_match.group())
+                if 1 <= potential_day <= 31:
+                    day = potential_day
+            except ValueError:
+                pass
+        
+        try:
+            return datetime(year=year, month=month, day=day)
+        except ValueError:
+            # Invalid date combination, fallback to year only
+            return datetime(year=year, month=1, day=1)
 
     def _get_bookaccession_id(self):
         for item in self.content.findall('BookDocument/ArticleIdList/ArticleId'):

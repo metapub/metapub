@@ -3,6 +3,10 @@ __doc__ = "Common functions for the formatting of academic reference citations."
 article_cit_fmt = '{author}. {title}. {journal}. {year}; {volume}:{pages}.{doi}'
 book_cit_fmt = '{author}. {book.title}. {cdate} (Update {mdate}). In: {editors}, editors. {book.journal} (Internet). {book.book_publisher}'
 
+# HTML format strings for citation_html functionality
+article_cit_fmt_html = '{author}. {title}. <i>{journal}</i>. {year}; <b>{volume}</b>:{pages}.{doi}'
+book_cit_fmt_html = '{author}. <i>{book.title}</i>. {cdate} (Update {mdate}). In: {editors}, editors. <i>{book.journal}</i> (Internet). {book.book_publisher}'
+
 
 def author_str(author_list_or_string, as_html=False):
     """ Helper function for constructing article citations.
@@ -73,9 +77,10 @@ def citation(**kwargs):
     pages = '(unknown pages)' if not kwargs.get('pages', None) else kwargs['pages']
 
     #TODO: how many articles DON'T have a volume, or are missing pages? (not that important for now.)
-    # article_cit_fmt = '{author}. {title}. {journal}. {year}; {volume}:{pages}.{doi}'
-    return article_cit_fmt.format(author=author, volume=volume, pages=pages, year=year,
-                                  title=title, journal=journal, doi=doi_str)
+    # Choose format string based on HTML preference
+    fmt = article_cit_fmt_html if kwargs.get('as_html', False) else article_cit_fmt
+    return fmt.format(author=author, volume=volume, pages=pages, year=year,
+                      title=title, journal=journal, doi=doi_str)
 
 
 def article(**kwargs):
@@ -134,6 +139,8 @@ def book(book, **kwargs):
         editors = author_str(book.book_editors, as_html=kwargs.get('as_html', False))
         if editors.endswith(', et al'):
             editors += '.'
-        return book_cit_fmt.format(editors=editors, author=author, book=book,
-                                   mdate=mdate, cdate=cdate)
+        # Choose format string based on HTML preference
+        fmt = book_cit_fmt_html if kwargs.get('as_html', False) else book_cit_fmt
+        return fmt.format(editors=editors, author=author, book=book,
+                          mdate=mdate, cdate=cdate)
 

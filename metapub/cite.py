@@ -2,7 +2,7 @@ __doc__ = "Common functions for the formatting of academic reference citations."
 
 article_cit_fmt = '{author}. {title}. {journal}. {year}; {volume}:{pages}.{doi}'
 book_cit_fmt = '{author}. {book.title}. {cdate} (Update {mdate}). In: {editors}, editors. {book.journal} (Internet). {book.book_publisher}'
-bibtex_fmt='@{entrytype}{{{citeID},{author}{doi}{title}{abstract}{journal}{year}{volume}{pages}{url}}}'
+bibtex_fmt = '@{entrytype}{{{citeID},\n{author}{doi}{title}{abstract}{journal}{year}{volume}{pages}{url}}}'
 
 # HTML format strings for citation_html functionality
 article_cit_fmt_html = '{author}. {title}. <i>{journal}</i>. {year}; <b>{volume}</b>:{pages}.{doi}'
@@ -171,44 +171,75 @@ def bibtex(**kwargs):
         bibtex citation (str)
     """
 
-    entrytype= 'article' if not kwargs.get('isbook', False) else 'book'
-    print(entrytype)
+    entrytype = 'article' if not kwargs.get('isbook', False) else 'book'
 
 
-    # Citation ID
-    if not kwargs.get('author1_lastfm', None) or not kwargs.get('year', None):
-        citeID = kwargs.get('pmid', None)
+    # Citation ID - create from first author last name and year
+    year_str = str(kwargs.get('year', ''))
+    if kwargs.get('authors', None) and len(kwargs['authors']) > 0 and year_str:
+        # Extract last name from first author
+        first_author = kwargs['authors'][0]
+        # Handle formats like "Smith J" or "Smith, John"
+        if ',' in first_author:
+            last_name = first_author.split(',')[0].strip()
+        else:
+            last_name = first_author.split(' ')[0].strip()
+        citeID = last_name + year_str
     else:
-        citeID= kwargs.get('author1_lastfm', ' ') + kwargs.get('year', ' ') 
+        # Fallback to PMID if available
+        citeID = kwargs.get('pmid', 'UnknownCitation') 
 
     # Author(s)
     if kwargs.get('authors', None):
-        authorlist= list(map(lambda x: x.replace(" ",", "), kwargs.get('authors', None)))
-        author= 'author= {%s}, \n'% " and  ".join(authorlist)
+        # Convert author list to BibTeX format: "Last, First and Last, First"
+        authorlist = []
+        for a in kwargs['authors']:
+            if ',' in a:
+                # Already in "Last, First" format
+                authorlist.append(a.strip())
+            else:
+                # Convert "LastName Initial" to "LastName, Initial"
+                parts = a.strip().split(' ')
+                if len(parts) >= 2:
+                    # For PubMed format "Smith J" -> "Smith, J"
+                    last_name = ' '.join(parts[:-1])
+                    initials = parts[-1]
+                    authorlist.append(f"{last_name}, {initials}")
+                else:
+                    authorlist.append(a.strip())
+        author = 'author = {%s},\n' % ' and '.join(authorlist)
     else:
-        author = '' if not kwargs.get('author', None) else 'author= {%s}, \n' % kwargs['author']
+        author = '' if not kwargs.get('author', None) else 'author = {%s},\n' % kwargs['author']
 
-    #DOI
-    doi_str = '' if not kwargs.get('doi', None) else 'doi = {%s}, ' % kwargs['doi']
+    # DOI
+    doi_str = '' if not kwargs.get('doi', None) else 'doi = {%s},\n' % kwargs['doi']
 
-    #Title
-    title = '' if not kwargs.get('title', None) else 'title = {%s}, ' % kwargs['title'].strip('.')
+    # Title
+    title = '' if not kwargs.get('title', None) else 'title = {%s},\n' % kwargs['title'].strip('.')
 
-    #Abstract 
-    abstract = '' if not kwargs.get('abstract', None) else 'abstract = {%s}, ' % kwargs['abstract'].strip('.')
+    # Abstract (optional for BibTeX, often excluded for brevity)
+    if kwargs.get('abstract', None):
+        abs_text = kwargs['abstract'].strip('.')
+        if len(abs_text) > 500:
+            abs_text = abs_text[:500] + '...'
+        abstract = 'abstract = {%s},\n' % abs_text
+    else:
+        abstract = ''
 
-    #Journal
-    journal = '' if not kwargs.get('journal', None) else 'journal = {%s}, ' % kwargs['journal'].strip('.')
+    # Journal
+    journal = '' if not kwargs.get('journal', None) else 'journal = {%s},\n' % kwargs['journal'].strip('.')
+    
     # Year
-    year = '' if not kwargs.get('year', None) else 'year = {%s}, ' % kwargs['year']
+    year = '' if not kwargs.get('year', None) else 'year = {%s},\n' % kwargs['year']
 
     # Volume
-    volume = '' if not kwargs.get('volume', None) else 'volume = {%s}, ' % str(kwargs['volume'])
+    volume = '' if not kwargs.get('volume', None) else 'volume = {%s},\n' % str(kwargs['volume'])
+    
     # Pages
-    pages = '' if not kwargs.get('pages', None) else 'pages = {%s}, ' % kwargs['pages']
+    pages = '' if not kwargs.get('pages', None) else 'pages = {%s},\n' % kwargs['pages']
 
-    #url
-    url = '' if not kwargs.get('url', None) else 'url = {%s}, ' % kwargs['url'].strip('.')
+    # URL
+    url = '' if not kwargs.get('url', None) else 'url = {%s},\n' % kwargs['url'].strip('.')
 
 
     # bibtex_fmt = '@{entrytype}{{{citeID},\n{author}{doi_str}{title}{abstract}{journal}{year}{volume}{pages}{url}}}'

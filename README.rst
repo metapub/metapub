@@ -16,13 +16,29 @@ FindIt class.
 
 MetaPub features include:
 
-* Build formatted citations easily from lists of PMIDs.
+* Build powerful cross-NCBI workflows to get complex results in few lines of code.
+* Format citations easily from lists of PMIDs in BibTex, HTML, plaintext.
 * Generate valid LEGAL links to paper PDFs using FindIt, given a PMID or DOI.
 * Common text mining "batteries included" such as finding DOIs in text.
-* NCBI_API_KEY supported as environment variable (see below).
+* Use NCBI_API_KEY for max rate of access to NCBI Entrez API -- metapub will rate-limit your requests for you.
 * PubMedArticle object is a privileged class across Metapub -- use it to instantiate CrossRef lookups, for example.
-* Widespread use of Logging so you can see what's going on under the hood.
+* Detailed module-level logging to see what metapub is doing in as much detail as you need.
 * Command line utilities -- see Getting Started below.
+
+Documentation
+=============
+
+The latest version of the complete documentation is available at:
+
+📚 **https://metapub.readthedocs.io/**
+
+The documentation includes comprehensive guides for:
+
+* Getting started with Metapub
+* Citation formatting (standard, HTML, and BibTeX)
+* Advanced search patterns and integrations
+* Complete API reference
+* Examples and tutorials
 
 Getting Started
 ===============

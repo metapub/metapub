@@ -183,7 +183,13 @@ def bibtex(**kwargs):
         if ',' in first_author:
             last_name = first_author.split(',')[0].strip()
         else:
-            last_name = first_author.split(' ')[0].strip()
+            # Handle "LastName Initial" or "Multi Word LastName Initial" formats
+            parts = first_author.strip().split(' ')
+            if len(parts) >= 2:
+                # Take all but the last part (which should be initials)
+                last_name = ''.join(parts[:-1])  # Join without spaces for citation ID
+            else:
+                last_name = parts[0].strip()
         citeID = last_name + year_str
     else:
         # Fallback to PMID if available

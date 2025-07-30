@@ -191,6 +191,13 @@ class PubMedArticle(MetaPubObject):
             return cite.book(self, as_html=True)
         return cite.article(as_html=True, **self.to_dict())
 
+    @property
+    def citation_bibtex(self):
+        if self.book_accession_id:
+            return cite.bibtex(isbook=True, **self.to_dict())
+        return cite.bibtex(**self.to_dict())
+    
+
     def _construct_datetime(self, d):
         names = ['Year', 'Month', 'Day']
         # if any part is missing, python will default to setting it to 1 anyway.

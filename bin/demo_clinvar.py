@@ -1,25 +1,32 @@
+import tempfile
 from metapub import ClinVarFetcher
 
-print("ClinVar Demo - Testing a few example variant IDs")
-print("=" * 50)
-print("Note: This demo shows ClinVarFetcher basic usage and error handling.")
-print("WARNING: ClinVarFetcher may be affected by NCBI API changes (April 2019).")
-print("The library may need updates to work with the new ClinVar API format.")
-print("=" * 50)
+# Demo with known valid ClinVar variant IDs
+# Note: Most low-numbered IDs are invalid, so we use a curated list
+VALID_IDS = [4, 8, 1013, 10000, 12000, 12003, 12004, 12005, 12006, 12007]
 
-cvfetch = ClinVarFetcher()
+# Use a temporary cache directory to avoid conflicts
+with tempfile.TemporaryDirectory() as tmpdir:
+    cvfetch = ClinVarFetcher(cachedir=tmpdir)
+    print("ClinVar Fetcher Demo - showing valid variants")
+    print("=" * 50)
 
-# Test with known valid ClinVar variant IDs
-test_variants = [12222, 12111, 12100]
+    for varid in VALID_IDS:
+        print(f"Variant ID: {varid}")
+        try:
+            var = cvfetch.variant(varid)
+            print(f"  Name: {var.variation_name}")
+            print(f"  Type: {var.variation_type}")
+            print(f"  Gene(s): {[gene['Symbol'] for gene in var.genes]}")
+            print(f"  HGVS_c: {var.hgvs_c}")
+            print(f"  HGVS_g: {var.hgvs_g[:2]}...")  # Show first 2 genomic HGVS
+            print(f"  HGVS_p: {var.hgvs_p}")
+            print(f"  Location: {var.cytogenic_location}")
+            print(f"  Species: {var.species}")
+        except Exception as error:
+            print(f"  ERROR: {error}")
 
-for varid in test_variants:
-    print(f"Testing variant ID: {varid}")
-    try:
-        var = cvfetch.variant(varid)
-        print(f"  ✓ Found: {var.variation_name}")
-        print(f"  HGVS_c: {var.hgvs_c}")
-    except Exception as error:
-        print(f"  ✗ Error: {error}")
-    print("-" * 30)
+        print()
 
-print("\nDemo completed. Use demo_ClinVarFetcher.py for more features.")
+    print("ClinVar demo completed.")
+

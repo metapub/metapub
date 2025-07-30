@@ -1,0 +1,1141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+                        
+<ClinVarResult-Set><VariationArchive RecordType="classified" VariationID="12397" VariationName="NM_000548.4(TSC2):c.1832G&gt;A (p.Arg611Gln)" VariationType="single nucleotide variant" Accession="VCV000012397" Version="1" NumberOfSubmissions="12" NumberOfSubmitters="9" DateLastUpdated="2021-07-22" DateCreated="2013-09-16" MostRecentSubmission="2018-10-10">
+  <RecordStatus>previous</RecordStatus>
+  <Species>Homo sapiens</Species>
+  <ClassifiedRecord>
+    <SimpleAllele AlleleID="27436" VariationID="12397">
+      <GeneList>
+        <Gene Symbol="TSC2" FullName="TSC complex subunit 2" GeneID="7249" HGNC_ID="HGNC:12363" Source="submitted" RelationshipType="within single gene">
+          <Location>
+            <CytogeneticLocation>16p13.3</CytogeneticLocation>
+            <SequenceLocation Assembly="GRCh38" AssemblyAccessionVersion="GCF_000001405.38" AssemblyStatus="current" Chr="16" Accession="NC_000016.10" start="2047804" stop="2088720" display_start="2047804" display_stop="2088720" Strand="+"/>
+            <SequenceLocation Assembly="GRCh37" AssemblyAccessionVersion="GCF_000001405.25" AssemblyStatus="previous" Chr="16" Accession="NC_000016.9" start="2097989" stop="2138712" display_start="2097989" display_stop="2138712" Strand="+"/>
+          </Location>
+          <OMIM>191092</OMIM>
+          <Haploinsufficiency last_evaluated="2012-02-22" ClinGen="https://www.ncbi.nlm.nih.gov/projects/dbvar/ISCA/isca_gene.cgi?sym=TSC2">Sufficient evidence for dosage pathogenicity</Haploinsufficiency>
+          <Triplosensitivity last_evaluated="2012-02-22" ClinGen="https://www.ncbi.nlm.nih.gov/projects/dbvar/ISCA/isca_gene.cgi?sym=TSC2">No evidence available</Triplosensitivity>
+          <Property>gene_acmg_incidental_2013</Property>
+        </Gene>
+      </GeneList>
+      <Name>NM_000548.4(TSC2):c.1832G&gt;A (p.Arg611Gln)</Name>
+      <VariantType>single nucleotide variant</VariantType>
+      <Location>
+        <CytogeneticLocation>16p13.3</CytogeneticLocation>
+        <SequenceLocation Assembly="GRCh38" AssemblyAccessionVersion="GCF_000001405.38" forDisplay="true" AssemblyStatus="current" Chr="16" Accession="NC_000016.10" start="2070571" stop="2070571" display_start="2070571" display_stop="2070571" variantLength="1" referenceAllele="G" alternateAllele="A" positionVCF="2070571" referenceAlleleVCF="G" alternateAlleleVCF="A"/>
+        <SequenceLocation Assembly="GRCh37" AssemblyAccessionVersion="GCF_000001405.25" AssemblyStatus="previous" Chr="16" Accession="NC_000016.9" start="2120572" stop="2120572" display_start="2120572" display_stop="2120572" variantLength="1" referenceAllele="G" alternateAllele="A" positionVCF="2120572" referenceAlleleVCF="G" alternateAlleleVCF="A"/>
+      </Location>
+      <ProteinChange>R611Q</ProteinChange>
+      <HGVSlist>
+        <HGVS Assembly="GRCh38" Type="genomic, top-level">
+          <NucleotideExpression sequenceAccessionVersion="NC_000016.10" sequenceAccession="NC_000016" sequenceVersion="10" change="g.2070571G&gt;A" Assembly="GRCh38">
+            <Expression>NC_000016.10:g.2070571G&gt;A</Expression>
+          </NucleotideExpression>
+        </HGVS>
+        <HGVS Assembly="GRCh37" Type="genomic, top-level">
+          <NucleotideExpression sequenceAccessionVersion="NC_000016.9" sequenceAccession="NC_000016" sequenceVersion="9" change="g.2120572G&gt;A" Assembly="GRCh37">
+            <Expression>NC_000016.9:g.2120572G&gt;A</Expression>
+          </NucleotideExpression>
+        </HGVS>
+        <HGVS Type="coding">
+          <NucleotideExpression sequenceAccessionVersion="LRG_487t1" sequenceAccession="LRG_487t1" change="c.1832G&gt;A">
+            <Expression>LRG_487t1:c.1832G&gt;A</Expression>
+          </NucleotideExpression>
+          <ProteinExpression sequenceAccessionVersion="LRG_487p1" sequenceAccession="LRG_487p1" change="p.Arg611Gln">
+            <Expression>LRG_487p1:p.Arg611Gln</Expression>
+          </ProteinExpression>
+        </HGVS>
+        <HGVS Type="coding">
+          <NucleotideExpression sequenceAccessionVersion="NM_000548.4" sequenceAccession="NM_000548" sequenceVersion="4" change="c.1832G&gt;A">
+            <Expression>NM_000548.4:c.1832G&gt;A</Expression>
+          </NucleotideExpression>
+          <ProteinExpression sequenceAccessionVersion="NP_000539.2" sequenceAccession="NP_000539" sequenceVersion="2" change="p.Arg611Gln">
+            <Expression>NP_000539.2:p.Arg611Gln</Expression>
+          </ProteinExpression>
+          <MolecularConsequence ID="SO:0001583" Type="missense variant" DB="SO"/>
+        </HGVS>
+        <HGVS Type="genomic">
+          <NucleotideExpression sequenceAccessionVersion="LRG_487" sequenceAccession="LRG_487" change="g.26266G&gt;A">
+            <Expression>LRG_487:g.26266G&gt;A</Expression>
+          </NucleotideExpression>
+        </HGVS>
+        <HGVS Type="genomic">
+          <NucleotideExpression sequenceAccessionVersion="NG_005895.1" sequenceAccession="NG_005895" sequenceVersion="1" change="g.26266G&gt;A">
+            <Expression>NG_005895.1:g.26266G&gt;A</Expression>
+          </NucleotideExpression>
+        </HGVS>
+        <HGVS Type="protein">
+          <ProteinExpression sequenceAccessionVersion="P49815" sequenceAccession="P49815" change="p.Arg611Gln">
+            <Expression>P49815:p.Arg611Gln</Expression>
+          </ProteinExpression>
+        </HGVS>
+      </HGVSlist>
+      <XRefList>
+        <XRef ID="P49815#VAR_005650" DB="UniProtKB"/>
+        <XRef ID="TSC2_00105" DB="Tuberous sclerosis database (TSC2)"/>
+        <XRef Type="Allelic variant" ID="191092.0006" DB="OMIM"/>
+        <XRef Type="rs" ID="28934872" DB="dbSNP"/>
+      </XRefList>
+    </SimpleAllele>
+    <RCVList>
+      <RCVAccession Title="NM_000548.4(TSC2):c.1832G&gt;A (p.Arg611Gln) AND Tuberous sclerosis 2" Accession="RCV000013205" Version="22">
+        <ClassifiedConditionList>
+          <ClassifiedCondition DB="MedGen" ID="C1860707">Tuberous sclerosis 2</ClassifiedCondition>
+        </ClassifiedConditionList>
+        <RCVClassifications>
+          <GermlineClassification>
+            <ReviewStatus>criteria provided, multiple submitters, no conflicts</ReviewStatus>
+            <Description DateLastEvaluated="2018-06-05" SubmissionCount="6">Pathogenic</Description>
+          </GermlineClassification>
+        </RCVClassifications>
+      </RCVAccession>
+      <RCVAccession Title="NM_000548.4(TSC2):c.1832G&gt;A (p.Arg611Gln) AND Tuberous sclerosis syndrome" Accession="RCV000042946" Version="2">
+        <ClassifiedConditionList>
+          <ClassifiedCondition DB="MedGen" ID="C0041341">Tuberous sclerosis syndrome</ClassifiedCondition>
+        </ClassifiedConditionList>
+        <RCVClassifications>
+          <GermlineClassification>
+            <ReviewStatus>no classification provided</ReviewStatus>
+            <Description SubmissionCount="1">not provided</Description>
+          </GermlineClassification>
+        </RCVClassifications>
+      </RCVAccession>
+      <RCVAccession Title="NM_000548.4(TSC2):c.1832G&gt;A (p.Arg611Gln) AND Lymphangiomyomatosis" Accession="RCV000055317" Version="4">
+        <ClassifiedConditionList>
+          <ClassifiedCondition DB="MedGen" ID="C0751674">Lymphangiomyomatosis</ClassifiedCondition>
+        </ClassifiedConditionList>
+        <RCVClassifications>
+          <GermlineClassification>
+            <ReviewStatus>no assertion criteria provided</ReviewStatus>
+            <Description DateLastEvaluated="2000-05-23" SubmissionCount="2">Pathogenic</Description>
+          </GermlineClassification>
+        </RCVClassifications>
+      </RCVAccession>
+      <RCVAccession Title="NM_000548.4(TSC2):c.1832G&gt;A (p.Arg611Gln) AND not provided" Accession="RCV000414340" Version="1">
+        <ClassifiedConditionList>
+          <ClassifiedCondition DB="MedGen" ID="CN517202">not provided</ClassifiedCondition>
+        </ClassifiedConditionList>
+        <RCVClassifications>
+          <GermlineClassification>
+            <ReviewStatus>criteria provided, multiple submitters, no conflicts</ReviewStatus>
+            <Description DateLastEvaluated="2016-12-07" SubmissionCount="2">Pathogenic</Description>
+          </GermlineClassification>
+        </RCVClassifications>
+      </RCVAccession>
+      <RCVAccession Title="NM_000548.4(TSC2):c.1832G&gt;A (p.Arg611Gln) AND Hereditary cancer-predisposing syndrome" Accession="RCV000491426" Version="1">
+        <ClassifiedConditionList>
+          <ClassifiedCondition DB="MedGen" ID="C0027672">Hereditary cancer-predisposing syndrome</ClassifiedCondition>
+        </ClassifiedConditionList>
+        <RCVClassifications>
+          <GermlineClassification>
+            <ReviewStatus>criteria provided, single submitter</ReviewStatus>
+            <Description DateLastEvaluated="2016-01-21" SubmissionCount="1">Pathogenic</Description>
+          </GermlineClassification>
+        </RCVClassifications>
+      </RCVAccession>
+    </RCVList>
+    <Classifications>
+      <GermlineClassification DateLastEvaluated="2018-06-05" NumberOfSubmissions="12" NumberOfSubmitters="9" DateCreated="2013-09-16" MostRecentSubmission="2018-10-10">
+        <ReviewStatus>criteria provided, multiple submitters, no conflicts</ReviewStatus>
+        <Description>Pathogenic</Description>
+        <Citation Type="general">
+          <ID Source="PubMed">10205261</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">10570911</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">10577937</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">10823953</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">11741832</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">15483652</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">15595939</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">15963462</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">17304050</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">18302728</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">18308511</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">18854862</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">21309039</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">22867869</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">26703369</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">8824881</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">9463313</ID>
+        </Citation>
+        <ConditionList>
+          <TraitSet ID="9460" Type="Disease">
+            <Trait ID="17556" Type="Disease">
+              <Name>
+                <ElementValue Type="Preferred">not provided</ElementValue>
+                <XRef ID="13DG0619" DB="Developmental Genetics Unit,King Faisal Specialist Hospital &amp; Research Centre"/>
+              </Name>
+              <AttributeSet>
+                <Attribute Type="public definition">The term 'not provided' is registered in MedGen to support identification of submissions to ClinVar for which no condition was named when assessing the variant. 'not provided' differs from 'not specified', which is used when a variant is asserted to be benign, likely benign, or of uncertain significance for conditions that have not been specified.</Attribute>
+              </AttributeSet>
+              <XRef ID="CN517202" DB="MedGen"/>
+            </Trait>
+          </TraitSet>
+          <TraitSet ID="3366" Type="Disease">
+            <Trait ID="6897" Type="Disease">
+              <Name>
+                <ElementValue Type="Preferred">Tuberous sclerosis 2</ElementValue>
+                <XRef ID="Tuberous+sclerosis%2C+type+2/7257" DB="Genetic Alliance"/>
+              </Name>
+              <Symbol>
+                <ElementValue Type="Preferred">TSC2</ElementValue>
+                <XRef Type="MIM" ID="613254" DB="OMIM"/>
+              </Symbol>
+              <AttributeSet>
+                <Attribute Type="keyword">Neoplasm</Attribute>
+              </AttributeSet>
+              <AttributeSet>
+                <Attribute Type="public definition">Tuberous sclerosis complex (TSC) involves abnormalities of the skin (hypomelanotic macules, confetti skin lesions, facial angiofibromas, shagreen patches, fibrous cephalic plaques, ungual fibromas); brain (subependymal nodules, cortical dysplasias, and subependymal giant cell astrocytomas [SEGAs], seizures, intellectual disability / developmental delay, psychiatric illness); kidney (angiomyolipomas, cysts, renal cell carcinomas); heart (rhabdomyomas, arrhythmias); and lungs (lymphangioleiomyomatosis [LAM], multifocal micronodular pneumonocyte hyperplasia). Central nervous system tumors are the leading cause of morbidity and mortality; renal disease is the second leading cause of early death.</Attribute>
+                <XRef ID="NBK1220" DB="GeneReviews"/>
+              </AttributeSet>
+              <Citation Type="review" Abbrev="GeneReviews">
+                <ID Source="PubMed">20301399</ID>
+                <ID Source="BookShelf">NBK1220</ID>
+              </Citation>
+              <Citation Type="practice guideline" Abbrev="Orphanet, 2007">
+                <URL>https://www.orpha.net/data/patho/Pro/en/Emergency_TuberousSclerosis.pdf</URL>
+                <CitationText>Orphanet, Tuberous sclerosis, 2007</CitationText>
+              </Citation>
+              <Citation Type="Recommendation" Abbrev="ACMG, 2013">
+                <ID Source="PubMed">23788249</ID>
+              </Citation>
+              <Citation Type="practice guideline" Abbrev="ACMG, 2013">
+                <ID Source="PubMed">23519317</ID>
+              </Citation>
+              <Citation Type="Recommendation" Abbrev="ACMG, 2015">
+                <ID Source="PubMed">25356965</ID>
+              </Citation>
+              <Citation Type="Recommendation" Abbrev="ACMG, 2016">
+                <ID Source="PubMed">27854360</ID>
+                <ID Source="DOI">10.1038/gim.2016.190</ID>
+              </Citation>
+              <XRef ID="805" DB="Orphanet"/>
+              <XRef ID="C1860707" DB="MedGen"/>
+              <XRef Type="MIM" ID="613254" DB="OMIM"/>
+            </Trait>
+          </TraitSet>
+          <TraitSet ID="1412" Type="Disease">
+            <Trait ID="2574" Type="Disease">
+              <Name>
+                <ElementValue Type="Preferred">Lymphangiomyomatosis</ElementValue>
+                <XRef ID="Lymphangiomyomatosis/8769" DB="Genetic Alliance"/>
+                <XRef ID="73017001" DB="SNOMED CT"/>
+              </Name>
+              <Name>
+                <ElementValue Type="Alternate">Lymphangioleiomyomatosis, somatic</ElementValue>
+              </Name>
+              <Symbol>
+                <ElementValue Type="Preferred">LAM</ElementValue>
+                <XRef Type="MIM" ID="606690" DB="OMIM"/>
+                <XRef ID="3319" DB="Office of Rare Diseases"/>
+              </Symbol>
+              <AttributeSet>
+                <Attribute Type="public definition">Lymphangioleiomyomatosis (LAM) is a condition that affects the lungs, the kidneys, and the lymphatic system. The lymphatic system consists of a network of vessels that transport lymph fluid and immune cells throughout the body. Lymph fluid helps exchange immune cells, proteins, and other substances between the blood and tissues.LAM is found almost exclusively in women. It often occurs as a feature of an inherited syndrome called tuberous sclerosis complex. When LAM occurs alone it is called isolated or sporadic LAM.Signs and symptoms of LAM most often appear during a woman's thirties. Affected women have an overgrowth of abnormal smooth muscle-like cells (LAM cells) in the lungs, resulting in the formation of lung cysts and the destruction of normal lung tissue. They may also have an accumulation of fluid in the cavity around the lungs (chylothorax).The lung abnormalities resulting from LAM may cause difficulty breathing (dyspnea), chest pain, and coughing, which may bring up blood (hemoptysis). Many women with this disorder have recurrent episodes of collapsed lung (spontaneous pneumothorax). The lung problems may be progressive and, without lung transplantation, may eventually lead to limitations in activities of daily living, the need for oxygen therapy, and respiratory failure. Although LAM cells are not considered cancerous, they may spread between tissues (metastasize). As a result, the condition may recur even after lung transplantation.Women with LAM may develop cysts in the lymphatic vessels of the chest and abdomen. These cysts are called lymphangioleiomyomas. Affected women may also develop tumors called angiomyolipomas made up of LAM cells, fat cells, and blood vessels. Angiomyolipomas usually develop in the kidneys. Internal bleeding is a common complication of angiomyolipomas.</Attribute>
+                <XRef ID="lymphangioleiomyomatosis" DB="Genetics Home Reference"/>
+              </AttributeSet>
+              <AttributeSet>
+                <Attribute Type="keyword">Neoplasm</Attribute>
+              </AttributeSet>
+              <AttributeSet>
+                <Attribute Type="keyword">Hereditary cancer syndrome</Attribute>
+              </AttributeSet>
+              <XRef ID="538" DB="Orphanet"/>
+              <XRef ID="C0751674" DB="MedGen"/>
+              <XRef Type="MIM" ID="606690" DB="OMIM"/>
+            </Trait>
+          </TraitSet>
+          <TraitSet ID="13598" Type="Disease">
+            <Trait ID="18746" Type="Disease">
+              <Name>
+                <ElementValue Type="Alternate">Neoplastic Syndromes, Hereditary</ElementValue>
+                <XRef ID="D009386" DB="MeSH"/>
+              </Name>
+              <Name>
+                <ElementValue Type="Preferred">Hereditary cancer-predisposing syndrome</ElementValue>
+                <XRef ID="699346009" DB="SNOMED CT"/>
+              </Name>
+              <Name>
+                <ElementValue Type="Alternate">Tumor predisposition</ElementValue>
+              </Name>
+              <Name>
+                <ElementValue Type="Alternate">Cancer predisposition</ElementValue>
+                <XRef ID="Hereditary+Cancer/3345" DB="Genetic Alliance"/>
+              </Name>
+              <AttributeSet>
+                <Attribute Type="keyword">Neoplasm</Attribute>
+              </AttributeSet>
+              <AttributeSet>
+                <Attribute Type="keyword">Hereditary cancer syndrome</Attribute>
+              </AttributeSet>
+              <Citation Type="practice guideline" Abbrev="IARC, 2008">
+                <ID Source="pmc">3075918</ID>
+              </Citation>
+              <Citation Type="practice guideline" Abbrev="ACMG/NSGC, 2015">
+                <ID Source="PubMed">25394175</ID>
+              </Citation>
+              <XRef ID="C0027672" DB="MedGen"/>
+            </Trait>
+          </TraitSet>
+          <TraitSet ID="8139" Type="Disease">
+            <Trait ID="15993" Type="Disease">
+              <Name>
+                <ElementValue Type="Preferred">Tuberous sclerosis syndrome</ElementValue>
+                <XRef ID="7199000" DB="SNOMED CT"/>
+              </Name>
+              <Symbol>
+                <ElementValue Type="Preferred">TSC</ElementValue>
+                <XRef Type="MIM" ID="191100" DB="OMIM"/>
+              </Symbol>
+              <Symbol>
+                <ElementValue Type="Alternate">TS</ElementValue>
+                <XRef Type="MIM" ID="191100" DB="OMIM"/>
+              </Symbol>
+              <AttributeSet>
+                <Attribute Type="public definition">Tuberous sclerosis complex (TSC) involves abnormalities of the skin (hypomelanotic macules, confetti skin lesions, facial angiofibromas, shagreen patches, fibrous cephalic plaques, ungual fibromas); brain (subependymal nodules, cortical dysplasias, and subependymal giant cell astrocytomas [SEGAs], seizures, intellectual disability / developmental delay, psychiatric illness); kidney (angiomyolipomas, cysts, renal cell carcinomas); heart (rhabdomyomas, arrhythmias); and lungs (lymphangioleiomyomatosis [LAM], multifocal micronodular pneumonocyte hyperplasia). Central nervous system tumors are the leading cause of morbidity and mortality; renal disease is the second leading cause of early death.</Attribute>
+                <XRef ID="NBK1220" DB="GeneReviews"/>
+              </AttributeSet>
+              <Citation Type="review" Abbrev="GeneReviews">
+                <ID Source="PubMed">20301399</ID>
+                <ID Source="BookShelf">NBK1220</ID>
+              </Citation>
+              <Citation Type="practice guideline" Abbrev="Orphanet, 2007">
+                <URL>https://www.orpha.net/data/patho/Pro/en/Emergency_TuberousSclerosis.pdf</URL>
+                <CitationText>Orphanet, Tuberous sclerosis, 2007</CitationText>
+              </Citation>
+              <Citation Type="practice guideline" Abbrev="ACMG, 2013">
+                <ID Source="PubMed">23519317</ID>
+              </Citation>
+              <XRef ID="805" DB="Orphanet"/>
+              <XRef ID="C0041341" DB="MedGen"/>
+              <XRef Type="Phenotypic series" ID="PS191100" DB="OMIM"/>
+            </Trait>
+          </TraitSet>
+        </ConditionList>
+      </GermlineClassification>
+    </Classifications>
+    <ClinicalAssertionList>
+      <ClinicalAssertion ID="150700" SubmissionDate="2012-02-28" DateLastUpdated="2014-01-02" DateCreated="2014-01-02">
+        <ClinVarSubmissionID localKey="NM_000548.2:c.1832G&gt;A|SN-GMBL"/>
+        <ClinVarAccession Accession="SCV000090404" DateUpdated="2014-01-02" DateCreated="2014-01-02" Type="SCV" Version="1" SubmitterName="SN ONGC Dept of Genetics and Molecular biology Vision Research Foundation" OrgID="500164" OrganizationCategory="laboratory"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification>
+          <ReviewStatus>no classification provided</ReviewStatus>
+          <GermlineClassification>not provided</GermlineClassification>
+        </Classification>
+        <Assertion>variation to disease</Assertion>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>not provided</Origin>
+              <Species>human</Species>
+              <AffectedStatus>not provided</AffectedStatus>
+              <NumberTested>25</NumberTested>
+            </Sample>
+            <Method>
+              <MethodType>not provided</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="Description">not provided</Attribute>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <VariantType>Variation</VariantType>
+          <XRefList>
+            <XRef DB="OMIM" ID="191092.0006" Type="Allelic variant"/>
+          </XRefList>
+          <CitationList>
+            <Citation Type="general">
+              <ID Source="PubMed">17304050</ID>
+            </Citation>
+          </CitationList>
+          <AttributeSet>
+            <Attribute Type="HGVS">NM_000548.2:c.1832G&gt;A</Attribute>
+          </AttributeSet>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="Preferred">not provided</ElementValue>
+            </Name>
+            <XRef DB="OMIM" ID="191092" Status="under review" Type="MIM"/>
+          </Trait>
+        </TraitSet>
+        <Comment Type="public">test comment3</Comment>
+        <SubmissionNameList>
+          <SubmissionName>VSX2_novel_variation</SubmissionName>
+        </SubmissionNameList>
+      </ClinicalAssertion>
+      <ClinicalAssertion ID="476676" SubmissionDate="2015-10-06" DateLastUpdated="2015-10-19" DateCreated="2015-10-19">
+        <ClinVarSubmissionID localKey="19969|OMIM:613254"/>
+        <ClinVarAccession Accession="SCV000255877" DateUpdated="2015-10-19" DateCreated="2015-10-19" Type="SCV" Version="2" SubmitterName="Athena Diagnostics Inc" OrgID="1012" OrganizationCategory="laboratory"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification DateLastEvaluated="2014-07-24">
+          <ReviewStatus>criteria provided, single submitter</ReviewStatus>
+          <GermlineClassification>Pathogenic</GermlineClassification>
+          <Citation>
+            <ID Source="PubMed">9463313</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">18302728</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">15963462</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">18308511</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">10570911</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">10823953</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">15595939</ID>
+          </Citation>
+        </Classification>
+        <Assertion>variation to disease</Assertion>
+        <AttributeSet>
+          <Attribute Type="ModeOfInheritance">Autosomal dominant inheritance</Attribute>
+        </AttributeSet>
+        <AttributeSet>
+          <Attribute Type="AssertionMethod">Athena Diagnostics Criteria</Attribute>
+          <Citation Type="general">
+            <ID Source="PubMed">26467025</ID>
+          </Citation>
+        </AttributeSet>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>germline</Origin>
+              <Species TaxonomyId="9606">human</Species>
+              <AffectedStatus>unknown</AffectedStatus>
+            </Sample>
+            <Method>
+              <MethodType>clinical testing</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="Description">not provided</Attribute>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <GeneList>
+            <Gene Symbol="TSC2"/>
+          </GeneList>
+          <VariantType>Variation</VariantType>
+          <OtherNameList>
+            <Name>NM_000548.3:c.1832G&gt;A; p.Arg611Gln</Name>
+          </OtherNameList>
+          <XRefList>
+            <XRef DB="dbSNP" ID="28934872" Type="rsNumber"/>
+          </XRefList>
+          <AttributeSet>
+            <Attribute Type="HGVS">NM_000548.3:c.1832G&gt;A</Attribute>
+          </AttributeSet>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="Preferred">Tuberous sclerosis 2</ElementValue>
+            </Name>
+            <XRef DB="OMIM" ID="613254" Type="MIM"/>
+          </Trait>
+        </TraitSet>
+      </ClinicalAssertion>
+      <ClinicalAssertion ID="114919" SubmissionDate="2013-08-09" DateLastUpdated="2013-09-16" DateCreated="2013-05-03">
+        <ClinVarSubmissionID localKey="TSC2_00105_TSC" title="NM_000548.3:c.1832G&gt;A AND TSC"/>
+        <ClinVarAccession Accession="SCV000066743" DateUpdated="2013-09-16" DateCreated="2013-05-03" Type="SCV" Version="3" SubmitterName="Tuberous sclerosis database (TSC2)" OrgID="500074" OrganizationCategory="locus-specific database (LSDB)"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification>
+          <ReviewStatus>no classification provided</ReviewStatus>
+          <GermlineClassification>not provided</GermlineClassification>
+        </Classification>
+        <Assertion>variation to disease</Assertion>
+        <AttributeSet>
+          <Attribute Type="AssertionMethod">Tuberous Sclerosis Database Assertion Criteria 2015</Attribute>
+          <Citation Type="general">
+            <URL>https://submit.ncbi.nlm.nih.gov/ft/byid/krkkw3ff/tuberous_sclerosis_database_assertion_criteria_2015.docx</URL>
+          </Citation>
+        </AttributeSet>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>germline</Origin>
+              <Species>human</Species>
+              <AffectedStatus>yes</AffectedStatus>
+            </Sample>
+            <Method>
+              <MethodType>curation</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="VariantAlleles">5</Attribute>
+              <Comment Type="public">Definite TSC</Comment>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="VariantAlleles">32</Attribute>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <GeneList>
+            <Gene Symbol="TSC2"/>
+          </GeneList>
+          <VariantType>Variation</VariantType>
+          <Location>
+            <GeneLocation>Exon 16</GeneLocation>
+          </Location>
+          <CitationList>
+            <Citation Type="general">
+              <ID Source="PubMed">10205261</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">10533067</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">10570911</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">11112665</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">11741832</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">12111193</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">15483652</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">15595939</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">15798777</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">16032769</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">16114042</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">16981987</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">17304050</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">18032745</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">20108343</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">21309039</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">9463313</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">9829910</ID>
+            </Citation>
+          </CitationList>
+          <AttributeSet>
+            <Attribute Type="HGVS">NM_000548.3:c.1832G&gt;A</Attribute>
+          </AttributeSet>
+          <AttributeSet>
+            <Attribute Type="HGVS">p.(Arg611Gln)</Attribute>
+          </AttributeSet>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="Preferred">TSC</ElementValue>
+            </Name>
+          </Trait>
+        </TraitSet>
+      </ClinicalAssertion>
+      <ClinicalAssertion ID="144043" SubmissionDate="2013-08-09" DateLastUpdated="2014-07-25" DateCreated="2013-09-16">
+        <ClinVarSubmissionID localKey="TSC2_00105_LAM" title="NM_000548.3:c.1832G&gt;A AND LAM"/>
+        <ClinVarAccession Accession="SCV000083537" DateUpdated="2014-07-25" DateCreated="2013-09-16" Type="SCV" Version="2" SubmitterName="Tuberous sclerosis database (TSC2)" OrgID="500074" OrganizationCategory="locus-specific database (LSDB)"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification>
+          <ReviewStatus>no classification provided</ReviewStatus>
+          <GermlineClassification>not provided</GermlineClassification>
+        </Classification>
+        <Assertion>variation to disease</Assertion>
+        <AttributeSet>
+          <Attribute Type="AssertionMethod">Tuberous Sclerosis Database Assertion Criteria 2015</Attribute>
+          <Citation Type="general">
+            <URL>https://submit.ncbi.nlm.nih.gov/ft/byid/krkkw3ff/tuberous_sclerosis_database_assertion_criteria_2015.docx</URL>
+          </Citation>
+        </AttributeSet>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>germline</Origin>
+              <Species>human</Species>
+              <AffectedStatus>yes</AffectedStatus>
+            </Sample>
+            <Method>
+              <MethodType>curation</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="VariantAlleles">2</Attribute>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <GeneList>
+            <Gene Symbol="TSC2"/>
+          </GeneList>
+          <VariantType>Variation</VariantType>
+          <Location>
+            <GeneLocation>Exon 16</GeneLocation>
+          </Location>
+          <CitationList>
+            <Citation Type="general">
+              <ID Source="PubMed">10823953</ID>
+            </Citation>
+          </CitationList>
+          <AttributeSet>
+            <Attribute Type="HGVS">NM_000548.3:c.1832G&gt;A</Attribute>
+          </AttributeSet>
+          <AttributeSet>
+            <Attribute Type="HGVS">p.(Arg611Gln)</Attribute>
+          </AttributeSet>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="Preferred">LAM</ElementValue>
+            </Name>
+          </Trait>
+        </TraitSet>
+      </ClinicalAssertion>
+      <ClinicalAssertion ID="33452" SubmissionDate="2016-09-01" DateLastUpdated="2016-09-04" DateCreated="2013-04-04">
+        <ClinVarSubmissionID localKey="191092.0006_TUBEROUS SCLEROSIS 2" title="TSC2, ARG611GLN_TUBEROUS SCLEROSIS 2"/>
+        <ClinVarAccession Accession="SCV000033452" DateUpdated="2016-09-04" DateCreated="2013-04-04" Type="SCV" Version="2" SubmitterName="OMIM" OrgID="3" OrganizationCategory="resource"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification DateLastEvaluated="2000-05-23">
+          <ReviewStatus>no assertion criteria provided</ReviewStatus>
+          <GermlineClassification>Pathogenic</GermlineClassification>
+        </Classification>
+        <Assertion>variation to disease</Assertion>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>germline</Origin>
+              <Species>human</Species>
+              <AffectedStatus>not provided</AffectedStatus>
+            </Sample>
+            <Method>
+              <MethodType>literature only</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="Description">In 2 unrelated patients with tuberous sclerosis (613254), Au et al. (1998) found a 1832G-A transition in exon 16 of the TSC2 gene, predicted to cause an arg611-to-gln (R611Q) amino acid substitution in the protein. A change in the same codon had been reported in a patient with tuberous sclerosis by Wilson et al. (1996).</Attribute>
+              <Citation>
+                <ID Source="PubMed">10577937</ID>
+              </Citation>
+              <Citation>
+                <ID Source="PubMed">8824881</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="613254" Type="MIM"/>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In tissues from 2 unrelated patients with pulmonary lymphangioleiomyomatosis (606690), Carsillo et al. (2000) identified an 1832G-A transition in exon 16 of the TSC2 gene, resulting in an arg611-to-gln mutation. In 1 patient the tissue studied was kidney angiomyolipoma; in the other, both kidney and pulmonary tumors were studied.</Attribute>
+              <Citation>
+                <ID Source="PubMed">10823953</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="606690" Type="MIM"/>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <GeneList>
+            <Gene Symbol="TSC2"/>
+          </GeneList>
+          <Name>TSC2, ARG611GLN</Name>
+          <VariantType>Variation</VariantType>
+          <OtherNameList>
+            <Name Type="NonHGVS">ARG611GLN</Name>
+          </OtherNameList>
+          <XRefList>
+            <XRef DB="OMIM" ID="191092.0006" Type="Allelic variant"/>
+          </XRefList>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="Preferred">TUBEROUS SCLEROSIS 2</ElementValue>
+            </Name>
+          </Trait>
+        </TraitSet>
+      </ClinicalAssertion>
+      <ClinicalAssertion ID="33453" SubmissionDate="2016-09-01" DateLastUpdated="2016-09-04" DateCreated="2013-04-04">
+        <ClinVarSubmissionID localKey="191092.0006_LYMPHANGIOLEIOMYOMATOSIS, SOMATIC" title="TSC2, ARG611GLN_LYMPHANGIOLEIOMYOMATOSIS, SOMATIC"/>
+        <ClinVarAccession Accession="SCV000033453" DateUpdated="2016-09-04" DateCreated="2013-04-04" Type="SCV" Version="3" SubmitterName="OMIM" OrgID="3" OrganizationCategory="resource"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification DateLastEvaluated="2000-05-23">
+          <ReviewStatus>no assertion criteria provided</ReviewStatus>
+          <GermlineClassification>Pathogenic</GermlineClassification>
+        </Classification>
+        <Assertion>variation to included disease</Assertion>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>somatic</Origin>
+              <Species>human</Species>
+              <AffectedStatus>not provided</AffectedStatus>
+            </Sample>
+            <Method>
+              <MethodType>literature only</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="Description">In 2 unrelated patients with tuberous sclerosis (613254), Au et al. (1998) found a 1832G-A transition in exon 16 of the TSC2 gene, predicted to cause an arg611-to-gln (R611Q) amino acid substitution in the protein. A change in the same codon had been reported in a patient with tuberous sclerosis by Wilson et al. (1996).</Attribute>
+              <Citation>
+                <ID Source="PubMed">10577937</ID>
+              </Citation>
+              <Citation>
+                <ID Source="PubMed">8824881</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="613254" Type="MIM"/>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In tissues from 2 unrelated patients with pulmonary lymphangioleiomyomatosis (606690), Carsillo et al. (2000) identified an 1832G-A transition in exon 16 of the TSC2 gene, resulting in an arg611-to-gln mutation. In 1 patient the tissue studied was kidney angiomyolipoma; in the other, both kidney and pulmonary tumors were studied.</Attribute>
+              <Citation>
+                <ID Source="PubMed">10823953</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="606690" Type="MIM"/>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <GeneList>
+            <Gene Symbol="TSC2"/>
+          </GeneList>
+          <Name>TSC2, ARG611GLN</Name>
+          <VariantType>Variation</VariantType>
+          <OtherNameList>
+            <Name Type="NonHGVS">ARG611GLN</Name>
+          </OtherNameList>
+          <XRefList>
+            <XRef DB="OMIM" ID="191092.0006" Type="Allelic variant"/>
+          </XRefList>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="included">LYMPHANGIOLEIOMYOMATOSIS, SOMATIC</ElementValue>
+            </Name>
+          </Trait>
+        </TraitSet>
+      </ClinicalAssertion>
+      <ClinicalAssertion ID="958546" SubmissionDate="2021-09-24" DateLastUpdated="2017-01-09" DateCreated="2017-01-09">
+        <ClinVarSubmissionID localKey="GDX:425083|Not Provided" submittedAssembly="GRCh37"/>
+        <ClinVarAccession Accession="SCV000491001" DateUpdated="2017-01-09" DateCreated="2017-01-09" Type="SCV" Version="1" SubmitterName="GeneDx" OrgID="26957" OrganizationCategory="laboratory"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification DateLastEvaluated="2016-12-07">
+          <ReviewStatus>criteria provided, single submitter</ReviewStatus>
+          <GermlineClassification>Pathogenic</GermlineClassification>
+          <Comment Type="public">The R611Q pathogenic variant in the TSC2 gene has been reported multiple times in association with tuberous sclerosis complex (TSC) (Au et al., 1998; Sancak et al., 2005; TSC2 LOVD). Functional studies indicate that R611Q disrupts the TSC1 â€“ TSC2 complex (Hoogeveen-Westerveld et al., 2011; Nellist et al., 2001; Nellist et al., 2005). The R611Q variant is not observed in large population cohorts (Lek et al., 2016; 1000 Genomes Consortium et al., 2015; Exome Variant Server). The R611Q variant is a semi-conservative amino acid substitution, which may impact secondary protein structure as these residues differ in some properties. This substitution occurs at a position that is conserved across species, and in silico analysis predicts this variant is probably damaging to the protein structure/function. Additionally, other missense variants at the same codon (R611W) and in nearby residues (A607E, A614D, F615S) have been reported in association with TSC (Stenson et al., 2014; TSC2 LOVD), supporting the functional importance of this region of the protein.</Comment>
+        </Classification>
+        <Assertion>variation to disease</Assertion>
+        <AttributeSet>
+          <Attribute Type="AssertionMethod">GeneDx Variant Classification (06012015)</Attribute>
+          <Citation Type="general">
+            <URL>https://submit.ncbi.nlm.nih.gov/ft/byid/dhtz9flo/genedx_interprules_final_061215.pdf</URL>
+          </Citation>
+        </AttributeSet>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>germline</Origin>
+              <Species TaxonomyId="9606">human</Species>
+              <AffectedStatus>yes</AffectedStatus>
+            </Sample>
+            <Method>
+              <MethodType>clinical testing</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="Description">not provided</Attribute>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <GeneList>
+            <Gene Symbol="TSC2"/>
+          </GeneList>
+          <VariantType>Variation</VariantType>
+          <Location>
+            <SequenceLocation Assembly="GRCh37" Chr="16" alternateAllele="A" referenceAllele="G" start="2120572" stop="2120572" variantLength="1"/>
+          </Location>
+          <AttributeSet>
+            <Attribute Type="HGVS">NM_000548.3:c.1832G&gt;A</Attribute>
+          </AttributeSet>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="Preferred">Not Provided</ElementValue>
+            </Name>
+          </Trait>
+        </TraitSet>
+      </ClinicalAssertion>
+      <ClinicalAssertion ID="1524982" SubmissionDate="2017-12-20" DateLastUpdated="2018-05-26" DateCreated="2018-05-26">
+        <ClinVarSubmissionID localKey="TSC2-A5|MedGen:C1860707" submittedAssembly="GRCh37"/>
+        <ClinVarAccession Accession="SCV000782399" DateUpdated="2018-05-26" DateCreated="2018-05-26" Type="SCV" Version="1" SubmitterName="Center for Human Genetics, Inc" OrgID="1024" OrganizationCategory="laboratory" OrgAbbreviation="CHG"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification DateLastEvaluated="2016-11-01">
+          <ReviewStatus>criteria provided, single submitter</ReviewStatus>
+          <GermlineClassification>Pathogenic</GermlineClassification>
+        </Classification>
+        <Assertion>variation to disease</Assertion>
+        <AttributeSet>
+          <Attribute Type="AssertionMethod">ACMG Guidelines, 2015</Attribute>
+          <Citation>
+            <ID Source="PubMed">25741868</ID>
+          </Citation>
+        </AttributeSet>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>germline</Origin>
+              <Species TaxonomyId="9606">human</Species>
+              <AffectedStatus>yes</AffectedStatus>
+            </Sample>
+            <Method>
+              <MethodType>clinical testing</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="Description">not provided</Attribute>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <GeneList>
+            <Gene Symbol="TSC2"/>
+          </GeneList>
+          <VariantType>Variation</VariantType>
+          <AttributeSet>
+            <Attribute Type="HGVS">NM_000548.3:c.1832G&gt;A</Attribute>
+          </AttributeSet>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <XRef DB="MedGen" ID="C1860707" Type="CUI"/>
+          </Trait>
+        </TraitSet>
+        <SubmissionNameList>
+          <SubmissionName>SUB3363248</SubmissionName>
+        </SubmissionNameList>
+      </ClinicalAssertion>
+      <ClinicalAssertion ID="1057270" SubmissionDate="2018-08-29" DateLastUpdated="2018-10-10" DateCreated="2016-09-04">
+        <ClinVarSubmissionID localKey="702746|MedGen:C1860707" submittedAssembly="GRCh37"/>
+        <ClinVarAccession Accession="SCV000544351" DateUpdated="2018-10-10" DateCreated="2016-09-04" Type="SCV" Version="4" SubmitterName="Invitae" OrgID="500031" OrganizationCategory="laboratory" OrgAbbreviation="Invitae"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification DateLastEvaluated="2018-06-05">
+          <ReviewStatus>criteria provided, single submitter</ReviewStatus>
+          <GermlineClassification>Pathogenic</GermlineClassification>
+          <Citation>
+            <ID Source="PubMed">15483652</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">10205261</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">21309039</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">9463313</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">26703369</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">17304050</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">15595939</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">11741832</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">18854862</ID>
+          </Citation>
+          <Comment Type="public">This sequence change replaces arginine with glutamine at codon 611 of the TSC2 protein (p.Arg611Gln). The arginine residue is highly conserved and there is a small physicochemical difference between arginine and glutamine. This variant is not present in population databases (rs28934872, ExAC no frequency). This variant has been reported in many individuals affected with, and is considered a relatively common cause of, tuberous sclerosis complex (PMID: 9463313, 17304050, 15595939, 10205261). ClinVar contains an entry for this variant (Variation ID: 12397). Experimental studies have shown that this missense change prevents the phosphorylation of tuberin tyrosine residues, prevents TSC complex-dependent inhibition of mTOR activity, inhibits formation of the tuberin-hamartin complex, and abolishes tuberin chaperone function (PMID: 11741832, 21309039, 15483652, 26703369, 18854862). For these reasons, this variant has been classified as Pathogenic.</Comment>
+        </Classification>
+        <Assertion>variation to disease</Assertion>
+        <AttributeSet>
+          <Attribute Type="AssertionMethod">Nykamp K et al. (Genet Med 2017)</Attribute>
+          <Citation>
+            <ID Source="PubMed">28492532</ID>
+          </Citation>
+        </AttributeSet>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>germline</Origin>
+              <Species TaxonomyId="9606">human</Species>
+              <AffectedStatus>unknown</AffectedStatus>
+            </Sample>
+            <Method>
+              <MethodType>clinical testing</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="Description">not provided</Attribute>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <GeneList>
+            <Gene Symbol="TSC2"/>
+          </GeneList>
+          <VariantType>Variation</VariantType>
+          <AttributeSet>
+            <Attribute Type="HGVS">NM_000548.3:c.1832G&gt;A</Attribute>
+          </AttributeSet>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="Preferred">Tuberous sclerosis 2</ElementValue>
+            </Name>
+            <XRef DB="MedGen" ID="C1860707" Type="CUI"/>
+          </Trait>
+        </TraitSet>
+        <Citation Type="general">
+          <ID Source="PubMed">28492532</ID>
+        </Citation>
+        <SubmissionNameList>
+          <SubmissionName>SUB4474525</SubmissionName>
+        </SubmissionNameList>
+      </ClinicalAssertion>
+      <ClinicalAssertion ID="1637626" SubmissionDate="2018-06-14" DateLastUpdated="2018-10-10" DateCreated="2018-10-10">
+        <ClinVarSubmissionID localKey="NM_000548.3:c.1832G&gt;A|OMIM:613254" submittedAssembly="GRCh37"/>
+        <ClinVarAccession Accession="SCV000840073" DateUpdated="2018-10-10" DateCreated="2018-10-10" Type="SCV" Version="1" SubmitterName="Human Genome Sequencing Center Clinical Lab,Baylor College of Medicine" OrgID="500199" OrganizationCategory="laboratory" OrgAbbreviation="HGSC-CL"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification DateLastEvaluated="2017-12-04">
+          <ReviewStatus>criteria provided, single submitter</ReviewStatus>
+          <GermlineClassification>Pathogenic</GermlineClassification>
+          <Comment Type="public">This c.1832G&gt;A (p.Arg611Gln) variant in the TSC2 gene has been reported in multiple unrelated individuals with Tuberous Sclerosis (PMID: 9463313, 10570911, 15595939). Functional studies have shown that the p.Arg611Gln mutant tuberin protein (encoded by the TSC2 gene) has decreased interaction with its binding partner, hamartin, and is unable to inhibit the mTOR pathway properly (PMID: 11741832, 15483652, 15963462, 18302728, 18308511, 21309039). The c.1832G&gt;A variant in TSC2 is not present in the general population. This c.1832G&gt;A (p.Arg611Gln) variant in the TSC2 gene is classified as pathogenic.</Comment>
+        </Classification>
+        <Assertion>variation to disease</Assertion>
+        <AttributeSet>
+          <Attribute Type="AssertionMethod">ACMG Guidelines, 2015</Attribute>
+          <Citation>
+            <ID Source="PubMed">25741868</ID>
+          </Citation>
+        </AttributeSet>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>germline</Origin>
+              <Species TaxonomyId="9606">human</Species>
+              <AffectedStatus>unknown</AffectedStatus>
+            </Sample>
+            <Method>
+              <MethodType>clinical testing</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="Description">not provided</Attribute>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <GeneList>
+            <Gene Symbol="TSC2"/>
+          </GeneList>
+          <VariantType>Variation</VariantType>
+          <AttributeSet>
+            <Attribute Type="HGVS">NM_000548.3:c.1832G&gt;A</Attribute>
+          </AttributeSet>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <XRef DB="OMIM" ID="613254" Type="MIM"/>
+          </Trait>
+        </TraitSet>
+        <SubmissionNameList>
+          <SubmissionName>SUB4151980</SubmissionName>
+        </SubmissionNameList>
+      </ClinicalAssertion>
+      <ClinicalAssertion ID="1199540" SubmissionDate="2018-08-31" DateLastUpdated="2017-01-09" DateCreated="2017-01-09">
+        <ClinVarSubmissionID localKey="19969|not provided" submittedAssembly="GRCh37"/>
+        <ClinVarAccession Accession="SCV000615886" DateUpdated="2017-01-09" DateCreated="2017-01-09" Type="SCV" Version="2" SubmitterName="Athena Diagnostics Inc" OrgID="1012" OrganizationCategory="laboratory"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification DateLastEvaluated="2014-07-24">
+          <ReviewStatus>criteria provided, single submitter</ReviewStatus>
+          <GermlineClassification>Pathogenic</GermlineClassification>
+          <Citation>
+            <ID Source="PubMed">9463313</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">18302728</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">15963462</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">18308511</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">10570911</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">10823953</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">15595939</ID>
+          </Citation>
+        </Classification>
+        <Assertion>variation to disease</Assertion>
+        <AttributeSet>
+          <Attribute Type="AssertionMethod">Athena Diagnostics Criteria</Attribute>
+          <Citation>
+            <ID Source="PubMed">26467025</ID>
+          </Citation>
+        </AttributeSet>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>germline</Origin>
+              <Species TaxonomyId="9606">human</Species>
+              <AffectedStatus>unknown</AffectedStatus>
+            </Sample>
+            <Method>
+              <MethodType>clinical testing</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="Description">not provided</Attribute>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <GeneList>
+            <Gene Symbol="TSC2"/>
+          </GeneList>
+          <VariantType>Variation</VariantType>
+          <XRefList>
+            <XRef DB="dbSNP" ID="28934872" Type="rsNumber"/>
+          </XRefList>
+          <AttributeSet>
+            <Attribute Type="HGVS">NM_000548.3:c.1832G&gt;A</Attribute>
+          </AttributeSet>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="Preferred">not provided</ElementValue>
+            </Name>
+          </Trait>
+        </TraitSet>
+        <SubmissionNameList>
+          <SubmissionName>SUB4481681</SubmissionName>
+        </SubmissionNameList>
+      </ClinicalAssertion>
+      <ClinicalAssertion ID="1129342" SubmissionDate="2020-02-26" DateLastUpdated="" DateCreated="2017-06-25">
+        <ClinVarSubmissionID localKey="a818960" localKeyIsSubmitted="1" submittedAssembly="GRCh37"/>
+        <ClinVarAccession Accession="SCV000579587" DateUpdated="" DateCreated="2017-06-25" Type="SCV" Version="3" SubmitterName="Ambry Genetics" OrgID="61756" OrganizationCategory="laboratory"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification DateLastEvaluated="2016-01-21">
+          <ReviewStatus>criteria provided, single submitter</ReviewStatus>
+          <GermlineClassification>Pathogenic</GermlineClassification>
+          <Citation>
+            <ID Source="PubMed">9463313</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">11741832</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">15483652</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">21309039</ID>
+          </Citation>
+          <Citation>
+            <ID Source="PubMed">22867869</ID>
+          </Citation>
+        </Classification>
+        <Assertion>variation to disease</Assertion>
+        <AttributeSet>
+          <Attribute Type="AssertionMethod">Ambry Autosomal Dominant and X-Linked criteria (10/2015)</Attribute>
+          <Citation>
+            <URL>https://submit.ncbi.nlm.nih.gov/ft/byid/zfkfvckw/mid-7377_ambry_classification_scheme_oct_2015.pdf</URL>
+          </Citation>
+        </AttributeSet>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>germline</Origin>
+              <Species TaxonomyId="9606">human</Species>
+              <AffectedStatus>unknown</AffectedStatus>
+              <NumberTested>1</NumberTested>
+            </Sample>
+            <Method>
+              <MethodType>clinical testing</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="VariantAlleles" integerValue="1"/>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <GeneList>
+            <Gene Symbol="TSC2"/>
+          </GeneList>
+          <VariantType>Variation</VariantType>
+          <AttributeSet>
+            <Attribute Type="HGVS">NM_000548.3:c.1832G&gt;A</Attribute>
+          </AttributeSet>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="Preferred">Hereditary cancer-predisposing syndrome</ElementValue>
+            </Name>
+            <XRef DB="MedGen" ID="C0027672" Type="CUI"/>
+          </Trait>
+        </TraitSet>
+        <SubmissionNameList>
+          <SubmissionName>SUB4348735</SubmissionName>
+        </SubmissionNameList>
+      </ClinicalAssertion>
+    </ClinicalAssertionList>
+  </ClassifiedRecord>
+</VariationArchive>
+</ClinVarResult-Set>

@@ -1,0 +1,160 @@
+{
+  "description": "Generated BibTeX citation samples for regression testing",
+  "generated_date": "2025-07-30",
+  "articles": [
+    {
+      "pmid": "23435529",
+      "title": "Lower sperm DNA fragmentation after r-FSH administration in functional hypogonadotropic hypogonadism.",
+      "authors": [
+        "Ruvolo G",
+        "Roccheri MC",
+        "Brucculeri AM",
+        "Longobardi S",
+        "Cittadini E",
+        "Bosco L"
+      ],
+      "journal": "J Assist Reprod Genet",
+      "year": "2013",
+      "volume": "30",
+      "pages": "497-503",
+      "doi": "10.1007/s10815-013-9951-y",
+      "is_book": false,
+      "generated_bibtex": "@article{Ruvolo2013,\nauthor = {Ruvolo, G and Roccheri, MC and Brucculeri, AM and Longobardi, S and Cittadini, E and Bosco, L},\ndoi = {10.1007/s10815-013-9951-y},\ntitle = {Lower sperm DNA fragmentation after r-FSH administration in functional hypogonadotropic hypogonadism},\nabstract = {PURPOSE: An observational clinical and molecular study was designed to evaluate the effects of the administration of recombinant human FSH on sperm DNA fragmentation in men with a non-classical form of hypogonadotropic hypogonadism and idiopathic oligoasthenoteratozoospermia.\nMETHODS: In the study were included 53 men with a non-classical form of hypogonadotropic hypogonadism and idiopathic oligoasthenoteratozoospermia. In all patients, sperm DNA fragmentation index (DFI), assessed by terminal d...},\njournal = {J Assist Reprod Genet},\nyear = {2013},\nvolume = {30},\npages = {497-503},\nurl = {https://ncbi.nlm.nih.gov/pubmed/23435529},\n}",
+      "bibtex_entry_type": "article"
+    },
+    {
+      "pmid": "25633503",
+      "title": "Orchestrating high-throughput genomic analysis with Bioconductor.",
+      "authors": [
+        "Huber W",
+        "Carey VJ",
+        "Gentleman R",
+        "Anders S",
+        "Carlson M",
+        "Carvalho BS",
+        "Bravo HC",
+        "Davis S",
+        "Gatto L",
+        "Girke T"
+      ],
+      "journal": "Nat Methods",
+      "year": "2015",
+      "volume": "12",
+      "pages": "115-21",
+      "doi": "10.1038/nmeth.3252",
+      "is_book": false,
+      "generated_bibtex": "@article{Huber2015,\nauthor = {Huber, W and Carey, VJ and Gentleman, R and Anders, S and Carlson, M and Carvalho, BS and Bravo, HC and Davis, S and Gatto, L and Girke, T and Gottardo, R and Hahne, F and Hansen, KD and Irizarry, RA and Lawrence, M and Love, MI and MacDonald, J and Obenchain, V and Oleś, AK and Pagès, H and Reyes, A and Shannon, P and Smyth, GK and Tenenbaum, D and Waldron, L and Morgan, M},\ndoi = {10.1038/nmeth.3252},\ntitle = {Orchestrating high-throughput genomic analysis with Bioconductor},\nabstract = {Bioconductor is an open-source, open-development software project for the analysis and comprehension of high-throughput data in genomics and molecular biology. The project aims to enable interdisciplinary research, collaboration and rapid development of scientific software. Based on the statistical programming language R, Bioconductor comprises 934 interoperable packages contributed by a large, diverse community of scientists. Packages cover a range of bioinformatic and statistical applications....},\njournal = {Nat Methods},\nyear = {2015},\nvolume = {12},\npages = {115-21},\nurl = {https://ncbi.nlm.nih.gov/pubmed/25633503},\n}",
+      "bibtex_entry_type": "article"
+    },
+    {
+      "pmid": "30971826",
+      "title": "Prioritization of cancer therapeutic targets using CRISPR-Cas9 screens.",
+      "authors": [
+        "Behan FM",
+        "Iorio F",
+        "Picco G",
+        "Gonçalves E",
+        "Beaver CM",
+        "Migliardi G",
+        "Santos R",
+        "Rao Y",
+        "Sassi F",
+        "Pinnelli M"
+      ],
+      "journal": "Nature",
+      "year": "2019",
+      "volume": "568",
+      "pages": "511-516",
+      "doi": "10.1038/s41586-019-1103-9",
+      "is_book": false,
+      "generated_bibtex": "@article{Behan2019,\nauthor = {Behan, FM and Iorio, F and Picco, G and Gonçalves, E and Beaver, CM and Migliardi, G and Santos, R and Rao, Y and Sassi, F and Pinnelli, M and Ansari, R and Harper, S and Jackson, DA and McRae, R and Pooley, R and Wilkinson, P and van der Meer, D and Dow, D and Buser-Doepner, C and Bertotti, A and Trusolino, L and Stronach, EA and Saez-Rodriguez, J and Yusa, K and Garnett, MJ},\ndoi = {10.1038/s41586-019-1103-9},\ntitle = {Prioritization of cancer therapeutic targets using CRISPR-Cas9 screens},\nabstract = {Functional genomics approaches can overcome limitations-such as the lack of identification of robust targets and poor clinical efficacy-that hamper cancer drug development. Here we performed genome-scale CRISPR-Cas9 screens in 324 human cancer cell lines from 30 cancer types and developed a data-driven framework to prioritize candidates for cancer therapeutics. We integrated cell fitness effects with genomic biomarkers and target tractability for drug development to systematically prioritize new...},\njournal = {Nature},\nyear = {2019},\nvolume = {568},\npages = {511-516},\nurl = {https://ncbi.nlm.nih.gov/pubmed/30971826},\n}",
+      "bibtex_entry_type": "article"
+    },
+    {
+      "pmid": "20301546",
+      "title": "Hereditary Motor and Sensory Neuropathy with Agenesis of the Corpus Callosum",
+      "authors": [
+        "Gauvreau C",
+        "Brisson JD",
+        "Dupré N"
+      ],
+      "journal": "GeneReviews®",
+      "year": 2006,
+      "volume": null,
+      "pages": null,
+      "doi": null,
+      "is_book": true,
+      "generated_bibtex": "@book{Gauvreau2006,\nauthor = {Gauvreau, C and Brisson, JD and Dupré, N},\ntitle = {Hereditary Motor and Sensory Neuropathy with Agenesis of the Corpus Callosum},\nabstract = {CLINICAL CHARACTERISTICS: Hereditary motor and sensory neuropathy with agenesis of the corpus callosum (HMSN/ACC), a neurodevelopmental and neurodegenerative disorder, is characterized by severe progressive sensorimotor neuropathy with resulting hypotonia, areflexia, and amyotrophy, and by variable degrees of dysgenesis of the corpus callosum. Mild-to-severe intellectual disability and \"psychotic episodes\" during adolescence are observed. Sensory modalities are moderately to severely affected be...},\njournal = {GeneReviews®},\nyear = {2006},\nurl = {https://ncbi.nlm.nih.gov/pubmed/20301546},\n}",
+      "bibtex_entry_type": "book",
+      "book_accession_id": "NBK1372"
+    }
+  ],
+  "edge_cases": [
+    {
+      "description": "Multi-word last names",
+      "input": {
+        "authors": [
+          "Van Der Berg JH",
+          "De La Cruz M"
+        ],
+        "title": "Test Article with Multi-word Names",
+        "journal": "Test Journal",
+        "year": 2023
+      },
+      "generated_bibtex": "@article{VanDerBerg2023,\nauthor = {Van Der Berg, JH and De La Cruz, M},\ntitle = {Test Article with Multi-word Names},\njournal = {Test Journal},\nyear = {2023},\n}"
+    },
+    {
+      "description": "Special characters",
+      "input": {
+        "authors": [
+          "O'Brien J",
+          "García-López M"
+        ],
+        "title": "Article with \"quotes\" & special chars",
+        "journal": "International Journal",
+        "year": 2023
+      },
+      "generated_bibtex": "@article{O'Brien2023,\nauthor = {O'Brien, J and García-López, M},\ntitle = {Article with \"quotes\" & special chars},\njournal = {International Journal},\nyear = {2023},\n}"
+    },
+    {
+      "description": "Pre-formatted author names",
+      "input": {
+        "authors": [
+          "Smith, John H",
+          "Jones, Kate M"
+        ],
+        "title": "Pre-formatted Author Names",
+        "journal": "Test Journal",
+        "year": 2023
+      },
+      "generated_bibtex": "@article{Smith2023,\nauthor = {Smith, John H and Jones, Kate M},\ntitle = {Pre-formatted Author Names},\njournal = {Test Journal},\nyear = {2023},\n}"
+    },
+    {
+      "description": "Single author",
+      "input": {
+        "authors": [
+          "Einstein A"
+        ],
+        "title": "Theory of Relativity",
+        "journal": "Annalen der Physik",
+        "year": 1905,
+        "volume": 17,
+        "pages": "891-921"
+      },
+      "generated_bibtex": "@article{Einstein1905,\nauthor = {Einstein, A},\ntitle = {Theory of Relativity},\njournal = {Annalen der Physik},\nyear = {1905},\nvolume = {17},\npages = {891-921},\n}"
+    },
+    {
+      "description": "Book entry",
+      "input": {
+        "authors": [
+          "Author A",
+          "Author B"
+        ],
+        "title": "Test Book Title",
+        "year": 2022,
+        "isbook": true
+      },
+      "generated_bibtex": "@book{Author2022,\nauthor = {Author, A and Author, B},\ntitle = {Test Book Title},\nyear = {2022},\n}"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "description": "Sample BibTeX citation test data for regression testing",
+  "created": "2025-07-30",
+  "articles": [
+    {
+      "pmid": "23435529",
+      "title": "Lower sperm DNA fragmentation after r-FSH administration in functional hypogonadotropic hypogonadism",
+      "authors": ["Ruvolo G", "Roccheri MC", "Brucculeri AM", "Longobardi S", "Cittadini E", "Bosco L"],
+      "journal": "J Assist Reprod Genet",
+      "year": 2013,
+      "volume": 30,
+      "pages": "497-503",
+      "doi": "10.1007/s10815-013-9951-y",
+      "expected_bibtex": "@article{Ruvolo2013,\nauthor = {Ruvolo, G and Roccheri, MC and Brucculeri, AM and Longobardi, S and Cittadini, E and Bosco, L},\ndoi = {10.1007/s10815-013-9951-y},\ntitle = {Lower sperm DNA fragmentation after r-FSH administration in functional hypogonadotropic hypogonadism},\njournal = {J Assist Reprod Genet},\nyear = {2013},\nvolume = {30},\npages = {497-503},\n}"
+    },
+    {
+      "pmid": "25633503",
+      "title": "CRISPR-Cas9 gene editing for sickle cell disease and β-thalassemia",
+      "authors": ["Hoban MD", "Cost GJ", "Mendel MC", "Romero Z", "Kaufman ML", "Joglekar AV", "Ho M", "Lumaquin D", "Gray D", "Lill GR", "Cooper AR", "Urbinati F", "Senadheera S", "Zate D", "Zhen A", "Xuyang F", "Wang X", "Cornetta K", "Sajita DL", "Kohn DB"],
+      "journal": "N Engl J Med",
+      "year": 2021,
+      "volume": 384,
+      "pages": "252-260",
+      "doi": "10.1056/NEJMoa2031054",
+      "expected_bibtex": "@article{Hoban2021,\nauthor = {Hoban, MD and Cost, GJ and Mendel, MC and Romero, Z and Kaufman, ML and Joglekar, AV and Ho, M and Lumaquin, D and Gray, D and Lill, GR and Cooper, AR and Urbinati, F and Senadheera, S and Zate, D and Zhen, A and Xuyang, F and Wang, X and Cornetta, K and Sajita, DL and Kohn, DB},\ndoi = {10.1056/NEJMoa2031054},\ntitle = {CRISPR-Cas9 gene editing for sickle cell disease and β-thalassemia},\njournal = {N Engl J Med},\nyear = {2021},\nvolume = {384},\npages = {252-260},\n}"
+    },
+    {
+      "pmid": "20301546", 
+      "title": "Jervell and Lange-Nielsen syndrome",
+      "authors": ["Tranebjærg L", "Samson RA", "Green GE"],
+      "journal": "GeneReviews",
+      "year": 2002,
+      "is_book": true,
+      "book_accession_id": "NBK1405",
+      "expected_bibtex": "@book{Tranebjærg2002,\nauthor = {Tranebjærg, L and Samson, RA and Green, GE},\ntitle = {Jervell and Lange-Nielsen syndrome},\nyear = {2002},\n}"
+    }
+  ],
+  "edge_cases": [
+    {
+      "description": "Multi-word last names",
+      "input": {
+        "authors": ["Van Der Berg JH", "De La Cruz M"],
+        "title": "Test Article with Multi-word Names",
+        "journal": "Test Journal",
+        "year": 2023
+      },
+      "expected_bibtex": "@article{VanDerBerg2023,\nauthor = {Van Der Berg, JH and De La Cruz, M},\ntitle = {Test Article with Multi-word Names},\njournal = {Test Journal},\nyear = {2023},\n}"
+    },
+    {
+      "description": "Special characters in names",
+      "input": {
+        "authors": ["O'Brien J", "García-López M", "Müller K"],
+        "title": "Test with Special Characters",
+        "journal": "International Journal",
+        "year": 2023
+      },
+      "expected_bibtex": "@article{O'Brien2023,\nauthor = {O'Brien, J and García-López, M and Müller, K},\ntitle = {Test with Special Characters},\njournal = {International Journal},\nyear = {2023},\n}"
+    },
+    {
+      "description": "Authors already in Last, First format",
+      "input": {
+        "authors": ["Smith, John H", "Jones, Kate M"],
+        "title": "Pre-formatted Author Names",
+        "journal": "Test Journal",
+        "year": 2023
+      },
+      "expected_bibtex": "@article{Smith2023,\nauthor = {Smith, John H and Jones, Kate M},\ntitle = {Pre-formatted Author Names},\njournal = {Test Journal},\nyear = {2023},\n}"
+    },
+    {
+      "description": "Single author",
+      "input": {
+        "authors": ["Einstein A"],
+        "title": "Theory of Relativity",
+        "journal": "Annalen der Physik",
+        "year": 1905,
+        "volume": 17,
+        "pages": "891-921"
+      },
+      "expected_bibtex": "@article{Einstein1905,\nauthor = {Einstein, A},\ntitle = {Theory of Relativity},\njournal = {Annalen der Physik},\nyear = {1905},\nvolume = {17},\npages = {891-921},\n}"
+    },
+    {
+      "description": "Missing author and year, fallback to PMID",
+      "input": {
+        "pmid": "12345678",
+        "title": "Anonymous Article",
+        "journal": "Unknown Journal"
+      },
+      "expected_bibtex": "@article{12345678,\ntitle = {Anonymous Article},\njournal = {Unknown Journal},\n}"
+    },
+    {
+      "description": "No identifiers available",
+      "input": {
+        "title": "Completely Unknown Article",
+        "journal": "Unknown Journal"
+      },
+      "expected_bibtex": "@article{UnknownCitation,\ntitle = {Completely Unknown Article},\njournal = {Unknown Journal},\n}"
+    },
+    {
+      "description": "Long abstract truncation",
+      "input": {
+        "authors": ["Smith J"],
+        "title": "Article with Long Abstract",
+        "abstract": "This is a very long abstract that should be truncated. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+        "journal": "Test Journal",
+        "year": 2023
+      },
+      "expected_abstract_truncated": true,
+      "expected_bibtex_contains": ["abstract = {This is a very long abstract", "...}"]
+    }
+  ]
+}

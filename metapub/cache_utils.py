@@ -4,9 +4,7 @@ __author__ = "nthmost"
 import os, logging
 from datetime import datetime
 
-# this is kinda ugh. we shouldn't be using an "internal" module, but the
-# eutils package structure changed suddenly. Replace with bespoke...?
-from eutils._internal.sqlitecache import SQLiteCache
+from .ncbi_client import SimpleCache as SQLiteCache
 
 from .config import PKGNAME, DEFAULT_CACHE_DIR
 from .exceptions import MetaPubError
@@ -30,7 +28,7 @@ def get_cache_path(cachedir=DEFAULT_CACHE_DIR, filename='metapub-cache.db'):
     raises MetaPubError if it can't be created.
 
         if cachedir is None, returns None.
-    
+
         Default: DEFAULT_CACHE_DIR set in config.py (~/.cache)
 
         Supports expansion of user directory shortcut '~' to full path.
@@ -53,6 +51,16 @@ def get_cache_path(cachedir=DEFAULT_CACHE_DIR, filename='metapub-cache.db'):
 
 
 def _require_dir(targetdir):
+    """Ensure a directory exists, creating it if necessary.
+    
+    Internal utility function used by get_cache_path to ensure
+    cache directories exist before use.
+    
+    :param targetdir: path to directory that must exist
+    :type targetdir: str
+    :return: True if directory exists or was created successfully, False otherwise
+    :rtype: bool
+    """
     if os.path.exists(targetdir):
         return True
 
@@ -63,6 +71,15 @@ def _require_dir(targetdir):
         return False
 
 def cleanup_dir(cachedir):
+    """Remove all files from a cache directory and delete the directory itself.
+    
+    This function is used for cache maintenance and cleanup operations.
+    Silently handles errors if files cannot be removed.
+    
+    :param cachedir: path to directory to clean up
+    :type cachedir: str
+    :return: None
+    """
     try:
         for item in os.listdir(cachedir):
             os.unlink(os.path.join(cachedir, item))

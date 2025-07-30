@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="metapub",
-    version="0.6.3",
+    version="0.7.0b",
     description="Pubmed / NCBI / eutils interaction library, handling the metadata of pubmed papers.",
     long_description=open("README.rst").read(),
     long_description_content_type="text/x-rst",

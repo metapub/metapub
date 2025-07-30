@@ -417,10 +417,25 @@ class UrlReverse(object):
             self.steps.append('NO PMID, AMBIGUOUS results from pubmed advanced query (%i possibilities). %s' % (len(pmids), work))
 
     def to_dict(self):
-        """ Returns a dictionary containing all public object attributes (i.e. not starting with an underscore). """
+        """ Returns a dictionary containing all public object attributes (i.e. not starting with an underscore). 
+        Function objects are converted to their names for JSON serialization.
+        """
         outd = {}
         for key in self.__dict__:
             if not key.startswith('_'):
-                outd[key] = self.__dict__[key]
+                value = self.__dict__[key]
+                # Handle the info dict which may contain function objects
+                if key == 'info' and isinstance(value, dict):
+                    info_copy = {}
+                    for info_key, info_value in value.items():
+                        if callable(info_value):
+                            info_copy[info_key] = info_value.__name__
+                        else:
+                            info_copy[info_key] = info_value
+                    outd[key] = info_copy
+                elif callable(value):
+                    outd[key] = value.__name__
+                else:
+                    outd[key] = value
         return outd
 

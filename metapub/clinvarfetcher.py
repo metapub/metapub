@@ -107,7 +107,7 @@ class ClinVarFetcher(Borg):
         """ returns variant summary XML (<ClinVarResult-Set>) for given ClinVar accession ID.
         (This corresponds to the entry in the clinvar.variant_summary table.)
         """
-        result = self.qs.efetch({'db': 'clinvar', 'id': accession_id, 'rettype': 'variation'})
+        result = self.qs.efetch({'db': 'clinvar', 'id': accession_id, 'rettype': 'vcv'})
         try:
             return ClinVarVariant(result)
         except BaseXMLError as error:

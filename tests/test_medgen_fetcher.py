@@ -1,4 +1,5 @@
 import unittest, os
+import tempfile
 
 from metapub import MedGenFetcher
 from metapub.cache_utils import cleanup_dir
@@ -6,29 +7,31 @@ from tests.common import TEST_CACHEDIR
 
 hugos = ['ACVRL1', 'FOXP3', 'ATM']
 
-fetch = MedGenFetcher(cachedir=TEST_CACHEDIR)
-
 class TestMedGenFetcher(unittest.TestCase):
 
     def setUp(self):
-        pass
+        # Create a unique temporary cache directory for each test run
+        self.temp_cache = tempfile.mkdtemp(prefix='medgen_test_cache_')
+        self.fetch = MedGenFetcher(cachedir=self.temp_cache)
 
     def tearDown(self):
-        pass
+        # Clean up the temporary cache directory
+        if hasattr(self, 'temp_cache') and os.path.exists(self.temp_cache):
+            cleanup_dir(self.temp_cache)
 
     def test_fetch_concepts_for_known_gene(self):
         hugo = 'ACVRL1'
-        result = fetch.uids_by_term(hugo+'[gene]')
+        result = self.fetch.uids_by_term(hugo+'[gene]')
         assert result is not None
         assert result[0] == '324960'
     
     def test_fetch_concepts_for_incorrect_term(self):
         term = 'AVCRL'
-        result = fetch.uids_by_term(term+'[gene]')
+        result = self.fetch.uids_by_term(term+'[gene]')
         assert result == []
 
     def test_attributes_on_medgen_concept(self):
-        concept = fetch.concept_by_uid(324960)
+        concept = self.fetch.concept_by_uid(324960)
         assert concept.OMIM[0] == '600376'
 
         # names is a list of dictionaries. We can't predict what order they come in or 

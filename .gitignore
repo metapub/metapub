@@ -5,6 +5,9 @@ tests/cachedir/*.db
 default/
 output/
 
+# ignore dev utility directories
+CLEANUP/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

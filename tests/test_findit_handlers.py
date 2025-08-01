@@ -144,8 +144,8 @@ class TestRegistryBackedLookupSystem(unittest.TestCase):
         self.assertIsNone(handler)
         self.mock_registry.get_publisher_for_journal.assert_called_once_with("Unknown Journal")
 
-    def test_get_handler_creates_and_caches(self):
-        """Test that handler is created and cached correctly."""
+    def test_get_handler_creates_handler(self):
+        """Test that handler is created correctly (no caching after simplification)."""
         publisher_data = {
             'name': 'Test Publisher',
             'dance_function': 'test_dance'
@@ -157,12 +157,15 @@ class TestRegistryBackedLookupSystem(unittest.TestCase):
         self.assertIsNotNone(handler1)
         self.assertEqual(handler1.name, 'Test Publisher')
         
-        # Second call should return cached handler
+        # Second call should create a new handler (no caching after simplification)
         handler2 = self.lookup_system.get_handler_for_journal("Test Journal")
-        self.assertIs(handler1, handler2)
+        self.assertIsNotNone(handler2)
+        self.assertEqual(handler2.name, 'Test Publisher')
+        # Should be different objects since we removed caching
+        self.assertIsNot(handler1, handler2)
         
-        # Registry should only be called once due to caching
-        self.mock_registry.get_publisher_for_journal.assert_called_once_with("Test Journal")
+        # Registry should be called twice since we removed caching
+        self.assertEqual(self.mock_registry.get_publisher_for_journal.call_count, 2)
 
     @patch('metapub.findit.registry.standardize_journal_name')
     def test_find_pdf_url_standardizes_journal_name(self, mock_standardize):

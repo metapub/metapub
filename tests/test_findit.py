@@ -145,9 +145,12 @@ class TestFindIt(unittest.TestCase):
         # Publisher name should contain "nature" (case insensitive)
         self.assertIn("nature", handler.name.lower())
         
-        # Test caching behavior
+        # Test no caching behavior (after simplification)
         handler2 = lookup_system.get_handler_for_journal("Nature")
-        self.assertIs(handler, handler2)  # Should be same cached instance
+        self.assertIsNotNone(handler2)
+        self.assertIn("nature", handler2.name.lower())
+        # Should be different objects since we removed caching for simplification
+        self.assertIsNot(handler, handler2)
 
     def test_paywall_handler(self):
         """Test that paywall handler returns appropriate response."""

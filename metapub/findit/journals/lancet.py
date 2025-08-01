@@ -1,4 +1,3 @@
-from __future__ import absolute_import, unicode_literals
 
 lancet_journals = {
     'Lancet': {'ja': 'lancet'},

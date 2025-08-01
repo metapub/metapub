@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 # karger: mostly paywalled, but sometimes...
 # http://www.karger.com/Article/Pdf/351538
 #

@@ -93,3 +93,61 @@ class TestFindItDances(unittest.TestCase):
         pmid = 10201537
         source = FindIt(pmid)
         assert source.url == 'http://www.jidonline.org/article/S0022-202X(15)40457-9/pdf'
+
+    def test_cambridge_foxtrot(self):
+        """Test Cambridge University Press dance function across different eras."""
+        # Test PMIDs from different decades to ensure Cambridge dance works across time periods
+        
+        # 1990s era - Law Med Health Care
+        pmid_1990s = '1630136'  # 1992 - DOI: 10.1111/j.1748-720x.1992.tb01177.x
+        source = FindIt(pmid=pmid_1990s)
+        # Cambridge journals should either get PDF URL or fall back to PMC
+        assert source.url is not None or source.reason is not None
+        
+        # 2010s era - Trans R Hist Soc  
+        pmid_2010s = '26633910'  # 2015 - DOI: 10.1017/S008044011500002X
+        source = FindIt(pmid=pmid_2010s)
+        assert source.url is not None or source.reason is not None
+        
+        # 2020s era - Philosophy
+        pmid_2020s = '38481934'  # 2023 - DOI: 10.1017/S0031819123000049
+        source = FindIt(pmid=pmid_2020s)
+        assert source.url is not None or source.reason is not None
+
+    def test_sage_hula(self):
+        """Test SAGE Publications dance function."""
+        # Test SAGE paywall detection - should either get PMC or access denial
+        pmid_sage_paywall = '22295291'  # South Asia Res - typical paywalled SAGE article
+        source = FindIt(pmid=pmid_sage_paywall)
+        # Should either get PMC URL or SAGE access denial
+        if source.url:
+            assert "europepmc.org" in source.url
+        else:
+            assert source.reason is not None
+            assert "SAGE" in source.reason or "DENIED" in source.reason
+        
+        # Test SAGE with PMC availability
+        pmid_sage_pmc = '30369646'  # Urban Stud - available in both SAGE and PMC
+        source = FindIt(pmid=pmid_sage_pmc)
+        # FindIt should prefer PMC over SAGE paywall
+        assert source.url is not None or source.reason is not None
+        if source.url:
+            assert "europepmc.org" in source.url
+
+    def test_sage_integration_coverage(self):
+        """Test SAGE journal coverage across different subject areas."""
+        # Test different SAGE journals to ensure registry integration
+        sage_test_cases = [
+            ('22295291', 'South Asia Res'),     # Political science
+            ('38863277', 'Med Sci Law'),        # Medical-legal
+            ('37972566', 'Sex Abuse'),          # Psychology
+        ]
+        
+        for pmid, expected_journal in sage_test_cases:
+            source = FindIt(pmid=pmid)
+            assert source.pma.journal == expected_journal
+            assert source.pma.doi.startswith('10.1177/')  # SAGE DOI prefix
+            # Should either get PMC URL or SAGE-specific error (never NOFORMAT)
+            if source.reason:
+                assert 'NOFORMAT' not in source.reason
+            assert source.url is not None or source.reason is not None

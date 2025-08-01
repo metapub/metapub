@@ -6,6 +6,7 @@ from .misc_doi import doi_templates, simple_formats_doi
 from .misc_pii import simple_formats_pii
 from .misc_vip import vip_format, vip_journals, vip_journals_nonstandard
 from .bmc import BMC_journals, BMC_format
+from .cambridge import cambridge_journals
 from .cantdo_list import JOURNAL_CANTDO_LIST
 
 # simple_formats_pmid: links to PDFs that can be constructed using the

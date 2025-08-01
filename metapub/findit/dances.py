@@ -42,10 +42,13 @@ def the_doi_2step(doi):
         NoPDFLink if dx.doi.org lookup failed (see error.message)
     '''
     _start_dx_doi_engine()
+    attempted_url = f"{DX_DOI_URL}/{doi}"
     try:
         return dx_doi_engine.resolve(doi)
-    except (BadDOI, DxDOIError) as error:
-        raise NoPDFLink('%r' % error)
+    except BadDOI as error:
+        raise NoPDFLink(f'MISSING: Invalid DOI format ({error}) - attempted: {attempted_url}')
+    except DxDOIError as error:
+        raise NoPDFLink(f'TXERROR: dx.doi.org lookup failed ({error}) - attempted: {attempted_url}')
 
 def standardize_journal_name(journal_name):
     '''Returns a "standardized" journal name with periods stripped out.'''
@@ -534,14 +537,14 @@ def the_nature_ballet(pma, verify=True):
                 elif 'html' in content_type:
                     page_text = response.text.lower()
                     if any(term in page_text for term in ['paywall', 'subscribe', 'sign in', 'log in', 'purchase']):
-                        raise AccessDenied('PAYWALL: Nature article requires subscription')
+                        raise AccessDenied(f'PAYWALL: Nature article requires subscription - attempted: {pdf_url}')
                     else:
                         raise NoPDFLink(f'TXERROR: Nature returned HTML instead of PDF for {pdf_url}')
                 else:
                     raise NoPDFLink(f'TXERROR: Unexpected content type {content_type} from Nature')
 
             elif response.status_code == 403:
-                raise AccessDenied('DENIED: Access forbidden by Nature')
+                raise AccessDenied(f'DENIED: Access forbidden by Nature - attempted: {pdf_url}')
             elif response.status_code == 404:
                 # DOI-based URL failed, try fallback approach
                 pass
@@ -579,7 +582,7 @@ def the_nature_ballet(pma, verify=True):
                         elif 'html' in content_type:
                             page_text = response.text.lower()
                             if any(term in page_text for term in ['paywall', 'subscribe', 'sign in', 'log in', 'purchase']):
-                                raise AccessDenied('PAYWALL: Nature article requires subscription')
+                                raise AccessDenied(f'PAYWALL: Nature article requires subscription - attempted: {fallback_url}')
                             else:
                                 # Old format URLs redirect to modern URLs, so this might be expected
                                 # Try to extract the modern URL from the redirect
@@ -591,14 +594,14 @@ def the_nature_ballet(pma, verify=True):
                             raise NoPDFLink(f'TXERROR: Unexpected content type {content_type} from Nature fallback')
 
                     elif response.status_code == 403:
-                        raise AccessDenied('DENIED: Access forbidden by Nature')
+                        raise AccessDenied(f'DENIED: Access forbidden by Nature - attempted: {fallback_url}')
                     elif response.status_code == 404:
-                        raise NoPDFLink('NOTFOUND: Article not found on Nature platform (both approaches failed)')
+                        raise NoPDFLink(f'NOTFOUND: Article not found on Nature platform - attempted: {pdf_url}, {fallback_url}')
                     else:
-                        raise NoPDFLink(f'TXERROR: Nature fallback returned status {response.status_code}')
+                        raise NoPDFLink(f'TXERROR: Nature fallback returned status {response.status_code} - attempted: {fallback_url}')
 
                 except requests.exceptions.RequestException as e:
-                    raise NoPDFLink(f'TXERROR: Network error with Nature fallback: {e}')
+                    raise NoPDFLink(f'TXERROR: Network error with Nature fallback: {e} - attempted: {fallback_url}')
 
     # If we get here, neither approach worked
     missing_data = []
@@ -608,9 +611,17 @@ def the_nature_ballet(pma, verify=True):
         missing_data.append('volume/issue/pii data')
 
     if missing_data:
-        raise NoPDFLink(f'MISSING: {" and ".join(missing_data)} - cannot construct Nature URL')
+        raise NoPDFLink(f'MISSING: {" and ".join(missing_data)} - cannot construct Nature URL - attempted: none')
     else:
-        raise NoPDFLink('TXERROR: Both DOI-based and volume/issue/pii approaches failed for Nature article')
+        # Both approaches were attempted but failed
+        attempted_urls = []
+        if pma.doi and pma.doi.startswith('10.1038/'):
+            article_id = pma.doi.split('/', 1)[1]
+            attempted_urls.append(f'https://www.nature.com/articles/{article_id}.pdf')
+        if pma.volume and pma.issue and pma.pii:
+            attempted_urls.append(f'traditional Nature URL (vol/issue/pii)')
+        urls_str = ', '.join(attempted_urls) if attempted_urls else 'none'
+        raise NoPDFLink(f'TXERROR: Both DOI-based and volume/issue/pii approaches failed for Nature article - attempted: {urls_str}')
 
 
 PMC_PDF_URL = 'https://www.ncbi.nlm.nih.gov/pmc/articles/pmid/{a.pmid}/pdf'
@@ -820,7 +831,7 @@ def the_sage_hula(pma, verify=True):
     :raises: AccessDenied, NoPDFLink
     '''
     if not pma.doi:
-        raise NoPDFLink('MISSING: DOI required for SAGE journals')
+        raise NoPDFLink('MISSING: DOI required for SAGE journals - attempted: none')
 
     # SAGE uses DOI-based URLs on their unified platform
     pdf_url = f'https://journals.sagepub.com/doi/pdf/{pma.doi}'

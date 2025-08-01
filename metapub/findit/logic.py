@@ -175,7 +175,7 @@ def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None):
     # Many Biomed Central journals start with "BMC", but many more don't.
     if jrnl.find('BMC') == 0 or jrnl in BMC_journals:
         try:
-            url = the_biomed_calypso(pma, verify)
+            url = the_bmc_boogie(pma, verify)
         except MetaPubError as error:
             reason = str(error)
 

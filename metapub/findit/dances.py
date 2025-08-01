@@ -268,7 +268,7 @@ def the_sciencedirect_disco(pma, verify=True):
         # give up, it's probably a "shopping cart" link.
         raise NoPDFLink('DENIED: ScienceDirect did not provide pdf link (probably paywalled)')
 
-def the_biomed_calypso(pma, verify=False):
+def the_bmc_boogie(pma, verify=False):
     '''Note: verification turned off by default because BMC is an all-open-access publisher.
 
        (You may still like to use verify=True to make sure it's a valid link.)

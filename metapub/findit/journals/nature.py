@@ -55,4 +55,45 @@ nature_journals = {
     'Oncogene': {'ja': 'onc'},
     'Pediatr Res': {'ja': 'pr'},
     'Pharmacogenomics J': {'ja': 'tpj'},
+    # Additional Nature journals found in PMID data
+    ## BELOW ARE UNTESTED, SOME PROBABLY WRONG -- HANG TIGHT
+    'Nat Rev Microbiol': {'ja': 'nrmicro'},
+    'Nat Immunol': {'ja': 'ni'},
+    'Cell Mol Immunol': {'ja': 'cmi'},
+    'Nat Rev Cancer': {'ja': 'nrc'},
+    'Nat Ecol Evol': {'ja': 's41559'},
+    'Nat Hum Behav': {'ja': 's41562'},
+    'Nat Rev Dis Primers': {'ja': 'nrdp'},
+    'Nat Rev Chem': {'ja': 's41570'},
+    'Nat Struct Mol Biol': {'ja': 'nsmb'},
+    'Nat Food': {'ja': 's43016'},
+    'Nat Metab': {'ja': 's42255'},
+    'Nat Cancer': {'ja': 's43018'},
+    'Nat Chem Biol': {'ja': 'nchembio'},
+    'Nat Rev Neurosci': {'ja': 'nrn'},
+    'Nat Aging': {'ja': 's43587'},
+    'Nat Plants': {'ja': 'nplants'},
+    'Nat Biomed Eng': {'ja': 's41551'},
+    'Nat Struct Biol': {'ja': 'nsb'},  # Legacy name for Nat Struct Mol Biol
+    'Nat New Biol': {'ja': 'newbio'},  # Legacy Nature journal
+    'Paraplegia': {'ja': 'sc'},  # Now Spinal Cord
+    'Spinal Cord': {'ja': 'sc'},
+    # Non-Nature publisher journals that appear in Nature PMIDs
+    'Biotechnology (N Y)': {'ja': 'nbt'},  # Actually Nature Biotechnology variation
+    'Int J Impot Res': {'ja': 'ijir'},
+    'J Antibiot (Tokyo)': {'ja': 'ja'},
+    'J Expo Anal Environ Epidemiol': {'ja': 'jea'},
+    'J Expo Sci Environ Epidemiol': {'ja': 'jes'},
+    'Bone Marrow Transplant': {'ja': 'bmt'},
+    'Acta Pharmacol Sin': {'ja': 'aps'},
+    'Jpn J Hum Genet': {'ja': 'jhg'},
+    'Lab Anim (NY)': {'ja': 'laban'},
+    'Evid Based Dent': {'ja': 'ebd'},
+    'Cell Death Differ': {'ja': 'cdd'},
+    'Gene Ther': {'ja': 'gt'},
+    'J Perinatol': {'ja': 'jp'},
+    'Jinrui Idengaku Zasshi': {'ja': 'jhg'},  # Japanese name for J Hum Genet
+    'Br Dent J': {'ja': 'bdj'},
+    'Prostate Cancer Prostatic Dis': {'ja': 'pcan'},
+    ## END UNTESTED / UNRELIABLE SECTION
 }

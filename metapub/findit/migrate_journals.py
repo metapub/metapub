@@ -51,8 +51,11 @@ from metapub.findit.journals.paywalled import (
     schattauer_journals, RSC_journals, thieme_journals, weird_paywall_publishers
 )
 
-logging.basicConfig(level=logging.INFO)
+# Only configure logging if this is run as a script, not when imported
 log = logging.getLogger(__name__)
+
+# Track if we've already configured this module's logging to avoid duplicates
+_logging_configured = False
 
 # Publisher configurations with their journals and dance functions
 PUBLISHER_CONFIGS = [
@@ -82,13 +85,13 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'degruyter',
-        'dance_function': 'the_degruyter_dance',
+        'dance_function': 'paywall_handler',  # TODO: Implement the_degruyter_dance
         'format_template': None,
         'journals': degruyter_journals,
     },
     {
         'name': 'dustri',
-        'dance_function': 'the_dustri_dance',
+        'dance_function': 'paywall_handler',  # TODO: Implement the_dustri_dance
         'format_template': None,
         'journals': dustri_journals,
     },
@@ -226,6 +229,14 @@ def migrate_journals(db_path=None):
     """Migrate all existing journal data to the new registry database."""
     registry = JournalRegistry(db_path)
     
+    # Check if database already has data to avoid duplicate migration
+    stats = registry.get_stats()
+    if stats['publishers'] > 0:
+        log.debug("Journal registry already populated (%d publishers, %d journals), skipping migration", 
+                 stats['publishers'], stats['journals'])
+        registry.close()
+        return stats
+    
     log.info("Starting journal migration...")
     
     total_publishers = 0
@@ -316,5 +327,14 @@ def main():
     stats = migrate_journals(args.db_path)
     print(f"Migration completed: {stats}")
 
+def _configure_logging():
+    """Configure logging if not already configured."""
+    global _logging_configured
+    if not _logging_configured:
+        logging.basicConfig(level=logging.INFO)
+        _logging_configured = True
+
 if __name__ == '__main__':
+    # Configure logging only when run as a script
+    _configure_logging()
     main()

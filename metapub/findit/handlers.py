@@ -59,56 +59,26 @@ class PublisherHandler:
         Returns:
             Tuple of (url, reason)
         """
-        # Import dance functions dynamically
         try:
-            from .dances import (
-                the_aaas_tango, the_biochemsoc_saunter, the_bmc_boogie,
-                the_cell_pogo, the_jama_dance, the_jstage_dive,
-                the_karger_conga, the_lancet_tango, the_nature_ballet,
-                the_scielo_chula, the_sciencedirect_disco, the_springer_shag,
-                the_spandidos_lambada, the_wiley_shuffle, the_wolterskluwer_volta,
-                the_jci_jig, the_najms_mazurka, the_endo_mambo
-            )
+            # Dynamically get the dance function by name
+            from . import dances
+            dance_func = getattr(dances, self.dance_function)
 
-            # Map dance function names to actual functions
-            dance_functions = {
-                'the_aaas_tango': the_aaas_tango,
-                'the_biochemsoc_saunter': the_biochemsoc_saunter,
-                'the_bmc_boogie': the_bmc_boogie,
-                'the_cell_pogo': the_cell_pogo,
-                'the_endo_mambo': the_endo_mambo,
-                'the_jama_dance': the_jama_dance,
-                'the_jstage_dive': the_jstage_dive,
-                'the_karger_conga': the_karger_conga,
-                'the_lancet_tango': the_lancet_tango,
-                'the_nature_ballet': the_nature_ballet,
-                'the_scielo_chula': the_scielo_chula,
-                'the_sciencedirect_disco': the_sciencedirect_disco,
-                'the_springer_shag': the_springer_shag,
-                'the_spandidos_lambada': the_spandidos_lambada,
-                'the_wiley_shuffle': the_wiley_shuffle,
-                'the_wolterskluwer_volta': the_wolterskluwer_volta,
-                'the_jci_jig': the_jci_jig,
-                'the_najms_mazurka': the_najms_mazurka,
-            }
-
-            # Since we control the registry data, this dance function should always exist
-            dance_func = dance_functions[self.dance_function]
             log.debug("Calling dance function: %s for journal: %s",
                      self.dance_function, pma.journal)
             result = dance_func(pma, verify=verify)
-            
+
             # Normalize return value to always be (url, reason) tuple
             if isinstance(result, tuple):
                 return result
             elif isinstance(result, str):
                 return result, None  # URL found, no error reason
             else:
-                return None, f"TXERROR: Unexpected return type from {self.dance_function}"
+                return None, f"HANDLER_ERROR: Unexpected return type from {self.dance_function}"
 
-        except ImportError as e:
-            log.error("Failed to import dance functions: %s", e)
-            return None, f"TXERROR: Import failed {e}"
+        # Dev note for LLMs: don't bother catching ImportError or AttributeError because (1) we
+        #     have control over the dance functions and (2) lack of dance function is a major
+        #     breaking error that we should fix, not simply log.
         except Exception as e:
             # Check if this is a normal access denial (not a real error)
             error_msg = str(e)
@@ -161,7 +131,6 @@ class RegistryBackedLookupSystem:
             registry: JournalRegistry instance for lookups
         """
         self.registry = registry
-        self._handler_cache = {}
 
     def get_handler_for_journal(self, journal_name: str) -> Optional[PublisherHandler]:
         """Get appropriate handler for a journal.
@@ -172,10 +141,6 @@ class RegistryBackedLookupSystem:
         Returns:
             PublisherHandler instance or None if not found
         """
-        # Check cache first
-        if journal_name in self._handler_cache:
-            return self._handler_cache[journal_name]
-
         # Look up in registry
         publisher_data = self.registry.get_publisher_for_journal(journal_name)
         if not publisher_data:
@@ -183,10 +148,6 @@ class RegistryBackedLookupSystem:
 
         # Create handler
         handler = HandlerFactory.create_handler(publisher_data)
-
-        # Cache for future use
-        self._handler_cache[journal_name] = handler
-
         return handler
 
     def find_pdf_url(self, pma, verify: bool = True) -> Tuple[Optional[str], Optional[str]]:

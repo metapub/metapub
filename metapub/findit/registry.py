@@ -6,7 +6,6 @@ that can efficiently handle thousands of journals with lazy loading and caching.
 
 import sqlite3
 import logging
-from functools import lru_cache
 from typing import Optional, Dict, Tuple, List
 from ..config import DEFAULT_CACHE_DIR
 from ..cache_utils import get_cache_path
@@ -187,7 +186,6 @@ class JournalRegistry:
             log.error('Error during auto-population: %s', error)
             raise
     
-    @lru_cache(maxsize=1000)
     def get_publisher_for_journal(self, journal_name: str) -> Optional[Dict]:
         """Get publisher information for a journal name.
         
@@ -245,10 +243,6 @@ class JournalRegistry:
             VALUES (?, ?, ?, ?)
         ''', (name, dance_function, format_template, base_url))
         conn.commit()
-        
-        # Clear cache since we added new data
-        self.get_publisher_for_journal.cache_clear()
-        
         return cursor.lastrowid
     
     def add_journal(self, name: str, publisher_id: int, 
@@ -282,10 +276,6 @@ class JournalRegistry:
                 ''', (journal_id, alias))
         
         conn.commit()
-        
-        # Clear cache since we added new data
-        self.get_publisher_for_journal.cache_clear()
-        
         return journal_id
     
     def get_all_journals(self) -> List[str]:

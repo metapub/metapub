@@ -5,7 +5,6 @@ Tests the registry-backed handler system that replaces the static PUBMED_SWITCHB
 """
 
 import unittest
-import pytest
 import os
 from unittest.mock import Mock, patch
 
@@ -15,6 +14,7 @@ from metapub.findit.handlers import (
     RegistryBackedLookupSystem
 )
 from metapub.findit.registry import JournalRegistry
+from .test_compat import skip_network_tests
 
 
 class TestPublisherHandler(unittest.TestCase):
@@ -205,7 +205,7 @@ class TestRegistryBackedLookupSystem(unittest.TestCase):
             self.assertEqual(reason, "NOFORMAT: No handler found for journal 'Unknown Journal'. Report with sample PMID at https://github.com/metapub/metapub/issues")
 
 
-@pytest.mark.skipif(os.getenv('SKIP_NETWORK_TESTS'), reason="Network tests disabled")
+@skip_network_tests
 class TestRegistryIntegration(unittest.TestCase):
     """Integration tests with the actual registry."""
 
@@ -254,7 +254,7 @@ class TestRegistryIntegration(unittest.TestCase):
                           "Registry should contain multiple publishers")
 
 
-@pytest.mark.skipif(os.getenv('SKIP_NETWORK_TESTS'), reason="Network tests disabled")
+@skip_network_tests
 class TestLiveHandlerBehavior(unittest.TestCase):
     """Test handler behavior with real PMIDs (network required)."""
 

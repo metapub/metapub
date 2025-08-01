@@ -14,6 +14,7 @@ from ..text_mining import find_doi_in_string
 from ..utils import remove_chars
 
 from .journals import *
+from .journals.nature import nature_format, nature_journals
 
 OK_STATUS_CODES = (200, 301, 302, 307)
 
@@ -28,7 +29,7 @@ def _start_dx_doi_engine():
         dx_doi_engine = DxDOI()
 
 def the_doi_2step(doi):
-    '''Given a doi, uses DxDOI lookup engine to source the publisher's 
+    '''Given a doi, uses DxDOI lookup engine to source the publisher's
             article URL for this doi.
 
     Args:
@@ -56,7 +57,7 @@ def verify_pdf_url(pdfurl, publisher_name=''):
         raise NoPDFLink('DENIED: %s url (%s) requires login.' % (publisher_name, pdfurl))
 
     if not res.ok:
-        raise NoPDFLink('TXERROR: %i status returned from %s url (%s)' % (res.status_code, 
+        raise NoPDFLink('TXERROR: %i status returned from %s url (%s)' % (res.status_code,
                             publisher_name, pdfurl))
 
     if res.status_code in OK_STATUS_CODES and 'pdf' in res.headers['content-type']:
@@ -72,7 +73,7 @@ def rectify_pma_for_vip_links(pma):
     If volume, issue, and page data are all represented, return the PubMedArticle (possibly
     modified).
 
-    If missing data, raise NoPDFLink('MISSING: vip...') 
+    If missing data, raise NoPDFLink('MISSING: vip...')
     '''
     pma = square_voliss_data_for_pma(pma)
     if pma.volume and pma.first_page and pma.issue:
@@ -87,7 +88,7 @@ def the_doi_slide(pma, verify=True):
          :return: url (string)
          :raises: AccessDenied, NoPDFLink
     '''
-    jrnl = standardize_journal_name(pma.journal) 
+    jrnl = standardize_journal_name(pma.journal)
     if pma.doi:
         url = simple_formats_doi[jrnl].format(a=pma)
     else:
@@ -145,7 +146,7 @@ def the_vip_nonstandard_shake(pma, verify=True):
     if verify:
         verify_pdf_url(url)
     return url
- 
+
 
 def the_pii_polka(pma, verify=True):
     '''Dance of the miscellaneous journals that use a PII in their URL construction
@@ -230,7 +231,7 @@ def the_najms_mazurka(pma, verify=True):
     return url
 
 def the_sciencedirect_disco(pma, verify=True):
-    '''Note: verify=True required to find link.  Parameter supplied only for unity 
+    '''Note: verify=True required to find link.  Parameter supplied only for unity
        with other dances.
 
          :param: pma (PubMedArticle object)
@@ -336,7 +337,7 @@ def the_scielo_chula(pma, verify=True):
 
 def the_aaas_tango(pma, verify=True):
     '''Note: "verify" param recommended here (page navigation usually necessary).
-    
+
          :param: pma (PubMedArticle object)
          :param: verify (bool) [default: True]
          :return: url (string)
@@ -366,7 +367,7 @@ def the_aaas_tango(pma, verify=True):
         else:
             # some items are acquirable via free account registration... but let's not mess with this just yet.
             raise NoPDFLink('DENIED: AAAS paper subscription-only or requires site registration (url: %s)' % pdfurl)
-    
+
         form = tree.cssselect('form')[0]
         fbi = form.fields.get('form_build_id')
 
@@ -441,7 +442,7 @@ def the_wiley_shuffle(pma, verify=True):
 
     Note: Wiley sometimes buries PDF links in HTML pages we have to parse first.
     Turning off verification (verify=False) may return only a superficial link.
-         
+
          :param: pma (PubMedArticle object)
          :param: verify (bool) [default: True]
          :return: url (string)
@@ -499,32 +500,117 @@ def the_lancet_tango(pma, verify=True):
     return url
 
 def the_nature_ballet(pma, verify=True):
-    '''  :param: pma (PubMedArticle object)
-         :param: verify (bool) [default: True]
-         :return: url (string)
-         :raises: AccessDenied, NoPDFLink
+    '''Nature Publishing Group dance using modern DOI-based URLs with fallback.
+
+    Primary approach: Modern DOI-based URL structure
+    https://www.nature.com/articles/{DOI_SUFFIX}.pdf
+
+    Fallback approach: Traditional volume/issue/pii URLs (still work via redirects)
+    http://www.nature.com/{ja}/journal/v{volume}/n{issue}/pdf/{pii}.pdf
+
+    :param: pma (PubMedArticle object)
+    :param: verify (bool) [default: True]
+    :return: url (string)
+    :raises: AccessDenied, NoPDFLink
     '''
-    url = ''
-    if pma.doi:
+    pdf_url = None
+
+    # Primary approach: DOI-based URL
+    if pma.doi and pma.doi.startswith('10.1038/'):
+        article_id = pma.doi.split('/', 1)[1]
+        pdf_url = f'https://www.nature.com/articles/{article_id}.pdf'
+
+        if not verify:
+            return pdf_url
+
+        # Try the DOI-based approach first
         try:
-            starturl = the_doi_2step(pma.doi)
-            url = starturl.replace('html', 'pdf').replace('abs', 'pdf').replace('full', 'pdf')
-        except NoPDFLink:
-            # alright, let's try the pii route.
+            response = requests.get(pdf_url, timeout=10)
+
+            if response.status_code == 200:
+                content_type = response.headers.get('content-type', '').lower()
+                if 'pdf' in content_type:
+                    return response.url
+                elif 'html' in content_type:
+                    page_text = response.text.lower()
+                    if any(term in page_text for term in ['paywall', 'subscribe', 'sign in', 'log in', 'purchase']):
+                        raise AccessDenied('PAYWALL: Nature article requires subscription')
+                    else:
+                        raise NoPDFLink(f'TXERROR: Nature returned HTML instead of PDF for {pdf_url}')
+                else:
+                    raise NoPDFLink(f'TXERROR: Unexpected content type {content_type} from Nature')
+
+            elif response.status_code == 403:
+                raise AccessDenied('DENIED: Access forbidden by Nature')
+            elif response.status_code == 404:
+                # DOI-based URL failed, try fallback approach
+                pass
+            else:
+                raise NoPDFLink(f'TXERROR: Nature returned status {response.status_code} for {pdf_url}')
+
+        except requests.exceptions.RequestException:
+            # Network error with DOI approach, try fallback
             pass
 
-    if url == '':
-        if pma.pii:
-            url = nature_format.format(a=pma, ja=nature_journals[standardize_journal_name(pma.journal)]['ja'])
-        else:
-            if pma.doi:
-                raise NoPDFLink('MISSING: pii, TXERROR: dx.doi.org resolution failed for doi %s' % pma.doi)
-            else:
-                raise NoPDFLink('MISSING: pii, doi')
+    # Fallback approach: Traditional volume/issue/pii URL construction
+    # Only works for traditional Nature journals with short PIIs (not modern s4xxxx journals)
+    if pma.volume and pma.issue and pma.pii and pma.pii != pma.doi:
 
-    if verify:
-        verify_pdf_url(url, 'Nature')
-    return url
+        # Skip modern journals that use full DOI as PII (s41xxx, s42xxx, s43xxx)
+        is_modern_journal = pma.doi and any(code in pma.doi for code in ['s41', 's42', 's43'])
+
+        if not is_modern_journal:
+            # Find journal abbreviation for traditional journals
+            jrnl = standardize_journal_name(pma.journal)
+            if jrnl in nature_journals:
+                ja = nature_journals[jrnl]['ja']
+                fallback_url = nature_format.format(ja=ja, a=pma)
+
+                if not verify:
+                    return fallback_url
+
+                try:
+                    response = requests.get(fallback_url, timeout=10)
+
+                    if response.status_code == 200:
+                        content_type = response.headers.get('content-type', '').lower()
+                        if 'pdf' in content_type:
+                            return response.url
+                        elif 'html' in content_type:
+                            page_text = response.text.lower()
+                            if any(term in page_text for term in ['paywall', 'subscribe', 'sign in', 'log in', 'purchase']):
+                                raise AccessDenied('PAYWALL: Nature article requires subscription')
+                            else:
+                                # Old format URLs redirect to modern URLs, so this might be expected
+                                # Try to extract the modern URL from the redirect
+                                if 'articles' in response.url:
+                                    return response.url.replace('/articles/', '/articles/') + '.pdf'
+                                else:
+                                    raise NoPDFLink(f'TXERROR: Nature fallback returned HTML for {fallback_url}')
+                        else:
+                            raise NoPDFLink(f'TXERROR: Unexpected content type {content_type} from Nature fallback')
+
+                    elif response.status_code == 403:
+                        raise AccessDenied('DENIED: Access forbidden by Nature')
+                    elif response.status_code == 404:
+                        raise NoPDFLink('NOTFOUND: Article not found on Nature platform (both approaches failed)')
+                    else:
+                        raise NoPDFLink(f'TXERROR: Nature fallback returned status {response.status_code}')
+
+                except requests.exceptions.RequestException as e:
+                    raise NoPDFLink(f'TXERROR: Network error with Nature fallback: {e}')
+
+    # If we get here, neither approach worked
+    missing_data = []
+    if not pma.doi or not pma.doi.startswith('10.1038/'):
+        missing_data.append('valid Nature DOI')
+    if not (pma.volume and pma.issue and pma.pii):
+        missing_data.append('volume/issue/pii data')
+
+    if missing_data:
+        raise NoPDFLink(f'MISSING: {" and ".join(missing_data)} - cannot construct Nature URL')
+    else:
+        raise NoPDFLink('TXERROR: Both DOI-based and volume/issue/pii approaches failed for Nature article')
 
 
 PMC_PDF_URL = 'https://www.ncbi.nlm.nih.gov/pmc/articles/pmid/{a.pmid}/pdf'
@@ -556,7 +642,7 @@ def the_pmc_twist(pma, verify=True, use_nih=False):
         return url
 
     except (NoPDFLink, AccessDenied):
-        # Fallback to using NIH.gov if we're allowing it.        
+        # Fallback to using NIH.gov if we're allowing it.
         if use_nih:
             #   URL block might be discerned by grepping for this:
             #
@@ -595,7 +681,7 @@ def the_karger_conga(pma, verify=True):
     #       http://www.karger.com/Article/FullText/351538
     #       http://www.karger.com/Article/Pdf/351538
 
-    if pma.doi: 
+    if pma.doi:
         if find_doi_in_string(pma.doi):
             kid = pma.doi.split('/')[1]
             if kid.isdigit():
@@ -651,7 +737,7 @@ def the_wolterskluwer_volta(pma, verify=True):
     elif pma.issn:
         pma = rectify_pma_for_vip_links(pma)  #raises NoPDFLink if missing data
         baseurl = requests.get(volissurl.format(a=pma)).url
-        
+
     res = requests.get(baseurl)
     tree = etree.fromstring(res.content, HTMLParser())
     try:
@@ -672,7 +758,7 @@ def the_biochemsoc_saunter(pma, verify=True):
          :raises: AccessDenied, NoPDFLink
     '''
     jrnl = standardize_journal_name(pma.journal)
-    pma = rectify_pma_for_vip_links(pma)  #raises NoPDFLink if missing data 
+    pma = rectify_pma_for_vip_links(pma)  #raises NoPDFLink if missing data
     host = biochemsoc_journals[jrnl]['host']
     url = biochemsoc_format.format(a=pma, host=host, ja=biochemsoc_journals[jrnl]['ja'])
     if verify:
@@ -721,13 +807,13 @@ def the_endo_mambo(pma, verify=True):
 
 def the_sage_hula(pma, verify=True):
     '''SAGE Publications dance for modern journals.sagepub.com hosting.
-    
+
     SAGE moved to a unified hosting platform using DOI-based URLs:
     https://journals.sagepub.com/doi/{DOI}
-    
+
     For PDF access, we convert to:
     https://journals.sagepub.com/doi/pdf/{DOI}
-    
+
     :param: pma (PubMedArticle object)
     :param: verify (bool) [default: True]
     :return: url (string)
@@ -735,17 +821,17 @@ def the_sage_hula(pma, verify=True):
     '''
     if not pma.doi:
         raise NoPDFLink('MISSING: DOI required for SAGE journals')
-    
+
     # SAGE uses DOI-based URLs on their unified platform
     pdf_url = f'https://journals.sagepub.com/doi/pdf/{pma.doi}'
-    
+
     if not verify:
         return pdf_url
-    
+
     # Verify the PDF URL works
     try:
         response = requests.get(pdf_url, timeout=10)
-        
+
         if response.status_code == 200:
             content_type = response.headers.get('content-type', '').lower()
             if 'pdf' in content_type:
@@ -759,14 +845,14 @@ def the_sage_hula(pma, verify=True):
                     raise NoPDFLink(f'TXERROR: SAGE returned HTML instead of PDF for {pdf_url}')
             else:
                 raise NoPDFLink(f'TXERROR: Unexpected content type {content_type} from SAGE')
-                
+
         elif response.status_code == 403:
             raise AccessDenied('DENIED: Access forbidden by SAGE')
         elif response.status_code == 404:
             raise NoPDFLink('NOTFOUND: Article not found on SAGE platform')
         else:
             raise NoPDFLink(f'TXERROR: SAGE returned status {response.status_code} for {pdf_url}')
-            
+
     except requests.exceptions.RequestException as e:
         raise NoPDFLink(f'TXERROR: Network error accessing SAGE: {e}')
 

@@ -1,0 +1,202 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2019//EN" "https://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_190101.dtd">
+<PubmedArticleSet>
+<PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+        <PMID Version="1">23435529</PMID>
+        <DateCompleted>
+            <Year>2013</Year>
+            <Month>09</Month>
+            <Day>30</Day>
+        </DateCompleted>
+        <DateRevised>
+            <Year>2017</Year>
+            <Month>02</Month>
+            <Day>20</Day>
+        </DateRevised>
+        <Article PubModel="Print-Electronic">
+            <Journal>
+                <ISSN IssnType="Electronic">1527-7755</ISSN>
+                <JournalIssue CitedMedium="Internet">
+                    <Volume>31</Volume>
+                    <Issue>10</Issue>
+                    <PubDate>
+                        <Year>2013</Year>
+                        <Month>Apr</Month>
+                        <Day>01</Day>
+                    </PubDate>
+                </JournalIssue>
+                <Title>Journal of clinical oncology : official journal of the American Society of Clinical Oncology</Title>
+                <ISOAbbreviation>J. Clin. Oncol.</ISOAbbreviation>
+            </Journal>
+            <ArticleTitle>Randomized phase III trial of docetaxel versus vinorelbine, both combined with cisplatin, as first-line therapy for advanced non-small-cell lung cancer: the TAX 325 study group.</ArticleTitle>
+            <Pagination>
+                <MedlinePgn>1207-13</MedlinePgn>
+            </Pagination>
+            <ELocationID EIdType="doi" ValidYN="Y">10.1200/JCO.2012.44.6112</ELocationID>
+            <Abstract>
+                <AbstractText Label="PURPOSE" NlmCategory="OBJECTIVE">To compare the efficacy and safety of docetaxel plus cisplatin (DC) versus vinorelbine plus cisplatin (VC) as first-line chemotherapy for advanced non-small-cell lung cancer (NSCLC).</AbstractText>
+                <AbstractText Label="PATIENTS AND METHODS" NlmCategory="METHODS">Patients with advanced NSCLC and no prior chemotherapy were randomly assigned to receive either DC (docetaxel 75 mg/m(2) plus cisplatin 75 mg/m(2)) or VC (vinorelbine 25 mg/m(2) on days 1 and 8 plus cisplatin 100 mg/m(2) on day 1) every 3 weeks for up to six cycles.</AbstractText>
+                <AbstractText Label="RESULTS" NlmCategory="RESULTS">A total of 408 patients were enrolled. The median survival time was significantly longer in the DC arm than in the VC arm (11.3 v 10.1 months; hazard ratio [HR], 0.81; 95% CI, 0.65 to 1.00; P = .044). The 1-year survival rate was 46% for DC versus 40% for VC. Time to progression was significantly longer for DC than for VC (5.6 v 4.2 months; HR, 0.75; 95% CI, 0.62 to 0.91; P = .0046). Overall response rates were similar (31.6% for DC v 24.5% for VC; P = .13). Grade 3 to 4 neutropenia was more frequent in the DC arm (67.2% v 51.2%; P = .0018), as was grade 3 to 4 thrombocytopenia (8.8% v 1.0%; P = .0006). Febrile neutropenia occurred in 16.2% of DC patients versus 8.8% of VC patients (P = .03). Grade 3 to 4 neurotoxicity was infrequent in both arms (2.5% for DC v 1.5% for VC).</AbstractText>
+                <AbstractText Label="CONCLUSION" NlmCategory="CONCLUSIONS">DC demonstrated statistically significant improvement in survival and time to progression compared with VC as first-line chemotherapy for advanced NSCLC. The toxicity profile was manageable in both treatment arms.</AbstractText>
+            </Abstract>
+            <AuthorList CompleteYN="Y">
+                <Author ValidYN="Y">
+                    <LastName>Fossella</LastName>
+                    <ForeName>Frank</ForeName>
+                    <Initials>F</Initials>
+                    <AffiliationInfo>
+                        <Affiliation>University of Texas MD Anderson Cancer Center, Houston, TX 77030, USA. ffossell@mdanderson.org</Affiliation>
+                    </AffiliationInfo>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Pereira</LastName>
+                    <ForeName>Jose R</ForeName>
+                    <Initials>JR</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>von Pawel</LastName>
+                    <ForeName>Joachim</ForeName>
+                    <Initials>J</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Pluzanska</LastName>
+                    <ForeName>Anna</ForeName>
+                    <Initials>A</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Gorbounova</LastName>
+                    <ForeName>Vera</ForeName>
+                    <Initials>V</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Kaukel</LastName>
+                    <ForeName>Erwin</ForeName>
+                    <Initials>E</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Mattson</LastName>
+                    <ForeName>Kari V</ForeName>
+                    <Initials>KV</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Millward</LastName>
+                    <ForeName>Michael</ForeName>
+                    <Initials>M</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Belani</LastName>
+                    <ForeName>Chandra P</ForeName>
+                    <Initials>CP</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>de Marinis</LastName>
+                    <ForeName>Filippo</ForeName>
+                    <Initials>F</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Fukuoka</LastName>
+                    <ForeName>Masahiro</ForeName>
+                    <Initials>M</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Ramlau</LastName>
+                    <ForeName>Rodryg</ForeName>
+                    <Initials>R</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Cupit</LastName>
+                    <ForeName>Lisa</ForeName>
+                    <Initials>L</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Splinter</LastName>
+                    <ForeName>Theo A W</ForeName>
+                    <Initials>TA</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <CollectiveName>TAX 325 Study Group</CollectiveName>
+                </Author>
+            </AuthorList>
+            <Language>eng</Language>
+            <PublicationTypeList>
+                <PublicationType UI="D016428">Journal Article</PublicationType>
+                <PublicationType UI="D016449">Randomized Controlled Trial</PublicationType>
+                <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+            </PublicationTypeList>
+            <ArticleDate DateType="Electronic">
+                <Year>2013</Year>
+                <Month>02</Month>
+                <Day>25</Day>
+            </ArticleDate>
+        </Article>
+        <MedlineJournalInfo>
+            <Country>United States</Country>
+            <MedlineTA>J Clin Oncol</MedlineTA>
+            <NlmUniqueID>8309333</NlmUniqueID>
+            <ISSNLinking>0732-183X</ISSNLinking>
+        </MedlineJournalInfo>
+        <CitationSubset>IM</CitationSubset>
+        <MeshHeadingList>
+            <MeshHeading>
+                <DescriptorName UI="D000328" MajorTopicYN="N">Adult</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D000368" MajorTopicYN="N">Aged</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D002289" MajorTopicYN="N">Carcinoma, Non-Small-Cell Lung</DescriptorName>
+                <QualifierName UI="Q000188" MajorTopicYN="Y">drug therapy</QualifierName>
+                <QualifierName UI="Q000401" MajorTopicYN="N">mortality</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D008175" MajorTopicYN="N">Lung Neoplasms</DescriptorName>
+                <QualifierName UI="Q000188" MajorTopicYN="Y">drug therapy</QualifierName>
+                <QualifierName UI="Q000401" MajorTopicYN="N">mortality</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D008875" MajorTopicYN="N">Middle Aged</DescriptorName>
+            </MeshHeading>
+        </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+        <History>
+            <PubMedPubDate PubStatus="entrez">
+                <Year>2013</Year>
+                <Month>2</Month>
+                <Day>26</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="pubmed">
+                <Year>2013</Year>
+                <Month>2</Month>
+                <Day>26</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="medline">
+                <Year>2013</Year>
+                <Month>10</Month>
+                <Day>1</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+        </History>
+        <PublicationStatus>ppublish</PublicationStatus>
+        <ArticleIdList>
+            <ArticleId IdType="pubmed">23435529</ArticleId>
+            <ArticleId IdType="doi">10.1200/JCO.2012.44.6112</ArticleId>
+        </ArticleIdList>
+    </PubmedData>
+</PubmedArticle>
+</PubmedArticleSet>

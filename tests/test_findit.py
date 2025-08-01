@@ -1,10 +1,10 @@
 import unittest
 import os
-import pytest
 
 from metapub import FindIt
 from metapub.findit import SUPPORTED_JOURNALS 
 from metapub.findit.findit import CACHE_FILENAME
+from .test_compat import skip_network_tests
 
 SAMPLE_PMIDS = {'embargoed': ['25575644', '25700512', '25554792', '25146281', '25766237', '25370453'],
                 'nonembargoed': ['26098888'],
@@ -82,7 +82,7 @@ class TestFindIt(unittest.TestCase):
         # assert src.url is None
         # assert src.reason.startswith('DENIED')
 
-    @pytest.mark.skipif(os.getenv('SKIP_NETWORK_TESTS'), reason="Network tests disabled")
+    @skip_network_tests
     def test_oxford_journals_handler(self):
         """Test FindIt with Oxford Academic journals using new handler system."""
         for pmid in PUBLISHER_SAMPLE_PMIDS['oxford'][:2]:  # Test first 2 to avoid overloading
@@ -94,7 +94,7 @@ class TestFindIt(unittest.TestCase):
                     # Oxford URLs can be oxford.com or europepmc.org for PMC content
                     self.assertTrue('oxford' in src.url.lower() or 'europepmc.org' in src.url.lower())
 
-    @pytest.mark.skipif(os.getenv('SKIP_NETWORK_TESTS'), reason="Network tests disabled")
+    @skip_network_tests
     def test_nature_journals_handler(self):
         """Test FindIt with Nature Publishing Group journals using new handler system."""
         for pmid in PUBLISHER_SAMPLE_PMIDS['nature'][:2]:  # Test first 2 to avoid overloading
@@ -106,7 +106,7 @@ class TestFindIt(unittest.TestCase):
                     # Nature URLs can be nature.com or europepmc.org for PMC content
                     self.assertTrue('nature.com' in src.url.lower() or 'europepmc.org' in src.url.lower())
 
-    @pytest.mark.skipif(os.getenv('SKIP_NETWORK_TESTS'), reason="Network tests disabled")  
+    @skip_network_tests  
     def test_springer_journals_handler(self):
         """Test FindIt with Springer journals using new handler system."""
         for pmid in PUBLISHER_SAMPLE_PMIDS['springer'][:2]:  # Test first 2 to avoid overloading
@@ -117,7 +117,7 @@ class TestFindIt(unittest.TestCase):
                 if src.url:
                     self.assertTrue('springer' in src.url.lower() or 'europepmc.org' in src.url.lower())
 
-    @pytest.mark.skipif(os.getenv('SKIP_NETWORK_TESTS'), reason="Network tests disabled")
+    @skip_network_tests
     def test_science_journals_handler(self):
         """Test FindIt with Science/AAAS journals."""
         for pmid in PUBLISHER_SAMPLE_PMIDS['science'][:1]:  # Test only 1 to avoid overloading
@@ -168,7 +168,7 @@ class TestFindIt(unittest.TestCase):
         self.assertIsNone(url)
         self.assertEqual(reason, "PAYWALL")
 
-    @pytest.mark.skipif(os.getenv('SKIP_NETWORK_TESTS'), reason="Network tests disabled")
+    @skip_network_tests
     def test_registry_has_major_publishers(self):
         """Test that the registry includes major publishers and their key journals."""
         from metapub.findit.registry import JournalRegistry

@@ -8,13 +8,13 @@ Tests cover three different scenarios:
 """
 
 import unittest
-import pytest
 import os
 from unittest.mock import Mock, patch
 
 from metapub import FindIt, PubMedFetcher
 from metapub.findit.dances import the_sage_hula
 from metapub.exceptions import AccessDenied, NoPDFLink
+from .test_compat import skip_network_tests
 
 
 class TestSageHula(unittest.TestCase):
@@ -24,7 +24,7 @@ class TestSageHula(unittest.TestCase):
         """Set up test fixtures."""
         self.fetcher = PubMedFetcher()
 
-    @pytest.mark.skipif(os.getenv('SKIP_NETWORK_TESTS'), reason="Network tests disabled")
+    @skip_network_tests
     def test_sage_paywall_access_denied(self):
         """Test SAGE journal behind paywall (should raise AccessDenied)."""
         # PMID 22295291 - South Asia Research - typical paywalled SAGE article
@@ -47,7 +47,7 @@ class TestSageHula(unittest.TestCase):
             f"Expected access denial message, got: {error_msg}"
         )
 
-    @pytest.mark.skipif(os.getenv('SKIP_NETWORK_TESTS'), reason="Network tests disabled") 
+    @skip_network_tests 
     def test_sage_with_pmc_availability(self):
         """Test SAGE journal available in PMC (FindIt should prefer PMC)."""
         # PMID 30369646 - Urban Studies - available in both SAGE and PMC
@@ -85,7 +85,7 @@ class TestSageHula(unittest.TestCase):
         self.assertIn("SAGE", error_msg)
 
     def test_sage_url_construction_no_verify(self):
-        """Test SAGE URL construction without verification."""
+        """Test SAGE URL construction without verification (fast test)."""
         # Create mock PMA with SAGE DOI
         mock_pma = Mock()
         mock_pma.doi = "10.1177/1234567890123456"
@@ -97,7 +97,42 @@ class TestSageHula(unittest.TestCase):
         expected_url = "https://journals.sagepub.com/doi/pdf/10.1177/1234567890123456"
         self.assertEqual(url, expected_url)
 
-    @pytest.mark.skipif(os.getenv('SKIP_NETWORK_TESTS'), reason="Network tests disabled")
+    def test_sage_with_mocked_success(self):
+        """Test SAGE dance with mocked successful response (fast test)."""
+        mock_pma = Mock()
+        mock_pma.doi = "10.1177/1234567890123456"
+        mock_pma.journal = "Test SAGE Journal"
+        
+        # Mock successful PDF response
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.headers = {'content-type': 'application/pdf'}
+        mock_response.url = 'https://journals.sagepub.com/doi/pdf/10.1177/1234567890123456'
+        
+        with patch('metapub.findit.dances.requests.get', return_value=mock_response):
+            url = the_sage_hula(mock_pma, verify=True)
+            self.assertEqual(url, mock_response.url)
+
+    def test_sage_with_mocked_paywall(self):
+        """Test SAGE dance with mocked paywall response (fast test)."""
+        mock_pma = Mock()
+        mock_pma.doi = "10.1177/1234567890123456"
+        mock_pma.journal = "Test SAGE Journal"
+        
+        # Mock paywall HTML response
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.headers = {'content-type': 'text/html'}
+        mock_response.text = '<html><body>Please subscribe to access this content</body></html>'
+        
+        with patch('metapub.findit.dances.requests.get', return_value=mock_response):
+            with self.assertRaises(AccessDenied) as context:
+                the_sage_hula(mock_pma, verify=True)
+            
+            error_msg = str(context.exception)
+            self.assertIn("PAYWALL", error_msg)
+
+    @skip_network_tests
     def test_sage_integration_with_registry(self):
         """Test that SAGE journals are properly handled through registry system."""
         # Test different SAGE journals to ensure registry integration
@@ -167,7 +202,7 @@ class TestSageHula(unittest.TestCase):
 class TestSageHulaIntegration(unittest.TestCase):
     """Integration tests for SAGE journals in FindIt system."""
 
-    @pytest.mark.skipif(os.getenv('SKIP_NETWORK_TESTS'), reason="Network tests disabled")
+    @skip_network_tests
     def test_sage_registry_coverage(self):
         """Test that SAGE journals are properly registered."""
         from metapub.findit.registry import JournalRegistry
@@ -194,7 +229,7 @@ class TestSageHulaIntegration(unittest.TestCase):
         
         registry.close()
 
-    @pytest.mark.skipif(os.getenv('SKIP_NETWORK_TESTS'), reason="Network tests disabled")
+    @skip_network_tests
     def test_no_noformat_errors_for_sage(self):
         """Test that SAGE journals no longer return NOFORMAT errors."""
         # Test a variety of SAGE PMIDs

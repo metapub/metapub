@@ -124,8 +124,9 @@ class FindIt(object):
                 doi_min_score (int): Minimum CrossRef confidence score for DOI 
                     matches. Defaults to 60.
                 verify (bool): Verify URLs by testing HTTP response. Defaults to True.
-                retry_errors (bool): Retry if cached result has error reasons. 
-                    Defaults to False.
+                retry_errors (bool): Retry if cached result has error reasons like
+                    "PAYWALL", "TODO", "CANTDO", or "TXERROR". Note: "NOFORMAT"
+                    results are always retried. Defaults to False.
                 debug (bool): Enable debug logging. Defaults to False.
                 tmpdir (str): Temporary directory for downloads. Defaults to '/tmp'.
         
@@ -224,8 +225,9 @@ class FindIt(object):
             verify (bool, optional): Verify URLs by testing HTTP response. 
                 Defaults to True.
             retry_errors (bool, optional): Force fresh lookup if cached result
-                has error reasons like "NOFORMAT", "TODO", "PAYWALL", or "CANTDO".
-                Useful as new publisher support is frequently added. Defaults to False.
+                has error reasons like "TODO", "PAYWALL", "CANTDO", or "TXERROR".
+                Note: "NOFORMAT" results are always retried since new publisher 
+                support is frequently added. Defaults to False.
         
         Returns:
             Tuple[Optional[str], Optional[str]]: A tuple of (url, reason).
@@ -235,11 +237,20 @@ class FindIt(object):
         Note:
             Connection errors are not cached to avoid persisting temporary network issues.
         """
-        retry_reasons = ['PAYWALL', 'TODO', 'NOFORMAT', 'CANTDO']
+        # Always retry NOFORMAT results since new journal support gets added frequently
+        retry_reasons = ['NOFORMAT']
+        # Optionally retry other error types when requested
         if retry_errors:
-            retry_reasons.append('TXERROR')
+            retry_reasons.extend(['PAYWALL', 'TODO', 'CANTDO', 'TXERROR'])
 
         cache_result = self._query_cache(self.pmid)
+        
+        # Check for stale dance function references in cached results
+        if cache_result and cache_result.get('reason'):
+            reason = cache_result.get('reason', '')
+            # Auto-retry if cache contains reference to old/missing dance functions
+            if 'has no attribute' in reason and ('_shuffle' in reason or '_tango' in reason or '_dance' in reason):
+                retry_reasons.append('TXERROR')
         if cache_result:
             url = cache_result['url']
             reason = '' if cache_result['reason'] is None else cache_result['reason']

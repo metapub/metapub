@@ -39,6 +39,8 @@ from metapub.findit.journals.sage import sage_journals, sage_additional_journals
 from metapub.findit.journals.informa import informa_journals
 from metapub.findit.journals.cambridge import cambridge_journals
 from metapub.findit.journals.oxford import oxford_journals, oxford_vip_template
+from metapub.findit.journals.acs import acs_journals, acs_template
+from metapub.findit.journals.taylor_francis import taylor_francis_journals, taylor_francis_template
 
 # Import format templates
 from metapub.findit.journals.aaas import aaas_format
@@ -190,6 +192,18 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_template_dance',
         'format_template': informa_template,
         'journals': informa_journals,
+    },
+    {
+        'name': 'American Chemical Society',
+        'dance_function': 'the_template_dance',
+        'format_template': acs_template,
+        'journals': acs_journals,
+    },
+    {
+        'name': 'Taylor & Francis',
+        'dance_function': 'the_template_dance',
+        'format_template': taylor_francis_template,
+        'journals': taylor_francis_journals,
     },
     
     # Single journal publishers

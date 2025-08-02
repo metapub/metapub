@@ -1,8 +1,6 @@
-from __future__ import absolute_import, unicode_literals
-
 # Wolters Kluwer
 #
-# Some of this stuff is Free and/or Open Access. 
+# Some of this stuff is Free and/or Open Access.
 #
 # http://journals.lww.com/pain/Fulltext/2015/07000/Social_communication_model_of_pain.7.aspx
 

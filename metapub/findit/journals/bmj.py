@@ -4,12 +4,8 @@ BMJ Publishing Group publishes a wide range of medical journals,
 all hosted on bmj.com subdomains using the VIP format.
 """
 
-# VIP template for BMJ journals
-bmj_vip_template = {
-    'url_template': 'http://{host}/content/{volume}/{issue}/{first_page}.full.pdf',
-    'required_fields': ['volume', 'issue', 'first_page'],
-    'host_param': 'host'
-}
+# VIP template for BMJ journals 
+bmj_vip_template = 'http://{host}/content/{volume}/{issue}/{first_page}.full.pdf'
 
 # BMJ journals with their host parameters
 bmj_journals = [

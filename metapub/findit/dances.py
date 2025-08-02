@@ -84,21 +84,69 @@ def rectify_pma_for_vip_links(pma):
     raise NoPDFLink('MISSING: vip (volume, issue, and/or first_page missing from PubMedArticle)')
 
 def the_doi_slide(pma, verify=True):
-    '''Dance of the miscellaneous journals that use DOI in their URL construction.
+    '''Dance of journals that use DOI in their URL construction.
+    
+    This function supports both legacy simple_formats_doi lookups and the new
+    registry-based template system for DOI-based publishers.
 
          :param: pma (PubMedArticle object)
          :param: verify (bool) [default: True]
          :return: url (string)
          :raises: AccessDenied, NoPDFLink
     '''
+    if not pma.doi:
+        raise NoPDFLink('MISSING: DOI required for DOI-based publishers - attempted: none')
+    
     jrnl = standardize_journal_name(pma.journal)
-    if pma.doi:
-        url = simple_formats_doi[jrnl].format(a=pma)
+    
+    # First try legacy simple_formats_doi lookup
+    if jrnl in simple_formats_doi:
+        template = simple_formats_doi[jrnl]
+        if isinstance(template, str):
+            url = template.format(a=pma)
+        else:
+            url = template.format(a=pma)  # Handle template objects
     else:
-        raise NoPDFLink('MISSING: doi (lookup failed)')
-
+        # Fall back to registry-based template lookup
+        from .registry import JournalRegistry
+        
+        try:
+            registry = JournalRegistry()
+            publisher_info = registry.get_publisher_for_journal(jrnl)
+            registry.close()
+            
+            if not publisher_info or not publisher_info.get('format_template'):
+                raise NoPDFLink(f'MISSING: No template found for journal {pma.journal} - attempted: registry lookup')
+            
+            # Perform template substitution
+            template = publisher_info['format_template']
+            
+            # Handle different template formats
+            if '{doi}' in template:
+                url = template.format(doi=pma.doi)
+            elif '{a.doi}' in template:
+                url = template.format(a=pma)
+            else:
+                raise NoPDFLink(f'TEMPLATE_ERROR: Unsupported template format for {pma.journal} - attempted: {template}')
+                
+        except Exception as e:
+            if isinstance(e, NoPDFLink):
+                raise
+            else:
+                raise NoPDFLink(f'TXERROR: DOI slide failed for {pma.journal}: {e} - attempted: none')
+    
+    # Verification logic
     if verify:
-        verify_pdf_url(url)
+        try:
+            verify_pdf_url(url)
+        except Exception as e:
+            # If verification fails, try to provide more specific error messages for paywalled content
+            if "403" in str(e) or "Access" in str(e):
+                raise AccessDenied(f'PAYWALL: {pma.journal} requires subscription - attempted: {url}')
+            else:
+                # Re-raise the original verification error
+                raise
+    
     return url
 
 def the_pmid_pogo(pma, verify=True):
@@ -451,7 +499,8 @@ def the_wiley_shuffle(pma, verify=True):
          :return: url (string)
          :raises: AccessDenied, NoPDFLink
     '''
-    url = doi_templates['wiley'].format(a=pma)
+    from .journals.wiley import wiley_template
+    url = wiley_template.format(a=pma)
     if not verify:
         return url
 
@@ -918,4 +967,6 @@ def the_cambridge_foxtrot(pma, verify=True):
 
     except requests.exceptions.RequestException as e:
         raise NoPDFLink(f'TXERROR: Network error accessing Cambridge: {e} - attempted: {pdf_url}')
+
+
 

@@ -40,6 +40,7 @@ from metapub.findit.journals.informa import informa_journals
 from metapub.findit.journals.cambridge import cambridge_journals
 from metapub.findit.journals.oxford import oxford_journals, oxford_vip_template
 from metapub.findit.journals.bmj import bmj_journals, bmj_vip_template
+from metapub.findit.journals.lww import lww_journals, lww_template
 from metapub.findit.journals.acs import acs_journals, acs_template
 from metapub.findit.journals.taylor_francis import taylor_francis_journals, taylor_francis_template
 
@@ -178,15 +179,21 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'Oxford University Press',
-        'dance_function': 'the_template_dance',
+        'dance_function': 'the_doi_slide',
         'format_template': oxford_vip_template,
         'journals': oxford_journals,
     },
     {
         'name': 'BMJ Publishing Group',
-        'dance_function': 'the_template_dance',
+        'dance_function': 'the_doi_slide',
         'format_template': bmj_vip_template,
         'journals': bmj_journals,
+    },
+    {
+        'name': 'Wolters Kluwer LWW',
+        'dance_function': 'the_doi_slide',
+        'format_template': lww_template,
+        'journals': lww_journals,
     },
     {
         'name': 'SAGE Publications',
@@ -196,19 +203,19 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'Informa Healthcare',
-        'dance_function': 'the_template_dance',
+        'dance_function': 'the_doi_slide',
         'format_template': informa_template,
         'journals': informa_journals,
     },
     {
         'name': 'American Chemical Society',
-        'dance_function': 'the_template_dance',
+        'dance_function': 'the_doi_slide',
         'format_template': acs_template,
         'journals': acs_journals,
     },
     {
         'name': 'Taylor & Francis',
-        'dance_function': 'the_template_dance',
+        'dance_function': 'the_doi_slide',
         'format_template': taylor_francis_template,
         'journals': taylor_francis_journals,
     },

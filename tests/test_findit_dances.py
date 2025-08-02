@@ -98,8 +98,8 @@ class TestFindItDances(unittest.TestCase):
         """Test Cambridge University Press dance function across different eras."""
         # Test PMIDs from different decades to ensure Cambridge dance works across time periods
         
-        # 1990s era - Law Med Health Care
-        pmid_1990s = '1630136'  # 1992 - DOI: 10.1111/j.1748-720x.1992.tb01177.x
+        # 1990s era - Journal of Mental Science  
+        pmid_1990s = '14021516'  # 1992 - DOI: 10.1192/bjp.108.457.811
         source = FindIt(pmid=pmid_1990s)
         # Cambridge journals should either get PDF URL or fall back to PMC
         assert source.url is not None or source.reason is not None

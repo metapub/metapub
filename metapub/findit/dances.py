@@ -875,7 +875,7 @@ def the_cambridge_foxtrot(pma, verify=True):
     are accessible via cambridge.org/core. The PDF access pattern uses:
     https://www.cambridge.org/core/services/aop-pdf-file/content/view/{DOI}
     
-    All Cambridge DOIs start with 10.1017/
+    Cambridge publishes journals with various DOI prefixes due to acquisitions.
     
     :param: pma (PubMedArticle object)
     :param: verify (bool) [default: True]
@@ -884,9 +884,6 @@ def the_cambridge_foxtrot(pma, verify=True):
     '''
     if not pma.doi:
         raise NoPDFLink('MISSING: DOI required for Cambridge University Press journals - attempted: none')
-    
-    if not pma.doi.startswith('10.1017/'):
-        raise NoPDFLink(f'MISSING: Invalid DOI format for Cambridge (expected 10.1017/...) - attempted: none')
     
     # Cambridge uses DOI-based URLs on their unified platform
     pdf_url = f'https://www.cambridge.org/core/services/aop-pdf-file/content/view/{pma.doi}'

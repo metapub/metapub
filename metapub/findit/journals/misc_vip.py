@@ -8,7 +8,6 @@ from __future__ import absolute_import, unicode_literals
 vip_format = 'http://{host}/content/{a.volume}/{a.issue}/{a.first_page}.full.pdf'
 
 vip_journals = {
-    'Ann Clin Biochem': {'host': 'acb.sagepub.com'},
     'Am J Clin Pathol': {'host': 'ajcp.ascpjournals.org'},
     'Am J Physiol Cell Physiol': {'host': 'ajpcell.physiology.org'},
     'Am J Physiol Endocrinol Metab': {'host': 'ajpendo.physiology.org'},
@@ -18,14 +17,12 @@ vip_journals = {
     'Am J Physiol Regul Integr Comp Physiol': {'host': 'ajpregu.physiology.org'},
     'Am J Physiol Renal Physiol': {'host': 'ajprenal.physiology.org'},
     # TODO: the rest of physiology.org. see: http://www.the-aps.org/mm/Publications/Journals
-    'Angiology': {'host': 'ang.sagepub.com'},
     # TODO: backup_url: pmid lookup strategy, e.g.
     # http://aac.asm.org/cgi/pmidlookup?view=long&pmid=7689822
     'Anticancer Res': {'host': 'ar.iiarjournals.org'},
     'Antimicrob Agents Chemother': {'host': 'aac.asm.org'},
     'Appl Environ Microbiol': {'host': 'aem.asm.org'},
     'Arterioscler Thromb Vasc Biol': {'host': 'atvb.ahajournals.org'},
-    'Assessment': {'host': 'asm.sagepub.com'},
     'Breast Cancer Res': {'host': 'breast-cancer-research.com'},
     'Cancer Discov': {'host': 'cancerdiscovery.aacrjournals.org'},
     'Cancer Epidemiol Biomarkers Prev': {'host': 'cebp.aacrjournals.org'},
@@ -37,12 +34,9 @@ vip_journals = {
     'Circ Arrhythm Electrophysiol': {'host': 'circep.ahajournals.org'},
     'Circ Cardiovasc Genet': {'host': 'circgenetics.ahajournals.org'},
     'Circ Res': {'host': 'circres.ahajournals.org'},
-    'Clin Appl Thromb Hemost': {'host': 'cat.sagepub.com'},
     'Clin Cancer Res': {'host': 'clincancerres.aacrjournals.org'},
     'Clin Chem': {'host': 'clinchem.org'},
     'Clin Microbiol Rev': {'host': 'cmr.asm.org'},
-    'Clin Pediatr': {'host': 'cpj.sagepub.com'},
-    'Clin Pediatr (Phila)': {'host': 'cpj.sagepub.com'},
     'Clin Vaccine Immunol': {'host': 'cvi.asm.org'},
     'Diabetes': {'host': 'diabetes.diabetesjournals.org'},
     'Diabetes Care': {'host': 'care.diabetesjournals.org'},
@@ -66,7 +60,6 @@ vip_journals = {
     'IOVS': {'host': 'iovs.org'},
     # TODO: backup_url: pmid lookup strategy,
     # http://jah.sagepub.com/cgi/pmidlookup?view=long&pmid=20056814
-    'J Aging Health': {'host': 'jah.sagepub.com'},
     'J Am Soc Nephrol': {'host': 'jasn.asnjournals.org'},
     'J Appl Physiol': {'host': 'jap.physiology.org'},
     # TODO: backup_url: pmid lookup strategy,
@@ -78,13 +71,10 @@ vip_journals = {
     'J Bone Joint Surg Am': {'host': 'jbjs.org'},
     'J Cell Biol': {'host': 'jcb.rupress.org'},
     'J Cell Sci': {'host': 'jcs.biologists.org'},
-    'J Child Neurol': {'host': 'jcn.sagepub.com'},
     'J Clin Oncol': {'host': 'jco.ascopubs.org'},
-    'J Dent Res': {'host': 'jdr.sagepub.com'},
     #'J Endocrinol': {'host': 'joe.endocrinology-journals.org'},   #moved
     #'J Mol Endocrinol': {'host': 'jme.endocrinology-journals.org'}, # moved to endo.py
     'J Exp Med': {'host': 'jem.rupress.org'},
-    'J Hum Lact': {'host': 'jhl.sagepub.com'},
     'J Immunol': {'host': 'jimmunol.org'},
     'J Lipid Res': {'host': 'www.jlr.org'},
     'J Clin Microbiol': {'host': 'jcm.asm.org'},
@@ -95,9 +85,7 @@ vip_journals = {
     'J Nutr': {'host': 'jn.nutrition.org'},
     'J Pharmacol Exp Ther': {'host': 'jpet.aspetjournals.org'},
     'J Rheumatol': {'host': 'www.jrheum.org'},
-    'J Renin Angiotensin Aldosterone Syst': {'host': 'jra.sagepub.com'},
     'J Virol': {'host': 'jvi.asm.org'},
-    'Lupus': {'host': 'lup.sagepub.com'},
     'MBio': {'host': 'mbio.asm.org'},
     'mSystems': {'host': 'msystems.asm.org'},
     'mSphere': {'host': 'msphere.asm.org'},

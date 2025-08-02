@@ -4,38 +4,35 @@
 #                  having "More than 25 sessions created in 5 minutes"
 #
 
+# Import templates from publisher files for remaining journals
+from .informa import informa_template
+from .wiley import wiley_template
+
 doi_templates = {
-    'acs': 'http://pubs.acs.org/doi/pdf/{a.doi}',
     'akademii': 'http://www.akademiai.com/content/{a.pii}/fulltext.pdf',
     'ats': 'http://www.atsjournals.org/doi/pdf/{a.doi}',
-    'futuremed': 'http://www.futuremedicine.com/doi/pdf/{a.doi}',
-    'informa': 'http://informahealthcare.com/doi/pdf/{a.doi}',
     'lancet': 'http://www.thelancet.com/pdfs/journals/{ja}/PII{a.pii}.pdf',
     'liebert': 'http://online.liebertpub.com/doi/pdf/{a.doi}',
     'plos': 'http://www.plosone.org/article/fetchObject.action?uri=info:doi/{a.doi}&representation=PDF',
-    'taylor_francis': 'http://www.tandfonline.com/doi/pdf/{a.doi}',
-    'wiley': 'http://onlinelibrary.wiley.com/doi/{a.doi}/pdf',
+    'wiley': wiley_template,
     'jci': 'http://www.jci.org/articles/view/{a.pii}/pdf',
 }
 
 simple_formats_doi = {
-    'Acta Oncol': doi_templates['informa'],
-    'Ann Hum Biol': doi_templates['informa'],
-    'Hemoglobin': doi_templates['informa'],
-    'J Matern Fetal Neonatal Med': doi_templates['informa'],
-    'Ophthalmic Genet': doi_templates['informa'],
-    'Platelets': doi_templates['informa'],
-    'Ren Fail': doi_templates['informa'],
-    'Scand J Rheumatol': doi_templates['informa'],
-    'Scand J Urol Nephrol': doi_templates['informa'],
-    'Xenobiotica': doi_templates['informa'],
+    'Acta Oncol': informa_template,
+    'Ann Hum Biol': informa_template,
+    'Hemoglobin': informa_template,
+    'J Matern Fetal Neonatal Med': informa_template,
+    'Ophthalmic Genet': informa_template,
+    'Platelets': informa_template,
+    'Ren Fail': informa_template,
+    'Scand J Rheumatol': informa_template,
+    'Scand J Urol Nephrol': informa_template,
+    'Xenobiotica': informa_template,
 
     'Am J Public Health': 'http://ajph.aphapublications.org/doi/pdf/{a.doi}',
     'Am J Respir Cell Mol Biol': doi_templates['ats'],
     'Am J Respir Crit Care Med': doi_templates['ats'],
-
-
-    # ACS (American Chemical Society) journals
 
     'BMJ Open Gastroenterol': 'http://bmjopengastro.bmj.com/doi/pdf/{a.doi}',
     'Microbiol Spectr': 'http://www.asmscience.org/content/journal/microbiolspec/{a.doi}', #10.1128/microbiolspec.VMBF-0028-2015
@@ -51,12 +48,6 @@ simple_formats_doi = {
     'Genet Test Mol Biomarkers': doi_templates['liebert'],
     'Thyroid': doi_templates['liebert'],
     'Vector Borne Zoonotic Dis': doi_templates['liebert'],
-
-    # TODO: the rest of futuremed journals. see http://www.futuremedicine.com/
-    'Pharmacogenomics': doi_templates['futuremed'],
-
-    # Taylor & Francis journals
-
 
     # PLOS (Public Library of Science) journals
     'J Data Mining Genomics Proteomics': doi_templates['plos'],

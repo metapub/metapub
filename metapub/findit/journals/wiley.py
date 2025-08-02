@@ -1,5 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
+# Wiley DOI-based template
+wiley_template = 'http://onlinelibrary.wiley.com/doi/{doi}/pdf'
+
 wiley_journals = [
         'ACR Open Rheumatol',
         'AEM Educ Train',

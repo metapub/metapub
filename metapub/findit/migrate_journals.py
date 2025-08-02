@@ -33,7 +33,7 @@ from metapub.findit.journals.scielo import scielo_journals
 from metapub.findit.journals.sciencedirect import sciencedirect_journals
 from metapub.findit.journals.springer import springer_journals
 from metapub.findit.journals.spandidos import spandidos_journals
-from metapub.findit.journals.wiley import wiley_journals
+from metapub.findit.journals.wiley import wiley_journals, wiley_template
 from metapub.findit.journals.wolterskluwer import wolterskluwer_journals
 from metapub.findit.journals.sage import sage_journals, sage_additional_journals
 from metapub.findit.journals.informa import informa_journals
@@ -158,7 +158,7 @@ PUBLISHER_CONFIGS = [
     {
         'name': 'wiley',
         'dance_function': 'the_wiley_shuffle',
-        'format_template': None,
+        'format_template': wiley_template,
         'journals': wiley_journals,
     },
     {

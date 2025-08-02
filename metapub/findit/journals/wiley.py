@@ -1,5 +1,5 @@
 # Wiley DOI-based template
-wiley_template = 'http://onlinelibrary.wiley.com/doi/{a.doi}/pdf'
+wiley_template = 'http://onlinelibrary.wiley.com/doi/{doi}/pdf'
 
 wiley_journals = [
         'ACR Open Rheumatol',

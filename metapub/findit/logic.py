@@ -147,12 +147,6 @@ def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None):
         except MetaPubError as error:
             reason = str(error)
 
-    elif jrnl in simple_formats_doi.keys():
-        try:
-            url = the_doi_slide(pma, verify)
-        except MetaPubError as error:
-            reason = str(error)
-
     elif jrnl in vip_journals.keys():
         try:
             url = the_vip_shake(pma, verify)

@@ -15,6 +15,7 @@ from ..utils import remove_chars
 
 from .journals import *
 from .journals.nature import nature_format, nature_journals
+from .registry import JournalRegistry
 
 OK_STATUS_CODES = (200, 301, 302, 307)
 
@@ -86,8 +87,7 @@ def rectify_pma_for_vip_links(pma):
 def the_doi_slide(pma, verify=True):
     '''Dance of journals that use DOI in their URL construction.
     
-    This function supports both legacy simple_formats_doi lookups and the new
-    registry-based template system for DOI-based publishers.
+    Uses the registry-based template system for DOI-based publishers.
 
          :param: pma (PubMedArticle object)
          :param: verify (bool) [default: True]
@@ -99,41 +99,26 @@ def the_doi_slide(pma, verify=True):
     
     jrnl = standardize_journal_name(pma.journal)
     
-    # First try legacy simple_formats_doi lookup
-    if jrnl in simple_formats_doi:
-        template = simple_formats_doi[jrnl]
-        if isinstance(template, str):
-            url = template.format(a=pma)
-        else:
-            url = template.format(a=pma)  # Handle template objects
-    else:
-        # Fall back to registry-based template lookup
-        from .registry import JournalRegistry
+    # Registry-based template lookup
+    try:
+        registry = JournalRegistry()
+        publisher_info = registry.get_publisher_for_journal(jrnl)
+        registry.close()
         
-        try:
-            registry = JournalRegistry()
-            publisher_info = registry.get_publisher_for_journal(jrnl)
-            registry.close()
+        if not publisher_info or not publisher_info.get('format_template'):
+            raise NoPDFLink(f'MISSING: No template found for journal {pma.journal} - attempted: registry lookup')
+        
+        # Perform template substitution
+        template = publisher_info['format_template']
+        
+        # Apply standardized DOI template format
+        url = template.format(doi=pma.doi)
             
-            if not publisher_info or not publisher_info.get('format_template'):
-                raise NoPDFLink(f'MISSING: No template found for journal {pma.journal} - attempted: registry lookup')
-            
-            # Perform template substitution
-            template = publisher_info['format_template']
-            
-            # Handle different template formats
-            if '{doi}' in template:
-                url = template.format(doi=pma.doi)
-            elif '{a.doi}' in template:
-                url = template.format(a=pma)
-            else:
-                raise NoPDFLink(f'TEMPLATE_ERROR: Unsupported template format for {pma.journal} - attempted: {template}')
-                
-        except Exception as e:
-            if isinstance(e, NoPDFLink):
-                raise
-            else:
-                raise NoPDFLink(f'TXERROR: DOI slide failed for {pma.journal}: {e} - attempted: none')
+    except Exception as e:
+        if isinstance(e, NoPDFLink):
+            raise
+        else:
+            raise NoPDFLink(f'TXERROR: DOI slide failed for {pma.journal}: {e} - attempted: none')
     
     # Verification logic
     if verify:

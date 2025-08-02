@@ -2,7 +2,6 @@ from pkgutil import extend_path
 __path__ = extend_path(__path__, __name__)
 
 # Legacy imports still needed by some parts of the system
-from .misc_doi import doi_templates, simple_formats_doi
 from .misc_pii import simple_formats_pii
 from .misc_vip import vip_format, vip_journals, vip_journals_nonstandard
 from .bmc import BMC_journals, BMC_format

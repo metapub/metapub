@@ -157,7 +157,7 @@ class TestFindItDances(unittest.TestCase):
         # Test core Wolters Kluwer journals that use the_wolterskluwer_volta
         
         # Pain journal - flagship WK publication
-        pmid_pain = '38101893'  # 2023 - "Pain research in 2023: towards understanding chronic pain"
+        pmid_pain = '37326643'  # 2023 - "Predicting chronic postsurgical pain: current evidence and a novel program to develop predictive biomarker signatures"
         source = FindIt(pmid=pmid_pain)
         assert source.pma.journal == 'Pain'
         assert source.url is not None or source.reason is not None

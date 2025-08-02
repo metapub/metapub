@@ -8,7 +8,6 @@ from ..exceptions import MetaPubError
 from .dances import *
 from .registry import JournalRegistry, standardize_journal_name
 from .handlers import RegistryBackedLookupSystem
-from .journals.todo import todo_journals
 
 log = logging.getLogger('metapub.findit.logic')
 
@@ -18,24 +17,24 @@ _lookup_systems = {}
 
 def _get_lookup_system(cachedir=None):
     """Get or create the lookup system for the specified cache directory.
-    
+
     Args:
         cachedir: Cache directory path. If None, uses DEFAULT_CACHE_DIR.
-        
+
     Returns:
         RegistryBackedLookupSystem instance for the specified cache directory.
     """
     global _registries, _lookup_systems
-    
+
     from ..config import DEFAULT_CACHE_DIR
-    
+
     # Use default if not specified
     if cachedir is None:
         cachedir = DEFAULT_CACHE_DIR
-    
+
     # Convert to string for consistent cache key
     cache_key = str(cachedir) if cachedir else 'default'
-    
+
     if cache_key not in _lookup_systems:
         if cachedir is None or cache_key == 'None':
             # Disable caching - create in-memory database
@@ -44,10 +43,10 @@ def _get_lookup_system(cachedir=None):
             from ..cache_utils import get_cache_path
             db_path = get_cache_path(cachedir, 'journal_registry.db')
             _registries[cache_key] = JournalRegistry(db_path=db_path)
-        
+
         _lookup_systems[cache_key] = RegistryBackedLookupSystem(_registries[cache_key])
         log.debug("Initialized registry-backed lookup system for cachedir: %s", cache_key)
-    
+
     return _lookup_systems[cache_key]
 
 
@@ -104,7 +103,6 @@ def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None):
             "DOI missing from PubMedArticle and CrossRef lookup failed."
             "pii missing from PubMedArticle XML"
             "No URL format for Journal %s"
-            "TODO format"
 
         Optional params:
             use_nih      -- source PubmedCentral articles from nih.gov (NOT recommended)
@@ -184,31 +182,28 @@ def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None):
 
     # === NEW REGISTRY-BASED LOOKUP === #
     # This replaces the old PUBMED_SWITCHBOARD lookup
-    
+
     try:
         lookup_system = _get_lookup_system(cachedir=cachedir)
         registry_url, registry_reason = lookup_system.find_pdf_url(pma, verify=verify)
-        
+
         if registry_url:
             return (registry_url, registry_reason)
         elif registry_reason:
             reason = registry_reason
-            
+
     except Exception as error:
         log.error("Registry lookup failed for journal '%s': %s", jrnl, error)
         reason = f'REGISTRY_ERROR: {error}'
 
     # === FALLBACK CHECKS === #
 
-    if jrnl in todo_journals:
-        reason = 'TODO: format example: %s' % todo_journals[jrnl]['example']
-
-    elif jrnl in JOURNAL_CANTDO_LIST:
-        reason = 'CANTDO: this journal has been marked as unsourceable'
+    if jrnl in JOURNAL_CANTDO_LIST:
+        reason = f'CANTDO: this journal ({jrnl}) has been marked as unsourceable'
 
     # aka if url is STILL None...
     if not url and not reason:
-        reason = 'NOFORMAT: No URL format for journal "%s"' % jrnl
+        reason = f'NOFORMAT: No URL format for journal "{jrnl}"'
 
     return (url, reason)
 

@@ -35,6 +35,10 @@ from metapub.findit.journals.springer import springer_journals
 from metapub.findit.journals.spandidos import spandidos_journals
 from metapub.findit.journals.wiley import wiley_journals
 from metapub.findit.journals.wolterskluwer import wolterskluwer_journals
+from metapub.findit.journals.sage import sage_journals, sage_additional_journals
+from metapub.findit.journals.informa import informa_journals
+from metapub.findit.journals.cambridge import cambridge_journals
+from metapub.findit.journals.oxford import oxford_journals, oxford_vip_template
 
 # Import format templates
 from metapub.findit.journals.aaas import aaas_format
@@ -45,6 +49,8 @@ from metapub.findit.journals.karger import karger_format
 from metapub.findit.journals.nature import nature_format
 from metapub.findit.journals.scielo import scielo_format
 from metapub.findit.journals.spandidos import spandidos_format
+from metapub.findit.journals.sage import sage_vip_template
+from metapub.findit.journals.informa import informa_template
 
 # Import paywalled journals
 from metapub.findit.journals.paywalled import (
@@ -57,8 +63,12 @@ log = logging.getLogger(__name__)
 # Track if we've already configured this module's logging to avoid duplicates
 _logging_configured = False
 
-# Publisher configurations with their journals and dance functions
+# Unified publisher configurations with their journals and dance functions
+# All publishers are now consolidated into a single list for consistency.
+# Previously separated into PUBLISHER_CONFIGS, SPECIAL_JOURNALS, and PAYWALL_PUBLISHERS,
+# but the separation was arbitrary and provided no functional benefit.
 PUBLISHER_CONFIGS = [
+    # Core established publishers
     {
         'name': 'aaas',
         'dance_function': 'the_aaas_tango',
@@ -82,18 +92,6 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_cell_pogo',
         'format_template': cell_format,
         'journals': cell_journals,
-    },
-    {
-        'name': 'degruyter',
-        'dance_function': 'paywall_handler',  # TODO: Implement the_degruyter_dance
-        'format_template': None,
-        'journals': degruyter_journals,
-    },
-    {
-        'name': 'dustri',
-        'dance_function': 'paywall_handler',  # TODO: Implement the_dustri_dance
-        'format_template': None,
-        'journals': dustri_journals,
     },
     {
         'name': 'endo',
@@ -167,42 +165,82 @@ PUBLISHER_CONFIGS = [
         'format_template': None,
         'journals': wolterskluwer_journals,
     },
-]
-
-# Special single journals
-SPECIAL_JOURNALS = [
+    
+    # Major academic publishers
+    {
+        'name': 'Cambridge University Press',
+        'dance_function': 'the_cambridge_foxtrot',
+        'format_template': None,
+        'journals': cambridge_journals,
+    },
+    {
+        'name': 'Oxford University Press',
+        'dance_function': 'the_template_dance',
+        'format_template': oxford_vip_template,
+        'journals': oxford_journals,
+    },
+    {
+        'name': 'SAGE Publications',
+        'dance_function': 'the_sage_hula',
+        'format_template': sage_vip_template,
+        'journals': sage_journals + sage_additional_journals,
+    },
+    {
+        'name': 'Informa Healthcare',
+        'dance_function': 'the_template_dance',
+        'format_template': informa_template,
+        'journals': informa_journals,
+    },
+    
+    # Single journal publishers
     {
         'name': 'jci',
         'dance_function': 'the_jci_jig',
+        'format_template': None,
         'journals': ('J Clin Invest',),
     },
     {
         'name': 'najms',
         'dance_function': 'the_najms_mazurka',
+        'format_template': None,
         'journals': ('N Am J Med Sci',),
     },
-]
-
-# Paywalled publishers
-PAYWALL_PUBLISHERS = [
+    
+    # Paywalled publishers
+    {
+        'name': 'degruyter',
+        'dance_function': 'paywall_handler',  # TODO: Implement the_degruyter_dance
+        'format_template': None,
+        'journals': degruyter_journals,
+    },
+    {
+        'name': 'dustri',
+        'dance_function': 'paywall_handler',  # TODO: Implement the_dustri_dance
+        'format_template': None,
+        'journals': dustri_journals,
+    },
     {
         'name': 'schattauer',
         'dance_function': 'paywall_handler',
+        'format_template': None,
         'journals': schattauer_journals,
     },
     {
         'name': 'rsc',
         'dance_function': 'paywall_handler',
+        'format_template': None,
         'journals': RSC_journals,
     },
     {
         'name': 'thieme',
         'dance_function': 'paywall_handler',
+        'format_template': None,
         'journals': thieme_journals,
     },
     {
         'name': 'weird_paywall',
         'dance_function': 'paywall_handler',
+        'format_template': None,
         'journals': weird_paywall_publishers,
     },
 ]
@@ -242,7 +280,7 @@ def migrate_journals(db_path=None):
     total_publishers = 0
     total_journals = 0
     
-    # Migrate main publishers
+    # Migrate all publishers from unified configuration
     for config in PUBLISHER_CONFIGS:
         log.info("Migrating publisher: %s", config['name'])
         
@@ -254,44 +292,6 @@ def migrate_journals(db_path=None):
         total_publishers += 1
         
         # Extract and add journals
-        journals = extract_journal_info(config['journals'])
-        for journal_name, format_params in journals:
-            registry.add_journal(
-                name=journal_name,
-                publisher_id=publisher_id,
-                format_params=format_params
-            )
-            total_journals += 1
-    
-    # Migrate special single journals
-    for config in SPECIAL_JOURNALS:
-        log.info("Migrating special publisher: %s", config['name'])
-        
-        publisher_id = registry.add_publisher(
-            name=config['name'],
-            dance_function=config['dance_function'],
-        )
-        total_publishers += 1
-        
-        journals = extract_journal_info(config['journals'])
-        for journal_name, format_params in journals:
-            registry.add_journal(
-                name=journal_name,
-                publisher_id=publisher_id,
-                format_params=format_params
-            )
-            total_journals += 1
-    
-    # Migrate paywalled publishers
-    for config in PAYWALL_PUBLISHERS:
-        log.info("Migrating paywalled publisher: %s", config['name'])
-        
-        publisher_id = registry.add_publisher(
-            name=config['name'],
-            dance_function=config['dance_function'],
-        )
-        total_publishers += 1
-        
         journals = extract_journal_info(config['journals'])
         for journal_name, format_params in journals:
             registry.add_journal(

@@ -969,4 +969,134 @@ def the_cambridge_foxtrot(pma, verify=True):
         raise NoPDFLink(f'TXERROR: Network error accessing Cambridge: {e} - attempted: {pdf_url}')
 
 
+def the_asm_shimmy(pma, verify=True):
+    '''Dance function for American Society of Microbiology (ASM) journals.
+    
+    ASM journals use Volume-Issue-Page (VIP) format URLs with journal-specific subdomains.
+    URL Pattern: http://{host}.asm.org/content/{volume}/{issue}/{first_page}.full.pdf
+    
+    :param: pma (PubMedArticle object)
+    :param: verify (bool) [default: True]
+    :return: url (string)
+    :raises: AccessDenied, NoPDFLink
+    '''
+    from .journals.asm import asm_journal_params, asm_vip_template
+    from .registry import standardize_journal_name
+    
+    jrnl = standardize_journal_name(pma.journal)
+    
+    if jrnl not in asm_journal_params:
+        raise NoPDFLink(f'MISSING: Journal {pma.journal} not found in ASM registry - attempted: none')
+    
+    try:
+        pma = rectify_pma_for_vip_links(pma)
+        host = asm_journal_params[jrnl]['host']
+        url = asm_vip_template.format(host=host, volume=pma.volume, issue=pma.issue, first_page=pma.first_page)
+        
+        if verify:
+            verify_pdf_url(url, 'ASM')
+        return url
+        
+    except NoPDFLink:
+        raise NoPDFLink(f'MISSING: VIP data (volume/issue/page) required for ASM journals - attempted: none')
+
+
+def the_aha_waltz(pma, verify=True):
+    '''Dance function for American Heart Association (AHA) journals.
+    
+    AHA journals use Volume-Issue-Page (VIP) format URLs with journal-specific subdomains.
+    URL Pattern: http://{host}.ahajournals.org/content/{volume}/{issue}/{first_page}.full.pdf
+    
+    :param: pma (PubMedArticle object)
+    :param: verify (bool) [default: True]
+    :return: url (string)
+    :raises: AccessDenied, NoPDFLink
+    '''
+    from .journals.aha import aha_journal_params, aha_vip_template
+    from .registry import standardize_journal_name
+    
+    jrnl = standardize_journal_name(pma.journal)
+    
+    if jrnl not in aha_journal_params:
+        raise NoPDFLink(f'MISSING: Journal {pma.journal} not found in AHA registry - attempted: none')
+    
+    try:
+        pma = rectify_pma_for_vip_links(pma)
+        host = aha_journal_params[jrnl]['host']
+        url = aha_vip_template.format(host=host, volume=pma.volume, issue=pma.issue, first_page=pma.first_page)
+        
+        if verify:
+            verify_pdf_url(url, 'AHA')
+        return url
+        
+    except NoPDFLink:
+        raise NoPDFLink(f'MISSING: VIP data (volume/issue/page) required for AHA journals - attempted: none')
+
+
+def the_aacr_jitterbug(pma, verify=True):
+    '''Dance function for American Association for Cancer Research (AACR) journals.
+    
+    AACR journals use Volume-Issue-Page (VIP) format URLs with journal-specific subdomains.
+    URL Pattern: http://{host}.aacrjournals.org/content/{volume}/{issue}/{first_page}.full.pdf
+    
+    :param: pma (PubMedArticle object)
+    :param: verify (bool) [default: True]
+    :return: url (string)
+    :raises: AccessDenied, NoPDFLink
+    '''
+    from .journals.aacr import aacr_journal_params, aacr_vip_template
+    from .registry import standardize_journal_name
+    
+    jrnl = standardize_journal_name(pma.journal)
+    
+    if jrnl not in aacr_journal_params:
+        raise NoPDFLink(f'MISSING: Journal {pma.journal} not found in AACR registry - attempted: none')
+    
+    try:
+        pma = rectify_pma_for_vip_links(pma)
+        host = aacr_journal_params[jrnl]['host']
+        url = aacr_vip_template.format(host=host, volume=pma.volume, issue=pma.issue, first_page=pma.first_page)
+        
+        if verify:
+            verify_pdf_url(url, 'AACR')
+        return url
+        
+    except NoPDFLink:
+        raise NoPDFLink(f'MISSING: VIP data (volume/issue/page) required for AACR journals - attempted: none')
+
+
+def the_aps_quickstep(pma, verify=True):
+    '''Dance function for American Physiological Society (APS) journals.
+    
+    APS journals use Volume-Issue-Page (VIP) format URLs with journal-specific subdomains.
+    URL Pattern: http://{host}.physiology.org/content/{volume}/{issue}/{first_page}.full.pdf
+    
+    :param: pma (PubMedArticle object)
+    :param: verify (bool) [default: True]
+    :return: url (string)
+    :raises: AccessDenied, NoPDFLink
+    '''
+    from .journals.aps import aps_journal_params, aps_vip_template
+    from .registry import standardize_journal_name
+    
+    jrnl = standardize_journal_name(pma.journal)
+    
+    if jrnl not in aps_journal_params:
+        raise NoPDFLink(f'MISSING: Journal {pma.journal} not found in APS registry - attempted: none')
+    
+    try:
+        pma = rectify_pma_for_vip_links(pma)
+        host = aps_journal_params[jrnl]['host']
+        url = aps_vip_template.format(host=host, volume=pma.volume, issue=pma.issue, first_page=pma.first_page)
+        
+        if verify:
+            verify_pdf_url(url, 'APS')
+        return url
+        
+    except NoPDFLink:
+        raise NoPDFLink(f'MISSING: VIP data (volume/issue/page) required for APS journals - attempted: none')
+
+
+
+
 

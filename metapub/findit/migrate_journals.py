@@ -43,6 +43,19 @@ from metapub.findit.journals.bmj import bmj_journals, bmj_vip_template
 from metapub.findit.journals.lww import lww_journals, lww_template
 from metapub.findit.journals.acs import acs_journals, acs_template
 from metapub.findit.journals.taylor_francis import taylor_francis_journals, taylor_francis_template
+from metapub.findit.journals.asm import asm_journals, asm_vip_template
+from metapub.findit.journals.aha import aha_journals, aha_vip_template
+from metapub.findit.journals.aacr import aacr_journals, aacr_vip_template
+from metapub.findit.journals.aps import aps_journals, aps_vip_template
+from metapub.findit.journals.liebert import liebert_journals, liebert_template
+from metapub.findit.journals.ats import ats_journals, ats_template
+from metapub.findit.journals.plos import plos_journals, plos_template
+from metapub.findit.journals.single_journal_publishers import (
+    nejm_journals, nejm_template, science_journals, science_vip_template,
+    pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
+    bmj_open_gastro_journals, bmj_open_gastro_template,
+    microbiol_spectr_journals, microbiol_spectr_template
+)
 
 # Import format templates
 from metapub.findit.journals.aaas import aaas_format
@@ -218,6 +231,84 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_doi_slide',
         'format_template': taylor_francis_template,
         'journals': taylor_francis_journals,
+    },
+    {
+        'name': 'American Society of Microbiology',
+        'dance_function': 'the_asm_shimmy',
+        'format_template': asm_vip_template,
+        'journals': asm_journals,
+    },
+    {
+        'name': 'American Heart Association',
+        'dance_function': 'the_aha_waltz',
+        'format_template': aha_vip_template,
+        'journals': aha_journals,
+    },
+    {
+        'name': 'American Association for Cancer Research',
+        'dance_function': 'the_aacr_jitterbug',
+        'format_template': aacr_vip_template,
+        'journals': aacr_journals,
+    },
+    {
+        'name': 'American Physiological Society',
+        'dance_function': 'the_aps_quickstep',
+        'format_template': aps_vip_template,
+        'journals': aps_journals,
+    },
+    {
+        'name': 'Mary Ann Liebert Publishers',
+        'dance_function': 'the_doi_slide',
+        'format_template': liebert_template,
+        'journals': liebert_journals,
+    },
+    {
+        'name': 'American Thoracic Society',
+        'dance_function': 'the_doi_slide',
+        'format_template': ats_template,
+        'journals': ats_journals,
+    },
+    {
+        'name': 'Public Library of Science',
+        'dance_function': 'the_doi_slide',
+        'format_template': plos_template,
+        'journals': plos_journals,
+    },
+    {
+        'name': 'New England Journal of Medicine',
+        'dance_function': 'the_doi_slide',
+        'format_template': nejm_template,
+        'journals': nejm_journals,
+    },
+    {
+        'name': 'Science Magazine',
+        'dance_function': 'the_vip_shake',
+        'format_template': science_vip_template,
+        'journals': science_journals,
+    },
+    {
+        'name': 'Proceedings of the National Academy of Sciences',
+        'dance_function': 'the_vip_shake',
+        'format_template': pnas_vip_template,
+        'journals': pnas_journals,
+    },
+    {
+        'name': 'American Journal of Public Health',
+        'dance_function': 'the_doi_slide',
+        'format_template': ajph_template,
+        'journals': ajph_journals,
+    },
+    {
+        'name': 'BMJ Open Gastroenterology',
+        'dance_function': 'the_doi_slide',
+        'format_template': bmj_open_gastro_template,
+        'journals': bmj_open_gastro_journals,
+    },
+    {
+        'name': 'Microbiology Spectrum',
+        'dance_function': 'the_doi_slide',
+        'format_template': microbiol_spectr_template,
+        'journals': microbiol_spectr_journals,
     },
     
     # Single journal publishers

@@ -15,6 +15,7 @@ from ..utils import remove_chars
 
 from .journals import *
 from .journals.nature import nature_format, nature_journals
+from .journals.wiley import wiley_template
 from .registry import JournalRegistry
 
 OK_STATUS_CODES = (200, 301, 302, 307)
@@ -86,7 +87,7 @@ def rectify_pma_for_vip_links(pma):
 
 def the_doi_slide(pma, verify=True):
     '''Dance of journals that use DOI in their URL construction.
-    
+
     Uses the registry-based template system for DOI-based publishers.
 
          :param: pma (PubMedArticle object)
@@ -96,30 +97,30 @@ def the_doi_slide(pma, verify=True):
     '''
     if not pma.doi:
         raise NoPDFLink('MISSING: DOI required for DOI-based publishers - attempted: none')
-    
+
     jrnl = standardize_journal_name(pma.journal)
-    
+
     # Registry-based template lookup
     try:
         registry = JournalRegistry()
         publisher_info = registry.get_publisher_for_journal(jrnl)
         registry.close()
-        
+
         if not publisher_info or not publisher_info.get('format_template'):
             raise NoPDFLink(f'MISSING: No template found for journal {pma.journal} - attempted: registry lookup')
-        
+
         # Perform template substitution
         template = publisher_info['format_template']
-        
+
         # Apply standardized DOI template format
         url = template.format(doi=pma.doi)
-            
+
     except Exception as e:
         if isinstance(e, NoPDFLink):
             raise
         else:
             raise NoPDFLink(f'TXERROR: DOI slide failed for {pma.journal}: {e} - attempted: none')
-    
+
     # Verification logic
     if verify:
         try:
@@ -131,7 +132,7 @@ def the_doi_slide(pma, verify=True):
             else:
                 # Re-raise the original verification error
                 raise
-    
+
     return url
 
 def the_pmid_pogo(pma, verify=True):
@@ -182,7 +183,6 @@ def the_vip_nonstandard_shake(pma, verify=True):
     if verify:
         verify_pdf_url(url)
     return url
-
 
 def the_pii_polka(pma, verify=True):
     '''Dance of the miscellaneous journals that use a PII in their URL construction
@@ -484,8 +484,7 @@ def the_wiley_shuffle(pma, verify=True):
          :return: url (string)
          :raises: AccessDenied, NoPDFLink
     '''
-    from .journals.wiley import wiley_template
-    url = wiley_template.format(a=pma)
+    url = wiley_template.format(doi=pma.doi)
     if not verify:
         return url
 
@@ -535,6 +534,7 @@ def the_lancet_tango(pma, verify=True):
     if verify:
         verify_pdf_url(url, 'Lancet')
     return url
+
 
 def the_nature_ballet(pma, verify=True):
     '''Nature Publishing Group dance using modern DOI-based URLs with fallback.
@@ -904,13 +904,13 @@ def the_sage_hula(pma, verify=True):
 
 def the_cambridge_foxtrot(pma, verify=True):
     '''Cambridge University Press dance for modern cambridge.org hosting.
-    
+
     Cambridge University Press moved to a DOI-based system where all articles
     are accessible via cambridge.org/core. The PDF access pattern uses:
     https://www.cambridge.org/core/services/aop-pdf-file/content/view/{DOI}
-    
+
     Cambridge publishes journals with various DOI prefixes due to acquisitions.
-    
+
     :param: pma (PubMedArticle object)
     :param: verify (bool) [default: True]
     :return: url (string)
@@ -918,10 +918,10 @@ def the_cambridge_foxtrot(pma, verify=True):
     '''
     if not pma.doi:
         raise NoPDFLink('MISSING: DOI required for Cambridge University Press journals - attempted: none')
-    
+
     # Cambridge uses DOI-based URLs on their unified platform
     pdf_url = f'https://www.cambridge.org/core/services/aop-pdf-file/content/view/{pma.doi}'
-    
+
     if not verify:
         return pdf_url
 
@@ -956,10 +956,10 @@ def the_cambridge_foxtrot(pma, verify=True):
 
 def the_asm_shimmy(pma, verify=True):
     '''Dance function for American Society of Microbiology (ASM) journals.
-    
+
     ASM journals use Volume-Issue-Page (VIP) format URLs with journal-specific subdomains.
     URL Pattern: http://{host}.asm.org/content/{volume}/{issue}/{first_page}.full.pdf
-    
+
     :param: pma (PubMedArticle object)
     :param: verify (bool) [default: True]
     :return: url (string)
@@ -967,31 +967,31 @@ def the_asm_shimmy(pma, verify=True):
     '''
     from .journals.asm import asm_journal_params, asm_vip_template
     from .registry import standardize_journal_name
-    
+
     jrnl = standardize_journal_name(pma.journal)
-    
+
     if jrnl not in asm_journal_params:
         raise NoPDFLink(f'MISSING: Journal {pma.journal} not found in ASM registry - attempted: none')
-    
+
     try:
         pma = rectify_pma_for_vip_links(pma)
         host = asm_journal_params[jrnl]['host']
         url = asm_vip_template.format(host=host, volume=pma.volume, issue=pma.issue, first_page=pma.first_page)
-        
+
         if verify:
             verify_pdf_url(url, 'ASM')
         return url
-        
+
     except NoPDFLink:
         raise NoPDFLink(f'MISSING: VIP data (volume/issue/page) required for ASM journals - attempted: none')
 
 
 def the_aha_waltz(pma, verify=True):
     '''Dance function for American Heart Association (AHA) journals.
-    
+
     AHA journals use Volume-Issue-Page (VIP) format URLs with journal-specific subdomains.
     URL Pattern: http://{host}.ahajournals.org/content/{volume}/{issue}/{first_page}.full.pdf
-    
+
     :param: pma (PubMedArticle object)
     :param: verify (bool) [default: True]
     :return: url (string)
@@ -999,31 +999,31 @@ def the_aha_waltz(pma, verify=True):
     '''
     from .journals.aha import aha_journal_params, aha_vip_template
     from .registry import standardize_journal_name
-    
+
     jrnl = standardize_journal_name(pma.journal)
-    
+
     if jrnl not in aha_journal_params:
         raise NoPDFLink(f'MISSING: Journal {pma.journal} not found in AHA registry - attempted: none')
-    
+
     try:
         pma = rectify_pma_for_vip_links(pma)
         host = aha_journal_params[jrnl]['host']
         url = aha_vip_template.format(host=host, volume=pma.volume, issue=pma.issue, first_page=pma.first_page)
-        
+
         if verify:
             verify_pdf_url(url, 'AHA')
         return url
-        
+
     except NoPDFLink:
         raise NoPDFLink(f'MISSING: VIP data (volume/issue/page) required for AHA journals - attempted: none')
 
 
 def the_aacr_jitterbug(pma, verify=True):
     '''Dance function for American Association for Cancer Research (AACR) journals.
-    
+
     AACR journals use Volume-Issue-Page (VIP) format URLs with journal-specific subdomains.
     URL Pattern: http://{host}.aacrjournals.org/content/{volume}/{issue}/{first_page}.full.pdf
-    
+
     :param: pma (PubMedArticle object)
     :param: verify (bool) [default: True]
     :return: url (string)
@@ -1031,31 +1031,31 @@ def the_aacr_jitterbug(pma, verify=True):
     '''
     from .journals.aacr import aacr_journal_params, aacr_vip_template
     from .registry import standardize_journal_name
-    
+
     jrnl = standardize_journal_name(pma.journal)
-    
+
     if jrnl not in aacr_journal_params:
         raise NoPDFLink(f'MISSING: Journal {pma.journal} not found in AACR registry - attempted: none')
-    
+
     try:
         pma = rectify_pma_for_vip_links(pma)
         host = aacr_journal_params[jrnl]['host']
         url = aacr_vip_template.format(host=host, volume=pma.volume, issue=pma.issue, first_page=pma.first_page)
-        
+
         if verify:
             verify_pdf_url(url, 'AACR')
         return url
-        
+
     except NoPDFLink:
         raise NoPDFLink(f'MISSING: VIP data (volume/issue/page) required for AACR journals - attempted: none')
 
 
 def the_aps_quickstep(pma, verify=True):
     '''Dance function for American Physiological Society (APS) journals.
-    
+
     APS journals use Volume-Issue-Page (VIP) format URLs with journal-specific subdomains.
     URL Pattern: http://{host}.physiology.org/content/{volume}/{issue}/{first_page}.full.pdf
-    
+
     :param: pma (PubMedArticle object)
     :param: verify (bool) [default: True]
     :return: url (string)
@@ -1063,21 +1063,21 @@ def the_aps_quickstep(pma, verify=True):
     '''
     from .journals.aps import aps_journal_params, aps_vip_template
     from .registry import standardize_journal_name
-    
+
     jrnl = standardize_journal_name(pma.journal)
-    
+
     if jrnl not in aps_journal_params:
         raise NoPDFLink(f'MISSING: Journal {pma.journal} not found in APS registry - attempted: none')
-    
+
     try:
         pma = rectify_pma_for_vip_links(pma)
         host = aps_journal_params[jrnl]['host']
         url = aps_vip_template.format(host=host, volume=pma.volume, issue=pma.issue, first_page=pma.first_page)
-        
+
         if verify:
             verify_pdf_url(url, 'APS')
         return url
-        
+
     except NoPDFLink:
         raise NoPDFLink(f'MISSING: VIP data (volume/issue/page) required for APS journals - attempted: none')
 

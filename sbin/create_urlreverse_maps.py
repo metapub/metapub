@@ -6,7 +6,7 @@ except ImportError:
     # assume python3
     from urllib.parse import urlparse
 
-from metapub.findit.journals import misc_vip, misc_doi, misc_pii
+from metapub.findit.journals import misc_vip, misc_pii
 from metapub.findit.journals import biochemsoc, aaas 
 
 from metapub import PubMedFetcher

@@ -58,7 +58,6 @@ vip_journals = {
     'Mol Biol Cell': {'host': 'molbiolcell.org'},
     'Mol Pharmacol': {'host': 'molpharm.aspetjournals.org'},
     'Neurology': {'host': 'neurology.org'},
-    'Orphanet J Rare Dis': {'host': 'ojrd.com'},
     'Pediatrics': {'host': 'pediatrics.aappublications.org'},
     # TODO: backup_url: pmid lookup strategy, e.g.
     # http://physiolgenomics.physiology.org/cgi/pmidlookup?view=long&pmid=15252189

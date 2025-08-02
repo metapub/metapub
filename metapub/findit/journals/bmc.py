@@ -320,6 +320,7 @@ BMC_journals = (
     'One Health Outlook',
     'Ophthalmology',
     'Oral Health',
+    'Orphanet J Rare Dis',
     'Osteopath Med Prim Care',
     'Parasit Vectors',
     'Part Fibre Toxicol',

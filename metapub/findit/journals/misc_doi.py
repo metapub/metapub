@@ -4,9 +4,7 @@
 #                  having "More than 25 sessions created in 5 minutes"
 #
 
-# Import templates from publisher files for remaining journals
-from .informa import informa_template
-from .wiley import wiley_template
+# Templates for remaining miscellaneous journals
 
 doi_templates = {
     'akademii': 'http://www.akademiai.com/content/{a.pii}/fulltext.pdf',
@@ -14,21 +12,11 @@ doi_templates = {
     'lancet': 'http://www.thelancet.com/pdfs/journals/{ja}/PII{a.pii}.pdf',
     'liebert': 'http://online.liebertpub.com/doi/pdf/{a.doi}',
     'plos': 'http://www.plosone.org/article/fetchObject.action?uri=info:doi/{a.doi}&representation=PDF',
-    'wiley': wiley_template,
     'jci': 'http://www.jci.org/articles/view/{a.pii}/pdf',
 }
 
 simple_formats_doi = {
-    'Acta Oncol': informa_template,
-    'Ann Hum Biol': informa_template,
-    'Hemoglobin': informa_template,
-    'J Matern Fetal Neonatal Med': informa_template,
-    'Ophthalmic Genet': informa_template,
-    'Platelets': informa_template,
-    'Ren Fail': informa_template,
-    'Scand J Rheumatol': informa_template,
-    'Scand J Urol Nephrol': informa_template,
-    'Xenobiotica': informa_template,
+    # Informa Healthcare journals moved to journals/informa.py
 
     'Am J Public Health': 'http://ajph.aphapublications.org/doi/pdf/{a.doi}',
     'Am J Respir Cell Mol Biol': doi_templates['ats'],

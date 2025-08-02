@@ -39,6 +39,7 @@ from metapub.findit.journals.sage import sage_journals, sage_additional_journals
 from metapub.findit.journals.informa import informa_journals
 from metapub.findit.journals.cambridge import cambridge_journals
 from metapub.findit.journals.oxford import oxford_journals, oxford_vip_template
+from metapub.findit.journals.bmj import bmj_journals, bmj_vip_template
 from metapub.findit.journals.acs import acs_journals, acs_template
 from metapub.findit.journals.taylor_francis import taylor_francis_journals, taylor_francis_template
 
@@ -180,6 +181,12 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_template_dance',
         'format_template': oxford_vip_template,
         'journals': oxford_journals,
+    },
+    {
+        'name': 'BMJ Publishing Group',
+        'dance_function': 'the_template_dance',
+        'format_template': bmj_vip_template,
+        'journals': bmj_journals,
     },
     {
         'name': 'SAGE Publications',

@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 # vip = Volume-Issue-Page format
 #       URLs that have the same format except for the host name
 #
@@ -110,64 +108,6 @@ vip_journals = {
     'Proc Natl Acad Sci USA': {'host': 'pnas.org'},
     'Science': {'host': 'sciencemag.org'},
     'Stroke': {'host': 'stroke.ahajournals.org'},
-
-    'Acupunct Med': {'host': 'aim.bmj.com'},
-    'Arch Dis Child': {'host': 'adc.bmj.com'},
-    'Arch Dis Child Fetal Neonatal Ed': {'host': 'fn.bmj.com'},
-    'Arch Dis Child Educ Pract Ed': {'host': 'ep.bmj.com'},
-    'Ann Rheum Dis': {'host': 'ard.bmj.com'},
-    'BMJ Innov': {'host': 'innovations.bmj.com'},
-    'BMJ Open': {'host': 'bmjopen.bmj.com'},
-    'BMJ Open Diabetes Res Care': {'host': 'drc.bmj.com'},
-    'BMJ Open Resp Res': {'host': 'bmjopenrespres.bmj.com'},
-    'BMJ Open Sport Exerc Med': {'host': 'bmjopensem.bmj.com'},
-    'BMJ Qual Saf': {'host': 'qualitysafety.bmj.com'},
-    'BMJ Qual Improv Report': {'host': 'qir.bmj.com'},
-    'BMJ STEL': {'host': 'stel.bmj.com'},
-    'BMJ Support Palliat Care': {'host': 'spcare.bmj.com'},
-    'BMC Ophthalmol': {'host': 'bjo.bmj.com'},
-    'Br J Sports Med': {'host': 'bjsm.bmj.com'},
-    'Drug Ther Bull': {'host': 'dtb.bmj.com'},
-    'Emerg Med J': {'host': 'emj.bmj.com'},
-    'End Life J': {'host': 'eolj.bmj.com'},
-    'ESMO Open': {'host': 'esmoopen.bmj.com'},
-    'Eur J Hosp Pharm': {'host': 'ejhp.bmj.com'},
-    'Evid Based Mental Health': {'host': 'ebmh.bmj.com'},
-    'Evid Based Med': {'host': 'ebm.bmj.com'},
-    'Evid Based Nurs': {'host': 'ebn.bmj.com'},
-    'Frontline Gastroenterol': {'host': 'fg.bmj.com'},
-    'Gut': {'host': 'gut.bmj.com'},
-    'Heart': {'host': 'heart.bmj.com'},
-    'Heart Asia': {'host': 'heartasia.bmj.com'},
-    'Inj Prev': {'host': 'injuryprevention.bmj.com'},
-    'In Pract': {'host': 'inpractice.bmj.com'},
-    'J Clin Pathol': {'host': 'jcp.bmj.com'},
-    'J Epidemiol Community Health': {'host': 'jech.bmj.com'},
-    'J Fam Plann Reprod Health Care': {'host': 'jfprhc.bmj.com'},
-    'J Investig Med': {'host': 'jim.bmj.com'},
-    'J ISAKOS': {'host': 'jisakos.bmj.com'},
-    'J Med Ethics': {'host': 'jme.bmj.com'},
-    'J Med Genet': {'host': 'jmg.bmj.com'},
-    'J Neurol Neurosurg Psychiatry': {'host': 'jnnp.bmj.com'},
-    'J Neurointerv Surg': {'host': 'jnis.bmj.com'},
-    'J R Army Med Corps': {'host': 'jramc.bmj.com'}, # not in Entrez journal list but has citation pmid 7602561
-    'Lupus Sci Med': {'host': 'lupus.bmj.com'},
-    'Med Humanities': {'host': 'mh.bmj.com'},
-    'Occup Environ Med': {'host': 'oem.bmj.com'},
-    'Open Heart': {'host': 'openheart.bmj.com'},
-    'Pract Neurol': {'host': 'pn.bmj.com'},
-    'RMD Open': {'host': 'rmdopen.bmj.com'},
-    'Sex Transm Infect': {'host': 'sti.bmj.com'},
-    'Vet Rec': {'host': 'veterinaryrecord.bmj.com'},
-    'Vet Rec Case Rep': {'host': 'vetrecordcasereports.bmj.com'},
-    'Vet Rec Open': {'host': 'vetrecordopen.bmj.com'},
-    'Tob Control': {'host': 'tobaccocontrol.bmj.com'},
-    'Postgrad Med J': {'host': 'pmj.bmj.com'},
-    'Thorax': {'host': 'thorax.bmj.com'},
-
-    # Oxford Academic journals (1.0 confidence + manually approved)
-
-    # Nature journals removed - already handled by dedicated nature.py file
 }
 
 # volume-issue-page type URLs but with a nonstandard baseurl construction.
@@ -181,7 +121,7 @@ vip_journals_nonstandard = {
     # TODO: backup_url: pmid lookup strategy, e.g.
     # http://www.bloodjournal.org/cgi/pmidlookup?view=long&pmid=1586703
     'Blood': 'http://www.bloodjournal.org/content/bloodjournal/{a.volume}/{a.issue}/{a.first_page}.full.pdf',
-    'BMJ':   'http://www.bmj.com/content/bmj/{a.volume}/bmj.{a.first_page}.full.pdf',
+    # 'BMJ': moved to journals/bmj.py with standard VIP format
 }
 
 # Non-VIP, not sure where to put yet

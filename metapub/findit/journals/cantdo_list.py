@@ -1,3 +1,6 @@
+# This file commemorates work done to attempt to get these journals' articles at one point or another.
+# They're marked "CANTDO" in FindIt.reason when FindIt attempts to get their fulltext.
+
 JOURNAL_CANTDO_LIST = [
     'J Lancet',  # not to be confused with THE Lancet ("Lancet"), this one ended 1965, collection unlikely.
     'Nat Monspel Ser Bot',      # 1972-1973 https://www.unboundmedicine.com/medline/journal/Nat_Monspel_Ser_Bot
@@ -12,5 +15,3 @@ JOURNAL_CANTDO_LIST = [
     'Zhonghua Yi Xue Yi Chuan Xue Za Zhi', # Chinese & DOI won't resolve. (eg. https://dx.doi.org/10.3760/cma.j.issn.1003-9406.2015.05.034)
 ]
 
-# HELP NEEDED ESPECIALLY WITH CHINESE JOURNALS...!
-# https://zhyxycx.periodicals.net.cn/default.html

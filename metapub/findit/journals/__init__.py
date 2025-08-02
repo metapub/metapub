@@ -24,7 +24,7 @@ simple_formats_pmid = {
 # Registry-based SUPPORTED_JOURNALS
 def get_supported_journals():
     """Get list of supported journals from the registry database.
-    
+
     This replaces the static SUPPORTED_JOURNALS list with a dynamic
     version that reads from the journal registry database.
     """
@@ -52,20 +52,22 @@ def _get_supported_journals():
 class SupportedJournalsProperty:
     def __bool__(self):
         return len(_get_supported_journals()) > 0
-    
+
     def __len__(self):
         return len(_get_supported_journals())
-    
+
     def __iter__(self):
         return iter(_get_supported_journals())
-    
+
     def __contains__(self, item):
         return item in _get_supported_journals()
-    
+
     def __getitem__(self, key):
         return _get_supported_journals()[key]
 
 # Create property-like object for backward compatibility
 SUPPORTED_JOURNALS = SupportedJournalsProperty()
 
+# HELP NEEDED ESPECIALLY WITH CHINESE JOURNALS...!
+# https://zhyxycx.periodicals.net.cn/default.html
 

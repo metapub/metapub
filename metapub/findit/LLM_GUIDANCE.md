@@ -63,6 +63,7 @@ This document provides guidance for AI assistants working on the FindIt system, 
 4. Add comprehensive tests across different time periods
 5. Integrate with registry system
 6. Clean up development scripts
+7. Create 3 tests for each publisher "dance" using 3 PMIDs with different outcomes (if possible).
 
 ### Registry Integration
 - **DO**: Add publishers with `add_publisher()` first, then add journals

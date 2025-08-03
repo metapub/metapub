@@ -17,6 +17,7 @@ from .test_nature import TestNatureDance
 from .test_pmc import TestPMCTwist
 from .test_sage import TestSageDance
 from .test_scielo import TestScieloDance
+from .test_thieme import TestThiemeTap
 from .test_wolterskluwer import TestWoltersKluwerDance
 
 # This file serves as a central point to run all dance tests

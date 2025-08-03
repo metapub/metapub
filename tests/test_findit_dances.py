@@ -16,6 +16,7 @@ New structure:
 - tests/findit/test_pmc.py - PMC access
 - tests/findit/test_sage.py - SAGE Publications
 - tests/findit/test_scielo.py - SciELO
+- tests/findit/test_thieme.py - Thieme Medical Publishers
 - tests/findit/test_wolterskluwer.py - Wolters Kluwer
 
 To run all dance tests: pytest tests/findit/

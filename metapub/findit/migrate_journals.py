@@ -52,6 +52,7 @@ from metapub.findit.journals.ats import ats_journals, ats_template
 from metapub.findit.journals.plos import plos_journals, plos_template
 from metapub.findit.journals.mdpi import mdpi_journals, mdpi_template
 from metapub.findit.journals.eurekaselect import eurekaselect_journals, eurekaselect_template
+from metapub.findit.journals.thieme import thieme_journals, thieme_template
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
@@ -90,7 +91,7 @@ PUBLISHER_CONFIGS = [
     # Core established publishers
     {
         'name': 'aaas',
-        'dance_function': 'the_aaas_tango',
+        'dance_function': 'the_aaas_twist',
         'format_template': aaas_format,
         'journals': aaas_journals,
     },
@@ -287,6 +288,12 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_eureka_frug',
         'format_template': eurekaselect_template,
         'journals': eurekaselect_journals,
+    },
+    {
+        'name': 'Thieme Medical Publishers',
+        'dance_function': 'the_thieme_tap',
+        'format_template': thieme_template,
+        'journals': thieme_journals,
     },
     {
         'name': 'New England Journal of Medicine',

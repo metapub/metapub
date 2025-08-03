@@ -31,6 +31,7 @@ Each publisher has its own dedicated test file following the naming pattern `tes
 - `test_pmc.py` - PMC (PubMed Central) access
 - `test_sage.py` - SAGE Publications
 - `test_scielo.py` - SciELO (Scientific Electronic Library Online)
+- `test_thieme.py` - Thieme Medical Publishers
 - `test_wolterskluwer.py` - Wolters Kluwer
 
 ## Running Tests

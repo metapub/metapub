@@ -1,6 +1,11 @@
-"""Master test file for all FindIt dance functions.
+"""Master import file for all FindIt dance functions.
 
-This file imports and runs all publisher-specific dance tests.
+This file imports all publisher-specific dance test classes for convenience.
+Note: Renamed from test_all_dances.py to prevent pytest from discovering 
+these imported classes and running tests twice.
+
+To run all tests: pytest tests/findit/
+To run specific publisher: pytest tests/findit/test_<publisher>.py
 """
 
 # Import all publisher test modules

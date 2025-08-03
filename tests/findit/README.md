@@ -10,7 +10,7 @@ tests/findit/
 ├── README.md                           # This file
 ├── __init__.py                         # Package marker
 ├── common.py                           # Common test utilities and base classes
-├── test_all_dances.py                  # Master test file importing all publishers
+├── all_dances.py                       # Master import file (non-discoverable by pytest)
 └── test_[publisher].py                 # Individual publisher test files
 ```
 
@@ -99,8 +99,11 @@ The original `test_findit_dances.py` has been refactored into this publisher-spe
 - **Parallel testing** - Individual publishers can be tested independently
 - **Clearer debugging** - Test failures are easier to trace to specific publishers
 - **Scalability** - New publishers can be added without modifying existing tests
+- **No test duplication** - Individual test files run once (not duplicated via imports)
 
-The original file now contains a deprecation notice directing users to the new structure.
+## Test Discovery
+
+**Important**: The `all_dances.py` file was renamed from `test_all_dances.py` to prevent pytest from discovering and running the same tests twice. Pytest automatically discovers any file starting with `test_*`, which would cause imported test classes to run in addition to their individual files.
 
 ## Adding New Publishers
 

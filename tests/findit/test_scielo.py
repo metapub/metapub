@@ -8,10 +8,8 @@ from metapub import FindIt
 class TestScieloDance(BaseDanceTest):
     """Test cases for SciELO (Scientific Electronic Library Online)."""
 
-    @pytest.mark.skip(reason="Not working as of 2023-05-19")
-    def test_scielo_chula(self):
-        """Test SciELO chula dance function."""
-        # TODO: fix or remove
-        pmid = 26840468
-        source = FindIt(pmid)
-        assert source.url == 'http://www.scielo.br/pdf/ag/v52n4/0004-2803-ag-52-04-00278.pdf'
+    # NOTE: SciELO dance function has been broken since 2023-05-19
+    # All tests removed - the dance function needs to be completely rewritten
+    # to handle modern SciELO website structure and access requirements
+    
+    pass  # No tests - dance function is broken and needs repair

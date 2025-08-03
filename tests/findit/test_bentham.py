@@ -8,16 +8,18 @@ import pytest
 from unittest.mock import patch, Mock
 import requests
 
+from .common import BaseDanceTest
 from metapub import PubMedFetcher
 from metapub.findit.dances import the_eureka_frug
 from metapub.exceptions import AccessDenied, NoPDFLink
 
 
-class TestBenthamEurekaSelect:
+class TestBenthamEurekaSelect(BaseDanceTest):
     """Test cases for Bentham Science Publishers journal access."""
 
-    def setup_method(self):
+    def setUp(self):
         """Set up test fixtures."""
+        super().setUp()
         self.fetch = PubMedFetcher()
 
     def test_eureka_frug_available_article(self):

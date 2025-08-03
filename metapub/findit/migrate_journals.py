@@ -363,7 +363,7 @@ PUBLISHER_CONFIGS = [
     # Paywalled publishers
     {
         'name': 'degruyter',
-        'dance_function': 'paywall_handler',  # TODO: Implement the_degruyter_dance
+        'dance_function': 'the_degruyter_danza',
         'format_template': None,
         'journals': degruyter_journals,
     },

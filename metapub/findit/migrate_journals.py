@@ -53,6 +53,7 @@ from metapub.findit.journals.plos import plos_journals, plos_template
 from metapub.findit.journals.mdpi import mdpi_journals, mdpi_template
 from metapub.findit.journals.eurekaselect import eurekaselect_journals, eurekaselect_template
 from metapub.findit.journals.thieme import thieme_journals, thieme_template
+from metapub.findit.journals.dovepress import dovepress_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
@@ -338,6 +339,12 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_jci_jig',
         'format_template': None,
         'journals': ('J Clin Invest',),
+    },
+    {
+        'name': 'dovepress',
+        'dance_function': 'the_dovepress_peacock',
+        'format_template': None,
+        'journals': dovepress_journals,
     },
     {
         'name': 'najms',

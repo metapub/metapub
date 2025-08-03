@@ -364,6 +364,11 @@ PUBLISHER_CONFIGS = [
     },
 ]
 
+# Legacy compatibility - these were previously separate but are now consolidated
+# into PUBLISHER_CONFIGS. Keep empty lists for backward compatibility.
+SPECIAL_JOURNALS = []
+PAYWALL_PUBLISHERS = []
+
 def extract_journal_info(journals_data):
     """Extract journal names and format parameters from various data structures."""
     journal_list = []

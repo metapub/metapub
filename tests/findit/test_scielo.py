@@ -259,9 +259,13 @@ def test_scielo_journal_recognition():
     
     registry = JournalRegistry()
     
-    # Test SciELO journals
+    # Test SciELO journals (including some of the newly added Brazilian journals)
     test_journals = [
-        'Arq Gastroenterol'
+        'Arq Gastroenterol',
+        'Mem Inst Oswaldo Cruz',
+        'Braz J Biol',
+        'Quim Nova',
+        'Rev Bras Enferm'
     ]
     
     # Test journal recognition

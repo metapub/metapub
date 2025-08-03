@@ -55,6 +55,7 @@ from metapub.findit.journals.eurekaselect import eurekaselect_journals, eurekase
 from metapub.findit.journals.thieme import thieme_journals, thieme_template
 from metapub.findit.journals.dovepress import dovepress_journals
 from metapub.findit.journals.apa import apa_journals
+from metapub.findit.journals.scirp import scirp_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
@@ -352,6 +353,12 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_apa_dab',
         'format_template': None,
         'journals': apa_journals,
+    },
+    {
+        'name': 'scirp',
+        'dance_function': 'the_scirp_timewarp',
+        'format_template': None,
+        'journals': scirp_journals,
     },
     {
         'name': 'najms',

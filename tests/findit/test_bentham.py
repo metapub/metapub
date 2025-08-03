@@ -145,13 +145,16 @@ def test_bentham_journal_recognition():
         format_template=eurekaselect_template
     )
     
-    # Add test journals to registry
+    # Add test journals to registry (including some new Open Access journals)
     test_journals = [
         'Curr Genomics',
         'Curr Mol Med', 
         'Curr Top Med Chem',
         'Antiinfect Agents',
-        'Recent Pat Biotechnol'
+        'Recent Pat Biotechnol',
+        'Open Med Imaging J',  # New Open Access journal
+        'Open Cell Dev Biol J',  # New Open Access journal
+        'Open Inf Syst J'  # New Open Access journal
     ]
     
     for journal in test_journals:

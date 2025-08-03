@@ -50,6 +50,7 @@ from metapub.findit.journals.aps import aps_journals, aps_vip_template
 from metapub.findit.journals.liebert import liebert_journals, liebert_template
 from metapub.findit.journals.ats import ats_journals, ats_template
 from metapub.findit.journals.plos import plos_journals, plos_template
+from metapub.findit.journals.mdpi import mdpi_journals, mdpi_template
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
@@ -273,6 +274,12 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_doi_slide',
         'format_template': plos_template,
         'journals': plos_journals,
+    },
+    {
+        'name': 'MDPI',
+        'dance_function': 'the_mdpi_moonwalk',
+        'format_template': mdpi_template,
+        'journals': mdpi_journals,
     },
     {
         'name': 'New England Journal of Medicine',

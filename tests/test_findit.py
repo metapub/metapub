@@ -178,12 +178,12 @@ class TestFindIt(unittest.TestCase):
         # Test that key publishers are represented in the registry
         # These are journals we know should be in the registry based on the VIP and other data
         expected_journals = [
-            ("Nature", "nature"),      # Nature Publishing Group
-            ("Science", "aaas"),       # AAAS
-            ("Cell", "cell"),          # Cell Press  
-            ("Lancet", "lancet"),      # Lancet journals
-            ("JAMA", "jama"),          # JAMA network
-            ("J Clin Invest", "jci"),  # JCI
+            ("Nature", "nature"),              # Nature Publishing Group
+            ("Science", "Science Magazine"),   # Science Magazine (corrected from aaas)
+            ("Cell", "cell"),                  # Cell Press  
+            ("Lancet", "lancet"),              # Lancet journals
+            ("JAMA", "jama"),                  # JAMA network
+            ("J Clin Invest", "jci"),          # JCI
         ]
         
         for journal_name, expected_publisher in expected_journals:

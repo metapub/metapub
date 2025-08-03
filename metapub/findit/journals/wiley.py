@@ -1914,6 +1914,10 @@ wiley_journals = [
         'ISRN Vet Sci',
         'ISRN Virol',
         'ISRN Zool',
+        # Additional Hindawi journals found in categorized_unknown_journals.txt
+        'Adv Neurosci (Hindawi)',
+        'J Spectrosc (Hindawi)',
+        'J Sports Med (Hindawi Publ Corp)',
         'Influenza Res Treat',
         'Int J Alzheimers Dis',
         'Int J Anal Chem',

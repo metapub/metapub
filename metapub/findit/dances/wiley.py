@@ -1,6 +1,5 @@
 """Dance function for Wiley journals."""
 
-import requests
 from lxml.html import HTMLParser
 from lxml import etree
 
@@ -27,7 +26,7 @@ def the_wiley_shuffle(pma, verify=True):
         return url
 
     # wiley sometimes buries PDF links in HTML pages we have to parse.
-    res = requests.get(url)
+    res = unified_uri_get(url)
     if 'html' in res.headers['content-type']:
         if 'ACCESS DENIED' in res.text:
             raise AccessDenied('DENIED: Wiley E Publisher says no to %s' % res.url)

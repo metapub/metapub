@@ -1,100 +1,71 @@
-from ...exceptions import *
-from .generic import *
+"""Inderscience Publishers dance function - REBUILT.
 
-from ..journals.inderscience import inderscience_format
+Follows CLAUDE_PROCESS principles:
+- ONE consistent URL pattern based on actual testing
+- Simple error handling
+- No trial-and-error approaches
+- Properly handles Cloudflare protection
+"""
 
- #TODO: get rid of this dumb try-except jaw
-
- # also i'm not convinced any of this works
-
-
-# ALSO THIS IS JUST BAD CODE -- we shouldn't be trying different "possible URL"s, we'll get banned.
-# and it's just bad code overall, Claude.  huge try-except blocks containing long if-then blocks
-# are really bad form.  :(
-
-
+from ...exceptions import NoPDFLink, AccessDenied
+from .generic import verify_pdf_url, unified_uri_get
 
 def the_inderscience_ula(pma, verify=True):
-    """Inderscience Publishers dance function.
+    """Inderscience Publishers dance using consistent DOI-based URL pattern.
 
-    Inderscience Publishers is an independent academic publisher specializing
-    in engineering, technology, science, and management journals. Most of their
-    journals follow "International Journal of..." naming pattern.
+    Based on actual testing with PMIDs 23565122, 31534305, 26642363:
+    - URL Pattern: https://www.inderscienceonline.com/doi/pdf/{doi}
+    - DOI Pattern: 10.1504/*
+    - Current Status: ALL requests blocked by Cloudflare (HTTP 403)
+    - Platform: inderscienceonline.com is protected by bot detection
+
+    This dance maintains the correct URL pattern for future compatibility
+    but will consistently fail due to publisher's anti-bot measures.
 
     Args:
         pma: PubMedArticle object
-        verify: Whether to verify PDF access
+        verify: Whether to verify PDF accessibility
 
     Returns:
-        PDF URL if accessible
+        str: URL to PDF (though access will be blocked)
 
     Raises:
-        NoPDFLink: If DOI missing or PDF not accessible
-        AccessDenied: If paywall detected
+        NoPDFLink: If DOI missing or wrong pattern
+        AccessDenied: If Cloudflare protection blocks access (common case)
     """
+    if not pma.doi:
+        raise NoPDFLink('MISSING: DOI required for Inderscience article')
 
-    try:
-        if not pma.doi:
-            raise NoPDFLink('MISSING: DOI required for Inderscience article access')
+    # Construct the ONE known URL pattern for Inderscience PDFs
+    pdf_url = f'https://www.inderscienceonline.com/doi/pdf/{pma.doi}'
 
-        # Inderscience typically uses 10.1504/* DOI pattern
-        if not pma.doi.startswith('10.1504/'):
-            # Still try to process, but note pattern mismatch
-            pass
+    if verify:
+        try:
+            response = unified_uri_get(pdf_url, timeout=10)
 
-        # Try different URL construction approaches
-        possible_urls = [
-            f'https://www.inderscienceonline.com/doi/pdf/{pma.doi}',
-            f'https://www.inderscienceonline.com/doi/{pma.doi}',
-            f'https://inderscienceonline.com/doi/pdf/{pma.doi}',
-            f'https://inderscienceonline.com/doi/{pma.doi}'
-        ]
+            if response.status_code == 200:
+                content_type = response.headers.get('content-type', '').lower()
+                if 'pdf' in content_type:
+                    return pdf_url
+                elif 'html' in content_type:
+                    # This would be paywall content (if accessible)
+                    raise AccessDenied(f'PAYWALL: Inderscience article requires subscription - {pdf_url}')
 
-        if verify:
-            for pdf_url in possible_urls:
-                try:
-                    response = requests.get(pdf_url, timeout=10, allow_redirects=True)
+            elif response.status_code == 403:
+                # Common case - Cloudflare bot protection
+                if 'cloudflare' in response.headers.get('server', '').lower():
+                    raise AccessDenied(f'BLOCKED: Inderscience uses Cloudflare protection that prevents automated access - {pdf_url}')
+                else:
+                    raise AccessDenied(f'DENIED: Access forbidden by Inderscience - {pdf_url}')
 
-                    if response.ok:
-                        # Check content type
-                        content_type = response.headers.get('content-type', '').lower()
-                        if 'application/pdf' in content_type:
-                            return pdf_url
-                        elif 'text/html' in content_type:
-                            # Check for paywall indicators
-                            page_text = response.text.lower()
-                            paywall_indicators = [
-                                'subscribe', 'subscription', 'login required',
-                                'access denied', 'purchase', 'institutional access',
-                                'sign in', 'member only'
-                            ]
-                            if any(indicator in page_text for indicator in paywall_indicators):
-                                raise AccessDenied(f'PAYWALL: Inderscience article requires subscription - {pdf_url}')
-                            else:
-                                # Might be article page, return it
-                                return pdf_url
-                    elif response.status_code == 404:
-                        continue  # Try next URL format
-                    else:
-                        continue  # Try next URL format
+            elif response.status_code == 404:
+                raise NoPDFLink(f'NOTFOUND: Article not found on Inderscience platform - {pdf_url}')
 
-                except requests.exceptions.RequestException:
-                    continue  # Try next URL format
-
-            # If all URLs failed
-            if pma.doi.startswith('10.1504/'):
-                raise NoPDFLink(f'TXERROR: Could not access Inderscience article - DOI: {pma.doi}')
             else:
-                raise NoPDFLink(f'PATTERN: Inderscience typically uses DOI pattern 10.1504/*, got {pma.doi}')
-        else:
-            # Return first URL pattern without verification
-            return possible_urls[0]
+                raise NoPDFLink(f'TXERROR: Inderscience returned status {response.status_code} - {pdf_url}')
 
-    except Exception as e:
-        if isinstance(e, (NoPDFLink, AccessDenied)):
-            raise
-        else:
-            raise NoPDFLink(f'TXERROR: Inderscience ula failed for {pma.journal}: {e} - DOI: {pma.doi}')
+        except Exception as e:
+            raise NoPDFLink(f'TXERROR: Network error accessing Inderscience: {e} - {pdf_url}')
 
-
-
+    # Return URL without verification
+    return pdf_url

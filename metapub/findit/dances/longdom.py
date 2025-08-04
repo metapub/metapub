@@ -53,7 +53,7 @@ def the_longdom_hustle(pma, verify=True):
         if verify:
             for pdf_url in possible_urls:
                 try:
-                    response = requests.get(pdf_url, timeout=10, allow_redirects=True)
+                    response = unified_uri_get(pdf_url, timeout=10, allow_redirects=True)
 
                     if response.ok:
                         # Check if we got actual PDF content
@@ -70,7 +70,7 @@ def the_longdom_hustle(pma, verify=True):
                                 article_url = pdf_url.replace('/articles-pdf/', '/articles/').replace('.pdf', '')
                                 return article_url
 
-                except requests.exceptions.RequestException:
+                except Exception:
                     continue  # Try next URL pattern
 
             # If all patterns failed, raise error

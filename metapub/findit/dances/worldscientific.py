@@ -41,7 +41,7 @@ def the_worldscientific_robot(pma, verify=True):
 
         if verify:
             try:
-                response = requests.get(pdf_url, timeout=10, allow_redirects=True)
+                response = unified_uri_get(pdf_url, timeout=10, allow_redirects=True)
 
                 if response.ok:
                     # Check if we got actual PDF content
@@ -68,7 +68,7 @@ def the_worldscientific_robot(pma, verify=True):
                 else:
                     raise NoPDFLink(f'TXERROR: World Scientific returned status {response.status_code} - attempted: {pdf_url}')
 
-            except requests.exceptions.RequestException as e:
+            except Exception as e:
                 raise NoPDFLink(f'TXERROR: Network error accessing World Scientific: {e} - attempted: {pdf_url}')
         else:
             # Return PDF URL without verification

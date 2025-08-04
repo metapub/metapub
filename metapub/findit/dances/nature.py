@@ -1,11 +1,16 @@
 """Dance function for Nature Publishing Group journals."""
 
-import requests
 from ...exceptions import AccessDenied, NoPDFLink
 from .generic import *
 
 # Import Nature-specific constants
 from ..journals.nature import nature_format, nature_journals
+
+
+#TODO: use reusable paywall detection code
+
+
+#Do not rewrite this script in any other way. It's working.
 
 
 def the_nature_ballet(pma, verify=True):
@@ -34,7 +39,7 @@ def the_nature_ballet(pma, verify=True):
 
         # Try the DOI-based approach first
         try:
-            response = requests.get(pdf_url, timeout=10)
+            response = unified_uri_get(pdf_url, timeout=10)
 
             if response.status_code == 200:
                 content_type = response.headers.get('content-type', '').lower()
@@ -57,7 +62,7 @@ def the_nature_ballet(pma, verify=True):
             else:
                 raise NoPDFLink(f'TXERROR: Nature returned status {response.status_code} for {pdf_url}')
 
-        except requests.exceptions.RequestException:
+        except Exception:
             # Network error with DOI approach, try fallback
             pass
 
@@ -79,7 +84,7 @@ def the_nature_ballet(pma, verify=True):
                     return fallback_url
 
                 try:
-                    response = requests.get(fallback_url, timeout=10)
+                    response = unified_uri_get(fallback_url, timeout=10)
 
                     if response.status_code == 200:
                         content_type = response.headers.get('content-type', '').lower()
@@ -106,7 +111,7 @@ def the_nature_ballet(pma, verify=True):
                     else:
                         raise NoPDFLink(f'TXERROR: Nature fallback returned status {response.status_code} - attempted: {fallback_url}')
 
-                except requests.exceptions.RequestException as e:
+                except Exception as e:
                     raise NoPDFLink(f'TXERROR: Network error with Nature fallback: {e} - attempted: {fallback_url}')
 
     # If we get here, neither approach worked

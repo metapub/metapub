@@ -1,6 +1,5 @@
 """Dance function for ScienceDirect (Elsevier)."""
 
-import requests
 from lxml.html import HTMLParser
 from lxml import etree
 
@@ -34,7 +33,7 @@ def the_sciencedirect_disco(pma, verify=True):
         raise NoPDFLink('MISSING: pii, doi (doi lookup failed)')
 
     try:
-        res = requests.get(starturl)
+        res = unified_uri_get(starturl)
     except requests.exceptions.TooManyRedirects:
         raise NoPDFLink('TXERROR: ScienceDirect TooManyRedirects: cannot reach %s via %s' %
                         (pma.journal, starturl))

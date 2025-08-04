@@ -1,6 +1,5 @@
 """Dance function for JAMA (Journal of the American Medical Association)."""
 
-import requests
 from lxml.html import HTMLParser
 from lxml import etree
 
@@ -18,7 +17,7 @@ def the_jama_dance(pma, verify=True):
         raise NoPDFLink('MISSING: doi needed for JAMA article.')
 
     baseurl = the_doi_2step(pma.doi)
-    res = requests.get(baseurl)
+    res = unified_uri_get(baseurl)
     parser = HTMLParser()
     tree = etree.fromstring(res.content, parser)
     # we're looking for a meta tag like this:

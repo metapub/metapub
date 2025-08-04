@@ -18,8 +18,8 @@ def the_endo_mambo(pma, verify=True):
 
 
     ## TODO: THIS CLEARLY DOESN'T WORK, NEED TO REPLACE:
-    #html = requests.get(url)
-    #res = requests.get(url)
+    #html = unified_uri_get(url)
+    #res = unified_uri_get(url)
     #if 'html' in res.headers['content-type']:
     #    from IPython import embed; embed()
 

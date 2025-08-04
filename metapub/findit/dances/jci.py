@@ -1,6 +1,5 @@
 """Dance function for Journal of Clinical Investigation."""
 
-import requests
 from ...exceptions import AccessDenied, NoPDFLink
 from .generic import the_doi_2step, verify_pdf_url
 
@@ -40,7 +39,7 @@ def the_jci_jig(pma, verify=True):
         except NoPDFLink as e:
             # If verification fails, check if it's due to HTML content type
             try:
-                response = requests.get(url)
+                response = unified_uri_get(url)
                 if response.status_code == 200 and 'text/html' in response.headers.get('content-type', ''):
                     # JCI is returning HTML instead of PDF - this might be due to access control
                     # For now, we'll return the URL anyway as it's the correct pattern
@@ -48,7 +47,7 @@ def the_jci_jig(pma, verify=True):
                 else:
                     # Re-raise the original exception for other types of failures
                     raise e
-            except requests.exceptions.RequestException:
+            except Exception:
                 # Network error during verification - re-raise original exception
                 raise e
     return url

@@ -24,7 +24,7 @@ def the_thieme_tap(pma, verify=True):
 
         if verify:
             try:
-                response = requests.get(pdf_url, timeout=10)
+                response = unified_uri_get(pdf_url, timeout=10)
 
                 if response.status_code == 200:
                     content_type = response.headers.get('content-type', '').lower()
@@ -48,7 +48,7 @@ def the_thieme_tap(pma, verify=True):
                 else:
                     raise NoPDFLink(f'TXERROR: Thieme returned status {response.status_code} - attempted: {pdf_url}')
 
-            except requests.exceptions.RequestException as e:
+            except Exception as e:
                 raise NoPDFLink(f'TXERROR: Network error accessing Thieme: {e} - attempted: {pdf_url}')
         else:
             return pdf_url

@@ -24,7 +24,7 @@ def the_apa_dab(pma, verify=True):
 
         if verify:
             try:
-                response = requests.get(article_url, timeout=10)
+                response = unified_uri_get(article_url, timeout=10)
 
                 if response.status_code == 200:
                     # Check if we can access the content
@@ -64,7 +64,7 @@ def the_apa_dab(pma, verify=True):
                     raise NoPDFLink(f'TXERROR: APA returned status {response.status_code} - attempted: {article_url}')
 
 
-            except requests.exceptions.RequestException as e:
+            except Exception as e:
                 raise NoPDFLink(f'TXERROR: Network error accessing APA: {e} - attempted: {article_url}')
         else:
             # Return DOI-resolved URL without verification

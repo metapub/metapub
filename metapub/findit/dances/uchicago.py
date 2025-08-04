@@ -40,7 +40,7 @@ def the_uchicago_walk(pma, verify=True):
 
         if verify:
             try:
-                response = requests.get(pdf_url, timeout=10, allow_redirects=True)
+                response = unified_uri_get(pdf_url, timeout=10, allow_redirects=True)
 
                 if response.ok:
                     # Check if we got actual PDF content
@@ -67,7 +67,7 @@ def the_uchicago_walk(pma, verify=True):
                 else:
                     raise NoPDFLink(f'TXERROR: University of Chicago Press returned status {response.status_code} - attempted: {pdf_url}')
 
-            except requests.exceptions.RequestException as e:
+            except Exception as e:
                 raise NoPDFLink(f'TXERROR: Network error accessing University of Chicago Press: {e} - attempted: {pdf_url}')
         else:
             # Return PDF URL without verification

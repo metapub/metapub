@@ -23,21 +23,40 @@ from ..registry import JournalRegistry
 
 OK_STATUS_CODES = (200, 301, 302, 307)
 
+
+# Use consistent browser-like headers so we don't freak out the publishers.
+# We're not scraping, we're just checking something exists.
+COMMON_REQUEST_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.5",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Upgrade-Insecure-Requests": "1",
+}
+
 # Common paywall detection terms
 PAYWALL_TERMS = [
-    'paywall', 'subscribe', 'subscription', 'sign in', 'log in', 
+    'paywall', 'subscribe', 'subscription', 'sign in', 'log in',
     'login required', 'access denied', 'purchase', 'institutional access',
     'member access', 'subscribe now', 'buy article', 'rent this article',
     'subscription required', 'checkLicense', 'member only', 'institution'
 ]
 
+
+def unified_uri_get(uri, timeout=10, allow_redirects=True, params={},
+                    headers=COMMON_REQUEST_HEADERS):
+    response = requests.get(uri, headers=headers, allow_redirects=allow_redirects,
+                            timeout=timeout, params=params)
+    return response
+
 def detect_paywall_from_html(html_content, publisher_name=''):
     """Detect if HTML content indicates a paywall.
-    
+
     Args:
         html_content: HTML response text
         publisher_name: Optional publisher name for error messages
-        
+
     Returns:
         bool: True if paywall detected, False otherwise
     """

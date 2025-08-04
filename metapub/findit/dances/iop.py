@@ -41,7 +41,7 @@ def the_iop_fusion(pma, verify=True):
         if verify:
             for pdf_url in possible_urls:
                 try:
-                    response = requests.get(pdf_url, timeout=10, allow_redirects=True)
+                    response = unified_uri_get(pdf_url, timeout=10, allow_redirects=True)
 
                     if response.ok:
                         # Check content type
@@ -66,7 +66,7 @@ def the_iop_fusion(pma, verify=True):
                     else:
                         continue  # Try next URL format
 
-                except requests.exceptions.RequestException as e:
+                except Exception as e:
                     continue  # Try next URL format
 
             # If both URLs failed, determine appropriate error

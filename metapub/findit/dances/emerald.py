@@ -32,7 +32,7 @@ def the_emerald_ceili(pma, verify=True):
 
         if verify:
             try:
-                response = requests.get(pdf_url, timeout=30)
+                response = unified_uri_get(pdf_url, timeout=30)
 
                 if response.status_code in OK_STATUS_CODES:
                     # Check if this is actually a PDF
@@ -59,7 +59,7 @@ def the_emerald_ceili(pma, verify=True):
                 else:
                     raise NoPDFLink(f'TXERROR: Emerald returned status {response.status_code} - attempted: {pdf_url}')
 
-            except requests.exceptions.RequestException as e:
+            except Exception as e:
                 raise NoPDFLink(f'TXERROR: Network error accessing Emerald: {e} - attempted: {pdf_url}')
         else:
             # Return PDF URL without verification

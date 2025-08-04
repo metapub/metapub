@@ -7,6 +7,7 @@ from lxml import etree
 import os
 
 from ...exceptions import AccessDenied, NoPDFLink
+from .generic import unified_uri_get
 
 AAAS_USERNAME = os.environ.get("AAAS_USERNAME", "set me in environment variable AAAS_USERNAME / AAAS_PASSWORD")
 AAAS_PASSWORD = os.environ.get("AAAS_PASSWORD", "")
@@ -26,13 +27,13 @@ def the_aaas_twist(pma, verify=True):
     #except NoPDFLink:
         # try the pmid-based approach
     baseurl = 'http://www.sciencemag.org/cgi/pmidlookup?view=long&pmid=%s' % pma.pmid
-    res = requests.get(baseurl)
+    res = unified_uri_get(baseurl)
     pdfurl = res.url.replace('.long', '.full') + '.pdf'
 
     if not verify:
         return pdfurl
 
-    response = requests.get(pdfurl)
+    response = unified_uri_get(pdfurl)
     if response.status_code == 200 and 'pdf' in response.headers['content-type']:
         return response.url
 

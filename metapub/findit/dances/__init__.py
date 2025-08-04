@@ -12,7 +12,7 @@ from .generic import (
     the_doi_2step, standardize_journal_name, verify_pdf_url, rectify_pma_for_vip_links,
     the_doi_slide, the_pmid_pogo, the_vip_shake, the_vip_nonstandard_shake,
     the_pii_polka, the_pmc_twist, the_bmc_boogie, OK_STATUS_CODES,
-    detect_paywall_from_html, PAYWALL_TERMS
+    detect_paywall_from_html, PAYWALL_TERMS, unified_uri_get
 )
 
 # Publisher-specific dance functions (alphabetical order)

@@ -1,6 +1,5 @@
 """Dance function for J-STAGE (Japan Science and Technology Information Aggregator, Electronic)."""
 
-import requests
 from ...exceptions import AccessDenied, NoPDFLink
 from .generic import the_doi_2step, verify_pdf_url
 
@@ -13,7 +12,7 @@ def the_jstage_dive(pma, verify=True):
     '''
     if pma.doi:
         url = the_doi_2step(pma.doi)
-        res = requests.get(url)
+        res = unified_uri_get(url)
         if 'jstage' in res.url:
             url = res.url.replace('_article', '_pdf')
             pdfpos = url.find('_pdf')

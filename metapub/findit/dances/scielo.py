@@ -1,6 +1,5 @@
 """SciELO dance function."""
 
-import requests
 from lxml.html import HTMLParser
 from lxml import etree
 from ...exceptions import NoPDFLink
@@ -21,13 +20,13 @@ def the_scielo_chula(pma, verify=True):
     page_text = None
     baseurl_pii = 'http://www.scielo.br/scielo.php?script=sci_arttext&pid=%s'
     if pma.pii:
-        response = requests.get(baseurl_pii % pma.pii)
+        response = unified_uri_get(baseurl_pii % pma.pii)
         if response.ok:
             page_text = response.content
 
     if page_text is None:
         if pma.doi:
-            response = requests.get(the_doi_2step(pma.doi))
+            response = unified_uri_get(the_doi_2step(pma.doi))
             if response.ok:
                 page_text = response.content
         else:

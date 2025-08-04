@@ -1,7 +1,6 @@
 """Dance function for North American Journal of Medical Sciences."""
 
 from urllib.parse import urljoin
-import requests
 from lxml.html import HTMLParser
 from lxml import etree
 
@@ -28,7 +27,7 @@ def the_najms_mazurka(pma, verify=True):
         raise NoPDFLink('MISSING: pii, doi (doi lookup failed)')
 
     url = ''
-    response = requests.get(starturl)
+    response = unified_uri_get(starturl)
     if response.ok:
         body = etree.fromstring(response.content, parser=HTMLParser()).find('body')
         href = body.findall('table/tr/td/p/a')[0].get('href')

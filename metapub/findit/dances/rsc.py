@@ -30,7 +30,7 @@ def the_rsc_reaction(pma, verify=True):
 
         if verify:
             try:
-                response = requests.get(article_url, timeout=30)
+                response = unified_uri_get(article_url, timeout=30)
 
                 if response.status_code in OK_STATUS_CODES:
                     page_text = response.text.lower()
@@ -69,7 +69,7 @@ def the_rsc_reaction(pma, verify=True):
                 else:
                     raise NoPDFLink(f'TXERROR: RSC returned status {response.status_code} - attempted: {article_url}')
 
-            except requests.exceptions.RequestException as e:
+            except Exception as e:
                 raise NoPDFLink(f'TXERROR: Network error accessing RSC: {e} - attempted: {article_url}')
         else:
             # Return DOI-resolved URL without verification

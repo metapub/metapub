@@ -1,6 +1,5 @@
 """Dance function for DovePress (Dove Medical Press)."""
 
-import requests
 from lxml.html import HTMLParser
 from lxml import etree
 
@@ -30,7 +29,7 @@ def the_dovepress_peacock(pma, verify=True):
         article_url = the_doi_2step(pma.doi)
         
         # Get the article page to extract PDF download link
-        response = requests.get(article_url)
+        response = unified_uri_get(article_url)
         if not response.ok:
             raise NoPDFLink('TXERROR: DovePress article page returned status %i' % response.status_code)
         

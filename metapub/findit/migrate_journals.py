@@ -308,7 +308,7 @@ PUBLISHER_CONFIGS = [
         'journals': mdpi_journals,
     },
     {
-        'name': 'Bentham Science Publishers',
+        'name': 'eurekaselect',
         'dance_function': 'the_eureka_frug',
         'format_template': eurekaselect_template,
         'journals': eurekaselect_journals,

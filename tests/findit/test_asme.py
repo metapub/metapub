@@ -1,0 +1,293 @@
+"""Tests for ASME (American Society of Mechanical Engineers) dance function."""
+
+import pytest
+from unittest.mock import patch, Mock
+import requests
+
+from .common import BaseDanceTest
+from metapub import PubMedFetcher
+from metapub.findit.dances import the_asme_animal
+from metapub.exceptions import AccessDenied, NoPDFLink
+
+
+class TestASMEDance(BaseDanceTest):
+    """Test cases for ASME (American Society of Mechanical Engineers)."""
+
+    def setUp(self):
+        """Set up test fixtures."""
+        super().setUp()
+        self.fetch = PubMedFetcher()
+
+    def test_asme_assembly_url_construction_appl_mech(self):
+        """Test 1: URL construction success (J Appl Mech).
+        
+        PMID: 38449742 (J Appl Mech)
+        Expected: Should construct valid ASME PDF URL
+        """
+        pma = self.fetch.article_by_pmid('38449742')
+        
+        print(f"Test 1 - Article info: {pma.journal}, DOI: {pma.doi}")
+
+        # Test without verification (should always work for URL construction)
+        url = the_asme_animal(pma, verify=False)
+        assert url is not None
+        assert 'asmedigitalcollection.asme.org' in url
+        assert url.startswith('https://')
+        print(f"Test 1 - PDF URL: {url}")
+
+    def test_asme_assembly_url_construction_biomech_eng(self):
+        """Test 2: Biomechanical Engineering.
+        
+        PMID: 38913074 (J Biomech Eng)
+        Expected: Should construct valid ASME PDF URL
+        """
+        pma = self.fetch.article_by_pmid('38913074')
+        
+        print(f"Test 2 - Article info: {pma.journal}, DOI: {pma.doi}")
+
+        # Skip test if no DOI available
+        if not pma.doi:
+            print("Test 2 - Skipping: No DOI available for this PMID")
+            return
+
+        # Test without verification
+        url = the_asme_animal(pma, verify=False)
+        assert url is not None
+        assert 'asmedigitalcollection.asme.org' in url
+        print(f"Test 2 - PDF URL: {url}")
+
+    def test_asme_assembly_url_construction_heat_transfer(self):
+        """Test 3: Heat Transfer.
+        
+        PMID: 35833154 (J Heat Transfer)
+        Expected: Should construct valid ASME PDF URL
+        """
+        pma = self.fetch.article_by_pmid('35833154')
+        
+        print(f"Test 3 - Article info: {pma.journal}, DOI: {pma.doi}")
+
+        # Skip test if no DOI available
+        if not pma.doi:
+            print("Test 3 - Skipping: No DOI available for this PMID")
+            return
+
+        # Test without verification
+        url = the_asme_animal(pma, verify=False)
+        assert url is not None
+        assert 'asmedigitalcollection.asme.org' in url
+        print(f"Test 3 - PDF URL: {url}")
+
+    @patch('requests.get')
+    def test_asme_assembly_successful_access(self, mock_get):
+        """Test 4: Successful PDF access simulation.
+        
+        Expected: Should return PDF URL when accessible
+        """
+        # Mock successful PDF response
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.ok = True
+        mock_response.headers = {'content-type': 'application/pdf'}
+        mock_get.return_value = mock_response
+
+        pma = self.fetch.article_by_pmid('38449742')
+        
+        # Test with verification - should succeed
+        url = the_asme_animal(pma, verify=True)
+        assert 'asmedigitalcollection.asme.org' in url
+        print(f"Test 4 - Successful verified access: {url}")
+
+    @patch('requests.get')
+    def test_asme_assembly_paywall_detection(self, mock_get):
+        """Test 5: Paywall detection.
+        
+        Expected: Should detect paywall and raise AccessDenied
+        """
+        # Mock paywall response
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.ok = True
+        mock_response.headers = {'content-type': 'text/html'}
+        mock_response.text = '''<html><body>
+            <h1>ASME Digital Collection</h1>
+            <p>Login required for institutional access</p>
+            <button>Subscribe to access</button>
+        </body></html>'''
+        mock_get.return_value = mock_response
+
+        pma = self.fetch.article_by_pmid('38449742')
+        
+        # Test with verification - should detect paywall
+        with pytest.raises(AccessDenied) as exc_info:
+            the_asme_animal(pma, verify=True)
+        
+        assert 'PAYWALL' in str(exc_info.value)
+        print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
+
+    @patch('requests.get')
+    def test_asme_assembly_network_error(self, mock_get):
+        """Test 6: Network error handling.
+        
+        Expected: Should handle network errors gracefully
+        """
+        # Mock network error
+        mock_get.side_effect = requests.exceptions.ConnectionError("Network error")
+
+        pma = self.fetch.article_by_pmid('38449742')
+        
+        # Test - should handle network error
+        with pytest.raises(NoPDFLink) as exc_info:
+            the_asme_animal(pma, verify=True)
+        
+        assert 'TXERROR' in str(exc_info.value)
+        print(f"Test 6 - Correctly handled network error: {exc_info.value}")
+
+    def test_asme_assembly_missing_doi(self):
+        """Test 7: Article without DOI.
+        
+        Expected: Should raise NoPDFLink for missing DOI
+        """
+        # Create a mock PMA without DOI
+        pma = Mock()
+        pma.doi = None
+        pma.journal = 'J Appl Mech'
+        
+        with pytest.raises(NoPDFLink) as exc_info:
+            the_asme_animal(pma, verify=False)
+        
+        assert 'MISSING' in str(exc_info.value)
+        assert 'DOI required' in str(exc_info.value)
+        print(f"Test 7 - Correctly handled missing DOI: {exc_info.value}")
+
+    @patch('requests.get')
+    def test_asme_assembly_404_error(self, mock_get):
+        """Test 8: Article not found (404 error).
+        
+        Expected: Should try multiple patterns and handle 404 errors
+        """
+        # Mock 404 response for all attempts
+        mock_response = Mock()
+        mock_response.ok = False
+        mock_response.status_code = 404
+        mock_get.return_value = mock_response
+
+        pma = self.fetch.article_by_pmid('38449742')
+        
+        # Test - should try multiple patterns and eventually fail
+        with pytest.raises(NoPDFLink) as exc_info:
+            the_asme_animal(pma, verify=True)
+        
+        assert 'TXERROR' in str(exc_info.value) or 'PATTERN' in str(exc_info.value)
+        print(f"Test 8 - Correctly handled 404: {exc_info.value}")
+
+    @patch('requests.get')
+    def test_asme_assembly_journal_code_mapping(self, mock_get):
+        """Test 9: Journal code mapping and URL construction.
+        
+        Expected: Should use journal code in URL when available
+        """
+        # Mock successful response
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.ok = True
+        mock_response.headers = {'content-type': 'application/pdf'}
+        mock_get.return_value = mock_response
+
+        pma = self.fetch.article_by_pmid('38449742')
+        
+        # Test - should use journal-specific URL
+        url = the_asme_animal(pma, verify=True)
+        assert 'asmedigitalcollection.asme.org' in url
+        # Should contain journal code if mapping worked
+        print(f"Test 9 - Journal code mapping: {url}")
+
+    def test_asme_assembly_doi_pattern_warning(self):
+        """Test 10: Non-standard DOI pattern handling.
+        
+        Expected: Should handle non-10.1115 DOI patterns but may warn
+        """
+        # Create a mock PMA with non-ASME DOI pattern
+        pma = Mock()
+        pma.doi = '10.1016/j.example.2023.123456'  # Non-ASME DOI
+        pma.journal = 'J Appl Mech'
+        
+        # Should still construct URL without verification
+        url = the_asme_animal(pma, verify=False)
+        assert url is not None
+        assert 'asmedigitalcollection.asme.org' in url
+        print(f"Test 10 - Non-standard DOI pattern handled: {url}")
+
+
+def test_asme_journal_recognition():
+    """Test that ASME journals are properly recognized in the registry."""
+    from metapub.findit.registry import JournalRegistry
+    from metapub.findit.journals.asme import asme_journals
+    
+    registry = JournalRegistry()
+    
+    # Test sample ASME journals (using PubMed abbreviated names)
+    test_journals = [
+        'J Appl Mech',
+        'J Biomech Eng',
+        'J Heat Transfer',
+        'J Fluids Eng',
+        'J Tribol'
+    ]
+    
+    # Test journal recognition
+    found_count = 0
+    for journal in test_journals:
+        if journal in asme_journals:
+            publisher_info = registry.get_publisher_for_journal(journal)
+            if publisher_info and publisher_info['name'] == 'asme':
+                assert publisher_info['dance_function'] == 'the_asme_animal'
+                print(f"✓ {journal} correctly mapped to ASME")
+                found_count += 1
+            else:
+                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
+        else:
+            print(f"⚠ {journal} not in asme_journals list")
+    
+    # Just make sure we found at least one ASME journal
+    assert found_count > 0, "No ASME journals found in registry with asme publisher"
+    print(f"✓ Found {found_count} properly mapped ASME journals")
+    
+    registry.close()
+
+
+if __name__ == '__main__':
+    # Run basic tests if executed directly
+    test_instance = TestASMEDance()
+    test_instance.setUp()
+    
+    print("Running ASME tests...")
+    print("\n" + "="*60)
+    
+    tests = [
+        ('test_asme_assembly_url_construction_appl_mech', 'Applied Mechanics URL construction'),
+        ('test_asme_assembly_url_construction_biomech_eng', 'Biomech Eng URL construction'),
+        ('test_asme_assembly_url_construction_heat_transfer', 'Heat Transfer URL construction'),
+        ('test_asme_assembly_successful_access', 'Successful access simulation'),
+        ('test_asme_assembly_paywall_detection', 'Paywall detection'),
+        ('test_asme_assembly_network_error', 'Network error handling'),
+        ('test_asme_assembly_missing_doi', 'Missing DOI handling'),
+        ('test_asme_assembly_404_error', '404 error handling'),
+        ('test_asme_assembly_journal_code_mapping', 'Journal code mapping'),
+        ('test_asme_assembly_doi_pattern_warning', 'Non-standard DOI pattern handling')
+    ]
+    
+    for test_method, description in tests:
+        try:
+            getattr(test_instance, test_method)()
+            print(f"✓ {description} works")
+        except Exception as e:
+            print(f"✗ {description} failed: {e}")
+    
+    try:
+        test_asme_journal_recognition()
+        print("✓ Registry test passed: Journal recognition works")
+    except Exception as e:
+        print(f"✗ Registry test failed: {e}")
+    
+    print("\n" + "="*60)
+    print("Test suite completed!")

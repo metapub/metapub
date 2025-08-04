@@ -70,6 +70,8 @@ from metapub.findit.journals.longdom import longdom_journals
 from metapub.findit.journals.iop import iop_journals
 from metapub.findit.journals.oatext import oatext_journals
 from metapub.findit.journals.allenpress import allenpress_journals
+from metapub.findit.journals.inderscience import inderscience_journals
+from metapub.findit.journals.asme import asme_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
@@ -457,6 +459,18 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_allenpress_advance',
         'format_template': None,
         'journals': allenpress_journals,
+    },
+    {
+        'name': 'inderscience',
+        'dance_function': 'the_inderscience_ula',
+        'format_template': None,
+        'journals': inderscience_journals,
+    },
+    {
+        'name': 'asme',
+        'dance_function': 'the_asme_animal',
+        'format_template': None,
+        'journals': asme_journals,
     },
     {
         'name': 'najms',

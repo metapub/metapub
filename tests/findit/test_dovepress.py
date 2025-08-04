@@ -210,7 +210,7 @@ class TestDovePressTest(BaseDanceTest):
         assert '404' in str(exc_info.value)
         print(f"Test 8 - Correctly handled 404: {exc_info.value}")
 
-    @patch('metapub.findit.dances.etree.fromstring')
+    @patch('metapub.findit.dances.dovepress.etree.fromstring')
     @patch('requests.get')
     def test_dovepress_waltz_html_parsing_error(self, mock_get, mock_etree):
         """Test 9: HTML parsing error handling.

@@ -198,7 +198,7 @@ class TestScieloDance(BaseDanceTest):
         assert 'pii or doi needed' in str(exc_info.value)
         print(f"Test 7 - Correctly handled missing data: {exc_info.value}")
 
-    @patch('metapub.findit.dances.etree.fromstring')
+    @patch('metapub.findit.dances.scielo.etree.fromstring')
     @patch('requests.get')
     def test_scielo_chula_html_parsing_error(self, mock_get, mock_etree):
         """Test 8: HTML parsing error handling.

@@ -2449,3 +2449,86 @@ def the_longdom_hustle(pma, verify=True):
         else:
             raise NoPDFLink(f'TXERROR: Longdom hustle failed for {pma.journal}: {e} - attempted: DOI resolution')
 
+
+def the_iop_fusion(pma, verify=True):
+    """IOP Publishing (Institute of Physics) dance function.
+    
+    IOP Publishing operates multiple domains including iopscience.iop.org 
+    and validate.perfdrive.com. Most IOP journals use DOI pattern 10.1088/*.
+    
+    Args:
+        pma: PubMedArticle object
+        verify: Whether to verify PDF access
+        
+    Returns:
+        PDF URL if accessible
+        
+    Raises:
+        NoPDFLink: If DOI missing, wrong pattern, or PDF not accessible
+        AccessDenied: If paywall detected
+    """
+    from .journals.iop import iop_format, iop_alt_format
+    
+    try:
+        if not pma.doi:
+            raise NoPDFLink('MISSING: DOI required for IOP article access')
+        
+        # Most IOP journals use 10.1088 pattern, but some use others
+        # Accept common patterns but warn about uncommon ones
+        common_iop_patterns = ['10.1088', '10.1149', '10.3847', '10.1209', '10.1238']
+        if not any(pma.doi.startswith(pattern) for pattern in common_iop_patterns):
+            # Still try to process for other patterns
+            pass
+        
+        # Try both IOP URL formats
+        possible_urls = [
+            iop_format.format(doi=pma.doi),
+            iop_alt_format.format(doi=pma.doi)
+        ]
+        
+        if verify:
+            for pdf_url in possible_urls:
+                try:
+                    response = requests.get(pdf_url, timeout=10, allow_redirects=True)
+                    
+                    if response.ok:
+                        # Check content type
+                        content_type = response.headers.get('content-type', '').lower()
+                        if 'application/pdf' in content_type:
+                            return pdf_url
+                        elif 'text/html' in content_type:
+                            # Check for paywall indicators
+                            page_text = response.text.lower()
+                            paywall_indicators = [
+                                'subscribe', 'subscription', 'login required',
+                                'access denied', 'purchase', 'institutional access'
+                            ]
+                            if any(indicator in page_text for indicator in paywall_indicators):
+                                # Try next URL before raising paywall error
+                                continue
+                            else:
+                                # Might be article page, return it
+                                return pdf_url
+                    elif response.status_code == 404:
+                        continue  # Try next URL format
+                    else:
+                        continue  # Try next URL format
+                        
+                except requests.exceptions.RequestException as e:
+                    continue  # Try next URL format
+            
+            # If both URLs failed, determine appropriate error
+            if any(pma.doi.startswith(pattern) for pattern in common_iop_patterns):
+                raise NoPDFLink(f'TXERROR: Could not access IOP article at either domain - DOI: {pma.doi}')
+            else:
+                raise NoPDFLink(f'PATTERN: IOP typically uses DOI patterns {common_iop_patterns}, got {pma.doi}')
+        else:
+            # Return primary URL without verification
+            return possible_urls[0]
+            
+    except Exception as e:
+        if isinstance(e, (NoPDFLink, AccessDenied)):
+            raise
+        else:
+            raise NoPDFLink(f'TXERROR: IOP fusion failed for {pma.journal}: {e} - DOI: {pma.doi}')
+

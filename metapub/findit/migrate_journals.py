@@ -67,6 +67,7 @@ from metapub.findit.journals.worldscientific import worldscientific_journals
 from metapub.findit.journals.uchicago import uchicago_journals
 from metapub.findit.journals.iospress import iospress_journals
 from metapub.findit.journals.longdom import longdom_journals
+from metapub.findit.journals.iop import iop_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
@@ -436,6 +437,12 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_longdom_hustle',
         'format_template': None,
         'journals': longdom_journals,
+    },
+    {
+        'name': 'iop',
+        'dance_function': 'the_iop_fusion',
+        'format_template': None,
+        'journals': iop_journals,
     },
     {
         'name': 'najms',

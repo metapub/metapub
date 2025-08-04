@@ -5,13 +5,13 @@ Taylor & Francis publishes a vast array of academic journals across multiple dis
 using DOI-based URLs through their tandfonline.com platform.
 
 URL Pattern: http://www.tandfonline.com/doi/pdf/{DOI}
-Dance Function: the_template_dance
+Dance Function: the_doi_slide
 """
 
 # Publisher metadata
 PUBLISHER_INFO = {
     'name': 'Taylor & Francis',
-    'dance_function': 'the_template_dance',
+    'dance_function': 'the_doi_slide',
     'base_url': 'http://www.tandfonline.com',
     'url_pattern': 'http://www.tandfonline.com/doi/pdf/{doi}',
     'identifier_type': 'doi'

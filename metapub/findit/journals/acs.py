@@ -5,13 +5,13 @@ ACS publishes chemistry and chemical engineering journals using DOI-based URLs.
 All ACS journals follow a consistent DOI-based PDF access pattern.
 
 URL Pattern: http://pubs.acs.org/doi/pdf/{DOI}
-Dance Function: the_template_dance
+Dance Function: the_doi_slide
 """
 
 # Publisher metadata
 PUBLISHER_INFO = {
     'name': 'American Chemical Society',
-    'dance_function': 'the_template_dance',
+    'dance_function': 'the_doi_slide',
     'base_url': 'http://pubs.acs.org',
     'url_pattern': 'http://pubs.acs.org/doi/pdf/{doi}',
     'identifier_type': 'doi'

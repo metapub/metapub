@@ -5,13 +5,13 @@ Informa Healthcare publishes medical and pharmaceutical journals using DOI-based
 URL construction follows a standard pattern with DOI-based access.
 
 URL Pattern: http://informahealthcare.com/doi/pdf/{DOI}
-Dance Function: the_template_dance
+Dance Function: the_doi_slide
 """
 
 # Publisher metadata
 PUBLISHER_INFO = {
     'name': 'Informa Healthcare',
-    'dance_function': 'the_template_dance',
+    'dance_function': 'the_doi_slide',
     'base_url': 'http://informahealthcare.com',
     'url_pattern': 'http://informahealthcare.com/doi/pdf/{doi}',
     'identifier_type': 'doi'

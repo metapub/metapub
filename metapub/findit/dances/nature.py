@@ -2,7 +2,7 @@
 
 import requests
 from ...exceptions import AccessDenied, NoPDFLink
-from .generic import standardize_journal_name
+from .generic import *
 
 # Import Nature-specific constants
 from ..journals.nature import nature_format, nature_journals

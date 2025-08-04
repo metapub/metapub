@@ -8,7 +8,7 @@ from .bmc import BMC_journals, BMC_format
 from .cambridge import cambridge_journals
 from .sage import sage_journals, sage_journal_params, sage_vip_template
 from .informa import informa_journals, informa_template
-from .oxford import oxford_journals, oxford_vip_template
+from .oxford import oxford_vip_template
 from .bmj import bmj_journals, bmj_vip_template
 from .lww import lww_journals, lww_template
 from .acs import acs_journals, acs_template

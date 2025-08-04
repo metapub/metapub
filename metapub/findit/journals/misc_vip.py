@@ -1,7 +1,7 @@
 # vip = Volume-Issue-Page format
 #       URLs that have the same format except for the host name
 #
-# TODO: early release format
+# TODO (maybe): early release format
 
 vip_format = 'http://{host}/content/{a.volume}/{a.issue}/{a.first_page}.full.pdf'
 
@@ -67,6 +67,10 @@ vip_journals = {
     'Proc Natl Acad Sci USA': {'host': 'pnas.org'},
     'Science': {'host': 'sciencemag.org'},
 }
+
+# Import Oxford journals from the oxford.py module and merge them into vip_journals
+from .oxford import oxford_journal_params
+vip_journals.update(oxford_journal_params)
 
 # volume-issue-page type URLs but with a nonstandard baseurl construction.
 # e.g. Blood: http://www.bloodjournal.org/content/bloodjournal/79/10/2507.full.pdf

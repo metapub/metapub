@@ -38,7 +38,7 @@ from metapub.findit.journals.wolterskluwer import wolterskluwer_journals
 from metapub.findit.journals.sage import sage_journals, sage_additional_journals
 from metapub.findit.journals.informa import informa_journals
 from metapub.findit.journals.cambridge import cambridge_journals
-from metapub.findit.journals.oxford import oxford_journals, oxford_vip_template
+from metapub.findit.journals.oxford import oxford_journal_params, oxford_vip_template
 from metapub.findit.journals.bmj import bmj_journals, bmj_vip_template
 from metapub.findit.journals.lww import lww_journals, lww_template
 from metapub.findit.journals.acs import acs_journals, acs_template
@@ -219,9 +219,9 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'Oxford University Press',
-        'dance_function': 'the_doi_slide',
+        'dance_function': 'the_vip_shake',
         'format_template': oxford_vip_template,
-        'journals': oxford_journals,
+        'journals': list(oxford_journal_params.keys()),
     },
     {
         'name': 'BMJ Publishing Group',

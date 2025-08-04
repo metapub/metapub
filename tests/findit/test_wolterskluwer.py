@@ -55,7 +55,7 @@ class TestWoltersKluwerDance(BaseDanceTest):
         print(f"Test 3 - Critical Care article: {pma.journal}, DOI: {pma.doi}")
 
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.wolterskluwer.the_doi_2step')
     @patch('requests.get')
     def test_wolterskluwer_volta_paywall_detection(self, mock_get, mock_doi_2step):
         """Test 5: Paywall detection.
@@ -88,7 +88,7 @@ class TestWoltersKluwerDance(BaseDanceTest):
         print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
 
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.wolterskluwer.the_doi_2step')
     @patch('requests.get')
     def test_wolterskluwer_volta_network_error(self, mock_get, mock_doi_2step):
         """Test 7: Network error handling.

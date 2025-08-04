@@ -176,7 +176,7 @@ class TestJCIDance(BaseDanceTest):
         assert 'pii or doi needed' in str(exc_info.value)
         print(f"Test 8 - Correctly handled missing data: {exc_info.value}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.jci.the_doi_2step')
     def test_jci_jig_doi_fallback_with_redirect(self, mock_doi_2step):
         """Test 9: DOI fallback with redirect handling.
         

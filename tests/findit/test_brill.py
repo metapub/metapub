@@ -88,7 +88,7 @@ class TestBrillDance(BaseDanceTest):
         assert url is not None
         print(f"Test 4 - Article URL: {url}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.brill.the_doi_2step')
     @patch('requests.get')
     def test_brill_bridge_successful_access_with_pdf(self, mock_get, mock_doi_2step):
         """Test 5: Successful access simulation with PDF link found.
@@ -124,7 +124,7 @@ class TestBrillDance(BaseDanceTest):
         assert '/pdf' in url or '.pdf' in url  # Accept either PDF URL format
         print(f"Test 5 - Found PDF link: {url}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.brill.the_doi_2step')
     @patch('requests.get')
     def test_brill_bridge_open_access_article(self, mock_get, mock_doi_2step):
         """Test 6: Open access article without direct PDF link.
@@ -159,7 +159,7 @@ class TestBrillDance(BaseDanceTest):
         assert url == 'https://brill.com/view/journals/esm/20/2/article-p153_3.xml'
         print(f"Test 6 - Article URL: {url}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.brill.the_doi_2step')
     @patch('requests.get')
     def test_brill_bridge_paywall_detection(self, mock_get, mock_doi_2step):
         """Test 7: Paywall detection.
@@ -200,7 +200,7 @@ class TestBrillDance(BaseDanceTest):
         assert 'subscription' in str(exc_info.value)
         print(f"Test 7 - Correctly detected paywall: {exc_info.value}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.brill.the_doi_2step')
     @patch('requests.get')
     def test_brill_bridge_access_forbidden(self, mock_get, mock_doi_2step):
         """Test 8: Access forbidden (403 error).
@@ -226,7 +226,7 @@ class TestBrillDance(BaseDanceTest):
         assert '403' in str(exc_info.value) or 'forbidden' in str(exc_info.value).lower()
         print(f"Test 8 - Correctly handled 403: {exc_info.value}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.brill.the_doi_2step')
     @patch('requests.get')
     def test_brill_bridge_network_error(self, mock_get, mock_doi_2step):
         """Test 9: Network error handling.
@@ -283,7 +283,7 @@ class TestBrillDance(BaseDanceTest):
         assert '10.1163/' in str(exc_info.value)
         print(f"Test 11 - Correctly handled invalid DOI: {exc_info.value}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.brill.the_doi_2step')
     @patch('requests.get')
     def test_brill_bridge_article_not_found(self, mock_get, mock_doi_2step):
         """Test 12: Article not found (404 error).

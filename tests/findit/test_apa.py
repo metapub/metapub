@@ -75,7 +75,7 @@ class TestAPADance(BaseDanceTest):
         assert 'doi.apa.org' in url or 'psycnet.apa.org' in url
         print(f"Test 3 - Article URL: {url}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.apa.the_doi_2step')
     @patch('requests.get')
     def test_apa_dab_successful_access_with_pdf(self, mock_get, mock_doi_2step):
         """Test 4: Successful access simulation with PDF link found.
@@ -111,7 +111,7 @@ class TestAPADance(BaseDanceTest):
         assert '.pdf' in url
         print(f"Test 4 - Found PDF link: {url}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.apa.the_doi_2step')
     @patch('requests.get')
     def test_apa_dab_paywall_detection(self, mock_get, mock_doi_2step):
         """Test 5: Paywall detection.
@@ -151,7 +151,7 @@ class TestAPADance(BaseDanceTest):
         assert 'subscription' in str(exc_info.value)
         print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.apa.the_doi_2step')
     @patch('requests.get')
     def test_apa_dab_access_forbidden(self, mock_get, mock_doi_2step):
         """Test 6: Access forbidden (403 error).
@@ -177,7 +177,7 @@ class TestAPADance(BaseDanceTest):
         assert '403' in str(exc_info.value) or 'forbidden' in str(exc_info.value).lower()
         print(f"Test 6 - Correctly handled 403: {exc_info.value}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.apa.the_doi_2step')
     @patch('requests.get')
     def test_apa_dab_network_error(self, mock_get, mock_doi_2step):
         """Test 7: Network error handling.
@@ -234,7 +234,7 @@ class TestAPADance(BaseDanceTest):
         assert '10.1037' in str(exc_info.value)
         print(f"Test 9 - Correctly handled invalid DOI pattern: {exc_info.value}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.apa.the_doi_2step')
     @patch('requests.get') 
     def test_apa_dab_open_access_article(self, mock_get, mock_doi_2step):
         """Test 10: Open access article without paywall.

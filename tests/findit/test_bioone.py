@@ -98,7 +98,7 @@ class TestBioOneDance(BaseDanceTest):
         assert url is not None
         print(f"Test 5 - Article URL: {url}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.bioone.the_doi_2step')
     @patch('requests.get')
     def test_bioone_bounce_successful_access_with_pdf(self, mock_get, mock_doi_2step):
         """Test 6: Successful access simulation with PDF link found.
@@ -134,7 +134,7 @@ class TestBioOneDance(BaseDanceTest):
         assert 'pdf' in url  # Accept any PDF URL format
         print(f"Test 6 - Found PDF link: {url}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.bioone.the_doi_2step')
     @patch('requests.get')
     def test_bioone_bounce_open_access_article(self, mock_get, mock_doi_2step):
         """Test 7: Open access article without direct PDF link.
@@ -169,7 +169,7 @@ class TestBioOneDance(BaseDanceTest):
         assert url == 'https://complete.bioone.org/journals/journal-of-parasitology/volume-111/issue-4/25-22/test-article/10.1645/25-22.full'
         print(f"Test 7 - Article URL: {url}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.bioone.the_doi_2step')
     @patch('requests.get')
     def test_bioone_bounce_paywall_detection(self, mock_get, mock_doi_2step):
         """Test 8: Paywall detection.
@@ -210,7 +210,7 @@ class TestBioOneDance(BaseDanceTest):
         assert 'subscription' in str(exc_info.value)
         print(f"Test 8 - Correctly detected paywall: {exc_info.value}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.bioone.the_doi_2step')
     @patch('requests.get')
     def test_bioone_bounce_access_forbidden(self, mock_get, mock_doi_2step):
         """Test 9: Access forbidden (403 error).
@@ -236,7 +236,7 @@ class TestBioOneDance(BaseDanceTest):
         assert '403' in str(exc_info.value) or 'forbidden' in str(exc_info.value).lower()
         print(f"Test 9 - Correctly handled 403: {exc_info.value}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.bioone.the_doi_2step')
     @patch('requests.get')
     def test_bioone_bounce_network_error(self, mock_get, mock_doi_2step):
         """Test 10: Network error handling.
@@ -276,7 +276,7 @@ class TestBioOneDance(BaseDanceTest):
         assert 'DOI required' in str(exc_info.value)
         print(f"Test 11 - Correctly handled missing DOI: {exc_info.value}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.bioone.the_doi_2step')
     @patch('requests.get')
     def test_bioone_bounce_article_not_found(self, mock_get, mock_doi_2step):
         """Test 12: Article not found (404 error).

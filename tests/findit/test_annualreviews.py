@@ -71,7 +71,7 @@ class TestAnnualReviewsDance(BaseDanceTest):
         assert url is not None
         print(f"Test 3 - Article URL: {url}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.annualreviews.the_doi_2step')
     @patch('requests.get')
     def test_annualreviews_round_successful_access_with_pdf(self, mock_get, mock_doi_2step):
         """Test 4: Successful access simulation with PDF link found.
@@ -107,7 +107,7 @@ class TestAnnualReviewsDance(BaseDanceTest):
         assert '/pdf/' in url or '.pdf' in url  # Accept either PDF URL format
         print(f"Test 4 - Found PDF link: {url}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.annualreviews.the_doi_2step')
     @patch('requests.get')
     def test_annualreviews_round_open_access_article(self, mock_get, mock_doi_2step):
         """Test 5: Open access article without direct PDF link.
@@ -142,7 +142,7 @@ class TestAnnualReviewsDance(BaseDanceTest):
         assert url == 'https://www.annualreviews.org/doi/10.1146/annurev-phyto-021722-034823'
         print(f"Test 5 - Article URL: {url}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.annualreviews.the_doi_2step')
     @patch('requests.get')
     def test_annualreviews_round_paywall_detection(self, mock_get, mock_doi_2step):
         """Test 6: Paywall detection.
@@ -183,7 +183,7 @@ class TestAnnualReviewsDance(BaseDanceTest):
         assert 'subscription' in str(exc_info.value)
         print(f"Test 6 - Correctly detected paywall: {exc_info.value}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.annualreviews.the_doi_2step')
     @patch('requests.get')
     def test_annualreviews_round_access_forbidden(self, mock_get, mock_doi_2step):
         """Test 7: Access forbidden (403 error).
@@ -209,7 +209,7 @@ class TestAnnualReviewsDance(BaseDanceTest):
         assert '403' in str(exc_info.value) or 'forbidden' in str(exc_info.value).lower()
         print(f"Test 7 - Correctly handled 403: {exc_info.value}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.annualreviews.the_doi_2step')
     @patch('requests.get')
     def test_annualreviews_round_network_error(self, mock_get, mock_doi_2step):
         """Test 8: Network error handling.
@@ -266,7 +266,7 @@ class TestAnnualReviewsDance(BaseDanceTest):
         assert '10.1146/' in str(exc_info.value)
         print(f"Test 10 - Correctly handled invalid DOI: {exc_info.value}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.annualreviews.the_doi_2step')
     @patch('requests.get')
     def test_annualreviews_round_article_not_found(self, mock_get, mock_doi_2step):
         """Test 11: Article not found (404 error).

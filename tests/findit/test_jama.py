@@ -43,7 +43,7 @@ class TestJAMADance(BaseDanceTest):
         assert pma.doi is not None
         print(f"Test 2 - Second article: {pma.journal}, DOI: {pma.doi}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.jama.the_doi_2step')
     @patch('requests.get')
     def test_jama_dance_successful_access(self, mock_get, mock_doi_2step):
         """Test 3: Successful PDF access simulation.
@@ -72,7 +72,7 @@ class TestJAMADance(BaseDanceTest):
         assert 'jamanetwork.com' in url
         print(f"Test 3 - Successful access: {url}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.jama.the_doi_2step')
     @patch('requests.get')
     def test_jama_dance_no_pdf_link(self, mock_get, mock_doi_2step):
         """Test 4: Missing PDF link detection.
@@ -119,7 +119,7 @@ class TestJAMADance(BaseDanceTest):
         assert 'MISSING: doi needed for JAMA article' in str(exc_info.value)
         print(f"Test 5 - Correctly handled missing DOI: {exc_info.value}")
 
-    @patch('metapub.findit.dances.the_doi_2step')
+    @patch('metapub.findit.dances.jama.the_doi_2step')
     @patch('requests.get')
     def test_jama_dance_network_error(self, mock_get, mock_doi_2step):
         """Test 6: Network error handling.

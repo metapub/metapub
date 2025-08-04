@@ -77,6 +77,7 @@ from metapub.findit.journals.hilaris import hilaris_journals
 from metapub.findit.journals.projectmuse import projectmuse_journals
 from metapub.findit.journals.walshmedia import walshmedia_journals
 from metapub.findit.journals.aip import aip_journals
+from metapub.findit.journals.frontiers import frontiers_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
@@ -506,6 +507,12 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_aip_allegro',
         'format_template': None,
         'journals': aip_journals,
+    },
+    {
+        'name': 'frontiers',
+        'dance_function': 'the_frontiers_square',
+        'format_template': None,
+        'journals': frontiers_journals,
     },
     {
         'name': 'najms',

@@ -68,6 +68,8 @@ from metapub.findit.journals.uchicago import uchicago_journals
 from metapub.findit.journals.iospress import iospress_journals
 from metapub.findit.journals.longdom import longdom_journals
 from metapub.findit.journals.iop import iop_journals
+from metapub.findit.journals.oatext import oatext_journals
+from metapub.findit.journals.allenpress import allenpress_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
@@ -443,6 +445,18 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_iop_fusion',
         'format_template': None,
         'journals': iop_journals,
+    },
+    {
+        'name': 'oatext',
+        'dance_function': 'the_oatext_orbit',
+        'format_template': None,
+        'journals': oatext_journals,
+    },
+    {
+        'name': 'allenpress',
+        'dance_function': 'the_allenpress_advance',
+        'format_template': None,
+        'journals': allenpress_journals,
     },
     {
         'name': 'najms',

@@ -2532,3 +2532,203 @@ def the_iop_fusion(pma, verify=True):
         else:
             raise NoPDFLink(f'TXERROR: IOP fusion failed for {pma.journal}: {e} - DOI: {pma.doi}')
 
+
+def the_oatext_orbit(pma, verify=True):
+    """OAText Publishing dance function.
+    
+    OAText is an open access publisher specializing in medical and healthcare
+    journals. Their URL patterns may vary, so this function tries multiple
+    approaches to access PDFs.
+    
+    Args:
+        pma: PubMedArticle object
+        verify: Whether to verify PDF access
+        
+    Returns:
+        PDF URL if accessible
+        
+    Raises:
+        NoPDFLink: If DOI missing or PDF not accessible
+        AccessDenied: If paywall detected (unlikely for open access)
+    """
+    from .journals.oatext import oatext_format
+    
+    try:
+        if not pma.doi:
+            raise NoPDFLink('MISSING: DOI required for OAText article access')
+        
+        # OAText journals may use various DOI patterns
+        # Most open access publishers are flexible with DOI patterns
+        
+        # Try different URL construction approaches
+        doi_suffix = pma.doi.split('/')[-1] if '/' in pma.doi else pma.doi
+        
+        possible_urls = [
+            f'https://www.oatext.com/pdf/{doi_suffix}.pdf',
+            f'https://oatext.com/pdf/{doi_suffix}.pdf',
+            f'https://www.oatext.com/pdf/{pma.doi}.pdf',
+            f'https://oatext.com/pdf/{pma.doi}.pdf'
+        ]
+        
+        # Also try constructing from article title if available
+        if hasattr(pma, 'title') and pma.title:
+            # Convert title to URL-friendly format
+            title_slug = pma.title.lower().replace(' ', '-').replace(',', '').replace(':', '').replace('.', '')
+            title_slug = ''.join(c for c in title_slug if c.isalnum() or c == '-')
+            possible_urls.extend([
+                f'https://www.oatext.com/{title_slug}.php',
+                f'https://oatext.com/{title_slug}.php'
+            ])
+        
+        if verify:
+            for pdf_url in possible_urls:
+                try:
+                    response = requests.get(pdf_url, timeout=10, allow_redirects=True)
+                    
+                    if response.ok:
+                        # Check content type
+                        content_type = response.headers.get('content-type', '').lower()
+                        if 'application/pdf' in content_type:
+                            return pdf_url
+                        elif 'text/html' in content_type:
+                            # Check for article page or PDF links
+                            page_text = response.text.lower()
+                            if 'not found' in page_text or '404' in page_text:
+                                continue  # Try next URL
+                            else:
+                                # Might be article page, return it
+                                return pdf_url
+                    elif response.status_code == 404:
+                        continue  # Try next URL format
+                    else:
+                        continue  # Try next URL format
+                        
+                except requests.exceptions.RequestException:
+                    continue  # Try next URL format
+            
+            # If all URLs failed
+            raise NoPDFLink(f'TXERROR: Could not access OAText article with any URL pattern - DOI: {pma.doi}')
+        else:
+            # Return first PDF URL pattern without verification
+            return possible_urls[0]
+            
+    except Exception as e:
+        if isinstance(e, (NoPDFLink, AccessDenied)):
+            raise
+        else:
+            raise NoPDFLink(f'TXERROR: OAText orbit failed for {pma.journal}: {e} - DOI: {pma.doi}')
+
+
+def the_allenpress_advance(pma, verify=True):
+    """Allen Press dance function.
+    
+    Allen Press provides publishing services for scholarly and professional
+    societies. Their journals are hosted on meridian.allenpress.com with
+    journal-specific URL structures.
+    
+    Args:
+        pma: PubMedArticle object
+        verify: Whether to verify PDF access
+        
+    Returns:
+        PDF URL if accessible
+        
+    Raises:
+        NoPDFLink: If DOI missing or PDF not accessible
+        AccessDenied: If paywall detected
+    """
+    from .journals.allenpress import allenpress_format
+    
+    try:
+        if not pma.doi:
+            raise NoPDFLink('MISSING: DOI required for Allen Press article access')
+        
+        # Allen Press journals may use various DOI patterns from different societies
+        # Try to derive journal code from journal name or DOI
+        journal_name = pma.journal.lower() if pma.journal else ''
+        
+        # Common journal code mappings (will need to expand based on actual patterns)
+        journal_codes = {
+            'oper dent': 'od',
+            'j am anim hosp assoc': 'jaaha',
+            'arch pathol lab med': 'aplm',
+            'j athl train': 'jat',
+            'angle orthod': 'angl',
+            'tex heart inst j': 'thij',
+            'ethn dis': 'ethn',
+            'j oral implantol': 'joi',
+            'j am mosq control assoc': 'jamca',
+            'j grad med educ': 'jgme',
+            'j pediatr pharmacol ther': 'jppt'
+        }
+        
+        # Try to find journal code
+        journal_code = None
+        for name_pattern, code in journal_codes.items():
+            if name_pattern in journal_name:
+                journal_code = code
+                break
+        
+        # If we can't determine journal code, try generic patterns
+        possible_urls = []
+        
+        if journal_code:
+            possible_urls.extend([
+                f'https://meridian.allenpress.com/{journal_code}/article-pdf/{pma.doi}',
+                f'https://meridian.allenpress.com/{journal_code}/article/{pma.doi}',
+                f'https://meridian.allenpress.com/{journal_code}/article-pdf/doi/{pma.doi}',
+                f'https://meridian.allenpress.com/{journal_code}/article/doi/{pma.doi}'
+            ])
+        
+        # Try generic patterns without journal code
+        doi_suffix = pma.doi.split('/')[-1] if '/' in pma.doi else pma.doi
+        possible_urls.extend([
+            f'https://meridian.allenpress.com/article-pdf/{pma.doi}',
+            f'https://meridian.allenpress.com/article/{pma.doi}',
+            f'https://meridian.allenpress.com/doi/pdf/{pma.doi}',
+            f'https://meridian.allenpress.com/doi/{pma.doi}'
+        ])
+        
+        if verify:
+            for pdf_url in possible_urls:
+                try:
+                    response = requests.get(pdf_url, timeout=10, allow_redirects=True)
+                    
+                    if response.ok:
+                        # Check content type
+                        content_type = response.headers.get('content-type', '').lower()
+                        if 'application/pdf' in content_type:
+                            return pdf_url
+                        elif 'text/html' in content_type:
+                            # Check for paywall indicators
+                            page_text = response.text.lower()
+                            paywall_indicators = [
+                                'subscribe', 'subscription', 'login required',
+                                'access denied', 'purchase', 'institutional access',
+                                'sign in', 'member'
+                            ]
+                            if any(indicator in page_text for indicator in paywall_indicators):
+                                raise AccessDenied(f'PAYWALL: Allen Press article requires subscription - {pdf_url}')
+                            else:
+                                # Might be article page, return it
+                                return pdf_url
+                    elif response.status_code == 404:
+                        continue  # Try next URL format
+                    else:
+                        continue  # Try next URL format
+                        
+                except requests.exceptions.RequestException:
+                    continue  # Try next URL format
+            
+            # If all URLs failed
+            raise NoPDFLink(f'TXERROR: Could not access Allen Press article with any URL pattern - DOI: {pma.doi}')
+        else:
+            # Return first URL pattern without verification
+            return possible_urls[0] if possible_urls else f'https://meridian.allenpress.com/article-pdf/{pma.doi}'
+            
+    except Exception as e:
+        if isinstance(e, (NoPDFLink, AccessDenied)):
+            raise
+        else:
+            raise NoPDFLink(f'TXERROR: Allen Press advance failed for {pma.journal}: {e} - DOI: {pma.doi}')
+

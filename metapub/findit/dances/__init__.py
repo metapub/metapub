@@ -31,9 +31,3 @@ from .scielo import the_scielo_chula
 from .lancet import the_lancet_tango
 from .wolterskluwer import the_wolterskluwer_volta
 
-# Also re-export important constants and helpers
-globals().update({
-    'AAAS_USERNAME': getattr(_main_dances, 'AAAS_USERNAME', None),
-    'AAAS_PASSWORD': getattr(_main_dances, 'AAAS_PASSWORD', None),
-})
-

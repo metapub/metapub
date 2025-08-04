@@ -4,12 +4,12 @@ from urllib.parse import urlsplit
 import requests
 from lxml.html import HTMLParser
 from lxml import etree
+import os
 
 from ...exceptions import AccessDenied, NoPDFLink
 
-#TODO: make configurable (somehow...)
-AAAS_USERNAME = 'nthmost'
-AAAS_PASSWORD = '434264'
+AAAS_USERNAME = os.environ["AAAS_USERNAME"]
+AAAS_PASSWORD = os.environ["AAAS_PASSWORD"]
 
 
 def the_aaas_twist(pma, verify=True):

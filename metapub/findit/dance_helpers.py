@@ -244,46 +244,179 @@ def handle_dance_exceptions(publisher_name: str, dance_name: str):
     return decorator
 
 
-class PublisherURLBuilder:
-    """Helper class for building publisher-specific URL patterns."""
+class FocusedURLBuilder:
+    """Focused URL builder that prioritizes primary PDF endpoints over shotgun approaches."""
     
-    def __init__(self, base_domain: str, publisher_name: str):
-        self.base_domain = base_domain
+    def __init__(self, publisher_name: str):
         self.publisher_name = publisher_name
-        self.urls = []
+        self.primary_url = None
+        self.secondary_url = None
+        self.fallback_url = None
     
-    def add_article_id_patterns(self, patterns: List[str], article_id: str) -> 'PublisherURLBuilder':
-        """Add URL patterns using article ID."""
-        self.urls.extend(build_article_id_urls(self.base_domain, article_id, patterns))
+    def set_primary_pdf_url(self, url: str) -> 'FocusedURLBuilder':
+        """Set the primary PDF URL (this should be the researched, known-good PDF endpoint)."""
+        self.primary_url = url
         return self
     
-    def add_doi_patterns(self, patterns: List[str], doi: str) -> 'PublisherURLBuilder':
-        """Add URL patterns using full DOI."""
-        self.urls.extend(build_doi_urls(self.base_domain, doi, patterns))
+    def set_secondary_url(self, url: str, reason: str = "") -> 'FocusedURLBuilder':
+        """Set optional secondary URL (only if we know it works, e.g., PMID-based lookup)."""
+        self.secondary_url = url
+        if reason:
+            print(f"DEBUG: Secondary URL for {self.publisher_name}: {reason}")
         return self
     
-    def add_volume_issue_patterns(self, patterns: List[str], volume: Optional[str], 
-                                 issue: Optional[str], doi: str) -> 'PublisherURLBuilder':
-        """Add URL patterns using volume/issue."""
-        self.urls.extend(build_volume_issue_urls(self.base_domain, volume, issue, doi, patterns))
+    def set_fallback_doi_resolver(self, doi: str) -> 'FocusedURLBuilder':
+        """Set DOI resolver as final fallback."""
+        self.fallback_url = f'https://doi.org/{doi}'
         return self
     
-    def add_custom_urls(self, urls: List[str]) -> 'PublisherURLBuilder':
-        """Add custom URL list."""
-        self.urls.extend(urls)
-        return self
+    def get_urls_to_try(self) -> List[str]:
+        """Get the focused list of URLs to try (1-3 URLs max)."""
+        urls = []
+        if self.primary_url:
+            urls.append(self.primary_url)
+        if self.secondary_url:
+            urls.append(self.secondary_url)
+        if self.fallback_url:
+            urls.append(self.fallback_url)
+        return urls
     
-    def add_fallbacks(self, doi: str) -> 'PublisherURLBuilder':
-        """Add standard fallback URLs."""
-        add_fallback_urls(self.urls, doi)
-        return self
-    
-    def verify_or_return_first(self, verify: bool, paywall_indicators: Optional[List[str]] = None) -> str:
-        """Verify URLs if requested, otherwise return first URL."""
+    def verify_or_return_primary(self, verify: bool, paywall_indicators: Optional[List[str]] = None) -> str:
+        """Verify URLs in priority order, or return primary URL without verification."""
         if verify:
-            return verify_url_access(self.urls, self.publisher_name, paywall_indicators)
+            urls = self.get_urls_to_try()
+            if not urls:
+                raise NoPDFLink(f'MISSING: No URLs configured for {self.publisher_name}')
+            return verify_focused_url_access(urls, self.publisher_name, paywall_indicators)
         else:
-            return self.urls[0] if self.urls else f'https://doi.org/unknown'
+            if not self.primary_url:
+                raise NoPDFLink(f'MISSING: No primary URL configured for {self.publisher_name}')
+            return self.primary_url
+
+
+def verify_focused_url_access(urls: List[str], publisher_name: str, 
+                             paywall_indicators: Optional[List[str]] = None,
+                             timeout: int = 10) -> str:
+    """Verify focused URL list (1-3 URLs max) and return first working PDF URL.
+    
+    This is the focused replacement for the shotgun verify_url_access approach.
+    """
+    if paywall_indicators is None:
+        paywall_indicators = DEFAULT_PAYWALL_INDICATORS
+    
+    for i, pdf_url in enumerate(urls):
+        url_type = "primary" if i == 0 else "secondary" if i == 1 else "fallback"
+        
+        try:
+            response = requests.get(pdf_url, timeout=timeout, allow_redirects=True)
+            
+            if response.ok:
+                # Check content type - we ONLY want PDFs
+                content_type = response.headers.get('content-type', '').lower()
+                if 'application/pdf' in content_type:
+                    return pdf_url
+                elif 'text/html' in content_type:
+                    # HTML response - check if it's a paywall or just wrong URL
+                    page_text = response.text.lower()
+                    if any(indicator in page_text for indicator in paywall_indicators):
+                        # This is a paywall, try next URL if available
+                        if i + 1 < len(urls):
+                            continue
+                        else:
+                            raise AccessDenied(f'PAYWALL: {publisher_name} article requires access - {pdf_url}')
+                    else:
+                        # HTML page but not paywalled - wrong URL, try next
+                        if i + 1 < len(urls):
+                            continue
+                        else:
+                            raise NoPDFLink(f'WRONGTYPE: {publisher_name} {url_type} URL returned HTML, not PDF - {pdf_url}')
+                else:
+                    # Some other content type, try next URL
+                    if i + 1 < len(urls):
+                        continue
+                    else:
+                        raise NoPDFLink(f'WRONGTYPE: {publisher_name} {url_type} URL returned {content_type}, not PDF - {pdf_url}')
+            elif response.status_code == 404:
+                # 404 - try next URL if available
+                if i + 1 < len(urls):
+                    continue
+                else:
+                    raise NoPDFLink(f'NOTFOUND: {publisher_name} {url_type} URL not found (404) - {pdf_url}')
+            else:
+                # Other HTTP error - try next URL if available
+                if i + 1 < len(urls):
+                    continue
+                else:
+                    raise NoPDFLink(f'HTTPERROR: {publisher_name} {url_type} URL failed ({response.status_code}) - {pdf_url}')
+                
+        except requests.exceptions.RequestException as e:
+            # Network error - try next URL if available
+            if i + 1 < len(urls):
+                continue
+            else:
+                raise NoPDFLink(f'NETWORKERROR: {publisher_name} {url_type} URL network failure - {pdf_url}: {e}')
+    
+    # Should never reach here, but just in case
+    raise NoPDFLink(f'TXERROR: All {publisher_name} URLs failed unexpectedly')
+
+
+def create_focused_dance_function(publisher_name: str, primary_pdf_template: str, 
+                                 secondary_template: str = None, secondary_reason: str = "",
+                                 paywall_indicators: Optional[List[str]] = None):
+    """Factory function to create focused dance functions with 1-2 precise URL templates.
+    
+    Args:
+        publisher_name: Name of publisher
+        primary_pdf_template: Primary PDF URL template (e.g., 'https://example.com/pdf/{doi}')
+        secondary_template: Optional secondary URL template (e.g., 'https://example.com/pmid/{pmid}')
+        secondary_reason: Explanation for why secondary exists (for debugging)
+        paywall_indicators: Custom paywall indicators
+        
+    Returns:
+        Focused dance function that tries 1-2 precise URLs
+    """
+    @handle_dance_exceptions(publisher_name, 'focused')
+    def focused_dance_function(pma, verify=False):
+        validate_doi(pma, publisher_name)
+        
+        doi_parts = extract_doi_parts(pma.doi)
+        metadata = extract_pma_metadata(pma)
+        
+        builder = FocusedURLBuilder(publisher_name)
+        
+        # Build primary URL
+        primary_url = primary_pdf_template.format(
+            doi=pma.doi,
+            article_id=doi_parts['article_id'],
+            volume=metadata.get('volume', ''),
+            issue=metadata.get('issue', ''),
+            year=metadata.get('year', ''),
+            pmid=getattr(pma, 'pmid', '')
+        )
+        builder.set_primary_pdf_url(primary_url)
+        
+        # Build secondary URL if provided
+        if secondary_template:
+            try:
+                secondary_url = secondary_template.format(
+                    doi=pma.doi,
+                    article_id=doi_parts['article_id'],
+                    volume=metadata.get('volume', ''),
+                    issue=metadata.get('issue', ''),
+                    year=metadata.get('year', ''),
+                    pmid=getattr(pma, 'pmid', '')
+                )
+                builder.set_secondary_url(secondary_url, secondary_reason)
+            except (KeyError, AttributeError):
+                # If secondary template can't be filled, skip it
+                pass
+        
+        # Always set DOI resolver as fallback
+        builder.set_fallback_doi_resolver(pma.doi)
+        
+        return builder.verify_or_return_primary(verify, paywall_indicators)
+    
+    return focused_dance_function
 
 
 def create_standard_dance_function(publisher_name: str, base_domain: str, 

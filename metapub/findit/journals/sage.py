@@ -21,7 +21,7 @@ PUBLISHER_INFO = {
 # SAGE journals using VIP format (extracted from misc_vip.py)
 sage_journals = [
     'Ann Clin Biochem',
-    'Angiology', 
+    'Angiology',
     'Assessment',
     'Clin Appl Thromb Hemost',
     'Clin Pediatr',
@@ -53,11 +53,12 @@ sage_journal_params = {
 # VIP URL template for SAGE journals
 sage_vip_template = 'http://{host}/content/{volume}/{issue}/{first_page}.full.pdf'
 
+# TODO: pull these into sage_journal_params by finding their host subdomain
 # Additional SAGE journals that may use the main DOI-based system
 # These would be added as more SAGE journals are identified
 sage_additional_journals = [
     'South Asia Res',      # From test data
-    'Med Sci Law',         # From test data  
+    'Med Sci Law',         # From test data
     'Sex Abuse',           # From test data
     'Urban Stud',          # From test data
     'Med Decis Making',    # From test data

@@ -78,6 +78,7 @@ from metapub.findit.journals.projectmuse import projectmuse_journals
 from metapub.findit.journals.walshmedia import walshmedia_journals
 from metapub.findit.journals.aip import aip_journals
 from metapub.findit.journals.frontiers import frontiers_journals
+from metapub.findit.journals.sciendo import sciendo_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
@@ -99,7 +100,7 @@ from metapub.findit.journals.informa import informa_template
 
 # Import paywalled journals
 from metapub.findit.journals.paywalled import (
-    schattauer_journals, RSC_journals, thieme_journals, weird_paywall_publishers
+    schattauer_journals, weird_paywall_publishers
 )
 
 # Only configure logging if this is run as a script, not when imported
@@ -110,8 +111,6 @@ _logging_configured = False
 
 # Unified publisher configurations with their journals and dance functions
 # All publishers are now consolidated into a single list for consistency.
-# Previously separated into PUBLISHER_CONFIGS, SPECIAL_JOURNALS, and PAYWALL_PUBLISHERS,
-# but the separation was arbitrary and provided no functional benefit.
 PUBLISHER_CONFIGS = [
     # Core established publishers
     {
@@ -122,7 +121,7 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'biochemsoc',
-        'dance_function': 'the_biochemsoc_saunter', 
+        'dance_function': 'the_biochemsoc_saunter',
         'format_template': biochemsoc_format,
         'journals': biochemsoc_journals,
     },
@@ -210,7 +209,7 @@ PUBLISHER_CONFIGS = [
         'format_template': None,
         'journals': wolterskluwer_journals,
     },
-    
+
     # Major academic publishers
     {
         'name': 'Cambridge University Press',
@@ -356,7 +355,7 @@ PUBLISHER_CONFIGS = [
         'format_template': microbiol_spectr_template,
         'journals': microbiol_spectr_journals,
     },
-    
+
     # Single journal publishers
     {
         'name': 'jci',
@@ -396,7 +395,7 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'rsc',
-        'dance_function': 'the_rsc_reaction',  
+        'dance_function': 'the_rsc_reaction',
         'format_template': rsc_template,
         'journals': rsc_journals,
     },
@@ -515,22 +514,27 @@ PUBLISHER_CONFIGS = [
         'journals': frontiers_journals,
     },
     {
+        'name': 'sciendo',
+        'dance_function': 'the_sciendo_spiral',
+        'format_template': None,
+        'journals': sciendo_journals,
+    },
+    {
         'name': 'najms',
         'dance_function': 'the_najms_mazurka',
         'format_template': None,
         'journals': ('N Am J Med Sci',),
     },
-    
-    # Paywalled publishers
     {
         'name': 'degruyter',
         'dance_function': 'the_degruyter_danza',
         'format_template': None,
         'journals': degruyter_journals,
     },
+    # Paywalled publishers we haven't properly dealt with yet
     {
         'name': 'dustri',
-        'dance_function': 'paywall_handler',  # TODO: Implement the_dustri_dance
+        'dance_function': 'paywall_handler',  # TODO: Implement the_dustri_stomp
         'format_template': None,
         'journals': dustri_journals,
     },
@@ -539,12 +543,6 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'paywall_handler',
         'format_template': None,
         'journals': schattauer_journals,
-    },
-    {
-        'name': 'thieme',
-        'dance_function': 'paywall_handler',
-        'format_template': None,
-        'journals': thieme_journals,
     },
     {
         'name': 'weird_paywall',
@@ -562,7 +560,7 @@ PAYWALL_PUBLISHERS = []
 def extract_journal_info(journals_data):
     """Extract journal names and format parameters from various data structures."""
     journal_list = []
-    
+
     if isinstance(journals_data, dict):
         # Dictionary format like nature_journals
         for journal_name, params in journals_data.items():
@@ -574,37 +572,37 @@ def extract_journal_info(journals_data):
             journal_list.append((journal_name, None))
     else:
         log.warning("Unknown journal data format: %s", type(journals_data))
-    
+
     return journal_list
 
 def migrate_journals(db_path=None):
     """Migrate all existing journal data to the new registry database."""
     registry = JournalRegistry(db_path)
-    
+
     # Check if database already has data to avoid duplicate migration
     stats = registry.get_stats()
     if stats['publishers'] > 0:
-        log.debug("Journal registry already populated (%d publishers, %d journals), skipping migration", 
+        log.debug("Journal registry already populated (%d publishers, %d journals), skipping migration",
                  stats['publishers'], stats['journals'])
         registry.close()
         return stats
-    
+
     log.info("Starting journal migration...")
-    
+
     total_publishers = 0
     total_journals = 0
-    
+
     # Migrate all publishers from unified configuration
     for config in PUBLISHER_CONFIGS:
         log.info("Migrating publisher: %s", config['name'])
-        
+
         publisher_id = registry.add_publisher(
             name=config['name'],
             dance_function=config['dance_function'],
             format_template=config.get('format_template'),
         )
         total_publishers += 1
-        
+
         # Extract and add journals
         journals = extract_journal_info(config['journals'])
         for journal_name, format_params in journals:
@@ -614,30 +612,30 @@ def migrate_journals(db_path=None):
                 format_params=format_params
             )
             total_journals += 1
-    
+
     # Get final stats
     stats = registry.get_stats()
     log.info("Migration completed!")
     log.info("Migrated %d publishers, %d journals", total_publishers, total_journals)
     log.info("Database stats: %s", stats)
-    
+
     registry.close()
     return stats
 
 def main():
     """Main entry point for the migration console script."""
     import argparse
-    
+
     parser = argparse.ArgumentParser(description='Migrate journal data to registry database')
     parser.add_argument('--db-path', help='Path to database file (optional)')
     parser.add_argument('--force', action='store_true', help='Force recreation of database')
-    
+
     args = parser.parse_args()
-    
+
     if args.force and args.db_path and os.path.exists(args.db_path):
         os.remove(args.db_path)
         log.info("Removed existing database: %s", args.db_path)
-    
+
     stats = migrate_journals(args.db_path)
     print(f"Migration completed: {stats}")
 

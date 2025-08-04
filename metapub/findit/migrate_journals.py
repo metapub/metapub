@@ -65,6 +65,8 @@ from metapub.findit.journals.emerald import emerald_journals
 from metapub.findit.journals.acm import acm_journals
 from metapub.findit.journals.worldscientific import worldscientific_journals
 from metapub.findit.journals.uchicago import uchicago_journals
+from metapub.findit.journals.iospress import iospress_journals
+from metapub.findit.journals.longdom import longdom_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
@@ -422,6 +424,18 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_uchicago_waltz',
         'format_template': None,
         'journals': uchicago_journals,
+    },
+    {
+        'name': 'iospress',
+        'dance_function': 'the_iospress_freestyle',
+        'format_template': None,
+        'journals': iospress_journals,
+    },
+    {
+        'name': 'longdom',
+        'dance_function': 'the_longdom_shuffle',
+        'format_template': None,
+        'journals': longdom_journals,
     },
     {
         'name': 'najms',

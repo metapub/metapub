@@ -75,6 +75,8 @@ from metapub.findit.journals.asme import asme_journals
 from metapub.findit.journals.wjgnet import wjgnet_journals
 from metapub.findit.journals.hilaris import hilaris_journals
 from metapub.findit.journals.projectmuse import projectmuse_journals
+from metapub.findit.journals.walshmedia import walshmedia_journals
+from metapub.findit.journals.aip import aip_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
@@ -489,9 +491,21 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'projectmuse',
-        'dance_function': 'the_projectmuse_melody',
+        'dance_function': 'the_projectmuse_syrtos',
         'format_template': None,
         'journals': projectmuse_journals,
+    },
+    {
+        'name': 'walshmedia',
+        'dance_function': 'the_walshmedia_bora',
+        'format_template': None,
+        'journals': walshmedia_journals,
+    },
+    {
+        'name': 'aip',
+        'dance_function': 'the_aip_allegro',
+        'format_template': None,
+        'journals': aip_journals,
     },
     {
         'name': 'najms',

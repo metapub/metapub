@@ -3137,7 +3137,7 @@ def the_hilaris_hop(pma, verify=True):
             raise NoPDFLink(f'TXERROR: Hilaris hop failed for {pma.journal}: {e} - DOI: {pma.doi}')
 
 
-def the_projectmuse_melody(pma, verify=True):
+def the_projectmuse_syrtos(pma, verify=True):
     """Dance function for Project MUSE journals.
     
     Handles scholarly journals available through Project MUSE (muse.jhu.edu),
@@ -3233,5 +3233,212 @@ def the_projectmuse_melody(pma, verify=True):
         if isinstance(e, (NoPDFLink, AccessDenied)):
             raise
         else:
-            raise NoPDFLink(f'TXERROR: Project MUSE melody failed for {pma.journal}: {e} - DOI: {pma.doi}')
+            raise NoPDFLink(f'TXERROR: Project MUSE syrtos failed for {pma.journal}: {e} - DOI: {pma.doi}')
+
+
+def the_walshmedia_bora(pma, verify=True):
+    """Dance function for Walsh Medical Media journals.
+    
+    Handles academic journals published by Walsh Medical Media at walshmedicalmedia.com.
+    These journals typically follow open access publishing models.
+    
+    Args:
+        pma: PubMedArticle object
+        verify: Whether to verify PDF accessibility
+        
+    Returns:
+        str: URL to PDF or article page
+        
+    Raises:
+        NoPDFLink: If DOI missing or URL construction fails
+        AccessDenied: If paywall detected
+    """
+    try:
+        # Check if DOI is available
+        if not pma.doi:
+            raise NoPDFLink(f'MISSING: DOI required for Walsh Medical Media access - Journal: {pma.journal}')
+        
+        # Walsh Medical Media journals typically use 10.4172/* or 10.35248/* DOI patterns
+        if not (pma.doi.startswith('10.4172/') or pma.doi.startswith('10.35248/')):
+            # Still try to process, but note pattern mismatch
+            pass
+        
+        # Try different URL construction approaches for Walsh Medical Media
+        possible_urls = []
+        
+        # Try to construct article slugs from DOI
+        doi_parts = pma.doi.split('/')
+        if len(doi_parts) >= 2:
+            article_id = doi_parts[-1]
+            
+            # Try different URL patterns
+            possible_urls.extend([
+                f'https://www.walshmedicalmedia.com/articles/{article_id}.pdf',
+                f'https://www.walshmedicalmedia.com/open-access/{article_id}.pdf',
+                f'https://www.walshmedicalmedia.com/abstract/{article_id}.pdf',
+                f'https://walshmedicalmedia.com/articles/{article_id}.pdf',
+                f'https://walshmedicalmedia.com/open-access/{article_id}.pdf'
+            ])
+        
+        # Try generic patterns with full DOI
+        possible_urls.extend([
+            f'https://www.walshmedicalmedia.com/pdf/{pma.doi}.pdf',
+            f'https://www.walshmedicalmedia.com/articles/{pma.doi}.pdf',
+            f'https://walshmedicalmedia.com/pdf/{pma.doi}.pdf',
+            f'https://www.walshmedicalmedia.com/abstract/{pma.doi}',
+            f'https://www.walshmedicalmedia.com/open-access/{pma.doi}.pdf'
+        ])
+        
+        if verify:
+            for pdf_url in possible_urls:
+                try:
+                    response = requests.get(pdf_url, timeout=10, allow_redirects=True)
+                    
+                    if response.ok:
+                        # Check content type
+                        content_type = response.headers.get('content-type', '').lower()
+                        if 'application/pdf' in content_type:
+                            return pdf_url
+                        elif 'text/html' in content_type:
+                            # Check for paywall indicators
+                            page_text = response.text.lower()
+                            paywall_indicators = [
+                                'subscribe', 'subscription', 'login required',
+                                'access denied', 'purchase', 'institutional access'
+                            ]
+                            if any(indicator in page_text for indicator in paywall_indicators):
+                                raise AccessDenied(f'PAYWALL: Walsh Medical Media article requires access - {pdf_url}')
+                            else:
+                                # Might be article page, return it
+                                return pdf_url
+                    elif response.status_code == 404:
+                        continue  # Try next URL format
+                    else:
+                        continue  # Try next URL format
+                        
+                except requests.exceptions.RequestException:
+                    continue  # Try next URL format
+            
+            # If all URLs failed
+            if pma.doi.startswith('10.4172/') or pma.doi.startswith('10.35248/'):
+                raise NoPDFLink(f'TXERROR: Could not access Walsh Medical Media article - DOI: {pma.doi}')
+            else:
+                raise NoPDFLink(f'PATTERN: Walsh Medical Media typically uses DOI patterns 10.4172/* or 10.35248/*, got {pma.doi}')
+        else:
+            # Return first URL pattern without verification
+            return possible_urls[0] if possible_urls else f'https://www.walshmedicalmedia.com/pdf/{pma.doi}.pdf'
+            
+    except Exception as e:
+        if isinstance(e, (NoPDFLink, AccessDenied)):
+            raise
+        else:
+            raise NoPDFLink(f'TXERROR: Walsh Media bora failed for {pma.journal}: {e} - DOI: {pma.doi}')
+
+
+def the_aip_allegro(pma, verify=True):
+    """Dance function for AIP Publishing journals.
+    
+    Handles physics and related science journals published by AIP Publishing at pubs.aip.org.
+    These journals typically require subscription access but may have open access content.
+    
+    Args:
+        pma: PubMedArticle object
+        verify: Whether to verify PDF accessibility
+        
+    Returns:
+        str: URL to PDF or article page
+        
+    Raises:
+        NoPDFLink: If DOI missing or URL construction fails
+        AccessDenied: If paywall detected
+    """
+    try:
+        # Check if DOI is available
+        if not pma.doi:
+            raise NoPDFLink(f'MISSING: DOI required for AIP Publishing access - Journal: {pma.journal}')
+        
+        # AIP Publishing journals typically use 10.1063/* DOI pattern
+        if not pma.doi.startswith('10.1063/'):
+            # Still try to process, but note pattern mismatch
+            pass
+        
+        # Try different URL construction approaches for AIP Publishing
+        possible_urls = []
+        
+        # Try to extract article details from DOI and PMA data
+        doi_parts = pma.doi.split('/')
+        if len(doi_parts) >= 2:
+            article_id = doi_parts[-1]
+            
+            # Get volume and issue info if available
+            volume = getattr(pma, 'volume', None)
+            issue = getattr(pma, 'issue', None)
+            
+            # Try different AIP URL patterns
+            possible_urls.extend([
+                f'https://pubs.aip.org/{pma.doi}/pdf',
+                f'https://aip.scitation.org/doi/pdf/{pma.doi}',
+                f'https://pubs.aip.org/aip/article-pdf/doi/{pma.doi}',
+                f'https://aip.scitation.org/doi/abs/{pma.doi}',
+                f'https://pubs.aip.org/{article_id}/pdf'
+            ])
+            
+            if volume:
+                possible_urls.extend([
+                    f'https://pubs.aip.org/aip/article/doi/{pma.doi}',
+                    f'https://pubs.aip.org/aip/article/{volume}/{article_id}/pdf'
+                ])
+        
+        # Try generic patterns
+        possible_urls.extend([
+            f'https://doi.org/{pma.doi}',  # Fallback to DOI resolver
+            f'https://pubs.aip.org/doi/{pma.doi}',
+            f'https://aip.scitation.org/doi/{pma.doi}'
+        ])
+        
+        if verify:
+            for pdf_url in possible_urls:
+                try:
+                    response = requests.get(pdf_url, timeout=10, allow_redirects=True)
+                    
+                    if response.ok:
+                        # Check content type
+                        content_type = response.headers.get('content-type', '').lower()
+                        if 'application/pdf' in content_type:
+                            return pdf_url
+                        elif 'text/html' in content_type:
+                            # Check for paywall indicators (AIP typically requires subscription)
+                            page_text = response.text.lower()
+                            paywall_indicators = [
+                                'subscribe', 'subscription', 'login required',
+                                'access denied', 'purchase', 'institutional access',
+                                'sign in', 'member access', 'buy this article'
+                            ]
+                            if any(indicator in page_text for indicator in paywall_indicators):
+                                raise AccessDenied(f'PAYWALL: AIP Publishing article requires subscription - {pdf_url}')
+                            else:
+                                # Might be open access article page, return it
+                                return pdf_url
+                    elif response.status_code == 404:
+                        continue  # Try next URL format
+                    else:
+                        continue  # Try next URL format
+                        
+                except requests.exceptions.RequestException:
+                    continue  # Try next URL format
+            
+            # If all URLs failed
+            if pma.doi.startswith('10.1063/'):
+                raise NoPDFLink(f'TXERROR: Could not access AIP Publishing article - DOI: {pma.doi}')
+            else:
+                raise NoPDFLink(f'PATTERN: AIP Publishing typically uses DOI pattern 10.1063/*, got {pma.doi}')
+        else:
+            # Return first URL pattern without verification
+            return possible_urls[0] if possible_urls else f'https://pubs.aip.org/{pma.doi}/pdf'
+            
+    except Exception as e:
+        if isinstance(e, (NoPDFLink, AccessDenied)):
+            raise
+        else:
+            raise NoPDFLink(f'TXERROR: AIP allegro failed for {pma.journal}: {e} - DOI: {pma.doi}')
 

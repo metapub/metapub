@@ -57,6 +57,7 @@ from metapub.findit.journals.dovepress import dovepress_journals
 from metapub.findit.journals.apa import apa_journals
 from metapub.findit.journals.scirp import scirp_journals
 from metapub.findit.journals.annualreviews import annualreviews_journals
+from metapub.findit.journals.brill import brill_journals, brill_template
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
@@ -366,6 +367,12 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_annualreviews_round',
         'format_template': None,
         'journals': annualreviews_journals,
+    },
+    {
+        'name': 'brill',
+        'dance_function': 'the_brill_bridge',
+        'format_template': brill_template,
+        'journals': brill_journals,
     },
     {
         'name': 'najms',

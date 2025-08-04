@@ -1,0 +1,20 @@
+Read output/journal_clusters_todo/*.json -- for every file, treat as a potential new publisher or list of journals we need to add to an existing publisher in FindIt, using this process:
+
+1. Read in list of journals underneath the publisher or domain name heading in that cluster.
+2. look in metapub/findit/journals to see if publisher/journal cluster is represented anywhere yet
+3. if so, simply add those journal names to the existing publisher list (unless publisher template calls for more info). If those journals appear to be mapped to an existing publisher, investigate sample PMIDs for those journals individually to make sure we're mapping correctly. go to step 6.
+4. if publisher isn't supported yet, create new file in metapub/findit/journals for that publisher and then (goto 5)
+5. create a "dance" for this new publisher in metapub/findit/dances.py.  The suggested dance name may be found in the cluster.  If not, assign one.
+6. if tests don't exist yet, add tests using 3 PMIDs with different expected outcomes for this publisher. these PMIDs are found in the cluster json file. add to tests/findit/
+7. Force rebuilding the journal registry using python metapub/findit/migrate_journals.py --force
+8. run tests and make sure they pass.  fix any tests that don't pass.
+9. check output/categorized_unknown_journals.txt for "errant" journals belonging to this publisher that may have been added as one-offs further down in the file.
+
+Repeat this process for each cluster until every JSON file has been processed.  There isn't a more efficient way to do this without compromising our coverage.
+
+Report at the end:
+
+* per publisher, how many journals were added?
+* what dances were added?
+* how many journals are now in the registry for FindIt?
+

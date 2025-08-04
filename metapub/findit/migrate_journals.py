@@ -62,6 +62,7 @@ from metapub.findit.journals.rsc import rsc_journals, rsc_template
 from metapub.findit.journals.ingentaconnect import ingentaconnect_journals, ingentaconnect_template
 from metapub.findit.journals.bioone import bioone_journals, bioone_template
 from metapub.findit.journals.emerald import emerald_journals
+from metapub.findit.journals.acm import acm_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
@@ -401,6 +402,12 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_emerald_ceili',
         'format_template': None,
         'journals': emerald_journals,
+    },
+    {
+        'name': 'acm',
+        'dance_function': 'the_acm_reel',
+        'format_template': None,
+        'journals': acm_journals,
     },
     {
         'name': 'najms',

@@ -58,6 +58,7 @@ from metapub.findit.journals.apa import apa_journals
 from metapub.findit.journals.scirp import scirp_journals
 from metapub.findit.journals.annualreviews import annualreviews_journals
 from metapub.findit.journals.brill import brill_journals, brill_template
+from metapub.findit.journals.rsc import rsc_journals, rsc_template
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
@@ -375,6 +376,12 @@ PUBLISHER_CONFIGS = [
         'journals': brill_journals,
     },
     {
+        'name': 'rsc',
+        'dance_function': 'the_rsc_reaction',  
+        'format_template': rsc_template,
+        'journals': rsc_journals,
+    },
+    {
         'name': 'najms',
         'dance_function': 'the_najms_mazurka',
         'format_template': None,
@@ -399,12 +406,6 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'paywall_handler',
         'format_template': None,
         'journals': schattauer_journals,
-    },
-    {
-        'name': 'rsc',
-        'dance_function': 'paywall_handler',
-        'format_template': None,
-        'journals': RSC_journals,
     },
     {
         'name': 'thieme',

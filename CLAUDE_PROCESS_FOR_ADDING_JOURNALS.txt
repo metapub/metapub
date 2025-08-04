@@ -4,5 +4,6 @@
 4. if publisher isn't supported yet, create new file in metapub/findit/journals for that publisher and then (goto 5)
 5. create a "dance" for this new publisher in metapub/findit/dances.py -- stop and ask what the name of the dance should be
 6. if they don't exist yet, add a test using 3 PMIDs with different expected outcomes for this publisher. add to tests/findit
-7. run tests and make sure they pass.  fix any tests that don't pass.
-8. check output/categorized_unknown_journals.txt for "errant" journals belonging to this publisher that may have been added as one-offs further down in the file.
+7. Force rebuilding the journal registry using python metapub/findit/migrate_journals.py --force
+8. run tests and make sure they pass.  fix any tests that don't pass.
+9. check output/categorized_unknown_journals.txt for "errant" journals belonging to this publisher that may have been added as one-offs further down in the file.

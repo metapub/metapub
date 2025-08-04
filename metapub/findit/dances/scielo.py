@@ -3,7 +3,7 @@
 from lxml.html import HTMLParser
 from lxml import etree
 from ...exceptions import NoPDFLink
-from .generic import the_doi_2step, verify_pdf_url
+from .generic import the_doi_2step, verify_pdf_url, unified_uri_get
 
 
 def the_scielo_chula(pma, verify=True):

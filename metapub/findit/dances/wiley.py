@@ -4,7 +4,7 @@ from lxml.html import HTMLParser
 from lxml import etree
 
 from ...exceptions import AccessDenied, NoPDFLink
-from .generic import verify_pdf_url
+from .generic import verify_pdf_url, unified_uri_get
 
 # Import Wiley-specific template
 from ..journals.wiley import wiley_template

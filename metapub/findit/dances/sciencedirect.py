@@ -5,7 +5,7 @@ from lxml import etree
 
 from ...exceptions import AccessDenied, NoPDFLink
 from ...utils import remove_chars
-from .generic import the_doi_2step
+from .generic import the_doi_2step, unified_uri_get
 
 # Import ScienceDirect-specific URL template
 from ..journals.sciencedirect import sciencedirect_url

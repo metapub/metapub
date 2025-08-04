@@ -1,7 +1,7 @@
 """Dance function for Journal of Clinical Investigation."""
 
 from ...exceptions import AccessDenied, NoPDFLink
-from .generic import the_doi_2step, verify_pdf_url
+from .generic import the_doi_2step, verify_pdf_url, unified_uri_get
 
 
 def the_jci_jig(pma, verify=True):

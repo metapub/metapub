@@ -1,7 +1,7 @@
 """Dance function for J-STAGE (Japan Science and Technology Information Aggregator, Electronic)."""
 
 from ...exceptions import AccessDenied, NoPDFLink
-from .generic import the_doi_2step, verify_pdf_url
+from .generic import the_doi_2step, verify_pdf_url, unified_uri_get
 
 
 def the_jstage_dive(pma, verify=True):

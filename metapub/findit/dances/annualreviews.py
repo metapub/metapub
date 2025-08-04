@@ -1,6 +1,6 @@
 
 from ...exceptions import AccessDenied, NoPDFLink
-from .generic import OK_STATUS_CODES, the_doi_2step
+from .generic import OK_STATUS_CODES, the_doi_2step, unified_uri_get
 
 def the_annualreviews_round(pma, verify=True):
     '''Annual Reviews Inc.: Nonprofit publisher of comprehensive review articles

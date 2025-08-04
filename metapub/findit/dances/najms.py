@@ -5,7 +5,7 @@ from lxml.html import HTMLParser
 from lxml import etree
 
 from ...exceptions import AccessDenied, NoPDFLink
-from .generic import verify_pdf_url
+from .generic import verify_pdf_url, unified_uri_get
 
 
 def the_najms_mazurka(pma, verify=True):

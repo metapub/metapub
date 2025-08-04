@@ -4,7 +4,7 @@ from lxml.html import HTMLParser
 from lxml import etree
 
 from ...exceptions import AccessDenied, NoPDFLink
-from .generic import the_doi_2step, verify_pdf_url
+from .generic import the_doi_2step, verify_pdf_url, unified_uri_get
 
 
 def the_jama_dance(pma, verify=True):

@@ -37,7 +37,10 @@ def the_inderscience_ula(pma, verify=True):
         raise NoPDFLink('MISSING: DOI required for Inderscience article')
 
     # Construct the ONE known URL pattern for Inderscience PDFs
-    pdf_url = f'https://www.inderscienceonline.com/doi/pdf/{pma.doi}'
+    #pdf_url = f'https://www.inderscienceonline.com/doi/pdf/{pma.doi}'
+
+    # example (paywalled): 10.1504/IJENVH.2023.135446
+    pdf_url = f'https://www.inderscienceonline.com/doi/epdf/{pma.doi}'
 
     if verify:
         try:

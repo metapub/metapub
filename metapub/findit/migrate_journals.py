@@ -63,6 +63,8 @@ from metapub.findit.journals.ingentaconnect import ingentaconnect_journals, inge
 from metapub.findit.journals.bioone import bioone_journals, bioone_template
 from metapub.findit.journals.emerald import emerald_journals
 from metapub.findit.journals.acm import acm_journals
+from metapub.findit.journals.worldscientific import worldscientific_journals
+from metapub.findit.journals.uchicago import uchicago_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
@@ -408,6 +410,18 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_acm_reel',
         'format_template': None,
         'journals': acm_journals,
+    },
+    {
+        'name': 'worldscientific',
+        'dance_function': 'the_worldscientific_robot',
+        'format_template': None,
+        'journals': worldscientific_journals,
+    },
+    {
+        'name': 'uchicago',
+        'dance_function': 'the_uchicago_waltz',
+        'format_template': None,
+        'journals': uchicago_journals,
     },
     {
         'name': 'najms',

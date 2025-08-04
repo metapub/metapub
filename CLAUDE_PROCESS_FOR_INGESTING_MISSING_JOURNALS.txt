@@ -13,6 +13,21 @@ Read output/journal_clusters_todo/*.json -- for every file, treat as a potential
 
 Repeat this process for each cluster until every JSON file has been processed.  There isn't a more efficient way to do this without compromising our coverage.
 
+
+DO:
+
+* use sample PMIDs found in the json file for this journal cluster
+* reuse code found in metapub/findit/dances/generic.py
+* actually test getting PDFs using various methods
+* settle on ONE consistent way to formulate a PDF link for this publisher
+* respect DANCE_FUNCTION_GUIDELINES.md
+
+DON'T:
+
+* use any approach that attempts several different ways of getting the file (e.g. "maybe this URL format will work...") -- this will make publishers mad at us.
+* use huge try-except blocks
+* use enormous nested if-then blocks
+
 Report at the end:
 
 * per publisher, how many journals were added?

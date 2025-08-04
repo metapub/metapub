@@ -8,6 +8,9 @@ from ..exceptions import MetaPubError
 from .dances import *
 from .registry import JournalRegistry, standardize_journal_name
 from .handlers import RegistryBackedLookupSystem
+from .journals import (simple_formats_pii, simple_formats_pmid,
+                      vip_journals, vip_journals_nonstandard,
+                      BMC_journals, JOURNAL_CANTDO_LIST)
 
 log = logging.getLogger('metapub.findit.logic')
 

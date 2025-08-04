@@ -1,5 +1,6 @@
 Read output/journal_clusters_todo/*.json -- for every file, treat as a potential new publisher or list of journals we need to add to an existing publisher in FindIt, using this process:
 
+0. Look at the priority list found in the same directory.
 1. Read in list of journals underneath the publisher or domain name heading in that cluster.
 2. look in metapub/findit/journals to see if publisher/journal cluster is represented anywhere yet
 3. if so, simply add those journal names to the existing publisher list (unless publisher template calls for more info). If those journals appear to be mapped to an existing publisher, investigate sample PMIDs for those journals individually to make sure we're mapping correctly. go to step 6.

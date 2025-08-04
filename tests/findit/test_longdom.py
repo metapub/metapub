@@ -6,7 +6,7 @@ import requests
 
 from .common import BaseDanceTest
 from metapub import PubMedFetcher
-from metapub.findit.dances import the_longdom_shuffle
+from metapub.findit.dances import the_longdom_hustle
 from metapub.exceptions import AccessDenied, NoPDFLink
 
 
@@ -29,7 +29,7 @@ class TestLongdomDance(BaseDanceTest):
         print(f"Test 1 - Article info: {pma.journal}, DOI: {pma.doi}")
 
         # Test without verification (should always work for URL construction)
-        url = the_longdom_shuffle(pma, verify=False)
+        url = the_longdom_hustle(pma, verify=False)
         assert url is not None
         assert 'longdom.org' in url
         assert 'articles' in url or 'pdf' in url
@@ -47,7 +47,7 @@ class TestLongdomDance(BaseDanceTest):
         print(f"Test 2 - Article info: {pma.journal}, DOI: {pma.doi}")
 
         # Test without verification
-        url = the_longdom_shuffle(pma, verify=False)
+        url = the_longdom_hustle(pma, verify=False)
         assert url is not None
         assert 'longdom.org' in url
         print(f"Test 2 - PDF URL: {url}")
@@ -63,7 +63,7 @@ class TestLongdomDance(BaseDanceTest):
         print(f"Test 3 - Article info: {pma.journal}, DOI: {pma.doi}")
 
         # Test without verification
-        url = the_longdom_shuffle(pma, verify=False)
+        url = the_longdom_hustle(pma, verify=False)
         assert url is not None
         assert 'longdom.org' in url
         print(f"Test 3 - PDF URL: {url}")
@@ -84,7 +84,7 @@ class TestLongdomDance(BaseDanceTest):
         pma = self.fetch.article_by_pmid('28299372')
         
         # Test with verification - should succeed
-        url = the_longdom_shuffle(pma, verify=True)
+        url = the_longdom_hustle(pma, verify=True)
         assert 'longdom.org' in url
         print(f"Test 4 - Successful verified access: {url}")
 
@@ -108,7 +108,7 @@ class TestLongdomDance(BaseDanceTest):
         pma = self.fetch.article_by_pmid('28299372')
         
         # Test with verification - should return article URL
-        url = the_longdom_shuffle(pma, verify=True)
+        url = the_longdom_hustle(pma, verify=True)
         assert 'longdom.org' in url
         assert 'articles' in url
         print(f"Test 5 - HTML fallback: {url}")
@@ -126,7 +126,7 @@ class TestLongdomDance(BaseDanceTest):
         
         # Test - should handle network error
         with pytest.raises(NoPDFLink) as exc_info:
-            the_longdom_shuffle(pma, verify=True)
+            the_longdom_hustle(pma, verify=True)
         
         assert 'TXERROR' in str(exc_info.value)
         print(f"Test 6 - Correctly handled network error: {exc_info.value}")
@@ -142,7 +142,7 @@ class TestLongdomDance(BaseDanceTest):
         pma.journal = 'Immunotherapy (Los Angel)'
         
         with pytest.raises(NoPDFLink) as exc_info:
-            the_longdom_shuffle(pma, verify=False)
+            the_longdom_hustle(pma, verify=False)
         
         assert 'MISSING' in str(exc_info.value)
         assert 'DOI required' in str(exc_info.value)
@@ -164,7 +164,7 @@ class TestLongdomDance(BaseDanceTest):
         
         # Test - should try multiple patterns and eventually fail
         with pytest.raises(NoPDFLink) as exc_info:
-            the_longdom_shuffle(pma, verify=True)
+            the_longdom_hustle(pma, verify=True)
         
         assert 'TXERROR' in str(exc_info.value)
         print(f"Test 8 - Correctly handled 404: {exc_info.value}")
@@ -185,7 +185,7 @@ class TestLongdomDance(BaseDanceTest):
         pma = self.fetch.article_by_pmid('28299372')
         
         # Test - should succeed on second attempt
-        url = the_longdom_shuffle(pma, verify=True)
+        url = the_longdom_hustle(pma, verify=True)
         assert 'longdom.org' in url
         print(f"Test 9 - Multiple pattern success: {url}")
 
@@ -211,7 +211,7 @@ def test_longdom_journal_recognition():
         if journal in longdom_journals:
             publisher_info = registry.get_publisher_for_journal(journal)
             if publisher_info and publisher_info['name'] == 'longdom':
-                assert publisher_info['dance_function'] == 'the_longdom_shuffle'
+                assert publisher_info['dance_function'] == 'the_longdom_hustle'
                 print(f"✓ {journal} correctly mapped to Longdom")
                 found_count += 1
             else:
@@ -235,15 +235,15 @@ if __name__ == '__main__':
     print("\n" + "="*60)
     
     tests = [
-        ('test_longdom_shuffle_url_construction_immunotherapy', 'Immunotherapy URL construction'),
-        ('test_longdom_shuffle_url_construction_mycobact', 'Mycobacterial URL construction'),
-        ('test_longdom_shuffle_url_construction_angiology', 'Angiology URL construction'),
-        ('test_longdom_shuffle_successful_access', 'Successful access simulation'),
-        ('test_longdom_shuffle_html_fallback', 'HTML fallback'),
-        ('test_longdom_shuffle_network_error', 'Network error handling'),
-        ('test_longdom_shuffle_missing_doi', 'Missing DOI handling'),
-        ('test_longdom_shuffle_404_error', '404 error handling'),
-        ('test_longdom_shuffle_multiple_patterns', 'Multiple pattern attempts')
+        ('test_longdom_hustle_url_construction_immunotherapy', 'Immunotherapy URL construction'),
+        ('test_longdom_hustle_url_construction_mycobact', 'Mycobacterial URL construction'),
+        ('test_longdom_hustle_url_construction_angiology', 'Angiology URL construction'),
+        ('test_longdom_hustle_successful_access', 'Successful access simulation'),
+        ('test_longdom_hustle_html_fallback', 'HTML fallback'),
+        ('test_longdom_hustle_network_error', 'Network error handling'),
+        ('test_longdom_hustle_missing_doi', 'Missing DOI handling'),
+        ('test_longdom_hustle_404_error', '404 error handling'),
+        ('test_longdom_hustle_multiple_patterns', 'Multiple pattern attempts')
     ]
     
     for test_method, description in tests:

@@ -421,7 +421,7 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'uchicago',
-        'dance_function': 'the_uchicago_waltz',
+        'dance_function': 'the_uchicago_walk',
         'format_template': None,
         'journals': uchicago_journals,
     },
@@ -433,7 +433,7 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'longdom',
-        'dance_function': 'the_longdom_shuffle',
+        'dance_function': 'the_longdom_hustle',
         'format_template': None,
         'journals': longdom_journals,
     },

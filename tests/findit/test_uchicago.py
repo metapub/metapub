@@ -6,7 +6,7 @@ import requests
 
 from .common import BaseDanceTest
 from metapub import PubMedFetcher
-from metapub.findit.dances import the_uchicago_waltz
+from metapub.findit.dances import the_uchicago_walk
 from metapub.exceptions import AccessDenied, NoPDFLink
 
 
@@ -29,7 +29,7 @@ class TestUChicagoDance(BaseDanceTest):
         print(f"Test 1 - Article info: {pma.journal}, DOI: {pma.doi}")
 
         # Test without verification (should always work for URL construction)
-        url = the_uchicago_waltz(pma, verify=False)
+        url = the_uchicago_walk(pma, verify=False)
         assert url is not None
         assert 'journals.uchicago.edu' in url
         assert '/doi/pdf/' in url
@@ -47,7 +47,7 @@ class TestUChicagoDance(BaseDanceTest):
         print(f"Test 2 - Article info: {pma.journal}, DOI: {pma.doi}")
 
         # Test without verification
-        url = the_uchicago_waltz(pma, verify=False)
+        url = the_uchicago_walk(pma, verify=False)
         assert url is not None
         assert 'journals.uchicago.edu' in url
         assert '/doi/pdf/' in url
@@ -64,7 +64,7 @@ class TestUChicagoDance(BaseDanceTest):
         print(f"Test 3 - Article info: {pma.journal}, DOI: {pma.doi}")
 
         # Test without verification
-        url = the_uchicago_waltz(pma, verify=False)
+        url = the_uchicago_walk(pma, verify=False)
         assert url is not None
         assert 'journals.uchicago.edu' in url
         assert '/doi/pdf/' in url
@@ -86,7 +86,7 @@ class TestUChicagoDance(BaseDanceTest):
         pma = self.fetch.article_by_pmid('20827843')
         
         # Test with verification - should succeed
-        url = the_uchicago_waltz(pma, verify=True)
+        url = the_uchicago_walk(pma, verify=True)
         assert 'journals.uchicago.edu' in url
         assert '/doi/pdf/' in url
         print(f"Test 4 - Successful verified access: {url}")
@@ -113,7 +113,7 @@ class TestUChicagoDance(BaseDanceTest):
         
         # Test with verification - should detect paywall
         with pytest.raises(AccessDenied) as exc_info:
-            the_uchicago_waltz(pma, verify=True)
+            the_uchicago_walk(pma, verify=True)
         
         assert 'PAYWALL' in str(exc_info.value)
         print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
@@ -131,7 +131,7 @@ class TestUChicagoDance(BaseDanceTest):
         
         # Test - should handle network error
         with pytest.raises(NoPDFLink) as exc_info:
-            the_uchicago_waltz(pma, verify=True)
+            the_uchicago_walk(pma, verify=True)
         
         assert 'TXERROR' in str(exc_info.value)
         print(f"Test 6 - Correctly handled network error: {exc_info.value}")
@@ -147,7 +147,7 @@ class TestUChicagoDance(BaseDanceTest):
         pma.journal = 'Winterthur Portf'
         
         with pytest.raises(NoPDFLink) as exc_info:
-            the_uchicago_waltz(pma, verify=False)
+            the_uchicago_walk(pma, verify=False)
         
         assert 'MISSING' in str(exc_info.value)
         assert 'DOI required' in str(exc_info.value)
@@ -164,7 +164,7 @@ class TestUChicagoDance(BaseDanceTest):
         pma.journal = 'Winterthur Portf'
         
         with pytest.raises(NoPDFLink) as exc_info:
-            the_uchicago_waltz(pma, verify=False)
+            the_uchicago_walk(pma, verify=False)
         
         assert 'PATTERN' in str(exc_info.value)
         assert '10.1086' in str(exc_info.value)
@@ -186,7 +186,7 @@ class TestUChicagoDance(BaseDanceTest):
         
         # Test - should handle 404
         with pytest.raises(NoPDFLink) as exc_info:
-            the_uchicago_waltz(pma, verify=True)
+            the_uchicago_walk(pma, verify=True)
         
         assert 'TXERROR' in str(exc_info.value)
         assert '404' in str(exc_info.value)
@@ -214,7 +214,7 @@ def test_uchicago_journal_recognition():
         if journal in uchicago_journals:
             publisher_info = registry.get_publisher_for_journal(journal)
             if publisher_info and publisher_info['name'] == 'uchicago':
-                assert publisher_info['dance_function'] == 'the_uchicago_waltz'
+                assert publisher_info['dance_function'] == 'the_uchicago_walk'
                 print(f"✓ {journal} correctly mapped to University of Chicago Press")
                 found_count += 1
             else:
@@ -238,15 +238,15 @@ if __name__ == '__main__':
     print("\n" + "="*60)
     
     tests = [
-        ('test_uchicago_waltz_url_construction_winterthur', 'Winterthur Portfolio URL construction'),
-        ('test_uchicago_waltz_url_construction_law_econ', 'Journal of Law and Economics URL construction'),
-        ('test_uchicago_waltz_url_construction_legal_stud', 'Journal of Legal Studies URL construction'),
-        ('test_uchicago_waltz_successful_access', 'Successful access simulation'),
-        ('test_uchicago_waltz_paywall_detection', 'Paywall detection'),
-        ('test_uchicago_waltz_network_error', 'Network error handling'),
-        ('test_uchicago_waltz_missing_doi', 'Missing DOI handling'),
-        ('test_uchicago_waltz_wrong_doi_pattern', 'Wrong DOI pattern handling'),
-        ('test_uchicago_waltz_404_error', '404 error handling')
+        ('test_uchicago_walk_url_construction_winterthur', 'Winterthur Portfolio URL construction'),
+        ('test_uchicago_walk_url_construction_law_econ', 'Journal of Law and Economics URL construction'),
+        ('test_uchicago_walk_url_construction_legal_stud', 'Journal of Legal Studies URL construction'),
+        ('test_uchicago_walk_successful_access', 'Successful access simulation'),
+        ('test_uchicago_walk_paywall_detection', 'Paywall detection'),
+        ('test_uchicago_walk_network_error', 'Network error handling'),
+        ('test_uchicago_walk_missing_doi', 'Missing DOI handling'),
+        ('test_uchicago_walk_wrong_doi_pattern', 'Wrong DOI pattern handling'),
+        ('test_uchicago_walk_404_error', '404 error handling')
     ]
     
     for test_method, description in tests:

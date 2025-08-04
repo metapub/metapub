@@ -2204,7 +2204,7 @@ def the_worldscientific_robot(pma, verify=True):
             raise NoPDFLink(f'TXERROR: World Scientific robot failed for {pma.journal}: {e} - attempted: DOI resolution')
 
 
-def the_uchicago_waltz(pma, verify=True):
+def the_uchicago_walk(pma, verify=True):
     '''University of Chicago Press: Academic journals across multiple disciplines
     
     The University of Chicago Press is one of the largest and oldest university presses
@@ -2278,7 +2278,7 @@ def the_uchicago_waltz(pma, verify=True):
         if isinstance(e, (NoPDFLink, AccessDenied)):
             raise
         else:
-            raise NoPDFLink(f'TXERROR: University of Chicago Press waltz failed for {pma.journal}: {e} - attempted: DOI resolution')
+            raise NoPDFLink(f'TXERROR: University of Chicago Press walk failed for {pma.journal}: {e} - attempted: DOI resolution')
 
 
 def the_iospress_freestyle(pma, verify=True):
@@ -2369,7 +2369,7 @@ def the_iospress_freestyle(pma, verify=True):
             raise NoPDFLink(f'TXERROR: IOS Press freestyle failed for {pma.journal}: {e} - attempted: DOI resolution')
 
 
-def the_longdom_shuffle(pma, verify=True):
+def the_longdom_hustle(pma, verify=True):
     '''Longdom Publishing: Open access journals across various fields
     
     Longdom Publishing is an open access publisher that publishes journals
@@ -2447,5 +2447,5 @@ def the_longdom_shuffle(pma, verify=True):
         if isinstance(e, (NoPDFLink, AccessDenied)):
             raise
         else:
-            raise NoPDFLink(f'TXERROR: Longdom shuffle failed for {pma.journal}: {e} - attempted: DOI resolution')
+            raise NoPDFLink(f'TXERROR: Longdom hustle failed for {pma.journal}: {e} - attempted: DOI resolution')
 

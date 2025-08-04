@@ -39,6 +39,9 @@ sciendo_journals = (
     'Acta Med Marisiensis',
     'Prilozi',
     'J Data Inf Sci',
+    'Int Agrophys',
+    'Int Rev Soc Res',
+    'Acta Bot Croat',
 )
 
 # URL format template for Sciendo articles

@@ -23,6 +23,27 @@ from ..registry import JournalRegistry
 
 OK_STATUS_CODES = (200, 301, 302, 307)
 
+# Common paywall detection terms
+PAYWALL_TERMS = [
+    'paywall', 'subscribe', 'subscription', 'sign in', 'log in', 
+    'login required', 'access denied', 'purchase', 'institutional access',
+    'member access', 'subscribe now', 'buy article', 'rent this article',
+    'subscription required', 'checkLicense', 'member only', 'institution'
+]
+
+def detect_paywall_from_html(html_content, publisher_name=''):
+    """Detect if HTML content indicates a paywall.
+    
+    Args:
+        html_content: HTML response text
+        publisher_name: Optional publisher name for error messages
+        
+    Returns:
+        bool: True if paywall detected, False otherwise
+    """
+    page_text = html_content.lower()
+    return any(term in page_text for term in PAYWALL_TERMS)
+
 # PMC URL constants
 PMC_PDF_URL = 'https://www.ncbi.nlm.nih.gov/pmc/articles/pmid/{a.pmid}/pdf'
 EUROPEPMC_PDF_URL = 'http://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC{a.pmc}&blobtype=pdf'

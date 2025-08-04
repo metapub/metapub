@@ -72,6 +72,9 @@ from metapub.findit.journals.oatext import oatext_journals
 from metapub.findit.journals.allenpress import allenpress_journals
 from metapub.findit.journals.inderscience import inderscience_journals
 from metapub.findit.journals.asme import asme_journals
+from metapub.findit.journals.wjgnet import wjgnet_journals
+from metapub.findit.journals.hilaris import hilaris_journals
+from metapub.findit.journals.projectmuse import projectmuse_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
@@ -471,6 +474,24 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_asme_animal',
         'format_template': None,
         'journals': asme_journals,
+    },
+    {
+        'name': 'wjgnet',
+        'dance_function': 'the_wjgnet_wave',
+        'format_template': None,
+        'journals': wjgnet_journals,
+    },
+    {
+        'name': 'hilaris',
+        'dance_function': 'the_hilaris_hop',
+        'format_template': None,
+        'journals': hilaris_journals,
+    },
+    {
+        'name': 'projectmuse',
+        'dance_function': 'the_projectmuse_melody',
+        'format_template': None,
+        'journals': projectmuse_journals,
     },
     {
         'name': 'najms',

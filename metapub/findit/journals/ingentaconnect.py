@@ -1,0 +1,73 @@
+"""Ingenta Connect (ingentaconnect.com) journals.
+
+Ingenta Connect is a digital publishing platform that hosts scholarly content
+from multiple publishers. Founded by Ingenta, it serves as a content aggregator
+providing access to millions of articles from over 250 publishers.
+
+The platform hosts journals with diverse DOI prefixes from different publishers,
+but all content is accessible through ingentaconnect.com. Since publishers vary,
+DOI patterns are diverse (10.3751/, 10.5588/, 10.1166/, etc.).
+
+URL pattern investigation shows DOI resolution to ingentaconnect.com article pages.
+Access models vary by publisher - some open access, some subscription-based.
+"""
+
+# DOI-based template for Ingenta Connect
+# Since multiple publishers use this platform, we rely on DOI resolution
+ingentaconnect_template = 'https://doi.org/{doi}'
+
+# Ingenta Connect journals from categorized analysis
+# These journals were identified from ingentaconnect.com domain in categorized_unknown_journals.txt
+# Represents content from various publishers hosted on the Ingenta Connect platform
+ingentaconnect_journals = [
+    'N Engl Reg Allergy Proc',
+    'Middle East J',
+    'Folia Biol (Krakow)',
+    'Allergy Proc',
+    'J Conscious Stud',
+    'Public Health Action',
+    'Health Behav Policy Rev',
+    'J Biomed Nanotechnol',
+    'Photogramm Eng Remote Sensing',
+    'Syst Bot',
+    'Allergy Asthma Proc',
+    'Int J Tuberc Lung Dis',
+    'Comp Polit',
+    'Aviat Space Environ Med',
+    'Med Probl Perform Art',
+    'Cancer Commun',
+    'Soc Behav Pers',
+    'Acta Acust United Acust',
+    'Widening Partic Lifelong Learn',
+    'J Med Imaging Health Inform',
+    'Stud Mycol',
+    'Mycotaxon',
+    'Comp Med',
+    'Rev Analg',
+    'Sci Adv Mater',
+    'Technol Innov',
+    'J Biomater Tissue Eng',
+    'J Precis Respir Med',
+    'Br Paramed J',
+    'Consult Pharm',
+    'Sens Lett',
+    'J Am Assoc Lab Anim Sci',
+    'Aerosp Med Hum Perform',
+    'Adv Sci Eng Med',
+    'Noise Control Eng J',
+    'J Comput Theor Nanosci',
+    'Sr Care Pharm',
+    'J Am Helicopter Soc',
+    'Neurographics (2011)',
+    'Mar Technol Soc J',
+    'Curr Drug Targets Immune Endocr Metabol Disord',
+    'Persoonia',
+    'Am J Health Behav',
+    'Habitation (Elmsford)',
+    'Acupunct Electrother Res',
+    'J Low Power Electron',
+    'Fungal Syst Evol',
+    'Nanosci Nanotechnol Lett',
+    'Adv Sci Lett',
+    'J Fam Consum Sci'
+]

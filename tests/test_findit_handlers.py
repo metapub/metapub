@@ -10,7 +10,7 @@ from unittest.mock import Mock, patch
 
 from metapub import FindIt
 from metapub.findit.handlers import (
-    PublisherHandler, PaywallHandler, HandlerFactory, 
+    PublisherHandler, PaywallHandler, HandlerFactory,
     RegistryBackedLookupSystem
 )
 from metapub.findit.registry import JournalRegistry
@@ -47,9 +47,9 @@ class TestPublisherHandler(unittest.TestCase):
         """Test that get_pdf_url properly dispatches to dance function."""
         mock_dispatch.return_value = ("http://test.url", None)
         mock_pma = Mock()
-        
+
         url, reason = self.handler.get_pdf_url(mock_pma, verify=True)
-        
+
         # Check call was made correctly (the method passes verify as positional arg)
         mock_dispatch.assert_called_once_with(mock_pma, True)
         self.assertEqual(url, "http://test.url")
@@ -69,19 +69,19 @@ class TestPaywallHandler(unittest.TestCase):
     def test_paywall_handler_always_returns_paywall(self):
         """Test that paywall handler always returns PAYWALL message."""
         mock_pma = Mock()
-        
+
         url, reason = self.handler.get_pdf_url(mock_pma, verify=True)
-        
+
         self.assertIsNone(url)
         self.assertEqual(reason, "PAYWALL")
 
     def test_paywall_handler_ignores_verify_parameter(self):
         """Test that verify parameter doesn't affect paywall handler."""
         mock_pma = Mock()
-        
+
         url1, reason1 = self.handler.get_pdf_url(mock_pma, verify=True)
         url2, reason2 = self.handler.get_pdf_url(mock_pma, verify=False)
-        
+
         self.assertEqual(url1, url2)
         self.assertEqual(reason1, reason2)
         self.assertEqual(reason1, "PAYWALL")
@@ -96,9 +96,9 @@ class TestHandlerFactory(unittest.TestCase):
             'name': 'Test Paywall',
             'dance_function': 'paywall_handler'
         }
-        
+
         handler = HandlerFactory.create_handler(registry_data)
-        
+
         self.assertIsInstance(handler, PaywallHandler)
         self.assertEqual(handler.name, 'Test Paywall')
 
@@ -108,9 +108,9 @@ class TestHandlerFactory(unittest.TestCase):
             'name': 'Test Publisher',
             'dance_function': 'the_nature_ballet'
         }
-        
+
         handler = HandlerFactory.create_handler(registry_data)
-        
+
         self.assertIsInstance(handler, PublisherHandler)
         self.assertNotIsInstance(handler, PaywallHandler)
         self.assertEqual(handler.name, 'Test Publisher')
@@ -121,9 +121,9 @@ class TestHandlerFactory(unittest.TestCase):
             'name': 'Test Publisher',
             'dance_function': ''
         }
-        
+
         handler = HandlerFactory.create_handler(registry_data)
-        
+
         self.assertIsInstance(handler, PublisherHandler)
         self.assertNotIsInstance(handler, PaywallHandler)
 
@@ -138,9 +138,9 @@ class TestRegistryBackedLookupSystem(unittest.TestCase):
     def test_get_handler_for_unknown_journal(self):
         """Test handling of unknown journal."""
         self.mock_registry.get_publisher_for_journal.return_value = None
-        
+
         handler = self.lookup_system.get_handler_for_journal("Unknown Journal")
-        
+
         self.assertIsNone(handler)
         self.mock_registry.get_publisher_for_journal.assert_called_once_with("Unknown Journal")
 
@@ -151,19 +151,19 @@ class TestRegistryBackedLookupSystem(unittest.TestCase):
             'dance_function': 'test_dance'
         }
         self.mock_registry.get_publisher_for_journal.return_value = publisher_data
-        
+
         # First call should create handler
         handler1 = self.lookup_system.get_handler_for_journal("Test Journal")
         self.assertIsNotNone(handler1)
         self.assertEqual(handler1.name, 'Test Publisher')
-        
+
         # Second call should create a new handler (no caching after simplification)
         handler2 = self.lookup_system.get_handler_for_journal("Test Journal")
         self.assertIsNotNone(handler2)
         self.assertEqual(handler2.name, 'Test Publisher')
         # Should be different objects since we removed caching
         self.assertIsNot(handler1, handler2)
-        
+
         # Registry should be called twice since we removed caching
         self.assertEqual(self.mock_registry.get_publisher_for_journal.call_count, 2)
 
@@ -173,20 +173,20 @@ class TestRegistryBackedLookupSystem(unittest.TestCase):
         mock_standardize.return_value = "Standardized Journal"
         mock_pma = Mock()
         mock_pma.journal = "Original Journal Name"
-        
+
         publisher_data = {
             'name': 'Test Publisher',
             'dance_function': 'test_dance'
         }
         self.mock_registry.get_publisher_for_journal.return_value = publisher_data
-        
+
         with patch.object(self.lookup_system, 'get_handler_for_journal') as mock_get_handler:
             mock_handler = Mock()
             mock_handler.get_pdf_url.return_value = ("http://test.url", None)
             mock_get_handler.return_value = mock_handler
-            
+
             url, reason = self.lookup_system.find_pdf_url(mock_pma, verify=True)
-            
+
             mock_standardize.assert_called_once_with("Original Journal Name")
             mock_get_handler.assert_called_once_with("Standardized Journal")
             mock_handler.get_pdf_url.assert_called_once_with(mock_pma, verify=True)
@@ -195,12 +195,12 @@ class TestRegistryBackedLookupSystem(unittest.TestCase):
         """Test find_pdf_url when no handler found for journal."""
         mock_pma = Mock()
         mock_pma.journal = "Unknown Journal"
-        
+
         with patch('metapub.findit.registry.standardize_journal_name', return_value="Unknown Journal"):
             self.mock_registry.get_publisher_for_journal.return_value = None
-            
+
             url, reason = self.lookup_system.find_pdf_url(mock_pma, verify=True)
-            
+
             self.assertIsNone(url)
             self.assertEqual(reason, "NOFORMAT: No handler found for journal 'Unknown Journal'. Report with sample PMID at https://github.com/metapub/metapub/issues")
 
@@ -216,7 +216,7 @@ class TestRegistryIntegration(unittest.TestCase):
     def test_nature_journal_handler_integration(self):
         """Test integration with actual Nature journal in registry."""
         handler = self.lookup_system.get_handler_for_journal("Nature")
-        
+
         self.assertIsNotNone(handler)
         self.assertEqual(handler.name, "nature")  # Actual publisher name in registry
         self.assertEqual(handler.dance_function, "the_nature_ballet")
@@ -225,7 +225,7 @@ class TestRegistryIntegration(unittest.TestCase):
         """Test integration with actual Oxford journal in registry."""
         # Test with a common Oxford journal
         handler = self.lookup_system.get_handler_for_journal("Brain")
-        
+
         if handler:  # Only test if journal is in registry
             self.assertIn("Oxford", handler.name)
             self.assertIsNotNone(handler.dance_function)
@@ -233,24 +233,24 @@ class TestRegistryIntegration(unittest.TestCase):
     def test_science_journal_handler_integration(self):
         """Test integration with Science journal in registry."""
         handler = self.lookup_system.get_handler_for_journal("Science")
-        
+
         if handler:  # Only test if journal is in registry
-            self.assertIn("aaas", handler.name.lower())  # Case insensitive check
-            self.assertEqual(handler.dance_function, "the_aaas_twist")
+            self.assertIn("science magazine", handler.name.lower())  # Case insensitive check
+            self.assertEqual(handler.dance_function, "the_vip_shake")
 
     def test_registry_seeding(self):
         """Test that registry is properly seeded with data."""
         # Registry should contain multiple publishers
         sample_journals = ["Nature", "Science", "Cell", "Brain", "JAMA"]
         found_publishers = set()
-        
+
         for journal in sample_journals:
             publisher_data = self.registry.get_publisher_for_journal(journal)
             if publisher_data:
                 found_publishers.add(publisher_data['name'])
-        
+
         # Should find at least a few different publishers
-        self.assertGreater(len(found_publishers), 2, 
+        self.assertGreater(len(found_publishers), 2,
                           "Registry should contain multiple publishers")
 
 
@@ -263,30 +263,30 @@ class TestLiveHandlerBehavior(unittest.TestCase):
         # Sample PMIDs from different publishers
         test_cases = [
             ("4587242", "Nature"),  # Nature PMID
-            ("22250305", "Brain"),  # Oxford PMID  
+            ("22250305", "Brain"),  # Oxford PMID
             ("11636298", "Human Genetics"),  # Springer PMID
         ]
-        
+
         lookup_system = RegistryBackedLookupSystem(JournalRegistry())
-        
+
         for pmid, expected_journal in test_cases:
             with self.subTest(pmid=pmid, journal=expected_journal):
                 try:
                     # Test the full FindIt flow
                     finder = FindIt(pmid=pmid, cachedir=None)
-                    
+
                     # Should get either a URL or a reasonable error
                     self.assertTrue(
                         finder.url is not None or finder.reason is not None,
                         f"PMID {pmid} returned neither URL nor reason"
                     )
-                    
+
                     # Test direct handler lookup
                     handler = lookup_system.get_handler_for_journal(expected_journal)
                     if handler:
                         self.assertIsNotNone(handler.name)
                         self.assertIsNotNone(handler.dance_function)
-                        
+
                 except Exception as e:
                     # Log the error but don't fail the test for network issues
                     self.skipTest(f"Network error testing PMID {pmid}: {e}")

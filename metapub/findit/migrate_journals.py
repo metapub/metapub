@@ -59,6 +59,7 @@ from metapub.findit.journals.scirp import scirp_journals
 from metapub.findit.journals.annualreviews import annualreviews_journals
 from metapub.findit.journals.brill import brill_journals, brill_template
 from metapub.findit.journals.rsc import rsc_journals, rsc_template
+from metapub.findit.journals.ingentaconnect import ingentaconnect_journals, ingentaconnect_template
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
@@ -380,6 +381,12 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_rsc_reaction',  
         'format_template': rsc_template,
         'journals': rsc_journals,
+    },
+    {
+        'name': 'ingentaconnect',
+        'dance_function': 'the_ingenta_flux',
+        'format_template': ingentaconnect_template,
+        'journals': ingentaconnect_journals,
     },
     {
         'name': 'najms',

@@ -205,21 +205,28 @@ class TestWJGNetDance(BaseDanceTest):
         assert 'wjgnet.com' in url
         print(f"Test 9 - Volume/issue URL construction: {url}")
 
-    def test_wjgnet_wave_doi_pattern_warning(self):
-        """Test 10: Non-standard DOI pattern handling.
+    def test_wjgnet_wave_multiple_doi_prefixes(self):
+        """Test 10: Multiple DOI prefix handling.
         
-        Expected: Should handle non-10.3748 DOI patterns but may warn
+        Expected: Should handle various DOI prefixes due to acquisitions
         """
-        # Create a mock PMA with non-WJG Net DOI pattern
-        pma = Mock()
-        pma.doi = '10.1016/j.example.2023.123456'  # Non-WJG Net DOI
-        pma.journal = 'World J Gastroenterol'
+        # Test different DOI prefixes that WJG Net might use
+        test_dois = [
+            '10.3748/wjg.v30.i1.123',      # Primary WJG Net DOI
+            '10.1016/j.example.2023.123',   # Acquired journal DOI
+            '10.1186/example-2023-456'      # Partnership DOI
+        ]
         
-        # Should still construct URL without verification
-        url = the_wjgnet_wave(pma, verify=False)
-        assert url is not None
-        assert 'wjgnet.com' in url
-        print(f"Test 10 - Non-standard DOI pattern handled: {url}")
+        for doi in test_dois:
+            pma = Mock()
+            pma.doi = doi
+            pma.journal = 'World J Gastroenterol'
+            
+            # Should construct URL regardless of DOI prefix
+            url = the_wjgnet_wave(pma, verify=False)
+            assert url is not None
+            assert 'wjgnet.com' in url
+            print(f"Test 10 - DOI {doi}: {url}")
 
     def test_wjgnet_wave_multiple_journals(self):
         """Test 11: Multiple WJG Net journal coverage.

@@ -2963,10 +2963,7 @@ def the_wjgnet_wave(pma, verify=True):
         if not pma.doi:
             raise NoPDFLink(f'MISSING: DOI required for WJG Net access - Journal: {pma.journal}')
         
-        # WJG Net journals typically use 10.3748/* DOI pattern
-        if not pma.doi.startswith('10.3748/'):
-            # Still try to process, but note pattern mismatch
-            pass
+        # WJG Net journals use various DOI prefixes due to acquisitions and partnerships
         
         # Try different URL construction approaches for WJG Net
         possible_urls = []
@@ -3023,10 +3020,7 @@ def the_wjgnet_wave(pma, verify=True):
                     continue  # Try next URL format
             
             # If all URLs failed
-            if pma.doi.startswith('10.3748/'):
-                raise NoPDFLink(f'TXERROR: Could not access WJG Net article - DOI: {pma.doi}')
-            else:
-                raise NoPDFLink(f'PATTERN: WJG Net typically uses DOI pattern 10.3748/*, got {pma.doi}')
+            raise NoPDFLink(f'TXERROR: Could not access WJG Net article - attempted: {", ".join(possible_urls[:3])}')
         else:
             # Return first URL pattern without verification
             return possible_urls[0] if possible_urls else f'https://www.wjgnet.com/pdf/{pma.doi}.pdf'
@@ -3060,10 +3054,7 @@ def the_hilaris_hop(pma, verify=True):
         if not pma.doi:
             raise NoPDFLink(f'MISSING: DOI required for Hilaris Publisher access - Journal: {pma.journal}')
         
-        # Hilaris Publisher journals typically use 10.4172/* DOI pattern
-        if not pma.doi.startswith('10.4172/'):
-            # Still try to process, but note pattern mismatch
-            pass
+        # Hilaris Publisher journals use various DOI prefixes due to acquisitions and partnerships
         
         # Try different URL construction approaches for Hilaris
         possible_urls = []
@@ -3122,10 +3113,7 @@ def the_hilaris_hop(pma, verify=True):
                     continue  # Try next URL format
             
             # If all URLs failed
-            if pma.doi.startswith('10.4172/'):
-                raise NoPDFLink(f'TXERROR: Could not access Hilaris Publisher article - DOI: {pma.doi}')
-            else:
-                raise NoPDFLink(f'PATTERN: Hilaris Publisher typically uses DOI pattern 10.4172/*, got {pma.doi}')
+            raise NoPDFLink(f'TXERROR: Could not access Hilaris Publisher article - attempted: {", ".join(possible_urls[:3])}')
         else:
             # Return first URL pattern without verification
             return possible_urls[0] if possible_urls else f'https://www.hilarispublisher.com/pdf/{pma.doi}.pdf'
@@ -3160,10 +3148,7 @@ def the_projectmuse_syrtos(pma, verify=True):
         if not pma.doi:
             raise NoPDFLink(f'MISSING: DOI required for Project MUSE access - Journal: {pma.journal}')
         
-        # Project MUSE articles typically use 10.1353/* DOI pattern
-        if not pma.doi.startswith('10.1353/'):
-            # Still try to process, but note pattern mismatch
-            pass
+        # Project MUSE articles use various DOI prefixes due to acquisitions and partnerships
         
         # Try different URL construction approaches for Project MUSE
         possible_urls = []
@@ -3221,10 +3206,7 @@ def the_projectmuse_syrtos(pma, verify=True):
                     continue  # Try next URL format
             
             # If all URLs failed
-            if pma.doi.startswith('10.1353/'):
-                raise NoPDFLink(f'TXERROR: Could not access Project MUSE article - DOI: {pma.doi}')
-            else:
-                raise NoPDFLink(f'PATTERN: Project MUSE typically uses DOI pattern 10.1353/*, got {pma.doi}')
+            raise NoPDFLink(f'TXERROR: Could not access Project MUSE article - attempted: {", ".join(possible_urls[:3])}')
         else:
             # Return first URL pattern without verification
             return possible_urls[0] if possible_urls else f'https://muse.jhu.edu/article/{pma.doi}'
@@ -3258,10 +3240,7 @@ def the_walshmedia_bora(pma, verify=True):
         if not pma.doi:
             raise NoPDFLink(f'MISSING: DOI required for Walsh Medical Media access - Journal: {pma.journal}')
         
-        # Walsh Medical Media journals typically use 10.4172/* or 10.35248/* DOI patterns
-        if not (pma.doi.startswith('10.4172/') or pma.doi.startswith('10.35248/')):
-            # Still try to process, but note pattern mismatch
-            pass
+        # Walsh Medical Media journals use various DOI prefixes due to acquisitions and partnerships
         
         # Try different URL construction approaches for Walsh Medical Media
         possible_urls = []
@@ -3320,10 +3299,7 @@ def the_walshmedia_bora(pma, verify=True):
                     continue  # Try next URL format
             
             # If all URLs failed
-            if pma.doi.startswith('10.4172/') or pma.doi.startswith('10.35248/'):
-                raise NoPDFLink(f'TXERROR: Could not access Walsh Medical Media article - DOI: {pma.doi}')
-            else:
-                raise NoPDFLink(f'PATTERN: Walsh Medical Media typically uses DOI patterns 10.4172/* or 10.35248/*, got {pma.doi}')
+            raise NoPDFLink(f'TXERROR: Could not access Walsh Medical Media article - attempted: {", ".join(possible_urls[:3])}')
         else:
             # Return first URL pattern without verification
             return possible_urls[0] if possible_urls else f'https://www.walshmedicalmedia.com/pdf/{pma.doi}.pdf'
@@ -3357,10 +3333,7 @@ def the_aip_allegro(pma, verify=True):
         if not pma.doi:
             raise NoPDFLink(f'MISSING: DOI required for AIP Publishing access - Journal: {pma.journal}')
         
-        # AIP Publishing journals typically use 10.1063/* DOI pattern
-        if not pma.doi.startswith('10.1063/'):
-            # Still try to process, but note pattern mismatch
-            pass
+        # AIP Publishing journals use various DOI prefixes due to acquisitions and partnerships
         
         # Try different URL construction approaches for AIP Publishing
         possible_urls = []
@@ -3428,10 +3401,7 @@ def the_aip_allegro(pma, verify=True):
                     continue  # Try next URL format
             
             # If all URLs failed
-            if pma.doi.startswith('10.1063/'):
-                raise NoPDFLink(f'TXERROR: Could not access AIP Publishing article - DOI: {pma.doi}')
-            else:
-                raise NoPDFLink(f'PATTERN: AIP Publishing typically uses DOI pattern 10.1063/*, got {pma.doi}')
+            raise NoPDFLink(f'TXERROR: Could not access AIP Publishing article - attempted: {", ".join(possible_urls[:3])}')
         else:
             # Return first URL pattern without verification
             return possible_urls[0] if possible_urls else f'https://pubs.aip.org/{pma.doi}/pdf'

@@ -204,21 +204,28 @@ class TestProjectMuseDance(BaseDanceTest):
         assert 'muse.jhu.edu' in url
         print(f"Test 9 - Article ID URL construction: {url}")
 
-    def test_projectmuse_melody_doi_pattern_warning(self):
-        """Test 10: Non-standard DOI pattern handling.
+    def test_projectmuse_syrtos_multiple_doi_prefixes(self):
+        """Test 10: Multiple DOI prefix handling.
         
-        Expected: Should handle non-10.1353 DOI patterns but may warn
+        Expected: Should handle various DOI prefixes due to acquisitions
         """
-        # Create a mock PMA with non-Project MUSE DOI pattern
-        pma = Mock()
-        pma.doi = '10.1016/j.example.2023.123456'  # Non-Project MUSE DOI
-        pma.journal = 'Narrat Inq Bioeth'
+        # Test different DOI prefixes that Project MUSE might use
+        test_dois = [
+            '10.1353/nib.2024.a926149',     # Primary Project MUSE DOI
+            '10.1080/example.2023.123',     # University press DOI
+            '10.1017/acquired.2023.456'     # Academic press DOI
+        ]
         
-        # Should still construct URL without verification
-        url = the_projectmuse_syrtos(pma, verify=False)
-        assert url is not None
-        assert 'muse.jhu.edu' in url
-        print(f"Test 10 - Non-standard DOI pattern handled: {url}")
+        for doi in test_dois:
+            pma = Mock()
+            pma.doi = doi
+            pma.journal = 'Narrat Inq Bioeth'
+            
+            # Should construct URL regardless of DOI prefix
+            url = the_projectmuse_syrtos(pma, verify=False)
+            assert url is not None
+            assert 'muse.jhu.edu' in url
+            print(f"Test 10 - DOI {doi}: {url}")
 
     def test_projectmuse_melody_multiple_journals(self):
         """Test 11: Multiple Project MUSE journal coverage.
@@ -300,7 +307,7 @@ if __name__ == '__main__':
         ('test_projectmuse_melody_missing_doi', 'Missing DOI handling'),
         ('test_projectmuse_melody_404_error', '404 error handling'),
         ('test_projectmuse_melody_article_id_construction', 'Article ID URL construction'),
-        ('test_projectmuse_melody_doi_pattern_warning', 'Non-standard DOI pattern handling'),
+        ('test_projectmuse_syrtos_multiple_doi_prefixes', 'Multiple DOI prefix handling'),
         ('test_projectmuse_melody_multiple_journals', 'Multiple journal coverage')
     ]
     

@@ -204,21 +204,28 @@ class TestWalshMediaDance(BaseDanceTest):
         assert 'walshmedicalmedia.com' in url
         print(f"Test 9 - Article slug URL construction: {url}")
 
-    def test_walshmedia_waltz_doi_pattern_warning(self):
-        """Test 10: Non-standard DOI pattern handling.
+    def test_walshmedia_bora_multiple_doi_prefixes(self):
+        """Test 10: Multiple DOI prefix handling.
         
-        Expected: Should handle non-10.4172/10.35248 DOI patterns but may warn
+        Expected: Should handle various DOI prefixes due to acquisitions
         """
-        # Create a mock PMA with non-Walsh Media DOI pattern
-        pma = Mock()
-        pma.doi = '10.1016/j.example.2023.123456'  # Non-Walsh Media DOI
-        pma.journal = 'Dentistry'
+        # Test different DOI prefixes that Walsh Media might use
+        test_dois = [
+            '10.4172/2161-1122.1000448',    # Primary Walsh Media DOI
+            '10.35248/example.2023.123',     # Alternative Walsh Media DOI
+            '10.1186/acquired-2023-456'      # Acquired journal DOI
+        ]
         
-        # Should still construct URL without verification
-        url = the_walshmedia_bora(pma, verify=False)
-        assert url is not None
-        assert 'walshmedicalmedia.com' in url
-        print(f"Test 10 - Non-standard DOI pattern handled: {url}")
+        for doi in test_dois:
+            pma = Mock()
+            pma.doi = doi
+            pma.journal = 'Dentistry'
+            
+            # Should construct URL regardless of DOI prefix
+            url = the_walshmedia_bora(pma, verify=False)
+            assert url is not None
+            assert 'walshmedicalmedia.com' in url
+            print(f"Test 10 - DOI {doi}: {url}")
 
     def test_walshmedia_waltz_multiple_journals(self):
         """Test 11: Multiple Walsh Medical Media journal coverage.
@@ -300,7 +307,7 @@ if __name__ == '__main__':
         ('test_walshmedia_waltz_missing_doi', 'Missing DOI handling'),
         ('test_walshmedia_waltz_404_error', '404 error handling'),
         ('test_walshmedia_waltz_article_slug_construction', 'Article slug URL construction'),
-        ('test_walshmedia_waltz_doi_pattern_warning', 'Non-standard DOI pattern handling'),
+        ('test_walshmedia_bora_multiple_doi_prefixes', 'Multiple DOI prefix handling'),
         ('test_walshmedia_waltz_multiple_journals', 'Multiple journal coverage')
     ]
     

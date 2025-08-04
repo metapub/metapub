@@ -206,21 +206,28 @@ class TestAIPDance(BaseDanceTest):
         assert 'pubs.aip.org' in url or 'aip.scitation.org' in url
         print(f"Test 9 - Volume-based URL construction: {url}")
 
-    def test_aip_allegro_doi_pattern_warning(self):
-        """Test 10: Non-standard DOI pattern handling.
+    def test_aip_allegro_multiple_doi_prefixes(self):
+        """Test 10: Multiple DOI prefix handling.
         
-        Expected: Should handle non-10.1063 DOI patterns but may warn
+        Expected: Should handle various DOI prefixes due to acquisitions
         """
-        # Create a mock PMA with non-AIP DOI pattern
-        pma = Mock()
-        pma.doi = '10.1016/j.example.2023.123456'  # Non-AIP DOI
-        pma.journal = 'J Chem Phys'
+        # Test different DOI prefixes that AIP might use
+        test_dois = [
+            '10.1063/4.0000259',            # Primary AIP DOI
+            '10.1116/example.2023.123',     # AIP subsidiary DOI
+            '10.1121/acquired.2023.456'     # Acquired journal DOI
+        ]
         
-        # Should still construct URL without verification
-        url = the_aip_allegro(pma, verify=False)
-        assert url is not None
-        assert 'pubs.aip.org' in url or 'aip.scitation.org' in url
-        print(f"Test 10 - Non-standard DOI pattern handled: {url}")
+        for doi in test_dois:
+            pma = Mock()
+            pma.doi = doi
+            pma.journal = 'J Chem Phys'
+            
+            # Should construct URL regardless of DOI prefix
+            url = the_aip_allegro(pma, verify=False)
+            assert url is not None
+            assert 'pubs.aip.org' in url or 'aip.scitation.org' in url
+            print(f"Test 10 - DOI {doi}: {url}")
 
     def test_aip_allegro_multiple_journals(self):
         """Test 11: Multiple AIP journal coverage.
@@ -302,7 +309,7 @@ if __name__ == '__main__':
         ('test_aip_allegro_missing_doi', 'Missing DOI handling'),
         ('test_aip_allegro_404_error', '404 error handling'),
         ('test_aip_allegro_volume_url_construction', 'Volume-based URL construction'),
-        ('test_aip_allegro_doi_pattern_warning', 'Non-standard DOI pattern handling'),
+        ('test_aip_allegro_multiple_doi_prefixes', 'Multiple DOI prefix handling'),
         ('test_aip_allegro_multiple_journals', 'Multiple journal coverage')
     ]
     

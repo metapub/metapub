@@ -204,21 +204,28 @@ class TestHilarisDance(BaseDanceTest):
         assert 'hilarispublisher.com' in url
         print(f"Test 9 - Article slug URL construction: {url}")
 
-    def test_hilaris_hop_doi_pattern_warning(self):
-        """Test 10: Non-standard DOI pattern handling.
+    def test_hilaris_hop_multiple_doi_prefixes(self):
+        """Test 10: Multiple DOI prefix handling.
         
-        Expected: Should handle non-10.4172 DOI patterns but may warn
+        Expected: Should handle various DOI prefixes due to acquisitions
         """
-        # Create a mock PMA with non-Hilaris DOI pattern
-        pma = Mock()
-        pma.doi = '10.1016/j.example.2023.123456'  # Non-Hilaris DOI
-        pma.journal = 'J Environ Anal Toxicol'
+        # Test different DOI prefixes that Hilaris might use
+        test_dois = [
+            '10.4172/2161-0525.1000551',    # Primary Hilaris DOI
+            '10.37421/example.2023.123',     # Secondary Hilaris DOI
+            '10.1186/acquired-2023-456'      # Acquired journal DOI
+        ]
         
-        # Should still construct URL without verification
-        url = the_hilaris_hop(pma, verify=False)
-        assert url is not None
-        assert 'hilarispublisher.com' in url
-        print(f"Test 10 - Non-standard DOI pattern handled: {url}")
+        for doi in test_dois:
+            pma = Mock()
+            pma.doi = doi
+            pma.journal = 'J Environ Anal Toxicol'
+            
+            # Should construct URL regardless of DOI prefix
+            url = the_hilaris_hop(pma, verify=False)
+            assert url is not None
+            assert 'hilarispublisher.com' in url
+            print(f"Test 10 - DOI {doi}: {url}")
 
     def test_hilaris_hop_multiple_journals(self):
         """Test 11: Multiple Hilaris journal coverage.

@@ -8,8 +8,8 @@ import os
 
 from ...exceptions import AccessDenied, NoPDFLink
 
-AAAS_USERNAME = os.environ["AAAS_USERNAME"]
-AAAS_PASSWORD = os.environ["AAAS_PASSWORD"]
+AAAS_USERNAME = os.environ.get("AAAS_USERNAME", "set me in environment variable AAAS_USERNAME / AAAS_PASSWORD")
+AAAS_PASSWORD = os.environ.get("AAAS_PASSWORD", "")
 
 
 def the_aaas_twist(pma, verify=True):

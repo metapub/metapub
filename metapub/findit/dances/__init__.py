@@ -14,6 +14,8 @@ from .generic import (
     the_pii_polka, the_pmc_twist, the_bmc_boogie, OK_STATUS_CODES
 )
 
+from .acm import the_acm_reel
+from .annualreviews import the_annualreviews_round
 from .frontiers import the_frontiers_square
 from .sciendo import the_sciendo_spiral
 from .aip import the_aip_allegro

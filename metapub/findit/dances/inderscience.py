@@ -1,7 +1,7 @@
 from ...exceptions import *
 from .generic import *
 
-from .journals.inderscience import inderscience_format
+from ..journals.inderscience import inderscience_format
 
  #TODO: get rid of this dumb try-except jaw
 

@@ -1,13 +1,13 @@
- from ...exceptions import *
- from .generic import *
+from ...exceptions import *
+from .generic import *
 
 
- #TODO: get rid of this dumb try-except jaw
+#TODO: get rid of this dumb try-except jaw
 
- # also i'm not convinced any of this works
+# also i'm not convinced any of this works
 
- # also this is just BAD CODE, CLAUDE, and this approach is bad.
- # we should not be trying tons of different URLs just to find one PDF.
+# also this is just BAD CODE, CLAUDE, and this approach is bad.
+# we should not be trying tons of different URLs just to find one PDF.
 
 
 def the_projectmuse_syrtos(pma, verify=True):

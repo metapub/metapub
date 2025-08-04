@@ -1,7 +1,7 @@
 from ...exceptions import *
 from .generic import *
 
-from .journals.aacr import aacr_journal_params, aacr_vip_template
+from ..journals.aacr import aacr_journal_params, aacr_vip_template
 
 def the_aacr_jitterbug(pma, verify=True):
     '''Dance function for American Association for Cancer Research (AACR) journals.

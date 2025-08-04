@@ -1,7 +1,7 @@
 from ...exceptions import *
 from .generic import *
 
-from .journals.aha import aha_journal_params, aha_vip_template
+from ..journals.aha import aha_journal_params, aha_vip_template
 
 def the_aha_waltz(pma, verify=True):
     '''Dance function for American Heart Association (AHA) journals.

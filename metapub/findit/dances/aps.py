@@ -1,6 +1,6 @@
 from ...exceptions import *
 from .generic import *
-from .journals.aps import aps_journal_params, aps_vip_template
+from ..journals.aps import aps_journal_params, aps_vip_template
 
 
 def the_aps_quickstep(pma, verify=True):

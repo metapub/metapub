@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from lxml.etree import XMLSyntaxError
 
 
@@ -31,7 +29,7 @@ class NoPDFLink(MetaPubError):
     This Exception provides extended attributes:
 
             reason      :    human-readable "reason" why URL lookup failed.
-            url         :    last url attempted 
+            url         :    last url attempted
             status_code :    last HTTP code returned in attempt (if any)
             missing     :    list of data items missing from last attempt (if any)
 
@@ -44,7 +42,7 @@ class NoPDFLink(MetaPubError):
         self.missing = kwargs.get('missing', [])
         self.status_code = kwargs.get('status_code', None)
 
-        super(NoPDFLink, self).__init__(reason, *args, **kwargs) 
+        super(NoPDFLink, self).__init__(reason, *args, **kwargs)
 
 
 class AccessDenied(NoPDFLink):

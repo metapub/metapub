@@ -1,13 +1,13 @@
- from ...exceptions import *
- from .generic import *
+from ...exceptions import *
+from .generic import *
 
- from lxml import html
- from urllib.parse import urljoin
+from lxml import html
+from urllib.parse import urljoin
 
 
- #TODO: get rid of this dumb try-except jaw
+#TODO: get rid of this dumb try-except jaw
 
- # also i'm not convinced any of this works
+# also i'm not convinced any of this works
 
 
 def the_bioone_bounce(pma, verify=True):

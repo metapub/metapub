@@ -1,34 +1,27 @@
-import requests
-
-from ...exceptions import AccessDenied, NoPDFLink
-from .generic import the_doi_2step, verify_pdf_url
-
-from .generic import standardize_journal_name, rectify_pma_for_vip_links
-
-#TODO: PUT TESTS ON THIS ASAP
+from ...exceptions import NoPDFLink
+from .generic import verify_pdf_url
 
 
 def the_spandidos_lambada(pma, verify=True):
-    '''  :param: pma (PubMedArticle object)
-         :param: verify (bool) [default: True]
-         :return: url
-         :raises: AccessDenied, NoPDFLink
-    '''
-    jrnl = standardize_journal_name(pma.journal)
-    baseurl = None
-    try:
-        pma = rectify_pma_for_vip_links(pma)  #raises NoPDFLink if missing data
-        url = spandidos_format.format(ja=spandidos_journals[jrnl]['ja'], a=pma)
-    except NoPDFLink:
-        # let doi2step exceptions fall to calling function
-        if pma.doi:
-            baseurl = the_doi_2step(pma.doi)
-            url = baseurl + '/download'
-        else:
-            raise NoPDFLink('MISSING: vip, doi - volume and/or issue missing from PubMedArticle; doi lookup failed.')
+    """Spandidos Publications: Direct PDF URL construction from DOI
+    
+    Spandidos uses a consistent URL pattern for PDF downloads:
+    http://www.spandidos-publications.com/{DOI}/download
+    
+    :param: pma (PubmedArticle)
+    :param: verify (bool) [default: True]
+    :return: url (string)
+    :raises: NoPDFLink
+    """
+    if not pma.doi:
+        raise NoPDFLink('MISSING: DOI required for Spandidos journals')
 
+    # Construct PDF URL directly from DOI
+    pdf_url = f'http://www.spandidos-publications.com/{pma.doi}/download'
+    
     if verify:
-        verify_pdf_url(url, 'Spandidos')
-    return url
+        verify_pdf_url(pdf_url, 'Spandidos')
+    
+    return pdf_url
 
 

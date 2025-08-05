@@ -4,6 +4,98 @@ Guidelines for writing proper dance functions in metapub FindIt system.
 
 ## Core Principles
 
+Publisher Dance Development Process
+
+  Phase 1: Evidence Collection
+
+  1. Create Investigation Script ({publisher}_investigator.py)
+    - Fetch real HTML pages from 3-5 recent PMIDs
+    - Save raw HTML to files for analysis
+    - Look for consistent patterns (PDF links, embed codes, etc.)
+    - Document SSL/certificate issues encountered
+  2. Pattern Discovery
+    - Identify the most reliable PDF extraction method
+    - Note any protocol quirks (protocol-relative URLs, etc.)
+    - Document error conditions and edge cases
+    - Test pattern consistency across different articles
+
+  Phase 2: Infrastructure Assessment
+
+  3. Evaluate Generic Functions
+    - Does verify_pdf_url handle this publisher's SSL setup?
+    - Does unified_uri_get work with their servers?
+    - Any new generic utilities needed?
+  4. Fix Foundation First
+    - Enhance generic functions if needed
+    - Add publisher-specific handling to shared utilities
+    - Ensure robust error handling at the infrastructure level
+
+  Phase 3: Dance Implementation
+
+  5. Write Focused Dance Function
+    - Single method approach - no big try/except blocks
+    - Let specific errors bubble up (no generic Exception catching)
+    - Use discovered patterns, not complex parsing
+    - Require what's actually needed (DOI vs PMID vs journal name)
+    - If dance function exists don't create a new one -- rewrite the old one. don't rename it!
+  6. Apply "One Thing Well" Principle
+    - Function does PDF extraction, nothing else
+    - Clear error messages with prefixes (MISSING:, TXERROR:, DENIED:)
+    - Use verify=True parameter for optional verification
+
+  Phase 4: Test Development
+
+  7. Create Focused Tests
+    - Test the happy path with real pattern examples
+    - Test each error condition separately
+    - Test verification integration
+    - Remove any tests that don't match actual function behavior
+  8. Registry Integration Test
+    - Verify journal recognition works
+    - Confirm dance function mapping
+
+  (Theoretical) Automation Template (don't actually write this code...)
+
+  # {publisher}_development_workflow.py
+  def investigate_publisher(publisher_name, pmids):
+      """Phase 1: Collect evidence"""
+      patterns = extract_patterns_from_pmids(pmids)
+      ssl_issues = test_ssl_compatibility(pmids)
+      return {"patterns": patterns, "ssl_issues": ssl_issues}
+
+  def assess_infrastructure(findings):
+      """Phase 2: Check if generic functions need updates"""
+      return check_generic_function_compatibility(findings)
+
+  def implement_dance(patterns, publisher_name):
+      """Phase 3: Write the dance function"""
+      return generate_dance_template(patterns, publisher_name)
+
+  def create_tests(dance_function, patterns):
+      """Phase 4: Generate focused tests"""
+      return generate_test_suite(dance_function, patterns)
+
+  Decision Framework
+
+  - Simple pattern found → Use regex extraction
+  - Complex DOM needed → Use minimal BeautifulSoup, avoid XPath
+  - SSL issues discovered → Document for verify_pdf_url enhancement
+  - Authentication required → Consider if worth implementing vs PMC fallback
+  - Paywall detected → Implement detection, fail gracefully
+
+  Quality Gates
+
+  - Function under 50 lines
+  - No generic Exception catching
+  - Clear error messages with prefixes
+  - Tests cover actual function behavior
+  - Works with real PMIDs from findit_complete_collector.py
+
+  This process turns "figure out this publisher" into a systematic investigation that builds reliable, maintainable dance functions. The key insight: understand first, 
+  then implement simply.
+
+
+
 ### ✅ GOOD PATTERNS (Acceptable)
 
 #### 1. Primary + Fallback Pattern (Nature, Wolters Kluwer style)
@@ -138,6 +230,7 @@ for link in soup.find_all('a'):
 1. **Validate required data first** - fail fast if missing
 2. **Don't try to work around missing data** with guesses
 3. **Use the data PubMed actually provides** (DOI, volume, issue, etc.)
+4. **Don't invalidate an article based on its DOI base.** -- Trust the registry; some oddball DOIs belong to publishers due to acquisitions.
 
 ### URL Construction  
 1. **Research the publisher first** - understand their actual URL patterns

@@ -53,7 +53,7 @@ from .mdpi import the_mdpi_moonwalk
 from .najms import the_najms_mazurka
 from .nature import the_nature_ballet
 from .oatext import the_oatext_orbit
-from .projectmuse import the_projectmuse_paso
+from .projectmuse import the_projectmuse_syrtos
 from .rsc import the_rsc_reaction
 from .sage import the_sage_hula
 from .sciendo import the_sciendo_spiral
@@ -66,7 +66,7 @@ from .thieme import the_thieme_tap
 from .uchicago import the_uchicago_walk
 from .walshmedia import the_walshmedia_bora
 from .wiley import the_wiley_shuffle
-from .wjgnet import the_wjgnet_whisk
+from .wjgnet import the_wjgnet_wave
 from .wolterskluwer import the_wolterskluwer_volta
 from .worldscientific import the_worldscientific_robot
 

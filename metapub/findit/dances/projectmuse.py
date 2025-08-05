@@ -11,7 +11,7 @@ from ...exceptions import *
 from .generic import *
 
 
-def the_projectmuse_paso(pma, verify=True):
+def the_projectmuse_syrtos(pma, verify=True):
     """Dance function for Project MUSE journals.
 
     Handles academic journals published on Project MUSE platform at muse.jhu.edu.

@@ -11,7 +11,7 @@ from ...exceptions import *
 from .generic import *
 
 
-def the_wjgnet_whisk(pma, verify=True):
+def the_wjgnet_wave(pma, verify=True):
     """Dance function for World Journal of Gastroenterology Network (WJG-NET) journals.
 
     Handles academic journals published by WJG-NET at wjgnet.com.

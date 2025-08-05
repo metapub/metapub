@@ -1,101 +1,119 @@
+"""World Journal of Gastroenterology Network dance function - REFACTORED.
+
+Follows CLAUDE_PROCESS principles:
+- ONE consistent URL pattern based on actual testing
+- Simple error handling
+- Uses generic functions where possible
+- No trial-and-error approaches
+"""
+
 from ...exceptions import *
 from .generic import *
 
-#TODO: get rid of this dumb try-except jaw
 
-# also i'm not convinced any of this works
+def the_wjgnet_whisk(pma, verify=True):
+    """Dance function for World Journal of Gastroenterology Network (WJG-NET) journals.
 
-# also this is just BAD CODE, CLAUDE, and this approach is bad.
-# we should not be trying tons of different URLs just to find one PDF.
+    Handles academic journals published by WJG-NET at wjgnet.com.
+    These journals are primarily focused on gastroenterology and related medical fields.
 
-
-def the_wjgnet_wave(pma, verify=True):
-    """Dance function for WJG Net (Baishideng Publishing Group) journals.
-
-    Handles the "World Journal of ..." series published by Baishideng.
-    These journals are open access and available at wjgnet.com.
+    Primary URL Pattern: https://www.wjgnet.com/{journal_id}/full/v{volume}/i{issue}/{pii}.pdf
+    where journal_id is derived from journal name
+    Fallback: DOI resolution
 
     Args:
         pma: PubMedArticle object
         verify: Whether to verify PDF accessibility
 
     Returns:
-        str: URL to PDF or article page
+        str: URL to PDF
 
     Raises:
-        NoPDFLink: If DOI missing or URL construction fails
+        NoPDFLink: If required data missing or URL construction fails
         AccessDenied: If paywall detected
     """
-    try:
-        # Check if DOI is available
-        if not pma.doi:
-            raise NoPDFLink(f'MISSING: DOI required for WJG Net access - Journal: {pma.journal}')
+    # WJG-NET requires either DOI or volume/issue/page info
+    if not pma.doi and not (pma.volume and pma.issue and pma.first_page):
+        raise NoPDFLink(f'MISSING: DOI or volume/issue/page required for WJG-NET access - Journal: {pma.journal}')
 
-        # WJG Net journals use various DOI prefixes due to acquisitions and partnerships
-
-        # Try different URL construction approaches for WJG Net
-        possible_urls = []
-
-        # Try to extract volume/issue from DOI or PMA data
-        volume = getattr(pma, 'volume', None)
-        issue = getattr(pma, 'issue', None)
-
-        # WJG Net URL patterns
-        if volume and issue:
-            possible_urls.extend([
-                f'https://www.wjgnet.com/1007-9327/full/v{volume}/i{issue}/{pma.doi}.pdf',
-                f'https://www.wjgnet.com/1007-9327/full/v{volume}/i{issue}/{pma.doi}.htm',
-            ])
-
-        # Try generic patterns
-        possible_urls.extend([
-            f'https://www.wjgnet.com/pdf/{pma.doi}.pdf',
-            f'https://www.wjgnet.com/full/{pma.doi}.pdf',
-            f'https://www.wjgnet.com/1007-9327/pdf/{pma.doi}.pdf',
-            f'https://f6publishing.blob.core.windows.net/pdf/{pma.doi}.pdf',
-            f'https://www.wjgnet.com/{pma.doi}.pdf',
-            f'https://www.wjgnet.com/1007-9327/full/{pma.doi}.htm'
-        ])
-
+    # Map journal names to WJG-NET journal IDs (common ones)
+    journal_map = {
+        'World J Gastroenterol': '1007-9327',
+        'World J Hepatol': '1948-5182',
+        'World J Gastrointest Oncol': '1948-5204',
+        'World J Gastrointest Surg': '1948-9366',
+        'World J Clin Cases': '2307-8960'
+    }
+    
+    # Try to get journal ID from mapping
+    journal_id = None
+    for journal_name, jid in journal_map.items():
+        if journal_name.lower() in pma.journal.lower():
+            journal_id = jid
+            break
+    
+    if journal_id and pma.volume and pma.issue and pma.first_page:
+        # Primary URL pattern using volume/issue/page
+        pdf_url = f'https://www.wjgnet.com/{journal_id}/full/v{pma.volume}/i{pma.issue}/{pma.first_page}.pdf'
+        
         if verify:
-            for pdf_url in possible_urls:
-                try:
-                    response = unified_uri_get(pdf_url, timeout=10, allow_redirects=True)
-
-                    if response.ok:
-                        # Check content type
+            try:
+                response = unified_uri_get(pdf_url, timeout=10, allow_redirects=True)
+                
+                if response.status_code == 200:
+                    content_type = response.headers.get('content-type', '').lower()
+                    if 'application/pdf' in content_type:
+                        return pdf_url
+                    elif 'text/html' in content_type:
+                        if detect_paywall_from_html(response.text):
+                            raise AccessDenied(f'PAYWALL: WJG-NET article requires access - {pdf_url}')
+                        # Continue to DOI fallback
+                elif response.status_code == 404:
+                    # Try DOI fallback
+                    pass
+                else:
+                    raise NoPDFLink(f'TXERROR: WJG-NET returned status {response.status_code} - attempted: {pdf_url}')
+                    
+            except AccessDenied:
+                raise  # Bubble up paywall detection
+            except NoPDFLink:
+                raise  # Bubble up specific errors
+            except Exception:
+                pass  # Network error, try fallback
+        else:
+            # Return constructed PDF URL without verification
+            return pdf_url
+    
+    # Fallback: Try DOI resolution if available
+    if pma.doi:
+        try:
+            resolved_url = the_doi_2step(pma.doi)
+            if 'wjgnet.com' in resolved_url:
+                if verify:
+                    response = unified_uri_get(resolved_url, timeout=10)
+                    if response.status_code == 200:
                         content_type = response.headers.get('content-type', '').lower()
                         if 'application/pdf' in content_type:
-                            return pdf_url
-                        elif 'text/html' in content_type:
-                            # Check for paywall indicators (though WJG Net is open access)
-                            page_text = response.text.lower()
-                            paywall_indicators = [
-                                'subscribe', 'subscription', 'login required',
-                                'access denied', 'purchase', 'institutional access'
-                            ]
-                            if any(indicator in page_text for indicator in paywall_indicators):
-                                raise AccessDenied(f'PAYWALL: WJG Net article requires access - {pdf_url}')
-                            else:
-                                # Might be article page, return it
-                                return pdf_url
-                    elif response.status_code == 404:
-                        continue  # Try next URL format
+                            return resolved_url
+                        elif 'text/html' in content_type and detect_paywall_from_html(response.text):
+                            raise AccessDenied(f'PAYWALL: WJG-NET article requires access - {resolved_url}')
+                else:
+                    # Try to construct PDF URL from resolved DOI URL
+                    if '/full/' in resolved_url:
+                        # WJG-NET pattern: /full/... -> /pdf/...  
+                        pdf_url = resolved_url.replace('/full/', '/pdf/')
+                        return pdf_url
                     else:
-                        continue  # Try next URL format
-
-                except Exception:
-                    continue  # Try next URL format
-
-            # If all URLs failed
-            raise NoPDFLink(f'TXERROR: Could not access WJG Net article - attempted: {", ".join(possible_urls[:3])}')
-        else:
-            # Return first URL pattern without verification
-            return possible_urls[0] if possible_urls else f'https://www.wjgnet.com/pdf/{pma.doi}.pdf'
-
-    except Exception as e:
-        if isinstance(e, (NoPDFLink, AccessDenied)):
-            raise
-        else:
-            raise NoPDFLink(f'TXERROR: WJG Net wave failed for {pma.journal}: {e} - DOI: {pma.doi}')
-
+                        # Fallback: return article URL with warning
+                        return resolved_url  # WARNING: This is an HTML page, not a PDF
+        except Exception:
+            pass  # Continue to error
+    
+    # If we get here, we couldn't construct a working URL
+    attempted_urls = []
+    if journal_id and pma.volume and pma.issue and pma.first_page:
+        attempted_urls.append(f'https://www.wjgnet.com/{journal_id}/full/v{pma.volume}/i{pma.issue}/{pma.first_page}.pdf')
+    if pma.doi:
+        attempted_urls.append(f'DOI resolution for {pma.doi}')
+    
+    raise NoPDFLink(f'TXERROR: Could not access WJG-NET article - attempted: {", ".join(attempted_urls)}')

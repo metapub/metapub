@@ -3,6 +3,8 @@
 from ...exceptions import AccessDenied, NoPDFLink
 from .generic import the_doi_2step, verify_pdf_url, unified_uri_get
 
+from ..journals.jci import jci_format
+
 
 def the_jci_jig(pma, verify=True):
     '''Dance of the Journal of Clinical Investigation, which should be largely free.
@@ -12,8 +14,6 @@ def the_jci_jig(pma, verify=True):
          :return: url (string)
          :raises: AccessDenied, NoPDFLink
     '''
-    from ..journals.jci import jci_format
-    
     # JCI uses simple URL pattern: https://www.jci.org/articles/view/{pii}/pdf
     if pma.pii:
         # Direct construction using PII (preferred method)

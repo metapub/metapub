@@ -49,9 +49,8 @@ def the_acm_reel(pma, verify=True):
                         if any(term in page_text for term in paywall_terms):
                             raise AccessDenied(f'PAYWALL: ACM article requires subscription or membership - attempted: {pdf_url}')
 
-                        # Try article HTML page instead
-                        article_url = f'https://dl.acm.org/doi/{pma.doi}'
-                        return article_url
+                        # If PDF access fails, this is an error in verify mode
+                        raise NoPDFLink(f'TXERROR: No PDF access available for ACM article - attempted: {pdf_url}')
 
                 elif response.status_code == 403:
                     raise AccessDenied(f'DENIED: Access forbidden by ACM - attempted: {pdf_url}')

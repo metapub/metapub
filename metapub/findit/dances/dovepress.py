@@ -6,6 +6,8 @@ from lxml import etree
 from ...exceptions import AccessDenied, NoPDFLink
 from .generic import the_doi_2step, verify_pdf_url, unified_uri_get
 
+from ..journals.dovepress import dovepress_format
+
 
 def the_dovepress_peacock(pma, verify=True):
     '''DovePress (Dove Medical Press): Open access medical and scientific journals
@@ -21,8 +23,6 @@ def the_dovepress_peacock(pma, verify=True):
         37693885: IJN (International Journal of Nanomedicine) - DOI: 10.2147/IJN.S420748
         37736107: OPTH (Clinical Ophthalmology) - DOI: 10.2147/OPTH.S392665
     '''
-    from ..journals.dovepress import dovepress_format
-    
     # DovePress articles are typically accessed via DOI resolution to article page,
     # then PDF download link must be extracted from the article page
     if pma.doi:

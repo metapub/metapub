@@ -7,7 +7,7 @@ from .generic import *
 from ..journals.nature import nature_format, nature_journals
 
 
-#TODO: use reusable paywall detection code
+# Uses detect_paywall_from_html() for consistent paywall detection
 
 
 #Do not rewrite this script in any other way. It's working.
@@ -46,8 +46,7 @@ def the_nature_ballet(pma, verify=True):
                 if 'pdf' in content_type:
                     return response.url
                 elif 'html' in content_type:
-                    page_text = response.text.lower()
-                    if any(term in page_text for term in ['paywall', 'subscribe', 'sign in', 'log in', 'purchase']):
+                    if detect_paywall_from_html(response.text):
                         raise AccessDenied(f'PAYWALL: Nature article requires subscription - attempted: {pdf_url}')
                     else:
                         raise NoPDFLink(f'TXERROR: Nature returned HTML instead of PDF for {pdf_url}')
@@ -91,8 +90,7 @@ def the_nature_ballet(pma, verify=True):
                         if 'pdf' in content_type:
                             return response.url
                         elif 'html' in content_type:
-                            page_text = response.text.lower()
-                            if any(term in page_text for term in ['paywall', 'subscribe', 'sign in', 'log in', 'purchase']):
+                            if detect_paywall_from_html(response.text):
                                 raise AccessDenied(f'PAYWALL: Nature article requires subscription - attempted: {fallback_url}')
                             else:
                                 # Old format URLs redirect to modern URLs, so this might be expected

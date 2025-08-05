@@ -57,6 +57,7 @@ def the_uchicago_walk(pma, verify=True):
                             raise AccessDenied(f'PAYWALL: University of Chicago Press article requires subscription - attempted: {pdf_url}')
 
                         # Try article HTML page instead
+                        #TODO: learn how to construct a real PDF link without loading the page.
                         article_url = f'https://www.journals.uchicago.edu/doi/{pma.doi}'
                         return article_url
 

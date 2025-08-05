@@ -67,6 +67,7 @@ def the_longdom_hustle(pma, verify=True):
                                 continue  # Try next URL pattern
                             else:
                                 # Return article page URL instead
+                                #TODO: learn how to construct a real PDF link without loading the page.
                                 article_url = pdf_url.replace('/articles-pdf/', '/articles/').replace('.pdf', '')
                                 return article_url
 

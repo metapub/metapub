@@ -18,15 +18,13 @@ FindIt uses a structured error handling approach that provides meaningful inform
 
 **Message format**:
 ```python
-raise NoPDFLink(f'MISSING: {required_field} required for {publisher} - attempted: {attempted_url}')
-raise NoPDFLink(f'NOFORMAT: {publisher} does not provide PDF for this article type - attempted: {attempted_url}')
+raise NoPDFLink(f'MISSING: {required_field} required for {publisher} (PMID: {pmid}) - attempted: {attempted_url}')
 ```
 
 **Examples**:
 ```python
-raise NoPDFLink('MISSING: DOI required for SAGE journals - attempted: https://journals.sagepub.com/...')
-raise NoPDFLink('MISSING: pii needed for ScienceDirect lookup - attempted: https://sciencedirect.com/...')
-raise NoPDFLink('NOFORMAT: BMC article has no PDF version - attempted: https://bmcgenomics.biomedcentral.com/...')
+raise NoPDFLink('MISSING: DOI required for SAGE journals (PMID: {pmid}) - attempted: https://journals.sagepub.com/...')
+raise NoPDFLink('MISSING: pii needed for ScienceDirect lookup (PMID: {pmid}) - attempted: https://sciencedirect.com/...')
 ```
 
 ### 2. AccessDenied - Publisher Access Restrictions
@@ -41,14 +39,14 @@ raise NoPDFLink('NOFORMAT: BMC article has no PDF version - attempted: https://b
 
 **Message format**:
 ```python
-raise AccessDenied(f'PAYWALL: {publisher} requires subscription - attempted: {attempted_url}')
-raise AccessDenied(f'DENIED: {publisher} requires login - attempted: {attempted_url}')
+raise AccessDenied(f'PAYWALL: {publisher} requires purchase (PMID: {pmid}) - attempted: {attempted_url}')
+raise AccessDenied(f'DENIED: {publisher} prevented download (PMID: {pmid}) - attempted: {attempted_url}')
 ```
 
 **Examples**:
 ```python
-raise AccessDenied('PAYWALL: Nature requires subscription - attempted: https://nature.com/articles/...')
-raise AccessDenied('DENIED: JAMA requires login - attempted: https://jamanetwork.com/...')
+raise AccessDenied('PAYWALL: Nature requires subscription (PMID: 1233456) - attempted: https://nature.com/articles/...')
+raise AccessDenied('DENIED: JAMA requires login (PMID: 12345666) - attempted: https://jamanetwork.com/...')
 ```
 
 ### 3. TXERROR - Technical/Network Failures
@@ -64,7 +62,7 @@ raise AccessDenied('DENIED: JAMA requires login - attempted: https://jamanetwork
 
 **Message format**:
 ```python
-raise NoPDFLink(f'TXERROR: {error_description} - attempted: {attempted_url}')
+raise NoPDFLink(f'TXERROR: {error_description} (PMID: {pmid}) - attempted: {attempted_url}')
 ```
 
 **Examples**:
@@ -128,6 +126,149 @@ if result.reason:
         try_alternative_lookup(pmid, result.reason)
 ```
 
+## Code Quality and Refactoring Guidelines
+
+### 1. Avoid Bad Code Patterns
+
+Based on extensive refactoring of dance functions, avoid these anti-patterns:
+
+**❌ Massive try-except blocks (60+ lines)**:
+```python
+# DON'T DO THIS - Single try block covering entire function
+def bad_dance(pma, verify=True):
+    try:
+        # 60+ lines of complex logic
+        # Multiple HTTP requests
+        # HTML parsing
+        # Paywall detection
+        # URL construction
+        # All in one giant try block
+    except Exception as e:
+        raise NoPDFLink(f'Something failed: {e}')
+```
+
+**✅ Focused error handling**:
+```python
+# DO THIS - Specific error handling for each operation
+def good_dance(pma, verify=True):
+    if not pma.doi:
+        raise NoPDFLink('MISSING: DOI required')
+    
+    try:
+        article_url = the_doi_2step(pma.doi)
+    except NoPDFLink as e:
+        raise NoPDFLink(f'TXERROR: DOI resolution failed: {e}')
+    
+    # Each operation has focused error handling
+```
+
+**❌ Trial-and-error URL approaches**:
+```python
+# DON'T DO THIS - Testing multiple random URLs
+possible_urls = [url1, url2, url3, url4, url5]
+for url in possible_urls:
+    try:
+        if test_url(url):
+            return url
+    except:
+        continue
+```
+
+**✅ Primary + fallback pattern**:
+```python
+# DO THIS - One tested primary pattern with fallback
+primary_url = f'https://publisher.com/pdf/{pma.doi}'
+if verify and _test_url(primary_url):
+    return primary_url
+
+# Single tested fallback if primary fails
+try:
+    fallback_url = the_doi_2step(pma.doi)
+    return fallback_url
+except NoPDFLink:
+    raise NoPDFLink(f'TXERROR: Both primary and fallback failed - attempted: {primary_url}')
+```
+
+### 2. Use Generic Functions Consistently
+
+Replace custom implementations with proven generic functions:
+
+**✅ Use `detect_paywall_from_html()` instead of custom paywall detection**:
+```python
+# DON'T DO THIS
+paywall_terms = ['subscribe', 'sign in', 'purchase', 'login required']
+if any(term in page_text.lower() for term in paywall_terms):
+    raise AccessDenied('PAYWALL: ...')
+
+# DO THIS  
+if detect_paywall_from_html(response.text):
+    raise AccessDenied('PAYWALL: ...')
+```
+
+**✅ Use `unified_uri_get()` for all HTTP requests**:
+```python
+# DO THIS - Consistent headers and behavior
+response = unified_uri_get(url, timeout=10)
+```
+
+**✅ Use `the_doi_2step()` for DOI resolution**:
+```python
+# DO THIS - Proven DOI resolution with proper error handling
+resolved_url = the_doi_2step(pma.doi)
+```
+
+### 3. Helper Function Best Practices
+
+**❌ Over-engineered helper functions**:
+```python
+# DON'T DO THIS - Unnecessary try-except wrapping
+def _helper_function(url):
+    try:
+        response = unified_uri_get(url)
+        # ... processing logic ...
+        return result
+    except AccessDenied:
+        raise  # Silly re-raising
+    except Exception:
+        return None  # Lazy blanket catching
+```
+
+**✅ Clean helper functions that let errors bubble up**:
+```python
+# DO THIS - Let programming errors bubble up naturally
+def _helper_function(url):
+    response = unified_uri_get(url)
+    # ... processing logic ...
+    return result  # Let AccessDenied and other errors bubble up
+```
+
+**Key principles for helper functions**:
+- Don't catch exceptions you don't know how to handle
+- Don't re-raise the same exception type 
+- Let programming errors (AttributeError, KeyError, etc.) bubble up
+- Only catch exceptions at the level that knows what to do with them
+
+### 4. Verification Mode Logic
+
+**❌ Incorrect verification behavior**:
+```python
+# DON'T DO THIS - Returning article URL when no PDF found in verify=True mode
+if no_pdf_found_but_page_accessible:
+    return article_url  # WRONG! This violates verify=True contract
+```
+
+**✅ Correct verification behavior**:
+```python
+# DO THIS - Fail when PDF not found in verify=True mode
+if no_pdf_found:
+    raise NoPDFLink(f'TXERROR: No PDF link found on publisher page - attempted: {article_url}')
+```
+
+**Verification mode contract**:
+- `verify=True`: Must return actual PDF URL or raise appropriate exception
+- `verify=False`: Can return constructed URL without testing
+- Never return non-PDF URLs when verification is requested
+
 ## Implementation Guidelines
 
 ### 1. URL Construction and Tracking
@@ -161,8 +302,7 @@ def the_example_dance(pma, verify=True):
 
 Use consistent prefixes for error categorization:
 
-- `MISSING:` - Required data not available
-- `NOFORMAT:` - Publisher doesn't provide expected format
+- `MISSING:` - Required data not available (use with NoPDFLink)
 - `PAYWALL:` - Subscription/payment required (use with AccessDenied)
 - `DENIED:` - Access forbidden/login required (use with AccessDenied)  
 - `TXERROR:` - Technical/network/server error (use with NoPDFLink)
@@ -185,21 +325,27 @@ def the_example_dance(pma, verify=True):
     return pdf_url
 ```
 
-## Migration Strategy
+## Refactoring Impact and Lessons Learned
 
-### Phase 1: Add Missing URLs
-- Audit all dance functions for missing URL inclusion
-- Add attempted URL to all error messages
+### Successfully Refactored Dance Functions
 
-### Phase 2: Standardize Error Types  
-- Convert appropriate NoPDFLink to AccessDenied for paywall cases
-- Ensure TXERROR prefix for all technical issues
-- Standardize message formats
+The following files were refactored to eliminate bad code patterns:
 
-### Phase 3: Fix Error Classification
-- Review exception handling to ensure code errors bubble up
-- Distinguish between different failure types appropriately
-- Update error message prefixes consistently
+1. **`frontiers.py`** - Eliminated 73-line try-except block with trial-and-error URL testing
+2. **`bioone.py`** - Removed 60-line try-except block and custom paywall detection
+3. **`rsc.py`** - Fixed 63-line try-except block and moved in-function imports to top
+4. **`ingenta.py`** - Cleaned up 60-line try-except block and custom paywall logic
+5. **`nature.py`** - Replaced duplicate custom paywall detection with generic function
+
+### Additional Logic Fixes Applied
+
+Fixed incorrect verification logic in 8 files that were returning article URLs instead of failing when no PDF found in `verify=True` mode:
+- `ingenta.py`, `bioone.py`, `rsc.py`, `annualreviews.py`, `degruyter.py`, `brill.py`, `scirp.py`, `apa.py`
+
+### Fixed Missing Import Issues
+
+Resolved `unified_uri_get` undefined errors in 9 dance files that had selective imports:
+- Added `unified_uri_get` to selective import statements in multiple dance functions
 
 ## Benefits
 
@@ -210,5 +356,19 @@ This consistent error handling approach provides:
 3. **Debugging capability** through URL inclusion
 4. **Consistent behavior** across all publisher integrations
 5. **Appropriate error escalation** for code issues vs operational issues
+6. **Maintainable code** through consistent patterns and generic function usage
+7. **Proper error contracts** where `verify=True` mode actually verifies PDF availability
+8. **Better debugging** by letting programming errors bubble up instead of being swallowed
 
-The goal is to make FindIt failures informative and actionable rather than opaque.
+### Code Quality Improvements
+
+After refactoring, dance functions now feature:
+
+- **Focused error handling** instead of massive try-except blocks
+- **Primary + fallback patterns** instead of trial-and-error approaches  
+- **Generic function usage** for common operations like paywall detection
+- **Proper helper functions** that don't over-engineer exception handling
+- **Correct verification contracts** that fail appropriately when PDFs aren't found
+- **Consistent imports** with all required functions properly imported
+
+The goal is to make FindIt failures informative and actionable rather than opaque, while maintaining clean, maintainable code that follows established patterns.

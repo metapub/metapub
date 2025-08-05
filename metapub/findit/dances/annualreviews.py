@@ -2,6 +2,9 @@
 from ...exceptions import AccessDenied, NoPDFLink
 from .generic import OK_STATUS_CODES, the_doi_2step, unified_uri_get
 
+from lxml import html
+from urllib.parse import urljoin
+
 def the_annualreviews_round(pma, verify=True):
     '''Annual Reviews Inc.: Nonprofit publisher of comprehensive review articles
 
@@ -35,7 +38,6 @@ def the_annualreviews_round(pma, verify=True):
                     # Look for PDF download links or indicators
                     if 'pdf' in page_text and ('download' in page_text or 'full text' in page_text or 'view pdf' in page_text):
                         # Try to find PDF link in the page
-                        from lxml import html
                         tree = html.fromstring(response.content)
 
                         # Look for PDF download links (Annual Reviews typically has direct PDF links)
@@ -45,7 +47,6 @@ def the_annualreviews_round(pma, verify=True):
                             pdf_url = pdf_links[0]
                             # Convert relative URL to absolute if needed
                             if pdf_url.startswith('/'):
-                                from urllib.parse import urljoin
                                 pdf_url = urljoin(article_url, pdf_url)
                             return pdf_url
 
@@ -56,8 +57,8 @@ def the_annualreviews_round(pma, verify=True):
                     if any(term in page_text for term in paywall_terms):
                         raise AccessDenied(f'PAYWALL: Annual Reviews article requires subscription - attempted: {article_url}')
 
-                    # If no PDF link found but page accessible, return article URL
-                    return article_url
+                    # If no PDF link found, this is an error in verify mode
+                    raise NoPDFLink(f'TXERROR: No PDF link found on Annual Reviews page - attempted: {article_url}')
 
                 elif response.status_code == 403:
                     raise AccessDenied(f'DENIED: Access forbidden by Annual Reviews - attempted: {article_url}')
@@ -69,8 +70,22 @@ def the_annualreviews_round(pma, verify=True):
             except Exception as e:
                 raise NoPDFLink(f'TXERROR: Network error accessing Annual Reviews: {e} - attempted: {article_url}')
         else:
-            # Return DOI-resolved URL without verification
-            return article_url
+            # For Annual Reviews, try to construct PDF URL pattern without verification
+            # Annual Reviews typically uses patterns like /doi/10.1146/... -> /doi/pdf/10.1146/...
+            if 'annualreviews.org' in article_url:
+                # Try common Annual Reviews PDF patterns
+                if '/doi/' in article_url:
+                    # Pattern: /doi/10.1146/... -> /doi/pdf/10.1146/...
+                    pdf_url = article_url.replace('/doi/', '/doi/pdf/')
+                    return pdf_url
+                elif '/abs/' in article_url:
+                    # Pattern: /abs/10.1146/... -> /pdf/10.1146/...
+                    pdf_url = article_url.replace('/abs/', '/pdf/')
+                    return pdf_url
+            
+            # Fallback: return article URL with warning that it's not a PDF
+            # This preserves existing behavior while marking the issue
+            return article_url  # WARNING: This is an HTML page, not a PDF
 
     except Exception as e:
         if isinstance(e, (NoPDFLink, AccessDenied)):

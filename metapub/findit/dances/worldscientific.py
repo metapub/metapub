@@ -58,6 +58,7 @@ def the_worldscientific_robot(pma, verify=True):
                             raise AccessDenied(f'PAYWALL: World Scientific article requires subscription - attempted: {pdf_url}')
 
                         # Try article HTML page instead
+                        #TODO: learn how to construct a real PDF link without loading the page.
                         article_url = f'https://www.worldscientific.com/doi/{pma.doi}'
                         return article_url
 

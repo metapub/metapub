@@ -1,6 +1,9 @@
 from ...exceptions import *
 from .generic import *
 
+from lxml import html
+from urllib.parse import urljoin
+
 def the_degruyter_danza(pma, verify=True):
     '''De Gruyter: Academic publisher for humanities, social sciences, and STEM
 
@@ -30,7 +33,6 @@ def the_degruyter_danza(pma, verify=True):
                     # Look for PDF download links or indicators
                     if 'pdf' in page_text and ('download' in page_text or 'full text' in page_text):
                         # Try to find PDF link in the page
-                        from lxml import html
                         tree = html.fromstring(response.content)
 
                         # Look for PDF download links
@@ -40,7 +42,6 @@ def the_degruyter_danza(pma, verify=True):
                             pdf_url = pdf_links[0]
                             # Convert relative URL to absolute if needed
                             if pdf_url.startswith('/'):
-                                from urllib.parse import urljoin
                                 pdf_url = urljoin(article_url, pdf_url)
                             return pdf_url
 
@@ -51,8 +52,8 @@ def the_degruyter_danza(pma, verify=True):
                     if any(term in page_text for term in paywall_terms):
                         raise AccessDenied(f'PAYWALL: De Gruyter article requires subscription - attempted: {article_url}')
 
-                    # If no PDF link found but page accessible, return article URL
-                    return article_url
+                    # If no PDF link found, this is an error in verify mode
+                    raise NoPDFLink(f'TXERROR: No PDF link found on De Gruyter page - attempted: {article_url}')
 
                 elif response.status_code == 403:
                     raise AccessDenied(f'DENIED: Access forbidden by De Gruyter - attempted: {article_url}')
@@ -64,8 +65,22 @@ def the_degruyter_danza(pma, verify=True):
             except Exception as e:
                 raise NoPDFLink(f'TXERROR: Network error accessing De Gruyter: {e} - attempted: {article_url}')
         else:
-            # Return DOI-resolved URL without verification
-            return article_url
+            # For De Gruyter, try to construct PDF URL pattern without verification
+            # De Gruyter typically uses patterns like /document/doi/10.1515/... -> /document/doi/10.1515/.../pdf
+            if 'degruyter.com' in article_url or 'degruyterbrill.com' in article_url:
+                # Try common De Gruyter PDF patterns
+                if '/document/doi/' in article_url:
+                    # Pattern: /document/doi/10.1515/... -> /document/doi/10.1515/.../pdf
+                    pdf_url = article_url.rstrip('/') + '/pdf'
+                    return pdf_url
+                elif '/view/' in article_url:
+                    # Pattern: /view/... -> /downloadpdf/...
+                    pdf_url = article_url.replace('/view/', '/downloadpdf/')
+                    return pdf_url
+            
+            # Fallback: return article URL with warning that it's not a PDF
+            # This preserves existing behavior while marking the issue
+            return article_url  # WARNING: This is an HTML page, not a PDF
 
     except Exception as e:
         if isinstance(e, (NoPDFLink, AccessDenied)):

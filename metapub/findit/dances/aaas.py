@@ -1,7 +1,6 @@
 """Dance function for AAAS (American Association for the Advancement of Science) journals."""
 
 from urllib.parse import urlsplit
-import requests
 from lxml.html import HTMLParser
 from lxml import etree
 import os
@@ -9,7 +8,7 @@ import os
 from ...exceptions import AccessDenied, NoPDFLink
 from .generic import unified_uri_get
 
-AAAS_USERNAME = os.environ.get("AAAS_USERNAME", "set me in environment variable AAAS_USERNAME / AAAS_PASSWORD")
+AAAS_USERNAME = os.environ.get("AAAS_USERNAME", "set in env: AAAS_USERNAME and AAAS_PASSWORD")
 AAAS_PASSWORD = os.environ.get("AAAS_PASSWORD", "")
 
 
@@ -54,8 +53,8 @@ def the_aaas_twist(pma, verify=True):
 
         payload = {'pass': AAAS_PASSWORD, 'name': AAAS_USERNAME,
                    'form_build_id': fbi, 'remember_me': 1}
-        print("SUBMITTING TO AAAS")
-        print(payload)
+        #print("SUBMITTING TO AAAS")
+        #print(payload)
 
         response = requests.post(post_url, data=payload)
         if response.status_code == 403:

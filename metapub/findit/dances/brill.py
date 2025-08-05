@@ -62,8 +62,8 @@ def the_brill_bridge(pma, verify=True):
                     if any(term in page_text for term in paywall_terms):
                         raise AccessDenied(f'PAYWALL: Brill article requires subscription - attempted: {article_url}')
 
-                    # If no PDF link found but page accessible, return article URL
-                    return article_url
+                    # If no PDF link found, this is an error in verify mode
+                    raise NoPDFLink(f'TXERROR: No PDF link found on Brill page - attempted: {article_url}')
 
                 elif response.status_code == 403:
                     raise AccessDenied(f'DENIED: Access forbidden by Brill - attempted: {article_url}')
@@ -75,8 +75,26 @@ def the_brill_bridge(pma, verify=True):
             except Exception as e:
                 raise NoPDFLink(f'TXERROR: Network error accessing Brill: {e} - attempted: {article_url}')
         else:
-            # Return DOI-resolved URL without verification
-            return article_url
+            # For Brill, try to construct PDF URL pattern without verification
+            # Brill typically uses patterns like /view/journals/... -> /downloadpdf/journals/...
+            if 'brill.com' in article_url:
+                # Try common Brill PDF patterns
+                if '/view/journals/' in article_url:
+                    # Pattern: /view/journals/... -> /downloadpdf/journals/...
+                    pdf_url = article_url.replace('/view/journals/', '/downloadpdf/journals/')
+                    return pdf_url
+                elif '/abstract/' in article_url:
+                    # Pattern: /abstract/... -> /pdf/...
+                    pdf_url = article_url.replace('/abstract/', '/pdf/')
+                    return pdf_url
+                else:
+                    # Try adding /pdf suffix to DOI-based URLs
+                    pdf_url = article_url.rstrip('/') + '/pdf'
+                    return pdf_url
+            
+            # Fallback: return article URL with warning that it's not a PDF
+            # This preserves existing behavior while marking the issue
+            return article_url  # WARNING: This is an HTML page, not a PDF
 
     except Exception as e:
         if isinstance(e, (NoPDFLink, AccessDenied)):

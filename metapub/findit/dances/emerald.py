@@ -48,9 +48,8 @@ def the_emerald_ceili(pma, verify=True):
                         if any(term in page_text for term in paywall_terms):
                             raise AccessDenied(f'PAYWALL: Emerald article requires subscription - attempted: {pdf_url}')
 
-                        # Try article HTML page instead
-                        article_url = f'https://www.emerald.com/insight/content/doi/{pma.doi}/full/html'
-                        return article_url
+                        # If PDF access fails, this is an error in verify mode
+                        raise NoPDFLink(f'TXERROR: No PDF access available for Emerald article - attempted: {pdf_url}')
 
                 elif response.status_code == 403:
                     raise AccessDenied(f'DENIED: Access forbidden by Emerald - attempted: {pdf_url}')

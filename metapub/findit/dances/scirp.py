@@ -57,8 +57,8 @@ def the_scirp_timewarp(pma, verify=True):
                     if any(term in page_text for term in paywall_terms):
                         raise AccessDenied(f'PAYWALL: SCIRP article requires subscription - attempted: {article_url}')
 
-                    # If no PDF link found but page accessible, return article URL (typical for open access)
-                    return article_url
+                    # If no PDF link found, this is an error in verify mode
+                    raise NoPDFLink(f'TXERROR: No PDF link found on SCIRP page - attempted: {article_url}')
 
                 elif response.status_code == 403:
                     raise AccessDenied(f'DENIED: Access forbidden by SCIRP - attempted: {article_url}')
@@ -70,8 +70,22 @@ def the_scirp_timewarp(pma, verify=True):
             except Exception as e:
                 raise NoPDFLink(f'TXERROR: Network error accessing SCIRP: {e} - attempted: {article_url}')
         else:
-            # Return DOI-resolved URL without verification
-            return article_url
+            # For SCIRP, try to construct PDF URL pattern without verification
+            # SCIRP typically uses patterns like /Html/1-1234567.html -> /Html/pdf/1-1234567.pdf
+            if 'scirp.org' in article_url:
+                # Try common SCIRP PDF patterns
+                if '/Html/' in article_url and article_url.endswith('.html'):
+                    # Pattern: /Html/1-1234567.html -> /Html/pdf/1-1234567.pdf
+                    pdf_url = article_url.replace('/Html/', '/Html/pdf/').replace('.html', '.pdf')
+                    return pdf_url
+                elif '/journal/' in article_url:
+                    # Alternative pattern based on DOI
+                    doi_suffix = pma.doi.split('/')[-1] if '/' in pma.doi else pma.doi
+                    return f'https://www.scirp.org/pdf/{doi_suffix}.pdf'
+            
+            # Fallback: return article URL with warning that it's not a PDF
+            # This preserves existing behavior while marking the issue
+            return article_url  # WARNING: This is an HTML page, not a PDF
 
     except Exception as e:
         if isinstance(e, (NoPDFLink, AccessDenied)):

@@ -70,6 +70,7 @@ def the_iospress_freestyle(pma, verify=True):
                             raise AccessDenied(f'PAYWALL: IOS Press article requires subscription - attempted: {pdf_url}')
 
                         # Try article HTML page instead
+                        #TODO: learn how to construct a real PDF link without loading the page.
                         article_url = f'https://content.iospress.com/articles/{journal_code}/{pma.doi}'
                         return article_url
 

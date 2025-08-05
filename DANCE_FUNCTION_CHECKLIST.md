@@ -218,17 +218,19 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Status:** TODO
 - **Priority:** Low
 
-### ✅ JAMA Network
+### ✅ JAMA Network  
 - **Dance Function:** `the_jama_dance`
-- **HTML Samples:** `output/article_html/jama/`
-- **Status:** TODO
+- **HTML Samples:** `output/article_html/jama/` (**BLOCKED BY CLOUDFLARE**)
+- **Status:** 🚫 **BLOCKED** - Cloudflare protection prevents analysis
 - **Priority:** High (top medical journals)
+- **Notes:** All HTML samples show Cloudflare challenge pages ("Just a moment...") indicating JAMA has implemented bot protection. Cannot analyze patterns or improve function while Cloudflare blocking is active. Current function uses `citation_pdf_url` extraction but effectiveness unknown due to access restrictions.
 
 ### ✅ JCI (Journal of Clinical Investigation)
 - **Dance Function:** `the_jci_jig`
 - **HTML Samples:** `output/article_html/jci/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (fixed broken URL pattern)
 - **Priority:** High (top medical journal)
+- **Notes:** **Critical URL Pattern Fix**: HTML evidence revealed function was using wrong pattern. Changed from `/pdf` to `/files/pdf` based on `citation_pdf_url` meta tags in HTML samples. Old pattern: `https://www.jci.org/articles/view/{pii}/pdf` (broken). New pattern: `http://www.jci.org/articles/view/{pii}/files/pdf` (works). Updated both PII and DOI fallback paths. All 10 tests pass. Function was well-structured but had incorrect URL format.
 
 ### ✅ J-STAGE
 - **Dance Function:** `the_jstage_dive`
@@ -409,8 +411,9 @@ These publishers use generic functions that don't need individual rewrites:
 
 ## Progress Summary
 
-- **Completed:** 14/40+ publishers (SCIRP, Spandidos, SciELO, Cancer Biology & Medicine, AACR, Emerald, Cambridge, Dovepress, EurekaSelect, Nature, Springer, Wiley, ScienceDirect+Cell+Lancet)
-- **High Priority Remaining:** BMC, JAMA, JCI, Wolters Kluwer, AAAS, AHA
+- **Completed:** 15/40+ publishers (SCIRP, Spandidos, SciELO, Cancer Biology & Medicine, AACR, Emerald, Cambridge, Dovepress, EurekaSelect, Nature, Springer, Wiley, ScienceDirect+Cell+Lancet, JCI)
+- **High Priority Remaining:** BMC, Wolters Kluwer, AAAS, AHA
+- **Blocked by Protection:** JAMA (Cloudflare)
 - **Next Recommended:** Pick high-priority publishers with existing HTML samples
 
 ## HTML Sample Availability
@@ -443,6 +446,7 @@ These publishers use generic functions that don't need individual rewrites:
 - **2025-01-09:** Fixed test imports (restored creative dance names: the_projectmuse_syrtos, the_wjgnet_wave)
 - **2025-08-05:** **MAJOR CONSOLIDATION**: Cell Press integrated into ScienceDirect - Cell is owned by Elsevier and uses ScienceDirect infrastructure, so all 15 Cell journals now use `the_sciencedirect_disco`. Removed redundant `the_cell_pogo` function, tests, and journal files. Registry regenerated. This simplifies codebase while maintaining full functionality.
 - **2025-08-05:** **SECOND MAJOR CONSOLIDATION**: Lancet integrated into ScienceDirect - HTML evidence shows Lancet uses Elsevier's linking hub infrastructure. Old `the_lancet_tango` was broken (403 Forbidden errors). All 10 Lancet journals now use `the_sciencedirect_disco`. Removed broken Lancet function and files. Registry regenerated. ScienceDirect now handles Cell Press (15) + Lancet (10) + core ScienceDirect journals = comprehensive Elsevier coverage.
+- **2025-08-05:** **CRITICAL JCI FIX**: Fixed broken JCI function using HTML evidence. Pattern was `/pdf` but should be `/files/pdf` based on `citation_pdf_url` meta tags. Updated both PII and DOI fallback logic. Fixed test mocks to use proper targets. All 10 tests pass. This demonstrates the power of evidence-driven development - function appeared to work but had wrong URL pattern.
 
 ## Notes
 

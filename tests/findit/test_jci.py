@@ -34,10 +34,10 @@ class TestJCIDance(BaseDanceTest):
         # Test without verification (should always work for URL construction)
         url = the_jci_jig(pma, verify=False)
         assert url is not None
-        assert url == 'https://www.jci.org/articles/view/82041/pdf'
+        assert url == 'http://www.jci.org/articles/view/82041/files/pdf'
         assert 'jci.org' in url
         assert '/articles/view/' in url
-        assert '/pdf' in url
+        assert '/files/pdf' in url
         print(f"Test 1 - PDF URL: {url}")
 
     def test_jci_jig_url_construction_with_doi_fallback(self):
@@ -58,7 +58,7 @@ class TestJCIDance(BaseDanceTest):
         assert url is not None
         assert 'jci.org' in url
         assert '/articles/view/' in url
-        assert '/pdf' in url
+        assert '/files/pdf' in url
         print(f"Test 2 - PDF URL: {url}")
 
     def test_jci_jig_different_article_pattern(self):
@@ -73,23 +73,18 @@ class TestJCIDance(BaseDanceTest):
         pma.journal = 'J Clin Invest'
         
         url = the_jci_jig(pma, verify=False)
-        assert url == 'https://www.jci.org/articles/view/12345/pdf'
+        assert url == 'http://www.jci.org/articles/view/12345/files/pdf'
         print(f"Test 3 - Mock PDF URL: {url}")
 
-    @patch('requests.get')
-    def test_jci_jig_successful_pdf_access(self, mock_get):
+    @patch('metapub.findit.dances.jci.verify_pdf_url')
+    def test_jci_jig_successful_pdf_access(self, mock_verify):
         """Test 4: Successful PDF access simulation.
         
         PMID: 26030226 (J Clin Invest)
         Expected: Should return PDF URL when accessible
         """
-        # Mock successful PDF response
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'application/pdf'}
-        mock_response.url = 'https://www.jci.org/articles/view/82041/pdf'
-        mock_get.return_value = mock_response
+        # Mock successful PDF verification
+        mock_verify.return_value = True
 
         pma = self.fetch.article_by_pmid('26030226')
         
@@ -99,7 +94,7 @@ class TestJCIDance(BaseDanceTest):
         assert '/articles/view/' in url
         print(f"Test 4 - Successful verified access: {url}")
 
-    @patch('requests.get')
+    @patch('metapub.findit.dances.jci.unified_uri_get')
     def test_jci_jig_html_response_handling(self, mock_get):
         """Test 5: JCI returning HTML instead of PDF (common case).
         
@@ -110,28 +105,24 @@ class TestJCIDance(BaseDanceTest):
         mock_response.status_code = 200
         mock_response.ok = True
         mock_response.headers = {'content-type': 'text/html; charset=utf-8'}
-        mock_response.url = 'https://www.jci.org/articles/view/82041/pdf'
+        mock_response.url = 'http://www.jci.org/articles/view/82041/files/pdf'
         mock_get.return_value = mock_response
 
         pma = self.fetch.article_by_pmid('26030226')
         
         # Test with verification - should handle HTML response gracefully
         url = the_jci_jig(pma, verify=True)
-        assert url == 'https://www.jci.org/articles/view/82041/pdf'
+        assert url == 'http://www.jci.org/articles/view/82041/files/pdf'
         print(f"Test 5 - HTML response handled gracefully: {url}")
 
-    @patch('requests.get')
-    def test_jci_jig_access_denied(self, mock_get):
+    @patch('metapub.findit.dances.jci.verify_pdf_url')
+    def test_jci_jig_access_denied(self, mock_verify):
         """Test 6: Access forbidden (403 error).
         
         Expected: Should handle 403 errors properly
         """
-        # Mock 403 response
-        mock_response = Mock()
-        mock_response.status_code = 403
-        mock_response.ok = False
-        mock_response.headers = {'content-type': 'text/html'}
-        mock_get.return_value = mock_response
+        # Mock access denied
+        mock_verify.side_effect = NoPDFLink("DENIED: access forbidden")
 
         pma = self.fetch.article_by_pmid('26030226')
         
@@ -142,14 +133,14 @@ class TestJCIDance(BaseDanceTest):
         assert 'DENIED' in str(exc_info.value) or 'TXERROR' in str(exc_info.value)
         print(f"Test 6 - Correctly handled 403: {exc_info.value}")
 
-    @patch('requests.get')
-    def test_jci_jig_network_error(self, mock_get):
+    @patch('metapub.findit.dances.jci.verify_pdf_url')
+    def test_jci_jig_network_error(self, mock_verify):
         """Test 7: Network error handling.
         
         Expected: Should handle network errors gracefully
         """
         # Mock network error
-        mock_get.side_effect = requests.exceptions.ConnectionError("Network error")
+        mock_verify.side_effect = requests.exceptions.ConnectionError("Network error")
 
         pma = self.fetch.article_by_pmid('26030226')
         
@@ -183,7 +174,7 @@ class TestJCIDance(BaseDanceTest):
         Expected: Should handle DOI redirect to JCI article page properly
         """
         # Mock DOI resolution to JCI article page
-        mock_doi_2step.return_value = 'https://www.jci.org/articles/view/23606'
+        mock_doi_2step.return_value = 'http://www.jci.org/articles/view/23606'
         
         pma = Mock()
         pma.pii = None
@@ -191,7 +182,7 @@ class TestJCIDance(BaseDanceTest):
         pma.journal = 'J Clin Invest'
         
         url = the_jci_jig(pma, verify=False)
-        assert url == 'https://www.jci.org/articles/view/23606/pdf'
+        assert url == 'http://www.jci.org/articles/view/23606/files/pdf'
         print(f"Test 9 - DOI fallback with redirect: {url}")
 
 

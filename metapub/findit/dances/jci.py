@@ -22,12 +22,12 @@ def the_jci_jig(pma, verify=True):
         # Fallback: use DOI resolution to get article page, then construct PDF URL
         article_url = the_doi_2step(pma.doi)
         # Convert article URL to PDF URL
-        # Example: http://www.jci.org/articles/view/82041 -> http://www.jci.org/articles/view/82041/pdf
+        # Example: http://www.jci.org/articles/view/82041 -> http://www.jci.org/articles/view/82041/files/pdf
         if '/articles/view/' in article_url:
-            url = article_url.rstrip('/') + '/pdf'
+            url = article_url.rstrip('/') + '/files/pdf'
         else:
             # Fallback pattern if DOI redirects to unexpected format
-            url = article_url + '/pdf'
+            url = article_url + '/files/pdf'
     else:
         raise NoPDFLink('MISSING: pii or doi needed for JCI lookup.')
         

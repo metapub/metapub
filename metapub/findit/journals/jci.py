@@ -7,7 +7,7 @@
 #
 # URL Pattern:
 #   - Article view: https://www.jci.org/articles/view/{pii}
-#   - PDF download: https://www.jci.org/articles/view/{pii}/pdf
+#   - PDF download: http://www.jci.org/articles/view/{pii}/files/pdf
 #
 # PII Pattern:
 #   - Numeric ID (e.g., 82041)
@@ -21,7 +21,7 @@
 #   - PII is essential for URL construction
 #   - DOI can be used as fallback via dx.doi.org resolution
 
-jci_format = 'https://www.jci.org/articles/view/{pii}/pdf'
+jci_format = 'http://www.jci.org/articles/view/{pii}/files/pdf'
 
 jci_journals = (
     'J Clin Invest',

@@ -40,20 +40,29 @@ class TestBenthamEurekaSelect(BaseDanceTest):
         assert '/pdf' in url or 'openurl.php' in url
         print(f"Test 1 - Constructed URL: {url}")
 
-    @patch('requests.get')
+    @patch('metapub.findit.dances.eureka.unified_uri_get')
     def test_eureka_frug_paywall_detected(self, mock_get):
         """Test 2: Article behind paywall (typical case).
         
         PMID: 38867537 (Current Molecular Medicine)
         Expected: Should detect paywall and raise AccessDenied
         """
-        # Mock paywall response
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.headers = {'content-type': 'text/html'}
-        mock_response.text = '<html><body>Please sign in to access this article. Subscribe now for full access.</body></html>'
-        mock_response.url = 'https://www.eurekaselect.com/article/140986'
-        mock_get.return_value = mock_response
+        # Mock article page response (first call)
+        mock_article_response = Mock()
+        mock_article_response.status_code = 200
+        mock_article_response.url = 'https://www.eurekaselect.com/article/140986'
+        
+        # Mock PDF response with 403 (second call)
+        mock_pdf_response = Mock()
+        mock_pdf_response.status_code = 403
+        
+        def side_effect(url, *args, **kwargs):
+            if '/pdf' in url:
+                return mock_pdf_response
+            else:
+                return mock_article_response
+        
+        mock_get.side_effect = side_effect
 
         pma = self.fetch.article_by_pmid('38867537')
         
@@ -64,22 +73,33 @@ class TestBenthamEurekaSelect(BaseDanceTest):
         with pytest.raises(AccessDenied) as exc_info:
             the_eureka_frug(pma, verify=True)
         
-        assert 'PAYWALL' in str(exc_info.value)
-        assert 'Bentham Science' in str(exc_info.value)
+        assert 'DENIED' in str(exc_info.value)
+        assert 'EurekaSelect' in str(exc_info.value)
         print(f"Test 2 - Correctly detected paywall: {exc_info.value}")
 
-    @patch('requests.get')
+    @patch('metapub.findit.dances.eureka.unified_uri_get')
     def test_eureka_frug_server_error(self, mock_get):
         """Test 3: Server error or article not found.
         
         PMID: 38318823 (Current Topics in Medicinal Chemistry)
         Expected: Should handle server errors gracefully
         """
-        # Mock server error response
-        mock_response = Mock()
-        mock_response.status_code = 500
-        mock_response.headers = {'content-type': 'text/html'}
-        mock_get.return_value = mock_response
+        # Mock article page response (first call)
+        mock_article_response = Mock()
+        mock_article_response.status_code = 200
+        mock_article_response.url = 'https://www.eurekaselect.com/article/123456'
+        
+        # Mock PDF response with 500 (second call)
+        mock_pdf_response = Mock()
+        mock_pdf_response.status_code = 500
+        
+        def side_effect(url, *args, **kwargs):
+            if '/pdf' in url:
+                return mock_pdf_response
+            else:
+                return mock_article_response
+        
+        mock_get.side_effect = side_effect
 
         pma = self.fetch.article_by_pmid('38318823')
         
@@ -91,7 +111,7 @@ class TestBenthamEurekaSelect(BaseDanceTest):
             the_eureka_frug(pma, verify=True)
         
         assert 'TXERROR' in str(exc_info.value)
-        assert 'status 500' in str(exc_info.value)
+        assert 'HTTP 500' in str(exc_info.value)
         print(f"Test 3 - Correctly handled server error: {exc_info.value}")
 
     def test_eureka_frug_no_doi(self):
@@ -107,21 +127,32 @@ class TestBenthamEurekaSelect(BaseDanceTest):
         with pytest.raises(NoPDFLink) as exc_info:
             the_eureka_frug(pma, verify=False)
         
-        assert 'MISSING: DOI required' in str(exc_info.value)
+        assert 'MISSING: DOI required for EurekaSelect' in str(exc_info.value)
         print(f"Test 4 - Correctly handled missing DOI: {exc_info.value}")
 
-    @patch('requests.get')
+    @patch('metapub.findit.dances.eureka.unified_uri_get')
     def test_eureka_frug_successful_pdf_access(self, mock_get):
         """Test optimistic case: Successful PDF access.
         
-        This simulates the rare case where a Bentham article is freely accessible.
+        This simulates the rare case where a EurekaSelect article is freely accessible.
         """
-        # Mock successful PDF response
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.headers = {'content-type': 'application/pdf'}
-        mock_response.url = 'https://www.eurekaselect.com/article/123456/pdf'
-        mock_get.return_value = mock_response
+        # Mock article page response (first call)
+        mock_article_response = Mock()
+        mock_article_response.status_code = 200
+        mock_article_response.url = 'https://www.eurekaselect.com/article/123456'
+        
+        # Mock successful PDF response (second call)
+        mock_pdf_response = Mock()
+        mock_pdf_response.status_code = 200
+        mock_pdf_response.headers = {'content-type': 'application/pdf'}
+        
+        def side_effect(url, *args, **kwargs):
+            if '/pdf' in url:
+                return mock_pdf_response
+            else:
+                return mock_article_response
+        
+        mock_get.side_effect = side_effect
 
         pma = self.fetch.article_by_pmid('38751602')
         

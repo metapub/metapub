@@ -20,7 +20,6 @@ from metapub.findit.registry import JournalRegistry
 from metapub.findit.journals.aaas import aaas_journals
 from metapub.findit.journals.biochemsoc import biochemsoc_journals
 from metapub.findit.journals.bmc import BMC_journals
-from metapub.findit.journals.cell import cell_journals
 from metapub.findit.journals.degruyter import degruyter_journals
 from metapub.findit.journals.dustri import dustri_journals
 from metapub.findit.journals.endo import endo_journals
@@ -90,7 +89,6 @@ from metapub.findit.journals.single_journal_publishers import (
 from metapub.findit.journals.aaas import aaas_format
 from metapub.findit.journals.biochemsoc import biochemsoc_format
 from metapub.findit.journals.bmc import BMC_format
-from metapub.findit.journals.cell import cell_format
 from metapub.findit.journals.karger import karger_format
 from metapub.findit.journals.nature import nature_format
 from metapub.findit.journals.scielo import scielo_format
@@ -130,12 +128,6 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_bmc_boogie',
         'format_template': BMC_format,
         'journals': BMC_journals,
-    },
-    {
-        'name': 'cell',
-        'dance_function': 'the_cell_pogo',
-        'format_template': cell_format,
-        'journals': cell_journals,
     },
     {
         'name': 'endo',

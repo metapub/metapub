@@ -1,51 +1,61 @@
 """Dance function for ScienceDirect (Elsevier)."""
 
-from lxml.html import HTMLParser
-from lxml import etree
-
 from ...exceptions import AccessDenied, NoPDFLink
 from ...utils import remove_chars
-from .generic import the_doi_2step, unified_uri_get
-
-# Import ScienceDirect-specific URL template
-from ..journals.sciencedirect import sciencedirect_url
+from .generic import verify_pdf_url
 
 
 def the_sciencedirect_disco(pma, verify=True):
-    '''Note: verify=True required to find link.  Parameter supplied only for unity
-       with other dances.
-
-         :param: pma (PubMedArticle object)
-         :param: verify (bool) [default: True]
-         :return: url (string)
-         :raises: AccessDenied, NoPDFLink
+    '''ScienceDirect (Elsevier) dance using direct PDF URL construction.
+    
+    Primary approach: Direct PDF URL from PII
+    Pattern: https://www.sciencedirect.com/science/article/pii/{clean_pii}/pdfft?isDTMRedir=true&download=true
+    
+    ScienceDirect is one of the largest academic publishers, including:
+    - Elsevier journals
+    - Cell Press journals  
+    - Lancet journals
+    - And thousands of others
+    
+    Most articles have a PII (Publisher Item Identifier) which is used to construct URLs.
+    PIIs need to be cleaned by removing hyphens, parentheses, etc.
+    
+    :param: pma (PubMedArticle object)
+    :param: verify (bool) [default: True]
+    :return: url (string)
+    :raises: AccessDenied, NoPDFLink
     '''
-    #we're looking for a url that looks like this:
-    #http://www.sciencedirect.com/science/article/pii/S0022283601953379/pdfft?md5=07db9e1b612f64ea74872842e34316a5&pid=1-s2.0-S0022283601953379-main.pdf
-
-    starturl = None
+    
+    if not pma.pii and not pma.doi:
+        raise NoPDFLink('MISSING: PII or DOI required for ScienceDirect access')
+    
+    # Primary method: Use PII if available
     if pma.pii:
-        starturl = sciencedirect_url.format(piit=remove_chars(pma.pii, '-()'))
+        # Clean PII - remove hyphens, parentheses, and other special chars
+        clean_pii = remove_chars(pma.pii, '-()[]{}')
+        
+        # Direct PDF URL pattern
+        pdf_url = f'https://www.sciencedirect.com/science/article/pii/{clean_pii}/pdfft?isDTMRedir=true&download=true'
+        
+        if verify:
+            try:
+                if verify_pdf_url(pdf_url):
+                    return pdf_url
+                else:
+                    # Try alternate pattern without download parameter
+                    alt_url = f'https://www.sciencedirect.com/science/article/pii/{clean_pii}/pdfft'
+                    if verify_pdf_url(alt_url):
+                        return alt_url
+                    else:
+                        raise AccessDenied(f'PAYWALL: ScienceDirect article requires subscription - {pdf_url}')
+            except Exception:
+                raise AccessDenied(f'PAYWALL: ScienceDirect article requires subscription - {pdf_url}')
+        else:
+            return pdf_url
+    
+    # Fallback: Try DOI-based URL
     elif pma.doi:
-        starturl = the_doi_2step(pma.doi)
-
-    if starturl == None:
-        raise NoPDFLink('MISSING: pii, doi (doi lookup failed)')
-
-    try:
-        res = unified_uri_get(starturl)
-    except requests.exceptions.TooManyRedirects:
-        raise NoPDFLink('TXERROR: ScienceDirect TooManyRedirects: cannot reach %s via %s' %
-                        (pma.journal, starturl))
-
-    tree = etree.fromstring(res.content, HTMLParser())
-    try:
-        div = tree.cssselect('div.icon_pdf')[0]
-    except IndexError:
-        raise NoPDFLink('DENIED: ScienceDirect did not provide pdf link (probably paywalled)')
-    url = div.cssselect('a')[0].get('href')
-    if 'pdf' in url:
-        return url
-    else:
-        # give up, it's probably a "shopping cart" link.
-        raise NoPDFLink('DENIED: ScienceDirect did not provide pdf link (probably paywalled)')
+        # For DOI-only articles, we need to construct a different URL
+        # Pattern: https://www.sciencedirect.com/science/article/abs/pii/SXXXXXXXXX
+        # But without PII, we can't construct the full URL reliably
+        raise NoPDFLink(f'MISSING: PII required for ScienceDirect PDF access (DOI alone insufficient) - Journal: {pma.journal}')

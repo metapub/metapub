@@ -1,6 +1,23 @@
 sciencedirect_url = 'http://www.sciencedirect.com/science/article/pii/{piit}'
 
 sciencedirect_journals = [
+        # Cell Press journals (merged from cell.py - these are owned by Elsevier)
+        'Am J Hum Genet',
+        'Biophys J', 
+        'Cancer Cell',
+        'Cell',
+        'Cell Host Microbe',
+        'Cell Metab',
+        'Cell Stem Cell',
+        'Chem Biol',
+        'Curr Biol',
+        'Dev Cell',
+        'Immunity',
+        'Mol Cell',
+        'Neuron',
+        'Structure',
+        'Trends Mol Med',
+        # Other ScienceDirect journals
         'AACE Clin Case Rep',
         'AWHONN Lifelines',
         'Acad Pathol',

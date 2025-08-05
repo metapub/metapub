@@ -1,61 +1,35 @@
-from ...exceptions import *
-from .generic import *
+from ...exceptions import AccessDenied, NoPDFLink
+from .generic import verify_pdf_url
 
 def the_thieme_tap(pma, verify=True):
-    '''Dance function for Thieme Medical Publishers journals.
-
-    Thieme journals use a straightforward DOI-based PDF URL pattern.
-    URL Pattern: https://www.thieme-connect.de/products/ejournals/pdf/{doi}.pdf
-
-    Thieme uses 10.1055 as their DOI prefix and provides direct PDF access
-    through their thieme-connect.de platform.
-
-    :param: pma (PubMedArticle object)
-    :param: verify (bool) [default: True]
+    '''Thieme Medical Publishers: Direct PDF URL construction
+    
+    Evidence from output/article_html/thieme_medical_publishers/:
+    Pattern: http://www.thieme-connect.de/products/ejournals/pdf/{DOI}.pdf
+    
+    Perfect consistency: 10/10 samples show exact DOI → PDF URL pattern.
+    All Thieme DOIs use 10.1055/ prefix with various suffixes (s-, a-, etc.).
+    
+    Example: DOI 10.1055/s-0034-1387804 → http://www.thieme-connect.de/products/ejournals/pdf/10.1055/s-0034-1387804.pdf
+    
+    :param: pma (PubmedArticle)
+    :param: verify (bool) [default: True] 
     :return: url (string)
     :raises: AccessDenied, NoPDFLink
     '''
     if not pma.doi:
         raise NoPDFLink('MISSING: DOI required for Thieme journals - attempted: none')
 
-    try:
-        # Construct PDF URL using Thieme's pattern
-        pdf_url = f"https://www.thieme-connect.de/products/ejournals/pdf/{pma.doi}.pdf"
+    if not pma.doi.startswith('10.1055/'):
+        raise NoPDFLink(f'INVALID: DOI does not match Thieme pattern (10.1055/) - attempted: {pma.doi}')
 
-        if verify:
-            try:
-                response = unified_uri_get(pdf_url, timeout=10)
+    # Construct PDF URL using evidence-based pattern
+    pdf_url = f"http://www.thieme-connect.de/products/ejournals/pdf/{pma.doi}.pdf"
 
-                if response.status_code == 200:
-                    content_type = response.headers.get('content-type', '').lower()
-                    if 'pdf' in content_type:
-                        return response.url
-                    elif 'html' in content_type:
-                        # Check for paywall indicators
-                        page_text = response.text.lower()
-                        paywall_terms = ['paywall', 'subscribe', 'sign in', 'log in', 'purchase', 'access denied', 'login required']
-                        if any(term in page_text for term in paywall_terms):
-                            raise AccessDenied(f'PAYWALL: Thieme article requires subscription - attempted: {pdf_url}')
-                        else:
-                            raise NoPDFLink(f'TXERROR: Thieme returned HTML instead of PDF - attempted: {pdf_url}')
-                    else:
-                        raise NoPDFLink(f'TXERROR: Unexpected content type {content_type} from Thieme - attempted: {pdf_url}')
-
-                elif response.status_code == 403:
-                    raise AccessDenied(f'DENIED: Access forbidden by Thieme - attempted: {pdf_url}')
-                elif response.status_code == 404:
-                    raise NoPDFLink(f'TXERROR: Thieme PDF not found - attempted: {pdf_url}')
-                else:
-                    raise NoPDFLink(f'TXERROR: Thieme returned status {response.status_code} - attempted: {pdf_url}')
-
-            except Exception as e:
-                raise NoPDFLink(f'TXERROR: Network error accessing Thieme: {e} - attempted: {pdf_url}')
-        else:
+    if verify:
+        if verify_pdf_url(pdf_url):
             return pdf_url
-
-    except Exception as e:
-        if isinstance(e, (NoPDFLink, AccessDenied)):
-            raise
         else:
-            raise NoPDFLink(f'TXERROR: Thieme tap failed for {pma.journal}: {e} - attempted: DOI-based PDF URL')
+            raise AccessDenied(f'PAYWALL: Thieme PDF requires subscription - attempted: {pdf_url}')
 
+    return pdf_url

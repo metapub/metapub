@@ -30,6 +30,7 @@ from .biochemsoc import the_biochemsoc_saunter
 from .bioone import the_bioone_bounce
 from .brill import the_brill_bridge
 from .cambridge import the_cambridge_foxtrot
+from .cancerbiomed import the_cancerbiomed_quickstep
 from .cell import the_cell_pogo
 from .degruyter import the_degruyter_danza
 from .dovepress import the_dovepress_peacock

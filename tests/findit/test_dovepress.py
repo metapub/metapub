@@ -76,37 +76,26 @@ class TestDovePressTest(BaseDanceTest):
         assert '/article/download/' in url
         print(f"Test 3 - PDF URL: {url}")
 
-    @patch('requests.get')
-    def test_dovepress_waltz_successful_pdf_access(self, mock_get):
+    @patch('metapub.findit.dances.dovepress.verify_pdf_url')
+    @patch('metapub.findit.dances.dovepress.unified_uri_get')
+    def test_dovepress_waltz_successful_pdf_access(self, mock_get, mock_verify):
         """Test 4: Successful PDF access simulation.
         
         PMID: 37693885 (Int J Nanomedicine)
         Expected: Should return PDF URL when accessible
         """
-        # Mock DOI resolution to DovePress article page
-        mock_article_response = Mock()
-        mock_article_response.ok = True
-        mock_article_response.url = 'https://www.dovepress.com/plant-derived-exosome-like-nanovesicles-peer-reviewed-fulltext-article-IJN'
-        mock_article_response.content = b'''<!DOCTYPE html>
+        # Mock article page response
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.content = b'''<!DOCTYPE html>
         <html><head></head>
         <body>
-            <a href="/article/download/86435">[Download Article [PDF]]</a>
+            <a href="article/download/86435">Download Article [PDF]</a>
         </body></html>'''
+        mock_get.return_value = mock_response
         
-        # Mock successful PDF response for verification
-        mock_pdf_response = Mock()
-        mock_pdf_response.status_code = 200
-        mock_pdf_response.ok = True
-        mock_pdf_response.headers = {'content-type': 'application/pdf'}
-        mock_pdf_response.url = 'https://www.dovepress.com/article/download/86435'
-        
-        def side_effect(url, *args, **kwargs):
-            if '/article/download/' in url:
-                return mock_pdf_response
-            else:
-                return mock_article_response
-        
-        mock_get.side_effect = side_effect
+        # Mock successful PDF verification
+        mock_verify.return_value = None
 
         pma = self.fetch.article_by_pmid('37693885')
         
@@ -114,48 +103,40 @@ class TestDovePressTest(BaseDanceTest):
         url = the_dovepress_peacock(pma, verify=True)
         assert 'dovepress.com' in url
         assert '/article/download/' in url
+        assert url == 'https://www.dovepress.com/article/download/86435'
+        mock_verify.assert_called_once()
         print(f"Test 4 - Successful verified access: {url}")
 
-    @patch('requests.get')
-    def test_dovepress_waltz_paywall_detection(self, mock_get):
+    @patch('metapub.findit.dances.dovepress.verify_pdf_url')
+    @patch('metapub.findit.dances.dovepress.unified_uri_get')
+    def test_dovepress_waltz_paywall_detection(self, mock_get, mock_verify):
         """Test 5: Paywall detection.
         
         Expected: Should detect paywall and raise AccessDenied
         """
         # Mock article page response (successful)
-        mock_article_response = Mock()
-        mock_article_response.ok = True
-        mock_article_response.url = 'https://www.dovepress.com/some-article-peer-reviewed-fulltext-article-IJN'
-        mock_article_response.content = b'''<!DOCTYPE html>
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.content = b'''<!DOCTYPE html>
         <html><head></head>
         <body>
-            <a href="/article/download/12345">[Download Article [PDF]]</a>
+            <a href="article/download/12345">Download Article [PDF]</a>
         </body></html>'''
+        mock_get.return_value = mock_response
         
-        # Mock paywall response for PDF verification
-        mock_paywall_response = Mock()
-        mock_paywall_response.status_code = 401
-        mock_paywall_response.ok = False
-        mock_paywall_response.headers = {'content-type': 'text/html'}
-        
-        def side_effect(url, *args, **kwargs):
-            if '/article/download/' in url:
-                return mock_paywall_response
-            else:
-                return mock_article_response
-        
-        mock_get.side_effect = side_effect
+        # Mock verify_pdf_url to raise AccessDenied for paywall
+        mock_verify.side_effect = AccessDenied("DENIED: Paywall detected")
 
         pma = self.fetch.article_by_pmid('37693885')
         
         # Test with verification - should detect paywall
-        with pytest.raises(NoPDFLink) as exc_info:
+        with pytest.raises(AccessDenied) as exc_info:
             the_dovepress_peacock(pma, verify=True)
         
-        assert 'DENIED' in str(exc_info.value) or 'TXERROR' in str(exc_info.value)
+        assert 'DENIED' in str(exc_info.value)
         print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
 
-    @patch('requests.get')
+    @patch('metapub.findit.dances.dovepress.unified_uri_get')
     def test_dovepress_waltz_network_error(self, mock_get):
         """Test 6: Network error handling.
         
@@ -185,10 +166,10 @@ class TestDovePressTest(BaseDanceTest):
             the_dovepress_peacock(pma, verify=False)
         
         assert 'MISSING' in str(exc_info.value)
-        assert 'doi needed' in str(exc_info.value)
+        assert 'DOI required' in str(exc_info.value)
         print(f"Test 7 - Correctly handled missing DOI: {exc_info.value}")
 
-    @patch('requests.get')
+    @patch('metapub.findit.dances.dovepress.unified_uri_get')
     def test_dovepress_waltz_article_page_not_found(self, mock_get):
         """Test 8: Article page not found (404 error).
         
@@ -196,7 +177,6 @@ class TestDovePressTest(BaseDanceTest):
         """
         # Mock 404 response for article page
         mock_response = Mock()
-        mock_response.ok = False
         mock_response.status_code = 404
         mock_get.return_value = mock_response
 
@@ -211,7 +191,7 @@ class TestDovePressTest(BaseDanceTest):
         print(f"Test 8 - Correctly handled 404: {exc_info.value}")
 
     @patch('metapub.findit.dances.dovepress.etree.fromstring')
-    @patch('requests.get')
+    @patch('metapub.findit.dances.dovepress.unified_uri_get')
     def test_dovepress_waltz_html_parsing_error(self, mock_get, mock_etree):
         """Test 9: HTML parsing error handling.
         
@@ -219,8 +199,7 @@ class TestDovePressTest(BaseDanceTest):
         """
         # Mock successful article page response
         mock_response = Mock()
-        mock_response.ok = True
-        mock_response.url = 'https://www.dovepress.com/test-article'
+        mock_response.status_code = 200
         mock_response.content = b'<html><head></head><body></body></html>'
         mock_get.return_value = mock_response
         
@@ -229,15 +208,14 @@ class TestDovePressTest(BaseDanceTest):
 
         pma = self.fetch.article_by_pmid('37693885')
         
-        # Test - should handle parsing error
-        with pytest.raises(NoPDFLink) as exc_info:
+        # Test - should handle parsing error by letting it propagate
+        with pytest.raises(Exception) as exc_info:
             the_dovepress_peacock(pma, verify=False)
         
-        assert 'TXERROR' in str(exc_info.value)
-        assert 'Failed to parse' in str(exc_info.value)
+        assert 'XML parsing failed' in str(exc_info.value)
         print(f"Test 9 - Correctly handled parsing error: {exc_info.value}")
 
-    @patch('requests.get')
+    @patch('metapub.findit.dances.dovepress.unified_uri_get')
     def test_dovepress_waltz_no_pdf_link_found(self, mock_get):
         """Test 10: Article page with no PDF download link.
         
@@ -245,8 +223,7 @@ class TestDovePressTest(BaseDanceTest):
         """
         # Mock article page response without PDF download link
         mock_response = Mock()
-        mock_response.ok = True
-        mock_response.url = 'https://www.dovepress.com/test-article'
+        mock_response.status_code = 200
         mock_response.content = b'''<!DOCTYPE html>
         <html><head></head>
         <body>
@@ -260,8 +237,8 @@ class TestDovePressTest(BaseDanceTest):
         with pytest.raises(NoPDFLink) as exc_info:
             the_dovepress_peacock(pma, verify=False)
         
-        assert 'TXERROR' in str(exc_info.value)
-        assert 'lacks PDF download link' in str(exc_info.value)
+        assert 'MISSING' in str(exc_info.value)
+        assert 'No PDF download link found' in str(exc_info.value)
         print(f"Test 10 - Correctly handled missing PDF link: {exc_info.value}")
 
 

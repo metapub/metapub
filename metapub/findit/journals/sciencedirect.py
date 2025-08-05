@@ -17,6 +17,17 @@ sciencedirect_journals = [
         'Neuron',
         'Structure',
         'Trends Mol Med',
+        # Lancet journals (merged from lancet.py - these are owned by Elsevier)
+        'Lancet',
+        'Lancet Diabetes Endocrinol',
+        'Lancet Glob Health',
+        'Lancet Haematol',
+        'Lancet HIV',
+        'Lancet Infect Dis',
+        'Lancet Neurol',
+        'Lancet Oncol',
+        'Lancet Psychiatry',
+        'Lancet Respir Med',
         # Other ScienceDirect journals
         'AACE Clin Case Rep',
         'AWHONN Lifelines',

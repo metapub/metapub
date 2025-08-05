@@ -174,8 +174,8 @@ class TestFindIt(unittest.TestCase):
         expected_journals = [
             ("Nature", "nature"),              # Nature Publishing Group
             ("Science", "Science Magazine"),   # Science Magazine (corrected from aaas)
-            ("Cell", "cell"),                  # Cell Press
-            ("Lancet", "lancet"),              # Lancet journals
+            ("Cell", "sciencedirect"),         # Cell Press (consolidated into ScienceDirect)
+            ("Lancet", "sciencedirect"),       # Lancet journals (consolidated into ScienceDirect)
             ("JAMA", "jama"),                  # JAMA network
             ("J Clin Invest", "jci"),          # JCI
         ]

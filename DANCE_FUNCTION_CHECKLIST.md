@@ -243,10 +243,11 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** Medium (medical publisher)
 
 ### ✅ Lancet
-- **Dance Function:** `the_lancet_tango`
+- **Dance Function:** ~~`the_lancet_tango`~~ **CONSOLIDATED** into ScienceDirect
 - **HTML Samples:** `output/article_html/lancet/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (consolidated into ScienceDirect)
 - **Priority:** High (top medical journal)
+- **Notes:** Lancet journals are owned by Elsevier and use ScienceDirect infrastructure. HTML evidence shows all Lancet articles redirect through Elsevier's linking hub system. All 10 Lancet journals (Lancet, Lancet Oncol, Lancet Infect Dis, etc.) consolidated into `sciencedirect_journals` list and use `the_sciencedirect_disco` dance function. Old `the_lancet_tango` was broken (403 Forbidden). Registry updated, Lancet-specific files removed. Modern Elsevier infrastructure now handles all Lancet journals properly.
 
 ### ✅ Longdom
 - **Dance Function:** `the_longdom_hustle`
@@ -313,9 +314,9 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 ### ✅ ScienceDirect (Elsevier)
 - **Dance Function:** `the_sciencedirect_disco`
 - **HTML Samples:** `output/article_html/sciencedirect/`
-- **Status:** COMPLETED ✅ (enhanced with Cell Press consolidation)
+- **Status:** COMPLETED ✅ (enhanced with Cell Press + Lancet consolidation)
 - **Priority:** High (major publisher)
-- **Notes:** Rewritten from 51→61 lines using direct PDF URL construction from PII. Pattern: `https://www.sciencedirect.com/science/article/pii/{clean_pii}/pdfft?isDTMRedir=true&download=true`. PII cleaning removes special characters. **MAJOR CONSOLIDATION**: Cell Press journals (15 journals) consolidated into ScienceDirect since Cell is owned by Elsevier and uses the same infrastructure. This reduces codebase complexity while maintaining full functionality.
+- **Notes:** Rewritten from 51→61 lines using direct PDF URL construction from PII. Pattern: `https://www.sciencedirect.com/science/article/pii/{clean_pii}/pdfft?isDTMRedir=true&download=true`. PII cleaning removes special characters. **MAJOR CONSOLIDATIONS**: Cell Press journals (15 journals) + Lancet journals (10 journals) consolidated into ScienceDirect since both are owned by Elsevier and use the same infrastructure. Old Lancet function was broken (403 errors). This reduces codebase complexity while maintaining full functionality.
 
 ### ✅ SCIRP (Scientific Research Publishing)
 - **Dance Function:** `the_scirp_timewarp`
@@ -408,8 +409,8 @@ These publishers use generic functions that don't need individual rewrites:
 
 ## Progress Summary
 
-- **Completed:** 13/40+ publishers (SCIRP, Spandidos, SciELO, Cancer Biology & Medicine, AACR, Emerald, Cambridge, Dovepress, EurekaSelect, Nature, Springer, Wiley, ScienceDirect+Cell)
-- **High Priority Remaining:** BMC, JAMA, JCI, Lancet, Wolters Kluwer, AAAS, AHA
+- **Completed:** 14/40+ publishers (SCIRP, Spandidos, SciELO, Cancer Biology & Medicine, AACR, Emerald, Cambridge, Dovepress, EurekaSelect, Nature, Springer, Wiley, ScienceDirect+Cell+Lancet)
+- **High Priority Remaining:** BMC, JAMA, JCI, Wolters Kluwer, AAAS, AHA
 - **Next Recommended:** Pick high-priority publishers with existing HTML samples
 
 ## HTML Sample Availability
@@ -441,6 +442,7 @@ These publishers use generic functions that don't need individual rewrites:
 - **2025-01-09:** Completed Wiley rewrite (54→30 lines) using epdf pattern from wiley_example.txt
 - **2025-01-09:** Fixed test imports (restored creative dance names: the_projectmuse_syrtos, the_wjgnet_wave)
 - **2025-08-05:** **MAJOR CONSOLIDATION**: Cell Press integrated into ScienceDirect - Cell is owned by Elsevier and uses ScienceDirect infrastructure, so all 15 Cell journals now use `the_sciencedirect_disco`. Removed redundant `the_cell_pogo` function, tests, and journal files. Registry regenerated. This simplifies codebase while maintaining full functionality.
+- **2025-08-05:** **SECOND MAJOR CONSOLIDATION**: Lancet integrated into ScienceDirect - HTML evidence shows Lancet uses Elsevier's linking hub infrastructure. Old `the_lancet_tango` was broken (403 Forbidden errors). All 10 Lancet journals now use `the_sciencedirect_disco`. Removed broken Lancet function and files. Registry regenerated. ScienceDirect now handles Cell Press (15) + Lancet (10) + core ScienceDirect journals = comprehensive Elsevier coverage.
 
 ## Notes
 

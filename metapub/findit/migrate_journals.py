@@ -26,7 +26,6 @@ from metapub.findit.journals.endo import endo_journals
 from metapub.findit.journals.jama import jama_journals
 from metapub.findit.journals.jstage import jstage_journals
 from metapub.findit.journals.karger import karger_journals
-from metapub.findit.journals.lancet import lancet_journals
 from metapub.findit.journals.nature import nature_journals
 from metapub.findit.journals.scielo import scielo_journals
 from metapub.findit.journals.sciencedirect import sciencedirect_journals
@@ -152,12 +151,6 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_karger_conga',
         'format_template': karger_format,
         'journals': karger_journals,
-    },
-    {
-        'name': 'lancet',
-        'dance_function': 'the_lancet_tango',
-        'format_template': None,
-        'journals': lancet_journals,
     },
     {
         'name': 'nature',

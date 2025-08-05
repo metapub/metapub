@@ -46,7 +46,6 @@ from .jama import the_jama_dance
 from .jci import the_jci_jig
 from .jstage import the_jstage_dive
 from .karger import the_karger_conga
-from .lancet import the_lancet_tango
 from .longdom import the_longdom_hustle
 from .mdpi import the_mdpi_moonwalk
 from .najms import the_najms_mazurka

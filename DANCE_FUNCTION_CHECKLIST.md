@@ -77,8 +77,9 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 ### ✅ Annual Reviews
 - **Dance Function:** `the_annualreviews_round`
 - **HTML Samples:** `output/article_html/annualreviews/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (evidence-driven PDF form extraction)
 - **Priority:** Medium (high-impact review journals)
+- **Notes:** Rewritten from 96→49 lines using evidence-driven approach with **direct URL construction**. Pattern: `https://www.annualreviews.org/deliver/fulltext/{journal_abbrev}/{volume}/{issue}/{doi_suffix}.pdf` where journal_abbrev is extracted from DOI pattern `annurev-{journal}-{date}-{id}`. Follows DANCE_FUNCTION_GUIDELINES: single method, no HTML parsing, under 50 lines, clear error messages. Test suite 11/11 passing with proper mocking.
 
 ### ✅ APA (American Psychological Association)
 - **Dance Function:** `the_apa_dab`
@@ -411,7 +412,7 @@ These publishers use generic functions that don't need individual rewrites:
 
 ## Progress Summary
 
-- **Completed:** 15/40+ publishers (SCIRP, Spandidos, SciELO, Cancer Biology & Medicine, AACR, Emerald, Cambridge, Dovepress, EurekaSelect, Nature, Springer, Wiley, ScienceDirect+Cell+Lancet, JCI)
+- **Completed:** 16/40+ publishers (SCIRP, Spandidos, SciELO, Cancer Biology & Medicine, AACR, Emerald, Cambridge, Dovepress, EurekaSelect, Nature, Springer, Wiley, ScienceDirect+Cell+Lancet, JCI, Annual Reviews)
 - **High Priority Remaining:** BMC, Wolters Kluwer, AAAS, AHA
 - **Blocked by Protection:** JAMA (Cloudflare)
 - **Next Recommended:** Pick high-priority publishers with existing HTML samples
@@ -447,6 +448,7 @@ These publishers use generic functions that don't need individual rewrites:
 - **2025-08-05:** **MAJOR CONSOLIDATION**: Cell Press integrated into ScienceDirect - Cell is owned by Elsevier and uses ScienceDirect infrastructure, so all 15 Cell journals now use `the_sciencedirect_disco`. Removed redundant `the_cell_pogo` function, tests, and journal files. Registry regenerated. This simplifies codebase while maintaining full functionality.
 - **2025-08-05:** **SECOND MAJOR CONSOLIDATION**: Lancet integrated into ScienceDirect - HTML evidence shows Lancet uses Elsevier's linking hub infrastructure. Old `the_lancet_tango` was broken (403 Forbidden errors). All 10 Lancet journals now use `the_sciencedirect_disco`. Removed broken Lancet function and files. Registry regenerated. ScienceDirect now handles Cell Press (15) + Lancet (10) + core ScienceDirect journals = comprehensive Elsevier coverage.
 - **2025-08-05:** **CRITICAL JCI FIX**: Fixed broken JCI function using HTML evidence. Pattern was `/pdf` but should be `/files/pdf` based on `citation_pdf_url` meta tags. Updated both PII and DOI fallback logic. Fixed test mocks to use proper targets. All 10 tests pass. This demonstrates the power of evidence-driven development - function appeared to work but had wrong URL pattern.
+- **2025-08-05:** **ANNUAL REVIEWS COMPLETED**: Rewritten using evidence-driven approach (96→49 lines) with **direct URL construction** following DANCE_FUNCTION_GUIDELINES. Pattern: `https://www.annualreviews.org/deliver/fulltext/{journal_abbrev}/{volume}/{issue}/{doi_suffix}.pdf` extracted from DOI pattern `annurev-{journal}-{date}-{id}`. Single method, no HTML parsing, under 50 lines, clear error messages. Test suite 11/11 passing. **CORRECTED**: Initial implementation violated guidelines with HTML parsing - proper version uses direct URL construction from DOI analysis.
 
 ## Notes
 

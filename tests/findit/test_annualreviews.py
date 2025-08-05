@@ -2,7 +2,6 @@
 
 import pytest
 from unittest.mock import patch, Mock
-import requests
 
 from .common import BaseDanceTest
 from metapub import PubMedFetcher
@@ -22,7 +21,7 @@ class TestAnnualReviewsDance(BaseDanceTest):
         """Test 1: URL construction success (Annu Rev Phytopathol).
         
         PMID: 38885471 (Annu Rev Phytopathol)
-        Expected: Should construct valid Annual Reviews article URL via DOI resolution
+        Expected: Should construct valid Annual Reviews PDF URL directly
         """
         pma = self.fetch.article_by_pmid('38885471')
         
@@ -34,13 +33,15 @@ class TestAnnualReviewsDance(BaseDanceTest):
         url = the_annualreviews_round(pma, verify=False)
         assert url is not None
         assert 'annualreviews.org' in url
-        print(f"Test 1 - Article URL: {url}")
+        assert '/deliver/fulltext/phyto/' in url
+        assert 'annurev-phyto-021722-034823.pdf' in url
+        print(f"Test 1 - PDF URL: {url}")
 
     def test_annualreviews_round_url_construction_genomics(self):
         """Test 2: Annual Review of Genomics and Human Genetics article.
         
         PMID: 38724024 (Annu Rev Genomics Hum Genet)
-        Expected: Should construct valid Annual Reviews article URL
+        Expected: Should construct valid Annual Reviews PDF URL directly
         """
         pma = self.fetch.article_by_pmid('38724024')
         
@@ -48,17 +49,19 @@ class TestAnnualReviewsDance(BaseDanceTest):
         assert pma.doi == '10.1146/annurev-genom-121222-105345'
         print(f"Test 2 - Article info: {pma.journal}, DOI: {pma.doi}")
 
-        # Test without verification
+        # Test without verification  
         url = the_annualreviews_round(pma, verify=False)
         assert url is not None
         assert 'annualreviews.org' in url
-        print(f"Test 2 - Article URL: {url}")
+        assert '/deliver/fulltext/genom/' in url
+        assert 'annurev-genom-121222-105345.pdf' in url
+        print(f"Test 2 - PDF URL: {url}")
 
     def test_annualreviews_round_url_construction_marine_sci(self):
         """Test 3: Annual Review of Marine Science article.
         
         PMID: 38896540 (Ann Rev Mar Sci)
-        Expected: Should construct valid Annual Reviews article URL
+        Expected: Should construct valid Annual Reviews PDF URL directly
         """
         pma = self.fetch.article_by_pmid('38896540')
         
@@ -69,109 +72,41 @@ class TestAnnualReviewsDance(BaseDanceTest):
         # Test without verification
         url = the_annualreviews_round(pma, verify=False)
         assert url is not None
-        print(f"Test 3 - Article URL: {url}")
+        assert 'annualreviews.org' in url
+        assert '/deliver/fulltext/marine/' in url
+        assert 'annurev-marine-121422-015323.pdf' in url
+        print(f"Test 3 - PDF URL: {url}")
 
-    @patch('metapub.findit.dances.annualreviews.the_doi_2step')
-    @patch('requests.get')
-    def test_annualreviews_round_successful_access_with_pdf(self, mock_get, mock_doi_2step):
-        """Test 4: Successful access simulation with PDF link found.
+    @patch('metapub.findit.dances.annualreviews.verify_pdf_url')
+    def test_annualreviews_round_successful_access_with_verification(self, mock_verify):
+        """Test 4: Successful access with verification.
         
         PMID: 38885471 (Annu Rev Phytopathol)
-        Expected: Should return PDF URL when found on page
+        Expected: Should return PDF URL when verification passes
         """
-        # Mock DOI resolution to Annual Reviews article page
-        mock_doi_2step.return_value = 'https://www.annualreviews.org/doi/10.1146/annurev-phyto-021722-034823'
-        
-        # Mock successful article page response with PDF link
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.text = '''
-        <html>
-            <body>
-                <h1>Article Title</h1>
-                <p>This is an Annual Reviews article with PDF download available.</p>
-                <a href="/doi/pdf/10.1146/annurev-phyto-021722-034823" class="pdf-link">Download PDF</a>
-            </body>
-        </html>
-        '''
-        mock_response.content = mock_response.text.encode('utf-8')
-        mock_response.url = 'https://www.annualreviews.org/doi/10.1146/annurev-phyto-021722-034823'
-        mock_get.return_value = mock_response
+        # Mock successful PDF verification
+        mock_verify.return_value = True
 
         pma = self.fetch.article_by_pmid('38885471')
         
-        # Test with verification - should find PDF link
+        # Test with verification - should return PDF URL
         url = the_annualreviews_round(pma, verify=True)
         assert 'annualreviews.org' in url
-        assert '/pdf/' in url or '.pdf' in url  # Accept either PDF URL format
-        print(f"Test 4 - Found PDF link: {url}")
-
-    @patch('metapub.findit.dances.annualreviews.the_doi_2step')
-    @patch('requests.get')
-    def test_annualreviews_round_open_access_article(self, mock_get, mock_doi_2step):
-        """Test 5: Open access article without direct PDF link.
+        assert '/deliver/fulltext/phyto/' in url
+        assert '.pdf' in url
         
-        Expected: Should return article URL when accessible
+        # Verify that verify_pdf_url was called
+        mock_verify.assert_called_once()
+        print(f"Test 4 - Verified PDF URL: {url}")
+
+    @patch('metapub.findit.dances.annualreviews.verify_pdf_url')
+    def test_annualreviews_round_paywall_detection(self, mock_verify):
+        """Test 5: Paywall detection via verification.
+        
+        Expected: Should detect paywall when PDF verification fails
         """
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://www.annualreviews.org/doi/10.1146/annurev-phyto-021722-034823'
-        
-        # Mock successful article page response without specific PDF link
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.text = '''
-        <html>
-            <body>
-                <h1>Article Title</h1>
-                <p>This is an Annual Reviews article.</p>
-                <div class="article-content">
-                    <p>Full article content is available here.</p>
-                </div>
-            </body>
-        </html>
-        '''
-        mock_response.content = mock_response.text.encode('utf-8')
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38885471')
-        
-        # Test with verification - should return article URL
-        url = the_annualreviews_round(pma, verify=True)
-        assert url == 'https://www.annualreviews.org/doi/10.1146/annurev-phyto-021722-034823'
-        print(f"Test 5 - Article URL: {url}")
-
-    @patch('metapub.findit.dances.annualreviews.the_doi_2step')
-    @patch('requests.get')
-    def test_annualreviews_round_paywall_detection(self, mock_get, mock_doi_2step):
-        """Test 6: Paywall detection.
-        
-        Expected: Should detect paywall and raise AccessDenied
-        """
-        # Mock DOI resolution to Annual Reviews article page
-        mock_doi_2step.return_value = 'https://www.annualreviews.org/doi/10.1146/annurev-phyto-021722-034823'
-        
-        # Mock article page response with paywall indicators
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.text = '''
-        <html>
-            <body>
-                <h1>Article Title</h1>
-                <p>This content requires institutional access.</p>
-                <div class="paywall">
-                    <p>Please log in to access this article.</p>
-                    <a href="/login">Sign In</a>
-                    <a href="/subscribe">Subscribe</a>
-                    <p>Purchase this article for $49.95</p>
-                </div>
-            </body>
-        </html>
-        '''
-        mock_response.content = mock_response.text.encode('utf-8')
-        mock_get.return_value = mock_response
+        # Mock failed PDF verification (paywall)
+        mock_verify.return_value = False
 
         pma = self.fetch.article_by_pmid('38885471')
         
@@ -181,59 +116,11 @@ class TestAnnualReviewsDance(BaseDanceTest):
         
         assert 'PAYWALL' in str(exc_info.value)
         assert 'subscription' in str(exc_info.value)
-        print(f"Test 6 - Correctly detected paywall: {exc_info.value}")
-
-    @patch('metapub.findit.dances.annualreviews.the_doi_2step')
-    @patch('requests.get')
-    def test_annualreviews_round_access_forbidden(self, mock_get, mock_doi_2step):
-        """Test 7: Access forbidden (403 error).
-        
-        Expected: Should handle 403 errors properly
-        """
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://www.annualreviews.org/doi/10.1146/annurev-phyto-021722-034823'
-        
-        # Mock 403 response
-        mock_response = Mock()
-        mock_response.status_code = 403
-        mock_response.ok = False
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38885471')
-        
-        # Test with verification - should handle 403
-        with pytest.raises(AccessDenied) as exc_info:
-            the_annualreviews_round(pma, verify=True)
-        
-        assert 'DENIED' in str(exc_info.value)
-        assert '403' in str(exc_info.value) or 'forbidden' in str(exc_info.value).lower()
-        print(f"Test 7 - Correctly handled 403: {exc_info.value}")
-
-    @patch('metapub.findit.dances.annualreviews.the_doi_2step')
-    @patch('requests.get')
-    def test_annualreviews_round_network_error(self, mock_get, mock_doi_2step):
-        """Test 8: Network error handling.
-        
-        Expected: Should handle network errors gracefully
-        """
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://www.annualreviews.org/doi/10.1146/annurev-phyto-021722-034823'
-        
-        # Mock network error
-        mock_get.side_effect = requests.exceptions.ConnectionError("Network error")
-
-        pma = self.fetch.article_by_pmid('38885471')
-        
-        # Test - should handle network error
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_annualreviews_round(pma, verify=True)
-        
-        assert 'TXERROR' in str(exc_info.value)
-        assert 'Network error' in str(exc_info.value)
-        print(f"Test 8 - Correctly handled network error: {exc_info.value}")
+        mock_verify.assert_called_once()
+        print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
 
     def test_annualreviews_round_missing_doi(self):
-        """Test 9: Article without DOI.
+        """Test 6: Article without DOI.
         
         Expected: Should raise NoPDFLink for missing DOI
         """
@@ -247,10 +134,10 @@ class TestAnnualReviewsDance(BaseDanceTest):
         
         assert 'MISSING' in str(exc_info.value)
         assert 'DOI required' in str(exc_info.value)
-        print(f"Test 9 - Correctly handled missing DOI: {exc_info.value}")
+        print(f"Test 6 - Correctly handled missing DOI: {exc_info.value}")
 
     def test_annualreviews_round_invalid_doi(self):
-        """Test 10: Article with non-Annual Reviews DOI.
+        """Test 7: Article with non-Annual Reviews DOI.
         
         Expected: Should raise NoPDFLink for invalid DOI pattern
         """
@@ -264,33 +151,58 @@ class TestAnnualReviewsDance(BaseDanceTest):
         
         assert 'INVALID' in str(exc_info.value)
         assert '10.1146/' in str(exc_info.value)
-        print(f"Test 10 - Correctly handled invalid DOI: {exc_info.value}")
+        print(f"Test 7 - Correctly handled invalid DOI: {exc_info.value}")
 
-    @patch('metapub.findit.dances.annualreviews.the_doi_2step')
-    @patch('requests.get')
-    def test_annualreviews_round_article_not_found(self, mock_get, mock_doi_2step):
-        """Test 11: Article not found (404 error).
+    def test_annualreviews_round_malformed_doi_suffix(self):
+        """Test 8: DOI with malformed suffix (can't extract journal).
         
-        Expected: Should handle 404 errors properly
+        Expected: Should raise NoPDFLink for malformed DOI suffix
         """
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://www.annualreviews.org/doi/10.1146/annurev-phyto-021722-034823' 
+        # Create a mock PMA with malformed Annual Reviews DOI
+        pma = Mock()
+        pma.doi = '10.1146/malformed-doi-without-journal'
+        pma.journal = 'Annu Rev Phytopathol'
+        pma.volume = '62'
+        pma.issue = '1'
         
-        # Mock 404 response
-        mock_response = Mock()
-        mock_response.status_code = 404
-        mock_response.ok = False
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38885471')
-        
-        # Test with verification - should handle 404
         with pytest.raises(NoPDFLink) as exc_info:
-            the_annualreviews_round(pma, verify=True)
+            the_annualreviews_round(pma, verify=False)
         
-        assert 'TXERROR' in str(exc_info.value)
-        assert '404' in str(exc_info.value) or 'not found' in str(exc_info.value)
-        print(f"Test 11 - Correctly handled 404: {exc_info.value}")
+        assert 'INVALID' in str(exc_info.value)
+        assert 'Cannot extract journal abbreviation' in str(exc_info.value)
+        print(f"Test 8 - Correctly handled malformed DOI: {exc_info.value}")
+
+    def test_annualreviews_round_volume_issue_defaults(self):
+        """Test 9: Article without volume/issue (should use defaults).
+        
+        Expected: Should default to volume=1, issue=1 when missing
+        """
+        # Create a mock PMA without volume/issue
+        pma = Mock()
+        pma.doi = '10.1146/annurev-phyto-021722-034823'
+        pma.journal = 'Annu Rev Phytopathol'
+        pma.volume = None
+        pma.issue = None
+        
+        url = the_annualreviews_round(pma, verify=False)
+        assert '/deliver/fulltext/phyto/1/1/' in url
+        print(f"Test 9 - Used default volume/issue: {url}")
+
+    def test_annualreviews_round_with_volume_issue(self):
+        """Test 10: Article with volume/issue provided.
+        
+        Expected: Should use provided volume/issue in URL
+        """
+        # Create a mock PMA with volume/issue
+        pma = Mock()
+        pma.doi = '10.1146/annurev-phyto-021722-034823'
+        pma.journal = 'Annu Rev Phytopathol'
+        pma.volume = '62'
+        pma.issue = '1'
+        
+        url = the_annualreviews_round(pma, verify=False)
+        assert '/deliver/fulltext/phyto/62/1/' in url
+        print(f"Test 10 - Used provided volume/issue: {url}")
 
 
 def test_annualreviews_journal_recognition():
@@ -342,14 +254,13 @@ if __name__ == '__main__':
         ('test_annualreviews_round_url_construction_phytopathol', 'Annu Rev Phytopathol URL construction'),
         ('test_annualreviews_round_url_construction_genomics', 'Annu Rev Genomics Hum Genet URL construction'),
         ('test_annualreviews_round_url_construction_marine_sci', 'Ann Rev Mar Sci URL construction'),
-        ('test_annualreviews_round_successful_access_with_pdf', 'Successful access with PDF'),
-        ('test_annualreviews_round_open_access_article', 'Open access article handling'),
-        ('test_annualreviews_round_paywall_detection', 'Paywall detection'),
-        ('test_annualreviews_round_access_forbidden', 'Access forbidden handling'),
-        ('test_annualreviews_round_network_error', 'Network error handling'),
+        ('test_annualreviews_round_successful_access_with_verification', 'Successful access with verification'),
+        ('test_annualreviews_round_paywall_detection', 'Paywall detection via verification'),
         ('test_annualreviews_round_missing_doi', 'Missing DOI handling'),
         ('test_annualreviews_round_invalid_doi', 'Invalid DOI pattern handling'),
-        ('test_annualreviews_round_article_not_found', 'Article not found handling')
+        ('test_annualreviews_round_malformed_doi_suffix', 'Malformed DOI suffix handling'),
+        ('test_annualreviews_round_volume_issue_defaults', 'Volume/issue defaults'),
+        ('test_annualreviews_round_with_volume_issue', 'Provided volume/issue usage')
     ]
     
     for test_method, description in tests:

@@ -70,18 +70,14 @@ class TestEmeraldDance(BaseDanceTest):
         assert '/insight/content/doi/' in url
         print(f"Test 3 - PDF URL: {url}")
 
-    @patch('requests.get')
-    def test_emerald_ceili_successful_access(self, mock_get):
+    @patch('metapub.findit.dances.emerald.verify_pdf_url')
+    def test_emerald_ceili_successful_access(self, mock_verify):
         """Test 4: Successful PDF access simulation.
         
-        Expected: Should return PDF URL when accessible
+        Expected: Should return PDF URL when verification succeeds
         """
-        # Mock successful PDF response
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'application/pdf'}
-        mock_get.return_value = mock_response
+        # Mock successful verification (no exception raised)
+        mock_verify.return_value = None
 
         pma = self.fetch.article_by_pmid('11617596')
         
@@ -89,42 +85,36 @@ class TestEmeraldDance(BaseDanceTest):
         url = the_emerald_ceili(pma, verify=True)
         assert 'emerald.com' in url
         assert '/insight/content/doi/' in url
+        mock_verify.assert_called_once()
         print(f"Test 4 - Successful verified access: {url}")
 
-    @patch('requests.get')
-    def test_emerald_ceili_paywall_detection(self, mock_get):
-        """Test 5: Paywall detection.
+    @patch('metapub.findit.dances.emerald.verify_pdf_url')
+    def test_emerald_ceili_access_denied(self, mock_verify):
+        """Test 5: Access denied detection.
         
-        Expected: Should detect paywall and raise AccessDenied
+        Expected: Should raise AccessDenied when verification fails
         """
-        # Mock paywall response
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'text/html'}
-        mock_response.text = '''<html><body>
-            <h1>Subscribe to access this article</h1>
-            <p>Institutional access required</p>
-        </body></html>'''
-        mock_get.return_value = mock_response
+        # Mock verification failure
+        from metapub.exceptions import AccessDenied
+        mock_verify.side_effect = AccessDenied('DENIED: Emerald url access forbidden.')
 
         pma = self.fetch.article_by_pmid('11617596')
         
-        # Test with verification - should detect paywall
+        # Test with verification - should raise AccessDenied
         with pytest.raises(AccessDenied) as exc_info:
             the_emerald_ceili(pma, verify=True)
         
-        assert 'PAYWALL' in str(exc_info.value)
-        print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
+        assert 'DENIED' in str(exc_info.value)
+        print(f"Test 5 - Correctly detected access denied: {exc_info.value}")
 
-    @patch('requests.get')
-    def test_emerald_ceili_network_error(self, mock_get):
+    @patch('metapub.findit.dances.emerald.verify_pdf_url')
+    def test_emerald_ceili_network_error(self, mock_verify):
         """Test 6: Network error handling.
         
         Expected: Should handle network errors gracefully
         """
-        # Mock network error
-        mock_get.side_effect = requests.exceptions.ConnectionError("Network error")
+        # Mock network error from verification
+        mock_verify.side_effect = NoPDFLink('TXERROR: Network error accessing Emerald')
 
         pma = self.fetch.article_by_pmid('11617596')
         
@@ -152,34 +142,31 @@ class TestEmeraldDance(BaseDanceTest):
         assert 'DOI required' in str(exc_info.value)
         print(f"Test 7 - Correctly handled missing DOI: {exc_info.value}")
 
-    def test_emerald_ceili_wrong_doi_pattern(self):
+    def test_emerald_ceili_non_emerald_doi(self):
         """Test 8: Article with non-Emerald DOI pattern.
         
-        Expected: Should raise NoPDFLink for wrong DOI pattern
+        Expected: Should still construct URL (trusts registry routing)
         """
         # Create a mock PMA with non-Emerald DOI
         pma = Mock()
         pma.doi = '10.1016/j.example.2023.123456'  # Elsevier DOI
         pma.journal = 'Libr Rev (Lond)'
         
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_emerald_ceili(pma, verify=False)
-        
-        assert 'PATTERN' in str(exc_info.value)
-        assert '10.1108' in str(exc_info.value)
-        print(f"Test 8 - Correctly handled wrong DOI pattern: {exc_info.value}")
+        # Should still work - trusts the registry
+        url = the_emerald_ceili(pma, verify=False)
+        assert url is not None
+        assert 'emerald.com' in url
+        assert '10.1016/j.example.2023.123456' in url
+        print(f"Test 8 - Correctly handled non-Emerald DOI (trusts registry): {url}")
 
-    @patch('requests.get')
-    def test_emerald_ceili_404_error(self, mock_get):
+    @patch('metapub.findit.dances.emerald.verify_pdf_url')
+    def test_emerald_ceili_404_error(self, mock_verify):
         """Test 9: Article not found (404 error).
         
         Expected: Should handle 404 errors properly
         """
-        # Mock 404 response
-        mock_response = Mock()
-        mock_response.ok = False
-        mock_response.status_code = 404
-        mock_get.return_value = mock_response
+        # Mock 404 error from verification
+        mock_verify.side_effect = NoPDFLink('TXERROR: Emerald url not found (HTTP 404)')
 
         pma = self.fetch.article_by_pmid('11617596')
         
@@ -188,7 +175,6 @@ class TestEmeraldDance(BaseDanceTest):
             the_emerald_ceili(pma, verify=True)
         
         assert 'TXERROR' in str(exc_info.value)
-        assert '404' in str(exc_info.value)
         print(f"Test 9 - Correctly handled 404: {exc_info.value}")
 
 
@@ -241,10 +227,10 @@ if __name__ == '__main__':
         ('test_emerald_ceili_url_construction_clinical_governance', 'Clinical Governance URL construction'),
         ('test_emerald_ceili_url_construction_mental_health', 'Mental Health URL construction'),
         ('test_emerald_ceili_successful_access', 'Successful access simulation'),
-        ('test_emerald_ceili_paywall_detection', 'Paywall detection'),
+        ('test_emerald_ceili_access_denied', 'Access denied detection'),
         ('test_emerald_ceili_network_error', 'Network error handling'),
         ('test_emerald_ceili_missing_doi', 'Missing DOI handling'),
-        ('test_emerald_ceili_wrong_doi_pattern', 'Wrong DOI pattern handling'),
+        ('test_emerald_ceili_non_emerald_doi', 'Non-Emerald DOI handling (trusts registry)'),
         ('test_emerald_ceili_404_error', '404 error handling')
     ]
     

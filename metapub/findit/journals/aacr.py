@@ -25,6 +25,11 @@ aacr_journals = [
     'Clin Cancer Res',
     'Mol Canc Therapeut',
     'Mol Cancer Ther',
+    # Additional real AACR journals from aacrjournals.org
+    'Cancer Prev Res (Phila)',
+    'Cancer Immunol Res',
+    'Blood Cancer Discov',
+    'Mol Cancer Res',
 ]
 
 # Host mappings for VIP format journals
@@ -35,6 +40,11 @@ aacr_journal_params = {
     'Clin Cancer Res': {'host': 'clincancerres'},
     'Mol Canc Therapeut': {'host': 'mct'},
     'Mol Cancer Ther': {'host': 'mct'},
+    # Additional real AACR journals
+    'Cancer Prev Res (Phila)': {'host': 'cancerpreventionresearch'},
+    'Cancer Immunol Res': {'host': 'cancerimmunolres'},
+    'Blood Cancer Discov': {'host': 'bloodcancerdiscov'},
+    'Mol Cancer Res': {'host': 'mcr'},
 }
 
 # VIP URL template for AACR journals

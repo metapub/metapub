@@ -116,20 +116,20 @@ def standardize_journal_name(journal_name):
 def verify_pdf_url(pdfurl, publisher_name='', referrer=None):
     """
     Enhanced PDF URL verification with robust handling for various publisher quirks.
-    
+
     This function tries multiple strategies to verify PDF accessibility:
     1. Standard request with SSL verification
     2. Request without SSL verification (for publishers with SSL issues like SCIRP)
     3. Validates actual PDF content, not just headers
-    
+
     Args:
         pdfurl: PDF URL to verify
         publisher_name: Publisher name for error messages (default: '')
         referrer: Optional referrer URL for requests (default: None)
-        
+
     Returns:
         The verified URL if successful
-        
+
     Raises:
         NoPDFLink: If PDF cannot be accessed or verified
         AccessDenied: If access requires authentication (401) or is forbidden (403)
@@ -138,10 +138,10 @@ def verify_pdf_url(pdfurl, publisher_name='', referrer=None):
     import certifi
     from urllib3.exceptions import InsecureRequestWarning
     import warnings
-    
+
     # Suppress SSL warnings when we need to disable verification
     warnings.filterwarnings('ignore', category=InsecureRequestWarning)
-    
+
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept': 'application/pdf,*/*',
@@ -150,7 +150,7 @@ def verify_pdf_url(pdfurl, publisher_name='', referrer=None):
         'Connection': 'keep-alive',
         'Cache-Control': 'max-age=0',
     }
-    
+
     if referrer:
         headers['Referer'] = referrer
 
@@ -163,16 +163,16 @@ def verify_pdf_url(pdfurl, publisher_name='', referrer=None):
         # Strategy 2: No SSL verification (for publishers with SSL issues)
         {'verify': False, 'name': 'No SSL verification'},
     ]
-    
+
     last_status_code = 0
-    
+
     for strategy in strategies:
         try:
-            response = session.get(pdfurl, timeout=15, allow_redirects=True, 
+            response = session.get(pdfurl, timeout=15, allow_redirects=True,
                                  **{k: v for k, v in strategy.items() if k != 'name'})
-            
+
             last_status_code = response.status_code
-            
+
             # Handle specific status codes
             if response.status_code == 401:
                 raise AccessDenied('DENIED: %s url (%s) requires login.' % (publisher_name, pdfurl))
@@ -195,7 +195,7 @@ def verify_pdf_url(pdfurl, publisher_name='', referrer=None):
                     raise NoPDFLink('DENIED: %s url (%s) did not result in a PDF' % (publisher_name, pdfurl))
             elif response.status_code in OK_STATUS_CODES:
                 # Handle redirects - if we got redirected and it's a PDF, accept it
-                if (response.content.startswith(b'%PDF') or 
+                if (response.content.startswith(b'%PDF') or
                     'application/pdf' in response.headers.get('Content-Type', '') or
                     'pdf' in response.headers.get('content-type', '').lower()):
                     return pdfurl
@@ -204,14 +204,14 @@ def verify_pdf_url(pdfurl, publisher_name='', referrer=None):
             else:
                 # Other status codes - try next strategy
                 continue
-                    
+
         except (requests.exceptions.SSLError, ssl.SSLError):
             # SSL errors - continue to next strategy
             continue
         except requests.exceptions.RequestException:
             # Other request errors - continue to next strategy
             continue
-    
+
     # All strategies failed - raise appropriate error based on last status code
     if last_status_code == 403:
         raise AccessDenied('DENIED: %s url (%s) access forbidden.' % (publisher_name, pdfurl))
@@ -253,38 +253,19 @@ def the_doi_slide(pma, verify=True):
     jrnl = standardize_journal_name(pma.journal)
 
     # Registry-based template lookup
-    try:
-        registry = JournalRegistry()
-        publisher_info = registry.get_publisher_for_journal(jrnl)
-        registry.close()
+    registry = JournalRegistry()
+    publisher_info = registry.get_publisher_for_journal(jrnl)
+    registry.close()
 
-        if not publisher_info or not publisher_info.get('format_template'):
-            raise NoPDFLink(f'MISSING: No template found for journal {pma.journal} - attempted: registry lookup')
+    # Perform template substitution
+    template = publisher_info['format_template']
 
-        # Perform template substitution
-        template = publisher_info['format_template']
-
-        # Apply standardized DOI template format
-        url = template.format(doi=pma.doi)
-
-    except Exception as e:
-        if isinstance(e, NoPDFLink):
-            raise
-        else:
-            raise NoPDFLink(f'TXERROR: DOI slide failed for {pma.journal}: {e} - attempted: none')
+    # Apply standardized DOI template format
+    url = template.format(doi=pma.doi)
 
     # Verification logic
     if verify:
-        try:
-            verify_pdf_url(url)
-        except Exception as e:
-            # If verification fails, try to provide more specific error messages for paywalled content
-            if "403" in str(e) or "Access" in str(e):
-                raise AccessDenied(f'PAYWALL: {pma.journal} requires subscription - attempted: {url}')
-            else:
-                # Re-raise the original verification error
-                raise
-
+        verify_pdf_url(url)
     return url
 
 

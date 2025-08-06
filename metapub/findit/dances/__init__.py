@@ -19,7 +19,7 @@ from .generic import (
 from .aacr import the_aacr_jitterbug
 from .acm import the_acm_reel
 from .aha import the_aha_waltz
-from .aip import the_aip_allegro
+# AIP now uses the_doi_slide generic function
 from .allenpress import the_allenpress_advance
 from .annualreviews import the_annualreviews_round
 from .apa import the_apa_dab
@@ -30,10 +30,10 @@ from .biochemsoc import the_biochemsoc_saunter
 # BioOne now uses the_vip_shake generic function
 from .brill import the_brill_bridge
 from .cambridge import the_cambridge_foxtrot
-from .cancerbiomed import the_cancerbiomed_quickstep
+# CancerBiomed now uses the_vip_shake generic function
 from .degruyter import the_degruyter_danza
 from .dovepress import the_dovepress_peacock
-from .emerald import the_emerald_ceili
+# Emerald now uses the_doi_slide generic function
 from .oxford_academic import the_oxford_academic_foxtrot
 from .eureka import the_eureka_frug
 # Frontiers now uses the_doi_slide generic function
@@ -58,12 +58,12 @@ from .sciendo import the_sciendo_spiral
 from .scielo import the_scielo_chula
 from .sciencedirect import the_sciencedirect_disco
 from .scirp import the_scirp_timewarp
-from .spandidos import the_spandidos_lambada
-from .springer import the_springer_shag
-from .thieme import the_thieme_tap
+# Spandidos now uses the_doi_slide generic function
+# Springer now uses the_doi_slide generic function
+# Thieme now uses the_doi_slide generic function
 from .uchicago import the_uchicago_walk
 from .walshmedia import the_walshmedia_bora
-from .wiley import the_wiley_shuffle
+# Wiley now uses the_doi_slide generic function
 from .wjgnet import the_wjgnet_wave
 from .wolterskluwer import the_wolterskluwer_volta
 from .worldscientific import the_worldscientific_robot

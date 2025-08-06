@@ -11,8 +11,11 @@ https://www.thieme-connect.de/products/ejournals/pdf/{doi}.pdf
 DOI pattern: Thieme uses 10.1055 as their DOI prefix.
 """
 
-# DOI-based template for Thieme Connect
-# Based on investigation showing PDF URLs follow this pattern
+# DOI-based template for Thieme Connect (evidence-driven pattern)
+# Evidence from HTML samples shows http://www.thieme-connect.de pattern
+thieme_doi_format = 'http://www.thieme-connect.de/products/ejournals/pdf/{doi}.pdf'
+
+# Legacy template (now unused after consolidation)  
 thieme_template = 'https://www.thieme-connect.de/products/ejournals/pdf/{doi}.pdf'
 
 # Thieme journals from categorized analysis

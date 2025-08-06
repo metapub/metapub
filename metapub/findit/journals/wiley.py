@@ -1,4 +1,8 @@
-# Wiley DOI-based template
+# Wiley DOI-based template (evidence-driven pattern)
+# Evidence from wiley_example.txt shows /doi/epdf/{DOI} pattern
+wiley_doi_format = 'https://onlinelibrary.wiley.com/doi/epdf/{doi}'
+
+# Legacy template (now unused after consolidation)
 wiley_template = 'http://onlinelibrary.wiley.com/doi/{doi}/pdf'
 
 wiley_journals = [

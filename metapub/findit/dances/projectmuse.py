@@ -11,6 +11,11 @@ from ...exceptions import *
 from .generic import *
 
 
+# TODO get rid of dumb try-except jaw
+
+# needs rewrite and verification
+
+
 def the_projectmuse_syrtos(pma, verify=True):
     """Dance function for Project MUSE journals.
 
@@ -36,22 +41,22 @@ def the_projectmuse_syrtos(pma, verify=True):
 
     # Project MUSE uses DOI resolution to get to article pages
     # Direct PDF URLs are typically behind institutional access
-    
+
     if verify:
         # Resolve DOI to get Project MUSE article URL
         try:
             article_url = the_doi_2step(pma.doi)
         except NoPDFLink as e:
             raise NoPDFLink(f'TXERROR: DOI resolution failed for Project MUSE: {e}')
-        
+
         # Check if it resolved to Project MUSE
         if 'muse.jhu.edu' not in article_url:
             raise NoPDFLink(f'TXERROR: DOI did not resolve to Project MUSE - got: {article_url}')
-        
+
         # Try to access the article page
         try:
             response = unified_uri_get(article_url, timeout=10, allow_redirects=True)
-            
+
             if response.status_code == 200:
                 content_type = response.headers.get('content-type', '').lower()
                 if 'application/pdf' in content_type:
@@ -71,19 +76,20 @@ def the_projectmuse_syrtos(pma, verify=True):
                                     return pdf_url
                             except Exception:
                                 pass
-                        
+
                         raise NoPDFLink(f'TXERROR: Could not find PDF link on Project MUSE page - attempted: {article_url}')
             else:
                 raise NoPDFLink(f'TXERROR: Project MUSE returned status {response.status_code} - attempted: {article_url}')
-                
+
         except AccessDenied:
             raise  # Bubble up paywall detection
         except NoPDFLink:
             raise  # Bubble up specific errors
         except Exception as e:
             raise NoPDFLink(f'TXERROR: Network error accessing Project MUSE: {e} - attempted: {article_url}')
-    
+
     else:
+        # TODO: this should really come first. Also, this is a horrible if-then pattern
         # Without verification, try to construct likely PDF URL pattern
         try:
             article_url = the_doi_2step(pma.doi)

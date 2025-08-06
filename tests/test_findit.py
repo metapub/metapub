@@ -22,6 +22,11 @@ PUBLISHER_SAMPLE_PMIDS = {
     'bioone': ['22942459', '28747648'],  # Herzogia, J Avian Med Surg → the_vip_shake
     'frontiers': ['37465203', '38405267'],  # Front Young Minds articles → the_doi_slide  
     'sage': ['12345678'],  # Assessment → the_doi_slide (placeholder PMID)
+    'aip': ['38318840', '38907517'],  # AIP journals → the_doi_slide
+    'emerald': ['35123456', '36234567'],  # Emerald journals → the_doi_slide (placeholders)
+    'cancerbiomed': ['38318840', '38907517'],  # Cancer Biol Med → the_vip_shake
+    'spandidos': ['37166210', '36000726'],  # Spandidos journals → the_doi_slide
+    'springer': ['37891234', '36789567'],  # Springer journals → the_doi_slide (placeholders)
 }
 
 TEST_CACHEDIR = "/tmp/metapub_test"

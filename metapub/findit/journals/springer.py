@@ -1,6 +1,12 @@
 from __future__ import absolute_import, unicode_literals
 
 # Springer journals
+#
+# Evidence-driven rewrite showed consistent DOI-based pattern:
+# https://link.springer.com/content/pdf/{DOI}.pdf
+
+# DOI-based format template (for the_doi_slide)
+springer_doi_format = 'https://link.springer.com/content/pdf/{doi}.pdf'
 
 springer_journals = [
         '3 Biotech',

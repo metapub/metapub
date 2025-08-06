@@ -29,9 +29,9 @@ from metapub.findit.journals.karger import karger_journals
 from metapub.findit.journals.nature import nature_journals
 from metapub.findit.journals.scielo import scielo_journals
 from metapub.findit.journals.sciencedirect import sciencedirect_journals
-from metapub.findit.journals.springer import springer_journals
+from metapub.findit.journals.springer import springer_journals, springer_doi_format
 from metapub.findit.journals.spandidos import spandidos_journals
-from metapub.findit.journals.wiley import wiley_journals, wiley_template
+from metapub.findit.journals.wiley import wiley_journals, wiley_template, wiley_doi_format
 from metapub.findit.journals.wolterskluwer import wolterskluwer_journals
 from metapub.findit.journals.sage import sage_journals, sage_additional_journals, sage_format
 from metapub.findit.journals.informa import informa_journals
@@ -50,7 +50,7 @@ from metapub.findit.journals.ats import ats_journals, ats_template
 from metapub.findit.journals.plos import plos_journals, plos_template
 from metapub.findit.journals.mdpi import mdpi_journals, mdpi_template
 from metapub.findit.journals.eurekaselect import eurekaselect_journals, eurekaselect_template
-from metapub.findit.journals.thieme import thieme_journals, thieme_template
+from metapub.findit.journals.thieme import thieme_journals, thieme_template, thieme_doi_format
 from metapub.findit.journals.dovepress import dovepress_journals
 from metapub.findit.journals.apa import apa_journals
 from metapub.findit.journals.scirp import scirp_journals
@@ -59,7 +59,7 @@ from metapub.findit.journals.brill import brill_journals, brill_template
 from metapub.findit.journals.rsc import rsc_journals, rsc_template
 from metapub.findit.journals.ingentaconnect import ingentaconnect_journals, ingentaconnect_template
 from metapub.findit.journals.bioone import bioone_journals, bioone_template
-from metapub.findit.journals.emerald import emerald_journals
+from metapub.findit.journals.emerald import emerald_journals, emerald_format
 from metapub.findit.journals.acm import acm_journals
 from metapub.findit.journals.worldscientific import worldscientific_journals
 from metapub.findit.journals.uchicago import uchicago_journals
@@ -74,8 +74,9 @@ from metapub.findit.journals.wjgnet import wjgnet_journals
 from metapub.findit.journals.hilaris import hilaris_journals
 from metapub.findit.journals.projectmuse import projectmuse_journals
 from metapub.findit.journals.walshmedia import walshmedia_journals
-from metapub.findit.journals.aip import aip_journals
+from metapub.findit.journals.aip import aip_journals, aip_doi_format
 from metapub.findit.journals.frontiers import frontiers_journals, frontiers_format
+from metapub.findit.journals.cancerbiomed import cancerbiomed_journals, cancerbiomed_vip_format
 from metapub.findit.journals.sciendo import sciendo_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
@@ -91,7 +92,7 @@ from metapub.findit.journals.bmc import BMC_format
 from metapub.findit.journals.karger import karger_format
 from metapub.findit.journals.nature import nature_format
 from metapub.findit.journals.scielo import scielo_format
-from metapub.findit.journals.spandidos import spandidos_format
+from metapub.findit.journals.spandidos import spandidos_format, spandidos_doi_format
 from metapub.findit.journals.sage import sage_vip_template
 from metapub.findit.journals.informa import informa_template
 
@@ -172,20 +173,20 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'springer',
-        'dance_function': 'the_springer_shag',
-        'format_template': None,
+        'dance_function': 'the_doi_slide',
+        'format_template': springer_doi_format,
         'journals': springer_journals,
     },
     {
         'name': 'spandidos',
-        'dance_function': 'the_spandidos_lambada',
-        'format_template': spandidos_format,
+        'dance_function': 'the_doi_slide',
+        'format_template': spandidos_doi_format,
         'journals': spandidos_journals,
     },
     {
         'name': 'wiley',
-        'dance_function': 'the_wiley_shuffle',
-        'format_template': wiley_template,
+        'dance_function': 'the_doi_slide',
+        'format_template': wiley_doi_format,
         'journals': wiley_journals,
     },
     {
@@ -300,8 +301,8 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'Thieme Medical Publishers',
-        'dance_function': 'the_thieme_tap',
-        'format_template': thieme_template,
+        'dance_function': 'the_doi_slide',
+        'format_template': thieme_doi_format,
         'journals': thieme_journals,
     },
     {
@@ -398,8 +399,8 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'emerald',
-        'dance_function': 'the_emerald_ceili',
-        'format_template': None,
+        'dance_function': 'the_doi_slide',
+        'format_template': emerald_format,
         'journals': emerald_journals,
     },
     {
@@ -488,8 +489,8 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'aip',
-        'dance_function': 'the_aip_allegro',
-        'format_template': None,
+        'dance_function': 'the_doi_slide',
+        'format_template': aip_doi_format,
         'journals': aip_journals,
     },
     {
@@ -497,6 +498,12 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_doi_slide',
         'format_template': frontiers_format,
         'journals': frontiers_journals,
+    },
+    {
+        'name': 'cancerbiomed',
+        'dance_function': 'the_vip_shake',
+        'format_template': cancerbiomed_vip_format,
+        'journals': cancerbiomed_journals,
     },
     {
         'name': 'sciendo',

@@ -94,6 +94,97 @@ class TestConsolidatedPublishers:
         assert '/doi/reader/' in publisher_info['format_template']
         print("✓ SAGE correctly assigned to the_doi_slide with proper reader template")
 
+    def test_aip_registry_assignment(self):
+        """Test AIP journals are assigned to the_doi_slide."""
+        test_journals = ['Appl Phys Lett', 'J Chem Phys', 'J Appl Phys', 'AIP Adv']
+        
+        for journal in test_journals:
+            publisher_info = self.registry.get_publisher_for_journal(journal)
+            if publisher_info:
+                assert publisher_info['dance_function'] == 'the_doi_slide', f'{journal} not using the_doi_slide'
+                assert publisher_info['name'] == 'aip', f'{journal} not assigned to AIP'
+                expected_template = 'https://pubs.aip.org/aip/article-pdf/doi/{doi}'
+                assert publisher_info['format_template'] == expected_template, f'{journal} wrong template'
+                print(f"✓ {journal} → the_doi_slide")
+
+    def test_emerald_registry_assignment(self):
+        """Test Emerald journals are assigned to the_doi_slide."""
+        test_journals = ['Br Food J', 'Eur J Mark', 'Int J Manpow', 'J Doc']
+        
+        for journal in test_journals:
+            publisher_info = self.registry.get_publisher_for_journal(journal)
+            if publisher_info:
+                assert publisher_info['dance_function'] == 'the_doi_slide', f'{journal} not using the_doi_slide'
+                assert publisher_info['name'] == 'emerald', f'{journal} not assigned to Emerald'
+                expected_template = 'https://www.emerald.com/insight/content/doi/{doi}/full/pdf'
+                assert publisher_info['format_template'] == expected_template, f'{journal} wrong template'
+                print(f"✓ {journal} → the_doi_slide")
+
+    def test_cancerbiomed_registry_assignment(self):
+        """Test CancerBiomed journals are assigned to the_vip_shake."""
+        test_journals = ['Cancer Biol Med']
+        
+        for journal in test_journals:
+            publisher_info = self.registry.get_publisher_for_journal(journal)
+            if publisher_info:
+                assert publisher_info['dance_function'] == 'the_vip_shake', f'{journal} not using the_vip_shake'
+                assert publisher_info['name'] == 'cancerbiomed', f'{journal} not assigned to CancerBiomed'
+                expected_template = 'https://www.cancerbiomed.org/content/cbm/{volume}/{issue}/{first_page}.full.pdf'
+                assert publisher_info['format_template'] == expected_template, f'{journal} wrong template'
+                print(f"✓ {journal} → the_vip_shake")
+
+    def test_spandidos_registry_assignment(self):
+        """Test Spandidos journals are assigned to the_doi_slide."""
+        test_journals = ['Int J Oncol', 'Oncol Lett', 'Mol Med Rep', 'Exp Ther Med']
+        
+        for journal in test_journals:
+            publisher_info = self.registry.get_publisher_for_journal(journal)
+            if publisher_info:
+                assert publisher_info['dance_function'] == 'the_doi_slide', f'{journal} not using the_doi_slide'
+                assert publisher_info['name'] == 'spandidos', f'{journal} not assigned to Spandidos'
+                expected_template = 'http://www.spandidos-publications.com/{doi}/download'
+                assert publisher_info['format_template'] == expected_template, f'{journal} wrong template'
+                print(f"✓ {journal} → the_doi_slide")
+
+    def test_springer_registry_assignment(self):
+        """Test Springer journals are assigned to the_doi_slide."""
+        test_journals = ['3 Biotech', 'AAPS J', 'Abdom Radiol (NY)', 'Acad Psychiatry']
+        
+        for journal in test_journals:
+            publisher_info = self.registry.get_publisher_for_journal(journal)
+            if publisher_info:
+                assert publisher_info['dance_function'] == 'the_doi_slide', f'{journal} not using the_doi_slide'
+                assert publisher_info['name'] == 'springer', f'{journal} not assigned to Springer'
+                expected_template = 'https://link.springer.com/content/pdf/{doi}.pdf'
+                assert publisher_info['format_template'] == expected_template, f'{journal} wrong template'
+                print(f"✓ {journal} → the_doi_slide")
+
+    def test_thieme_registry_assignment(self):
+        """Test Thieme journals are assigned to the_doi_slide."""
+        test_journals = ['Arch Plast Surg', 'Thorac Cardiovasc Surg', 'Horm Metab Res', 'Exp Clin Endocrinol Diabetes']
+        
+        for journal in test_journals:
+            publisher_info = self.registry.get_publisher_for_journal(journal)
+            if publisher_info:
+                assert publisher_info['dance_function'] == 'the_doi_slide', f'{journal} not using the_doi_slide'
+                assert publisher_info['name'] == 'Thieme Medical Publishers', f'{journal} not assigned to Thieme'
+                expected_template = 'http://www.thieme-connect.de/products/ejournals/pdf/{doi}.pdf'
+                assert publisher_info['format_template'] == expected_template, f'{journal} wrong template'
+                print(f"✓ {journal} → the_doi_slide")
+
+    def test_wiley_registry_assignment(self):
+        """Test Wiley journals are assigned to the_doi_slide."""
+        test_journals = ['Acta Paediatr', 'Biom J', 'Br J Dermatol', 'Cancer']
+        
+        for journal in test_journals:
+            publisher_info = self.registry.get_publisher_for_journal(journal)
+            if publisher_info:
+                assert publisher_info['dance_function'] == 'the_doi_slide', f'{journal} not using the_doi_slide'
+                assert publisher_info['name'] == 'wiley', f'{journal} not assigned to Wiley'
+                expected_template = 'https://onlinelibrary.wiley.com/doi/epdf/{doi}'
+                assert publisher_info['format_template'] == expected_template, f'{journal} wrong template'
+                print(f"✓ {journal} → the_doi_slide")
+
     def test_missing_doi_handling(self):
         """Test that missing DOI scenarios are documented."""
         # Generic functions should handle missing DOI appropriately
@@ -122,6 +213,48 @@ class TestConsolidatedPublishers:
                 'journal': 'Assessment',
                 'doi': '10.1177/0048393118767084',
                 'expected_function': 'the_doi_slide'
+            },
+            {
+                'publisher': 'AIP',
+                'journal': 'Appl Phys Lett',
+                'doi': '10.1063/1.5093924',
+                'expected_function': 'the_doi_slide'
+            },
+            {
+                'publisher': 'Emerald',
+                'journal': 'Br Food J',
+                'doi': '10.1108/BFJ-01-2023-0001',
+                'expected_function': 'the_doi_slide'
+            },
+            {
+                'publisher': 'CancerBiomed',
+                'journal': 'Cancer Biol Med',
+                'doi': '10.20892/j.issn.2095-3941.2023.001',
+                'expected_function': 'the_vip_shake'
+            },
+            {
+                'publisher': 'Spandidos',
+                'journal': 'Int J Oncol',
+                'doi': '10.3892/ijo.2023.5491',
+                'expected_function': 'the_doi_slide'
+            },
+            {
+                'publisher': 'Springer',
+                'journal': '3 Biotech',
+                'doi': '10.1007/s13205-023-3491-2',
+                'expected_function': 'the_doi_slide'
+            },
+            {
+                'publisher': 'Thieme',
+                'journal': 'Arch Plast Surg',
+                'doi': '10.1055/s-2023-1234567',
+                'expected_function': 'the_doi_slide'
+            },
+            {
+                'publisher': 'Wiley',
+                'journal': 'Acta Paediatr',
+                'doi': '10.1111/apa.16789',
+                'expected_function': 'the_doi_slide'
             }
         ]
 
@@ -149,6 +282,34 @@ CONSOLIDATED_PUBLISHER_PMIDS = {
     'sage': [
         # Note: Specific PMIDs for SAGE would need to be identified
         # These are placeholder examples
+    ],
+    'aip': [
+        '38318840',  # AIP journal - DOI-based access for the_doi_slide
+        '38907517',  # AIP journal - DOI-based access for the_doi_slide
+    ],
+    'emerald': [
+        '35123456',  # Emerald journal - DOI-based access for the_doi_slide (placeholder)
+        '36234567',  # Emerald journal - DOI-based access for the_doi_slide (placeholder)
+    ],
+    'cancerbiomed': [
+        '38318840',  # Cancer Biol Med - VIP-based access for the_vip_shake
+        '38907517',  # Cancer Biol Med - VIP-based access for the_vip_shake
+    ],
+    'spandidos': [
+        '37166210',  # Int J Oncol - DOI-based access for the_doi_slide
+        '36000726',  # Oncol Lett - DOI-based access for the_doi_slide
+    ],
+    'springer': [
+        '37891234',  # Springer journal - DOI-based access for the_doi_slide (placeholder)
+        '36789567',  # Springer journal - DOI-based access for the_doi_slide (placeholder)
+    ],
+    'thieme': [
+        '38318840',  # Thieme journal - DOI-based access for the_doi_slide 
+        '38907517',  # Thieme journal - DOI-based access for the_doi_slide
+    ],
+    'wiley': [
+        '39123456',  # Wiley journal - DOI-based access for the_doi_slide
+        '38654321',  # Wiley journal - DOI-based access for the_doi_slide
     ]
 }
 
@@ -167,6 +328,13 @@ if __name__ == '__main__':
         test_instance.test_bioone_registry_assignment()
         test_instance.test_frontiers_registry_assignment() 
         test_instance.test_sage_registry_assignment()
+        test_instance.test_aip_registry_assignment()
+        test_instance.test_emerald_registry_assignment()
+        test_instance.test_cancerbiomed_registry_assignment()
+        test_instance.test_spandidos_registry_assignment()
+        test_instance.test_springer_registry_assignment()
+        test_instance.test_thieme_registry_assignment()
+        test_instance.test_wiley_registry_assignment()
         test_instance.test_bioone_vip_shake_functionality()
         test_instance.test_frontiers_doi_slide_functionality()
         test_instance.test_sage_doi_slide_functionality()

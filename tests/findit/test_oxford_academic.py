@@ -138,7 +138,7 @@ class TestOxfordAcademic(BaseDanceTest):
         
         error_msg = str(exc_info.value)
         assert 'MISSING' in error_msg
-        assert 'No Oxford Academic PDF URLs found in CrossRef metadata' in error_msg
+        assert 'No Oxford Academic PDF URLs in CrossRef metadata' in error_msg
         assert pma.doi in error_msg
         print(f"Test 3 - No PDF links error: {error_msg}")
 
@@ -158,19 +158,33 @@ class TestOxfordAcademic(BaseDanceTest):
         print(f"Test 4 - Missing DOI error: {error_msg}")
 
     def test_oxford_academic_wrong_doi_pattern(self):
-        """Test 5: DOI doesn't match Endocrine Society pattern.
+        """Test 5: DOI with no Oxford Academic PDF links in CrossRef.
         
-        Expected: Should raise MISSING error for non-10.1210 DOIs
+        Expected: Should raise MISSING error when no Oxford Academic PDFs found
         """
-        pma = self._create_mock_pma(doi='10.1016/j.example.2023.123456', journal='Example Journal')
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_oxford_academic_foxtrot(pma, verify=False)
-        
-        error_msg = str(exc_info.value)
-        assert 'MISSING' in error_msg
-        assert 'Not an Oxford Academic Endocrine Society DOI (expected 10.1210/)' in error_msg
-        print(f"Test 5 - Wrong DOI pattern error: {error_msg}")
+        # Mock CrossRefFetcher
+        mock_fetcher = Mock()
+        with patch('metapub.findit.dances.oxford_academic.CrossRefFetcher') as mock_fetcher_class:
+            mock_fetcher_class.return_value = mock_fetcher
+            
+            # Mock work with links but no Oxford Academic PDFs
+            mock_work = Mock()
+            mock_work.link = [{
+                'URL': 'https://example.com/article.pdf',
+                'content-type': 'application/pdf',
+                'content-version': 'vor'
+            }]
+            mock_fetcher.article_by_doi.return_value = mock_work
+            
+            pma = self._create_mock_pma(doi='10.1016/j.example.2023.123456', journal='Example Journal')
+            
+            with pytest.raises(NoPDFLink) as exc_info:
+                the_oxford_academic_foxtrot(pma, verify=False)
+            
+            error_msg = str(exc_info.value)
+            assert 'MISSING' in error_msg
+            assert 'No Oxford Academic PDF URLs in CrossRef metadata' in error_msg
+            print(f"Test 5 - No Oxford Academic PDFs: {error_msg}")
 
     @patch('metapub.findit.dances.oxford_academic.CrossRefFetcher')
     def test_oxford_academic_crossref_work_none(self, mock_fetcher_class):
@@ -189,8 +203,8 @@ class TestOxfordAcademic(BaseDanceTest):
             the_oxford_academic_foxtrot(pma, verify=False)
         
         error_msg = str(exc_info.value)
-        assert 'TXERROR' in error_msg
-        assert 'CrossRef API returned no work for DOI' in error_msg
+        assert 'MISSING' in error_msg
+        assert 'No CrossRef metadata or links' in error_msg
         assert pma.doi in error_msg
         print(f"Test 6 - No CrossRef work error: {error_msg}")
 
@@ -216,81 +230,33 @@ class TestOxfordAcademic(BaseDanceTest):
         
         error_msg = str(exc_info.value)
         assert 'MISSING' in error_msg
-        assert 'No links in CrossRef metadata for DOI' in error_msg
+        assert 'No CrossRef metadata or links' in error_msg
         assert pma.doi in error_msg
         print(f"Test 7 - No links in work error: {error_msg}")
 
     @patch('metapub.findit.dances.oxford_academic.CrossRefFetcher')
-    def test_oxford_academic_crossref_network_error(self, mock_fetcher_class):
-        """Test 8: Network error during CrossRef API call.
+    def test_oxford_academic_crossref_exception(self, mock_fetcher_class):
+        """Test 8: CrossRef API throws exception.
         
-        Expected: Should raise TXERROR for network-related exceptions
+        Expected: Exception should bubble up naturally (no complex error handling)
         """
-        # Mock CrossRefFetcher throwing network error
+        # Mock CrossRefFetcher throwing exception
         mock_fetcher = Mock()
         mock_fetcher_class.return_value = mock_fetcher
-        mock_fetcher.article_by_doi.side_effect = Exception("Connection timeout")
+        mock_fetcher.article_by_doi.side_effect = Exception("CrossRef API error")
         
         pma = self._create_mock_pma(pmid='35639911', doi='10.1210/jendso/bvab173', journal='J Endocr Soc')
         
-        with pytest.raises(NoPDFLink) as exc_info:
+        # Exception should bubble up naturally (follows DANCE_FUNCTION_GUIDELINES)
+        with pytest.raises(Exception) as exc_info:
             the_oxford_academic_foxtrot(pma, verify=False)
         
-        error_msg = str(exc_info.value)
-        assert 'TXERROR' in error_msg
-        assert 'CrossRef API network issue' in error_msg
-        assert 'Connection timeout' in error_msg
-        assert pma.doi in error_msg
-        print(f"Test 8 - Network error: {error_msg}")
-
-    @patch('metapub.findit.dances.oxford_academic.CrossRefFetcher')
-    def test_oxford_academic_crossref_404_error(self, mock_fetcher_class):
-        """Test 9: DOI not found in CrossRef.
-        
-        Expected: Should raise MISSING error for 404/not found errors
-        """
-        # Mock CrossRefFetcher throwing 404 error
-        mock_fetcher = Mock()
-        mock_fetcher_class.return_value = mock_fetcher
-        mock_fetcher.article_by_doi.side_effect = Exception("404 not found")
-        
-        pma = self._create_mock_pma(pmid='35639911', doi='10.1210/jendso/bvab173', journal='J Endocr Soc')
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_oxford_academic_foxtrot(pma, verify=False)
-        
-        error_msg = str(exc_info.value)
-        assert 'MISSING' in error_msg
-        assert 'DOI' in error_msg and 'not found in CrossRef database' in error_msg
-        assert pma.doi in error_msg
-        print(f"Test 9 - DOI not found error: {error_msg}")
-
-    @patch('metapub.findit.dances.oxford_academic.CrossRefFetcher')
-    def test_oxford_academic_crossref_rate_limit(self, mock_fetcher_class):
-        """Test 10: CrossRef API rate limiting.
-        
-        Expected: Should raise TXERROR for rate limit errors
-        """
-        # Mock CrossRefFetcher throwing rate limit error
-        mock_fetcher = Mock()
-        mock_fetcher_class.return_value = mock_fetcher
-        mock_fetcher.article_by_doi.side_effect = Exception("429 too many requests")
-        
-        pma = self._create_mock_pma(pmid='35639911', doi='10.1210/jendso/bvab173', journal='J Endocr Soc')
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_oxford_academic_foxtrot(pma, verify=False)
-        
-        error_msg = str(exc_info.value)
-        assert 'TXERROR' in error_msg
-        assert 'CrossRef API rate limited' in error_msg
-        assert '429 too many requests' in error_msg
-        assert pma.doi in error_msg
-        print(f"Test 10 - Rate limit error: {error_msg}")
+        assert "CrossRef API error" in str(exc_info.value)
+        print(f"Test 8 - CrossRef exception bubbles up: {exc_info.value}")
 
     @patch('metapub.findit.dances.oxford_academic.CrossRefFetcher')
     def test_oxford_academic_non_oxford_pdf_filtered(self, mock_fetcher_class):
-        """Test 11: PDF links from non-Oxford Academic domains are filtered out.
+        """Test 9: PDF links from non-Oxford Academic domains are filtered out.
         
         Expected: Should ignore PDF links that aren't from academic.oup.com
         """
@@ -322,8 +288,8 @@ class TestOxfordAcademic(BaseDanceTest):
         
         error_msg = str(exc_info.value)
         assert 'MISSING' in error_msg
-        assert 'No Oxford Academic PDF URLs found' in error_msg
-        print(f"Test 11 - Non-Oxford PDF filtered: {error_msg}")
+        assert 'No Oxford Academic PDF URLs in CrossRef metadata' in error_msg
+        print(f"Test 9 - Non-Oxford PDF filtered: {error_msg}")
 
 
 def test_oxford_academic_journal_recognition():
@@ -377,12 +343,10 @@ if __name__ == '__main__':
         ('test_oxford_academic_multiple_pdf_priority', 'PDF priority selection (VoR > AM)'),
         ('test_oxford_academic_no_pdf_links', 'No PDF links in CrossRef'),
         ('test_oxford_academic_missing_doi', 'Missing DOI error handling'),
-        ('test_oxford_academic_wrong_doi_pattern', 'Wrong DOI pattern error'),
+        ('test_oxford_academic_wrong_doi_pattern', 'No Oxford Academic PDFs found'),
         ('test_oxford_academic_crossref_work_none', 'CrossRef returns no work'),
         ('test_oxford_academic_crossref_work_no_links', 'CrossRef work has no links'),
-        ('test_oxford_academic_crossref_network_error', 'Network error handling'),
-        ('test_oxford_academic_crossref_404_error', 'DOI not found error'),
-        ('test_oxford_academic_crossref_rate_limit', 'Rate limit error handling'),
+        ('test_oxford_academic_crossref_exception', 'CrossRef exception bubbles up'),
         ('test_oxford_academic_non_oxford_pdf_filtered', 'Non-Oxford PDF filtering')
     ]
     

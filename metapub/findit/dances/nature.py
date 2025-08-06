@@ -8,8 +8,6 @@ from ..journals.nature import nature_format, nature_journals
 
 
 # Uses detect_paywall_from_html() for consistent paywall detection
-
-
 #Do not rewrite this script in any other way. It's working.
 
 
@@ -18,7 +16,7 @@ def the_nature_ballet(pma, verify=True):
 
     Primary approach: Direct DOI-based PDF URL construction
     https://www.nature.com/articles/{DOI_SUFFIX}.pdf
-    
+
     Fallback approach: Canonical PDF link pattern (for older articles)
     https://www.nature.com/articles/{LEGACY_ID}.pdf
 
@@ -30,13 +28,13 @@ def the_nature_ballet(pma, verify=True):
     :return: url (string)
     :raises: AccessDenied, NoPDFLink
     '''
-    
+
     # Primary approach: Modern DOI-based URL construction for 10.1038 DOIs
     if pma.doi and pma.doi.startswith('10.1038/'):
         # Extract DOI suffix (everything after "10.1038/")
         doi_suffix = pma.doi.split('10.1038/', 1)[1]
         pdf_url = f'https://www.nature.com/articles/{doi_suffix}.pdf'
-        
+
         if verify:
             try:
                 if verify_pdf_url(pdf_url):
@@ -49,7 +47,7 @@ def the_nature_ballet(pma, verify=True):
                 pass
         else:
             return pdf_url
-    
+
     # Fallback approach: Legacy volume/issue construction for older articles
     # This covers cases where articles have traditional journal formats
     if pma.volume and pma.issue and pma.first_page:
@@ -58,12 +56,12 @@ def the_nature_ballet(pma, verify=True):
         jrnl = standardize_journal_name(pma.journal)
         if jrnl in nature_journals:
             ja = nature_journals[jrnl]['ja']
-            
+
             # Some older articles follow {journal}{year}{page} pattern
             if pma.year and len(pma.first_page) <= 4:  # Reasonable page number
                 legacy_id = f"{ja}{str(pma.year)[-2:]}{pma.first_page}"
                 fallback_url = f"https://www.nature.com/articles/{legacy_id}.pdf"
-                
+
                 if verify:
                     try:
                         if verify_pdf_url(fallback_url):
@@ -73,7 +71,7 @@ def the_nature_ballet(pma, verify=True):
                         pass
                 else:
                     return fallback_url
-    
+
     # Generate error message based on what data we have
     if pma.doi and pma.doi.startswith('10.1038/'):
         # We had a Nature DOI but couldn't access the PDF

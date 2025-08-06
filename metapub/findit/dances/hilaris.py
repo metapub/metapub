@@ -39,16 +39,18 @@ def the_hilaris_hop(pma, verify=True):
     doi_parts = pma.doi.split('/')
     if len(doi_parts) < 2:
         raise NoPDFLink(f'INVALID: Cannot parse DOI for Hilaris Publisher - DOI: {pma.doi}')
-    
+
     article_id = doi_parts[-1]
-    
+
     # Primary URL pattern for Hilaris Publisher articles (open access pattern)
     pdf_url = f'https://www.hilarispublisher.com/open-access/{article_id}.pdf'
-    
+
+
+    # TODO: replace with verify_pdf_url call
     if verify:
         try:
             response = unified_uri_get(pdf_url, timeout=10, allow_redirects=True)
-            
+
             if response.status_code == 200:
                 content_type = response.headers.get('content-type', '').lower()
                 if 'application/pdf' in content_type:
@@ -65,15 +67,17 @@ def the_hilaris_hop(pma, verify=True):
                 pass
             else:
                 raise NoPDFLink(f'TXERROR: Hilaris Publisher returned status {response.status_code} - attempted: {pdf_url}')
-                
+
         except AccessDenied:
             raise  # Bubble up paywall detection
         except NoPDFLink:
             raise  # Bubble up specific errors
         except Exception:
             pass  # Network error, try fallback
-        
+
         # Fallback: Try DOI resolution
+        # USELESS, WON'T WORK.
+        # TODO: REMOVE
         try:
             resolved_url = the_doi_2step(pma.doi)
             if 'hilarispublisher.com' in resolved_url:
@@ -85,8 +89,8 @@ def the_hilaris_hop(pma, verify=True):
                         return resolved_url
         except Exception:
             pass  # Continue to error
-        
+
         raise NoPDFLink(f'TXERROR: Could not access Hilaris Publisher article - attempted: {pdf_url}')
-    
+
     # Return constructed PDF URL without verification
     return pdf_url

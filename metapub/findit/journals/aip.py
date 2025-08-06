@@ -38,3 +38,6 @@ aip_journals = (
 )
 
 aip_format = 'https://pubs.aip.org/aip/{journal}/{article}/{volume}/{article_id}/pdf'
+
+# DOI-based template for AIP (for the_doi_slide)
+aip_doi_format = 'https://pubs.aip.org/aip/article-pdf/doi/{doi}'

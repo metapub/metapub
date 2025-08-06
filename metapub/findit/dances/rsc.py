@@ -38,6 +38,7 @@ def the_rsc_reaction(pma, verify=True):
     except NoPDFLink as e:
         raise NoPDFLink(f'TXERROR: RSC DOI resolution failed: {e}')
 
+    # TODO: WHY IS THIS A CONDITIONAL  AUGHGHHG
     if not verify:
         # For RSC, try to construct PDF URL pattern without verification
         # RSC typically uses patterns like /en/content/articlelanding/... -> /en/content/articlepdf/...
@@ -58,7 +59,7 @@ def the_rsc_reaction(pma, verify=True):
                 journal_code = doi_suffix[:2] if len(doi_suffix) >= 2 else 'cc'
                 pdf_url = f'https://pubs.rsc.org/en/content/articlepdf/{year}/{journal_code}/{doi_suffix}'
                 return pdf_url
-        
+
         # Fallback: return article URL with warning that it's not a PDF
         # This preserves existing behavior while marking the issue
         return article_url  # WARNING: This is an HTML page, not a PDF
@@ -94,31 +95,31 @@ def the_rsc_reaction(pma, verify=True):
 
 def _extract_rsc_pdf_link(response, base_url):
     """Extract PDF download link from RSC article page.
-    
+
     Args:
         response: HTTP response object
         base_url: Base URL for resolving relative links
-        
+
     Returns:
         str: PDF URL if found, None otherwise
     """
     page_text = response.text.lower()
-    
+
     # Look for PDF indicators in the page
     if not ('pdf' in page_text and ('download' in page_text or 'full text' in page_text or 'view pdf' in page_text)):
         return None
-        
+
     # Parse HTML to find PDF links
     tree = html.fromstring(response.content)
-    
+
     # Look for PDF download links (RSC typically has direct PDF access)
     pdf_links = tree.xpath('//a[contains(@href, ".pdf") or contains(text(), "PDF") or contains(@class, "pdf") or contains(@title, "PDF")]/@href')
-    
+
     if pdf_links:
         pdf_url = pdf_links[0]
         # Convert relative URL to absolute if needed
         if pdf_url.startswith('/'):
             pdf_url = urljoin(base_url, pdf_url)
         return pdf_url
-        
+
     return None

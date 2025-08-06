@@ -4,8 +4,6 @@ from .generic import *
 from lxml import html
 from urllib.parse import urljoin
 
-
-
 #TODO: get rid of this horrible try-except jaw
 #
 # also i'm not convinced this really works
@@ -91,7 +89,7 @@ def the_brill_bridge(pma, verify=True):
                     # Try adding /pdf suffix to DOI-based URLs
                     pdf_url = article_url.rstrip('/') + '/pdf'
                     return pdf_url
-            
+
             # Fallback: return article URL with warning that it's not a PDF
             # This preserves existing behavior while marking the issue
             return article_url  # WARNING: This is an HTML page, not a PDF

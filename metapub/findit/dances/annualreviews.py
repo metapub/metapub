@@ -41,9 +41,6 @@ def the_annualreviews_round(pma, verify=True):
     pdf_url = f"https://www.annualreviews.org/deliver/fulltext/{journal_abbrev}/{volume}/{issue}/{doi_suffix}.pdf"
 
     if verify:
-        if verify_pdf_url(pdf_url):
-            return pdf_url
-        else:
-            raise AccessDenied(f'PAYWALL: Annual Reviews PDF requires subscription - attempted: {pdf_url}')
+        verify_pdf_url(pdf_url)
 
     return pdf_url

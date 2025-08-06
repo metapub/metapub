@@ -18,6 +18,10 @@ PUBLISHER_SAMPLE_PMIDS = {
     'springer': ['11636298', '11636296', '38463537', '34483379', '38911049'],
     'wiley': ['17373727'],  # Known Wiley PMID from existing tests
     'science': ['25575644', '25554792'],  # Science PMIDs from embargoed list
+    # Consolidated publishers (now use generic functions)
+    'bioone': ['22942459', '28747648'],  # Herzogia, J Avian Med Surg → the_vip_shake
+    'frontiers': ['37465203', '38405267'],  # Front Young Minds articles → the_doi_slide  
+    'sage': ['12345678'],  # Assessment → the_doi_slide (placeholder PMID)
 }
 
 TEST_CACHEDIR = "/tmp/metapub_test"

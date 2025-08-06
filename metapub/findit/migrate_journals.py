@@ -33,7 +33,7 @@ from metapub.findit.journals.springer import springer_journals
 from metapub.findit.journals.spandidos import spandidos_journals
 from metapub.findit.journals.wiley import wiley_journals, wiley_template
 from metapub.findit.journals.wolterskluwer import wolterskluwer_journals
-from metapub.findit.journals.sage import sage_journals, sage_additional_journals
+from metapub.findit.journals.sage import sage_journals, sage_additional_journals, sage_format
 from metapub.findit.journals.informa import informa_journals
 from metapub.findit.journals.cambridge import cambridge_journals
 from metapub.findit.journals.oxford import oxford_journal_params, oxford_vip_template
@@ -75,7 +75,7 @@ from metapub.findit.journals.hilaris import hilaris_journals
 from metapub.findit.journals.projectmuse import projectmuse_journals
 from metapub.findit.journals.walshmedia import walshmedia_journals
 from metapub.findit.journals.aip import aip_journals
-from metapub.findit.journals.frontiers import frontiers_journals
+from metapub.findit.journals.frontiers import frontiers_journals, frontiers_format
 from metapub.findit.journals.sciendo import sciendo_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
@@ -222,8 +222,8 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'SAGE Publications',
-        'dance_function': 'the_sage_hula',
-        'format_template': sage_vip_template,
+        'dance_function': 'the_doi_slide',
+        'format_template': sage_format,
         'journals': sage_journals + sage_additional_journals,
     },
     {
@@ -392,7 +392,7 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'bioone',
-        'dance_function': 'the_bioone_bounce',
+        'dance_function': 'the_vip_shake',
         'format_template': bioone_template,
         'journals': bioone_journals,
     },
@@ -494,8 +494,8 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'frontiers',
-        'dance_function': 'the_frontiers_square',
-        'format_template': None,
+        'dance_function': 'the_doi_slide',
+        'format_template': frontiers_format,
         'journals': frontiers_journals,
     },
     {

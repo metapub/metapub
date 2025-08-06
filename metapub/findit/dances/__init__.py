@@ -27,7 +27,7 @@ from .aps import the_aps_quickstep
 from .asm import the_asm_shimmy
 from .asme import the_asme_animal
 from .biochemsoc import the_biochemsoc_saunter
-from .bioone import the_bioone_bounce
+# BioOne now uses the_vip_shake generic function
 from .brill import the_brill_bridge
 from .cambridge import the_cambridge_foxtrot
 from .cancerbiomed import the_cancerbiomed_quickstep
@@ -36,7 +36,7 @@ from .dovepress import the_dovepress_peacock
 from .emerald import the_emerald_ceili
 from .oxford_academic import the_oxford_academic_foxtrot
 from .eureka import the_eureka_frug
-from .frontiers import the_frontiers_square
+# Frontiers now uses the_doi_slide generic function
 from .hilaris import the_hilaris_hop
 from .inderscience import the_inderscience_ula
 from .ingenta import the_ingenta_flux
@@ -53,7 +53,7 @@ from .nature import the_nature_ballet
 from .oatext import the_oatext_orbit
 from .projectmuse import the_projectmuse_syrtos
 from .rsc import the_rsc_reaction
-from .sage import the_sage_hula
+# SAGE now uses the_doi_slide generic function
 from .sciendo import the_sciendo_spiral
 from .scielo import the_scielo_chula
 from .sciencedirect import the_sciencedirect_disco

@@ -53,6 +53,9 @@ sage_journal_params = {
 # VIP URL template for SAGE journals
 sage_vip_template = 'http://{host}/content/{volume}/{issue}/{first_page}.full.pdf'
 
+# DOI-based template for SAGE reader interface (for the_doi_slide)
+sage_format = 'https://journals.sagepub.com/doi/reader/{doi}'
+
 # TODO: pull these into sage_journal_params by finding their host subdomain
 # Additional SAGE journals that may use the main DOI-based system
 # These would be added as more SAGE journals are identified

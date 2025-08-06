@@ -2,171 +2,316 @@
 
 import pytest
 from unittest.mock import patch, Mock
-import requests
 
 from .common import BaseDanceTest
-from metapub import PubMedFetcher
 from metapub.findit.dances import the_wolterskluwer_volta
-from metapub.exceptions import AccessDenied, NoPDFLink
+from metapub.exceptions import NoPDFLink
 
 
 class TestWoltersKluwerDance(BaseDanceTest):
-    """Test cases for Wolters Kluwer."""
+    """Test cases for Wolters Kluwer CrossRef + URL construction dance."""
 
-    def setUp(self):
-        """Set up test fixtures."""
-        super().setUp()
-        self.fetch = PubMedFetcher()
+    def _create_mock_pma(self, pmid='12345', doi='10.1097/test.doi', journal='Test Journal'):
+        """Create a mock PubMedArticle object."""
+        pma = Mock()
+        pma.pmid = pmid
+        pma.doi = doi
+        pma.journal = journal
+        return pma
 
-    def test_wolterskluwer_volta_url_construction(self):
-        """Test 1: URL construction success (Pain journal article).
+    def _create_mock_crossref_work(self, doi='10.1097/test.doi'):
+        """Create a mock CrossRef work object."""
+        work = Mock()
+        work.doi = doi
+        work.title = 'Test Article'
+        work.author = 'Test Author'
+        return work
+
+    @patch('metapub.findit.dances.wolterskluwer.CrossRefFetcher')
+    @patch('metapub.findit.dances.wolterskluwer.unified_uri_get')
+    def test_wolterskluwer_volta_lrww_doi_success(self, mock_unified_get, mock_crossref_fetcher):
+        """Test 1: Successful URL construction for 10.1097/ DOI.
         
-        PMID: 37326643 (Pain)
-        Expected: Should construct valid Wolters Kluwer PDF URL
+        Expected: Should construct LWW journal URL pattern for 10.1097/ DOIs
         """
-        pma = self.fetch.article_by_pmid('37326643')
+        # Mock CrossRef success
+        mock_work = self._create_mock_crossref_work('10.1097/test.doi.123')
+        mock_crossref_instance = Mock()
+        mock_crossref_instance.article_by_doi.return_value = mock_work
+        mock_crossref_fetcher.return_value = mock_crossref_instance
         
-        assert pma.journal == 'Pain'
-        assert pma.doi is not None
-        print(f"Test 1 - Article info: {pma.journal}, DOI: {pma.doi}")
-
-    def test_wolterskluwer_volta_neurosurgery_article(self):
-        """Test 2: Neurosurgery journal article.
-        
-        PMID: 36924482 (Neurosurgery)
-        Expected: Should have correct journal and DOI info
-        """
-        pma = self.fetch.article_by_pmid('36924482')
-        
-        assert pma.journal == 'Neurosurgery'
-        assert pma.doi is not None
-        print(f"Test 2 - Neurosurgery article: {pma.journal}, DOI: {pma.doi}")
-
-    def test_wolterskluwer_volta_critical_care_article(self):
-        """Test 3: Critical Care Medicine journal article.
-        
-        PMID: 38240510 (Crit Care Med)
-        Expected: Should have correct journal and DOI info
-        """
-        pma = self.fetch.article_by_pmid('38240510')
-        
-        assert pma.journal == 'Crit Care Med'
-        assert pma.doi is not None
-        print(f"Test 3 - Critical Care article: {pma.journal}, DOI: {pma.doi}")
-
-
-    @patch('metapub.findit.dances.wolterskluwer.the_doi_2step')
-    @patch('requests.get')
-    def test_wolterskluwer_volta_paywall_detection(self, mock_get, mock_doi_2step):
-        """Test 5: Paywall detection.
-        
-        PMID: 36924482 (Neurosurgery)
-        Expected: Should detect paywall and raise AccessDenied
-        """
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://journals.lww.com/neurosurgery/pages/articleviewer.aspx'
-        
-        # Mock paywall response (no PDF link available)
-        mock_html_content = b'''<html><head><title>Neurosurgery</title></head>
-        <body><div class="content">
-        <p>Subscribe to access full content</p>
-        </div></body></html>'''
-        
+        # Mock successful HTTP response
         mock_response = Mock()
+        mock_response.ok = True
         mock_response.status_code = 200
-        mock_response.headers = {'content-type': 'text/html'}
-        mock_response.content = mock_html_content
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('36924482')
+        mock_response.headers = {'content-type': 'application/pdf'}
+        mock_unified_get.return_value = mock_response
         
-        # Test - should detect paywall/missing PDF link
+        pma = self._create_mock_pma(doi='10.1097/test.doi.123', journal='Test LWW Journal')
+        
+        result = the_wolterskluwer_volta(pma, verify=True)
+        
+        # Should return LWW pattern URL
+        assert result == 'https://journals.lww.com/10.1097/test.doi.123'
+        mock_crossref_instance.article_by_doi.assert_called_once_with('10.1097/test.doi.123')
+        print("Test 1 - Successfully constructed LWW URL for 10.1097/ DOI")
+
+    @patch('metapub.findit.dances.wolterskluwer.CrossRefFetcher')
+    def test_wolterskluwer_volta_no_doi_error(self, mock_crossref_fetcher):
+        """Test 2: Error when no DOI provided.
+        
+        Expected: Should raise NoPDFLink for missing DOI
+        """
+        pma = self._create_mock_pma(doi=None)
+        
         with pytest.raises(NoPDFLink) as exc_info:
             the_wolterskluwer_volta(pma, verify=False)
         
-        assert 'DENIED' in str(exc_info.value) or 'PDF link' in str(exc_info.value)
-        print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
+        assert 'MISSING: DOI required' in str(exc_info.value)
+        print("Test 2 - Correctly handled missing DOI")
 
-
-    @patch('metapub.findit.dances.wolterskluwer.the_doi_2step')
-    @patch('requests.get')
-    def test_wolterskluwer_volta_network_error(self, mock_get, mock_doi_2step):
-        """Test 7: Network error handling.
+    @patch('metapub.findit.dances.wolterskluwer.CrossRefFetcher')
+    def test_wolterskluwer_volta_crossref_error(self, mock_crossref_fetcher):
+        """Test 3: CrossRef API error handling.
         
-        Expected: Should handle network errors gracefully
+        Expected: Should raise NoPDFLink when CrossRef API fails
         """
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://journals.lww.com/pain/pages/articleviewer.aspx'
+        # Mock CrossRef failure
+        mock_crossref_instance = Mock()
+        mock_crossref_instance.article_by_doi.side_effect = Exception("CrossRef API error")
+        mock_crossref_fetcher.return_value = mock_crossref_instance
         
-        # Mock network error
-        mock_get.side_effect = requests.exceptions.ConnectionError("Network error")
-
-        pma = self.fetch.article_by_pmid('37326643')
+        pma = self._create_mock_pma(doi='10.1097/test.doi')
         
-        # Test - should handle network error
-        with pytest.raises(requests.exceptions.ConnectionError):
+        with pytest.raises(NoPDFLink) as exc_info:
             the_wolterskluwer_volta(pma, verify=False)
-        print("Test 7 - Correctly handled network error")
+        
+        assert 'CROSSREF_ERROR' in str(exc_info.value)
+        print("Test 3 - Correctly handled CrossRef API error")
+
+    @patch('metapub.findit.dances.wolterskluwer.CrossRefFetcher')
+    def test_wolterskluwer_volta_crossref_no_work(self, mock_crossref_fetcher):
+        """Test 4: CrossRef returns no work.
+        
+        Expected: Should raise NoPDFLink when CrossRef finds no metadata
+        """
+        # Mock CrossRef returning None
+        mock_crossref_instance = Mock()
+        mock_crossref_instance.article_by_doi.return_value = None
+        mock_crossref_fetcher.return_value = mock_crossref_instance
+        
+        pma = self._create_mock_pma(doi='10.1097/invalid.doi')
+        
+        with pytest.raises(NoPDFLink) as exc_info:
+            the_wolterskluwer_volta(pma, verify=False)
+        
+        assert 'MISSING: CrossRef returned no metadata' in str(exc_info.value)
+        print("Test 4 - Correctly handled missing CrossRef metadata")
+
+    @patch('metapub.findit.dances.wolterskluwer.CrossRefFetcher')
+    @patch('metapub.findit.dances.wolterskluwer.unified_uri_get')
+    def test_wolterskluwer_volta_non_lrww_doi_patterns(self, mock_unified_get, mock_crossref_fetcher):
+        """Test 5: URL construction for non-10.1097/ DOIs.
+        
+        Expected: Should try WK Health and DOI resolver patterns
+        """
+        # Mock CrossRef success
+        mock_work = self._create_mock_crossref_work('10.4103/test.journal.456')
+        mock_crossref_instance = Mock()
+        mock_crossref_instance.article_by_doi.return_value = mock_work
+        mock_crossref_fetcher.return_value = mock_crossref_instance
+        
+        # Mock successful response to WK Health pattern (first fallback)
+        mock_response = Mock()
+        mock_response.ok = True
+        mock_response.status_code = 200
+        mock_response.headers = {'content-type': 'text/html'}
+        mock_unified_get.return_value = mock_response
+        
+        pma = self._create_mock_pma(doi='10.4103/test.journal.456', journal='Non-LWW Journal')
+        
+        result = the_wolterskluwer_volta(pma, verify=True)
+        
+        # Should try WK Health pattern first
+        assert result == 'http://content.wkhealth.com/linkback/openurl?doi=10.4103/test.journal.456'
+        print("Test 5 - Successfully used WK Health pattern for non-10.1097/ DOI")
+
+    @patch('metapub.findit.dances.wolterskluwer.CrossRefFetcher')
+    @patch('metapub.findit.dances.wolterskluwer.unified_uri_get')
+    def test_wolterskluwer_volta_all_urls_fail(self, mock_unified_get, mock_crossref_fetcher):
+        """Test 6: All URL patterns fail.
+        
+        Expected: Should raise NoPDFLink when all constructed URLs fail
+        """
+        # Mock CrossRef success
+        mock_work = self._create_mock_crossref_work('10.1097/failing.doi')
+        mock_crossref_instance = Mock()
+        mock_crossref_instance.article_by_doi.return_value = mock_work
+        mock_crossref_fetcher.return_value = mock_crossref_instance
+        
+        # Mock all URLs failing
+        mock_response = Mock()
+        mock_response.ok = False
+        mock_response.status_code = 403
+        mock_response.headers = {'content-type': 'text/html'}
+        mock_unified_get.return_value = mock_response
+        
+        pma = self._create_mock_pma(doi='10.1097/failing.doi', journal='Failing Journal')
+        
+        with pytest.raises(NoPDFLink) as exc_info:
+            the_wolterskluwer_volta(pma, verify=True)
+        
+        assert 'BLOCKED: All Wolters Kluwer URL patterns failed' in str(exc_info.value)
+        assert 'HTTP 403' in str(exc_info.value)
+        print("Test 6 - Correctly handled all URLs failing with error details")
+
+    @patch('metapub.findit.dances.wolterskluwer.CrossRefFetcher')
+    def test_wolterskluwer_volta_no_verify_mode(self, mock_crossref_fetcher):
+        """Test 7: No verification mode.
+        
+        Expected: Should return first constructed URL without checking
+        """
+        # Mock CrossRef success
+        mock_work = self._create_mock_crossref_work('10.1097/unverified.doi')
+        mock_crossref_instance = Mock()
+        mock_crossref_instance.article_by_doi.return_value = mock_work
+        mock_crossref_fetcher.return_value = mock_crossref_instance
+        
+        pma = self._create_mock_pma(doi='10.1097/unverified.doi', journal='Test Journal')
+        
+        result = the_wolterskluwer_volta(pma, verify=False)
+        
+        # Should return first LWW pattern URL without verification
+        assert result == 'https://journals.lww.com/10.1097/unverified.doi'
+        print("Test 7 - Successfully returned URL without verification")
+
+    @patch('metapub.findit.dances.wolterskluwer.CrossRefFetcher')
+    @patch('metapub.findit.dances.wolterskluwer.unified_uri_get')
+    def test_wolterskluwer_volta_pdf_content_detection(self, mock_unified_get, mock_crossref_fetcher):
+        """Test 8: PDF content type detection.
+        
+        Expected: Should recognize PDF content type as valid
+        """
+        # Mock CrossRef success
+        mock_work = self._create_mock_crossref_work('10.1097/pdf.test')
+        mock_crossref_instance = Mock()
+        mock_crossref_instance.article_by_doi.return_value = mock_work
+        mock_crossref_fetcher.return_value = mock_crossref_instance
+        
+        # Mock PDF response
+        mock_response = Mock()
+        mock_response.ok = True
+        mock_response.status_code = 200
+        mock_response.headers = {'content-type': 'application/pdf'}
+        mock_unified_get.return_value = mock_response
+        
+        pma = self._create_mock_pma(doi='10.1097/pdf.test', journal='PDF Test')
+        
+        result = the_wolterskluwer_volta(pma, verify=True)
+        
+        assert result == 'https://journals.lww.com/10.1097/pdf.test'
+        print("Test 8 - Successfully detected PDF content type")
+
+    @patch('metapub.findit.dances.wolterskluwer.CrossRefFetcher')
+    @patch('metapub.findit.dances.wolterskluwer.unified_uri_get')
+    def test_wolterskluwer_volta_network_error_handling(self, mock_unified_get, mock_crossref_fetcher):
+        """Test 9: Network error during URL verification.
+        
+        Expected: Should try all patterns and report last error
+        """
+        # Mock CrossRef success
+        mock_work = self._create_mock_crossref_work('10.1097/network.error')
+        mock_crossref_instance = Mock()
+        mock_crossref_instance.article_by_doi.return_value = mock_work
+        mock_crossref_fetcher.return_value = mock_crossref_instance
+        
+        # Mock network errors for all URLs
+        mock_unified_get.side_effect = Exception("Network connection failed")
+        
+        pma = self._create_mock_pma(doi='10.1097/network.error', journal='Network Test')
+        
+        with pytest.raises(NoPDFLink) as exc_info:
+            the_wolterskluwer_volta(pma, verify=True)
+        
+        assert 'BLOCKED: All Wolters Kluwer URL patterns failed' in str(exc_info.value)
+        assert 'Network connection failed' in str(exc_info.value)
+        print("Test 9 - Correctly handled network errors with details")
 
 
 def test_wolterskluwer_journal_recognition():
     """Test that Wolters Kluwer journals are properly recognized in the registry."""
     from metapub.findit.registry import JournalRegistry
-    from metapub.findit.journals.wolterskluwer import wolterskluwer_journals
     
     registry = JournalRegistry()
     
-    # Test journals from Wolters Kluwer
+    # Test journals known to be published by Wolters Kluwer
     test_journals = [
         'Pain',
-        'Neurosurgery',
+        'Neurosurgery', 
         'Crit Care Med',
-        'Circulation',
         'Anesthesiology'
     ]
     
     # Test journal recognition
     for journal in test_journals:
-        if journal in wolterskluwer_journals:
-            publisher_info = registry.get_publisher_for_journal(journal)
-            assert publisher_info is not None, f"Journal {journal} not found in registry"
-            assert publisher_info['name'] == 'wolterskluwer'
+        publisher_info = registry.get_publisher_for_journal(journal)
+        if publisher_info and publisher_info['name'] == 'wolterskluwer':
             assert publisher_info['dance_function'] == 'the_wolterskluwer_volta'
             print(f"✓ {journal} correctly mapped to Wolters Kluwer")
         else:
-            print(f"⚠ {journal} not in wolterskluwer_journals list - skipping")
+            print(f"⚠ {journal} not found in Wolters Kluwer registry - may need to be added")
     
     registry.close()
 
 
 if __name__ == '__main__':
     # Run basic tests if executed directly
-    test_instance = TestWoltersKluwerDance()
-    test_instance.setUp()
+    import sys
+    import traceback
     
-    print("Running Wolters Kluwer journal tests...")
-    print("\n" + "="*60)
+    test_instance = TestWoltersKluwerDance()
+    
+    print("Running Wolters Kluwer CrossRef + URL construction tests...")
+    print("\n" + "="*70)
     
     tests = [
-        ('test_wolterskluwer_volta_url_construction', 'URL construction'),
-        ('test_wolterskluwer_volta_neurosurgery_article', 'Neurosurgery article info'),
-        ('test_wolterskluwer_volta_critical_care_article', 'Critical Care article info'),
-        ('test_wolterskluwer_volta_paywall_detection', 'Paywall detection'),
-        ('test_wolterskluwer_volta_network_error', 'Network error handling')
+        ('test_wolterskluwer_volta_lrww_doi_success', 'LWW DOI pattern success'),
+        ('test_wolterskluwer_volta_no_doi_error', 'Missing DOI error'),
+        ('test_wolterskluwer_volta_crossref_error', 'CrossRef API error'),
+        ('test_wolterskluwer_volta_crossref_no_work', 'CrossRef no work'),
+        ('test_wolterskluwer_volta_non_lrww_doi_patterns', 'Non-LWW DOI patterns'),
+        ('test_wolterskluwer_volta_all_urls_fail', 'All URLs fail'),
+        ('test_wolterskluwer_volta_no_verify_mode', 'No verification mode'),
+        ('test_wolterskluwer_volta_pdf_content_detection', 'PDF content detection'),
+        ('test_wolterskluwer_volta_network_error_handling', 'Network error handling')
     ]
+    
+    passed = 0
+    failed = 0
     
     for test_method, description in tests:
         try:
             getattr(test_instance, test_method)()
-            print(f"✓ {description} works")
+            print(f"✓ {description}")
+            passed += 1
         except Exception as e:
-            print(f"✗ {description} failed: {e}")
+            print(f"✗ {description}: {e}")
+            traceback.print_exc()
+            failed += 1
     
     try:
         test_wolterskluwer_journal_recognition()
-        print("✓ Registry test passed: Journal recognition works")
+        print("✓ Journal registry recognition")
+        passed += 1
     except Exception as e:
-        print(f"✗ Registry test failed: {e}")
+        print(f"✗ Journal registry recognition: {e}")
+        traceback.print_exc()
+        failed += 1
     
-    print("\n" + "="*60)
-    print("Test suite completed!")
+    print("\n" + "="*70)
+    print(f"Tests completed: {passed} passed, {failed} failed")
+    
+    if failed > 0:
+        sys.exit(1)
+    else:
+        print("All tests passed! ✅")

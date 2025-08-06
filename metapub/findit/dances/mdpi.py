@@ -1,5 +1,6 @@
 """MDPI dance function using direct URL construction from DOI patterns."""
 
+from .generic import the_doi_2step, verify_pdf_url
 from ...exceptions import NoPDFLink
 
 
@@ -34,12 +35,10 @@ def the_mdpi_moonwalk(pma, verify=True):
     # This works because MDPI DOIs resolve to their article pages
     # and the PDF pattern is consistent
     try:
-        from .generic import the_doi_2step
         resolved_url = the_doi_2step(pma.doi)
         pdf_url = f"{resolved_url}/pdf"
         
         if verify:
-            from .generic import verify_pdf_url
             verify_pdf_url(pdf_url, 'MDPI')
             
         return pdf_url

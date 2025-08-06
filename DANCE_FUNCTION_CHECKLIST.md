@@ -177,16 +177,17 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ### ✅ Endocrine Society
 - **Dance Function:** `the_endo_mambo`
-- **HTML Samples:** `output/article_html/endo/`
-- **Status:** TODO
+- **HTML Samples:** `output/article_html/endo/` (**70% BLOCKED BY CLOUDFLARE**)
+- **Status:** 🚫 **BLOCKED** - Cloudflare protection prevents evidence-driven analysis  
 - **Priority:** Medium (endocrinology)
+- **Notes:** **CRITICAL ISSUE 2025-08-06**: 7 out of 10 samples blocked by Cloudflare protection from Oxford University Press (academic.oup.com). Only 3 analyzable samples representing 2 different publishers: ASEAN Federation of Endocrine Societies (2 samples with citation_pdf_url pattern) and Minerva Medica (1 sample, no PDF patterns). 'Endocrine Society' appears to be miscategorized samples from different endocrine journals rather than a single coherent publisher. Insufficient evidence for reliable pattern development. Similar situation to JAMA and University of Chicago Press - bot protection prevents analysis.
 
 ### ✅ Eurekaselect (Bentham Science Publishers)
 - **Dance Function:** `the_eureka_frug`
 - **HTML Samples:** `output/article_html/eurekaselect/` (previously corrupted - fixed by brotli package)
-- **Status:** COMPLETED ✅ (rewritten for better code organization)
+- **Status:** COMPLETED ✅ (ARCHITECTURAL LIMITATION: POST-only downloads)
 - **Priority:** Low
-- **Notes:** Rewritten from 96→45 lines, removed massive if/else duplication, eliminated generic exception handling, simplified logic flow. **Infrastructure Benefit**: Function benefits from Brotli compression fix. Correctly constructs PDF URLs but EurekaSelect servers return HTTP 500 errors for PDF generation - this is documented and handled appropriately. Much cleaner code organization now follows our established principles. **Tests**: Comprehensive test suite in `tests/findit/test_bentham.py` updated and verified working (6 tests pass).
+- **Notes:** **CRITICAL DISCOVERY 2025-08-06**: Direct PDF URLs (/article/{id}/pdf) return HTTP 500 errors. User testing revealed "Download Article" works via POST request requiring session data (CSRF tokens, encrypted params). **SOLUTION**: Function throws informative `POSTONLY` error with article page URL since FindIt promises GET-able URLs. Documents complete POST process in comments for future pdf_utils implementation. EurekaSelect requires architectural enhancement to support POST-based downloads with session management. See EUREKA_POST_DOWNLOAD_NOTES.md for future implementation details.
 
 ### ✅ Frontiers
 - **Dance Function:** `the_frontiers_square`
@@ -356,9 +357,10 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ### ✅ University of Chicago Press
 - **Dance Function:** `the_uchicago_walk`
-- **HTML Samples:** `output/article_html/uchicago/`
-- **Status:** TODO
+- **HTML Samples:** `output/article_html/uchicago/` (**BLOCKED BY CLOUDFLARE**)
+- **Status:** 🚫 **BLOCKED** - Cloudflare protection prevents analysis
 - **Priority:** Medium (academic publisher)
+- **Notes:** HTML sample analysis revealed 40% Cloudflare blocked, 40% redirect to Springer infrastructure, 0% native UChicago PDF patterns. Similar to JAMA situation - bot protection prevents evidence-driven development. Existing function uses generic DOI construction but has noted reliability issues in code comments.
 
 ### ✅ WalsMedia
 - **Dance Function:** `the_walshmedia_bora`
@@ -418,9 +420,9 @@ These publishers use generic functions that don't need individual rewrites:
 
 ## Progress Summary
 
-- **Completed:** 16/40+ publishers (SCIRP, Spandidos, SciELO, Cancer Biology & Medicine, AACR, Emerald, Cambridge, Dovepress, EurekaSelect, Nature, Springer, Wiley, ScienceDirect+Cell+Lancet, JCI, Annual Reviews)
+- **Completed:** 17/40+ publishers (SCIRP, Spandidos, SciELO, Cancer Biology & Medicine, AACR, Emerald, Cambridge, Dovepress, EurekaSelect, Nature, Springer, Wiley, ScienceDirect+Cell+Lancet, JCI, Annual Reviews, Thieme)
 - **High Priority Remaining:** BMC, Wolters Kluwer, AAAS, AHA
-- **Blocked by Protection:** JAMA (Cloudflare)
+- **Blocked by Protection:** JAMA (Cloudflare), University of Chicago Press (Cloudflare)
 - **Next Recommended:** Pick high-priority publishers with existing HTML samples
 
 ## HTML Sample Availability
@@ -455,6 +457,9 @@ These publishers use generic functions that don't need individual rewrites:
 - **2025-08-05:** **SECOND MAJOR CONSOLIDATION**: Lancet integrated into ScienceDirect - HTML evidence shows Lancet uses Elsevier's linking hub infrastructure. Old `the_lancet_tango` was broken (403 Forbidden errors). All 10 Lancet journals now use `the_sciencedirect_disco`. Removed broken Lancet function and files. Registry regenerated. ScienceDirect now handles Cell Press (15) + Lancet (10) + core ScienceDirect journals = comprehensive Elsevier coverage.
 - **2025-08-05:** **CRITICAL JCI FIX**: Fixed broken JCI function using HTML evidence. Pattern was `/pdf` but should be `/files/pdf` based on `citation_pdf_url` meta tags. Updated both PII and DOI fallback logic. Fixed test mocks to use proper targets. All 10 tests pass. This demonstrates the power of evidence-driven development - function appeared to work but had wrong URL pattern.
 - **2025-08-05:** **ANNUAL REVIEWS COMPLETED**: Rewritten using evidence-driven approach (96→49 lines) with **direct URL construction** following DANCE_FUNCTION_GUIDELINES. Pattern: `https://www.annualreviews.org/deliver/fulltext/{journal_abbrev}/{volume}/{issue}/{doi_suffix}.pdf` extracted from DOI pattern `annurev-{journal}-{date}-{id}`. Single method, no HTML parsing, under 50 lines, clear error messages. Test suite 11/11 passing. **CORRECTED**: Initial implementation violated guidelines with HTML parsing - proper version uses direct URL construction from DOI analysis.
+- **2025-08-05:** **THIEME COMPLETED**: Rewritten using evidence-driven approach (62→35 lines) with **perfect 10/10 pattern consistency**. Pattern: `http://www.thieme-connect.de/products/ejournals/pdf/{DOI}.pdf` where all Thieme DOIs use 10.1055/ prefix. Evidence shows both s-prefix (older) and a-prefix (newer) articles follow exact same pattern. Follows DANCE_FUNCTION_GUIDELINES: single method, direct URL construction, under 50 lines. Test suite 9/9 passing.
+- **2025-08-05:** **UNIVERSITY OF CHICAGO PRESS BLOCKED**: HTML sample analysis revealed 40% Cloudflare blocked, 40% redirect to Springer infrastructure, 0% native UChicago PDF patterns. Similar to JAMA situation - bot protection prevents evidence-driven development. Marked as BLOCKED status. Existing function uses generic DOI construction but has noted reliability issues.
+- **2025-08-06:** **EUREKASELECT ARCHITECTURAL DISCOVERY**: Direct PDF URLs (/article/{id}/pdf) return HTTP 500 errors. User testing revealed "Download Article" works via POST request requiring session data (CSRF tokens, encrypted params). Function rewritten to throw informative `POSTONLY` error with article page URL since FindIt promises GET-able URLs. Documents complete POST process in comments for future pdf_utils implementation. This maintains FindIt's architectural contract while providing clear guidance to users.
 
 ## Notes
 

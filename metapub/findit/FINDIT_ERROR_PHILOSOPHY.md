@@ -72,7 +72,40 @@ raise NoPDFLink('TXERROR: Connection timeout after 30s - attempted: https://publ
 raise NoPDFLink('TXERROR: Too many redirects (>10) - attempted: https://publisher.com/...')
 ```
 
-### 4. Code Errors - Let Them Bubble Up
+### 4. POSTONLY - Architectural Incompatibility
+
+**Purpose**: Used within NoPDFLink messages when a publisher requires POST requests or session-based downloads that are incompatible with FindIt's URL-based model.
+
+**When to use**:
+- Publisher requires POST requests with CSRF tokens
+- Session-based downloads with encrypted parameters
+- Complex authentication flows that can't be captured in a simple URL
+- Any download mechanism that cannot be represented as a GET-able URL
+
+**Message format**:
+```python
+raise NoPDFLink(f'POSTONLY: {publisher} PDF requires POST request with session data - cannot provide direct PDF URL. Visit article page and click "Download Article": {article_url}')
+```
+
+**Examples**:
+```python
+raise NoPDFLink('POSTONLY: EurekaSelect PDF requires POST request with session data - cannot provide direct PDF URL. Visit article page and click "Download Article": https://www.eurekaselect.com/article/12345')
+```
+
+**Key principles for POSTONLY errors**:
+- Always provide the article page URL where users can manually download
+- Explain the architectural limitation clearly
+- Give specific instructions (e.g., "click Download Article button")
+- Document the complete POST process in code comments for future enhancement
+- Consider creating detailed notes for potential pdf_utils implementation
+
+**Future considerations**:
+When multiple publishers require POST-based downloads, consider enhancing FindIt architecture to support:
+- `method="POST"` in results
+- Session management utilities in pdf_utils
+- Standardized POST download helpers
+
+### 5. Code Errors - Let Them Bubble Up
 
 **Purpose**: Programming errors, unexpected conditions, or bugs should NOT be caught and re-raised as NoPDFLink.
 
@@ -124,6 +157,9 @@ if result.reason:
     elif 'MISSING' in result.reason:
         # Data issue - may need different approach
         try_alternative_lookup(pmid, result.reason)
+    elif 'POSTONLY' in result.reason:
+        # Architectural limitation - provide manual download option
+        show_manual_download_option(pmid, result.reason)
 ```
 
 ## Code Quality and Refactoring Guidelines
@@ -306,6 +342,7 @@ Use consistent prefixes for error categorization:
 - `PAYWALL:` - Subscription/payment required (use with AccessDenied)
 - `DENIED:` - Access forbidden/login required (use with AccessDenied)  
 - `TXERROR:` - Technical/network/server error (use with NoPDFLink)
+- `POSTONLY:` - Architectural incompatibility (POST-required downloads) (use with NoPDFLink)
 
 ### 3. Verification Function Integration
 

@@ -129,8 +129,8 @@ PUBLISHER_CONFIGS = [
         'journals': BMC_journals,
     },
     {
-        'name': 'endo',
-        'dance_function': 'the_endo_mambo',
+        'name': 'Oxford Academic (Endocrine Society)',
+        'dance_function': 'the_oxford_academic_foxtrot',
         'format_template': None,
         'journals': endo_journals,
     },

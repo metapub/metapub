@@ -34,7 +34,7 @@ from .cancerbiomed import the_cancerbiomed_quickstep
 from .degruyter import the_degruyter_danza
 from .dovepress import the_dovepress_peacock
 from .emerald import the_emerald_ceili
-from .endo import the_endo_mambo
+from .oxford_academic import the_oxford_academic_foxtrot
 from .eureka import the_eureka_frug
 from .frontiers import the_frontiers_square
 from .hilaris import the_hilaris_hop

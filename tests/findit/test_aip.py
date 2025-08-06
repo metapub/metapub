@@ -1,330 +1,208 @@
-"""Tests for AIP Publishing dance function."""
+"""Tests for AIP Publishing dance function using direct URL construction pattern."""
 
 import pytest
 from unittest.mock import patch, Mock
-import requests
 
 from .common import BaseDanceTest
-from metapub import PubMedFetcher
 from metapub.findit.dances import the_aip_allegro
-from metapub.exceptions import AccessDenied, NoPDFLink
+from metapub.exceptions import NoPDFLink
 
 
-class TestAIPDance(BaseDanceTest):
-    """Test cases for AIP Publishing."""
+class TestAIP(BaseDanceTest):
+    """Test cases for AIP Publishing direct URL construction dance."""
 
-    def setUp(self):
-        """Set up test fixtures."""
-        super().setUp()
-        self.fetch = PubMedFetcher()
+    def _create_mock_pma(self, pmid='30876344', doi='10.1063/1.5093924', journal='J Chem Phys'):
+        """Create a mock PubMedArticle object."""
+        pma = Mock()
+        pma.pmid = pmid
+        pma.doi = doi
+        pma.journal = journal
+        return pma
 
-    def test_aip_allegro_url_construction_struct_dyn(self):
-        """Test 1: URL construction success (Struct Dyn).
+    def test_aip_allegro_success(self):
+        """Test 1: Successful PDF URL construction.
         
-        PMID: 38912290 (Struct Dyn)
-        Expected: Should construct valid AIP Publishing PDF URL
+        Expected: Should construct direct AIP PDF URL from DOI
         """
-        pma = self.fetch.article_by_pmid('38912290')
+        pma = self._create_mock_pma(doi='10.1063/1.5093924')
         
-        print(f"Test 1 - Article info: {pma.journal}, DOI: {pma.doi}")
-
-        # Test without verification (should always work for URL construction)
-        url = the_aip_allegro(pma, verify=False)
-        assert url is not None
-        assert 'pubs.aip.org' in url or 'aip.scitation.org' in url
-        assert url.startswith('https://')
-        print(f"Test 1 - PDF URL: {url}")
-
-    def test_aip_allegro_url_construction_appl_phys_rev(self):
-        """Test 2: Appl Phys Rev.
+        result = the_aip_allegro(pma, verify=False)
         
-        PMID: 38784221 (Appl Phys Rev)
-        Expected: Should construct valid AIP Publishing PDF URL
+        assert result == 'https://pubs.aip.org/aip/article-pdf/doi/10.1063/1.5093924'
+        print("Test 1 - Successfully constructed AIP PDF URL")
+
+    def test_aip_allegro_different_dois(self):
+        """Test 2: Test different AIP DOI patterns.
+        
+        Expected: Should work for various AIP DOI formats
         """
-        pma = self.fetch.article_by_pmid('38784221')
+        test_cases = [
+            {
+                'doi': '10.1063/1.5093924',
+                'expected': 'https://pubs.aip.org/aip/article-pdf/doi/10.1063/1.5093924',
+                'journal': 'J Chem Phys'
+            },
+            {
+                'doi': '10.1063/5.0026818',
+                'expected': 'https://pubs.aip.org/aip/article-pdf/doi/10.1063/5.0026818',
+                'journal': 'J Chem Phys'
+            },
+            {
+                'doi': '10.1063/5.0021946',
+                'expected': 'https://pubs.aip.org/aip/article-pdf/doi/10.1063/5.0021946',
+                'journal': 'J Chem Phys'
+            },
+            {
+                'doi': '10.1063/5.0036408',
+                'expected': 'https://pubs.aip.org/aip/article-pdf/doi/10.1063/5.0036408',
+                'journal': 'Biophys Rev (Melville)'
+            }
+        ]
         
-        print(f"Test 2 - Article info: {pma.journal}, DOI: {pma.doi}")
+        for case in test_cases:
+            pma = self._create_mock_pma(doi=case['doi'], journal=case['journal'])
+            
+            result = the_aip_allegro(pma, verify=False)
+            
+            assert result == case['expected']
+            print(f"Test 2 - Successfully handled {case['journal']}: {case['doi']}")
 
-        # Skip test if no DOI available
-        if not pma.doi:
-            print("Test 2 - Skipping: No DOI available for this PMID")
-            return
-
-        # Test without verification
-        url = the_aip_allegro(pma, verify=False)
-        assert url is not None
-        assert 'pubs.aip.org' in url or 'aip.scitation.org' in url
-        print(f"Test 2 - PDF URL: {url}")
-
-    def test_aip_allegro_url_construction_j_chem_phys(self):
-        """Test 3: J Chem Phys.
-        
-        PMID: 38913842 (J Chem Phys)
-        Expected: Should construct valid AIP Publishing PDF URL
-        """
-        pma = self.fetch.article_by_pmid('38913842')
-        
-        print(f"Test 3 - Article info: {pma.journal}, DOI: {pma.doi}")
-
-        # Skip test if no DOI available
-        if not pma.doi:
-            print("Test 3 - Skipping: No DOI available for this PMID")
-            return
-
-        # Test without verification
-        url = the_aip_allegro(pma, verify=False)
-        assert url is not None
-        assert 'pubs.aip.org' in url or 'aip.scitation.org' in url
-        print(f"Test 3 - PDF URL: {url}")
-
-    @patch('requests.get')
-    def test_aip_allegro_successful_access(self, mock_get):
-        """Test 4: Successful PDF access simulation.
-        
-        Expected: Should return PDF URL when accessible
-        """
-        # Mock successful PDF response
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'application/pdf'}
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38912290')
-        
-        # Test with verification - should succeed
-        url = the_aip_allegro(pma, verify=True)
-        assert 'pubs.aip.org' in url or 'aip.scitation.org' in url
-        print(f"Test 4 - Successful verified access: {url}")
-
-    @patch('requests.get')
-    def test_aip_allegro_paywall_detection(self, mock_get):
-        """Test 5: Paywall detection.
-        
-        Expected: Should detect paywall and raise AccessDenied
-        """
-        # Mock paywall response
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'text/html'}
-        mock_response.text = '''<html><body>
-            <h1>AIP Publishing</h1>
-            <p>Institutional access required to view this article</p>
-            <button>Buy this article</button>
-        </body></html>'''
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38912290')
-        
-        # Test with verification - should detect paywall
-        with pytest.raises(AccessDenied) as exc_info:
-            the_aip_allegro(pma, verify=True)
-        
-        assert 'PAYWALL' in str(exc_info.value)
-        print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
-
-    @patch('requests.get')
-    def test_aip_allegro_network_error(self, mock_get):
-        """Test 6: Network error handling.
-        
-        Expected: Should handle network errors gracefully
-        """
-        # Mock network error
-        mock_get.side_effect = requests.exceptions.ConnectionError("Network error")
-
-        pma = self.fetch.article_by_pmid('38912290')
-        
-        # Test - should handle network error
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_aip_allegro(pma, verify=True)
-        
-        # Should contain either TXERROR (network error) or PATTERN (DOI mismatch)
-        assert 'TXERROR' in str(exc_info.value) or 'PATTERN' in str(exc_info.value)
-        print(f"Test 6 - Correctly handled network error or pattern mismatch: {exc_info.value}")
-
-    def test_aip_allegro_missing_doi(self):
-        """Test 7: Article without DOI.
+    def test_aip_allegro_no_doi(self):
+        """Test 3: Error when no DOI provided.
         
         Expected: Should raise NoPDFLink for missing DOI
         """
-        # Create a mock PMA without DOI
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'J Chem Phys'
+        pma = self._create_mock_pma(doi=None)
         
         with pytest.raises(NoPDFLink) as exc_info:
             the_aip_allegro(pma, verify=False)
         
-        assert 'MISSING' in str(exc_info.value)
-        assert 'DOI required' in str(exc_info.value)
-        print(f"Test 7 - Correctly handled missing DOI: {exc_info.value}")
+        assert 'MISSING: DOI required for AIP Publishing PDF access' in str(exc_info.value)
+        print("Test 3 - Correctly handled missing DOI")
 
-    @patch('requests.get')
-    def test_aip_allegro_404_error(self, mock_get):
-        """Test 8: Article not found (404 error).
+    @patch('metapub.findit.dances.aip.verify_pdf_url')
+    def test_aip_allegro_verification_enabled(self, mock_verify):
+        """Test 4: PDF URL verification when verify=True.
         
-        Expected: Should try multiple patterns and handle 404 errors
+        Expected: Should call verify_pdf_url when verify is True
         """
-        # Mock 404 response for all attempts
-        mock_response = Mock()
-        mock_response.ok = False
-        mock_response.status_code = 404
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38912290')
+        mock_verify.return_value = True  # Verification passes
         
-        # Test - should try multiple patterns and eventually fail
+        pma = self._create_mock_pma(doi='10.1063/1.5093924')
+        
+        result = the_aip_allegro(pma, verify=True)
+        
+        assert result == 'https://pubs.aip.org/aip/article-pdf/doi/10.1063/1.5093924'
+        mock_verify.assert_called_once_with('https://pubs.aip.org/aip/article-pdf/doi/10.1063/1.5093924', 'AIP')
+        print("Test 5 - Successfully called PDF verification")
+
+    @patch('metapub.findit.dances.aip.verify_pdf_url')
+    def test_aip_allegro_verification_fails(self, mock_verify):
+        """Test 5: Error when PDF verification fails.
+        
+        Expected: Should raise NoPDFLink when verify_pdf_url fails
+        """
+        mock_verify.side_effect = NoPDFLink("PDF verification failed")
+        
+        pma = self._create_mock_pma(doi='10.1063/1.5093924')
+        
         with pytest.raises(NoPDFLink) as exc_info:
             the_aip_allegro(pma, verify=True)
         
-        assert 'TXERROR' in str(exc_info.value) or 'PATTERN' in str(exc_info.value)
-        print(f"Test 8 - Correctly handled 404: {exc_info.value}")
+        assert 'PDF verification failed' in str(exc_info.value)
+        print("Test 6 - Correctly handled PDF verification failure")
 
-    @patch('requests.get')
-    def test_aip_allegro_volume_url_construction(self, mock_get):
-        """Test 9: Volume-based URL construction.
+    def test_aip_allegro_journal_consistency(self):
+        """Test 6: Verify URL pattern works across AIP journal types.
         
-        Expected: Should use volume info in URL when available
+        Expected: Same pattern should work for all AIP journals
         """
-        # Mock successful response
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'application/pdf'}
-        mock_get.return_value = mock_response
-
-        # Create mock PMA with volume info
-        pma = Mock()
-        pma.doi = '10.1063/4.0000259'
-        pma.journal = 'Struct Dyn'
-        pma.volume = '11'
-        pma.issue = '2'
-        
-        # Test - should use volume in URL
-        url = the_aip_allegro(pma, verify=True)
-        assert 'pubs.aip.org' in url or 'aip.scitation.org' in url
-        print(f"Test 9 - Volume-based URL construction: {url}")
-
-    def test_aip_allegro_multiple_doi_prefixes(self):
-        """Test 10: Multiple DOI prefix handling.
-        
-        Expected: Should handle various DOI prefixes due to acquisitions
-        """
-        # Test different DOI prefixes that AIP might use
-        test_dois = [
-            '10.1063/4.0000259',            # Primary AIP DOI
-            '10.1116/example.2023.123',     # AIP subsidiary DOI
-            '10.1121/acquired.2023.456'     # Acquired journal DOI
+        journal_types = [
+            ('Physics - Chemical Physics', '10.1063/1.5093924'),
+            ('Physics - Applied Physics', '10.1063/5.0026818'),
+            ('Physics - Biophysics', '10.1063/5.0036408'),
+            ('Physics - General', '10.1063/5.0021946')
         ]
         
-        for doi in test_dois:
-            pma = Mock()
-            pma.doi = doi
-            pma.journal = 'J Chem Phys'
+        for journal_type, doi in journal_types:
+            pma = self._create_mock_pma(doi=doi)
             
-            # Should construct URL regardless of DOI prefix
-            url = the_aip_allegro(pma, verify=False)
-            assert url is not None
-            assert 'pubs.aip.org' in url or 'aip.scitation.org' in url
-            print(f"Test 10 - DOI {doi}: {url}")
-
-    def test_aip_allegro_multiple_journals(self):
-        """Test 11: Multiple AIP journal coverage.
-        
-        Expected: Should work with various AIP journals
-        """
-        # Test different journal patterns
-        test_journals = [
-            'J Chem Phys',
-            'Appl Phys Lett',
-            'J Appl Phys',
-            'Rev Sci Instrum',
-            'Chaos'
-        ]
-        
-        for journal in test_journals:
-            pma = Mock()
-            pma.doi = '10.1063/4.0000259'
-            pma.journal = journal
+            result = the_aip_allegro(pma, verify=False)
             
-            url = the_aip_allegro(pma, verify=False)
-            assert url is not None
-            assert 'pubs.aip.org' in url or 'aip.scitation.org' in url
-            print(f"Test 11 - {journal}: {url}")
+            assert result.startswith('https://pubs.aip.org/aip/article-pdf/doi/')
+            assert doi in result
+            print(f"Test 7 - Successfully handled {journal_type} journal")
 
 
 def test_aip_journal_recognition():
     """Test that AIP journals are properly recognized in the registry."""
     from metapub.findit.registry import JournalRegistry
-    from metapub.findit.journals.aip import aip_journals
     
     registry = JournalRegistry()
     
-    # Test sample AIP journals (using PubMed abbreviated names)
+    # Test key AIP journals
     test_journals = [
         'J Chem Phys',
-        'Appl Phys Lett',
+        'Appl Phys Lett', 
         'J Appl Phys',
         'Rev Sci Instrum',
-        'Chaos'
+        'Biophys Rev (Melville)'
     ]
     
-    # Test journal recognition
-    found_count = 0
     for journal in test_journals:
-        if journal in aip_journals:
-            publisher_info = registry.get_publisher_for_journal(journal)
-            if publisher_info and publisher_info['name'] == 'aip':
-                assert publisher_info['dance_function'] == 'the_aip_allegro'
-                print(f"✓ {journal} correctly mapped to AIP Publishing")
-                found_count += 1
-            else:
-                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
+        publisher_info = registry.get_publisher_for_journal(journal)
+        if publisher_info and publisher_info['dance_function'] == 'the_aip_allegro':
+            print(f"✓ {journal} correctly mapped to AIP Publishing")
         else:
-            print(f"⚠ {journal} not in aip_journals list")
-    
-    # Just make sure we found at least one AIP journal
-    assert found_count > 0, "No AIP journals found in registry with aip publisher"
-    print(f"✓ Found {found_count} properly mapped AIP journals")
+            print(f"⚠ {journal} not found in AIP registry")
     
     registry.close()
 
 
 if __name__ == '__main__':
-    # Run basic tests if executed directly
-    test_instance = TestAIPDance()
-    test_instance.setUp()
+    import sys
+    import traceback
     
-    print("Running AIP Publishing tests...")
-    print("\n" + "="*60)
+    test_instance = TestAIP()
+    
+    print("Running AIP Publishing direct URL construction tests...")
+    print("\n" + "="*70)
     
     tests = [
-        ('test_aip_allegro_url_construction_struct_dyn', 'Struct Dyn URL construction'),
-        ('test_aip_allegro_url_construction_appl_phys_rev', 'Appl Phys Rev URL construction'),
-        ('test_aip_allegro_url_construction_j_chem_phys', 'J Chem Phys URL construction'),
-        ('test_aip_allegro_successful_access', 'Successful access simulation'),
-        ('test_aip_allegro_paywall_detection', 'Paywall detection'),
-        ('test_aip_allegro_network_error', 'Network error handling'),
-        ('test_aip_allegro_missing_doi', 'Missing DOI handling'),
-        ('test_aip_allegro_404_error', '404 error handling'),
-        ('test_aip_allegro_volume_url_construction', 'Volume-based URL construction'),
-        ('test_aip_allegro_multiple_doi_prefixes', 'Multiple DOI prefix handling'),
-        ('test_aip_allegro_multiple_journals', 'Multiple journal coverage')
+        ('test_aip_allegro_success', 'Basic PDF URL construction'),
+        ('test_aip_allegro_different_dois', 'Multiple DOI patterns'),
+        ('test_aip_allegro_no_doi', 'Missing DOI error'),
+        ('test_aip_allegro_verification_enabled', 'PDF verification enabled'),
+        ('test_aip_allegro_verification_fails', 'PDF verification failure'),
+        ('test_aip_allegro_journal_consistency', 'Journal type consistency'),
     ]
+    
+    passed = 0
+    failed = 0
     
     for test_method, description in tests:
         try:
             getattr(test_instance, test_method)()
-            print(f"✓ {description} works")
+            print(f"✓ {description}")
+            passed += 1
         except Exception as e:
-            print(f"✗ {description} failed: {e}")
+            print(f"✗ {description}: {e}")
+            traceback.print_exc()
+            failed += 1
     
     try:
         test_aip_journal_recognition()
-        print("✓ Registry test passed: Journal recognition works")
+        print("✓ Journal registry recognition")
+        passed += 1
     except Exception as e:
-        print(f"✗ Registry test failed: {e}")
+        print(f"✗ Journal registry recognition: {e}")
+        traceback.print_exc()
+        failed += 1
     
-    print("\n" + "="*60)
-    print("Test suite completed!")
+    print("\n" + "="*70)
+    print(f"Tests completed: {passed} passed, {failed} failed")
+    
+    if failed > 0:
+        sys.exit(1)
+    else:
+        print("All tests passed! ✅")

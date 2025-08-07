@@ -4,21 +4,27 @@ American Chemical Society (ACS) journal patterns and mappings.
 ACS publishes chemistry and chemical engineering journals using DOI-based URLs.
 All ACS journals follow a consistent DOI-based PDF access pattern.
 
-URL Pattern: http://pubs.acs.org/doi/pdf/{DOI}
+URL Pattern: https://pubs.acs.org/doi/pdf/{DOI}
 Dance Function: the_doi_slide
+
+Evidence-based analysis from HTML samples (2025-08-07):
+- Consistent pattern across all samples: /doi/pdf/{DOI}?ref=article_openPDF
+- All DOIs use 10.1021/ prefix (ACS DOI prefix)
+- HTTPS enforced (HTTP redirects with 301)
+- Cloudflare protection may block verification but URL construction works
 """
 
 # Publisher metadata
 PUBLISHER_INFO = {
     'name': 'American Chemical Society',
     'dance_function': 'the_doi_slide',
-    'base_url': 'http://pubs.acs.org',
-    'url_pattern': 'http://pubs.acs.org/doi/pdf/{doi}',
+    'base_url': 'https://pubs.acs.org',
+    'format_template': 'https://pubs.acs.org/doi/pdf/{doi}',
     'identifier_type': 'doi'
 }
 
 # Template for ACS DOI-based URLs
-acs_template = 'http://pubs.acs.org/doi/pdf/{doi}'
+acs_template = 'https://pubs.acs.org/doi/pdf/{doi}'
 
 # American Chemical Society journals (extracted from misc_doi.py)
 acs_journals = [

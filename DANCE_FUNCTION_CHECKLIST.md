@@ -55,12 +55,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** High (cancer research)
 - **Notes:** Fixed registry by adding 4 missing real AACR journals (Cancer Prev Res, Cancer Immunol Res, Blood Cancer Discov, Mol Cancer Res). Existing dance function works perfectly with 4/4 success rate.
 
-### ❓ ACS (American Chemical Society)
-- **Dance Function:** `the_acs_*` (various functions)
+### ✅ ACS (American Chemical Society)
+- **Dance Function:** `the_doi_slide` (generic function)
 - **HTML Samples:** `output/article_html/acs/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (infrastructure fixed and optimized)
 - **Priority:** High (major chemistry publisher)
-- **Notes:** Major chemistry publisher with multiple journal types
+- **Notes:** **INFRASTRUCTURE FIX COMPLETED 2025-08-07**: Evidence-driven analysis revealed ACS already configured with `the_doi_slide` generic function but had two critical issues: (1) used `url_pattern` instead of `format_template` expected by the function, (2) used HTTP instead of HTTPS. Fixed both issues - updated to use `format_template: 'https://pubs.acs.org/doi/pdf/{doi}'` and enforced HTTPS. Pattern confirmed across 5 HTML samples showing consistent `/doi/pdf/{DOI}` structure with 10.1021/ DOI prefix. Comprehensive test suite (9 tests) validates registry integration, URL construction, HTTPS enforcement, and all evidence DOIs. All 98 ACS journals already mapped in registry. Function performs optimally with modern DOI-slide infrastructure - no custom dance function needed.
 
 ### ❓ ACM (Association for Computing Machinery)
 - **Dance Function:** `the_acm_reel`
@@ -527,12 +527,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ## Progress Summary
 
-- **Completed:** 28/50+ publishers (AAAS, SCIRP, SciELO, Cancer Biology & Medicine, AACR, Cambridge, Dovepress, EurekaSelect, Nature, Wiley, ScienceDirect+Cell+Lancet, JCI, Annual Reviews, Thieme, Oxford Academic/Endocrine Society, Biochemical Society, MDPI, BMC)
+- **Completed:** 29/50+ publishers (ACS, AAAS, SCIRP, SciELO, Cancer Biology & Medicine, AACR, Cambridge, Dovepress, EurekaSelect, Nature, Wiley, ScienceDirect+Cell+Lancet, JCI, Annual Reviews, Thieme, Oxford Academic/Endocrine Society, Biochemical Society, MDPI, BMC)
 - **Consolidated into Generic Functions:** 10 publishers (SAGE→doi_slide, AIP→doi_slide, BioOne→vip_shake, Frontiers→doi_slide, Emerald→doi_slide, CancerBiomed→vip_shake, Spandidos→doi_slide, Springer→doi_slide, Thieme→doi_slide, Wiley→doi_slide)
-- **High Priority Remaining:** ACS, AHA, BMJ, NEJM, Oxford, PLOS, PNAS
+- **High Priority Remaining:** AHA, BMJ, NEJM, Oxford, PLOS, PNAS
 - **Blocked by Protection:** JAMA (Cloudflare), Emerald (Cloudflare - now consolidated), Wolters Kluwer (Cloudflare + no direct PDF URLs), MDPI (bot protection), AIP (Cloudflare - now consolidated)
 - **New Publishers Identified:** ACS, AJPH, ATS, BMJ, BMJ Open Gastro, Dustri, Informa, Liebert, LWW, Microbiology Spectrum, NEJM, Oxford, PLOS, PNAS, Schattauer, Science (handled by AAAS), Taylor & Francis
-- **Next Recommended:** ACS (major chemistry publisher), BMJ (major medical), NEJM (top medical journal)
+- **Next Recommended:** BMJ (major medical), NEJM (top medical journal), PLOS (major open access)
 
 ## HTML Sample Availability
 
@@ -550,6 +550,7 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ## Recent Activity
 
+- **2025-08-07:** **ACS INFRASTRUCTURE FIX COMPLETED**: Fixed critical issues in American Chemical Society configuration - updated from `url_pattern` to `format_template` expected by `the_doi_slide` function, enforced HTTPS instead of HTTP (HTTP redirects with 301). Evidence-driven analysis of 5 HTML samples confirmed consistent `/doi/pdf/{DOI}` pattern with 10.1021/ prefix. Created comprehensive test suite (9 tests) validating registry integration, URL construction, and evidence DOIs. All 98 ACS journals already mapped in registry. ACS now operates optimally with modern DOI-slide infrastructure.
 - **2025-08-07:** **AAAS COMPLETED**: Updated AAAS status from TODO to COMPLETED ✅ - evidence-driven rewrite with authentication handling completed, comprehensive test suite with XML fixtures, and full compliance with DANCE_FUNCTION_GUIDELINES
 - **2025-08-07:** **MAJOR CHECKLIST UPDATE**: Added 17 new publishers discovered from HTML samples directory analysis: ACS, AJPH, ATS, BMJ, BMJ Open Gastro, Dustri, Informa, Liebert, LWW, Microbiology Spectrum, NEJM, Oxford, PLOS, PNAS, Schattauer, Science (handled by AAAS), Taylor & Francis. Updated HTML samples paths and corrected directory references. Total publishers tracked increased from ~40 to 50+.
 - **2025-01-08:** Completed SCIRP rewrite (95→44 lines, regex pattern)

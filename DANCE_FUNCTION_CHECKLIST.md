@@ -41,12 +41,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ## Core Publishers (Alphabetical)
 
-### ❓ AAAS (American Association for the Advancement of Science)
+### ✅ AAAS (American Association for the Advancement of Science)
 - **Dance Function:** `the_aaas_twist`
 - **HTML Samples:** `output/article_html/aaas/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (evidence-driven rewrite with authentication)
 - **Priority:** High (Science journal)
-- **Notes:** Science magazine publisher
+- **Notes:** **EVIDENCE-DRIVEN REWRITE COMPLETED**: Science magazine publisher with complex authentication handling. Rewritten from analysis of real HTML samples showing no citation_pdf_url meta tags and subscription requirements. Function handles modern science.org domains (updated from legacy sciencemag.org), PMID lookup → redirect approach, paywall detection, and optional AAAS_USERNAME/AAAS_PASSWORD authentication. Comprehensive test suite (11 tests) uses XML fixtures approach with real PMIDs, achieving zero network dependencies while maintaining authentic validation. Follows DANCE_FUNCTION_GUIDELINES with clear error messages, proper exception handling, and evidence-based patterns. Authentication supports subscription access when credentials provided.
 
 ### ✅ AACR (American Association for Cancer Research)  
 - **Dance Function:** `the_aacr_jitterbug`
@@ -54,6 +54,13 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Status:** COMPLETED ✅ (registry updated with missing journals)
 - **Priority:** High (cancer research)
 - **Notes:** Fixed registry by adding 4 missing real AACR journals (Cancer Prev Res, Cancer Immunol Res, Blood Cancer Discov, Mol Cancer Res). Existing dance function works perfectly with 4/4 success rate.
+
+### ❓ ACS (American Chemical Society)
+- **Dance Function:** `the_acs_*` (various functions)
+- **HTML Samples:** `output/article_html/acs/`
+- **Status:** TODO
+- **Priority:** High (major chemistry publisher)
+- **Notes:** Major chemistry publisher with multiple journal types
 
 ### ❓ ACM (Association for Computing Machinery)
 - **Dance Function:** `the_acm_reel`
@@ -63,9 +70,17 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ### ❓ AHA (American Heart Association)
 - **Dance Function:** `the_aha_waltz`
-- **HTML Samples:** No samples available
+- **HTML Samples:** `output/article_html/aha/`
 - **Status:** TODO
 - **Priority:** High (cardiovascular research)
+- **Notes:** HTML samples now available for analysis
+
+### ❓ AJPH (American Journal of Public Health)
+- **Dance Function:** Not assigned
+- **HTML Samples:** `output/article_html/ajph/`
+- **Status:** TODO
+- **Priority:** Medium (public health)
+- **Notes:** New publisher identified with HTML samples available
 
 ### 🚫 AIP (American Institute of Physics)
 - **Dance Function:** `the_aip_allegro`
@@ -95,9 +110,17 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ### ❓ APS (American Physical Society)
 - **Dance Function:** `the_aps_quickstep`
-- **HTML Samples:** `output/article_html/american_physiological_society/`
+- **HTML Samples:** `output/article_html/aps/`
 - **Status:** TODO
 - **Priority:** Medium (physics journals)
+- **Notes:** HTML samples directory corrected from american_physiological_society to aps
+
+### ❓ ATS (American Thoracic Society)
+- **Dance Function:** Not assigned
+- **HTML Samples:** `output/article_html/ats/`
+- **Status:** TODO
+- **Priority:** Medium (respiratory medicine)
+- **Notes:** New publisher identified with HTML samples available
 
 ### ❓ ASME (American Society of Mechanical Engineers)
 - **Dance Function:** `the_asme_animal`
@@ -107,9 +130,10 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ### ❓ ASM (American Society for Microbiology)
 - **Dance Function:** `the_asm_shimmy`
-- **HTML Samples:** `output/article_html/american_society_of_microbiology/`
+- **HTML Samples:** `output/article_html/asm/`
 - **Status:** TODO
 - **Priority:** Medium (microbiology)
+- **Notes:** HTML samples directory corrected from american_society_of_microbiology to asm
 
 ### ✅ Biochemical Society
 - **Dance Function:** `the_biochemsoc_saunter`
@@ -127,10 +151,24 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ### ✅ BMC (BioMed Central)
 - **Dance Function:** `the_bmc_boogie` (generic function)
-- **HTML Samples:** No samples available
+- **HTML Samples:** `output/article_html/bmc/`
 - **Status:** COMPLETED ✅ (already optimal)
 - **Priority:** High (open access biomedicine)
-- **Notes:** **ALREADY OPTIMAL**: BMC already uses a minimal generic function `the_bmc_boogie` (19 lines) specifically designed for its URL pattern. Extracts article ID from DOI (after slash) and constructs URL as `http://www.biomedcentral.com/content/pdf/{aid}.pdf`. Since BMC is fully open access, verification is optional. No consolidation needed - the existing generic function is already perfectly suited for BMC's requirements.
+- **Notes:** **ALREADY OPTIMAL**: BMC already uses a minimal generic function `the_bmc_boogie` (19 lines) specifically designed for its URL pattern. Extracts article ID from DOI (after slash) and constructs URL as `http://www.biomedcentral.com/content/pdf/{aid}.pdf`. Since BMC is fully open access, verification is optional. No consolidation needed - the existing generic function is already perfectly suited for BMC's requirements. HTML samples now available.
+
+### ❓ BMJ (British Medical Journal)
+- **Dance Function:** Not assigned
+- **HTML Samples:** `output/article_html/bmj/`
+- **Status:** TODO
+- **Priority:** High (major medical publisher)
+- **Notes:** Major medical journal publisher with HTML samples available
+
+### ❓ BMJ Open Gastroenterology  
+- **Dance Function:** Not assigned
+- **HTML Samples:** `output/article_html/bmj_open_gastro/`
+- **Status:** TODO
+- **Priority:** Low (specialized journal)
+- **Notes:** BMJ subsidiary journal with HTML samples
 
 ### ❓ Brill
 - **Dance Function:** `the_brill_bridge`
@@ -164,6 +202,13 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **HTML Samples:** `output/article_html/degruyter/`
 - **Status:** TODO
 - **Priority:** Medium (academic publisher)
+
+### ❓ Dustri (Dustri-Verlag)
+- **Dance Function:** Not assigned
+- **HTML Samples:** `output/article_html/dustri/`
+- **Status:** TODO
+- **Priority:** Low (German medical publisher)
+- **Notes:** New publisher identified with HTML samples available
 
 ### ✅ Dovepress
 - **Dance Function:** `the_dovepress_peacock`
@@ -205,6 +250,13 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **HTML Samples:** `output/article_html/hilaris/`
 - **Status:** TODO
 - **Priority:** Low (open access)
+
+### ❓ Informa (Taylor & Francis)
+- **Dance Function:** Not assigned
+- **HTML Samples:** `output/article_html/informa/`
+- **Status:** TODO  
+- **Priority:** Medium (Taylor & Francis subsidiary)
+- **Notes:** New publisher identified with HTML samples available
 
 ### ❓ Inderscience
 - **Dance Function:** `the_inderscience_ula`
@@ -256,6 +308,20 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Status:** TODO
 - **Priority:** Medium (medical publisher)
 
+### ❓ Liebert (Mary Ann Liebert Publishers)
+- **Dance Function:** Not assigned
+- **HTML Samples:** `output/article_html/liebert/`
+- **Status:** TODO
+- **Priority:** Medium (medical publisher)
+- **Notes:** Medical publisher with HTML samples available
+
+### ❓ LWW (Lippincott Williams & Wilkins)
+- **Dance Function:** Not assigned
+- **HTML Samples:** `output/article_html/lww/`
+- **Status:** TODO
+- **Priority:** Medium (medical publisher)
+- **Notes:** Major medical publisher with HTML samples available
+
 ### ✅ Lancet
 - **Dance Function:** ~~`the_lancet_tango`~~ **CONSOLIDATED** into ScienceDirect
 - **HTML Samples:** `output/article_html/lancet/`
@@ -276,11 +342,25 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** Medium (open access)
 - **Notes:** **EVIDENCE-DRIVEN REWRITE COMPLETED 2025-08-06**: Rewritten from legacy backup strategy to clean DOI resolution + /pdf pattern. Function correctly constructs PDF URLs using DOI resolution (10.3390/ prefix → mdpi.com URLs + /pdf suffix). Pattern discovered via WebFetch: DOI `10.3390/cardiogenetics11030017` → URL `https://www.mdpi.com/2035-8148/11/3/17/pdf`. **BLOCKED BY PROTECTION**: HTML samples show "Access Denied" and PDF URLs return 403 Forbidden, indicating MDPI has bot protection similar to Cloudflare. Function works correctly for URL construction but verification fails due to access restrictions. Comprehensive test suite (7 tests) validates all scenarios with proper mocking. This demonstrates correct pattern implementation despite publisher protection.
 
+### ❓ Microbiology Spectrum
+- **Dance Function:** Not assigned
+- **HTML Samples:** `output/article_html/microbiol_spectr/`
+- **Status:** TODO
+- **Priority:** Medium (ASM journal)
+- **Notes:** American Society for Microbiology journal with HTML samples available
+
 ### ❓ NAJMS
 - **Dance Function:** `the_najms_mazurka`
 - **HTML Samples:** No samples available
 - **Status:** TODO
 - **Priority:** Low
+
+### ❓ NEJM (New England Journal of Medicine)
+- **Dance Function:** Not assigned
+- **HTML Samples:** `output/article_html/nejm/`
+- **Status:** TODO
+- **Priority:** High (top medical journal)
+- **Notes:** Premier medical journal with HTML samples available
 
 ### ✅ Nature Publishing Group
 - **Dance Function:** `the_nature_ballet`
@@ -294,6 +374,27 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **HTML Samples:** `output/article_html/oatext/`
 - **Status:** TODO
 - **Priority:** Low (open access)
+
+### ❓ Oxford University Press
+- **Dance Function:** Not assigned  
+- **HTML Samples:** `output/article_html/oxford/`
+- **Status:** TODO
+- **Priority:** High (major academic publisher)
+- **Notes:** Major academic publisher with HTML samples (distinct from Oxford Academic/Endocrine)
+
+### ❓ PLOS (Public Library of Science)
+- **Dance Function:** Not assigned
+- **HTML Samples:** `output/article_html/plos/`
+- **Status:** TODO
+- **Priority:** High (major open access publisher)
+- **Notes:** Major open access publisher with HTML samples available
+
+### ❓ PNAS (Proceedings of the National Academy of Sciences)
+- **Dance Function:** Not assigned
+- **HTML Samples:** `output/article_html/pnas/`
+- **Status:** TODO
+- **Priority:** High (prestigious journal)
+- **Notes:** Prestigious journal with HTML samples available
 
 ### ❓ Project MUSE
 - **Dance Function:** `the_projectmuse_syrtos`
@@ -313,6 +414,20 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Status:** COMPLETED ✅ (consolidated into generic function)
 - **Priority:** Medium (social sciences)
 - **Notes:** **ELIMINATED MIDDLEMAN 2025-08-06**: Evidence showed SAGE uses consistent `/doi/reader/{DOI}` pattern for PDF/EPUB access across all journals with 10.1177/ DOI prefix. Since the function used simple direct URL construction (`https://journals.sagepub.com/doi/reader/{DOI}`), eliminated the middleman dance function entirely. **Registry updated**: SAGE journals now directly assigned to `the_doi_slide` generic function with format template `https://journals.sagepub.com/doi/reader/{doi}`. **Files removed**: `metapub/findit/dances/sage.py`, `tests/findit/test_sage.py`. This reduces codebase complexity while maintaining identical functionality - `the_doi_slide` handles the reader URL construction pattern perfectly.
+
+### ❓ Schattauer
+- **Dance Function:** Not assigned
+- **HTML Samples:** `output/article_html/schattauer/`
+- **Status:** TODO
+- **Priority:** Low (German medical publisher)
+- **Notes:** German medical publisher with HTML samples available
+
+### ❓ Science (duplicate entry - see AAAS)
+- **Dance Function:** See AAAS `the_aaas_twist`
+- **HTML Samples:** `output/article_html/science/`
+- **Status:** ✅ HANDLED BY AAAS
+- **Priority:** High
+- **Notes:** Science articles handled by AAAS dance function
 
 ### ✅ SciELO
 - **Dance Function:** `the_scielo_chula`
@@ -382,6 +497,13 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** High (major publisher)
 - **Notes:** **ELIMINATED MIDDLEMAN 2025-08-06**: Evidence-driven rewrite showed consistent DOI-based pattern `https://onlinelibrary.wiley.com/doi/epdf/{DOI}` across all Wiley journals. Since the function used simple direct URL construction from DOI (30 lines), eliminated the middleman dance function entirely. **Registry updated**: Wiley journals now directly assigned to `the_doi_slide` generic function with format template `https://onlinelibrary.wiley.com/doi/epdf/{doi}`. **Files removed**: `metapub/findit/dances/wiley.py`, `tests/findit/test_wiley.py`. This reduces codebase complexity while maintaining identical functionality - supports all DOI patterns (10.1002, 10.1111, 10.1155 Hindawi).
 
+### ❓ Taylor & Francis (Informa subsidiary)
+- **Dance Function:** Not assigned
+- **HTML Samples:** `output/article_html/taylor_francis/`
+- **Status:** TODO
+- **Priority:** Medium (major publisher)
+- **Notes:** Major academic publisher with HTML samples available
+
 ### ❓ WJGNet
 - **Dance Function:** `the_wjgnet_wave`
 - **HTML Samples:** `output/article_html/wjgnet/`
@@ -405,28 +527,31 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ## Progress Summary
 
-- **Completed:** 27/40+ publishers (SCIRP, SciELO, Cancer Biology & Medicine, AACR, Cambridge, Dovepress, EurekaSelect, Nature, Wiley, ScienceDirect+Cell+Lancet, JCI, Annual Reviews, Thieme, Oxford Academic/Endocrine Society, Biochemical Society, MDPI, BMC)
+- **Completed:** 28/50+ publishers (AAAS, SCIRP, SciELO, Cancer Biology & Medicine, AACR, Cambridge, Dovepress, EurekaSelect, Nature, Wiley, ScienceDirect+Cell+Lancet, JCI, Annual Reviews, Thieme, Oxford Academic/Endocrine Society, Biochemical Society, MDPI, BMC)
 - **Consolidated into Generic Functions:** 10 publishers (SAGE→doi_slide, AIP→doi_slide, BioOne→vip_shake, Frontiers→doi_slide, Emerald→doi_slide, CancerBiomed→vip_shake, Spandidos→doi_slide, Springer→doi_slide, Thieme→doi_slide, Wiley→doi_slide)
-- **High Priority Remaining:** AAAS, AHA
+- **High Priority Remaining:** ACS, AHA, BMJ, NEJM, Oxford, PLOS, PNAS
 - **Blocked by Protection:** JAMA (Cloudflare), Emerald (Cloudflare - now consolidated), Wolters Kluwer (Cloudflare + no direct PDF URLs), MDPI (bot protection), AIP (Cloudflare - now consolidated)
-- **Next Recommended:** AAAS (has HTML samples), then AHA
+- **New Publishers Identified:** ACS, AJPH, ATS, BMJ, BMJ Open Gastro, Dustri, Informa, Liebert, LWW, Microbiology Spectrum, NEJM, Oxford, PLOS, PNAS, Schattauer, Science (handled by AAAS), Taylor & Francis
+- **Next Recommended:** ACS (major chemistry publisher), BMJ (major medical), NEJM (top medical journal)
 
 ## HTML Sample Availability
 
 **Publishers with HTML samples available (ready for investigation):**
-- AAAS, ACM, AACR, AIP, Allen Press, Annual Reviews, APA, APS, ASME, ASM
-- Biochemical Society, BioOne, Brill, Cambridge, Cell Press, De Gruyter, Dovepress
-- Emerald, Endocrine Society, Eurekaselect, Frontiers, Hilaris, Inderscience, Ingenta
-- IOP, IOS Press, JAMA, JCI, J-STAGE, Karger, Lancet, Longdom, MDPI
-- Nature, OAText, Project MUSE, RSC, SAGE, SciELO, Sciendo, ScienceDirect
-- SCIRP, Spandidos, Springer, Thieme, University of Chicago, WalsMedia
+- AAAS, ACS, ACM, AACR, AHA, AJPH, AIP, Allen Press, Annual Reviews, APA, APS, ASME, ASM, ATS
+- Biochemical Society, BioOne, BMC, BMJ, BMJ Open Gastro, Brill, Cambridge, Cell Press, De Gruyter, Dovepress, Dustri
+- Emerald, Endocrine Society, Eurekaselect, Frontiers, Hilaris, Informa, Inderscience, Ingenta
+- IOP, IOS Press, JAMA, JCI, J-STAGE, Karger, Lancet, Liebert, Longdom, LWW, MDPI, Microbiology Spectrum
+- Nature, NEJM, OAText, Oxford, PLOS, PNAS, Project MUSE, RSC, SAGE, Schattauer, Science, SciELO, Sciendo, ScienceDirect
+- SCIRP, Spandidos, Springer, Taylor & Francis, Thieme, University of Chicago, WalsMedia
 - Wiley, WJGNet, Wolters Kluwer, World Scientific
 
 **Publishers without HTML samples:**
-- AHA, BMC, NAJMS
+- NAJMS
 
 ## Recent Activity
 
+- **2025-08-07:** **AAAS COMPLETED**: Updated AAAS status from TODO to COMPLETED ✅ - evidence-driven rewrite with authentication handling completed, comprehensive test suite with XML fixtures, and full compliance with DANCE_FUNCTION_GUIDELINES
+- **2025-08-07:** **MAJOR CHECKLIST UPDATE**: Added 17 new publishers discovered from HTML samples directory analysis: ACS, AJPH, ATS, BMJ, BMJ Open Gastro, Dustri, Informa, Liebert, LWW, Microbiology Spectrum, NEJM, Oxford, PLOS, PNAS, Schattauer, Science (handled by AAAS), Taylor & Francis. Updated HTML samples paths and corrected directory references. Total publishers tracked increased from ~40 to 50+.
 - **2025-01-08:** Completed SCIRP rewrite (95→44 lines, regex pattern)
 - **2025-01-08:** Completed Spandidos rewrite (35→25 lines, direct URL construction)  
 - **2025-01-08:** Confirmed SciELO existing function works well (8/9 success)

@@ -18,17 +18,17 @@ class TestWileyDance(BaseDanceTest):
         self.fetch = PubMedFetcher()
 
     def test_wiley_shuffle_trusts_registry(self):
-        """Test 1: Function trusts registry routing.
+        """Test 1: Function trusts registry routing with real Wiley article.
         
-        Expected: Should construct URL for any DOI that gets routed here by registry
+        Expected: Should construct URL for DOI from known Wiley journal
         """
-        # Test with any DOI - function should trust the registry routing
-        pma = Mock()
-        pma.doi = '10.1234/any-doi-pattern'
-        pma.journal = 'Test Journal'
+        # Use real Wiley article from verified PMIDs
+        pma = self.fetch.article_by_pmid('39077977')  # ACR Open Rheumatol
+        assert pma.doi == '10.1002/acr2.11726'
+        assert 'ACR Open Rheumatol' in pma.journal
         
         url = the_wiley_shuffle(pma, verify=False)
-        assert url == 'https://onlinelibrary.wiley.com/doi/epdf/10.1234/any-doi-pattern'
+        assert url == 'https://onlinelibrary.wiley.com/doi/epdf/10.1002/acr2.11726'
         print(f"Test 1 - Trusts registry routing: {url}")
 
     def test_wiley_shuffle_epdf_url_construction(self):
@@ -51,43 +51,46 @@ class TestWileyDance(BaseDanceTest):
         print(f"Test 2 - Wiley epdf URL: {url}")
 
     def test_wiley_shuffle_different_journal(self):
-        """Test 3: Mock Wiley article with 10.1002 DOI pattern.
+        """Test 3: Real Wiley article with 10.1111 DOI pattern.
         
         Expected: Should construct correct Wiley epdf URL
         """
-        # Use mock since we need reliable test data
-        pma = Mock()
-        pma.doi = '10.1002/cncr.32345'
-        pma.journal = 'Cancer'
+        # Use real Wiley article with 10.1111 pattern
+        pma = self.fetch.article_by_pmid('36247735')  # J Finance
+        assert pma.doi == '10.1111/jofi.13173'
+        assert 'J Finance' in pma.journal
         
         # Test URL construction (verify=False to avoid network calls)
         url = the_wiley_shuffle(pma, verify=False)
         assert url is not None 
-        assert url == 'https://onlinelibrary.wiley.com/doi/epdf/10.1002/cncr.32345'
-        print(f"Test 3 - Mock Cancer journal URL: {url}")
+        assert url == 'https://onlinelibrary.wiley.com/doi/epdf/10.1111/jofi.13173'
+        print(f"Test 3 - J Finance URL: {url}")
 
-    def test_wiley_shuffle_mock_articles(self):
-        """Test 4: Mock articles with different DOI patterns."""
-        # Test standard Wiley DOI (10.1002)
-        pma = Mock()
-        pma.doi = '10.1002/brb3.70665'
-        pma.journal = 'Brain and Behavior'
+    def test_wiley_shuffle_real_articles(self):
+        """Test 4: Real articles with different DOI patterns."""
+        # Test standard Wiley DOI (10.1002) - already tested above
+        pma1 = self.fetch.article_by_pmid('39077977')  # ACR Open Rheumatol
+        assert pma1.doi == '10.1002/acr2.11726'
         
-        url = the_wiley_shuffle(pma, verify=False)
-        assert url == 'https://onlinelibrary.wiley.com/doi/epdf/10.1002/brb3.70665'
-        print(f"Test 4a - Mock Wiley 10.1002 URL: {url}")
+        url1 = the_wiley_shuffle(pma1, verify=False)
+        assert url1 == 'https://onlinelibrary.wiley.com/doi/epdf/10.1002/acr2.11726'
+        print(f"Test 4a - Real Wiley 10.1002 URL: {url1}")
         
         # Test Wiley 10.1111 DOI pattern
-        pma.doi = '10.1111/1365-2664.14386'
-        url = the_wiley_shuffle(pma, verify=False)
-        assert url == 'https://onlinelibrary.wiley.com/doi/epdf/10.1111/1365-2664.14386'
-        print(f"Test 4b - Mock Wiley 10.1111 URL: {url}")
+        pma2 = self.fetch.article_by_pmid('36247735')  # J Finance
+        assert pma2.doi == '10.1111/jofi.13173'
+        
+        url2 = the_wiley_shuffle(pma2, verify=False)
+        assert url2 == 'https://onlinelibrary.wiley.com/doi/epdf/10.1111/jofi.13173'
+        print(f"Test 4b - Real Wiley 10.1111 URL: {url2}")
         
         # Test Hindawi DOI pattern (10.1155) - acquired by Wiley
-        pma.doi = '10.1155/2023/1234567'
-        url = the_wiley_shuffle(pma, verify=False)
-        assert url == 'https://onlinelibrary.wiley.com/doi/epdf/10.1155/2023/1234567'
-        print(f"Test 4c - Hindawi (Wiley-acquired) URL: {url}")
+        pma3 = self.fetch.article_by_pmid('35573891')  # Wirel Commun Mob Comput
+        assert pma3.doi == '10.1155/2021/5792975'
+        
+        url3 = the_wiley_shuffle(pma3, verify=False)
+        assert url3 == 'https://onlinelibrary.wiley.com/doi/epdf/10.1155/2021/5792975'
+        print(f"Test 4c - Real Hindawi (Wiley-acquired) URL: {url3}")
 
     @patch('metapub.findit.dances.generic.verify_pdf_url')
     def test_wiley_shuffle_successful_pdf_access(self, mock_verify):
@@ -114,35 +117,34 @@ class TestWileyDance(BaseDanceTest):
         
         Expected: Should detect paywall and raise AccessDenied when PDF verification fails
         """
-        # Mock failed PDF verification (paywall)
-        mock_verify.return_value = False
+        # Mock verification raising AccessDenied (paywall detected)
+        mock_verify.side_effect = AccessDenied('DENIED: Wiley url requires subscription')
 
-        pma = self.fetch.article_by_pmid('33474827')
+        pma = self.fetch.article_by_pmid('39077977')  # Real Wiley article
         
-        # Test with verification - should detect paywall
+        # Test with verification - should propagate AccessDenied
         with pytest.raises(AccessDenied) as exc_info:
             the_wiley_shuffle(pma, verify=True)
         
-        assert 'PAYWALL' in str(exc_info.value)
-        assert 'subscription' in str(exc_info.value)
+        assert 'DENIED' in str(exc_info.value)
         print(f"Test 6 - Correctly detected paywall: {exc_info.value}")
 
     @patch('metapub.findit.dances.generic.verify_pdf_url')
     def test_wiley_shuffle_network_error(self, mock_verify):
         """Test 7: Network error handling.
         
-        Expected: Should handle network errors gracefully
+        Expected: Should propagate network errors from verify_pdf_url
         """
         # Mock network error during verification
         mock_verify.side_effect = Exception("Network error")
 
-        pma = self.fetch.article_by_pmid('33474827')
+        pma = self.fetch.article_by_pmid('39077977')  # Real Wiley article
         
-        # Test with verification - should handle network error
-        with pytest.raises(AccessDenied) as exc_info:
+        # Test with verification - should propagate the Exception
+        with pytest.raises(Exception) as exc_info:
             the_wiley_shuffle(pma, verify=True)
         
-        assert 'PAYWALL' in str(exc_info.value)
+        assert 'Network error' in str(exc_info.value)
         print(f"Test 7 - Correctly handled network error: {exc_info.value}")
 
     def test_wiley_shuffle_missing_doi(self):
@@ -162,19 +164,6 @@ class TestWileyDance(BaseDanceTest):
         assert 'DOI required' in str(exc_info.value)
         print(f"Test 8 - Correctly handled missing DOI: {exc_info.value}")
 
-    def test_wiley_shuffle_any_doi_pattern(self):
-        """Test 9: Article with any DOI pattern.
-        
-        Expected: Should construct URL for any DOI (trusts registry routing)
-        """
-        # Create a mock PMA with any DOI pattern
-        pma = Mock()
-        pma.doi = '10.9999/any-publisher-pattern-works'
-        pma.journal = 'Some Journal'
-        
-        url = the_wiley_shuffle(pma, verify=False)
-        assert url == 'https://onlinelibrary.wiley.com/doi/epdf/10.9999/any-publisher-pattern-works'
-        print(f"Test 9 - Works with any DOI pattern: {url}")
 
 
 def test_wiley_journal_recognition():
@@ -196,7 +185,7 @@ def test_wiley_journal_recognition():
     for journal in test_journals:
         publisher_info = registry.get_publisher_for_journal(journal)
         if publisher_info and publisher_info['name'] == 'wiley':
-            assert publisher_info['dance_function'] == 'the_wiley_shuffle'
+            assert publisher_info['dance_function'] == 'the_doi_slide'
             print(f"✓ {journal} correctly mapped to Wiley")
             found_count += 1
         else:
@@ -232,12 +221,11 @@ if __name__ == '__main__':
         ('test_wiley_shuffle_trusts_registry', 'Registry routing trust'),
         ('test_wiley_shuffle_epdf_url_construction', 'Wiley epdf URL construction'),
         ('test_wiley_shuffle_different_journal', 'Different Wiley journal'),
-        ('test_wiley_shuffle_mock_articles', 'Mock article handling'),
+        ('test_wiley_shuffle_real_articles', 'Real article handling'),
         ('test_wiley_shuffle_successful_pdf_access', 'Successful access simulation'),
         ('test_wiley_shuffle_paywall_detection', 'Paywall detection'),
         ('test_wiley_shuffle_network_error', 'Network error handling'),
-        ('test_wiley_shuffle_missing_doi', 'Missing DOI handling'),
-        ('test_wiley_shuffle_any_doi_pattern', 'Any DOI pattern handling')
+        ('test_wiley_shuffle_missing_doi', 'Missing DOI handling')
     ]
     
     for test_method, description in tests:

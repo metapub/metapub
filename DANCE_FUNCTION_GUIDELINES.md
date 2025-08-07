@@ -39,6 +39,7 @@ Publisher Dance Development Process
     - Use discovered patterns, not complex parsing
     - Require what's actually needed (DOI vs PMID vs journal name)
     - If dance function exists don't create a new one -- rewrite the old one. don't rename it!
+    - TRUST THE REGISTRY: PMID -> journal -> publisher wiring is consistent. no need to verify DOI.
   6. Apply "One Thing Well" Principle
     - Function does PDF extraction, nothing else
     - Clear error messages with prefixes (MISSING:, TXERROR:, DENIED:)
@@ -51,6 +52,7 @@ Publisher Dance Development Process
     - Test each error condition separately
     - Test verification integration
     - Remove any tests that don't match actual function behavior
+    - Don't test for wrong DOI, wrong journal, or wrong PMID.  FindIt wiring is consistent: PMID -> journal -> publisher handler. 
   8. Registry Integration Test
     - Verify journal recognition works
     - Confirm dance function mapping

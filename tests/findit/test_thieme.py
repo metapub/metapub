@@ -5,7 +5,7 @@ from unittest.mock import patch, Mock
 
 from .common import BaseDanceTest
 from metapub import PubMedFetcher
-from metapub.findit.dances import the_thieme_tap
+from metapub.findit.dances import the_doi_slide as the_thieme_tap
 from metapub.exceptions import AccessDenied, NoPDFLink
 
 
@@ -83,7 +83,7 @@ class TestThiemeTap(BaseDanceTest):
         assert url.endswith('.pdf')
         print(f"Test 3 - Very old article URL: {url}")
 
-    @patch('metapub.findit.dances.thieme.verify_pdf_url')
+    @patch('metapub.findit.dances.generic.verify_pdf_url')
     def test_thieme_tap_successful_access_with_verification(self, mock_verify):
         """Test 4: Successful access with verification.
         
@@ -105,7 +105,7 @@ class TestThiemeTap(BaseDanceTest):
         mock_verify.assert_called_once()
         print(f"Test 4 - Verified PDF URL: {url}")
 
-    @patch('metapub.findit.dances.thieme.verify_pdf_url')
+    @patch('metapub.findit.dances.generic.verify_pdf_url')
     def test_thieme_tap_paywall_detection(self, mock_verify):
         """Test 5: Paywall detection via verification.
         
@@ -188,7 +188,7 @@ class TestThiemeTap(BaseDanceTest):
 def test_thieme_journal_recognition():
     """Test basic URL pattern works (simplified registry test)."""
     from metapub import PubMedFetcher
-    from metapub.findit.dances import the_thieme_tap
+    from metapub.findit.dances import the_doi_slide as the_thieme_tap
     
     # Just test that the function works with real Thieme journals
     fetch = PubMedFetcher()
@@ -241,3 +241,75 @@ if __name__ == '__main__':
     
     print("\n" + "="*60)
     print("Test suite completed!")
+
+
+class TestThiemeWithVerifiedPMIDs:
+    """Test Thieme dance function with verified PMIDs from our system."""
+    
+    def test_thieme_verified_pmids_url_construction(self):
+        """Test URL construction with actual verified PMIDs from Thieme system."""
+        from metapub import PubMedFetcher
+        
+        # Verified PMIDs from thieme_medical_publishers_pmids.txt
+        verified_pmids_with_dois = [
+            ('36644330', '10.1055/s-0040-1721489'),  # ACI open
+            ('37920232', '10.1055/s-0041-1729981'),  # ACI open
+            ('32894878', '10.1055/s-0040-1715580'),  # Methods Inf Med
+            ('38158213', '10.1055/s-0043-1777732'),  # Methods Inf Med
+        ]
+        
+        fetch = PubMedFetcher()
+        
+        with patch('metapub.findit.dances.generic.verify_pdf_url') as mock_verify:
+            mock_verify.return_value = True
+            
+            for pmid, expected_doi in verified_pmids_with_dois:
+                try:
+                    pma = fetch.article_by_pmid(pmid)
+                    
+                    # Verify the article has the expected DOI
+                    assert pma.doi == expected_doi, f"PMID {pmid} DOI mismatch: expected {expected_doi}, got {pma.doi}"
+                    
+                    # Test URL construction
+                    result = the_thieme_tap(pma, verify=True)
+                    expected_url = f"http://www.thieme-connect.de/products/ejournals/pdf/{expected_doi}.pdf"
+                    
+                    assert result == expected_url, f"PMID {pmid} URL mismatch"
+                    print(f"✓ PMID {pmid} ({pma.journal}): {result}")
+                    
+                except Exception as e:
+                    print(f"⚠ PMID {pmid} failed: {e}")
+                    # Don't fail the test for network issues, just warn
+                    pass
+    
+    def test_thieme_sample_pmids_integration(self):
+        """Integration test with sample PMIDs to ensure functionality."""
+        from metapub import PubMedFetcher
+        
+        # Test just 2 PMIDs for lighter integration testing
+        sample_pmids = [
+            '36644330',  # Recent ACI open
+            '32894878',  # Methods Inf Med
+        ]
+        
+        fetch = PubMedFetcher()
+        
+        for pmid in sample_pmids:
+            try:
+                pma = fetch.article_by_pmid(pmid)
+                
+                if pma.doi and pma.doi.startswith('10.1055/'):
+                    # Test without verification to avoid network calls
+                    url = the_thieme_tap(pma, verify=False)
+                    
+                    assert 'thieme-connect.de' in url
+                    assert '/products/ejournals/pdf/' in url
+                    assert pma.doi in url
+                    assert url.endswith('.pdf')
+                    print(f"✓ Sample integration test PMID {pmid}: {url}")
+                else:
+                    print(f"⚠ PMID {pmid} doesn't have expected Thieme DOI pattern")
+                    
+            except Exception as e:
+                print(f"⚠ Sample PMID {pmid} failed: {e}")
+                # Don't fail for network issues

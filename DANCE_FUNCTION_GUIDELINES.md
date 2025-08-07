@@ -24,6 +24,7 @@ Publisher Dance Development Process
   3. Evaluate Generic Functions
     - Does verify_pdf_url handle this publisher's SSL setup?
     - Does unified_uri_get work with their servers?
+    - Would it work to use the_vip_shake or the_doi_slide instead of a whole new dance function?
     - Any new generic utilities needed?
   4. Fix Foundation First
     - Enhance generic functions if needed

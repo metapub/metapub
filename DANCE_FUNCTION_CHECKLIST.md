@@ -125,11 +125,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** Medium (biological sciences)
 - **Notes:** **ELIMINATED MIDDLEMAN 2025-08-06**: BioOne articles consistently use `citation_pdf_url` meta tags across 4 HTML samples with diverse DOI prefixes (10.1656/, 10.1647/, 10.13158/, 10.7589/) representing their multi-publisher platform (~200+ societies). Since the function was just a simple delegation to `the_vip_shake`, eliminated the middleman dance function entirely. **Registry updated**: BioOne journals now directly assigned to `the_vip_shake` generic function. **Files removed**: `metapub/findit/dances/bioone.py`, `tests/findit/test_bioone.py`. This reduces codebase complexity while maintaining identical functionality. Evidence showed perfect delegation pattern, making the intermediate function unnecessary.
 
-### ❓ BMC (BioMed Central)
-- **Dance Function:** `the_bmc_boogie`
+### ✅ BMC (BioMed Central)
+- **Dance Function:** `the_bmc_boogie` (generic function)
 - **HTML Samples:** No samples available
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (already optimal)
 - **Priority:** High (open access biomedicine)
+- **Notes:** **ALREADY OPTIMAL**: BMC already uses a minimal generic function `the_bmc_boogie` (19 lines) specifically designed for its URL pattern. Extracts article ID from DOI (after slash) and constructs URL as `http://www.biomedcentral.com/content/pdf/{aid}.pdf`. Since BMC is fully open access, verification is optional. No consolidation needed - the existing generic function is already perfectly suited for BMC's requirements.
 
 ### ❓ Brill
 - **Dance Function:** `the_brill_bridge`
@@ -402,36 +403,13 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ---
 
-## Generic Functions (Skip - No Rewrite Needed)
-
-These publishers use generic functions that don't need individual rewrites:
-
-### ⏭️ 🚫 DOI Slide Publishers (the_doi_slide)
-- Taylor & Francis
-- ACS (American Chemical Society) 
-- Informa
-- Liebert
-- ATS (American Thoracic Society)
-- Various smaller publishers
-
-### ⏭️ 🚫 VIP Shake Publishers (the_vip_shake)  
-- Oxford University Press
-- Various journal-specific implementations
-
-### ⏭️ 🚫 Paywall Handlers (paywall_handler)
-- Dustri (TODO: Implement the_dustri_stomp)
-- Schattauer
-- Cig Media
-
----
-
 ## Progress Summary
 
-- **Completed:** 26/40+ publishers (SCIRP, SciELO, Cancer Biology & Medicine, AACR, Cambridge, Dovepress, EurekaSelect, Nature, Wiley, ScienceDirect+Cell+Lancet, JCI, Annual Reviews, Thieme, Oxford Academic/Endocrine Society, Biochemical Society, MDPI)
+- **Completed:** 27/40+ publishers (SCIRP, SciELO, Cancer Biology & Medicine, AACR, Cambridge, Dovepress, EurekaSelect, Nature, Wiley, ScienceDirect+Cell+Lancet, JCI, Annual Reviews, Thieme, Oxford Academic/Endocrine Society, Biochemical Society, MDPI, BMC)
 - **Consolidated into Generic Functions:** 10 publishers (SAGE→doi_slide, AIP→doi_slide, BioOne→vip_shake, Frontiers→doi_slide, Emerald→doi_slide, CancerBiomed→vip_shake, Spandidos→doi_slide, Springer→doi_slide, Thieme→doi_slide, Wiley→doi_slide)
-- **High Priority Remaining:** BMC, AAAS, AHA
+- **High Priority Remaining:** AAAS, AHA
 - **Blocked by Protection:** JAMA (Cloudflare), Emerald (Cloudflare - now consolidated), Wolters Kluwer (Cloudflare + no direct PDF URLs), MDPI (bot protection), AIP (Cloudflare - now consolidated)
-- **Next Recommended:** BMC (high-impact open access), then AAAS or AHA
+- **Next Recommended:** AAAS (has HTML samples), then AHA
 
 ## HTML Sample Availability
 

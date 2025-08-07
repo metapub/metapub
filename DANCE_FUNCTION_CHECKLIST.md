@@ -382,12 +382,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** High (major academic publisher)
 - **Notes:** Major academic publisher with HTML samples (distinct from Oxford Academic/Endocrine)
 
-### ❓ PLOS (Public Library of Science)
-- **Dance Function:** Not assigned
+### ✅ PLOS (Public Library of Science)
+- **Dance Function:** `the_plos_pogo`
 - **HTML Samples:** `output/article_html/plos/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (perfect simplicity implementation)
 - **Priority:** High (major open access publisher)
-- **Notes:** Major open access publisher with HTML samples available
+- **Notes:** **PERFECT SIMPLICITY ACHIEVED 2025-08-07**: PLOS provides perfect `citation_pdf_url` meta tags across all HTML samples, enabling the most logically simple implementation possible. Created `the_plos_pogo` (14 lines) that directly extracts PDF URLs from meta tags without any URL construction. Pattern: `https://journals.plos.org/[journal]/article/file?id=[DOI]&type=printable` with consistent 10.1371/journal.[code] DOI format. Comprehensive test suite (10 tests) validates meta tag extraction, error handling, and all evidence DOIs. Function demonstrates maximum logical simplicity: DOI check → get HTML → extract meta tag → return URL. No complex conditionals, loops, or construction logic needed. This exemplifies the ideal case for reducing logical complication in dance functions.
 
 ### ❓ PNAS (Proceedings of the National Academy of Sciences)
 - **Dance Function:** Not assigned
@@ -527,12 +527,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ## Progress Summary
 
-- **Completed:** 29/50+ publishers (ACS, AAAS, SCIRP, SciELO, Cancer Biology & Medicine, AACR, Cambridge, Dovepress, EurekaSelect, Nature, Wiley, ScienceDirect+Cell+Lancet, JCI, Annual Reviews, Thieme, Oxford Academic/Endocrine Society, Biochemical Society, MDPI, BMC)
+- **Completed:** 30/50+ publishers (PLOS, ACS, AAAS, SCIRP, SciELO, Cancer Biology & Medicine, AACR, Cambridge, Dovepress, EurekaSelect, Nature, Wiley, ScienceDirect+Cell+Lancet, JCI, Annual Reviews, Thieme, Oxford Academic/Endocrine Society, Biochemical Society, MDPI, BMC)
 - **Consolidated into Generic Functions:** 10 publishers (SAGE→doi_slide, AIP→doi_slide, BioOne→vip_shake, Frontiers→doi_slide, Emerald→doi_slide, CancerBiomed→vip_shake, Spandidos→doi_slide, Springer→doi_slide, Thieme→doi_slide, Wiley→doi_slide)
-- **High Priority Remaining:** AHA, BMJ, NEJM, Oxford, PLOS, PNAS
+- **High Priority Remaining:** AHA, BMJ, NEJM, Oxford, PNAS
 - **Blocked by Protection:** JAMA (Cloudflare), Emerald (Cloudflare - now consolidated), Wolters Kluwer (Cloudflare + no direct PDF URLs), MDPI (bot protection), AIP (Cloudflare - now consolidated)
 - **New Publishers Identified:** ACS, AJPH, ATS, BMJ, BMJ Open Gastro, Dustri, Informa, Liebert, LWW, Microbiology Spectrum, NEJM, Oxford, PLOS, PNAS, Schattauer, Science (handled by AAAS), Taylor & Francis
-- **Next Recommended:** BMJ (major medical), NEJM (top medical journal), PLOS (major open access)
+- **Next Recommended:** BMJ (major medical), NEJM (top medical journal), PNAS (prestigious journal)
 
 ## HTML Sample Availability
 
@@ -550,6 +550,7 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ## Recent Activity
 
+- **2025-08-07:** **PLOS PERFECT SIMPLICITY COMPLETED**: Implemented PLOS (Public Library of Science) with maximum logical simplicity. PLOS provides perfect `citation_pdf_url` meta tags, enabling the most elegant possible implementation. Created `the_plos_pogo` (14 lines) that directly extracts PDF URLs with pattern `https://journals.plos.org/[journal]/article/file?id=[DOI]&type=printable`. No complex URL construction, no conditionals, no loops - just DOI check → get HTML → extract meta tag → return URL. Comprehensive test suite (10 tests) including logical simplicity compliance validation. This exemplifies the ideal case for reducing logical complication in dance functions.
 - **2025-08-07:** **ACS INFRASTRUCTURE FIX COMPLETED**: Fixed critical issues in American Chemical Society configuration - updated from `url_pattern` to `format_template` expected by `the_doi_slide` function, enforced HTTPS instead of HTTP (HTTP redirects with 301). Evidence-driven analysis of 5 HTML samples confirmed consistent `/doi/pdf/{DOI}` pattern with 10.1021/ prefix. Created comprehensive test suite (9 tests) validating registry integration, URL construction, and evidence DOIs. All 98 ACS journals already mapped in registry. ACS now operates optimally with modern DOI-slide infrastructure.
 - **2025-08-07:** **AAAS COMPLETED**: Updated AAAS status from TODO to COMPLETED ✅ - evidence-driven rewrite with authentication handling completed, comprehensive test suite with XML fixtures, and full compliance with DANCE_FUNCTION_GUIDELINES
 - **2025-08-07:** **MAJOR CHECKLIST UPDATE**: Added 17 new publishers discovered from HTML samples directory analysis: ACS, AJPH, ATS, BMJ, BMJ Open Gastro, Dustri, Informa, Liebert, LWW, Microbiology Spectrum, NEJM, Oxford, PLOS, PNAS, Schattauer, Science (handled by AAAS), Taylor & Francis. Updated HTML samples paths and corrected directory references. Total publishers tracked increased from ~40 to 50+.

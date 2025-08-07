@@ -51,6 +51,7 @@ from .mdpi import the_mdpi_moonwalk
 from .najms import the_najms_mazurka
 from .nature import the_nature_ballet
 from .oatext import the_oatext_orbit
+from .plos import the_plos_pogo
 from .projectmuse import the_projectmuse_syrtos
 from .rsc import the_rsc_reaction
 # SAGE now uses the_doi_slide generic function

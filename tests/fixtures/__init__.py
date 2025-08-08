@@ -73,3 +73,10 @@ AJPH_EVIDENCE_PMIDS = {
     '35679569': {'doi': '10.2105/AJPH.2022.306873', 'journal': 'Am J Public Health'},
     '34529508': {'doi': '10.2105/AJPH.2021.306453', 'journal': 'Am J Public Health'},
 }
+
+# APS (American Physiological Society) PMIDs with metadata
+APS_EVIDENCE_PMIDS = {
+    '34995163': {'doi': '10.1152/ajpheart.00590.2021', 'journal': 'Am J Physiol Heart Circ Physiol'},
+    '36367692': {'doi': '10.1152/ajpheart.00477.2022', 'journal': 'Am J Physiol Heart Circ Physiol'},
+    '36717101': {'doi': '10.1152/ajpcell.00544.2022', 'journal': 'Am J Physiol Cell Physiol'},
+}

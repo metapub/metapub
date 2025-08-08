@@ -22,6 +22,24 @@ pnas_template = 'https://www.pnas.org/doi/pdf/{doi}'
 ajph_journals = ['Am J Public Health']
 ajph_template = 'https://ajph.aphapublications.org/doi/pdf/{doi}?download=true'
 
+# American Physiological Society (APS) - DOI format
+aps_journals = [
+    'Am J Physiol Cell Physiol',
+    'Am J Physiol Endocrinol Metab',
+    'Am J Physiol Gastrointest Liver Physiol',
+    'Am J Physiol Heart Circ Physiol',
+    'Am J Physiol Lung Cell Mol Physiol',
+    'Am J Physiol Regul Integr Comp Physiol',
+    'Am J Physiol Renal Physiol',
+    'J Appl Physiol',
+    'J Neurophysiol',
+    'Physiology (Bethesda)',
+    'Physiol Genomics',
+    'Physiol Rep',
+    'Physiol Rev',
+]
+aps_template = 'https://journals.physiology.org/doi/pdf/{doi}'
+
 # BMJ Open Gastroenterology - DOI format
 bmj_open_gastro_journals = ['BMJ Open Gastroenterol']
 bmj_open_gastro_template = 'http://bmjopengastro.bmj.com/doi/pdf/{doi}'

@@ -20,7 +20,7 @@ pnas_template = 'https://www.pnas.org/doi/pdf/{doi}'
 
 # American Journal of Public Health - DOI format
 ajph_journals = ['Am J Public Health']
-ajph_template = 'http://ajph.aphapublications.org/doi/pdf/{doi}'
+ajph_template = 'https://ajph.aphapublications.org/doi/pdf/{doi}?download=true'
 
 # BMJ Open Gastroenterology - DOI format
 bmj_open_gastro_journals = ['BMJ Open Gastroenterol']

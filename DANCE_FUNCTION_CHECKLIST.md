@@ -76,12 +76,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** High (cardiovascular research)
 - **Notes:** **EVIDENCE-DRIVEN INVESTIGATION COMPLETED 2025-08-08**: Analyzed 5 HTML samples from AHA journals (Circulation, Arterioscler Thromb Vasc Biol, Circ Arrhythm Electrophysiol). Investigation revealed consistent `/doi/pdf/{DOI}?download=true` pattern in HTML, suggesting potential DOI-based approach. However, testing showed both DOI-based URLs and existing VIP (Volume-Issue-Page) pattern URLs return 403 Forbidden, indicating subscription requirement. Current `the_aha_waltz` function correctly constructs VIP URLs using journal-specific subdomains (e.g., atvb.ahajournals.org for ATVB). Function implementation is correct but AHA enforces paywall for PDF access. No changes needed - function properly handles VIP data and returns appropriate errors for subscription-required content.
 
-### ❓ AJPH (American Journal of Public Health)
-- **Dance Function:** Not assigned
+### ✅ AJPH (American Journal of Public Health)
+- **Dance Function:** `the_doi_slide` (generic function)
 - **HTML Samples:** `output/article_html/ajph/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (evidence-driven template optimization)
 - **Priority:** Medium (public health)
-- **Notes:** New publisher identified with HTML samples available
+- **Notes:** **EVIDENCE-DRIVEN TEMPLATE OPTIMIZATION COMPLETED 2025-08-08**: Analysis of 3 HTML samples revealed simple `/doi/pdf/{DOI}?download=true` pattern on `ajph.aphapublications.org` domain - perfect fit for `the_doi_slide` generic function. All DOIs use 10.2105 prefix (AJPH-specific). Updated template from HTTP to HTTPS and added `?download=true` parameter based on HTML evidence. No custom dance function needed. Uses optimized template: `https://ajph.aphapublications.org/doi/pdf/{doi}?download=true`. XML fixtures created for 3 evidence PMIDs (34709863, 35679569, 34529508). Comprehensive test suite validates URL construction, registry integration, and error handling. Follows metapub best practices for simple DOI-based publishers.
 
 ### 🚫 AIP (American Institute of Physics)
 - **Dance Function:** `the_aip_allegro`

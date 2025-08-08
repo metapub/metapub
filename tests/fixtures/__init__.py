@@ -66,3 +66,10 @@ APA_EVIDENCE_PMIDS = {
     '33119379': {'doi': '10.1037/rep0000367', 'journal': 'Rehabil Psychol'},
     '24349601': {'doi': '10.1037/a0030292', 'journal': 'J Neurosci Psychol Econ', 'pmc': 'PMC3858957'},
 }
+
+# AJPH PMIDs with metadata
+AJPH_EVIDENCE_PMIDS = {
+    '34709863': {'doi': '10.2105/AJPH.2021.306505', 'journal': 'Am J Public Health'},
+    '35679569': {'doi': '10.2105/AJPH.2022.306873', 'journal': 'Am J Public Health'},
+    '34529508': {'doi': '10.2105/AJPH.2021.306453', 'journal': 'Am J Public Health'},
+}

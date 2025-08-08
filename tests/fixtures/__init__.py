@@ -53,3 +53,15 @@ PNAS_EVIDENCE_PMIDS = {
     '38147649': {'doi': '10.1073/pnas.2308706120', 'journal': 'Proc Natl Acad Sci U S A'},
     '37903272': {'doi': '10.1073/pnas.2308214120', 'journal': 'Proc Natl Acad Sci U S A'},
 }
+
+# APA PMIDs with metadata
+APA_EVIDENCE_PMIDS = {
+    '34843274': {'doi': '10.1037/amp0000904', 'journal': 'Am Psychol'},
+    '32437181': {'doi': '10.1037/amp0000660', 'journal': 'Am Psychol'},
+    '38546579': {'doi': '10.1037/com0000370', 'journal': 'J Comp Psychol'},
+    '32496081': {'doi': '10.1037/com0000239', 'journal': 'J Comp Psychol'},
+    '38573673': {'doi': '10.1037/prj0000611', 'journal': 'Psychiatr Rehabil J'},
+    '33856845': {'doi': '10.1037/prj0000481', 'journal': 'Psychiatr Rehabil J'},
+    '38271020': {'doi': '10.1037/rep0000539', 'journal': 'Rehabil Psychol'},
+    '33119379': {'doi': '10.1037/rep0000367', 'journal': 'Rehabil Psychol'},
+}

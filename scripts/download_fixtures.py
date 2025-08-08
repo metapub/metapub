@@ -30,6 +30,18 @@ PNAS_PMIDS = [
     '37903272',  # Proc Natl Acad Sci U S A - 10.1073/pnas.2308214120
 ]
 
+# APA verified PMIDs
+APA_PMIDS = [
+    '34843274',  # Am Psychol - 10.1037/amp0000904
+    '32437181',  # Am Psychol - 10.1037/amp0000660
+    '38546579',  # J Comp Psychol - 10.1037/com0000370
+    '32496081',  # J Comp Psychol - 10.1037/com0000239
+    '38573673',  # Psychiatr Rehabil J - 10.1037/prj0000611
+    '33856845',  # Psychiatr Rehabil J - 10.1037/prj0000481
+    '38271020',  # Rehabil Psychol - 10.1037/rep0000539
+    '33119379',  # Rehabil Psychol - 10.1037/rep0000367
+]
+
 def download_xml_fixture(pmid, output_dir):
     """Download XML for a PMID and save as fixture."""
     
@@ -91,8 +103,18 @@ def main():
     print(f"PNAS: {pnas_success}/{len(PNAS_PMIDS)} downloaded")
     print()
     
-    total_success = tf_success + pnas_success
-    total_pmids = len(TAYLOR_FRANCIS_PMIDS) + len(PNAS_PMIDS)
+    # Download APA PMIDs
+    print("Downloading APA PMIDs...")
+    apa_success = 0
+    for pmid in APA_PMIDS:
+        if download_xml_fixture(pmid, fixtures_dir):
+            apa_success += 1
+    
+    print(f"APA: {apa_success}/{len(APA_PMIDS)} downloaded")
+    print()
+    
+    total_success = tf_success + pnas_success + apa_success
+    total_pmids = len(TAYLOR_FRANCIS_PMIDS) + len(PNAS_PMIDS) + len(APA_PMIDS)
     
     print(f"Total: {total_success}/{total_pmids} XML fixtures downloaded")
     

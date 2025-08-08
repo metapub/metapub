@@ -357,8 +357,8 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'apa',
-        'dance_function': 'the_apa_dab',
-        'format_template': None,
+        'dance_function': 'the_doi_slide',
+        'format_template': 'https://psycnet.apa.org/fulltext/{doi}.pdf',
         'journals': apa_journals,
     },
     {

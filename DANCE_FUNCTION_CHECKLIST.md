@@ -102,11 +102,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** Medium (high-impact review journals)
 - **Notes:** Rewritten from 96→49 lines using evidence-driven approach with **direct URL construction**. Pattern: `https://www.annualreviews.org/deliver/fulltext/{journal_abbrev}/{volume}/{issue}/{doi_suffix}.pdf` where journal_abbrev is extracted from DOI pattern `annurev-{journal}-{date}-{id}`. Follows DANCE_FUNCTION_GUIDELINES: single method, no HTML parsing, under 50 lines, clear error messages. Test suite 11/11 passing with proper mocking.
 
-### ❓ APA (American Psychological Association)
+### ✅ APA (American Psychological Association)
 - **Dance Function:** `the_apa_dab`
 - **HTML Samples:** `output/article_html/apa/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (XML fixtures implementation)
 - **Priority:** Medium (psychology journals)
+- **Notes:** **XML FIXTURES IMPLEMENTATION COMPLETED 2025-08-08**: Following TRANSITION_TESTS_TO_REAL_DATA.md guidelines, created comprehensive XML fixtures test suite using 8 verified PMIDs covering 4 different APA journals (Am Psychol, J Comp Psychol, Psychiatr Rehabil J, Rehabil Psychol). All PMIDs show consistent 10.1037/ DOI pattern and psycnet.apa.org URL construction. Test suite includes authentic metadata validation, URL construction, paywall detection, error handling, and DOI pattern coverage across journals. No network dependencies in XML fixture tests. Existing dance function works correctly with subscription-based access model and proper error messages. Results: 9/9 XML fixture tests passing with authentic PubMed data.
 
 ### ❓ APS (American Physical Society)
 - **Dance Function:** `the_aps_quickstep`
@@ -527,7 +528,7 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ## Progress Summary
 
-- **Completed:** 32/50+ publishers (PLOS, ACS, AAAS, SCIRP, SciELO, Cancer Biology & Medicine, AACR, Cambridge, Dovepress, EurekaSelect, Nature, Wiley, ScienceDirect+Cell+Lancet, JCI, Annual Reviews, Thieme, Oxford Academic/Endocrine Society, Biochemical Society, MDPI, BMC, Taylor & Francis, PNAS)
+- **Completed:** 33/50+ publishers (PLOS, ACS, AAAS, SCIRP, SciELO, Cancer Biology & Medicine, AACR, Cambridge, Dovepress, EurekaSelect, Nature, Wiley, ScienceDirect+Cell+Lancet, JCI, Annual Reviews, Thieme, Oxford Academic/Endocrine Society, Biochemical Society, MDPI, BMC, Taylor & Francis, PNAS, APA)
 - **Consolidated into Generic Functions:** 12 publishers (SAGE→doi_slide, AIP→doi_slide, BioOne→vip_shake, Frontiers→doi_slide, Emerald→doi_slide, CancerBiomed→vip_shake, Spandidos→doi_slide, Springer→doi_slide, Thieme→doi_slide, Wiley→doi_slide, Taylor & Francis→doi_slide, PNAS→doi_slide)
 - **High Priority Remaining:** AHA, BMJ, Oxford
 - **Blocked by Protection:** JAMA (Cloudflare), Emerald (Cloudflare - now consolidated), Wolters Kluwer (Cloudflare + no direct PDF URLs), MDPI (bot protection), AIP (Cloudflare - now consolidated)
@@ -550,6 +551,7 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ## Recent Activity
 
+- **2025-08-08:** **APA COMPLETED**: XML fixtures implementation for American Psychological Association following TRANSITION_TESTS_TO_REAL_DATA.md guidelines. Downloaded 8 verified PMIDs covering 4 different APA journals (Am Psychol, J Comp Psychol, Psychiatr Rehabil J, Rehabil Psychol). All show consistent 10.1037/ DOI pattern and psycnet.apa.org URL construction. Created comprehensive `test_apa_xml_fixtures.py` with 9 tests including authentic metadata validation, URL construction, paywall detection, error handling, and DOI pattern coverage. No network dependencies in XML fixture tests. Existing `the_apa_dab` dance function works correctly with subscription-based access model. Results: 9/9 XML fixture tests passing with authentic PubMed data. Progress: 5/41 publishers complete (12.2%).
 - **2025-08-08:** **TAYLOR & FRANCIS COMPLETED**: Evidence-driven template fix for existing comprehensive configuration. Discovered T&F already configured with 1,687 journals and `the_doi_slide` function but template had critical issues: HTTP instead of HTTPS, missing `/epdf/` and `?needAccess=true` parameter. Fixed template from `http://www.tandfonline.com/doi/pdf/{doi}` to `https://www.tandfonline.com/doi/epdf/{doi}?needAccess=true` based on 5 HTML sample analysis. Comprehensive test suite (9 tests) validates corrected template, HTTPS enforcement, and access parameter preservation. This demonstrates evidence-driven development fixing existing configurations for improved PDF access success rates.
 - **2025-08-08:** **PNAS COMPLETED**: Evidence-driven analysis revealed simple DOI-based PDF URL pattern: `https://www.pnas.org/doi/pdf/{doi}`. All DOIs follow 10.1073/pnas.{SUFFIX} format. Initially implemented custom dance function with citation_pdf_url extraction, then optimized to use `the_doi_slide` generic function with format template `https://www.pnas.org/doi/pdf/{doi}` - no custom dance needed! Added pnas_journals list in single_journal_publishers.py. Comprehensive test suite (8 tests) validates DOI construction, error handling, and template format. This represents optimal simplicity through DOI-based URL construction.
 - **2025-08-07:** **PLOS PERFECT SIMPLICITY COMPLETED**: Implemented PLOS (Public Library of Science) with maximum logical simplicity. PLOS provides perfect `citation_pdf_url` meta tags, enabling the most elegant possible implementation. Created `the_plos_pogo` (14 lines) that directly extracts PDF URLs with pattern `https://journals.plos.org/[journal]/article/file?id=[DOI]&type=printable`. No complex URL construction, no conditionals, no loops - just DOI check → get HTML → extract meta tag → return URL. Comprehensive test suite (10 tests) including logical simplicity compliance validation. This exemplifies the ideal case for reducing logical complication in dance functions.

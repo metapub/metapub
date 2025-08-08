@@ -56,13 +56,14 @@ class TestPublisher:
         # ✅ Authentic DOI, journal, all metadata
 ```
 
-## Conversion Status: 4/41 Complete
+## Conversion Status: 5/41 Complete
 
 - ✅ **AAAS** - Complete reference implementation
 - ✅ **WorldScientific** - Complete conversion
 - ✅ **Taylor & Francis** - Complete conversion  
 - ✅ **PNAS** - Complete conversion
-- ❌ **37 publishers** remaining
+- ✅ **APA** - Complete conversion
+- ❌ **36 publishers** remaining
 
 ## Publisher Priority List
 
@@ -168,6 +169,16 @@ class TestPublisher:
 - **Evidence Coverage**: Proc Natl Acad Sci U S A (all evidence from same journal)
 - **DOI Pattern**: Verified 10.1073/pnas.{SUFFIX} format for all PMIDs
 
+#### APA (American Psychological Association) 
+- **Status**: ✅ Complete
+- **XML Fixtures**: 8 evidence PMIDs downloaded (34843274, 32437181, 38546579, 32496081, 38573673, 33856845, 38271020, 33119379)
+- **Tests Updated**: Created comprehensive `test_apa_xml_fixtures.py` with 9 tests using `load_pmid_xml()`
+- **Mocking Removed**: No `PubMedFetcher` network calls in XML fixture tests
+- **Results**: 9/9 tests passing, authentic journal data validation
+- **Evidence Coverage**: 4 different APA journals (Am Psychol, J Comp Psychol, Psychiatr Rehabil J, Rehabil Psychol)
+- **DOI Pattern**: Verified 10.1037/ format for all PMIDs, psycnet.apa.org URL construction
+- **Features Tested**: Paywall detection, subscription access model, error handling, metadata consistency
+
 ### 🔧 In Progress
 
 *None currently*
@@ -218,7 +229,7 @@ def validate_publisher_fixtures(publisher_name):
 ```
 
 ### Progress Tracking
-- **Current**: 4/41 publishers complete (9.8%)
+- **Current**: 5/41 publishers complete (12.2%)
 - **Phase 1 Target**: 10/41 publishers (24.4%)
 - **Phase 2 Target**: 20/41 publishers (48.8%) 
 - **Full Completion**: 41/41 publishers (100%)

@@ -300,13 +300,14 @@ class JournalRegistry:
     
     def close(self):
         """Close database connection."""
-        if self._conn:
+        if hasattr(self, '_conn') and self._conn:
             self._conn.close()
             self._conn = None
     
     def __del__(self):
         """Cleanup database connection."""
-        self.close()
+        if hasattr(self, '_conn'):
+            self.close()
 
 
 def standardize_journal_name(journal_name: str) -> str:

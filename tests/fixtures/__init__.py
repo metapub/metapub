@@ -64,4 +64,5 @@ APA_EVIDENCE_PMIDS = {
     '33856845': {'doi': '10.1037/prj0000481', 'journal': 'Psychiatr Rehabil J'},
     '38271020': {'doi': '10.1037/rep0000539', 'journal': 'Rehabil Psychol'},
     '33119379': {'doi': '10.1037/rep0000367', 'journal': 'Rehabil Psychol'},
+    '24349601': {'doi': '10.1037/a0030292', 'journal': 'J Neurosci Psychol Econ', 'pmc': 'PMC3858957'},
 }

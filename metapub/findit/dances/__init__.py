@@ -22,7 +22,7 @@ from .aha import the_aha_waltz
 # AIP now uses the_doi_slide generic function
 from .allenpress import the_allenpress_advance
 from .annualreviews import the_annualreviews_round
-from .apa import the_apa_dab
+# APA now uses the_doi_slide generic function
 from .aps import the_aps_quickstep
 from .asm import the_asm_shimmy
 from .asme import the_asme_animal

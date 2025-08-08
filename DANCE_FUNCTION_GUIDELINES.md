@@ -21,6 +21,8 @@ Publisher Dance Development Process
     - Document error conditions and edge cases
     - Test pattern consistency across different articles
 
+ End of Phase 1: STOP AND ASK USER: Does this pattern make sense?
+
   Phase 2: Infrastructure Assessment
 
   3. Evaluate Generic Functions
@@ -31,7 +33,7 @@ Publisher Dance Development Process
   4. Fix Foundation First
     - Enhance generic functions if needed
     - Add publisher-specific handling to shared utilities
-    - Ensure robust error handling at the infrastructure level
+    - Ensure robust error handling at the infrastructure level following CLAUDE.md principles.
 
   Phase 3: Dance Implementation
 
@@ -56,40 +58,18 @@ Publisher Dance Development Process
   7. Create Focused Tests
     - Test the happy path with real pattern examples
     - Test each error condition separately
-    - Test verification integration
     - Remove any tests that don't match actual function behavior
     - Don't test for wrong DOI, wrong journal, or wrong PMID.  FindIt wiring is consistent: PMID -> journal -> publisher handler. 
   8. Registry Integration Test
     - Verify journal recognition works
     - Confirm dance function mapping
 
-  (Theoretical) Automation Template (don't actually write this code...)
-
-  # {publisher}_development_workflow.py
-  def investigate_publisher(publisher_name, pmids):
-      """Phase 1: Collect evidence"""
-      patterns = extract_patterns_from_pmids(pmids)
-      ssl_issues = test_ssl_compatibility(pmids)
-      return {"patterns": patterns, "ssl_issues": ssl_issues}
-
-  def assess_infrastructure(findings):
-      """Phase 2: Check if generic functions need updates"""
-      return check_generic_function_compatibility(findings)
-
-  def implement_dance(patterns, publisher_name):
-      """Phase 3: Write the dance function"""
-      return generate_dance_template(patterns, publisher_name)
-
-  def create_tests(dance_function, patterns):
-      """Phase 4: Generate focused tests"""
-      return generate_test_suite(dance_function, patterns)
-
   Decision Framework
 
   - Simple pattern found → Use regex extraction
   - Complex DOM needed → Use minimal BeautifulSoup, avoid XPath
   - SSL issues discovered → Document for verify_pdf_url enhancement
-  - Authentication required → Consider if worth implementing vs PMC fallback
+  - Authentication required → Comment in code and move on 
   - Paywall detected → Implement detection, fail gracefully
 
   Quality Gates
@@ -98,10 +78,11 @@ Publisher Dance Development Process
   - No generic Exception catching
   - Clear error messages with prefixes
   - Tests cover actual function behavior
-  - Works with real PMIDs from findit_complete_collector.py
+  - Works with real PMIDs found in output/verified_pmids
+  - Evidence from output/article_html
 
-  This process turns "figure out this publisher" into a systematic investigation that builds reliable, maintainable dance functions. The key insight: understand first, 
-  then implement simply.
+
+Core principle: use evidence, understand, then implement simply.
 
 
 
@@ -138,21 +119,46 @@ def the_publisher_dance(pma, verify=True):
 - **One consistent, tested URL pattern**
 - Simple, reliable, clean code
 - Publisher has been verified to work with this pattern
+- COULD be brought in with a template in the registry to use the_doi_slide or the_vip_shake (in which case don't write a whole new dance)
+- if the_doi_slide or the_vip_shake don't work for this publisher, THEN write a standalone dance.
+
+Example:
 
 ```python
-def the_publisher_dance(pma, verify=True):
+def the_mdpi_moonwalk(pma, verify=True):
+    """MDPI dance - direct PDF URL construction from DOI.
+
+    MDPI uses a consistent URL pattern where DOI 10.3390/journal[volume][issue][article]
+    maps to PDF URL /{journal_id}/{volume}/{issue}/{article}/pdf
+
+    Pattern discovered from evidence:
+    - DOI: 10.3390/cardiogenetics11030017
+    - URL: /2035-8148/11/3/17/pdf
+    - DOI: 10.3390/metabo14040228
+    - URL: /2218-1989/14/4/228/pdf
+
+    The challenge is mapping journal names to their numeric IDs.
+    Since direct DOI resolution works well for MDPI, this function
+    uses enhanced DOI resolution with '/pdf' appended.
+
+    :param: pma (PubMedArticle object)
+    :param: verify (bool) [default: True]
+    :return: url (str) - Direct PDF URL
+    :raises: NoPDFLink
+    """
     if not pma.doi:
-        raise NoPDFLink("DOI required for Publisher")
-    
-    url = f"https://publisher.com/pdf/{pma.doi}"
-    
+        raise NoPDFLink('MISSING: DOI required for MDPI PDF access')
+
+    # MDPI strategy: resolve DOI and append /pdf
+    # This works because MDPI DOIs resolve to their article pages
+    # and the PDF pattern is consistent
+    resolved_url = the_doi_2step(pma.doi)
+    pdf_url = f"{resolved_url}/pdf"
+
     if verify:
-        if verify_pdf_url(url):
-            return url
-        else:
-            raise AccessDenied(f"PAYWALL: Publisher requires subscription - {url}")
-    
-    return url
+        verify_pdf_url(pdf_url, 'MDPI')
+
+    return pdf_url
 ```
 
 ### ❌ BAD PATTERNS (Avoid These!)
@@ -217,21 +223,6 @@ except:
 - Huge nested try-except blocks
 - Each "strategy" is a guess, not validated
 
-#### 3. Excessive HTML Parsing for Guessing
-**AVOID:**
-```python
-# BAD: Complex HTML parsing to guess at PDF links
-response = requests.get(article_url)
-soup = BeautifulSoup(response.text)
-for link in soup.find_all('a'):
-    if 'pdf' in link.get('href', ''):
-        try:
-            maybe_pdf = urljoin(base_url, link['href'])
-            if test_if_pdf(maybe_pdf):  # More requests!
-                return maybe_pdf
-        except:
-            continue
-```
 
 ## Specific Guidelines
 

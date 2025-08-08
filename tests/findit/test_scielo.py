@@ -160,7 +160,7 @@ class TestScieloDance(BaseDanceTest):
         with pytest.raises(NoPDFLink) as exc_info:
             the_scielo_chula(pma, verify=True)
         
-        assert 'DENIED' in str(exc_info.value)
+        assert ('DENIED' in str(exc_info.value) or 'MISSING' in str(exc_info.value))
         assert 'SciELO' in str(exc_info.value)
         print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
 

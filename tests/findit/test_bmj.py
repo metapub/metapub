@@ -45,12 +45,11 @@ class TestBMJDance(BaseDanceTest):
         # Test the function directly with known BMJ patterns rather than registry lookup
         # since registry may not be populated during tests
         
-        from metapub.findit.journals.bmj import bmj_journals, PUBLISHER_INFO
+        from metapub.findit.journals.bmj import bmj_journals, bmj_journal_params
         
         # Verify BMJ configuration  
-        assert PUBLISHER_INFO['name'] == 'BMJ Publishing Group'
-        assert PUBLISHER_INFO['dance_function'] == 'the_bmj_bump'
         assert len(bmj_journals) > 0, "BMJ journals list should not be empty"
+        assert len(bmj_journal_params) > 0, "BMJ journal parameters should not be empty"
         
         # Check some expected BMJ journals are in the list
         expected_journals = ['Heart', 'BMJ Support Palliat Care', 'Gut', 'BMJ Open']

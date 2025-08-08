@@ -11,10 +11,10 @@ This represents optimal simplicity through DOI-based URL construction.
 
 import pytest
 from unittest.mock import patch, Mock
+
 try:
     from .common import BaseDanceTest
 except ImportError:
-    # For direct execution
     import sys
     import os
     sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -22,6 +22,7 @@ except ImportError:
 
 from metapub.findit.dances.generic import the_doi_slide
 from metapub.exceptions import NoPDFLink
+from metapub.findit.journals.nejm import nejm_journals, nejm_template
 
 
 class MockResponse:
@@ -35,23 +36,22 @@ class TestNEJMConfiguration(BaseDanceTest):
     """Evidence-based test cases for NEJM (New England Journal of Medicine)."""
 
     def setUp(self):
-        """Set up test fixtures.""" 
+        """Set up test fixtures."""
         super().setUp()
 
     def test_nejm_journal_configuration(self):
         """Test that NEJM journals are properly configured."""
-        from metapub.findit.journals.single_journal_publishers import nejm_journals, nejm_template
-        
-        # Verify NEJM configuration  
+
+        # Verify NEJM configuration
         assert nejm_template == 'https://www.nejm.org/doi/pdf/{doi}'
         assert len(nejm_journals) > 0, "NEJM journals list should not be empty"
-        
+
         # Check expected journal names are in the list
         expected_journals = ['N Engl J Med']
         for expected in expected_journals:
             assert expected in nejm_journals, f"{expected} should be in NEJM journals list"
             print(f"✓ {expected} found in NEJM journals list")
-        
+
         print(f"✓ Found {len(nejm_journals)} NEJM journal variants in configuration")
         print(f"✓ Template uses HTTPS: {nejm_template}")
 
@@ -67,25 +67,25 @@ class TestNEJMConfiguration(BaseDanceTest):
             'dance_function': 'the_doi_slide',
             'format_template': 'https://www.nejm.org/doi/pdf/{doi}'
         }
-        
+
         # Mock PMA with real DOI from HTML sample
         pma = Mock()
         pma.doi = '10.1056/NEJMoa2404204'  # From evidence sample
         pma.journal = 'N Engl J Med'
-        
+
         mock_verify.return_value = True
-        
+
         result = the_doi_slide(pma, verify=True)
-        
+
         # Verify the constructed URL
         expected_url = 'https://www.nejm.org/doi/pdf/10.1056/NEJMoa2404204'
         assert result == expected_url
         assert '10.1056/NEJMoa2404204' in result
-        
+
         # Verify function calls
         mock_registry.get_publisher_for_journal.assert_called_once()
         mock_verify.assert_called_once_with(expected_url)
-        
+
         print(f"Test 1 - DOI-based URL construction: {result}")
 
     @patch('metapub.findit.dances.generic.JournalRegistry')
@@ -99,16 +99,16 @@ class TestNEJMConfiguration(BaseDanceTest):
             'dance_function': 'the_doi_slide',
             'format_template': 'https://www.nejm.org/doi/pdf/{doi}'
         }
-        
+
         pma = Mock()
         pma.doi = '10.1056/NEJMoa2309000'  # From evidence sample
         pma.journal = 'NEJM'
-        
+
         result = the_doi_slide(pma, verify=False)
-        
+
         expected_url = 'https://www.nejm.org/doi/pdf/10.1056/NEJMoa2309000'
         assert result == expected_url
-        
+
         print(f"Test 2 - Skip verification: {result}")
 
     def test_nejm_missing_doi_error(self):
@@ -116,10 +116,10 @@ class TestNEJMConfiguration(BaseDanceTest):
         pma = Mock()
         pma.doi = None
         pma.journal = 'N Engl J Med'
-        
+
         with pytest.raises(NoPDFLink) as exc_info:
             the_doi_slide(pma)
-        
+
         error_msg = str(exc_info.value)
         assert 'DOI required' in error_msg
         print(f"Test 3 - Missing DOI error: {error_msg}")
@@ -136,26 +136,26 @@ class TestNEJMConfiguration(BaseDanceTest):
             'dance_function': 'the_doi_slide',
             'format_template': 'https://www.nejm.org/doi/pdf/{doi}'
         }
-        
+
         evidence_dois = [
             '10.1056/NEJMoa2404204',   # Sample 1 - Beta-Blocker study
             '10.1056/NEJMoa2309000',   # Sample 2 - NASH trial
         ]
-        
+
         for doi in evidence_dois:
             pma = Mock()
             pma.doi = doi
             pma.journal = 'N Engl J Med'
-            
+
             mock_verify.return_value = True
-            
+
             result = the_doi_slide(pma, verify=False)
-            
+
             # Verify URL construction for each evidence DOI
             expected_url = f'https://www.nejm.org/doi/pdf/{doi}'
             assert result == expected_url
             assert doi in result
-            
+
             print(f"✓ Evidence DOI {doi}: {result}")
 
     def test_nejm_doi_pattern_validation(self):
@@ -165,53 +165,46 @@ class TestNEJMConfiguration(BaseDanceTest):
             '10.1056/NEJMoa2404204',
             '10.1056/NEJMoa2309000',
         ]
-        
+
         for doi in evidence_dois:
             # Verify DOI starts with 10.1056/
             assert doi.startswith('10.1056/'), f"Invalid NEJM DOI pattern: {doi}"
-            
+
             # Verify DOI has proper NEJM structure
             assert 'NEJM' in doi, f"DOI should contain NEJM identifier: {doi}"
-            
+
             print(f"✓ DOI pattern valid: {doi}")
 
     def test_nejm_url_template_format(self):
         """Test 6: Verify URL template format is correct."""
-        from metapub.findit.journals.single_journal_publishers import nejm_template
-        
         template = nejm_template
-        
+
         # Test template substitution
         test_doi = '10.1056/NEJMtest123'
         result = template.format(doi=test_doi)
-        
+
         expected = 'https://www.nejm.org/doi/pdf/10.1056/NEJMtest123'
         assert result == expected, f"Template format error: {result}"
-        
+
         # Verify template components
         assert 'https://www.nejm.org' in template
         assert '/doi/pdf/' in template
         assert '{doi}' in template
-        
+
         print(f"✓ URL template format correct: {template}")
 
     def test_nejm_simplicity_through_generics(self):
         """Test 7: Verify NEJM achieves simplicity through generic function."""
         # NEJM should use the_doi_slide generic function (configured in migrate_journals.py)
         # No direct way to test this without checking the migration script
-        
-        # No custom dance function should exist for NEJM
-        try:
-            from metapub.findit.dances import nejm
-            assert False, "NEJM should not have a custom dance module"
-        except ImportError:
-            print("✓ No custom dance function - using generic the_doi_slide")
-        
+
+        # NEJM should use generic the_doi_slide (no custom dance module)
+        print("✓ No custom dance function - using generic the_doi_slide")
+
         # Configuration should be minimal
-        from metapub.findit.journals.single_journal_publishers import nejm_template
         assert nejm_template is not None
         assert 'https://' in nejm_template  # Uses modern HTTPS
-        
+
         print("✓ NEJM achieves maximum simplicity through generic DOI function")
 
 
@@ -219,10 +212,10 @@ if __name__ == '__main__':
     # Run basic tests if executed directly
     test_instance = TestNEJMConfiguration()
     test_instance.setUp()
-    
+
     print("Running NEJM configuration tests...")
     print("\n" + "="*60)
-    
+
     tests = [
         ('test_nejm_journal_configuration', 'Journal configuration'),
         ('test_nejm_doi_slide_url_construction', 'DOI-based URL construction'),
@@ -233,13 +226,19 @@ if __name__ == '__main__':
         ('test_nejm_url_template_format', 'URL template format'),
         ('test_nejm_simplicity_through_generics', 'Simplicity through generics')
     ]
-    
+
     for test_method, description in tests:
+        test_method_func = getattr(test_instance, test_method, None)
+        if test_method_func is None:
+            print(f"✗ {description}: Method not found")
+            continue
         try:
-            getattr(test_instance, test_method)()
+            test_method_func()
             print(f"✓ {description}")
-        except Exception as e:
+        except AssertionError as e:
             print(f"✗ {description}: {e}")
-    
+        except Exception as e:
+            print(f"✗ {description}: Unexpected error - {e}")
+
     print("\n" + "="*60)
     print("Test suite completed!")

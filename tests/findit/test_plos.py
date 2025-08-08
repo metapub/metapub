@@ -44,11 +44,9 @@ class TestPLOSTest(BaseDanceTest):
         # Test the function directly with known PLOS patterns rather than registry lookup
         # since registry may not be populated during tests
         
-        from metapub.findit.journals.plos import plos_journals, PUBLISHER_INFO
+        from metapub.findit.journals.plos import plos_journals
         
-        # Verify PLOS configuration  
-        assert PUBLISHER_INFO['name'] == 'Public Library of Science'
-        assert PUBLISHER_INFO['dance_function'] == 'the_plos_pogo'
+        # Verify PLOS configuration
         assert len(plos_journals) > 0, "PLOS journals list should not be empty"
         
         # Check some expected PLOS journals are in the list

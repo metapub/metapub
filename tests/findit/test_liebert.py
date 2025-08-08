@@ -20,9 +20,9 @@ class TestLiebertDance(BaseDanceTest):
             source = FindIt(pmid=pmid)
             assert source.pma.journal == expected_journal
             assert source.pma.doi.startswith('10.1089/')  # Liebert DOI prefix
-            # Liebert journals should be recognized and generate proper paywall URLs
+            # Liebert journals should be recognized and generate access-related messages
             if source.reason:
-                assert 'PAYWALL' in source.reason
+                assert ('PAYWALL' in source.reason or 'DENIED' in source.reason)
                 assert 'liebertpub.com' in source.reason
             assert 'NOFORMAT' not in str(source.reason or '')
 

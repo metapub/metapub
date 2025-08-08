@@ -15,7 +15,7 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../'))
 
 from metapub.findit.dances.generic import the_doi_slide
-from metapub.findit.journals.single_journal_publishers import degruyter_journals
+from metapub.findit.journals.degruyter import degruyter_journals
 from metapub.exceptions import NoPDFLink, MetaPubError
 from tests.fixtures import load_pmid_xml, DEGRUYTER_EVIDENCE_PMIDS
 
@@ -72,8 +72,8 @@ class TestDeGruyterDanceFunction:
         
         fake_article = MockArticle()
         
-        # Should fail because Nature journal uses different template parameters
-        with pytest.raises((NoPDFLink, KeyError)):
+        # Should fail because Nature journal is not configured for DOI-based access
+        with pytest.raises(KeyError):
             the_doi_slide(fake_article, verify=False)
     
     def test_degruyter_missing_doi_error(self):

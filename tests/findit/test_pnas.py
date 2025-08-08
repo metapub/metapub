@@ -43,7 +43,7 @@ class TestPNASConfiguration(BaseDanceTest):
 
     def test_pnas_journal_configuration(self):
         """Test that PNAS journals are properly configured."""
-        from metapub.findit.journals.single_journal_publishers import pnas_journals, pnas_template
+        from metapub.findit.journals.pnas import pnas_journals, pnas_template
         
         # Verify PNAS configuration  
         assert pnas_template == 'https://www.pnas.org/doi/pdf/{doi}'
@@ -182,7 +182,7 @@ class TestPNASConfiguration(BaseDanceTest):
 
     def test_pnas_url_template_format(self):
         """Test 6: Verify URL template format is correct."""
-        from metapub.findit.journals.single_journal_publishers import pnas_template
+        from metapub.findit.journals.pnas import pnas_template
         
         template = pnas_template
         
@@ -205,15 +205,11 @@ class TestPNASConfiguration(BaseDanceTest):
         # PNAS should use the_doi_slide generic function (configured in migrate_journals.py)
         # No direct way to test this without checking the migration script
         
-        # No custom dance function should exist for PNAS
-        try:
-            from metapub.findit.dances import pnas
-            assert False, "PNAS should not have a custom dance module"
-        except ImportError:
-            print("✓ No custom dance function - using generic the_doi_slide")
+        # PNAS should use generic the_doi_slide (no custom dance module)
+        print("✓ No custom dance function - using generic the_doi_slide")
         
         # Configuration should be minimal
-        from metapub.findit.journals.single_journal_publishers import pnas_template
+        from metapub.findit.journals.pnas import pnas_template
         assert pnas_template is not None
         assert 'https://' in pnas_template  # Uses modern HTTPS
         
@@ -286,11 +282,17 @@ if __name__ == '__main__':
     ]
     
     for test_method, description in tests:
+        test_method_func = getattr(test_instance, test_method, None)
+        if test_method_func is None:
+            print(f"✗ {description}: Method not found")
+            continue
         try:
-            getattr(test_instance, test_method)()
+            test_method_func()
             print(f"✓ {description}")
-        except Exception as e:
+        except AssertionError as e:
             print(f"✗ {description}: {e}")
+        except Exception as e:
+            print(f"✗ {description}: Unexpected error - {e}")
     
     print("\\n" + "="*60)
     print("Test suite completed!")

@@ -15,7 +15,7 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../'))
 
 from metapub.findit.dances.generic import the_doi_slide
-from metapub.findit.journals.single_journal_publishers import aps_journals
+from metapub.findit.journals.aps import aps_journals
 # Note: JournalRegistry integration tests may need to be adjusted
 # based on current registry implementation
 from metapub.exceptions import NoPDFLink, MetaPubError
@@ -75,8 +75,7 @@ class TestAPSDanceFunction:
         fake_article = MockArticle()
         
         # Should fail because Nature journal is not configured for DOI-based access
-        # or has incompatible template parameters
-        with pytest.raises((NoPDFLink, KeyError)):
+        with pytest.raises(KeyError):
             the_doi_slide(fake_article, verify=False)
     
     def test_aps_missing_doi_error(self):
@@ -108,8 +107,8 @@ class TestAPSDanceFunction:
         """Test that verify=True properly detects paywalled content."""
         article = load_pmid_xml('34995163')
         
-        # With verify=True, should detect 403 paywall
-        with pytest.raises((NoPDFLink, MetaPubError)):
+        # With verify=True, should detect paywall or access issues
+        with pytest.raises(NoPDFLink):
             the_doi_slide(article, verify=True)
 
 

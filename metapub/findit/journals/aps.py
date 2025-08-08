@@ -8,15 +8,6 @@ URL Pattern: http://{host}.physiology.org/content/{volume}/{issue}/{first_page}.
 Dance Function: the_aps_quickstep
 """
 
-# Publisher metadata
-PUBLISHER_INFO = {
-    'name': 'American Physiological Society',
-    'dance_function': 'the_aps_quickstep',
-    'base_url': 'https://physiology.org',
-    'url_pattern': 'http://{host}.physiology.org/content/{volume}/{issue}/{first_page}.full.pdf',
-    'identifier_type': 'vip'  # Volume-Issue-Page format
-}
-
 # APS journals using VIP format (extracted from misc_vip.py)
 aps_journals = [
     'Am J Physiol Cell Physiol',

@@ -9,15 +9,6 @@ Alternative: http://{host}/content/{volume}/{issue}/{first_page}.full.pdf
 Dance Function: the_sage_hula
 """
 
-# Publisher metadata
-PUBLISHER_INFO = {
-    'name': 'SAGE Publications',
-    'dance_function': 'the_sage_hula',
-    'base_url': 'https://journals.sagepub.com',
-    'url_pattern': 'https://journals.sagepub.com/doi/pdf/{doi}',
-    'identifier_type': 'doi'  # Primary method, with VIP fallback
-}
-
 # SAGE journals using VIP format (extracted from misc_vip.py)
 sage_journals = [
     'Ann Clin Biochem',

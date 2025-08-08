@@ -14,14 +14,6 @@ Evidence-based analysis from HTML samples (2025-08-07):
 - Cloudflare protection may block verification but URL construction works
 """
 
-# Publisher metadata
-PUBLISHER_INFO = {
-    'name': 'American Chemical Society',
-    'dance_function': 'the_doi_slide',
-    'base_url': 'https://pubs.acs.org',
-    'format_template': 'https://pubs.acs.org/doi/pdf/{doi}',
-    'identifier_type': 'doi'
-}
 
 # Template for ACS DOI-based URLs
 acs_template = 'https://pubs.acs.org/doi/pdf/{doi}'

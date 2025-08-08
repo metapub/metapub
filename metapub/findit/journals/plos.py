@@ -13,13 +13,6 @@ Evidence-based analysis from HTML samples (2025-08-07):
 Dance Function: the_plos_pogo
 """
 
-# Publisher metadata
-PUBLISHER_INFO = {
-    'name': 'Public Library of Science',
-    'dance_function': 'the_plos_pogo',
-    'base_url': 'https://journals.plos.org',
-    'identifier_type': 'doi'  # DOI-based format
-}
 
 # PLOS journals using DOI format (extracted from misc_doi.py)
 plos_journals = [

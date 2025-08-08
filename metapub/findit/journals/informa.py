@@ -8,15 +8,6 @@ URL Pattern: http://informahealthcare.com/doi/pdf/{DOI}
 Dance Function: the_doi_slide
 """
 
-# Publisher metadata
-PUBLISHER_INFO = {
-    'name': 'Informa Healthcare',
-    'dance_function': 'the_doi_slide',
-    'base_url': 'http://informahealthcare.com',
-    'url_pattern': 'http://informahealthcare.com/doi/pdf/{doi}',
-    'identifier_type': 'doi'
-}
-
 # Informa Healthcare journals (extracted from misc_doi.py)
 informa_journals = [
     'Acta Oncol',

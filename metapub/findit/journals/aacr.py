@@ -8,15 +8,6 @@ URL Pattern: http://{host}.aacrjournals.org/content/{volume}/{issue}/{first_page
 Dance Function: the_aacr_jitterbug
 """
 
-# Publisher metadata
-PUBLISHER_INFO = {
-    'name': 'American Association for Cancer Research',
-    'dance_function': 'the_aacr_jitterbug',
-    'base_url': 'https://aacrjournals.org',
-    'url_pattern': 'http://{host}.aacrjournals.org/content/{volume}/{issue}/{first_page}.full.pdf',
-    'identifier_type': 'vip'  # Volume-Issue-Page format
-}
-
 # AACR journals using VIP format (extracted from misc_vip.py)
 aacr_journals = [
     'Cancer Discov',

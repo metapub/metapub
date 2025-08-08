@@ -8,15 +8,6 @@ URL Pattern: http://{host}/content/{volume}/{issue}/{first_page}.full.pdf
 Dance Function: the_vip_shake (VIP format)
 """
 
-# Publisher metadata
-PUBLISHER_INFO = {
-    'name': 'Oxford University Press',
-    'dance_function': 'the_vip_shake',
-    'base_url': 'https://academic.oup.com',
-    'url_pattern': 'http://{host}/content/{volume}/{issue}/{first_page}.full.pdf',
-    'identifier_type': 'vip'  # Volume-Issue-Page format
-}
-
 # Oxford journals are available as keys in oxford_journal_params dictionary
 
 # Host mappings for Oxford journals (extracted from misc_vip.py)

@@ -8,15 +8,6 @@ URL Pattern: http://{host}.ahajournals.org/content/{volume}/{issue}/{first_page}
 Dance Function: the_aha_waltz
 """
 
-# Publisher metadata
-PUBLISHER_INFO = {
-    'name': 'American Heart Association',
-    'dance_function': 'the_aha_waltz',
-    'base_url': 'https://ahajournals.org',
-    'url_pattern': 'http://{host}.ahajournals.org/content/{volume}/{issue}/{first_page}.full.pdf',
-    'identifier_type': 'vip'  # Volume-Issue-Page format
-}
-
 # AHA journals using VIP format (extracted from misc_vip.py)
 aha_journals = [
     'Arterioscler Thromb Vasc Biol',

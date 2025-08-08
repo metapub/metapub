@@ -7,7 +7,7 @@ and don't fit into larger publisher groups.
 
 # New England Journal of Medicine
 nejm_journals = ['N Engl J Med']
-nejm_template = 'http://www.nejm.org/doi/pdf/{doi}'
+nejm_template = 'https://www.nejm.org/doi/pdf/{doi}'
 
 # Science (AAAS Science magazine) - VIP format
 science_journals = ['Science']

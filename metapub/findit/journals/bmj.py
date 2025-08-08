@@ -14,13 +14,6 @@ Evidence-based analysis from HTML samples (2025-08-07):
 Dance Function: the_bmj_bump
 """
 
-# Publisher metadata
-PUBLISHER_INFO = {
-    'name': 'BMJ Publishing Group',
-    'dance_function': 'the_bmj_bump',
-    'base_url': 'https://www.bmj.com',
-    'identifier_type': 'doi'  # DOI-based format
-}
 
 # VIP template for BMJ journals (used for primary URL construction)
 bmj_vip_template = 'https://{host}/content/{volume}/{issue}/{first_page}.full.pdf'

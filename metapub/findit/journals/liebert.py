@@ -8,15 +8,6 @@ URL Pattern: http://online.liebertpub.com/doi/pdf/{doi}
 Dance Function: the_doi_slide
 """
 
-# Publisher metadata
-PUBLISHER_INFO = {
-    'name': 'Mary Ann Liebert Publishers',
-    'dance_function': 'the_doi_slide',
-    'base_url': 'https://liebertpub.com',
-    'url_pattern': 'http://online.liebertpub.com/doi/pdf/{doi}',
-    'identifier_type': 'doi'  # DOI-based format
-}
-
 # Liebert journals using DOI format (expanded from unknown publishers analysis)
 liebert_journals = [
     # Original 8 journals

@@ -8,15 +8,6 @@ URL Pattern: http://www.tandfonline.com/doi/pdf/{DOI}
 Dance Function: the_doi_slide
 """
 
-# Publisher metadata
-PUBLISHER_INFO = {
-    'name': 'Taylor & Francis',
-    'dance_function': 'the_doi_slide',
-    'base_url': 'http://www.tandfonline.com',
-    'url_pattern': 'http://www.tandfonline.com/doi/pdf/{doi}',
-    'identifier_type': 'doi'
-}
-
 # Template for Taylor & Francis DOI-based URLs
 taylor_francis_template = 'http://www.tandfonline.com/doi/pdf/{doi}'
 

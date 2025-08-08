@@ -8,15 +8,6 @@ URL Pattern: http://{host}.asm.org/content/{volume}/{issue}/{first_page}.full.pd
 Dance Function: the_asm_shimmy
 """
 
-# Publisher metadata
-PUBLISHER_INFO = {
-    'name': 'American Society of Microbiology',
-    'dance_function': 'the_asm_shimmy',
-    'base_url': 'https://asm.org',
-    'url_pattern': 'http://{host}.asm.org/content/{volume}/{issue}/{first_page}.full.pdf',
-    'identifier_type': 'vip'  # Volume-Issue-Page format
-}
-
 # ASM journals using VIP format (extracted from misc_vip.py)
 asm_journals = [
     'Antimicrob Agents Chemother',

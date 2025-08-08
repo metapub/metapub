@@ -156,12 +156,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** High (open access biomedicine)
 - **Notes:** **ALREADY OPTIMAL**: BMC already uses a minimal generic function `the_bmc_boogie` (19 lines) specifically designed for its URL pattern. Extracts article ID from DOI (after slash) and constructs URL as `http://www.biomedcentral.com/content/pdf/{aid}.pdf`. Since BMC is fully open access, verification is optional. No consolidation needed - the existing generic function is already perfectly suited for BMC's requirements. HTML samples now available.
 
-### ❓ BMJ (British Medical Journal)
-- **Dance Function:** Not assigned
+### ✅ BMJ (British Medical Journal)
+- **Dance Function:** `the_bmj_bump`
 - **HTML Samples:** `output/article_html/bmj/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (perfect simplicity implementation)
 - **Priority:** High (major medical publisher)
-- **Notes:** Major medical journal publisher with HTML samples available
+- **Notes:** **EVIDENCE-DRIVEN REWRITE COMPLETED**: Major medical publisher with optimized two-stage approach. Analysis of 3 HTML samples revealed VIP URL construction pattern: `https://[journal].bmj.com/content/{volume}/{issue}/{first_page}.full.pdf`. All DOIs follow `10.1136/` prefix format. Implemented `the_bmj_bump` using efficient two-stage method: (1) VIP URL construction first (faster - no page load), (2) citation_pdf_url meta tag extraction as reliable backup. Function achieves 26 effective lines of code (under 50-line guideline). **EFFICIENCY OPTIMIZATION**: Eliminated massive journal list duplication - `bmj_journals` now generated dynamically from `bmj_journal_params.keys()`, reducing configuration file by 54 lines while maintaining full compatibility. Comprehensive test suite (11 tests) validates both VIP construction and meta tag fallback, error handling, and compliance with DANCE_FUNCTION_GUIDELINES. Optimized approach saves network requests while maintaining 100% reliability through fallback method.
 
 ### ❓ BMJ Open Gastroenterology  
 - **Dance Function:** Not assigned

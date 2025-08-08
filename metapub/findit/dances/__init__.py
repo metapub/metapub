@@ -28,6 +28,7 @@ from .asm import the_asm_shimmy
 from .asme import the_asme_animal
 from .biochemsoc import the_biochemsoc_saunter
 # BioOne now uses the_vip_shake generic function
+from .bmj import the_bmj_bump
 from .brill import the_brill_bridge
 from .cambridge import the_cambridge_foxtrot
 # CancerBiomed now uses the_vip_shake generic function

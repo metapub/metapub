@@ -35,3 +35,21 @@ WORLDSCIENTIFIC_EVIDENCE_PMIDS = {
     '24808625': {'doi': '10.1142/S0218213013600063', 'journal': 'Int J Artif Intell Tools'},
     '37868702': {'doi': '10.1142/s1088424623500700', 'journal': 'J Porphyr Phthalocyanines'},
 }
+
+# Taylor & Francis PMIDs with metadata
+TAYLOR_FRANCIS_EVIDENCE_PMIDS = {
+    '35067114': {'doi': '10.1080/09540121.2022.2029813', 'journal': 'AIDS Care'},
+    '38962805': {'doi': '10.1080/09540121.2024.2374185', 'journal': 'AIDS Care'},
+    '37065682': {'doi': '10.1080/09687637.2022.2055446', 'journal': 'Drugs (Abingdon Engl)'},
+    '35095222': {'doi': '10.1080/09687637.2020.1856786', 'journal': 'Drugs (Abingdon Engl)'},
+    '37008990': {'doi': '10.1080/15140326.2022.2041158', 'journal': 'J Appl Econ'},
+    '32306807': {'doi': '10.1080/00498254.2020.1755909', 'journal': 'Xenobiotica'},
+    '38738473': {'doi': '10.1080/00498254.2024.2351044', 'journal': 'Xenobiotica'},
+}
+
+# PNAS PMIDs with metadata
+PNAS_EVIDENCE_PMIDS = {
+    '38011560': {'doi': '10.1073/pnas.2305772120', 'journal': 'Proc Natl Acad Sci U S A'},
+    '38147649': {'doi': '10.1073/pnas.2308706120', 'journal': 'Proc Natl Acad Sci U S A'},
+    '37903272': {'doi': '10.1073/pnas.2308214120', 'journal': 'Proc Natl Acad Sci U S A'},
+}

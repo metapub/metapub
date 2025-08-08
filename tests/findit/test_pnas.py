@@ -7,6 +7,8 @@ Based on HTML sample analysis showing simple DOI-based PDF URL pattern:
 - Uses the_doi_slide generic function (no custom dance needed)
 
 This represents optimal simplicity through DOI-based URL construction.
+
+Following TRANSITION_TESTS_TO_REAL_DATA.md - using XML fixtures instead of mocking.
 """
 
 import pytest
@@ -22,6 +24,7 @@ except ImportError:
 
 from metapub.findit.dances.generic import the_doi_slide
 from metapub.exceptions import NoPDFLink
+from tests.fixtures import load_pmid_xml, PNAS_EVIDENCE_PMIDS
 
 
 class MockResponse:
@@ -216,6 +219,51 @@ class TestPNASConfiguration(BaseDanceTest):
         
         print("✓ PNAS achieves maximum simplicity through generic DOI function")
 
+    @patch('metapub.findit.dances.generic.verify_pdf_url')
+    @patch('metapub.findit.dances.generic.JournalRegistry')
+    def test_pnas_real_pmids_xml_fixtures(self, mock_registry_class, mock_verify):
+        """Test 8: Real PMIDs with XML fixtures (TRANSITION_TESTS_TO_REAL_DATA.md)."""
+        # Mock the registry
+        mock_registry = Mock()
+        mock_registry_class.return_value = mock_registry
+        mock_registry.get_publisher_for_journal.return_value = {
+            'name': 'Proceedings of the National Academy of Sciences',
+            'dance_function': 'the_doi_slide',
+            'format_template': 'https://www.pnas.org/doi/pdf/{doi}'
+        }
+        
+        # Test with real PMIDs using XML fixtures
+        for pmid, expected_data in PNAS_EVIDENCE_PMIDS.items():
+            # Load real article data from XML fixture
+            pma = load_pmid_xml(pmid)
+            
+            # Verify authentic metadata matches expectations
+            assert pma.pmid == pmid, f"PMID mismatch: {pma.pmid} != {pmid}"
+            assert pma.doi == expected_data['doi'], f"DOI mismatch for {pmid}: {pma.doi} != {expected_data['doi']}"
+            assert expected_data['journal'] in pma.journal, f"Journal mismatch for {pmid}: {expected_data['journal']} not in {pma.journal}"
+            
+            # Verify PNAS DOI pattern
+            assert pma.doi.startswith('10.1073/pnas.'), f"Invalid PNAS DOI pattern: {pma.doi}"
+            
+            # Mock verification to pass
+            mock_verify.return_value = True
+            
+            # Test the dance function
+            result = the_doi_slide(pma, verify=False)
+            
+            # Verify URL construction
+            expected_url = f"https://www.pnas.org/doi/pdf/{pma.doi}"
+            assert result == expected_url, f"URL mismatch for {pmid}: {result} != {expected_url}"
+            
+            # Verify URL components
+            assert 'https://www.pnas.org' in result
+            assert '/doi/pdf/' in result
+            assert pma.doi in result
+            
+            print(f"✓ Real PMID {pmid} ({expected_data['journal']}): {result}")
+        
+        print(f"✅ All {len(PNAS_EVIDENCE_PMIDS)} real PMIDs tested with XML fixtures")
+
 
 if __name__ == '__main__':
     # Run basic tests if executed directly
@@ -233,7 +281,8 @@ if __name__ == '__main__':
         ('test_pnas_evidence_dois_coverage', 'Evidence DOIs coverage'),
         ('test_pnas_doi_pattern_validation', 'DOI pattern validation'),
         ('test_pnas_url_template_format', 'URL template format'),
-        ('test_pnas_simplicity_through_generics', 'Simplicity through generics')
+        ('test_pnas_simplicity_through_generics', 'Simplicity through generics'),
+        ('test_pnas_real_pmids_xml_fixtures', 'Real PMIDs with XML fixtures')
     ]
     
     for test_method, description in tests:

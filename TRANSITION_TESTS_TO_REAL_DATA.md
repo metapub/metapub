@@ -56,11 +56,13 @@ class TestPublisher:
         # ✅ Authentic DOI, journal, all metadata
 ```
 
-## Conversion Status: 2/41 Complete
+## Conversion Status: 4/41 Complete
 
 - ✅ **AAAS** - Complete reference implementation
-- ✅ **WorldScientific** - Complete conversion  
-- ❌ **39 publishers** remaining
+- ✅ **WorldScientific** - Complete conversion
+- ✅ **Taylor & Francis** - Complete conversion  
+- ✅ **PNAS** - Complete conversion
+- ❌ **37 publishers** remaining
 
 ## Publisher Priority List
 
@@ -148,6 +150,24 @@ class TestPublisher:
 - **Results**: 11/11 tests passing, authentic journal data validation
 - **Evidence Coverage**: Technology, AI Tools, and Porphyrins journals
 
+#### Taylor & Francis (Phase 1, Priority 1)
+- **Status**: ✅ Complete
+- **XML Fixtures**: 7 evidence PMIDs downloaded (35067114, 38962805, 37065682, 35095222, 37008990, 32306807, 38738473)
+- **Tests Updated**: Added `test_taylor_francis_real_pmids_xml_fixtures` using `load_pmid_xml()`
+- **Mocking Removed**: No `PubMedFetcher` network calls in XML fixture test
+- **Results**: 10/10 tests passing, authentic journal data validation
+- **Evidence Coverage**: AIDS Care, Drugs (Abingdon Engl), J Appl Econ, Xenobiotica journals
+- **Template Fixed**: Updated from HTTP to HTTPS with /epdf/ and ?needAccess=true parameter
+
+#### PNAS (Proceedings of the National Academy of Sciences)
+- **Status**: ✅ Complete  
+- **XML Fixtures**: 3 evidence PMIDs downloaded (38011560, 38147649, 37903272)
+- **Tests Updated**: Added `test_pnas_real_pmids_xml_fixtures` using `load_pmid_xml()`
+- **Mocking Removed**: No `PubMedFetcher` network calls in XML fixture test
+- **Results**: 9/9 tests passing, authentic journal data validation
+- **Evidence Coverage**: Proc Natl Acad Sci U S A (all evidence from same journal)
+- **DOI Pattern**: Verified 10.1073/pnas.{SUFFIX} format for all PMIDs
+
 ### 🔧 In Progress
 
 *None currently*
@@ -198,7 +218,7 @@ def validate_publisher_fixtures(publisher_name):
 ```
 
 ### Progress Tracking
-- **Current**: 2/41 publishers complete (4.9%)
+- **Current**: 4/41 publishers complete (9.8%)
 - **Phase 1 Target**: 10/41 publishers (24.4%)
 - **Phase 2 Target**: 20/41 publishers (48.8%) 
 - **Full Completion**: 41/41 publishers (100%)

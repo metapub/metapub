@@ -389,12 +389,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** High (major open access publisher)
 - **Notes:** **PERFECT SIMPLICITY ACHIEVED 2025-08-07**: PLOS provides perfect `citation_pdf_url` meta tags across all HTML samples, enabling the most logically simple implementation possible. Created `the_plos_pogo` (14 lines) that directly extracts PDF URLs from meta tags without any URL construction. Pattern: `https://journals.plos.org/[journal]/article/file?id=[DOI]&type=printable` with consistent 10.1371/journal.[code] DOI format. Comprehensive test suite (10 tests) validates meta tag extraction, error handling, and all evidence DOIs. Function demonstrates maximum logical simplicity: DOI check → get HTML → extract meta tag → return URL. No complex conditionals, loops, or construction logic needed. This exemplifies the ideal case for reducing logical complication in dance functions.
 
-### ❓ PNAS (Proceedings of the National Academy of Sciences)
-- **Dance Function:** Not assigned
+### 🚫 PNAS (Proceedings of the National Academy of Sciences)
+- **Dance Function:** `the_doi_slide` (generic function)
 - **HTML Samples:** `output/article_html/pnas/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (consolidated into generic function)
 - **Priority:** High (prestigious journal)
-- **Notes:** Prestigious journal with HTML samples available
+- **Notes:** **ELIMINATED MIDDLEMAN 2025-08-08**: Evidence-driven analysis of HTML samples revealed simple DOI-based PDF URL pattern: `https://www.pnas.org/doi/pdf/{doi}`. All DOIs follow 10.1073/pnas.{SUFFIX} format. Initially implemented custom dance function with citation_pdf_url extraction, then optimized to use `the_doi_slide` generic function with format template `https://www.pnas.org/doi/pdf/{doi}` - no custom dance needed! **Configuration**: Added pnas_journals list in single_journal_publishers.py. Comprehensive test suite (8 tests) validates DOI construction, error handling, and template format. This represents optimal simplicity through DOI-based URL construction, achieving maximum efficiency through reuse of existing generic infrastructure.
 
 ### ❓ Project MUSE
 - **Dance Function:** `the_projectmuse_syrtos`
@@ -497,12 +497,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** High (major publisher)
 - **Notes:** **ELIMINATED MIDDLEMAN 2025-08-06**: Evidence-driven rewrite showed consistent DOI-based pattern `https://onlinelibrary.wiley.com/doi/epdf/{DOI}` across all Wiley journals. Since the function used simple direct URL construction from DOI (30 lines), eliminated the middleman dance function entirely. **Registry updated**: Wiley journals now directly assigned to `the_doi_slide` generic function with format template `https://onlinelibrary.wiley.com/doi/epdf/{doi}`. **Files removed**: `metapub/findit/dances/wiley.py`, `tests/findit/test_wiley.py`. This reduces codebase complexity while maintaining identical functionality - supports all DOI patterns (10.1002, 10.1111, 10.1155 Hindawi).
 
-### ❓ Taylor & Francis (Informa subsidiary)
-- **Dance Function:** Not assigned
+### ✅ Taylor & Francis 
+- **Dance Function:** `the_doi_slide` (generic function)
 - **HTML Samples:** `output/article_html/taylor_francis/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (evidence-driven template fix)
 - **Priority:** Medium (major publisher)
-- **Notes:** Major academic publisher with HTML samples available
+- **Notes:** **EVIDENCE-DRIVEN TEMPLATE FIX 2025-08-08**: Discovered existing comprehensive configuration with 1,687 journals but template had two critical issues: (1) used HTTP instead of HTTPS, (2) missing `/epdf/` and `?needAccess=true` parameter. Evidence analysis of 5 HTML samples revealed correct pattern: `https://www.tandfonline.com/doi/epdf/{doi}?needAccess=true`. **Template Updated**: Fixed from `http://www.tandfonline.com/doi/pdf/{doi}` to `https://www.tandfonline.com/doi/epdf/{doi}?needAccess=true` based on evidence from samples. **Infrastructure**: Taylor & Francis already configured with `the_doi_slide` generic function and extensive journal list (1,687 journals). Comprehensive test suite (9 tests) validates corrected template, HTTPS enforcement, access parameter preservation, and DOI construction. This demonstrates evidence-driven development can identify and fix template issues in existing configurations, improving PDF access success rates while maintaining optimal simplicity.
 
 ### ❓ WJGNet
 - **Dance Function:** `the_wjgnet_wave`
@@ -527,12 +527,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ## Progress Summary
 
-- **Completed:** 30/50+ publishers (PLOS, ACS, AAAS, SCIRP, SciELO, Cancer Biology & Medicine, AACR, Cambridge, Dovepress, EurekaSelect, Nature, Wiley, ScienceDirect+Cell+Lancet, JCI, Annual Reviews, Thieme, Oxford Academic/Endocrine Society, Biochemical Society, MDPI, BMC)
-- **Consolidated into Generic Functions:** 10 publishers (SAGE→doi_slide, AIP→doi_slide, BioOne→vip_shake, Frontiers→doi_slide, Emerald→doi_slide, CancerBiomed→vip_shake, Spandidos→doi_slide, Springer→doi_slide, Thieme→doi_slide, Wiley→doi_slide)
-- **High Priority Remaining:** AHA, BMJ, NEJM, Oxford, PNAS
+- **Completed:** 32/50+ publishers (PLOS, ACS, AAAS, SCIRP, SciELO, Cancer Biology & Medicine, AACR, Cambridge, Dovepress, EurekaSelect, Nature, Wiley, ScienceDirect+Cell+Lancet, JCI, Annual Reviews, Thieme, Oxford Academic/Endocrine Society, Biochemical Society, MDPI, BMC, Taylor & Francis, PNAS)
+- **Consolidated into Generic Functions:** 12 publishers (SAGE→doi_slide, AIP→doi_slide, BioOne→vip_shake, Frontiers→doi_slide, Emerald→doi_slide, CancerBiomed→vip_shake, Spandidos→doi_slide, Springer→doi_slide, Thieme→doi_slide, Wiley→doi_slide, Taylor & Francis→doi_slide, PNAS→doi_slide)
+- **High Priority Remaining:** AHA, BMJ, Oxford
 - **Blocked by Protection:** JAMA (Cloudflare), Emerald (Cloudflare - now consolidated), Wolters Kluwer (Cloudflare + no direct PDF URLs), MDPI (bot protection), AIP (Cloudflare - now consolidated)
 - **New Publishers Identified:** ACS, AJPH, ATS, BMJ, BMJ Open Gastro, Dustri, Informa, Liebert, LWW, Microbiology Spectrum, NEJM, Oxford, PLOS, PNAS, Schattauer, Science (handled by AAAS), Taylor & Francis
-- **Next Recommended:** BMJ (major medical), NEJM (top medical journal), PNAS (prestigious journal)
+- **Next Recommended:** BMJ (major medical), Oxford (major academic), AHA (cardiovascular)
 
 ## HTML Sample Availability
 
@@ -550,6 +550,8 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ## Recent Activity
 
+- **2025-08-08:** **TAYLOR & FRANCIS COMPLETED**: Evidence-driven template fix for existing comprehensive configuration. Discovered T&F already configured with 1,687 journals and `the_doi_slide` function but template had critical issues: HTTP instead of HTTPS, missing `/epdf/` and `?needAccess=true` parameter. Fixed template from `http://www.tandfonline.com/doi/pdf/{doi}` to `https://www.tandfonline.com/doi/epdf/{doi}?needAccess=true` based on 5 HTML sample analysis. Comprehensive test suite (9 tests) validates corrected template, HTTPS enforcement, and access parameter preservation. This demonstrates evidence-driven development fixing existing configurations for improved PDF access success rates.
+- **2025-08-08:** **PNAS COMPLETED**: Evidence-driven analysis revealed simple DOI-based PDF URL pattern: `https://www.pnas.org/doi/pdf/{doi}`. All DOIs follow 10.1073/pnas.{SUFFIX} format. Initially implemented custom dance function with citation_pdf_url extraction, then optimized to use `the_doi_slide` generic function with format template `https://www.pnas.org/doi/pdf/{doi}` - no custom dance needed! Added pnas_journals list in single_journal_publishers.py. Comprehensive test suite (8 tests) validates DOI construction, error handling, and template format. This represents optimal simplicity through DOI-based URL construction.
 - **2025-08-07:** **PLOS PERFECT SIMPLICITY COMPLETED**: Implemented PLOS (Public Library of Science) with maximum logical simplicity. PLOS provides perfect `citation_pdf_url` meta tags, enabling the most elegant possible implementation. Created `the_plos_pogo` (14 lines) that directly extracts PDF URLs with pattern `https://journals.plos.org/[journal]/article/file?id=[DOI]&type=printable`. No complex URL construction, no conditionals, no loops - just DOI check → get HTML → extract meta tag → return URL. Comprehensive test suite (10 tests) including logical simplicity compliance validation. This exemplifies the ideal case for reducing logical complication in dance functions.
 - **2025-08-07:** **ACS INFRASTRUCTURE FIX COMPLETED**: Fixed critical issues in American Chemical Society configuration - updated from `url_pattern` to `format_template` expected by `the_doi_slide` function, enforced HTTPS instead of HTTP (HTTP redirects with 301). Evidence-driven analysis of 5 HTML samples confirmed consistent `/doi/pdf/{DOI}` pattern with 10.1021/ prefix. Created comprehensive test suite (9 tests) validating registry integration, URL construction, and evidence DOIs. All 98 ACS journals already mapped in registry. ACS now operates optimally with modern DOI-slide infrastructure.
 - **2025-08-07:** **AAAS COMPLETED**: Updated AAAS status from TODO to COMPLETED ✅ - evidence-driven rewrite with authentication handling completed, comprehensive test suite with XML fixtures, and full compliance with DANCE_FUNCTION_GUIDELINES

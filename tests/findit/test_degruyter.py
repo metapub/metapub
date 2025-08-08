@@ -1,350 +1,177 @@
-"""Tests for De Gruyter dance function."""
+"""
+Test suite for De Gruyter publisher dance function.
+
+Following TRANSITION_TESTS_TO_REAL_DATA.md approach:
+- Uses XML fixtures from real PMIDs to avoid network dependencies  
+- Tests evidence-based DOI approach for true De Gruyter journals (10.1515 prefix)
+- Comprehensive coverage of the_doi_slide generic function requirements
+"""
 
 import pytest
-from unittest.mock import patch, Mock
-import requests
+import os
+import sys
 
-from .common import BaseDanceTest
-from metapub import PubMedFetcher
-from metapub.findit.dances import the_degruyter_danza
-from metapub.exceptions import AccessDenied, NoPDFLink
+# Add project root to Python path for imports
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../'))
+
+from metapub.findit.dances.generic import the_doi_slide
+from metapub.findit.journals.single_journal_publishers import degruyter_journals
+from metapub.exceptions import NoPDFLink, MetaPubError
+from tests.fixtures import load_pmid_xml, DEGRUYTER_EVIDENCE_PMIDS
 
 
-class TestDeGruyterDance(BaseDanceTest):
-    """Test cases for De Gruyter publisher."""
+class TestDeGruyterJournalRecognition:
+    """Test De Gruyter journal recognition."""
+    
+    def test_degruyter_journal_list_completeness(self):
+        """Test that degruyter_journals list contains expected journals."""
+        # Key De Gruyter journals should be included
+        expected_journals = [
+            'Clin Chem Lab Med',
+            'J Pediatr Endocrinol Metab',
+            'Horm Mol Biol Clin Investig',
+            'Biol Chem',
+            'Pure Appl Chem'
+        ]
+        
+        for journal in expected_journals:
+            assert journal in degruyter_journals, f"Expected De Gruyter journal '{journal}' missing from degruyter_journals list"
 
-    def setUp(self):
-        """Set up test fixtures."""
-        super().setUp()
-        self.fetch = PubMedFetcher()
 
-    def test_degruyter_dance_url_construction_phonetica(self):
-        """Test 1: URL construction success (Phonetica).
+class TestDeGruyterDanceFunction:
+    """Test De Gruyter dance function URL construction and error handling."""
+    
+    def test_degruyter_url_construction_with_fixtures(self):
+        """Test URL construction using XML fixtures."""
         
-        PMID: 38869142 (Phonetica)
-        Expected: Should construct valid De Gruyter article URL via DOI resolution
-        """
-        pma = self.fetch.article_by_pmid('38869142')
+        for pmid, expected_data in DEGRUYTER_EVIDENCE_PMIDS.items():
+            # Load article from XML fixture
+            article = load_pmid_xml(pmid)
+            
+            # Verify fixture data
+            assert article.journal == expected_data['journal'], f"PMID {pmid} journal mismatch"
+            assert article.doi == expected_data['doi'], f"PMID {pmid} DOI mismatch"
+            
+            # Test URL construction with the_doi_slide
+            url = the_doi_slide(article, verify=False)
+            
+            expected_url = f"https://www.degruyter.com/document/doi/{expected_data['doi']}/pdf"
+            assert url == expected_url, f"PMID {pmid}: expected {expected_url}, got {url}"
+            
+            # Verify URL structure
+            assert url.startswith('https://www.degruyter.com/document/doi/'), f"PMID {pmid}: URL has wrong structure"
+            assert expected_data['doi'] in url, f"PMID {pmid}: DOI not found in URL"
+    
+    def test_degruyter_missing_journal_error(self):
+        """Test error handling for non-De Gruyter journals."""
+        # Create mock article with non-De Gruyter journal
+        class MockArticle:
+            def __init__(self):
+                self.journal = 'Nature'  # Not a De Gruyter journal
+                self.doi = '10.1038/nature12345'
         
-        assert pma.journal == 'Phonetica'
-        assert pma.doi == '10.1515/phon-2023-0049'
-        print(f"Test 1 - Article info: {pma.journal}, DOI: {pma.doi}")
-
-        # Test without verification (should always work for URL construction)
-        url = the_degruyter_danza(pma, verify=False)
-        assert url is not None
-        assert 'degruyter' in url.lower()
-        print(f"Test 1 - Article URL: {url}")
-
-    def test_degruyter_dance_url_construction_intl_soc_lang(self):
-        """Test 2: International Journal of Sociology of Language article.
+        fake_article = MockArticle()
         
-        PMID: 36701212 (Int J Soc Lang)
-        Expected: Should construct valid De Gruyter article URL
-        """
-        pma = self.fetch.article_by_pmid('36701212')
+        # Should fail because Nature journal uses different template parameters
+        with pytest.raises((NoPDFLink, KeyError)):
+            the_doi_slide(fake_article, verify=False)
+    
+    def test_degruyter_missing_doi_error(self):
+        """Test error handling for missing DOI."""
+        # Create mock De Gruyter article without DOI
+        class MockArticle:
+            def __init__(self):
+                self.journal = 'Clin Chem Lab Med'
+                self.doi = None  # Missing DOI
         
-        assert pma.journal == 'Int J Soc Lang'
-        assert pma.doi == '10.1515/ijsl-2021-0099'
-        print(f"Test 2 - Article info: {pma.journal}, DOI: {pma.doi}")
-
-        # Test without verification
-        url = the_degruyter_danza(pma, verify=False)
-        assert url is not None
-        assert 'degruyter' in url.lower()
-        print(f"Test 2 - Article URL: {url}")
-
-    def test_degruyter_dance_url_construction_non_1515_doi(self):
-        """Test 3: Article with non-10.1515 DOI (may not be De Gruyter).
-        
-        PMID: 33227128 (J Am Osteopath Assoc)
-        Expected: Should still work via DOI resolution
-        """
-        pma = self.fetch.article_by_pmid('33227128')
-        
-        assert pma.journal == 'J Am Osteopath Assoc'
-        assert pma.doi == '10.7556/jaoa.2020.157'
-        print(f"Test 3 - Article info: {pma.journal}, DOI: {pma.doi}")
-
-        # Test without verification
-        url = the_degruyter_danza(pma, verify=False)
-        assert url is not None  
-        print(f"Test 3 - Article URL: {url}")
-
-    @patch('metapub.findit.dances.degruyter.the_doi_2step')
-    @patch('requests.get')
-    def test_degruyter_dance_successful_access_with_pdf(self, mock_get, mock_doi_2step):
-        """Test 4: Successful access simulation with PDF link found.
-        
-        PMID: 38869142 (Phonetica)
-        Expected: Should return PDF URL when found on page
-        """
-        # Mock DOI resolution to De Gruyter article page
-        mock_doi_2step.return_value = 'https://www.degruyterbrill.com/document/doi/10.1515/phon-2023-0049/html'
-        
-        # Mock successful article page response with PDF link
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.text = '''
-        <html>
-            <body>
-                <h1>Article Title</h1>
-                <p>This is an article page with PDF download available.</p>
-                <a href="/downloadpdf/journals/phon/81/4/article-p123.pdf" class="pdf-link">Download PDF</a>
-            </body>
-        </html>
-        '''
-        mock_response.content = mock_response.text.encode('utf-8')
-        mock_response.url = 'https://www.degruyterbrill.com/document/doi/10.1515/phon-2023-0049/html'
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38869142')
-        
-        # Test with verification - should find PDF link
-        url = the_degruyter_danza(pma, verify=True)
-        assert 'degruyterbrill.com' in url
-        assert '.pdf' in url
-        print(f"Test 4 - Found PDF link: {url}")
-
-    @patch('metapub.findit.dances.degruyter.the_doi_2step')
-    @patch('requests.get')
-    def test_degruyter_dance_paywall_detection(self, mock_get, mock_doi_2step):
-        """Test 5: Paywall detection.
-        
-        Expected: Should detect paywall and raise AccessDenied
-        """
-        # Mock DOI resolution to De Gruyter article page
-        mock_doi_2step.return_value = 'https://www.degruyterbrill.com/document/doi/10.1515/phon-2023-0049/html'
-        
-        # Mock article page response with paywall indicators
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.text = '''
-        <html>
-            <body>
-                <h1>Article Title</h1>
-                <p>This content requires institutional access.</p>
-                <div class="paywall">
-                    <p>Please log in to access this article.</p>
-                    <a href="/login">Sign In</a>
-                    <a href="/subscribe">Subscribe</a>
-                    <p>Purchase this article for $39.95</p>
-                </div>
-            </body>
-        </html>
-        '''
-        mock_response.content = mock_response.text.encode('utf-8')
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38869142')
-        
-        # Test with verification - should detect paywall
-        with pytest.raises(AccessDenied) as exc_info:
-            the_degruyter_danza(pma, verify=True)
-        
-        assert 'PAYWALL' in str(exc_info.value)
-        assert 'subscription' in str(exc_info.value)
-        print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
-
-    @patch('metapub.findit.dances.degruyter.the_doi_2step')
-    @patch('requests.get')
-    def test_degruyter_dance_access_forbidden(self, mock_get, mock_doi_2step):
-        """Test 6: Access forbidden (403 error).
-        
-        Expected: Should handle 403 errors properly
-        """
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://www.degruyterbrill.com/document/doi/10.1515/phon-2023-0049/html'
-        
-        # Mock 403 response
-        mock_response = Mock()
-        mock_response.status_code = 403
-        mock_response.ok = False
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38869142')
-        
-        # Test with verification - should handle 403
-        with pytest.raises(AccessDenied) as exc_info:
-            the_degruyter_danza(pma, verify=True)
-        
-        assert 'DENIED' in str(exc_info.value)
-        assert '403' in str(exc_info.value) or 'forbidden' in str(exc_info.value).lower()
-        print(f"Test 6 - Correctly handled 403: {exc_info.value}")
-
-    @patch('metapub.findit.dances.degruyter.the_doi_2step')
-    @patch('requests.get')
-    def test_degruyter_dance_network_error(self, mock_get, mock_doi_2step):
-        """Test 7: Network error handling.
-        
-        Expected: Should handle network errors gracefully
-        """
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://www.degruyterbrill.com/document/doi/10.1515/phon-2023-0049/html'
-        
-        # Mock network error
-        mock_get.side_effect = requests.exceptions.ConnectionError("Network error")
-
-        pma = self.fetch.article_by_pmid('38869142')
-        
-        # Test - should handle network error
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_degruyter_danza(pma, verify=True)
-        
-        assert 'TXERROR' in str(exc_info.value)
-        assert 'Network error' in str(exc_info.value)
-        print(f"Test 7 - Correctly handled network error: {exc_info.value}")
-
-    def test_degruyter_dance_missing_doi(self):
-        """Test 8: Article without DOI.
-        
-        Expected: Should raise NoPDFLink for missing DOI
-        """
-        # Create a mock PMA without DOI
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'Phonetica'
+        fake_article = MockArticle()
         
         with pytest.raises(NoPDFLink) as exc_info:
-            the_degruyter_danza(pma, verify=False)
+            the_doi_slide(fake_article, verify=False)
         
-        assert 'MISSING' in str(exc_info.value)
-        assert 'DOI required' in str(exc_info.value)
-        print(f"Test 8 - Correctly handled missing DOI: {exc_info.value}")
-
-    @patch('metapub.findit.dances.degruyter.the_doi_2step')
-    @patch('requests.get')
-    def test_degruyter_dance_article_not_found(self, mock_get, mock_doi_2step):
-        """Test 9: Article not found (404 error).
-        
-        Expected: Should handle 404 errors properly
-        """
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://www.degruyterbrill.com/document/doi/10.1515/phon-2023-0049/html' 
-        
-        # Mock 404 response
-        mock_response = Mock()
-        mock_response.status_code = 404
-        mock_response.ok = False
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38869142')
-        
-        # Test with verification - should handle 404
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_degruyter_danza(pma, verify=True)
-        
-        assert 'TXERROR' in str(exc_info.value)
-        assert '404' in str(exc_info.value) or 'not found' in str(exc_info.value)
-        print(f"Test 9 - Correctly handled 404: {exc_info.value}")
-
-    @patch('metapub.findit.dances.degruyter.the_doi_2step')
-    @patch('requests.get') 
-    def test_degruyter_dance_open_access_article(self, mock_get, mock_doi_2step):
-        """Test 10: Open access article without paywall.
-        
-        Expected: Should return article URL for open access content
-        """
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://www.degruyterbrill.com/document/doi/10.1515/phon-2023-0049/html'
-        
-        # Mock successful article page response without paywall indicators
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.text = '''
-        <html>
-            <body>
-                <h1>Article Title</h1>
-                <p>This is an open access article.</p>
-                <div class="article-content">
-                    <p>Full article content is available here.</p>
-                </div>
-            </body>
-        </html>
-        '''
-        mock_response.content = mock_response.text.encode('utf-8')
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38869142')
-        
-        # Test with verification - should return article URL
-        url = the_degruyter_danza(pma, verify=True)
-        assert url == 'https://www.degruyterbrill.com/document/doi/10.1515/phon-2023-0049/html'
-        print(f"Test 10 - Open access article URL: {url}")
-
-
-def test_degruyter_journal_recognition():
-    """Test that De Gruyter journals are properly recognized in the registry."""
-    from metapub.findit.registry import JournalRegistry
-    from metapub.findit.journals.degruyter import degruyter_journals
+        error_msg = str(exc_info.value)
+        assert 'DOI required for DOI-based publishers' in error_msg
     
-    registry = JournalRegistry()
+    def test_degruyter_verify_false_success(self):
+        """Test successful URL construction with verify=False."""
+        article = load_pmid_xml('38534005')
+        
+        url = the_doi_slide(article, verify=False)
+        expected_url = "https://www.degruyter.com/document/doi/10.1515/cclm-2024-0070/pdf"
+        
+        assert url == expected_url
     
-    # Test sample De Gruyter journals
-    test_journals = [
-        'Phonetica',
-        'Int J Soc Lang',
-        'Biol Chem',
-        'Pure Appl Chem'
-    ]
+    def test_degruyter_verify_true_paywall_detection(self):
+        """Test that verify=True properly detects paywalled content."""
+        article = load_pmid_xml('36318760')  # This one returns HTML (paywalled)
+        
+        # With verify=True, should detect paywall or similar access issues
+        with pytest.raises((NoPDFLink, MetaPubError)):
+            the_doi_slide(article, verify=True)
+
+
+class TestDeGruyterEvidenceValidation:
+    """Validate that our evidence-based approach is sound."""
     
-    # Test journal recognition
-    found_count = 0
-    for journal in test_journals:
-        if journal in degruyter_journals:
-            publisher_info = registry.get_publisher_for_journal(journal)
-            if publisher_info and publisher_info['name'] == 'degruyter':
-                assert publisher_info['dance_function'] == 'the_degruyter_danza'
-                print(f"✓ {journal} correctly mapped to De Gruyter")
-                found_count += 1
-            else:
-                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
-        else:
-            print(f"⚠ {journal} not in degruyter_journals list")
+    def test_doi_prefix_consistency(self):
+        """Test that all De Gruyter PMIDs use 10.1515 DOI prefix."""
+        doi_prefix = '10.1515'
+        
+        for pmid, data in DEGRUYTER_EVIDENCE_PMIDS.items():
+            assert data['doi'].startswith(doi_prefix), f"PMID {pmid} has unexpected DOI prefix: {data['doi']}"
     
-    # Just make sure we found at least one De Gruyter journal
-    assert found_count > 0, "No De Gruyter journals found in registry with degruyter publisher"
-    print(f"✓ Found {found_count} properly mapped De Gruyter journals")
+    def test_journal_consistency(self):
+        """Test that all test journals are in the De Gruyter journal list."""
+        test_journals = set(data['journal'] for data in DEGRUYTER_EVIDENCE_PMIDS.values())
+        
+        for journal in test_journals:
+            assert journal in degruyter_journals, f"Test journal '{journal}' not in degruyter_journals list"
     
-    registry.close()
+    def test_fixture_completeness(self):
+        """Test that all evidence PMIDs have working fixtures."""
+        for pmid in DEGRUYTER_EVIDENCE_PMIDS.keys():
+            # This should not raise an exception
+            article = load_pmid_xml(pmid)
+            
+            # Basic validation
+            assert article.journal is not None, f"PMID {pmid}: missing journal"
+            assert article.doi is not None, f"PMID {pmid}: missing DOI"
+            
+            # DOI format validation for De Gruyter
+            assert article.doi.startswith('10.1515'), f"PMID {pmid}: not a true De Gruyter DOI"
+
+
+class TestDeGruyterIntegration:
+    """Integration tests with metapub components."""
+    
+    def test_degruyter_template_validation(self):
+        """Test De Gruyter template produces expected URLs."""
+        
+        # Test template with known DOI
+        template = 'https://www.degruyter.com/document/doi/{doi}/pdf'
+        test_doi = '10.1515/cclm-2024-0070'
+        
+        expected_url = template.format(doi=test_doi)
+        assert expected_url == 'https://www.degruyter.com/document/doi/10.1515/cclm-2024-0070/pdf'
+        
+        # Verify template structure
+        assert '{doi}' in template
+        assert 'degruyter.com' in template
+        assert '/pdf' in template
+    
+    def test_degruyter_journal_list_integration(self):
+        """Test De Gruyter journal list integration."""
+        
+        # Test that De Gruyter journal list is accessible
+        assert 'Clin Chem Lab Med' in degruyter_journals
+        
+        # Verify dance function works with registry system
+        article = load_pmid_xml('38534005')
+        url = the_doi_slide(article, verify=False)
+        
+        assert url.startswith('https://www.degruyter.com/document/doi/')
+        assert '10.1515/cclm-2024-0070' in url
 
 
 if __name__ == '__main__':
-    # Run basic tests if executed directly
-    test_instance = TestDeGruyterDance()
-    test_instance.setUp()
-    
-    print("Running De Gruyter tests...")
-    print("\n" + "="*60)
-    
-    tests = [
-        ('test_degruyter_dance_url_construction_phonetica', 'Phonetica URL construction'),
-        ('test_degruyter_dance_url_construction_intl_soc_lang', 'Int J Soc Lang URL construction'),
-        ('test_degruyter_dance_url_construction_non_1515_doi', 'Non-10.1515 DOI handling'),
-        ('test_degruyter_dance_successful_access_with_pdf', 'Successful access with PDF'),
-        ('test_degruyter_dance_paywall_detection', 'Paywall detection'),
-        ('test_degruyter_dance_access_forbidden', 'Access forbidden handling'),
-        ('test_degruyter_dance_network_error', 'Network error handling'),
-        ('test_degruyter_dance_missing_doi', 'Missing DOI handling'),
-        ('test_degruyter_dance_article_not_found', 'Article not found handling'),
-        ('test_degruyter_dance_open_access_article', 'Open access article handling')
-    ]
-    
-    for test_method, description in tests:
-        try:
-            getattr(test_instance, test_method)()
-            print(f"✓ {description} works")
-        except Exception as e:
-            print(f"✗ {description} failed: {e}")
-    
-    try:
-        test_degruyter_journal_recognition()
-        print("✓ Registry test passed: Journal recognition works")
-    except Exception as e:
-        print(f"✗ Registry test failed: {e}")
-    
-    print("\n" + "="*60)
-    print("Test suite completed!")
+    pytest.main([__file__, '-v'])

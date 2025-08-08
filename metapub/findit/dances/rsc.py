@@ -1,125 +1,60 @@
-"""Royal Society of Chemistry dance function - REFACTORED.
+"""Royal Society of Chemistry dance function - EVIDENCE-DRIVEN REWRITE.
 
-Follows CLAUDE_PROCESS principles:
-- Simple error handling
-- Uses generic functions where possible
-- Focused try-except blocks
-- Imports at top of file
+Based on analysis of 9 HTML samples, RSC provides 100% consistent citation_pdf_url 
+meta tags with pattern: https://pubs.rsc.org/en/content/articlepdf/{year}/{journal}/{article_id}
+
+Evidence: All samples (31712796, 32935693, 34533150, 34817495, 35014660, 
+35699396, 38170905, 38651948, 39262316) have perfect citation_pdf_url metadata.
+
+Follows DANCE_FUNCTION_GUIDELINES:
+- Single method approach (no try-except blocks)
+- Under 50 lines
+- Uses citation_pdf_url extraction (most reliable)
+- Clear error messages with prefixes
 """
 
-from ...exceptions import *
-from .generic import *
-
-from lxml import html
-from urllib.parse import urljoin
+import re
+from ...exceptions import NoPDFLink, AccessDenied
+from .generic import the_doi_2step, verify_pdf_url, unified_uri_get
 
 
 def the_rsc_reaction(pma, verify=True):
-    '''Royal Society of Chemistry (RSC): Leading chemistry publisher
+    """Royal Society of Chemistry: Leading chemistry publisher with 50+ journals.
+    
+    Uses citation_pdf_url meta tag extraction - 100% reliable across all evidence samples.
+    All RSC DOIs follow 10.1039/ prefix pattern with pubs.rsc.org hosting.
 
-    RSC publishes over 50 journals covering all areas of chemistry and related fields.
-    Founded in 1841, articles are hosted on pubs.rsc.org and accessible via DOI resolution.
+    Evidence from 9 HTML samples shows consistent pattern:
+    https://pubs.rsc.org/en/content/articlepdf/{year}/{journal}/{article_id}
 
-    :param: pma (PubmedArticle)
-    :param: verify (bool) [default: True]
-    :return: url (string)
-    :raises: AccessDenied, NoPDFLink
-    '''
-    if not pma.doi:
-        raise NoPDFLink('MISSING: DOI required for RSC journals - attempted: none')
-
-    # Verify DOI pattern for RSC (should start with 10.1039/)
-    if not pma.doi.startswith('10.1039/'):
-        raise NoPDFLink(f'INVALID: DOI does not match RSC pattern (10.1039/) - attempted: {pma.doi}')
-
-    # Resolve DOI to get article URL
-    try:
-        article_url = the_doi_2step(pma.doi)
-    except NoPDFLink as e:
-        raise NoPDFLink(f'TXERROR: RSC DOI resolution failed: {e}')
-
-    # TODO: WHY IS THIS A CONDITIONAL  AUGHGHHG
-    if not verify:
-        # For RSC, try to construct PDF URL pattern without verification
-        # RSC typically uses patterns like /en/content/articlelanding/... -> /en/content/articlepdf/...
-        if 'pubs.rsc.org' in article_url:
-            # Try common RSC PDF patterns
-            if '/content/articlelanding/' in article_url:
-                # Pattern: /content/articlelanding/... -> /content/articlepdf/...
-                pdf_url = article_url.replace('/content/articlelanding/', '/content/articlepdf/')
-                return pdf_url
-            elif '/content/article' in article_url:
-                # Add pdf suffix to article URLs
-                pdf_url = article_url.rstrip('/') + '/pdf'
-                return pdf_url
-            else:
-                # Try constructing from DOI: 10.1039/c1cc12345a -> /en/content/articlepdf/2011/cc/c1cc12345a
-                doi_suffix = pma.doi.split('/')[-1] if '/' in pma.doi else pma.doi
-                year = '2023'  # Default year, could be extracted from other PMA fields
-                journal_code = doi_suffix[:2] if len(doi_suffix) >= 2 else 'cc'
-                pdf_url = f'https://pubs.rsc.org/en/content/articlepdf/{year}/{journal_code}/{doi_suffix}'
-                return pdf_url
-
-        # Fallback: return article URL with warning that it's not a PDF
-        # This preserves existing behavior while marking the issue
-        return article_url  # WARNING: This is an HTML page, not a PDF
-
-    # Verify article accessibility and look for PDF links
-    try:
-        response = unified_uri_get(article_url, timeout=30)
-    except Exception as e:
-        raise NoPDFLink(f'TXERROR: Network error accessing RSC: {e} - attempted: {article_url}')
-
-    if response.status_code == 403:
-        raise AccessDenied(f'DENIED: Access forbidden by RSC - attempted: {article_url}')
-    elif response.status_code == 404:
-        raise NoPDFLink(f'TXERROR: RSC article not found - attempted: {article_url}')
-    elif response.status_code not in OK_STATUS_CODES:
-        raise NoPDFLink(f'TXERROR: RSC returned status {response.status_code} - attempted: {article_url}')
-
-    # Check for paywall first
-    if detect_paywall_from_html(response.text):
-        raise AccessDenied(f'PAYWALL: RSC article requires subscription - attempted: {article_url}')
-
-    # Look for PDF download links
-    try:
-        pdf_url = _extract_rsc_pdf_link(response, article_url)
-        if pdf_url:
-            return pdf_url
-    except Exception:
-        pass  # If PDF extraction fails, continue to error
-
-    # If no PDF link found, this is an error in verify mode
-    raise NoPDFLink(f'TXERROR: No PDF link found on RSC page - attempted: {article_url}')
-
-
-def _extract_rsc_pdf_link(response, base_url):
-    """Extract PDF download link from RSC article page.
-
-    Args:
-        response: HTTP response object
-        base_url: Base URL for resolving relative links
-
-    Returns:
-        str: PDF URL if found, None otherwise
+    :param pma: PubmedArticle with DOI required
+    :param verify: PDF URL verification (default: True)
+    :return: PDF URL string
+    :raises: NoPDFLink, AccessDenied
     """
-    page_text = response.text.lower()
-
-    # Look for PDF indicators in the page
-    if not ('pdf' in page_text and ('download' in page_text or 'full text' in page_text or 'view pdf' in page_text)):
-        return None
-
-    # Parse HTML to find PDF links
-    tree = html.fromstring(response.content)
-
-    # Look for PDF download links (RSC typically has direct PDF access)
-    pdf_links = tree.xpath('//a[contains(@href, ".pdf") or contains(text(), "PDF") or contains(@class, "pdf") or contains(@title, "PDF")]/@href')
-
-    if pdf_links:
-        pdf_url = pdf_links[0]
-        # Convert relative URL to absolute if needed
-        if pdf_url.startswith('/'):
-            pdf_url = urljoin(base_url, pdf_url)
-        return pdf_url
-
-    return None
+    if not pma.doi:
+        raise NoPDFLink('MISSING: DOI required for RSC journals')
+    
+    # Validate RSC DOI pattern (all evidence shows 10.1039/ prefix)
+    if not pma.doi.startswith('10.1039/'):
+        raise NoPDFLink(f'INVALID: DOI must start with 10.1039/ for RSC - got: {pma.doi}')
+    
+    # Get article HTML page via DOI resolution
+    article_url = the_doi_2step(pma.doi)
+    response = unified_uri_get(article_url)
+    
+    if response.status_code != 200:
+        raise NoPDFLink(f'TXERROR: Could not access RSC article page (HTTP {response.status_code})')
+    
+    # Extract citation_pdf_url meta tag (evidence shows 100% reliability)
+    pdf_match = re.search(r'<meta\s+content="([^"]+)"\s+name="citation_pdf_url"', response.text)
+    if not pdf_match:
+        raise NoPDFLink('MISSING: No citation_pdf_url found in RSC article HTML')
+    
+    pdf_url = pdf_match.group(1)
+    
+    # Verify PDF accessibility if requested
+    if verify:
+        verify_pdf_url(pdf_url, 'RSC')
+    
+    return pdf_url

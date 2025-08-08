@@ -1,344 +1,202 @@
-"""Tests for APA (American Psychological Association) dance function."""
+"""
+Test suite for APA (American Psychological Association) publisher dance function.
+
+Following TRANSITION_TESTS_TO_REAL_DATA.md approach:
+- Uses XML fixtures from real PMIDs to avoid network dependencies  
+- Tests evidence-based subscription model with proper paywall detection
+- Comprehensive coverage of the_apa_dab dance function requirements
+"""
 
 import pytest
+import os
+import sys
 from unittest.mock import patch, Mock
 import requests
 
-from .common import BaseDanceTest
-from metapub import PubMedFetcher
-from metapub.findit.dances import the_apa_dab
-from metapub.exceptions import AccessDenied, NoPDFLink
+# Add project root to Python path for imports
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../'))
+
+from metapub.findit.dances.generic import the_doi_slide
+from metapub.findit.journals.apa import apa_journals
+from metapub.exceptions import NoPDFLink, MetaPubError
+from tests.fixtures import load_pmid_xml, APA_EVIDENCE_PMIDS
 
 
-class TestAPADance(BaseDanceTest):
-    """Test cases for APA (American Psychological Association)."""
+class TestAPAJournalRecognition:
+    """Test APA journal recognition."""
+    
+    def test_apa_journal_list_completeness(self):
+        """Test that apa_journals list contains expected journals."""
+        # Key APA journals should be included
+        expected_journals = [
+            'Am Psychol',
+            'J Comp Psychol', 
+            'Psychiatr Rehabil J',
+            'Rehabil Psychol',
+            'Dev Psychol',
+            'Health Psychol',
+            'J Pers Soc Psychol'
+        ]
+        
+        for journal in expected_journals:
+            assert journal in apa_journals, f"Expected APA journal '{journal}' missing from apa_journals list"
 
-    def setUp(self):
-        """Set up test fixtures."""
-        super().setUp()
-        self.fetch = PubMedFetcher()
 
-    def test_apa_dab_url_construction_health_psych(self):
-        """Test 1: URL construction success (Health Psychology).
+class TestAPADanceFunction:
+    """Test APA dance function URL construction and error handling."""
+    
+    def test_apa_url_construction_with_fixtures(self):
+        """Test URL construction using XML fixtures."""
         
-        PMID: 38884978 (Health Psychol)
-        Expected: Should construct valid APA article URL via DOI resolution
-        """
-        pma = self.fetch.article_by_pmid('38884978')
+        for pmid, expected_data in APA_EVIDENCE_PMIDS.items():
+            # Load article from XML fixture
+            article = load_pmid_xml(pmid)
+            
+            # Verify fixture data
+            assert article.journal == expected_data['journal'], f"PMID {pmid} journal mismatch"
+            assert article.doi == expected_data['doi'], f"PMID {pmid} DOI mismatch"
+            
+            # Test URL construction with verify=False
+            url = the_doi_slide(article, verify=False)
+            
+            # Verify URL structure - APA uses template-based URL construction
+            expected_url = f"https://psycnet.apa.org/fulltext/{expected_data['doi']}.pdf"
+            assert url == expected_url, f"PMID {pmid}: expected {expected_url}, got {url}"
+            
+            # Verify URL structure
+            assert url.startswith('https://psycnet.apa.org/fulltext/'), f"PMID {pmid}: URL has wrong structure"
+            assert expected_data['doi'] in url, f"PMID {pmid}: DOI not found in URL"
+    
+    def test_apa_missing_journal_error(self):
+        """Test error handling for non-APA journals."""
+        # Create mock article with non-APA journal
+        class MockArticle:
+            def __init__(self):
+                self.journal = 'Nature'  # Not an APA journal
+                self.doi = '10.1038/nature12345'
         
-        assert pma.journal == 'Health Psychol'
-        assert pma.doi == '10.1037/hea0001386'
-        assert pma.doi.startswith('10.1037/')
-        print(f"Test 1 - Article info: {pma.journal}, DOI: {pma.doi}")
-
-        # Test without verification (should always work for URL construction)
-        url = the_apa_dab(pma, verify=False)
-        assert url is not None
-        assert 'doi.apa.org' in url or 'psycnet.apa.org' in url
-        print(f"Test 1 - Article URL: {url}")
-
-    def test_apa_dab_url_construction_dev_psych(self):
-        """Test 2: Developmental Psychology article.
+        fake_article = MockArticle()
         
-        PMID: 38913760 (Dev Psychol)
-        Expected: Should construct valid APA article URL
-        """
-        pma = self.fetch.article_by_pmid('38913760')
+        # Should fail because journal uses different template parameters
+        with pytest.raises((NoPDFLink, KeyError)):
+            the_doi_slide(fake_article, verify=False)
+    
+    def test_apa_missing_doi_error(self):
+        """Test error handling for missing DOI."""
+        # Create mock APA article without DOI
+        class MockArticle:
+            def __init__(self):
+                self.journal = 'Am Psychol'
+                self.doi = None  # Missing DOI
         
-        assert pma.journal == 'Dev Psychol'
-        assert pma.doi == '10.1037/dev0001772'
-        assert pma.doi.startswith('10.1037/')
-        print(f"Test 2 - Article info: {pma.journal}, DOI: {pma.doi}")
-
-        # Test without verification
-        url = the_apa_dab(pma, verify=False)
-        assert url is not None
-        assert 'doi.apa.org' in url or 'psycnet.apa.org' in url
-        print(f"Test 2 - Article URL: {url}")
-
-    def test_apa_dab_url_construction_pers_soc_psych(self):
-        """Test 3: Journal of Personality and Social Psychology article.
-        
-        PMID: 38900533 (J Pers Soc Psychol)
-        Expected: Should construct valid APA article URL
-        """
-        pma = self.fetch.article_by_pmid('38900533')
-        
-        assert pma.journal == 'J Pers Soc Psychol'
-        assert pma.doi == '10.1037/pspp0000508'
-        assert pma.doi.startswith('10.1037/')
-        print(f"Test 3 - Article info: {pma.journal}, DOI: {pma.doi}")
-
-        # Test without verification
-        url = the_apa_dab(pma, verify=False)
-        assert url is not None
-        assert 'doi.apa.org' in url or 'psycnet.apa.org' in url
-        print(f"Test 3 - Article URL: {url}")
-
-    @patch('metapub.findit.dances.apa.the_doi_2step')
-    @patch('requests.get')
-    def test_apa_dab_successful_access_with_pdf(self, mock_get, mock_doi_2step):
-        """Test 4: Successful access simulation with PDF link found.
-        
-        PMID: 38884978 (Health Psychol)
-        Expected: Should return PDF URL when found on page
-        """
-        # Mock DOI resolution to APA article page
-        mock_doi_2step.return_value = 'https://doi.apa.org/doi/10.1037/hea0001386'
-        
-        # Mock successful article page response with PDF link
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.text = '''
-        <html>
-            <body>
-                <h1>Article Title</h1>
-                <p>This is an article page with PDF download available.</p>
-                <a href="/fulltext/2024-12345-001.pdf" class="pdf-link">Download PDF</a>
-            </body>
-        </html>
-        '''
-        mock_response.content = mock_response.text.encode('utf-8')
-        mock_response.url = 'https://doi.apa.org/doi/10.1037/hea0001386'
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38884978')
-        
-        # Test with verification - should find PDF link
-        url = the_apa_dab(pma, verify=True)
-        assert 'doi.apa.org' in url
-        assert '.pdf' in url
-        print(f"Test 4 - Found PDF link: {url}")
-
-    @patch('metapub.findit.dances.apa.the_doi_2step')
-    @patch('requests.get')
-    def test_apa_dab_paywall_detection(self, mock_get, mock_doi_2step):
-        """Test 5: Paywall detection.
-        
-        Expected: Should detect paywall and raise AccessDenied
-        """
-        # Mock DOI resolution to APA article page
-        mock_doi_2step.return_value = 'https://doi.apa.org/doi/10.1037/hea0001386'
-        
-        # Mock article page response with paywall indicators
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.text = '''
-        <html>
-            <body>
-                <h1>Article Title</h1>
-                <p>This content requires a subscription to access.</p>
-                <div class="paywall">
-                    <p>Please sign in to access this article.</p>
-                    <a href="/login">Log In</a>
-                    <a href="/subscribe">Subscribe</a>
-                </div>
-            </body>
-        </html>
-        '''
-        mock_response.content = mock_response.text.encode('utf-8')
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38884978')
-        
-        # Test with verification - should detect paywall
-        with pytest.raises(AccessDenied) as exc_info:
-            the_apa_dab(pma, verify=True)
-        
-        assert 'PAYWALL' in str(exc_info.value)
-        assert 'subscription' in str(exc_info.value)
-        print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
-
-    @patch('metapub.findit.dances.apa.the_doi_2step')
-    @patch('requests.get')
-    def test_apa_dab_access_forbidden(self, mock_get, mock_doi_2step):
-        """Test 6: Access forbidden (403 error).
-        
-        Expected: Should handle 403 errors properly
-        """
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://doi.apa.org/doi/10.1037/hea0001386'
-        
-        # Mock 403 response
-        mock_response = Mock()
-        mock_response.status_code = 403
-        mock_response.ok = False
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38884978')
-        
-        # Test with verification - should handle 403
-        with pytest.raises(AccessDenied) as exc_info:
-            the_apa_dab(pma, verify=True)
-        
-        assert 'DENIED' in str(exc_info.value)
-        assert '403' in str(exc_info.value) or 'forbidden' in str(exc_info.value).lower()
-        print(f"Test 6 - Correctly handled 403: {exc_info.value}")
-
-    @patch('metapub.findit.dances.apa.the_doi_2step')
-    @patch('requests.get')
-    def test_apa_dab_network_error(self, mock_get, mock_doi_2step):
-        """Test 7: Network error handling.
-        
-        Expected: Should handle network errors gracefully
-        """
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://doi.apa.org/doi/10.1037/hea0001386'
-        
-        # Mock network error
-        mock_get.side_effect = requests.exceptions.ConnectionError("Network error")
-
-        pma = self.fetch.article_by_pmid('38884978')
-        
-        # Test - should handle network error
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_apa_dab(pma, verify=True)
-        
-        assert 'TXERROR' in str(exc_info.value)
-        assert 'Network error' in str(exc_info.value)
-        print(f"Test 7 - Correctly handled network error: {exc_info.value}")
-
-    def test_apa_dab_missing_doi(self):
-        """Test 8: Article without DOI.
-        
-        Expected: Should raise NoPDFLink for missing DOI
-        """
-        # Create a mock PMA without DOI
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'Health Psychol'
+        fake_article = MockArticle()
         
         with pytest.raises(NoPDFLink) as exc_info:
-            the_apa_dab(pma, verify=False)
+            the_doi_slide(fake_article, verify=False)
         
-        assert 'MISSING' in str(exc_info.value)
-        assert 'DOI required' in str(exc_info.value)
-        print(f"Test 8 - Correctly handled missing DOI: {exc_info.value}")
-
-    def test_apa_dab_invalid_doi_pattern(self):
-        """Test 9: Article with non-APA DOI pattern.
+        error_msg = str(exc_info.value)
+        assert 'DOI required for DOI-based publishers' in error_msg
+    
+    def test_apa_invalid_doi_pattern(self):
+        """Test that non-APA DOIs still work but produce different URLs."""
+        # Create mock APA article with non-APA DOI
+        class MockArticle:
+            def __init__(self):
+                self.journal = 'Am Psychol'
+                self.doi = '10.1016/j.example.2024.01.001'  # Not an APA DOI (10.1037)
         
-        Expected: Should raise NoPDFLink for invalid DOI pattern
-        """
-        # Create a mock PMA with non-APA DOI
-        pma = Mock()
-        pma.doi = '10.1016/j.example.2024.01.001'  # Elsevier DOI, not APA
-        pma.journal = 'Health Psychol'
+        fake_article = MockArticle()
         
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_apa_dab(pma, verify=False)
+        # the_doi_slide doesn't validate DOI patterns, it just constructs URLs
+        # This will create a URL but it won't be a valid APA URL
+        url = the_doi_slide(fake_article, verify=False)
+        expected_url = "https://psycnet.apa.org/fulltext/10.1016/j.example.2024.01.001.pdf"
+        assert url == expected_url
+    
+    def test_apa_verify_false_success(self):
+        """Test successful URL construction with verify=False."""
+        article = load_pmid_xml('34843274')  # Am Psychol article
         
-        assert 'INVALID' in str(exc_info.value)
-        assert '10.1037' in str(exc_info.value)
-        print(f"Test 9 - Correctly handled invalid DOI pattern: {exc_info.value}")
-
-    @patch('metapub.findit.dances.apa.the_doi_2step')
-    @patch('requests.get') 
-    def test_apa_dab_open_access_article(self, mock_get, mock_doi_2step):
-        """Test 10: Open access article without paywall.
+        url = the_doi_slide(article, verify=False)
+        expected_url = "https://psycnet.apa.org/fulltext/10.1037/amp0000904.pdf"
         
-        Expected: Should return article URL for open access content
-        """
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://doi.apa.org/doi/10.1037/hea0001386'
+        assert url == expected_url
+    
+    def test_apa_verify_true_paywall_detection(self):
+        """Test that verify=True properly detects paywalled content."""
+        article = load_pmid_xml('32437181')  # Am Psychol article
         
-        # Mock successful article page response without paywall indicators
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.text = '''
-        <html>
-            <body>
-                <h1>Article Title</h1>
-                <p>This is an open access article.</p>
-                <div class="article-content">
-                    <p>Full article content is available here.</p>
-                </div>
-            </body>
-        </html>
-        '''
-        mock_response.content = mock_response.text.encode('utf-8')
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38884978')
-        
-        # Test with verification - should return article URL
-        url = the_apa_dab(pma, verify=True)
-        assert url == 'https://doi.apa.org/doi/10.1037/hea0001386'
-        print(f"Test 10 - Open access article URL: {url}")
+        # With verify=True, should detect paywall or similar access issues for subscription content
+        with pytest.raises((NoPDFLink, MetaPubError)):
+            the_doi_slide(article, verify=True)
 
 
-def test_apa_journal_recognition():
-    """Test that APA journals are properly recognized in the registry."""
-    from metapub.findit.registry import JournalRegistry
-    from metapub.findit.journals.apa import apa_journals
+class TestAPAEvidenceValidation:
+    """Validate that our evidence-based approach is sound."""
     
-    registry = JournalRegistry()
+    def test_doi_prefix_consistency(self):
+        """Test that all APA PMIDs use 10.1037 DOI prefix."""
+        doi_prefix = '10.1037'
+        
+        for pmid, data in APA_EVIDENCE_PMIDS.items():
+            assert data['doi'].startswith(doi_prefix), f"PMID {pmid} has unexpected DOI prefix: {data['doi']}"
     
-    # Test sample APA journals
-    test_journals = [
-        'Health Psychol',
-        'Dev Psychol',
-        'J Pers Soc Psychol',
-        'Psychol Rev'
-    ]
+    def test_journal_consistency(self):
+        """Test that all test journals are in the APA journal list."""
+        test_journals = set(data['journal'] for data in APA_EVIDENCE_PMIDS.values())
+        
+        for journal in test_journals:
+            assert journal in apa_journals, f"Test journal '{journal}' not in apa_journals list"
     
-    # Test journal recognition
-    found_count = 0
-    for journal in test_journals:
-        if journal in apa_journals:
-            publisher_info = registry.get_publisher_for_journal(journal)
-            if publisher_info and publisher_info['name'] == 'apa':
-                assert publisher_info['dance_function'] == 'the_apa_dab'
-                print(f"✓ {journal} correctly mapped to APA")
-                found_count += 1
-            else:
-                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
-        else:
-            print(f"⚠ {journal} not in apa_journals list")
+    def test_fixture_completeness(self):
+        """Test that all evidence PMIDs have working fixtures."""
+        for pmid in APA_EVIDENCE_PMIDS.keys():
+            # This should not raise an exception
+            article = load_pmid_xml(pmid)
+            
+            # Basic validation
+            assert article.journal is not None, f"PMID {pmid}: missing journal"
+            assert article.doi is not None, f"PMID {pmid}: missing DOI"
+            
+            # DOI format validation for APA
+            assert article.doi.startswith('10.1037'), f"PMID {pmid}: not an APA DOI"
+
+
+class TestAPAIntegration:
+    """Integration tests with metapub components."""
     
-    # Just make sure we found at least one APA journal
-    assert found_count > 0, "No APA journals found in registry with apa publisher"
-    print(f"✓ Found {found_count} properly mapped APA journals")
+    def test_apa_journal_list_integration(self):
+        """Test APA journal list integration."""
+        
+        # Test that APA journal list is accessible
+        assert 'Am Psychol' in apa_journals
+        
+        # Verify dance function works with registry system
+        article = load_pmid_xml('34843274')
+        url = the_doi_slide(article, verify=False)
+        
+        assert url.startswith('https://psycnet.apa.org/fulltext/')
+        assert '10.1037/amp0000904' in url
     
-    registry.close()
+    def test_apa_multiple_journal_types(self):
+        """Test APA dance function across different journal types."""
+        
+        # Test different journal types from fixtures
+        test_cases = [
+            ('34843274', 'Am Psychol'),      # American Psychologist
+            ('38546579', 'J Comp Psychol'),  # Journal of Comparative Psychology
+            ('38573673', 'Psychiatr Rehabil J'),  # Psychiatric Rehabilitation Journal
+            ('38271020', 'Rehabil Psychol'),  # Rehabilitation Psychology
+        ]
+        
+        for pmid, expected_journal in test_cases:
+            article = load_pmid_xml(pmid)
+            assert article.journal == expected_journal
+            
+            url = the_doi_slide(article, verify=False)
+            assert url is not None
+            assert article.doi in url
 
 
 if __name__ == '__main__':
-    # Run basic tests if executed directly
-    test_instance = TestAPADance()
-    test_instance.setUp()
-    
-    print("Running APA (American Psychological Association) tests...")
-    print("\n" + "="*60)
-    
-    tests = [
-        ('test_apa_dab_url_construction_health_psych', 'Health Psychology URL construction'),
-        ('test_apa_dab_url_construction_dev_psych', 'Developmental Psychology URL construction'),
-        ('test_apa_dab_url_construction_pers_soc_psych', 'Personality & Social Psychology URL construction'),
-        ('test_apa_dab_successful_access_with_pdf', 'Successful access with PDF'),
-        ('test_apa_dab_paywall_detection', 'Paywall detection'),
-        ('test_apa_dab_access_forbidden', 'Access forbidden handling'),
-        ('test_apa_dab_network_error', 'Network error handling'),
-        ('test_apa_dab_missing_doi', 'Missing DOI handling'),
-        ('test_apa_dab_invalid_doi_pattern', 'Invalid DOI pattern handling'),
-        ('test_apa_dab_open_access_article', 'Open access article handling')
-    ]
-    
-    for test_method, description in tests:
-        try:
-            getattr(test_instance, test_method)()
-            print(f"✓ {description} works")
-        except Exception as e:
-            print(f"✗ {description} failed: {e}")
-    
-    try:
-        test_apa_journal_recognition()
-        print("✓ Registry test passed: Journal recognition works")
-    except Exception as e:
-        print(f"✗ Registry test failed: {e}")
-    
-    print("\n" + "="*60)
-    print("Test suite completed!")
+    pytest.main([__file__, '-v'])

@@ -32,7 +32,7 @@ from .bmj import the_bmj_bump
 from .brill import the_brill_bridge
 from .cambridge import the_cambridge_foxtrot
 # CancerBiomed now uses the_vip_shake generic function
-from .degruyter import the_degruyter_danza
+# De Gruyter now uses the_doi_slide generic function
 from .dovepress import the_dovepress_peacock
 # Emerald now uses the_doi_slide generic function
 from .oxford_academic import the_oxford_academic_foxtrot

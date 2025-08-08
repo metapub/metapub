@@ -80,3 +80,22 @@ APS_EVIDENCE_PMIDS = {
     '36367692': {'doi': '10.1152/ajpheart.00477.2022', 'journal': 'Am J Physiol Heart Circ Physiol'},
     '36717101': {'doi': '10.1152/ajpcell.00544.2022', 'journal': 'Am J Physiol Cell Physiol'},
 }
+
+# De Gruyter PMIDs with metadata (true De Gruyter with 10.1515 DOI prefix)
+DEGRUYTER_EVIDENCE_PMIDS = {
+    '38534005': {'doi': '10.1515/cclm-2024-0070', 'journal': 'Clin Chem Lab Med'},
+    '36318760': {'doi': '10.1515/jpem-2022-0309', 'journal': 'J Pediatr Endocrinol Metab'},
+    '38716869': {'doi': '10.1515/hmbci-2022-0093', 'journal': 'Horm Mol Biol Clin Investig'},
+}
+
+# RSC (Royal Society of Chemistry) PMIDs with metadata
+RSC_EVIDENCE_PMIDS = {
+    '32935693': {'doi': '10.1039/d0np00027b', 'journal': 'Nat Prod Rep', 'pmc': 'PMC7864896'},
+    '38170905': {'doi': '10.1039/d3np00037k', 'journal': 'Nat Prod Rep', 'pmc': 'PMC11043010'},
+    '31712796': {'doi': '10.1039/c9em00386j', 'journal': 'Environ Sci Process Impacts'},
+    '34817495': {'doi': '10.1039/d1em00296a', 'journal': 'Environ Sci Process Impacts'},
+    '35699396': {'doi': '10.1039/d1em00553g', 'journal': 'Environ Sci Process Impacts'},
+    '37787043': {'doi': '10.1039/d3em00224a', 'journal': 'Environ Sci Process Impacts'},
+    '37655634': {'doi': '10.1039/d3em00235g', 'journal': 'Environ Sci Process Impacts'},
+    '35485580': {'doi': '10.1039/d2em00039c', 'journal': 'Environ Sci Process Impacts'},
+}

@@ -91,7 +91,7 @@ class TestACMDance(BaseDanceTest):
         assert '/doi/pdf/' in url
         print(f"Test 4 - Successful verified access: {url}")
 
-    @patch('requests.get')
+    @patch('metapub.findit.dances.acm.unified_uri_get')
     def test_acm_reel_paywall_detection(self, mock_get):
         """Test 5: Paywall detection.
         
@@ -108,7 +108,9 @@ class TestACMDance(BaseDanceTest):
         </body></html>'''
         mock_get.return_value = mock_response
 
-        pma = self.fetch.article_by_pmid('26949753')
+        # Create a test article with ACM DOI pattern
+        pma = Mock()
+        pma.doi = '10.1145/2811780.2811932'
         
         # Test with verification - should detect paywall
         with pytest.raises(AccessDenied) as exc_info:
@@ -213,7 +215,7 @@ def test_acm_journal_recognition():
         if journal in acm_journals:
             publisher_info = registry.get_publisher_for_journal(journal)
             if publisher_info and publisher_info['name'] == 'acm':
-                assert publisher_info['dance_function'] == 'the_acm_reel'
+                assert publisher_info['dance_function'] == 'the_doi_slide'
                 print(f"✓ {journal} correctly mapped to ACM")
                 found_count += 1
             else:

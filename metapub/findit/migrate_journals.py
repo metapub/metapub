@@ -20,7 +20,7 @@ from metapub.findit.registry import JournalRegistry
 from metapub.findit.journals.aaas import aaas_journals
 from metapub.findit.journals.biochemsoc import biochemsoc_journals
 from metapub.findit.journals.bmc import BMC_journals
-from metapub.findit.journals.degruyter import degruyter_journals
+# De Gruyter now in single_journal_publishers
 from metapub.findit.journals.dustri import dustri_journals
 from metapub.findit.journals.endo import endo_journals
 from metapub.findit.journals.jama import jama_journals
@@ -81,7 +81,7 @@ from metapub.findit.journals.sciendo import sciendo_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_template, ajph_journals, ajph_template,
-    aps_journals, aps_template,
+    aps_journals, aps_template, degruyter_journals, degruyter_template,
     bmj_open_gastro_journals, bmj_open_gastro_template,
     microbiol_spectr_journals, microbiol_spectr_template
 )
@@ -519,9 +519,9 @@ PUBLISHER_CONFIGS = [
         'journals': ('N Am J Med Sci',),
     },
     {
-        'name': 'degruyter',
-        'dance_function': 'the_degruyter_danza',
-        'format_template': None,
+        'name': 'De Gruyter',
+        'dance_function': 'the_doi_slide',
+        'format_template': degruyter_template,
         'journals': degruyter_journals,
     },
     # Paywalled publishers we haven't properly dealt with yet

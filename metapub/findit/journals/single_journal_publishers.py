@@ -40,6 +40,25 @@ aps_journals = [
 ]
 aps_template = 'https://journals.physiology.org/doi/pdf/{doi}'
 
+# De Gruyter (true De Gruyter journals with 10.1515 DOI prefix) - DOI format
+degruyter_journals = [
+    'Clin Chem Lab Med',
+    'J Pediatr Endocrinol Metab', 
+    'Horm Mol Biol Clin Investig',
+    'Biol Chem',
+    'Pure Appl Chem',
+    'Biomol Concepts',
+    'Biomed Tech (Berl)',
+    'Drug Metab Pers Ther',
+    'Rev Neurosci',
+    'Nanophotonics',
+    'Open Life Sci',
+    'Z Naturforsch C',
+    'Z Naturforsch C Biosci',
+    'Z Naturforsch C J Biosci',
+]
+degruyter_template = 'https://www.degruyter.com/document/doi/{doi}/pdf'
+
 # BMJ Open Gastroenterology - DOI format
 bmj_open_gastro_journals = ['BMJ Open Gastroenterol']
 bmj_open_gastro_template = 'http://bmjopengastro.bmj.com/doi/pdf/{doi}'

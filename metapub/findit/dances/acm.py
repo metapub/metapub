@@ -59,6 +59,9 @@ def the_acm_reel(pma, verify=True):
                 else:
                     raise NoPDFLink(f'TXERROR: ACM returned status {response.status_code} - attempted: {pdf_url}')
 
+            except (AccessDenied, NoPDFLink):
+                # Re-raise our own exceptions without wrapping
+                raise
             except Exception as e:
                 raise NoPDFLink(f'TXERROR: Network error accessing ACM: {e} - attempted: {pdf_url}')
         else:

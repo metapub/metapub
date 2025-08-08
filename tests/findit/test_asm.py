@@ -1,6 +1,7 @@
 """
 Tests for the improved evidence-based ASM dance function.
-Based on HTML sample analysis showing 100% /doi/reader/ pattern consistency.
+Based on HTML sample analysis showing direct PDF download pattern.
+Updated to test /doi/pdf/ pattern (PDF URLs) instead of /doi/reader/ (reader URLs).
 """
 
 import pytest
@@ -20,7 +21,7 @@ class TestASMShimmy:
     """Test suite for the_asm_shimmy function."""
 
     def test_modern_url_construction_with_doi(self):
-        """Test modern /doi/reader/ URL construction with DOI."""
+        """Test modern /doi/pdf/ URL construction with DOI."""
         # Test case from HTML evidence: PMID 35856662
         pma = MockPMA(doi='10.1128/aac.00216-22')
         
@@ -29,7 +30,7 @@ class TestASMShimmy:
             
             result = the_asm_shimmy(pma, verify=True)
             
-            expected = 'https://journals.asm.org/doi/reader/10.1128/aac.00216-22'
+            expected = 'https://journals.asm.org/doi/pdf/10.1128/aac.00216-22?download=true'
             assert result == expected
             mock_verify.assert_called_once_with(expected, 'ASM')
 
@@ -37,10 +38,10 @@ class TestASMShimmy:
         """Test URL construction works for different ASM journals."""
         test_cases = [
             # From HTML evidence
-            ('10.1128/jb.00337-22', 'https://journals.asm.org/doi/reader/10.1128/jb.00337-22'),  # J Bacteriol
-            ('10.1128/msystems.01299-23', 'https://journals.asm.org/doi/reader/10.1128/msystems.01299-23'),  # mSystems
-            ('10.1128/jb.00024-24', 'https://journals.asm.org/doi/reader/10.1128/jb.00024-24'),  # J Bacteriol
-            ('10.1128/aac.00924-24', 'https://journals.asm.org/doi/reader/10.1128/aac.00924-24'),  # AAC
+            ('10.1128/jb.00337-22', 'https://journals.asm.org/doi/pdf/10.1128/jb.00337-22?download=true'),  # J Bacteriol
+            ('10.1128/msystems.01299-23', 'https://journals.asm.org/doi/pdf/10.1128/msystems.01299-23?download=true'),  # mSystems
+            ('10.1128/jb.00024-24', 'https://journals.asm.org/doi/pdf/10.1128/jb.00024-24?download=true'),  # J Bacteriol
+            ('10.1128/aac.00924-24', 'https://journals.asm.org/doi/pdf/10.1128/aac.00924-24?download=true'),  # AAC
         ]
         
         with patch('metapub.findit.dances.asm.verify_pdf_url') as mock_verify:
@@ -58,7 +59,7 @@ class TestASMShimmy:
         with pytest.raises(NoPDFLink) as excinfo:
             the_asm_shimmy(pma)
         
-        assert 'MISSING: DOI required for ASM modern reader URLs' in str(excinfo.value)
+        assert 'MISSING: DOI required for ASM PDF downloads' in str(excinfo.value)
         assert 'attempted: none' in str(excinfo.value)
 
     def test_empty_doi_raises_nopdflink(self):
@@ -68,7 +69,7 @@ class TestASMShimmy:
         with pytest.raises(NoPDFLink) as excinfo:
             the_asm_shimmy(pma)
         
-        assert 'MISSING: DOI required for ASM modern reader URLs' in str(excinfo.value)
+        assert 'MISSING: DOI required for ASM PDF downloads' in str(excinfo.value)
 
     def test_verify_false_skips_verification(self):
         """Test that verify=False skips URL verification."""
@@ -77,7 +78,7 @@ class TestASMShimmy:
         with patch('metapub.findit.dances.asm.verify_pdf_url') as mock_verify:
             result = the_asm_shimmy(pma, verify=False)
             
-            expected = 'https://journals.asm.org/doi/reader/10.1128/aac.00216-22'
+            expected = 'https://journals.asm.org/doi/pdf/10.1128/aac.00216-22?download=true'
             assert result == expected
             mock_verify.assert_not_called()
 
@@ -109,7 +110,7 @@ class TestASMShimmy:
             mock_verify.return_value = True
             
             result = the_asm_shimmy(pma, verify=True)
-            expected = 'https://journals.asm.org/doi/reader/10.1128/aac.00216-22'
+            expected = 'https://journals.asm.org/doi/pdf/10.1128/aac.00216-22?download=true'
             assert result == expected
 
     def test_non_asm_doi_pattern(self):
@@ -121,7 +122,7 @@ class TestASMShimmy:
             mock_verify.return_value = True
             
             result = the_asm_shimmy(pma, verify=True)
-            expected = 'https://journals.asm.org/doi/reader/10.1234/example.doi'
+            expected = 'https://journals.asm.org/doi/pdf/10.1234/example.doi?download=true'
             assert result == expected
 
 
@@ -145,7 +146,7 @@ class TestASMEvidenceValidation:
             for doi in evidence_dois:
                 pma = MockPMA(doi=doi)
                 result = the_asm_shimmy(pma, verify=True)
-                expected = f'https://journals.asm.org/doi/reader/{doi}'
+                expected = f'https://journals.asm.org/doi/pdf/{doi}?download=true'
                 assert result == expected
 
     def test_pattern_simplification_benefits(self):
@@ -161,7 +162,7 @@ class TestASMEvidenceValidation:
             
             # Should work without any additional metadata
             result = the_asm_shimmy(pma, verify=True)
-            assert 'journals.asm.org/doi/reader/' in result
+            assert 'journals.asm.org/doi/pdf/' in result
             assert pma.doi in result
 
     def test_guidelines_compliance(self):
@@ -210,7 +211,7 @@ class TestASMWithVerifiedPMIDs:
                     
                     # Test URL construction
                     result = the_asm_shimmy(pma, verify=True)
-                    expected_url = f'https://journals.asm.org/doi/reader/{expected_doi}'
+                    expected_url = f'https://journals.asm.org/doi/pdf/{expected_doi}?download=true'
                     
                     assert result == expected_url, f"PMID {pmid} URL mismatch"
                     print(f"✓ PMID {pmid} ({pma.journal}): {result}")
@@ -240,7 +241,7 @@ class TestASMWithVerifiedPMIDs:
                     # Test without verification to avoid network calls
                     url = the_asm_shimmy(pma, verify=False)
                     
-                    assert 'journals.asm.org/doi/reader/' in url
+                    assert 'journals.asm.org/doi/pdf/' in url
                     assert pma.doi in url
                     print(f"✓ Sample integration test PMID {pmid}: {url}")
                 else:

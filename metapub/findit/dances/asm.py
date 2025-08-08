@@ -4,34 +4,39 @@ from ...exceptions import *
 def the_asm_shimmy(pma, verify=True):
     '''Evidence-based dance function for American Society of Microbiology (ASM) journals.
 
-    **EVIDENCE-DRIVEN REWRITE (2025-08-07)**
-    Based on analysis of 5 HTML samples showing 100% consistency with modern 
-    /doi/reader/ pattern. ASM has modernized from legacy VIP approach.
+    **EVIDENCE-DRIVEN PDF PATTERN UPDATE (2025-08-08)**
+    Updated based on re-analysis of HTML samples showing direct PDF download links.
+    ASM has modernized from legacy VIP approach to DOI-based PDF downloads.
 
-    Modern Pattern: https://journals.asm.org/doi/reader/{DOI}
-    Evidence: All 5 samples (PMIDs: 35856662, 36598232, 38329942, 38591913, 39382274)
+    PDF Download Pattern: https://journals.asm.org/doi/pdf/{DOI}?download=true
+    Evidence: All samples show consistent PDF download buttons with this pattern
     
-    Legacy Pattern: http://{host}.asm.org/content/{volume}/{issue}/{page}.full.pdf
-    Status: Deprecated - no longer found in HTML samples
+    Reader Pattern: https://journals.asm.org/doi/reader/{DOI} (HTML view, not PDF)
+    Legacy Pattern: http://{host}.asm.org/content/{volume}/{issue}/{page}.full.pdf (deprecated)
+
+    Contract Compliance: Returns direct PDF URLs as required by DANCE_FUNCTION_GUIDELINES.
+    "Function must return PDF link, nothing else (e.g. no article page as a runner-up!)"
 
     Benefits:
+    - Direct PDF download URLs (not reader interface)
     - No journal name mapping required
     - No VIP metadata dependencies  
-    - Direct DOI-based URL construction
-    - Eliminates complex journal standardization
-    - Follows DANCE_FUNCTION_GUIDELINES
+    - DOI-based URL construction only
+    - Follows FindIt contract properly
 
     :param: pma (PubMedArticle object)
     :param: verify (bool) [default: True] 
-    :return: url (string)
+    :return: url (string) - Direct PDF URL
     :raises: AccessDenied, NoPDFLink
     '''
 
     if not pma.doi:
-        raise NoPDFLink('MISSING: DOI required for ASM modern reader URLs - attempted: none')
+        raise NoPDFLink('MISSING: DOI required for ASM PDF downloads - attempted: none')
 
-    # Modern ASM uses centralized reader URLs (evidence from 5/5 HTML samples)
-    url = f'https://journals.asm.org/doi/reader/{pma.doi}'
+    # ASM PDF download pattern (evidence from HTML samples analysis)
+    # NOTE: Reader URLs (https://journals.asm.org/doi/reader/{doi}) were working as of ~2025-08-06
+    # but PDF URLs are preferred per DANCE_FUNCTION_GUIDELINES (return PDF link, not article page)
+    url = f'https://journals.asm.org/doi/pdf/{pma.doi}?download=true'
 
     if verify:
         verify_pdf_url(url, 'ASM')

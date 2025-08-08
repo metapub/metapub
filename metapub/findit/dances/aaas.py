@@ -1,14 +1,18 @@
 """
 Evidence-Based Dance Function for AAAS (American Association for the Advancement of Science).
 
-Based on HTML analysis of Science journals, this function handles the complex
-authentication requirements for Science/Science Advances articles.
+Based on HTML analysis of Science journals from 2025-01-08, this function uses
+the correct URL patterns discovered in actual AAAS article pages.
 
-Key findings from HTML evidence:
+Key findings from HTML evidence (samples from output/article_html/aaas/):
 - No citation_pdf_url meta tags available  
-- Main article PDFs require subscription access
-- Only supplementary material PDFs freely available
+- PDF links use pattern: /doi/reader/{DOI} (not /doi/pdf/)
+- Articles show: <a href="/doi/reader/10.1126/sciadv.abl6449" aria-label="PDF">
+- All PDFs require subscription access (403 Forbidden)
+- Open access articles only available via PMC fallback
 - Modern science.org domains (updated from legacy sciencemag.org)
+
+Evidence-based URL construction: https://www.science.org/doi/reader/{DOI}
 """
 
 from urllib.parse import urlsplit
@@ -26,36 +30,41 @@ AAAS_PASSWORD = os.environ.get("AAAS_PASSWORD", "")
 
 def the_aaas_twist(pma, verify=True):
     """
-    AAAS dance function for Science journals with subscription handling.
+    AAAS dance function for Science journals with evidence-based URL construction.
     
-    Evidence-based approach: AAAS requires complex authentication and doesn't
-    provide citation_pdf_url meta tags. Must use PMID lookup -> redirect approach.
+    Evidence-based approach: HTML samples show AAAS uses /doi/reader/{DOI} pattern
+    for PDF access. Falls back to PMID lookup if DOI unavailable.
     
     :param pma: PubMedArticle object
     :param verify: bool [default: True] - Recommended for navigation handling
     :return: PDF URL string
     :raises: AccessDenied, NoPDFLink
     """
-    if not pma.pmid:
-        raise NoPDFLink('MISSING: PMID required for AAAS article lookup (journal: %s)' % getattr(pma, 'journal', 'Unknown'))
     
-    # Use modern science.org PMID lookup (updated from legacy sciencemag.org)
-    baseurl = 'https://www.science.org/cgi/pmidlookup?view=long&pmid=%s' % pma.pmid
+    # Primary approach: Direct DOI-based URL construction (evidence-based)
+    if pma.doi:
+        # Evidence from HTML samples: AAAS uses /doi/reader/ pattern for PDFs
+        pdfurl = 'https://www.science.org/doi/reader/%s' % pma.doi
     
-    try:
-        res = unified_uri_get(baseurl)
-        # Convert article URL to PDF URL
-        # From: https://www.science.org/doi/10.1126/sciadv.abl6449
-        # To: https://www.science.org/doi/pdf/10.1126/sciadv.abl6449
-        if '.long' in res.url:
-            pdfurl = res.url.replace('.long', '.full') + '.pdf'
-        elif '/doi/' in res.url:
-            pdfurl = res.url.replace('/doi/', '/doi/pdf/')
-        else:
-            # Fallback: assume it's the full URL and append .pdf
-            pdfurl = res.url + '.pdf'
-    except Exception as e:
-        raise NoPDFLink('ERROR: AAAS PMID lookup failed for %s: %s' % (pma.pmid, str(e)))
+    # Fallback: PMID lookup approach (legacy)
+    elif pma.pmid:
+        baseurl = 'https://www.science.org/cgi/pmidlookup?view=long&pmid=%s' % pma.pmid
+        
+        try:
+            res = unified_uri_get(baseurl)
+            # Convert article URL to reader URL (evidence-based pattern)
+            if '/doi/' in res.url:
+                # Extract DOI from redirected URL and construct reader URL
+                doi_part = res.url.split('/doi/')[-1]
+                pdfurl = 'https://www.science.org/doi/reader/%s' % doi_part
+            else:
+                # Fallback: assume it's the full URL and use reader pattern
+                pdfurl = res.url.replace('/doi/', '/doi/reader/')
+        except Exception as e:
+            raise NoPDFLink('ERROR: AAAS PMID lookup failed for %s: %s' % (pma.pmid, str(e)))
+    
+    else:
+        raise NoPDFLink('MISSING: Either DOI or PMID required for AAAS article lookup (journal: %s)' % getattr(pma, 'journal', 'Unknown'))
 
     if not verify:
         return pdfurl

@@ -17,7 +17,7 @@ This document tracks the systematic transition from extensive mocking to XML fix
 
 ### For Each Publisher:
 
-1. **Identify PMIDs**: Use verified PMIDs from `output/verified_pmids/` or extract from existing tests
+1. **Identify PMIDs**: Use verified PMIDs from `output/verified_pmids/` and extract from existing tests
 2. **Download XML**: Use `PubMedFetcher.qs.efetch()` to get real XML data
 3. **Create Fixtures**: Save XML files to `tests/fixtures/pmid_xml/`
 4. **Update Constants**: Add publisher PMIDs to `tests/fixtures/__init__.py`

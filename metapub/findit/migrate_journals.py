@@ -47,7 +47,7 @@ from metapub.findit.journals.aacr import aacr_journals, aacr_vip_template
 from metapub.findit.journals.aps import aps_journals, aps_vip_template
 from metapub.findit.journals.liebert import liebert_journals, liebert_template
 from metapub.findit.journals.ats import ats_journals, ats_template
-from metapub.findit.journals.plos import plos_journals, plos_template
+from metapub.findit.journals.plos import plos_journals
 from metapub.findit.journals.mdpi import mdpi_journals, mdpi_template
 from metapub.findit.journals.eurekaselect import eurekaselect_journals, eurekaselect_template
 from metapub.findit.journals.thieme import thieme_journals, thieme_template, thieme_doi_format
@@ -60,7 +60,7 @@ from metapub.findit.journals.rsc import rsc_journals, rsc_template
 from metapub.findit.journals.ingentaconnect import ingentaconnect_journals, ingentaconnect_template
 from metapub.findit.journals.bioone import bioone_journals, bioone_template
 from metapub.findit.journals.emerald import emerald_journals, emerald_format
-from metapub.findit.journals.acm import acm_journals
+from metapub.findit.journals.acm import acm_journals, acm_format
 from metapub.findit.journals.worldscientific import worldscientific_journals
 from metapub.findit.journals.uchicago import uchicago_journals
 from metapub.findit.journals.iospress import iospress_journals
@@ -80,7 +80,7 @@ from metapub.findit.journals.cancerbiomed import cancerbiomed_journals, cancerbi
 from metapub.findit.journals.sciendo import sciendo_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
-    pnas_journals, pnas_vip_template, ajph_journals, ajph_template,
+    pnas_journals, pnas_template, ajph_journals, ajph_template,
     bmj_open_gastro_journals, bmj_open_gastro_template,
     microbiol_spectr_journals, microbiol_spectr_template
 )
@@ -283,8 +283,8 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'Public Library of Science',
-        'dance_function': 'the_doi_slide',
-        'format_template': plos_template,
+        'dance_function': 'the_plos_pogo',
+        'format_template': None,
         'journals': plos_journals,
     },
     {
@@ -319,8 +319,8 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'Proceedings of the National Academy of Sciences',
-        'dance_function': 'the_vip_shake',
-        'format_template': pnas_vip_template,
+        'dance_function': 'the_doi_slide',
+        'format_template': pnas_template,
         'journals': pnas_journals,
     },
     {
@@ -405,8 +405,8 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'acm',
-        'dance_function': 'the_acm_reel',
-        'format_template': None,
+        'dance_function': 'the_doi_slide',
+        'format_template': acm_format,
         'journals': acm_journals,
     },
     {

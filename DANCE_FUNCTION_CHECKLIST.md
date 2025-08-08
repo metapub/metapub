@@ -355,12 +355,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Status:** TODO
 - **Priority:** Low
 
-### ❓ NEJM (New England Journal of Medicine)
-- **Dance Function:** Not assigned
+### ✅ NEJM (New England Journal of Medicine)
+- **Dance Function:** `the_doi_slide` (generic DOI function)
 - **HTML Samples:** `output/article_html/nejm/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (perfect simplicity via generic function)
 - **Priority:** High (top medical journal)
-- **Notes:** Premier medical journal with HTML samples available
+- **Notes:** **EVIDENCE-DRIVEN CONFIGURATION COMPLETED**: Top medical journal with perfect DOI-based PDF URL pattern. Analysis of 2 HTML samples revealed simple pattern: `https://www.nejm.org/doi/pdf/{doi}`. All DOIs follow `10.1056/` prefix format. Configured to use `the_doi_slide` generic function - no custom dance needed! This represents optimal simplicity: configuration-only solution with zero custom code. Created comprehensive test suite (8 tests) validating DOI construction, error handling, and generic function usage. NEJM achieves maximum efficiency through reuse of existing generic infrastructure.
 
 ### ✅ Nature Publishing Group
 - **Dance Function:** `the_nature_ballet`

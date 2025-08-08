@@ -15,6 +15,8 @@ Publisher Dance Development Process
     - Document SSL/certificate issues encountered
   2. Pattern Discovery
     - Identify the most reliable PDF extraction method
+    - Look for patterns in the URLs that would allow us to build links without ever loading a remote page.
+    - Examples of patterns:  volume-issue-page + journal code.  DOI insert.  PMID insert.
     - Note any protocol quirks (protocol-relative URLs, etc.)
     - Document error conditions and edge cases
     - Test pattern consistency across different articles
@@ -22,9 +24,9 @@ Publisher Dance Development Process
   Phase 2: Infrastructure Assessment
 
   3. Evaluate Generic Functions
-    - Does verify_pdf_url handle this publisher's SSL setup?
-    - Does unified_uri_get work with their servers?
     - Would it work to use the_vip_shake or the_doi_slide instead of a whole new dance function?
+    - Does verify_pdf_url handle this publisher's SSL setup?
+    - IF we have to scrape an HTML page to get information, does unified_uri_get work with their servers?
     - Any new generic utilities needed?
   4. Fix Foundation First
     - Enhance generic functions if needed
@@ -34,14 +36,18 @@ Publisher Dance Development Process
   Phase 3: Dance Implementation
 
   5. Write Focused Dance Function
-    - Single method approach - no big try/except blocks
+    - No big try/except blocks
+    - No giant if-then tree
+    - Primary method to find PDF link should be the one that requires zero remote page loads, i.e. loading PubMedArticle info into a template string.
+    - Secondary method to find PDF link could involve loading a page and finding information in the page.
+    - Having 2 methods to find a PDF link is fine.  3 is too much.
     - Let specific errors bubble up (no generic Exception catching)
     - Use discovered patterns, not complex parsing
     - Require what's actually needed (DOI vs PMID vs journal name)
     - If dance function exists don't create a new one -- rewrite the old one. don't rename it!
     - TRUST THE REGISTRY: PMID -> journal -> publisher wiring is consistent. no need to verify DOI.
-  6. Apply "One Thing Well" Principle
-    - Function does PDF extraction, nothing else
+  6. Adhere to the FindIt contract: input PMID, get PDF link or a reason it couldn't be found.
+    - Function must return PDF link, nothing else (e.g. no article page as a runner-up!)
     - Clear error messages with prefixes (MISSING:, TXERROR:, DENIED:)
     - Use verify=True parameter for optional verification
 

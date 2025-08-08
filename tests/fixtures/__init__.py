@@ -99,3 +99,10 @@ RSC_EVIDENCE_PMIDS = {
     '37655634': {'doi': '10.1039/d3em00235g', 'journal': 'Environ Sci Process Impacts'},
     '35485580': {'doi': '10.1039/d2em00039c', 'journal': 'Environ Sci Process Impacts'},
 }
+
+# J-STAGE (Japan Science and Technology Information Aggregator, Electronic) PMIDs with metadata
+JSTAGE_EVIDENCE_PMIDS = {
+    '31588070': {'doi': '10.5761/atcs.ra.19-00158', 'journal': 'Ann Thorac Cardiovasc Surg', 'pmc': 'PMC7184035'},
+    '34334504': {'doi': '10.5761/atcs.ra.21-00040', 'journal': 'Ann Thorac Cardiovasc Surg', 'pmc': 'PMC8915931'},
+    '38028269': {'doi': '10.33160/yam.2023.11.001', 'journal': 'Yonago Acta Med', 'pmc': 'PMC10674056'},
+}

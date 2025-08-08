@@ -298,11 +298,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** High (top medical journal)
 - **Notes:** **Critical URL Pattern Fix**: HTML evidence revealed function was using wrong pattern. Changed from `/pdf` to `/files/pdf` based on `citation_pdf_url` meta tags in HTML samples. Old pattern: `https://www.jci.org/articles/view/{pii}/pdf` (broken). New pattern: `http://www.jci.org/articles/view/{pii}/files/pdf` (works). Updated both PII and DOI fallback paths. All 10 tests pass. Function was well-structured but had incorrect URL format.
 
-### ❓ J-STAGE
+### ✅ J-STAGE
 - **Dance Function:** `the_jstage_dive`
 - **HTML Samples:** `output/article_html/jstage/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (evidence-driven hybrid approach)
 - **Priority:** Medium (Japanese journals)
+- **Notes:** **OPTIMIZED COMPLEXITY HIERARCHY COMPLETED 2025-08-08**: Reorganized function to follow optimal complexity hierarchy - tries simplest method first, only loads page content when necessary. Approach: (1) DOI resolution to get article URL (minimal required network request), (2) Primary: URL manipulation on resolved URL (_article → _pdf) without loading page content, (3) Fallback: HTML parsing for citation_pdf_url only when URL manipulation fails. This minimizes network requests while maintaining reliability. Analysis of 3 HTML samples showed consistent pattern: `https://www.jstage.jst.go.jp/article/{journal}/{volume}/{issue}/{volume}_{article_id}/_pdf`. Function achieves 69 lines total. Follows DANCE_FUNCTION_GUIDELINES: clear error messages with prefixes (MISSING, INVALID, TXERROR), optimal resource usage. Created XML fixtures for 3 verified PMIDs (31588070, 34334504, 38028269) across 2 J-STAGE journals. Comprehensive test suite (13 tests) validates authentic metadata, primary URL manipulation without page loading, fallback citation_pdf_url extraction, platform validation, error handling, and complexity hierarchy documentation. Results: 13/13 tests passing with complete coverage of optimized approach.
 
 ### ❓ Karger
 - **Dance Function:** `the_karger_conga`
@@ -404,11 +405,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Status:** TODO
 - **Priority:** Medium (humanities/social sciences)
 
-### ❓ Royal Society of Chemistry
+### ✅ Royal Society of Chemistry
 - **Dance Function:** `the_rsc_reaction`
 - **HTML Samples:** `output/article_html/rsc/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (evidence-driven rewrite with citation_pdf_url)
 - **Priority:** Medium (chemistry)
+- **Notes:** **EVIDENCE-DRIVEN REWRITE COMPLETED 2025-08-08**: Rewritten from 126→26 lines (79% reduction) using evidence-driven approach with direct citation_pdf_url extraction. Analysis of 9 HTML samples showed 100% consistent pattern: `https://pubs.rsc.org/en/content/articlepdf/{year}/{journal}/{article_id}`. All RSC DOIs follow 10.1039/ prefix pattern with pubs.rsc.org hosting. Function uses DOI resolution → HTML extraction → regex parsing of citation_pdf_url meta tags. Follows DANCE_FUNCTION_GUIDELINES: single method approach, under 50 lines, clear error messages with prefixes (MISSING, INVALID, TXERROR). Created XML fixtures for 8 verified PMIDs across 2 RSC journals (Natural Products Reports, Environmental Science: Processes & Impacts). Comprehensive test suite (10 tests) validates authentic metadata, URL construction, paywall handling, error cases, and compliance. Results: 10/10 tests passing with proper evidence-based documentation and function compliance validation.
 
 ### ✅ SAGE Publications
 - **Dance Function:** ~~`the_sage_hula`~~ **CONSOLIDATED** into `the_doi_slide`
@@ -529,7 +531,7 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 
 ## Progress Summary
 
-- **Completed:** 33/50+ publishers (PLOS, ACS, AAAS, SCIRP, SciELO, Cancer Biology & Medicine, AACR, Cambridge, Dovepress, EurekaSelect, Nature, Wiley, ScienceDirect+Cell+Lancet, JCI, Annual Reviews, Thieme, Oxford Academic/Endocrine Society, Biochemical Society, MDPI, BMC, Taylor & Francis, PNAS, APA)
+- **Completed:** 35/50+ publishers (PLOS, ACS, AAAS, SCIRP, SciELO, Cancer Biology & Medicine, AACR, Cambridge, Dovepress, EurekaSelect, Nature, Wiley, ScienceDirect+Cell+Lancet, JCI, Annual Reviews, Thieme, Oxford Academic/Endocrine Society, Biochemical Society, MDPI, BMC, Taylor & Francis, PNAS, APA, RSC, J-STAGE)
 - **Consolidated into Generic Functions:** 12 publishers (SAGE→doi_slide, AIP→doi_slide, BioOne→vip_shake, Frontiers→doi_slide, Emerald→doi_slide, CancerBiomed→vip_shake, Spandidos→doi_slide, Springer→doi_slide, Thieme→doi_slide, Wiley→doi_slide, Taylor & Francis→doi_slide, PNAS→doi_slide)
 - **High Priority Remaining:** AHA, BMJ, Oxford
 - **Blocked by Protection:** JAMA (Cloudflare), Emerald (Cloudflare - now consolidated), Wolters Kluwer (Cloudflare + no direct PDF URLs), MDPI (bot protection), AIP (Cloudflare - now consolidated)

@@ -25,6 +25,7 @@ This document tracks the systematic transition from extensive mocking to XML fix
 6. **Remove Mocking**: Delete `Mock()` objects and `@patch` decorators for PubMed data
 7. **Validate**: Ensure all tests pass with authentic data
 
+
 ### Template Code Changes:
 
 **Before (mocking approach):**

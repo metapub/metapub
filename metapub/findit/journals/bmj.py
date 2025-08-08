@@ -28,6 +28,7 @@ bmj_journal_params = {
     'BMJ Innov': {'host': 'innovations.bmj.com'},
     'BMJ Open': {'host': 'bmjopen.bmj.com'},
     'BMJ Open Diabetes Res Care': {'host': 'drc.bmj.com'},
+    'BMJ Open Gastroenterol': {'host': 'bmjopengastro.bmj.com'},
     'BMJ Open Resp Res': {'host': 'bmjopenrespres.bmj.com'},
     'BMJ Open Sport Exerc Med': {'host': 'bmjopensem.bmj.com'},
     'BMJ Qual Saf': {'host': 'qualitysafety.bmj.com'},

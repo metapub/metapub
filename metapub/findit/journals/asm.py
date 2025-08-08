@@ -24,6 +24,7 @@ asm_journals = [
     'mSystems',
     'mSphere', 
     'Microbiol Mol Biol Rev',
+    'Microbiol Spectr',
     'Mol Cell Biol',
 ]
 
@@ -43,8 +44,12 @@ asm_journal_params = {
     'mSystems': {'host': 'msystems'},
     'mSphere': {'host': 'msphere'},
     'Microbiol Mol Biol Rev': {'host': 'mmbr'},
+    'Microbiol Spectr': {'host': 'spectrum'},
     'Mol Cell Biol': {'host': 'mcb'},
 }
 
 # VIP URL template for ASM journals
 asm_vip_template = 'http://{host}.asm.org/content/{volume}/{issue}/{first_page}.full.pdf'
+
+# DOI template for Microbiology Spectrum (uses DOI instead of VIP)
+microbiol_spectr_template = 'http://www.asmscience.org/content/journal/microbiolspec/{doi}'

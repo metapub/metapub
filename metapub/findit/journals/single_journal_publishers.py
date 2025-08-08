@@ -14,10 +14,9 @@ science_journals = ['Science']
 science_journal_params = {'Science': {'host': 'sciencemag'}}
 science_vip_template = 'http://{host}.org/content/{volume}/{issue}/{first_page}.full.pdf'
 
-# Proceedings of the National Academy of Sciences - VIP format
+# Proceedings of the National Academy of Sciences - DOI format
 pnas_journals = ['Proc Natl Acad Sci USA']
-pnas_journal_params = {'Proc Natl Acad Sci USA': {'host': 'pnas'}}
-pnas_vip_template = 'http://{host}.org/content/{volume}/{issue}/{first_page}.full.pdf'
+pnas_template = 'https://www.pnas.org/doi/pdf/{doi}'
 
 # American Journal of Public Health - DOI format
 ajph_journals = ['Am J Public Health']

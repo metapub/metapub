@@ -6,7 +6,7 @@ from unittest.mock import patch, Mock
 from .common import BaseDanceTest
 from metapub.findit.dances.oatext import the_oatext_orbit
 from metapub.exceptions import NoPDFLink
-from tests.fixtures import OATEXT_EVIDENCE_PMIDS
+from tests.fixtures import load_pmid_xml, OATEXT_EVIDENCE_PMIDS
 
 
 class TestOATextDance(BaseDanceTest):
@@ -358,20 +358,60 @@ class TestOATextXMLFixtures:
         assert result.startswith('https://')
         assert 'JSIN' in result  # Journal code should be in URL
 
-    def test_oatext_limited_pubmed_representation_acknowledgment(self):
-        """Test acknowledgment that OAText has limited PubMed representation."""
-        # This test documents the limitation that OAText articles may not be extensively indexed in PubMed
-        # The evidence PMIDs use representative DOI patterns from the actual test suite
+class TestOATextXMLFixtures:
+    """Test OAText XML fixtures for evidence-driven testing."""
+
+    @patch('metapub.findit.dances.oatext.verify_pdf_url')
+    @patch('metapub.findit.dances.oatext.unified_uri_get')
+    @patch('metapub.findit.dances.oatext.the_doi_2step')
+    def test_oatext_xml_32934823_j_syst_integr_neurosci(self, mock_doi_2step, mock_uri_get, mock_verify):
+        """Test PMID 32934823 - J Syst Integr Neurosci with DOI 10.15761/JSIN.1000229."""
+        mock_verify.return_value = None
         
-        # Verify we're using representative patterns, not necessarily real PMIDs
-        for pmid, expected in OATEXT_EVIDENCE_PMIDS.items():
-            # PMIDs starting with 99999 indicate placeholder/representative data
-            assert pmid.startswith('99999'), f"PMID {pmid} should be representative/placeholder data"
-            
-            # But DOI patterns should be authentic OAText patterns
-            assert expected['doi'].startswith('10.15761/'), f"DOI pattern should be authentic OAText: {expected['doi']}"
-            
-            print(f"✓ Representative PMID {pmid}: {expected['journal']} - {expected['doi']}")
+        # Mock DOI resolution and HTML page fetch
+        mock_doi_2step.return_value = 'https://www.oatext.com/improving-naltrexone-compliance.php'
+        
+        mock_response = Mock()
+        mock_response.ok = True
+        mock_response.text = '''<html><body><a href="pdf/JSIN-6-229.pdf" target="_blank">PDF</a></body></html>'''
+        mock_uri_get.return_value = mock_response
+        
+        pma = load_pmid_xml('32934823')
+        
+        assert pma.pmid == '32934823'
+        assert pma.doi == '10.15761/JSIN.1000229'
+        assert 'J Syst Integr Neurosci' in pma.journal
+        
+        result = the_oatext_orbit(pma, verify=True)
+        expected_url = 'https://www.oatext.com/pdf/JSIN-6-229.pdf'
+        assert result == expected_url
+        mock_verify.assert_called_once_with(expected_url, 'OAText')
+
+    @patch('metapub.findit.dances.oatext.verify_pdf_url')
+    @patch('metapub.findit.dances.oatext.unified_uri_get')
+    @patch('metapub.findit.dances.oatext.the_doi_2step')
+    def test_oatext_xml_32934824_j_syst_integr_neurosci(self, mock_doi_2step, mock_uri_get, mock_verify):
+        """Test PMID 32934824 - J Syst Integr Neurosci with DOI 10.15761/JSIN.1000228."""
+        mock_verify.return_value = None
+        
+        # Mock DOI resolution and HTML page fetch
+        mock_doi_2step.return_value = 'https://www.oatext.com/improving-naltrexone-compliance-2.php'
+        
+        mock_response = Mock()
+        mock_response.ok = True
+        mock_response.text = '''<html><body><a href="pdf/JSIN-6-228.pdf" target="_blank">PDF</a></body></html>'''
+        mock_uri_get.return_value = mock_response
+        
+        pma = load_pmid_xml('32934824')
+        
+        assert pma.pmid == '32934824'
+        assert pma.doi == '10.15761/JSIN.1000228'
+        assert 'J Syst Integr Neurosci' in pma.journal
+        
+        result = the_oatext_orbit(pma, verify=True)
+        expected_url = 'https://www.oatext.com/pdf/JSIN-6-228.pdf'
+        assert result == expected_url
+        mock_verify.assert_called_once_with(expected_url, 'OAText')
 
 
 class TestOATextRegistryIntegration:

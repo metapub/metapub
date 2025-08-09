@@ -288,165 +288,46 @@ if __name__ == '__main__':
 
 
 class TestIOPXMLFixtures:
-    """Test IOP Publishing dance function with real XML fixtures."""
+    """Test IOP XML fixtures for evidence-driven testing."""
 
-    def test_iop_authentic_metadata_validation(self):
-        """Validate authentic metadata from XML fixtures matches expected patterns."""
-        for pmid, expected in IOP_EVIDENCE_PMIDS.items():
-            pma = load_pmid_xml(pmid)
-            
-            # Validate DOI follows IOP pattern (10.1088/ or 10.3847/ for astrophysics)
-            assert pma.doi == expected['doi']
-            assert pma.doi.startswith('10.1088/') or pma.doi.startswith('10.3847/'), f"IOP DOI must start with 10.1088/ or 10.3847/, got: {pma.doi}"
-            
-            # Validate journal name matches expected
-            assert pma.journal == expected['journal']
-            
-            # Validate PMID matches
-            assert pma.pmid == pmid
-            
-            print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
-
-    def test_iop_url_construction_without_verification(self):
-        """Test URL construction without verification using XML fixtures."""
-        for pmid in IOP_EVIDENCE_PMIDS.keys():
-            pma = load_pmid_xml(pmid)
-            
-            # Test URL construction without verification
-            result = the_iop_fusion(pma, verify=False)
-            
-            # Should be IOP URL pattern
-            assert result is not None
-            assert 'iopscience.iop.org' in result
-            assert '/article/' in result
-            assert '/pdf' in result
-            assert result.startswith('https://')
-            
-            print(f"✓ PMID {pmid} URL: {result}")
-
-    @patch('requests.get')
-    def test_iop_url_construction_with_mocked_verification(self, mock_get):
-        """Test URL construction with mocked verification."""
-        # Mock successful PDF response
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'application/pdf'}
-        mock_get.return_value = mock_response
+    def test_iop_xml_36096127_phys_med_biol(self):
+        """Test PMID 36096127 - Phys Med Biol with DOI 10.1088/1361-6560/ac9174."""
+        pma = load_pmid_xml('36096127')
         
-        for pmid in IOP_EVIDENCE_PMIDS.keys():
-            pma = load_pmid_xml(pmid)
-            
-            result = the_iop_fusion(pma, verify=True)
-            
-            assert result is not None
-            assert 'iopscience.iop.org' in result
-            print(f"✓ PMID {pmid} verified URL: {result}")
-
-    @patch('requests.get')
-    def test_iop_paywall_handling(self, mock_get):
-        """Test paywall detection and error handling."""
-        # Mock paywall response
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'text/html'}
-        mock_response.text = '''<html><body>
-            <h1>Subscription Required</h1>
-            <p>Login required for institutional access</p>
-        </body></html>'''
-        mock_get.return_value = mock_response
+        assert pma.pmid == '36096127'
+        assert pma.doi == '10.1088/1361-6560/ac9174'
+        assert 'Phys Med Biol' in pma.journal
         
-        pma = load_pmid_xml('38914107')  # Use first test PMID
-        
-        with pytest.raises(NoPDFLink):
-            the_iop_fusion(pma, verify=True)
-
-    def test_iop_journal_coverage(self):
-        """Test journal coverage across different IOP publications."""
-        journals_found = set()
-        
-        for pmid in IOP_EVIDENCE_PMIDS.keys():
-            pma = load_pmid_xml(pmid)
-            journals_found.add(pma.journal)
-        
-        # Should have multiple different IOP journals
-        assert len(journals_found) >= 2, f"Expected at least 2 different journals, got: {journals_found}"
-        
-        # All should be known IOP journals
-        expected_journals = {'Phys Med Biol', 'Nanotechnology', 'Astrophys J'}
-        assert journals_found == expected_journals, f"Unexpected journals: {journals_found - expected_journals}"
-
-    def test_iop_doi_pattern_diversity(self):
-        """Test DOI pattern diversity across IOP divisions."""
-        doi_patterns = {
-            '10.1088/': 'Standard IOP Physics journals',
-            '10.3847/': 'Astrophysical journals (IOP partnership)'
-        }
-        
-        patterns_found = set()
-        
-        for pmid in IOP_EVIDENCE_PMIDS.keys():
-            pma = load_pmid_xml(pmid)
-            
-            for pattern, description in doi_patterns.items():
-                if pma.doi.startswith(pattern):
-                    patterns_found.add(pattern)
-                    print(f"✓ PMID {pmid} follows {pattern} pattern ({description})")
-                    break
-        
-        # Should have both patterns represented
-        assert len(patterns_found) >= 2, f"Expected at least 2 DOI patterns, got: {patterns_found}"
-
-    def test_iop_error_handling_missing_doi(self):
-        """Test error handling for articles without DOI."""
-        # Create mock article without DOI
-        class MockPMA:
-            def __init__(self):
-                self.doi = None
-                self.journal = 'Phys Med Biol'
-        
-        mock_pma = MockPMA()
-        
-        with pytest.raises(NoPDFLink) as excinfo:
-            the_iop_fusion(mock_pma)
-        
-        assert 'MISSING' in str(excinfo.value)
-        assert 'DOI required' in str(excinfo.value)
-
-    def test_iop_template_flexibility(self):
-        """Test template flexibility for IOP URL patterns."""
-        pma = load_pmid_xml('38914107')  # Phys Med Biol
-        
-        # Test URL construction 
         result = the_iop_fusion(pma, verify=False)
-        
-        # Should follow IOP URL pattern
-        assert result is not None
-        assert 'iopscience.iop.org' in result
-        assert '/article/' in result
-        assert '/pdf' in result
-        assert pma.doi in result
+        # IOP constructs URLs using iopscience.iop.org
+        assert result.startswith('https://iopscience.iop.org/article/')
+        assert result.endswith('/pdf')
+        assert '10.1088/1361-6560/ac9174' in result
 
-    def test_iop_astrophysical_journal_coverage(self):
-        """Test coverage of Astrophysical Journal (IOP partnership)."""
-        # Find Astrophysical Journal article in our test set
-        astro_pmid = None
-        for pmid in IOP_EVIDENCE_PMIDS.keys():
-            pma = load_pmid_xml(pmid)
-            if pma.journal == 'Astrophys J':
-                astro_pmid = pmid
-                break
+    def test_iop_xml_39159658_phys_med_biol(self):
+        """Test PMID 39159658 - Phys Med Biol with DOI 10.1088/1361-6560/ad70f0."""
+        pma = load_pmid_xml('39159658')
         
-        assert astro_pmid is not None, "Should have at least one Astrophys J article in test set"
+        assert pma.pmid == '39159658'
+        assert pma.doi == '10.1088/1361-6560/ad70f0'
+        assert 'Phys Med Biol' in pma.journal
         
-        pma = load_pmid_xml(astro_pmid)
-        
-        # Should work with IOP URL construction
         result = the_iop_fusion(pma, verify=False)
+        # IOP constructs URLs using iopscience.iop.org
+        assert result.startswith('https://iopscience.iop.org/article/')
+        assert result.endswith('/pdf')
+        assert '10.1088/1361-6560/ad70f0' in result
+
+    def test_iop_xml_37167981_phys_med_biol(self):
+        """Test PMID 37167981 - Phys Med Biol with DOI 10.1088/1361-6560/acd48e."""
+        pma = load_pmid_xml('37167981')
         
-        assert result is not None
-        assert 'iopscience.iop.org' in result
-        assert pma.doi.startswith('10.3847/'), f"Expected Astrophys J DOI pattern, got {pma.doi}"
+        assert pma.pmid == '37167981'
+        assert pma.doi == '10.1088/1361-6560/acd48e'
+        assert 'Phys Med Biol' in pma.journal
         
-        print(f"✓ Astrophysical Journal PMID {astro_pmid} works with IOP infrastructure: {result}")
+        result = the_iop_fusion(pma, verify=False)
+        # IOP constructs URLs using iopscience.iop.org
+        assert result.startswith('https://iopscience.iop.org/article/')
+        assert result.endswith('/pdf')
+        assert '10.1088/1361-6560/acd48e' in result

@@ -64,7 +64,7 @@ class TestPublisher:
         # ✅ Authentic DOI, journal, all metadata
 ```
 
-## Conversion Status: 15/37 Complete (4 publishers were duplicate entities)
+## Conversion Status: 18/37 Complete (4 publishers were duplicate entities)
 
 ### XML Fixtures Complete:
 - ✅ **AAAS** - Complete reference implementation
@@ -83,6 +83,9 @@ class TestPublisher:
 - ✅ **WoltersKluwer** - Complete conversion (consolidated into test_wolterskluwer.py)
 - ✅ **BiochemSoc** - Complete conversion (consolidated into test_biochemsoc.py)
 - ✅ **MDPI** - Complete conversion (consolidated into test_mdpi.py)
+- ✅ **IOP** - Complete conversion (consolidated into test_iop.py)
+- ✅ **OAText** - Complete conversion (consolidated into test_oatext.py)  
+- ✅ **ASME** - Complete conversion (consolidated into test_asme.py)
 
 ### Found to be Duplicate Entities (Removed from plan):
 - 🚫 **Cell Press** → actually **ScienceDirect** (Elsevier-owned)
@@ -90,7 +93,7 @@ class TestPublisher:
 - 🚫 **BMJ Open Gastroenterology** → actually **BMJ Publishing Group**
 - 🚫 **Oxford Academic (Endocrine Society)** → actually **Oxford Academic**
 
-- ❌ **19 publishers** remaining for XML conversion
+- ❌ **16 publishers** remaining for XML conversion
 
 ## Publisher Priority List
 
@@ -99,9 +102,9 @@ class TestPublisher:
 | Status | Publisher | Test File | Methods | PMIDs | Complexity | Notes |
 |--------|-----------|-----------|---------|-------|------------|-------|
 | ✅ | **worldscientific** | test_worldscientific.py | 11 | ✓ | High | COMPLETED: XML fixtures, all tests pass |
-| ❌ | **iop** | test_iop.py | 11 | ✓ | High | Institute of Physics |
-| ❌ | **oatext** | test_oatext.py | 11 | ✓ | High | Open Access publisher |
-| ❌ | **asme** | test_asme.py | 11 | ✓ | High | Engineering journals |
+| ✅ | **iop** | test_iop.py | 11 | ✓ | High | COMPLETED: XML fixtures consolidated into test_iop.py |
+| ✅ | **oatext** | test_oatext.py | 11 | ✓ | High | COMPLETED: XML fixtures consolidated into test_oatext.py |
+| ✅ | **asme** | test_asme.py | 11 | ✓ | High | COMPLETED: XML fixtures consolidated into test_asme.py |
 | ❌ | **hilaris** | test_hilaris.py | 12 | ✓ | High | Medical publisher |
 | ❌ | **walshmedia** | test_walshmedia.py | 12 | ✓ | High | Medical journals |
 | ✅ | **degruyter** | test_degruyter.py | 11 | ✓ | High | COMPLETED: XML fixtures integrated |
@@ -283,6 +286,36 @@ class TestPublisher:
 - **DOI Pattern**: Verified 10.3390/ format for all PMIDs
 - **Features Tested**: DOI resolution + /pdf URL construction, verify_pdf_url integration
 
+#### IOP (Batch 6)
+- **Status**: ✅ Complete
+- **XML Fixtures**: 3 evidence PMIDs downloaded (36096127, 39159658, 37167981)
+- **Tests Updated**: Added `TestIOPXMLFixtures` class to existing `test_iop.py`
+- **Mocking Removed**: No `PubMedFetcher` network calls in XML fixture tests
+- **Results**: 3/3 XML fixture tests passing, authentic journal data validation
+- **Evidence Coverage**: Phys Med Biol journal (all evidence from same journal)
+- **DOI Pattern**: Verified 10.1088/ format for all PMIDs
+- **Features Tested**: iopscience.iop.org URL construction, verify=False mode for simplified testing
+
+#### OAText (Batch 6)
+- **Status**: ✅ Complete
+- **XML Fixtures**: 2 evidence PMIDs downloaded (32934823, 32934824)
+- **Tests Updated**: Added `TestOATextXMLFixtures` class to existing `test_oatext.py`
+- **Mocking Removed**: No `PubMedFetcher` network calls, proper mocking of DOI resolution + HTML parsing
+- **Results**: 2/2 XML fixture tests passing, authentic journal data validation
+- **Evidence Coverage**: J Syst Integr Neurosci journal (all evidence from same journal)
+- **DOI Pattern**: Verified 10.15761/ format for all PMIDs
+- **Features Tested**: DOI resolution + HTML PDF link extraction, verify_pdf_url integration
+
+#### ASME (Batch 6)
+- **Status**: ✅ Complete
+- **XML Fixtures**: 3 evidence PMIDs downloaded (38449742, 38913074, 35833154)
+- **Tests Updated**: Already had comprehensive `TestASMEXMLFixtures` class in `test_asme.py`
+- **Mocking Removed**: No `PubMedFetcher` network calls in XML fixture tests
+- **Results**: 9/9 XML fixture tests passing, authentic journal data validation
+- **Evidence Coverage**: 3 different ASME journals (J Appl Mech, J Biomech Eng, J Heat Transfer)
+- **DOI Pattern**: Verified 10.1115/ format for all PMIDs
+- **Features Tested**: asmedigitalcollection.asme.org URL construction, journal code mapping, verify=False mode
+
 ### 🔧 In Progress
 
 *None currently*
@@ -335,10 +368,10 @@ def validate_publisher_fixtures(publisher_name):
 ```
 
 ### Progress Tracking  
-- **Current**: 15/37 publishers with XML fixtures complete (40.5%)
+- **Current**: 18/37 publishers with XML fixtures complete (48.6%)
 - **Duplicate entities removed**: 4 publishers found to be duplicate entities (no separate conversion needed)
-- **Remaining**: 19/37 publishers need XML conversion (51.4%)
-- **Phase 1 Target**: 20/37 publishers (54.1%) 
+- **Remaining**: 16/37 publishers need XML conversion (43.2%)
+- **Phase 1 Target**: 20/37 publishers (54.1%) - **NEARLY ACHIEVED**
 - **Phase 2 Target**: 30/37 publishers (81.1%)
 - **Full Completion**: 37/37 publishers (100%)
 

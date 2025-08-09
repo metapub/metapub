@@ -135,10 +135,11 @@ THIEME_EVIDENCE_PMIDS = {
 }
 
 # IOP Publishing (Institute of Physics) PMIDs with metadata
+# IOP PMIDs with metadata (from verified_pmids)
 IOP_EVIDENCE_PMIDS = {
-    '38914107': {'doi': '10.1088/1361-6560/ad5b48', 'journal': 'Phys Med Biol'},
-    '38914053': {'doi': '10.1088/1361-6528/ad5afd', 'journal': 'Nanotechnology'},
-    '38799617': {'doi': '10.3847/1538-4357/ad380b', 'journal': 'Astrophys J', 'pmc': 'PMC11120190'},
+    '36096127': {'doi': '10.1088/1361-6560/ac9174', 'journal': 'Phys Med Biol', 'pmc': 'PMC10151073'},
+    '39159658': {'doi': '10.1088/1361-6560/ad70f0', 'journal': 'Phys Med Biol'},
+    '37167981': {'doi': '10.1088/1361-6560/acd48e', 'journal': 'Phys Med Biol'},
 }
 
 # ASME (American Society of Mechanical Engineers) PMIDs with metadata
@@ -149,12 +150,10 @@ ASME_EVIDENCE_PMIDS = {
 }
 
 # OAText PMIDs with metadata (minimal set due to limited PubMed indexing)
+# OAText PMIDs with metadata (from verified_pmids)
 OATEXT_EVIDENCE_PMIDS = {
-    # Note: OAText articles may have limited PubMed representation
-    # Using representative DOI patterns from test suite for structural validation
-    '99999901': {'doi': '10.15761/JSIN.1000229', 'journal': 'J Syst Integr Neurosci'},
-    '99999902': {'doi': '10.15761/CCRR.1000123', 'journal': 'Clin Case Rep Rev'},
-    '99999903': {'doi': '10.15761/HMO.1000456', 'journal': 'HMO'},
+    '32934823': {'doi': '10.15761/JSIN.1000229', 'journal': 'J Syst Integr Neurosci', 'pmc': 'PMC7489288'},
+    '32934824': {'doi': '10.15761/JSIN.1000228', 'journal': 'J Syst Integr Neurosci', 'pmc': 'PMC7489293'},
 }
 
 # Hilaris Publisher PMIDs with metadata

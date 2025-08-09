@@ -529,11 +529,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** Medium (major publisher)
 - **Notes:** **EVIDENCE-DRIVEN TEMPLATE FIX 2025-08-08**: Discovered existing comprehensive configuration with 1,687 journals but template had two critical issues: (1) used HTTP instead of HTTPS, (2) missing `/epdf/` and `?needAccess=true` parameter. Evidence analysis of 5 HTML samples revealed correct pattern: `https://www.tandfonline.com/doi/epdf/{doi}?needAccess=true`. **Template Updated**: Fixed from `http://www.tandfonline.com/doi/pdf/{doi}` to `https://www.tandfonline.com/doi/epdf/{doi}?needAccess=true` based on evidence from samples. **Infrastructure**: Taylor & Francis already configured with `the_doi_slide` generic function and extensive journal list (1,687 journals). Comprehensive test suite (9 tests) validates corrected template, HTTPS enforcement, access parameter preservation, and DOI construction. This demonstrates evidence-driven development can identify and fix template issues in existing configurations, improving PDF access success rates while maintaining optimal simplicity.
 
-### ❓ WJGNet
+### ✅ WJGNet
 - **Dance Function:** `the_wjgnet_wave`
 - **HTML Samples:** `output/article_html/wjgnet/`
-- **Status:** TODO
-- **Priority:** Low
+- **Status:** COMPLETED
+- **Priority:** Medium (priority score 7.0)
+- **Notes:** **EVIDENCE-DRIVEN REWRITE 2025-08-09**: Complete rewrite from 119→61 lines using evidence-driven methodology. Original function violated DANCE_FUNCTION_GUIDELINES with multiple try/except blocks and trial-and-error URL patterns. Evidence analysis of 5 HTML samples revealed WJGNet uses two-tier system: articles on wjgnet.com, PDFs served by f6publishing.com with encrypted FilePath parameters. **New Implementation**: Single focused method using DOI resolution + regex extraction. Pattern: `href="(https://www\.f6publishing\.com/forms/main/DownLoadFile\.aspx[^"]*)"[^>]*>Full Article[^<]*\(PDF\)`. **Testing**: Comprehensive 8-test suite covering successful extraction, error scenarios, and registry integration. All tests pass. Function now follows evidence-driven principles: no generic exception catching, single focused method, pattern based on actual HTML evidence. Supports both "Full Article (PDF)" (TypeId=22) and "Full Article with Cover (PDF)" (TypeId=1) patterns.
 
 ### 🚫 Wolters Kluwer
 - **Dance Function:** `the_wolterskluwer_volta`

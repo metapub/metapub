@@ -8,6 +8,7 @@ from .common import BaseDanceTest
 from metapub import PubMedFetcher
 from metapub.findit.dances import the_scielo_chula
 from metapub.exceptions import AccessDenied, NoPDFLink
+from tests.fixtures import load_pmid_xml, SCIELO_EVIDENCE_PMIDS
 
 
 class TestScieloDance(BaseDanceTest):
@@ -256,7 +257,6 @@ def test_scielo_journal_recognition():
     """Test that SciELO journals are properly recognized in the registry."""
     from metapub.findit.registry import JournalRegistry
     from metapub.findit.journals.scielo import scielo_journals
-from tests.fixtures import load_pmid_xml, SCIELO_EVIDENCE_PMIDS
     
     registry = JournalRegistry()
     

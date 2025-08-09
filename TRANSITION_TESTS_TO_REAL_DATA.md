@@ -64,7 +64,7 @@ class TestPublisher:
         # ✅ Authentic DOI, journal, all metadata
 ```
 
-## Conversion Status: 25/37 Complete 🎯 PHASE 1 TARGET ACHIEVED! (4 publishers were duplicate entities)
+## Conversion Status: 28/37 Complete 🎯 PHASE 1 TARGET ACHIEVED! (4 publishers were duplicate entities)
 
 ### XML Fixtures Complete:
 - ✅ **AAAS** - Complete reference implementation
@@ -93,6 +93,9 @@ class TestPublisher:
 - ✅ **Dovepress** - Complete conversion (consolidated into test_dovepress.py)
 - ✅ **ProjectMuse** - Complete conversion (consolidated into test_projectmuse.py)
 - ✅ **WJGNet** - Complete conversion (consolidated into test_wjgnet.py)
+- ✅ **JCI** - Complete conversion (consolidated into test_jci.py)
+- ✅ **AnnualReviews** - Complete conversion (consolidated into test_annualreviews.py)
+- ✅ **Bentham** - Complete conversion (consolidated into test_bentham.py)
 
 ### Found to be Duplicate Entities (Removed from plan):
 - 🚫 **Cell Press** → actually **ScienceDirect** (Elsevier-owned)
@@ -100,7 +103,7 @@ class TestPublisher:
 - 🚫 **BMJ Open Gastroenterology** → actually **BMJ Publishing Group**
 - 🚫 **Oxford Academic (Endocrine Society)** → actually **Oxford Academic**
 
-- ❌ **9 publishers** remaining for XML conversion
+- ❌ **6 publishers** remaining for XML conversion
 
 ## Publisher Priority List
 
@@ -129,9 +132,9 @@ class TestPublisher:
 | ✅ | **dovepress** | test_dovepress.py | 11 | ✓ | High | COMPLETED: XML fixtures consolidated into test_dovepress.py |
 | ✅ | **projectmuse** | test_projectmuse.py | 12 | ✓ | High | COMPLETED: XML fixtures consolidated into test_projectmuse.py |
 | ✅ | **wjgnet** | test_wjgnet.py | 10 | ✓ | High | COMPLETED: XML fixtures consolidated into test_wjgnet.py |
-| ❌ | **jci** | test_jci.py | 11 | ✓ | High | Journal of Clinical Investigation |
-| ❌ | **annualreviews** | test_annualreviews.py | 9 | ✓ | High | Review journals |
-| ❌ | **bentham** | test_bentham.py | 9 | ✓ | High | Chemistry/medicine |
+| ✅ | **jci** | test_jci.py | 11 | ✓ | High | COMPLETED: XML fixtures consolidated into test_jci.py |
+| ✅ | **annualreviews** | test_annualreviews.py | 9 | ✓ | High | COMPLETED: XML fixtures consolidated into test_annualreviews.py |
+| ✅ | **bentham** | test_bentham.py | 9 | ✓ | High | COMPLETED: XML fixtures consolidated into test_bentham.py |
 | ✅ | **wolterskluwer** | test_wolterskluwer.py | 8 | ✓ | High | COMPLETED: XML fixtures consolidated into test_wolterskluwer.py |
 
 ### ⚠️ **Phase 3: Recently Updated** (Priority based on recent changes)

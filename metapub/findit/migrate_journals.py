@@ -62,7 +62,7 @@ from metapub.findit.journals.ingentaconnect import ingentaconnect_journals, inge
 from metapub.findit.journals.bioone import bioone_journals, bioone_template
 from metapub.findit.journals.emerald import emerald_journals, emerald_format
 from metapub.findit.journals.acm import acm_journals, acm_format
-from metapub.findit.journals.worldscientific import worldscientific_journals
+from metapub.findit.journals.worldscientific import worldscientific_journals, worldscientific_format
 from metapub.findit.journals.uchicago import uchicago_journals, uchicago_format
 from metapub.findit.journals.iospress import iospress_journals, iospress_format
 from metapub.findit.journals.longdom import longdom_journals
@@ -410,8 +410,8 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'worldscientific',
-        'dance_function': 'the_worldscientific_robot',
-        'format_template': None,
+        'dance_function': 'the_doi_slide',
+        'format_template': worldscientific_format,
         'journals': worldscientific_journals,
     },
     {

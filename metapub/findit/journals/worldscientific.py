@@ -20,8 +20,9 @@
 #   - Articles are indexed in PubMed with PMIDs for bio-computing and medical related content
 #   - DOI resolution typically redirects to article pages
 
-# URL format template - will be used in the dance function
-worldscientific_format = 'https://www.worldscientific.com/doi/pdf/{doi}'
+# URL format template - now used with the_doi_slide generic function
+# Based on evidence from HTML samples: ?download=true parameter is consistently used
+worldscientific_format = 'https://www.worldscientific.com/doi/pdf/{doi}?download=true'
 
 # Complete list of World Scientific journals (60 total)
 # NOTE: Using PubMed abbreviated journal names to match PMA data

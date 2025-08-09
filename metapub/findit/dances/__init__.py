@@ -69,5 +69,5 @@ from .walshmedia import the_walshmedia_bora
 # Wiley now uses the_doi_slide generic function
 from .wjgnet import the_wjgnet_wave
 from .wolterskluwer import the_wolterskluwer_volta
-from .worldscientific import the_worldscientific_robot
+# World Scientific now uses the_doi_slide generic function
 

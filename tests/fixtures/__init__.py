@@ -262,3 +262,9 @@ INDERSCIENCE_EVIDENCE_PMIDS = {
     '24794070': {'doi': '10.1504/IJBRA.2014.060762', 'journal': 'Int J Bioinform Res Appl'},
     '24449692': {'doi': '10.1504/IJBRA.2014.058777', 'journal': 'Int J Bioinform Res Appl'},
 }
+
+# Dovepress PMIDs with metadata (from verified_pmids)
+DOVEPRESS_EVIDENCE_PMIDS = {
+    '37822558': {'doi': '10.2147/AHMT.S429238', 'journal': 'Adolesc Health Med Ther', 'pmc': 'PMC10562508'},
+    '35592492': {'doi': '10.2147/AHMT.S358140', 'journal': 'Adolesc Health Med Ther', 'pmc': 'PMC9113550'},
+}

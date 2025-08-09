@@ -44,5 +44,8 @@ sciendo_journals = (
     'Acta Bot Croat',
 )
 
-# URL format template for Sciendo articles
+# DOI-based format template (for the_doi_slide)
+sciendo_doi_format = 'https://sciendo.com/pdf/{doi}'
+
+# Legacy format (no longer used)
 sciendo_format = "https://sciendo.com/article/{doi}"

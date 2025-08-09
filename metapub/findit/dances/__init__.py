@@ -57,7 +57,7 @@ from .plos import the_plos_pogo
 from .projectmuse import the_projectmuse_syrtos
 from .rsc import the_rsc_reaction
 # SAGE now uses the_doi_slide generic function
-from .sciendo import the_sciendo_spiral
+# Sciendo now uses the_doi_slide generic function
 from .scielo import the_scielo_chula
 from .sciencedirect import the_sciencedirect_disco
 from .scirp import the_scirp_timewarp

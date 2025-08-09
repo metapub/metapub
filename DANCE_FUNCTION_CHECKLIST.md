@@ -441,10 +441,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** Medium (social sciences)
 - **Notes:** **ELIMINATED MIDDLEMAN 2025-08-06**: Evidence showed SAGE uses consistent `/doi/reader/{DOI}` pattern for PDF/EPUB access across all journals with 10.1177/ DOI prefix. Since the function used simple direct URL construction (`https://journals.sagepub.com/doi/reader/{DOI}`), eliminated the middleman dance function entirely. **Registry updated**: SAGE journals now directly assigned to `the_doi_slide` generic function with format template `https://journals.sagepub.com/doi/reader/{doi}`. **Files removed**: `metapub/findit/dances/sage.py`, `tests/findit/test_sage.py`. This reduces codebase complexity while maintaining identical functionality - `the_doi_slide` handles the reader URL construction pattern perfectly.
 
-### ❓ Schattauer
-- **Dance Function:** Not assigned
+### ✅ Schattauer
+- **Dance Function:** Consolidated into `the_doi_slide` (via registry)
 - **HTML Samples:** `output/article_html/schattauer/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (consolidated with Thieme platform)
+- **Priority:** Low (single journal: Thromb Haemost)
+- **Notes:** **EVIDENCE-BASED CONSOLIDATION 2025-08-09**: Evidence from HTML samples revealed that Schattauer articles are hosted on Thieme's platform (`thieme-connect.de`) using identical URL patterns. All 6 HTML samples showed consistent `citation_pdf_url` meta tags: `http://www.thieme-connect.de/products/ejournals/pdf/{doi}.pdf`. **Registry updated**: Schattauer publisher entry changed from `paywall_handler` to `the_doi_slide` with format template `http://www.thieme-connect.de/products/ejournals/pdf/{doi}.pdf`. **Tests created**: `tests/findit/test_schattauer.py` with evidence-based test cases using real DOI patterns from HTML samples (10.1055/a-XXXX-XXXX). This eliminates the need for a separate dance function while ensuring reliable PDF access through proven Thieme infrastructure.
 - **Priority:** Low (German medical publisher)
 - **Notes:** German medical publisher with HTML samples available
 
@@ -462,11 +464,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** High (Latin American journals)
 - **Notes:** Existing function works well (8/9 success rate), uses citation_pdf_url meta tag
 
-### ❓ Sciendo
-- **Dance Function:** `the_sciendo_spiral`
+### ✅ Sciendo
+- **Dance Function:** ~~`the_sciendo_spiral`~~ **CONSOLIDATED** into `the_doi_slide`
 - **HTML Samples:** `output/article_html/sciendo/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (consolidated into generic function)
 - **Priority:** Low
+- **Notes:** **ELIMINATED MIDDLEMAN 2025-08-09**: Evidence-driven consolidation into `the_doi_slide` generic function using perfect DOI-based URL pattern. **EVIDENCE-BASED PATTERN**: Analysis of 6 HTML samples revealed 100% consistent pattern: `https://sciendo.com/pdf/{doi}` with perfect citation_pdf_url meta tags across all samples. **DOI DIVERSITY**: Supports multiple DOI prefixes (10.2478/, 10.34763/) representing Sciendo's multi-publisher platform (De Gruyter's open access journals). **CONSOLIDATION**: Since the function used simple direct URL construction from DOI, eliminated the middleman dance function entirely. **Registry updated**: Sciendo journals now directly assigned to `the_doi_slide` generic function with format template `https://sciendo.com/pdf/{doi}`. **Files removed**: Custom dance function and tests moved to `CLEANUP/sciendo_consolidation_2025-08-09/`. This reduces codebase complexity while maintaining identical functionality for all 34 Sciendo journals with perfect pattern consistency and open access support. **COMPREHENSIVE TESTING**: Created evidence-driven test suite with 10 tests (10/10 passing) validating consolidation benefits, registry integration, pattern consistency, and DANCE_FUNCTION_GUIDELINES compliance.
 
 ### ✅ ScienceDirect (Elsevier)
 - **Dance Function:** `the_sciencedirect_disco`

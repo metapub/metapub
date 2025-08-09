@@ -371,11 +371,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
            + Journal is included in ASM journals list as "Microbiol Spectr". All tests pass (14/14). No development required - existing infrastructure is
            + optimal.
 
-### ❓ NAJMS
+### 🚫 NAJMS
 - **Dance Function:** `the_najms_mazurka`
-- **HTML Samples:** No samples available
-- **Status:** TODO
-- **Priority:** Low
+- **HTML Samples:** No samples available (website defunct)
+- **Status:** 🚫 **DEFUNCT** - Publisher infrastructure permanently unavailable
+- **Priority:** N/A (ceased publication)
+- **Notes:** **INVESTIGATION COMPLETED 2025-08-09**: North American Journal of Medical Sciences confirmed as defunct publisher. **EVIDENCE**: Website najms.org returns HTTP 530 (Service Unavailable) across all endpoints, DOI resolution fails with 530 errors for prefix 10.4103/1947-2714.*, no articles published 2020-2024, only 3 articles found 2015-2024 indicating publication cessation around 2013-2015. **MIGRATION DETECTED**: One DOI (10.4297/najms.2011.3438) resolves to scopemed.org suggesting partial content migration, but returns minimal content. **CURRENT FUNCTION**: `the_najms_mazurka` fails with "HTTP 530" error when tested with verified PMIDs. **CONCLUSION**: Cannot proceed with evidence-driven development due to permanently unavailable publisher infrastructure. Function maintained for historical compatibility but marked as defunct.
 
 ### ✅ NEJM (New England Journal of Medicine)
 - **Dance Function:** `the_doi_slide` (generic DOI function)
@@ -391,11 +392,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** High (top-tier journals)
 - **Notes:** Rewritten from 134→76 lines using evidence-driven approach. Pattern: `/articles/{doi_suffix}.pdf` for modern DOIs, `/articles/{id}.pdf` for legacy. Uses DOI from meta tags/JSON-LD. Test suite with 10 tests covers all patterns.
 
-### ❓ OAText
+### ✅ OAText
 - **Dance Function:** `the_oatext_orbit`
 - **HTML Samples:** `output/article_html/oatext/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅
 - **Priority:** Low (open access)
+- **Notes:** Evidence-driven rewrite completed. Pattern: DOI resolution → extract PDF link from article page using regex `href="(pdf/[^"]+\.pdf)"[^>]*target="_blank"`. Reduced from 96→54 lines. Single method with clean error handling. Test suite with 7 tests covers all scenarios including PDF extraction, missing DOI, failed resolution, and registry integration.
 
 ### ✅ Oxford University Press (Oxford Academic)
 - **Dance Function:** `the_oxford_academic_foxtrot` (existing function)

@@ -15,6 +15,7 @@ from .common import BaseDanceTest
 from metapub import PubMedFetcher
 from metapub.findit.dances import the_projectmuse_syrtos
 from metapub.exceptions import AccessDenied, NoPDFLink
+from tests.fixtures import load_pmid_xml, PROJECTMUSE_EVIDENCE_PMIDS
 
 
 class TestProjectMuseEvidenceDriven:
@@ -485,3 +486,88 @@ if __name__ == '__main__':
     
     print("\n" + "="*60)
     print("Test suite completed!")
+
+
+class TestProjectMuseXMLFixtures:
+    """Test ProjectMuse XML fixtures for evidence-driven testing."""
+
+    @patch('metapub.findit.dances.projectmuse.verify_pdf_url')
+    @patch('metapub.findit.dances.projectmuse.unified_uri_get')
+    @patch('metapub.findit.dances.projectmuse.the_doi_2step')
+    def test_projectmuse_xml_39479534_j_black_sex_relatsh(self, mock_doi_2step, mock_uri_get, mock_verify):
+        """Test PMID 39479534 - J Black Sex Relatsh with DOI 10.1353/bsr.2021.0008."""
+        mock_verify.return_value = None
+        
+        # Mock DOI resolution
+        mock_doi_2step.return_value = 'https://muse.jhu.edu/article/123456'
+        
+        # Mock article page HTML with citation_pdf_url meta tag
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.text = '''<html><head><meta name="citation_pdf_url" content="https://muse.jhu.edu/pub/3/article/123456/pdf"/></head></html>'''
+        mock_uri_get.return_value = mock_response
+        
+        pma = load_pmid_xml('39479534')
+        
+        assert pma.pmid == '39479534'
+        assert pma.doi == '10.1353/bsr.2021.0008'
+        assert 'J Black Sex Relatsh' in pma.journal
+        
+        result = the_projectmuse_syrtos(pma, verify=True)
+        expected_url = 'https://muse.jhu.edu/pub/3/article/123456/pdf'
+        assert result == expected_url
+        mock_verify.assert_called_once_with(expected_url, 'Project MUSE')
+
+    @patch('metapub.findit.dances.projectmuse.verify_pdf_url')
+    @patch('metapub.findit.dances.projectmuse.unified_uri_get')
+    @patch('metapub.findit.dances.projectmuse.the_doi_2step')
+    def test_projectmuse_xml_34337106_j_black_sex_relatsh(self, mock_doi_2step, mock_uri_get, mock_verify):
+        """Test PMID 34337106 - J Black Sex Relatsh with DOI 10.1353/bsr.2020.0005."""
+        mock_verify.return_value = None
+        
+        # Mock DOI resolution
+        mock_doi_2step.return_value = 'https://muse.jhu.edu/article/789012'
+        
+        # Mock article page HTML with citation_pdf_url meta tag
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.text = '''<html><head><meta name="citation_pdf_url" content="https://muse.jhu.edu/pub/3/article/789012/pdf"/></head></html>'''
+        mock_uri_get.return_value = mock_response
+        
+        pma = load_pmid_xml('34337106')
+        
+        assert pma.pmid == '34337106'
+        assert pma.doi == '10.1353/bsr.2020.0005'
+        assert 'J Black Sex Relatsh' in pma.journal
+        
+        result = the_projectmuse_syrtos(pma, verify=True)
+        expected_url = 'https://muse.jhu.edu/pub/3/article/789012/pdf'
+        assert result == expected_url
+        mock_verify.assert_called_once_with(expected_url, 'Project MUSE')
+
+    @patch('metapub.findit.dances.projectmuse.verify_pdf_url')
+    @patch('metapub.findit.dances.projectmuse.unified_uri_get')
+    @patch('metapub.findit.dances.projectmuse.the_doi_2step')
+    def test_projectmuse_xml_39364306_j_black_sex_relatsh(self, mock_doi_2step, mock_uri_get, mock_verify):
+        """Test PMID 39364306 - J Black Sex Relatsh with DOI 10.1353/bsr.2024.a931228."""
+        mock_verify.return_value = None
+        
+        # Mock DOI resolution
+        mock_doi_2step.return_value = 'https://muse.jhu.edu/article/345678'
+        
+        # Mock article page HTML with citation_pdf_url meta tag
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.text = '''<html><head><meta name="citation_pdf_url" content="https://muse.jhu.edu/pub/3/article/345678/pdf"/></head></html>'''
+        mock_uri_get.return_value = mock_response
+        
+        pma = load_pmid_xml('39364306')
+        
+        assert pma.pmid == '39364306'
+        assert pma.doi == '10.1353/bsr.2024.a931228'
+        assert 'J Black Sex Relatsh' in pma.journal
+        
+        result = the_projectmuse_syrtos(pma, verify=True)
+        expected_url = 'https://muse.jhu.edu/pub/3/article/345678/pdf'
+        assert result == expected_url
+        mock_verify.assert_called_once_with(expected_url, 'Project MUSE')

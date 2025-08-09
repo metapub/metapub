@@ -8,6 +8,7 @@ from .common import BaseDanceTest
 from metapub import PubMedFetcher
 from metapub.findit.dances import the_dovepress_peacock
 from metapub.exceptions import AccessDenied, NoPDFLink
+from tests.fixtures import load_pmid_xml, DOVEPRESS_EVIDENCE_PMIDS
 
 
 class TestDovePressTest(BaseDanceTest):
@@ -314,3 +315,37 @@ if __name__ == '__main__':
     
     print("\n" + "="*60)
     print("Test suite completed!")
+
+
+class TestDovepressXMLFixtures:
+    """Test Dovepress XML fixtures for evidence-driven testing."""
+
+    @patch('metapub.findit.dances.dovepress.verify_pdf_url')
+    def test_dovepress_xml_37822558_adolesc_health_med_ther(self, mock_verify):
+        """Test PMID 37822558 - Adolesc Health Med Ther with DOI 10.2147/AHMT.S429238."""
+        mock_verify.return_value = None
+        pma = load_pmid_xml('37822558')
+        
+        assert pma.pmid == '37822558'
+        assert pma.doi == '10.2147/AHMT.S429238'
+        assert 'Adolesc Health Med Ther' in pma.journal
+        
+        result = the_dovepress_peacock(pma, verify=True)
+        expected_url = 'https://www.dovepress.com/article/download/87183'
+        assert result == expected_url
+        mock_verify.assert_called_once_with(expected_url, 'DovePress')
+
+    @patch('metapub.findit.dances.dovepress.verify_pdf_url')
+    def test_dovepress_xml_35592492_adolesc_health_med_ther(self, mock_verify):
+        """Test PMID 35592492 - Adolesc Health Med Ther with DOI 10.2147/AHMT.S358140."""
+        mock_verify.return_value = None
+        pma = load_pmid_xml('35592492')
+        
+        assert pma.pmid == '35592492'
+        assert pma.doi == '10.2147/AHMT.S358140'
+        assert 'Adolesc Health Med Ther' in pma.journal
+        
+        result = the_dovepress_peacock(pma, verify=True)
+        expected_url = 'https://www.dovepress.com/article/download/75287'
+        assert result == expected_url
+        mock_verify.assert_called_once_with(expected_url, 'DovePress')

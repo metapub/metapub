@@ -6,6 +6,7 @@ from unittest.mock import patch, Mock
 from .common import BaseDanceTest
 from metapub.findit.dances.wjgnet import the_wjgnet_wave
 from metapub.exceptions import NoPDFLink
+from tests.fixtures import load_pmid_xml, WJGNET_EVIDENCE_PMIDS
 
 
 class TestWJGNetDance(BaseDanceTest):
@@ -206,3 +207,61 @@ class TestWJGNetRegistryIntegration:
         assert wjgnet_config['dance_function'] == 'the_wjgnet_wave'
         assert wjgnet_config['journals'] is not None
         assert len(wjgnet_config['journals']) > 0
+
+
+class TestWJGNetXMLFixtures:
+    """Test WJGNet XML fixtures for evidence-driven testing."""
+
+    @patch('metapub.findit.dances.wjgnet.verify_pdf_url')
+    @patch('metapub.findit.dances.wjgnet.unified_uri_get')
+    @patch('metapub.findit.dances.wjgnet.the_doi_2step')
+    def test_wjgnet_xml_36187464_world_j_nephrol(self, mock_doi_2step, mock_uri_get, mock_verify):
+        """Test PMID 36187464 - World J Nephrol with DOI 10.5527/wjn.v11.i5.139."""
+        mock_verify.return_value = None
+        
+        # Mock DOI resolution
+        mock_doi_2step.return_value = 'https://www.wjgnet.com/2220-6124/full/v11/i5/139.htm'
+        
+        # Mock article page HTML with PDF link pattern
+        mock_response = Mock()
+        mock_response.ok = True
+        mock_response.text = '''<html><body><li><a href="https://www.f6publishing.com/forms/main/DownLoadFile.aspx?Type=Digital&amp;TypeId=1&amp;id=10.5527%2fwjn.v11.i5.139&amp;FilePath=6A4247D346110392065501C81D5D466E53E38B2A2665D5B6BE8824B66204A160082ECAB47942E514A44C5C35D97F94A64F5E83A741587ABA" target="_blank">Full Article with Cover (PDF)</a></li></body></html>'''
+        mock_uri_get.return_value = mock_response
+        
+        pma = load_pmid_xml('36187464')
+        
+        assert pma.pmid == '36187464'
+        assert pma.doi == '10.5527/wjn.v11.i5.139'
+        assert 'World J Nephrol' in pma.journal
+        
+        result = the_wjgnet_wave(pma, verify=True)
+        expected_url = 'https://www.f6publishing.com/forms/main/DownLoadFile.aspx?Type=Digital&TypeId=1&id=10.5527%2fwjn.v11.i5.139&FilePath=6A4247D346110392065501C81D5D466E53E38B2A2665D5B6BE8824B66204A160082ECAB47942E514A44C5C35D97F94A64F5E83A741587ABA'
+        assert result == expected_url
+        mock_verify.assert_called_once_with(expected_url, 'WJGNet')
+
+    @patch('metapub.findit.dances.wjgnet.verify_pdf_url')
+    @patch('metapub.findit.dances.wjgnet.unified_uri_get')
+    @patch('metapub.findit.dances.wjgnet.the_doi_2step')
+    def test_wjgnet_xml_38596266_world_j_nephrol(self, mock_doi_2step, mock_uri_get, mock_verify):
+        """Test PMID 38596266 - World J Nephrol with DOI 10.5527/wjn.v13.i1.89637."""
+        mock_verify.return_value = None
+        
+        # Mock DOI resolution
+        mock_doi_2step.return_value = 'https://www.wjgnet.com/2220-6124/full/v13/i1/89637.htm'
+        
+        # Mock article page HTML with PDF link pattern
+        mock_response = Mock()
+        mock_response.ok = True
+        mock_response.text = '''<html><body><li><a href="https://www.f6publishing.com/forms/main/DownLoadFile.aspx?Type=Digital&amp;TypeId=22&amp;id=10.5527%2fwjn.v13.i1.89637&amp;FilePath=DE686458A2BF16892F4B88612C01518D26AA3E447185B0240AE1546F2068C44ECF6E9742C6968B0E995CAC46EB1683AAF16B32515F46C322" target="_blank">Full Article (PDF)</a></li></body></html>'''
+        mock_uri_get.return_value = mock_response
+        
+        pma = load_pmid_xml('38596266')
+        
+        assert pma.pmid == '38596266'
+        assert pma.doi == '10.5527/wjn.v13.i1.89637'
+        assert 'World J Nephrol' in pma.journal
+        
+        result = the_wjgnet_wave(pma, verify=True)
+        expected_url = 'https://www.f6publishing.com/forms/main/DownLoadFile.aspx?Type=Digital&TypeId=22&id=10.5527%2fwjn.v13.i1.89637&FilePath=DE686458A2BF16892F4B88612C01518D26AA3E447185B0240AE1546F2068C44ECF6E9742C6968B0E995CAC46EB1683AAF16B32515F46C322'
+        assert result == expected_url
+        mock_verify.assert_called_once_with(expected_url, 'WJGNet')

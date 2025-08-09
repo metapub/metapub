@@ -194,3 +194,22 @@ INDERSCIENCE_EVIDENCE_PMIDS = {
     '24794070': {'doi': '10.1504/IJBRA.2014.060762', 'journal': 'Int J Bioinform Res Appl'},
     '24449692': {'doi': '10.1504/IJBRA.2014.058777', 'journal': 'Int J Bioinform Res Appl'},
 }
+
+# Dovepress PMIDs with metadata (from verified_pmids)
+DOVEPRESS_EVIDENCE_PMIDS = {
+    '37822558': {'doi': '10.2147/AHMT.S429238', 'journal': 'Adolesc Health Med Ther', 'pmc': 'PMC10562508'},
+    '35592492': {'doi': '10.2147/AHMT.S358140', 'journal': 'Adolesc Health Med Ther', 'pmc': 'PMC9113550'},
+}
+
+# ProjectMuse PMIDs with metadata (from verified_pmids)
+PROJECTMUSE_EVIDENCE_PMIDS = {
+    '39479534': {'doi': '10.1353/bsr.2021.0008', 'journal': 'J Black Sex Relatsh'},
+    '34337106': {'doi': '10.1353/bsr.2020.0005', 'journal': 'J Black Sex Relatsh'},
+    '39364306': {'doi': '10.1353/bsr.2024.a931228', 'journal': 'J Black Sex Relatsh'},
+}
+
+# WJGNet PMIDs with metadata (from verified_pmids)
+WJGNET_EVIDENCE_PMIDS = {
+    '36187464': {'doi': '10.5527/wjn.v11.i5.139', 'journal': 'World J Nephrol', 'pmc': 'PMC9521512'},
+    '38596266': {'doi': '10.5527/wjn.v13.i1.89637', 'journal': 'World J Nephrol', 'pmc': 'PMC11000037'},
+}

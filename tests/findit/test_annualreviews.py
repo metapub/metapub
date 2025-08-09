@@ -7,6 +7,7 @@ from .common import BaseDanceTest
 from metapub import PubMedFetcher
 from metapub.findit.dances import the_annualreviews_round
 from metapub.exceptions import AccessDenied, NoPDFLink
+from tests.fixtures import load_pmid_xml, ANNUALREVIEWS_EVIDENCE_PMIDS
 
 
 class TestAnnualReviewsDance(BaseDanceTest):
@@ -278,3 +279,56 @@ if __name__ == '__main__':
     
     print("\n" + "="*60)
     print("Test suite completed!")
+
+
+class TestAnnualReviewsXMLFixtures:
+    """Test AnnualReviews XML fixtures for evidence-driven testing."""
+
+    @patch('metapub.findit.dances.annualreviews.verify_pdf_url')
+    def test_annualreviews_xml_35320699_annu_rev_chem_biomol_eng(self, mock_verify):
+        """Test PMID 35320699 - Annu Rev Chem Biomol Eng with DOI 10.1146/annurev-chembioeng-092220-030853."""
+        mock_verify.return_value = None
+        
+        pma = load_pmid_xml('35320699')
+        
+        assert pma.pmid == '35320699'
+        assert pma.doi == '10.1146/annurev-chembioeng-092220-030853'
+        assert 'Annu Rev Chem Biomol Eng' in pma.journal
+        
+        result = the_annualreviews_round(pma, verify=True)
+        # AnnualReviews uses direct URL construction based on DOI pattern
+        expected_url = 'https://www.annualreviews.org/deliver/fulltext/chembioeng/13/1/annurev-chembioeng-092220-030853.pdf'
+        assert result == expected_url
+        mock_verify.assert_called_once_with(expected_url)
+
+    @patch('metapub.findit.dances.annualreviews.verify_pdf_url')
+    def test_annualreviews_xml_36917814_annu_rev_chem_biomol_eng(self, mock_verify):
+        """Test PMID 36917814 - Annu Rev Chem Biomol Eng with DOI 10.1146/annurev-chembioeng-101121-084508."""
+        mock_verify.return_value = None
+        
+        pma = load_pmid_xml('36917814')
+        
+        assert pma.pmid == '36917814'
+        assert pma.doi == '10.1146/annurev-chembioeng-101121-084508'
+        assert 'Annu Rev Chem Biomol Eng' in pma.journal
+        
+        result = the_annualreviews_round(pma, verify=True)
+        expected_url = 'https://www.annualreviews.org/deliver/fulltext/chembioeng/14/1/annurev-chembioeng-101121-084508.pdf'
+        assert result == expected_url
+        mock_verify.assert_called_once_with(expected_url)
+
+    @patch('metapub.findit.dances.annualreviews.verify_pdf_url')
+    def test_annualreviews_xml_32976730_ann_rev_mar_sci(self, mock_verify):
+        """Test PMID 32976730 - Ann Rev Mar Sci with DOI 10.1146/annurev-marine-032720-095144."""
+        mock_verify.return_value = None
+        
+        pma = load_pmid_xml('32976730')
+        
+        assert pma.pmid == '32976730'
+        assert pma.doi == '10.1146/annurev-marine-032720-095144'
+        assert 'Ann Rev Mar Sci' in pma.journal
+        
+        result = the_annualreviews_round(pma, verify=True)
+        expected_url = 'https://www.annualreviews.org/deliver/fulltext/marine/13/1/annurev-marine-032720-095144.pdf'
+        assert result == expected_url
+        mock_verify.assert_called_once_with(expected_url)

@@ -8,6 +8,7 @@ import pytest
 from unittest.mock import patch, Mock
 
 from .common import BaseDanceTest
+from tests.fixtures import load_pmid_xml, BENTHAM_EVIDENCE_PMIDS
 from metapub import PubMedFetcher
 from metapub.findit.dances import the_eureka_frug
 from metapub.exceptions import AccessDenied, NoPDFLink
@@ -243,3 +244,46 @@ if __name__ == '__main__':
     print("\nNote: EurekaSelect now throws POSTONLY errors because it requires")
     print("POST requests with session data, which is incompatible with FindIt's")
     print("URL-based model. Users must visit article pages and click 'Download Article'.")
+
+
+class TestBenthamXMLFixtures:
+    """Test Bentham/EurekaSelect XML fixtures for evidence-driven testing."""
+
+    def test_bentham_xml_32525788_curr_mol_pharmacol(self):
+        """Test PMID 32525788 - Curr Mol Pharmacol with DOI 10.2174/1874467213666200611142438."""
+        pma = load_pmid_xml('32525788')
+        
+        assert pma.pmid == '32525788'
+        assert pma.doi == '10.2174/1874467213666200611142438'
+        assert 'Curr Mol Pharmacol' in pma.journal
+        
+        # Test that the function raises POSTONLY error as expected for current architecture
+        from metapub.exceptions import NoPDFLink
+        with pytest.raises(NoPDFLink, match="POSTONLY"):
+            the_eureka_frug(pma, verify=False)
+
+    def test_bentham_xml_36635930_recent_pat_biotechnol(self):
+        """Test PMID 36635930 - Recent Pat Biotechnol with DOI 10.2174/1872208317666230111105223."""
+        pma = load_pmid_xml('36635930')
+        
+        assert pma.pmid == '36635930'
+        assert pma.doi == '10.2174/1872208317666230111105223'
+        assert 'Recent Pat Biotechnol' in pma.journal
+        
+        # Test that the function raises POSTONLY error as expected for current architecture
+        from metapub.exceptions import NoPDFLink
+        with pytest.raises(NoPDFLink, match="POSTONLY"):
+            the_eureka_frug(pma, verify=False)
+
+    def test_bentham_xml_33568043_curr_mol_pharmacol(self):
+        """Test PMID 33568043 - Curr Mol Pharmacol with DOI 10.2174/1874467214666210210122628."""
+        pma = load_pmid_xml('33568043')
+        
+        assert pma.pmid == '33568043'
+        assert pma.doi == '10.2174/1874467214666210210122628'
+        assert 'Curr Mol Pharmacol' in pma.journal
+        
+        # Test that the function raises POSTONLY error as expected for current architecture
+        from metapub.exceptions import NoPDFLink
+        with pytest.raises(NoPDFLink, match="POSTONLY"):
+            the_eureka_frug(pma, verify=False)

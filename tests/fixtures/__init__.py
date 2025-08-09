@@ -213,3 +213,23 @@ WJGNET_EVIDENCE_PMIDS = {
     '36187464': {'doi': '10.5527/wjn.v11.i5.139', 'journal': 'World J Nephrol', 'pmc': 'PMC9521512'},
     '38596266': {'doi': '10.5527/wjn.v13.i1.89637', 'journal': 'World J Nephrol', 'pmc': 'PMC11000037'},
 }
+
+# JCI PMIDs with metadata (from verified_pmids)
+JCI_EVIDENCE_PMIDS = {
+    '37966116': {'doi': '10.1172/JCI170500', 'journal': 'J Clin Invest', 'pmc': 'PMC10645385'},
+    '35358095': {'doi': '10.1172/JCI154225', 'journal': 'J Clin Invest', 'pmc': 'PMC9106355'},
+}
+
+# AnnualReviews PMIDs with metadata (from verified_pmids)
+ANNUALREVIEWS_EVIDENCE_PMIDS = {
+    '35320699': {'doi': '10.1146/annurev-chembioeng-092220-030853', 'journal': 'Annu Rev Chem Biomol Eng', 'pmc': 'PMC9236656'},
+    '36917814': {'doi': '10.1146/annurev-chembioeng-101121-084508', 'journal': 'Annu Rev Chem Biomol Eng', 'pmc': 'PMC10330301'},
+    '32976730': {'doi': '10.1146/annurev-marine-032720-095144', 'journal': 'Ann Rev Mar Sci'},
+}
+
+# Bentham/EurekaSelect PMIDs with metadata (from verified_pmids)
+BENTHAM_EVIDENCE_PMIDS = {
+    '32525788': {'doi': '10.2174/1874467213666200611142438', 'journal': 'Curr Mol Pharmacol', 'pmc': 'PMC7728656'},
+    '36635930': {'doi': '10.2174/1872208317666230111105223', 'journal': 'Recent Pat Biotechnol', 'pmc': 'PMC10242760'},
+    '33568043': {'doi': '10.2174/1874467214666210210122628', 'journal': 'Curr Mol Pharmacol'},
+}

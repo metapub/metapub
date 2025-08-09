@@ -8,6 +8,7 @@ from .common import BaseDanceTest
 from metapub import PubMedFetcher
 from metapub.findit.dances import the_jci_jig
 from metapub.exceptions import AccessDenied, NoPDFLink
+from tests.fixtures import load_pmid_xml, JCI_EVIDENCE_PMIDS
 
 
 class TestJCIDance(BaseDanceTest):
@@ -254,3 +255,37 @@ if __name__ == '__main__':
     
     print("\n" + "="*60)
     print("Test suite completed!")
+
+
+class TestJCIXMLFixtures:
+    """Test JCI XML fixtures for evidence-driven testing."""
+
+    @patch('metapub.findit.dances.jci.verify_pdf_url')
+    def test_jci_xml_37966116_j_clin_invest(self, mock_verify):
+        """Test PMID 37966116 - J Clin Invest with DOI 10.1172/JCI170500."""
+        mock_verify.return_value = None
+        pma = load_pmid_xml('37966116')
+        
+        assert pma.pmid == '37966116'
+        assert pma.doi == '10.1172/JCI170500'
+        assert 'J Clin Invest' in pma.journal
+        
+        result = the_jci_jig(pma, verify=True)
+        expected_url = 'http://www.jci.org/articles/view/170500/files/pdf'
+        assert result == expected_url
+        mock_verify.assert_called_once_with(expected_url, 'JCI')
+
+    @patch('metapub.findit.dances.jci.verify_pdf_url')
+    def test_jci_xml_35358095_j_clin_invest(self, mock_verify):
+        """Test PMID 35358095 - J Clin Invest with DOI 10.1172/JCI154225."""
+        mock_verify.return_value = None
+        pma = load_pmid_xml('35358095')
+        
+        assert pma.pmid == '35358095'
+        assert pma.doi == '10.1172/JCI154225'
+        assert 'J Clin Invest' in pma.journal
+        
+        result = the_jci_jig(pma, verify=True)
+        expected_url = 'http://www.jci.org/articles/view/154225/files/pdf'
+        assert result == expected_url
+        mock_verify.assert_called_once_with(expected_url, 'JCI')

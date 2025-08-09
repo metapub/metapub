@@ -19,8 +19,8 @@
 #   - Articles are indexed in PubMed with PMIDs across medical and technical fields
 #   - Journal abbreviations are used in URLs
 
-# URL format template - will be used in the dance function
-iospress_format = 'https://content.iospress.com/download/{journal}/{doi}'
+# URL format template - evidence-based pattern for the_doi_slide generic function
+iospress_format = 'https://content.iospress.com/doi/pdf/{doi}?download=true'
 
 # Complete list of IOS Press journals (54 total)
 # NOTE: Using PubMed abbreviated journal names to match PMA data

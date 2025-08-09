@@ -64,7 +64,7 @@ from metapub.findit.journals.emerald import emerald_journals, emerald_format
 from metapub.findit.journals.acm import acm_journals, acm_format
 from metapub.findit.journals.worldscientific import worldscientific_journals
 from metapub.findit.journals.uchicago import uchicago_journals
-from metapub.findit.journals.iospress import iospress_journals
+from metapub.findit.journals.iospress import iospress_journals, iospress_format
 from metapub.findit.journals.longdom import longdom_journals
 from metapub.findit.journals.iop import iop_journals
 from metapub.findit.journals.oatext import oatext_journals
@@ -422,8 +422,8 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'iospress',
-        'dance_function': 'the_iospress_freestyle',
-        'format_template': None,
+        'dance_function': 'the_doi_slide',
+        'format_template': iospress_format,
         'journals': iospress_journals,
     },
     {

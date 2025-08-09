@@ -43,7 +43,7 @@ from .hilaris import the_hilaris_hop
 from .inderscience import the_inderscience_ula
 from .ingenta import the_ingenta_flux
 from .iop import the_iop_fusion
-from .iospress import the_iospress_freestyle
+# IOS Press now uses the_doi_slide generic function
 from .jama import the_jama_dance
 from .jci import the_jci_jig
 from .jstage import the_jstage_dive

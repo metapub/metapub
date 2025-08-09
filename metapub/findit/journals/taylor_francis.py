@@ -633,6 +633,7 @@ taylor_francis_journals = [
     'HIV Clin Trials',
     'HIV Res Clin Pract',
     'HIV Ther',
+    'Hemoglobin',
     'Health Care Women Int',
     'Health Commun',
     'Health Mark Q',

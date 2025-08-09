@@ -9,12 +9,11 @@ Dance Function: the_doi_slide
 """
 
 # Informa Healthcare journals (extracted from misc_doi.py)
+# Evidence-driven consolidation: Ann Hum Biol and Hemoglobin moved to Taylor & Francis
+# Acta Oncol removed (uses medicaljournalssweden.se domain, not Informa Healthcare)
 informa_journals = [
-    'Acta Oncol',
-    'Ann Hum Biol',
-    'Hemoglobin',
     'J Matern Fetal Neonatal Med',
-    'Ophthalmic Genet',
+    'Ophthalmic Genet', 
     'Platelets',
     'Ren Fail',
     'Scand J Rheumatol',

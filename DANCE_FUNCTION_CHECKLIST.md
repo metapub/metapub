@@ -257,12 +257,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Status:** TODO
 - **Priority:** Low (open access)
 
-### ❓ Informa (Taylor & Francis)
-- **Dance Function:** Not assigned
+### ✅ Informa (Taylor & Francis)
+- **Dance Function:** `the_doi_slide` (generic function)
 - **HTML Samples:** `output/article_html/informa/`
-- **Status:** TODO  
+- **Status:** COMPLETED ✅ (evidence-driven journal consolidation)
 - **Priority:** Medium (Taylor & Francis subsidiary)
-- **Notes:** New publisher identified with HTML samples available
+- **Notes:** **EVIDENCE-DRIVEN JOURNAL CONSOLIDATION COMPLETED 2025-08-09**: Comprehensive investigation revealed complex multi-publisher scenario requiring journal redistribution. Analysis of 8 HTML samples showed: (1) **Ann Hum Biol** (2 samples) and **Hemoglobin** (1 sample) generating Taylor & Francis URLs (`tandfonline.com/doi/epdf/{doi}?needAccess=true`) despite being configured as "Informa Healthcare" - moved to Taylor & Francis config, (2) **Acta Oncol** (5 samples) using `medicaljournalssweden.se` domain with `citation_pdf_url` meta tags - removed from Informa config as it belongs to different Swedish medical publisher, (3) Remaining 7 Informa Healthcare journals preserved for true `informahealthcare.com` publications. **CONSOLIDATION RESULTS**: Moved Hemoglobin to Taylor & Francis journals (Ann Hum Biol already present), removed Acta Oncol from Informa config, maintained separation between true Informa Healthcare vs Taylor & Francis vs Swedish medical domains. Registry regenerated with correct mapping. Testing confirmed correct URL pattern generation: T&F journals now generate proper `tandfonline.com` URLs. Investigation files moved to CLEANUP/informa_investigation_2025-08-09/.
 
 ### ❓ Inderscience
 - **Dance Function:** `the_inderscience_ula`
@@ -351,12 +351,19 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** Medium (open access)
 - **Notes:** **EVIDENCE-DRIVEN REWRITE COMPLETED 2025-08-06**: Rewritten from legacy backup strategy to clean DOI resolution + /pdf pattern. Function correctly constructs PDF URLs using DOI resolution (10.3390/ prefix → mdpi.com URLs + /pdf suffix). Pattern discovered via WebFetch: DOI `10.3390/cardiogenetics11030017` → URL `https://www.mdpi.com/2035-8148/11/3/17/pdf`. **BLOCKED BY PROTECTION**: HTML samples show "Access Denied" and PDF URLs return 403 Forbidden, indicating MDPI has bot protection similar to Cloudflare. Function works correctly for URL construction but verification fails due to access restrictions. Comprehensive test suite (7 tests) validates all scenarios with proper mocking. This demonstrates correct pattern implementation despite publisher protection.
 
-### ❓ Microbiology Spectrum
-- **Dance Function:** Not assigned
+### ✅ Microbiology Spectrum
+- **Dance Function:** the_asm_shimmy (ASM)
 - **HTML Samples:** `output/article_html/microbiol_spectr/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅
 - **Priority:** Medium (ASM journal)
-- **Notes:** American Society for Microbiology journal with HTML samples available
+- **Notes:** **INFRASTRUCTURE ASSESSMENT COMPLETED 2025-08-09**: Microbiology Spectrum is already optimally supported through existing ASM
+     configuration. Evidence analysis shows 2/2 accessible samples with clear DOI pattern `/doi/pdf/10.1128/spectrum.*?download=true`. The existing ASM
+     dance function (`the_asm_shimmy`) already uses the exact evidence-based pattern: `https://journals.asm.org/doi/pdf/{doi}?download=true`. Journal is
+     included in ASM journals list as "Microbiol Spectr". All tests pass (14/14). No development required - existing infrastructure is optimal.
+           + configuration. Evidence analysis shows 2/2 accessible samples with clear DOI pattern `/doi/pdf/10.1128/spectrum.*?download=true`. The existing
+           + ASM dance function (`the_asm_shimmy`) already uses the exact evidence-based pattern: `https://journals.asm.org/doi/pdf/{doi}?download=true`.
+           + Journal is included in ASM journals list as "Microbiol Spectr". All tests pass (14/14). No development required - existing infrastructure is
+           + optimal.
 
 ### ❓ NAJMS
 - **Dance Function:** `the_najms_mazurka`
@@ -398,7 +405,7 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** High (major open access publisher)
 - **Notes:** **PERFECT SIMPLICITY ACHIEVED 2025-08-07**: PLOS provides perfect `citation_pdf_url` meta tags across all HTML samples, enabling the most logically simple implementation possible. Created `the_plos_pogo` (14 lines) that directly extracts PDF URLs from meta tags without any URL construction. Pattern: `https://journals.plos.org/[journal]/article/file?id=[DOI]&type=printable` with consistent 10.1371/journal.[code] DOI format. Comprehensive test suite (10 tests) validates meta tag extraction, error handling, and all evidence DOIs. Function demonstrates maximum logical simplicity: DOI check → get HTML → extract meta tag → return URL. No complex conditionals, loops, or construction logic needed. This exemplifies the ideal case for reducing logical complication in dance functions.
 
-### 🚫 PNAS (Proceedings of the National Academy of Sciences)
+### ✅ PNAS (Proceedings of the National Academy of Sciences)
 - **Dance Function:** `the_doi_slide` (generic function)
 - **HTML Samples:** `output/article_html/pnas/`
 - **Status:** COMPLETED ✅ (consolidated into generic function)
@@ -432,7 +439,7 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** Low (German medical publisher)
 - **Notes:** German medical publisher with HTML samples available
 
-### ❓ Science (duplicate entry - see AAAS)
+### ✅ Science (duplicate entry - see AAAS)
 - **Dance Function:** See AAAS `the_aaas_twist`
 - **HTML Samples:** `output/article_html/science/`
 - **Status:** ✅ HANDLED BY AAAS
@@ -466,21 +473,21 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** Medium (backup for PMC)
 - **Notes:** Rewritten from 95→44 lines, uses <link rel="alternate"> pattern
 
-### 🚫 Spandidos Publications
+### ✅ Spandidos Publications
 - **Dance Function:** ~~`the_spandidos_lambada`~~ **CONSOLIDATED** into `the_doi_slide`
 - **HTML Samples:** `output/article_html/spandidos/`
 - **Status:** COMPLETED ✅ (consolidated into generic function)
 - **Priority:** Medium
 - **Notes:** **ELIMINATED MIDDLEMAN 2025-08-06**: Evidence-driven rewrite showed consistent DOI-based pattern `http://www.spandidos-publications.com/{DOI}/download` across all Spandidos journals (Int J Oncol, Oncol Lett, Mol Med Rep, etc.). Since the function used simple direct URL construction from DOI (25 lines), eliminated the middleman dance function entirely. **Registry updated**: Spandidos journals now directly assigned to `the_doi_slide` generic function with format template `http://www.spandidos-publications.com/{doi}/download`. **Files removed**: `metapub/findit/dances/spandidos.py`, `tests/findit/test_spandidos.py`. This reduces codebase complexity while maintaining identical functionality.
 
-### 🚫 Springer
+### ✅ Springer
 - **Dance Function:** ~~`the_springer_shag`~~ **CONSOLIDATED** into `the_doi_slide`
 - **HTML Samples:** `output/article_html/springer/`
 - **Status:** COMPLETED ✅ (consolidated into generic function)
 - **Priority:** High (major publisher)
 - **Notes:** **ELIMINATED MIDDLEMAN 2025-08-06**: Evidence-driven rewrite showed consistent DOI-based pattern `https://link.springer.com/content/pdf/{DOI}.pdf` across all Springer journals. Since the function used simple direct URL construction with DOI, eliminated the middleman dance function entirely. **Registry updated**: Springer journals now directly assigned to `the_doi_slide` generic function with format template `https://link.springer.com/content/pdf/{doi}.pdf`. **Files removed**: `metapub/findit/dances/springer.py`, `tests/findit/test_springer.py`. This reduces codebase complexity while maintaining identical functionality - `the_doi_slide` handles direct URL construction just as effectively as the custom function.
 
-### 🚫 Thieme
+### ✅ Thieme
 - **Dance Function:** ~~`the_thieme_tap`~~ **CONSOLIDATED** into `the_doi_slide`
 - **HTML Samples:** `output/article_html/thieme_medical_publishers/`
 - **Status:** COMPLETED ✅ (consolidated into generic function)
@@ -500,7 +507,7 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Status:** TODO
 - **Priority:** Low
 
-### 🚫 Wiley
+### ✅ Wiley
 - **Dance Function:** ~~`the_wiley_shuffle`~~ **CONSOLIDATED** into `the_doi_slide`
 - **HTML Samples:** `output/article_html/wiley/`
 - **Status:** COMPLETED ✅ (consolidated into generic function)

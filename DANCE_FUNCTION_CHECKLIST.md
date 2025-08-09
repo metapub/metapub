@@ -119,12 +119,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** Medium (physiology journals)
 - **Notes:** **EVIDENCE CONFIRMS PERFECT CONFIGURATION 2025-08-08**: Investigation of 10 HTML samples revealed existing APS configuration is already optimal. All samples from journals.physiology.org show consistent `/doi/pdf/{doi}` pattern matching the configured template `https://journals.physiology.org/doi/pdf/{doi}` exactly. DOI prefix 10.1152/ (physiology, not physics) consistent across all samples. SSL compatibility confirmed (403 Forbidden expected for subscription content). Generic function `the_doi_slide` is perfect fit - no custom dance needed. All 10 existing tests pass (10/10). This demonstrates evidence-driven validation of existing optimal configurations. Investigation files moved to CLEANUP/. **CORRECTION**: This is American Physiological Society (APS), not American Physical Society - physiology journals covering heart, cell, renal, lung, gastrointestinal, endocrine, regulatory, and applied physiology.
 
-### ❓ ATS (American Thoracic Society)
-- **Dance Function:** Not assigned
+### ✅ ATS (American Thoracic Society)
+- **Dance Function:** `the_doi_slide` (generic function)
 - **HTML Samples:** `output/article_html/ats/`
-- **Status:** TODO
+- **Status:** COMPLETED ✅ (evidence-driven registry update)
 - **Priority:** Medium (respiratory medicine)
-- **Notes:** New publisher identified with HTML samples available
+- **Notes:** **EVIDENCE-DRIVEN REGISTRY UPDATE COMPLETED 2025-08-09**: Comprehensive evidence-driven investigation updated existing configuration from legacy `http://www.atsjournals.org/doi/pdf/{doi}` to evidence-based `https://www.thoracic.org/doi/pdf/{doi}?download=true`. Phase 1: Analyzed 7 HTML samples revealing 100% domain consistency (www.thoracic.org), DOI prefixes 10.1164/10.1165/10.1513. Phase 2: Confirmed SSL compatibility and generic function suitability. Phase 3: Registry migration with 4/4 ATS journals registered. Phase 4: Comprehensive test suite (15 tests, 100% pass rate). Key achievements: domain modernization, HTTPS enforcement, direct download parameter, perfect generic function reuse. Investigation files moved to CLEANUP/ats_investigation_2025-08-09/.
 
 ### ❓ ASME (American Society of Mechanical Engineers)
 - **Dance Function:** `the_asme_animal`

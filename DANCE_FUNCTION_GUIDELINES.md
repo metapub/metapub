@@ -21,8 +21,6 @@ Publisher Dance Development Process
     - Document error conditions and edge cases
     - Test pattern consistency across different articles
 
- End of Phase 1: STOP AND ASK USER: Does this pattern make sense?
-
   Phase 2: Infrastructure Assessment
 
   3. Evaluate Generic Functions
@@ -52,10 +50,14 @@ Publisher Dance Development Process
     - Function must return PDF link, nothing else (e.g. no article page as a runner-up!)
     - Clear error messages with prefixes (MISSING:, TXERROR:, DENIED:)
     - Use verify=True parameter for optional verification
+  7. Architectural Guidelines
+    - Only single-journal publishers go in single_journal_publishers.py
+    - Don't leave behind any files for "legacy" support.  Just delete (and report on delete at the end).
 
   Phase 4: Test Development
 
   7. Create Focused Tests
+    - Put all tests for this publisher in tests/findit/[publisher].py
     - Test the happy path with real pattern examples
     - Test each error condition separately
     - Remove any tests that don't match actual function behavior

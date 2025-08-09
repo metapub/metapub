@@ -44,7 +44,8 @@ from metapub.findit.journals.taylor_francis import taylor_francis_journals, tayl
 from metapub.findit.journals.asm import asm_journals, asm_vip_template
 from metapub.findit.journals.aha import aha_journals, aha_vip_template
 from metapub.findit.journals.aacr import aacr_journals, aacr_vip_template
-# APS now in single_journal_publishers
+from metapub.findit.journals.aps import aps_journals, aps_template
+from metapub.findit.journals.degruyter import degruyter_journals, degruyter_template
 from metapub.findit.journals.liebert import liebert_journals, liebert_template
 from metapub.findit.journals.ats import ats_journals, ats_template
 from metapub.findit.journals.plos import plos_journals
@@ -81,7 +82,6 @@ from metapub.findit.journals.sciendo import sciendo_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_template, ajph_journals, ajph_template,
-    aps_journals, aps_template, degruyter_journals, degruyter_template,
     bmj_open_gastro_journals, bmj_open_gastro_template,
     microbiol_spectr_journals, microbiol_spectr_template
 )
@@ -281,6 +281,12 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_doi_slide',
         'format_template': ats_template,
         'journals': ats_journals,
+    },
+    {
+        'name': 'De Gruyter',
+        'dance_function': 'the_doi_slide',
+        'format_template': degruyter_template,
+        'journals': degruyter_journals,
     },
     {
         'name': 'Public Library of Science',

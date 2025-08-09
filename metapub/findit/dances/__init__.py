@@ -34,6 +34,7 @@ from .cambridge import the_cambridge_foxtrot
 # CancerBiomed now uses the_vip_shake generic function
 # De Gruyter now uses the_doi_slide generic function
 from .dovepress import the_dovepress_peacock
+from .dustri import the_dustri_polka
 # Emerald now uses the_doi_slide generic function
 from .oxford_academic import the_oxford_academic_foxtrot
 from .eureka import the_eureka_frug

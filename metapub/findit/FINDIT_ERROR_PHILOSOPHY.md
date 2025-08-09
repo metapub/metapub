@@ -90,6 +90,7 @@ raise NoPDFLink(f'POSTONLY: {publisher} PDF requires POST request with session d
 **Examples**:
 ```python
 raise NoPDFLink('POSTONLY: EurekaSelect PDF requires POST request with session data - cannot provide direct PDF URL. Visit article page and click "Download Article": https://www.eurekaselect.com/article/12345')
+raise NoPDFLink('POSTONLY: Dustri-Verlag PDFs require POST form submission - visit: https://www.dustri.com/nc/article-response-page.html?doi=10.5414/CN110175Intro')
 ```
 
 **Key principles for POSTONLY errors**:

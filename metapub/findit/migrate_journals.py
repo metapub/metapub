@@ -37,7 +37,7 @@ from metapub.findit.journals.sage import sage_journals, sage_additional_journals
 from metapub.findit.journals.informa import informa_journals
 from metapub.findit.journals.cambridge import cambridge_journals
 from metapub.findit.journals.oxford import oxford_journal_params, oxford_vip_template
-from metapub.findit.journals.bmj import bmj_journals, bmj_vip_template
+from metapub.findit.journals.bmj import bmj_journals
 from metapub.findit.journals.lww import lww_journals, lww_template
 from metapub.findit.journals.acs import acs_journals, acs_template
 from metapub.findit.journals.taylor_francis import taylor_francis_journals, taylor_francis_template
@@ -82,7 +82,6 @@ from metapub.findit.journals.sciendo import sciendo_journals
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_template, ajph_journals, ajph_template,
-    bmj_open_gastro_journals, bmj_open_gastro_template,
     microbiol_spectr_journals, microbiol_spectr_template
 )
 
@@ -212,8 +211,7 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'BMJ Publishing Group',
-        'dance_function': 'the_doi_slide',
-        'format_template': bmj_vip_template,
+        'dance_function': 'the_bmj_bump',
         'journals': bmj_journals,
     },
     {
@@ -335,12 +333,6 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_doi_slide',
         'format_template': ajph_template,
         'journals': ajph_journals,
-    },
-    {
-        'name': 'BMJ Open Gastroenterology',
-        'dance_function': 'the_doi_slide',
-        'format_template': bmj_open_gastro_template,
-        'journals': bmj_open_gastro_journals,
     },
     {
         'name': 'Microbiology Spectrum',

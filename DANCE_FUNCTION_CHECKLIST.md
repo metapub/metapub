@@ -126,11 +126,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** Medium (respiratory medicine)
 - **Notes:** **EVIDENCE-DRIVEN REGISTRY UPDATE COMPLETED 2025-08-09**: Comprehensive evidence-driven investigation updated existing configuration from legacy `http://www.atsjournals.org/doi/pdf/{doi}` to evidence-based `https://www.thoracic.org/doi/pdf/{doi}?download=true`. Phase 1: Analyzed 7 HTML samples revealing 100% domain consistency (www.thoracic.org), DOI prefixes 10.1164/10.1165/10.1513. Phase 2: Confirmed SSL compatibility and generic function suitability. Phase 3: Registry migration with 4/4 ATS journals registered. Phase 4: Comprehensive test suite (15 tests, 100% pass rate). Key achievements: domain modernization, HTTPS enforcement, direct download parameter, perfect generic function reuse. Investigation files moved to CLEANUP/ats_investigation_2025-08-09/.
 
-### ❓ ASME (American Society of Mechanical Engineers)
+### 🚫 ASME (American Society of Mechanical Engineers)
 - **Dance Function:** `the_asme_animal`
-- **HTML Samples:** `output/article_html/asme/`
-- **Status:** TODO
+- **HTML Samples:** `output/article_html/asme/` (BLOCKED BY CLOUDFLARE)
+- **Status:** 🚫 **BLOCKED** - Cloudflare protection prevents automated access
 - **Priority:** Low (engineering)
+- **Notes:** **EVIDENCE COLLECTION BLOCKED 2025-08-09**: All 4 HTML samples show Cloudflare challenge pages ("Just a moment..."). Domain identified: `asmedigitalcollection.asme.org` consistently across all samples. Similar protection level to JAMA, AIP, MDPI. Investigation limited by bot detection preventing access to actual journal content. Cannot proceed with evidence-driven development due to Cloudflare blocking. Alternative approaches (CrossRef API, enhanced headers) may be needed for future investigation. Investigation files moved to CLEANUP/asme_investigation_2025-08-09/.
 
 ### ✅ ASM (American Society for Microbiology)
 - **Dance Function:** `the_asm_shimmy`
@@ -160,19 +161,19 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** High (open access biomedicine)
 - **Notes:** **ALREADY OPTIMAL**: BMC already uses a minimal generic function `the_bmc_boogie` (19 lines) specifically designed for its URL pattern. Extracts article ID from DOI (after slash) and constructs URL as `http://www.biomedcentral.com/content/pdf/{aid}.pdf`. Since BMC is fully open access, verification is optional. No consolidation needed - the existing generic function is already perfectly suited for BMC's requirements. HTML samples now available.
 
-### ✅ BMJ (British Medical Journal)
+### ✅ BMJ Publishing Group (British Medical Journal)
 - **Dance Function:** `the_bmj_bump`
 - **HTML Samples:** `output/article_html/bmj/`
-- **Status:** COMPLETED ✅ (perfect simplicity implementation)
-- **Priority:** High (major medical publisher)
-- **Notes:** **EVIDENCE-DRIVEN REWRITE COMPLETED**: Major medical publisher with optimized two-stage approach. Analysis of 3 HTML samples revealed VIP URL construction pattern: `https://[journal].bmj.com/content/{volume}/{issue}/{first_page}.full.pdf`. All DOIs follow `10.1136/` prefix format. Implemented `the_bmj_bump` using efficient two-stage method: (1) VIP URL construction first (faster - no page load), (2) citation_pdf_url meta tag extraction as reliable backup. Function achieves 26 effective lines of code (under 50-line guideline). **EFFICIENCY OPTIMIZATION**: Eliminated massive journal list duplication - `bmj_journals` now generated dynamically from `bmj_journal_params.keys()`, reducing configuration file by 54 lines while maintaining full compatibility. Comprehensive test suite (11 tests) validates both VIP construction and meta tag fallback, error handling, and compliance with DANCE_FUNCTION_GUIDELINES. Optimized approach saves network requests while maintaining 100% reliability through fallback method.
+- **Status:** COMPLETED ✅ (perfect simplicity implementation + major consolidation)
+- **Priority:** High (major medical publisher, 60+ journals)
+- **Notes:** **EVIDENCE-DRIVEN REWRITE + MAJOR CONSOLIDATION COMPLETED**: Major medical publisher with optimized two-stage approach and expanded consolidation. Analysis of 3 HTML samples revealed VIP URL construction pattern: `https://[journal].bmj.com/content/{volume}/{issue}/{first_page}.full.pdf`. All DOIs follow `10.1136/` prefix format. Implemented `the_bmj_bump` using efficient two-stage method: (1) VIP URL construction first (faster - no page load), (2) citation_pdf_url meta tag extraction as reliable backup. Function achieves 26 effective lines of code (under 50-line guideline). **EFFICIENCY OPTIMIZATION**: Eliminated massive journal list duplication - `bmj_journals` now generated dynamically from `bmj_journal_params.keys()`, reducing configuration file by 54 lines while maintaining full compatibility. **2025-08-09 CONSOLIDATION**: Fixed configuration mismatch (was incorrectly using `the_doi_slide` instead of `the_bmj_bump`), consolidated BMJ Open Gastroenterology into main BMJ group, reduced total publisher count by 1 while maintaining full functionality. Now supports 60+ BMJ journals under unified configuration. Comprehensive test suite (11 tests) validates both VIP construction and meta tag fallback, error handling, and compliance with DANCE_FUNCTION_GUIDELINES. Optimized approach saves network requests while maintaining 100% reliability through fallback method.
 
-### ❓ BMJ Open Gastroenterology  
-- **Dance Function:** Not assigned
+### ✅ BMJ Open Gastroenterology  
+- **Dance Function:** `the_bmj_bump` (consolidated with BMJ Publishing Group)
 - **HTML Samples:** `output/article_html/bmj_open_gastro/`
-- **Status:** TODO
-- **Priority:** Low (specialized journal)
-- **Notes:** BMJ subsidiary journal with HTML samples
+- **Status:** COMPLETED ✅ (consolidated with main BMJ)
+- **Priority:** Low (specialized journal, now part of major BMJ consolidation)
+- **Notes:** **MAJOR BMJ CONSOLIDATION COMPLETED 2025-08-09**: Originally investigated as separate single-journal publisher, but evidence-driven analysis revealed perfect consolidation opportunity with main BMJ Publishing Group (60+ journals). Analysis of 2 HTML samples confirmed **perfect citation_pdf_url meta tags** and **VIP URL construction compatibility** (`https://bmjopengastro.bmj.com/content/8/1/e000643.full.pdf`). **ARCHITECTURAL BREAKTHROUGH**: Consolidated separate BMJ Open Gastroenterology configuration into main BMJ Publishing Group, eliminating duplicate configuration while gaining access to robust `the_bmj_bump` two-stage approach (VIP construction + meta tag fallback). **CONFIGURATION FIX**: Corrected main BMJ configuration from incorrect `the_doi_slide` to proper `the_bmj_bump` function. **CONSOLIDATION IMPACT**: Reduced publisher count from 71→70 while supporting same functionality through proven BMJ infrastructure. Test suite updated to validate consolidation and VIP URL construction compatibility with evidence-based patterns.
 
 ### ❓ Brill
 - **Dance Function:** `the_brill_bridge`

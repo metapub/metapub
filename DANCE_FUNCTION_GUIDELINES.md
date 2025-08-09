@@ -56,13 +56,14 @@ Publisher Dance Development Process
 
   Phase 4: Test Development
 
-  7. Create Focused Tests
+  8. Create Focused Tests
     - Put all tests for this publisher in tests/findit/[publisher].py
     - Test the happy path with real pattern examples
     - Test each error condition separately
     - Remove any tests that don't match actual function behavior
     - Don't test for wrong DOI, wrong journal, or wrong PMID.  FindIt wiring is consistent: PMID -> journal -> publisher handler. 
-  8. Registry Integration Test
+    - Use test fixtures by downloading XML for read PMIDs for this publisher (see notes below on testing).
+  9. Registry Integration Test
     - Verify journal recognition works
     - Confirm dance function mapping
 
@@ -83,6 +84,25 @@ Publisher Dance Development Process
   - Works with real PMIDs found in output/verified_pmids
   - Evidence from output/article_html
 
+ ## Benefits of XML Fixtures
+ 
+ ✅ **Real article metadata** (no mock mismatches)
+ ✅ **No network dependencies** in tests
+ ✅ **Authentic test data** matching verified PMID system
+ ✅ **Faster test execution** (no API calls)
+ ✅ **Offline test capability**
+ ✅ **Consistent test results** regardless of network conditions
+ 
+ ### For Each Publisher:
+ 
+ 1. **Identify PMIDs**: Use verified PMIDs from `output/verified_pmids/` and extract from existing tests
+ 2. **Download XML**: Use `PubMedFetcher.qs.efetch()` to get real XML data
+ 3. **Create Fixtures**: Save XML files to `tests/fixtures/pmid_xml/`
+ 4. **Update Constants**: Add publisher PMIDs to `tests/fixtures/__init__.py`
+ 5. **Load PubMedArticle from XML**: Instead of `PubMedFetcher` calls, use PubMedArticle's `load_pmid_xml()`
+ 6. **Remove Mocking**: Delete `Mock()` objects and `@patch` decorators for PubMed data
+ 7. **Validate**: Ensure all tests pass with authentic data
+ 
 
 Core principle: use evidence, understand, then implement simply.
 

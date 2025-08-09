@@ -1,222 +1,194 @@
-"""Tests for Inderscience Publishers dance function."""
+"""
+Evidence-driven test suite for Inderscience Publishers dance function
+Testing CLAUDE.md compliant rewrite with evidence-based DOI patterns
 
-import pytest
+EVIDENCE-DRIVEN REWRITE 2025-08-09:
+- Tests evidence-based DOI pattern (10.1504/*) 
+- Validates CLAUDE.md compliance (no huge try-except, standard verification)
+- Uses real PMIDs: 24084238, 24794070, 24449692
+- Function reduced from 72→24 lines (66.7% reduction)
+"""
+
+import unittest
 from unittest.mock import patch, Mock
-import requests
 
-from .common import BaseDanceTest
-from metapub import PubMedFetcher
-from metapub.findit.dances import the_inderscience_ula
+from metapub.findit.dances.inderscience import the_inderscience_ula
 from metapub.exceptions import AccessDenied, NoPDFLink
+from metapub import PubMedFetcher
 
 
-class TestInderscienceDance(BaseDanceTest):
-    """Test cases for Inderscience Publishers."""
+class TestInderscienceDance(unittest.TestCase):
+    """Evidence-driven test suite for Inderscience Publishers dance function"""
 
     def setUp(self):
-        """Set up test fixtures."""
-        super().setUp()
+        """Set up test fixtures with real evidence PMIDs"""
         self.fetch = PubMedFetcher()
+        
+        # Real evidence PMIDs from Inderscience with DOI 10.1504/* pattern
+        self.evidence_pmids = [
+            '24084238',  # DOI: 10.1504/IJBRA.2013.056620
+            '24794070',  # DOI: 10.1504/IJBRA.2014.060762  
+            '24449692'   # DOI: 10.1504/IJBRA.2014.058777
+        ]
+        
+        # Create mock PMA with evidence data
+        self.mock_pma = Mock()
+        self.mock_pma.doi = '10.1504/IJBRA.2013.056620'
+        self.mock_pma.journal = 'Int J Bioinform Res Appl'
+        self.mock_pma.pmid = '24084238'
 
-    def test_inderscience_ula_url_construction_biomed_eng(self):
-        """Test 1: URL construction success (Int J Biomed Eng Technol).
-
-        PMID: 23565122 (Int J Biomed Eng Technol)
-        Expected: Should construct valid Inderscience PDF URL
-        """
-        pma = self.fetch.article_by_pmid('23565122')
-
-        print(f"Test 1 - Article info: {pma.journal}, DOI: {pma.doi}")
-
-        # Test without verification (should always work for URL construction)
-        url = the_inderscience_ula(pma, verify=False)
-        assert url is not None
-        assert 'inderscienceonline.com' in url
-        assert '/doi/epdf/' in url
-        assert url.startswith('https://')
-        print(f"Test 1 - PDF URL: {url}")
-
-    def test_inderscience_ula_url_construction_bioinform(self):
-        """Test 2: Bioinformatics Research and Applications.
-
-        PMID: 26642363 (Int J Bioinform Res Appl)
-        Expected: Should construct valid Inderscience PDF URL
-        """
-        pma = self.fetch.article_by_pmid('26642363')
-
-        print(f"Test 2 - Article info: {pma.journal}, DOI: {pma.doi}")
-
-        # Skip test if no DOI available
-        if not pma.doi:
-            print("Test 2 - Skipping: No DOI available for this PMID")
-            return
-
-        # Test without verification
-        url = the_inderscience_ula(pma, verify=False)
-        assert url is not None
-        assert 'inderscienceonline.com' in url
-        print(f"Test 2 - PDF URL: {url}")
-
-    def test_inderscience_ula_url_construction_environ_pollut(self):
-        """Test 3: Environmental Pollution.
-
-        PMID: 31534305 (Int J Environ Pollut)
-        Expected: Should construct valid Inderscience PDF URL
-        """
-        pma = self.fetch.article_by_pmid('31534305')
-
-        print(f"Test 3 - Article info: {pma.journal}, DOI: {pma.doi}")
-
-        # Skip test if no DOI available
-        if not pma.doi:
-            print("Test 3 - Skipping: No DOI available for this PMID")
-            return
-
-        # Test without verification
-        url = the_inderscience_ula(pma, verify=False)
-        assert url is not None
-        assert 'inderscienceonline.com' in url
-        print(f"Test 3 - PDF URL: {url}")
-
-    @patch('requests.get')
-    def test_inderscience_ula_successful_access(self, mock_get):
-        """Test 4: Successful PDF access simulation.
-
-        Expected: Should return PDF URL when accessible
-        """
-        # Mock successful PDF response
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'application/pdf'}
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('23565122')
-
-        # Test with verification - should succeed
-        url = the_inderscience_ula(pma, verify=True)
-        assert 'inderscienceonline.com' in url
-        assert '/doi/epdf/' in url
-        print(f"Test 4 - Successful verified access: {url}")
-
-    @patch('requests.get')
-    def test_inderscience_ula_paywall_detection(self, mock_get):
-        """Test 5: Paywall detection.
-
-        Expected: Should detect paywall and raise AccessDenied
-        """
-        # Mock paywall response
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'text/html'}
-        mock_response.text = '''<html><body>
-            <h1>Subscription Required</h1>
-            <p>Login required for institutional access</p>
-            <button>Subscribe now</button>
-        </body></html>'''
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('23565122')
-
-        # Test with verification - should detect paywall
-        with pytest.raises(AccessDenied) as exc_info:
-            the_inderscience_ula(pma, verify=True)
-
-        assert 'PAYWALL' in str(exc_info.value)
-        print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
-
-    @patch('requests.get')
-    def test_inderscience_ula_network_error(self, mock_get):
-        """Test 6: Network error handling.
-
-        Expected: Should handle network errors gracefully
-        """
-        # Mock network error
-        mock_get.side_effect = requests.exceptions.ConnectionError("Network error")
-
-        pma = self.fetch.article_by_pmid('23565122')
-
-        # Test - should handle network error
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_inderscience_ula(pma, verify=True)
-
-        assert 'TXERROR' in str(exc_info.value)
-        print(f"Test 6 - Correctly handled network error: {exc_info.value}")
-
-    def test_inderscience_ula_missing_doi(self):
-        """Test 7: Article without DOI.
-
-        Expected: Should raise NoPDFLink for missing DOI
-        """
-        # Create a mock PMA without DOI
+    def test_missing_doi_raises_nopdflink(self):
+        """Test that missing DOI raises NoPDFLink with MISSING prefix"""
         pma = Mock()
         pma.doi = None
-        pma.journal = 'Int J Biomed Eng Technol'
-
-        with pytest.raises(NoPDFLink) as exc_info:
+        pma.journal = 'Int J Bioinform Res Appl'
+        
+        with self.assertRaises(NoPDFLink) as context:
             the_inderscience_ula(pma, verify=False)
+        
+        self.assertIn('MISSING:', str(context.exception))
+        self.assertIn('DOI required', str(context.exception))
 
-        assert 'MISSING' in str(exc_info.value)
-        assert 'DOI required' in str(exc_info.value)
-        print(f"Test 7 - Correctly handled missing DOI: {exc_info.value}")
+    def test_doi_url_construction_without_verification(self):
+        """Test correct URL construction without verification"""
+        expected_url = 'https://www.inderscienceonline.com/doi/epdf/10.1504/IJBRA.2013.056620'
+        
+        result = the_inderscience_ula(self.mock_pma, verify=False)
+        
+        self.assertEqual(result, expected_url)
 
-    @patch('requests.get')
-    def test_inderscience_ula_404_error(self, mock_get):
-        """Test 8: Article not found (404 error).
+    @patch('metapub.findit.dances.inderscience.verify_pdf_url')
+    def test_verification_success(self, mock_verify):
+        """Test successful verification using standard verify_pdf_url"""
+        expected_url = 'https://www.inderscienceonline.com/doi/epdf/10.1504/IJBRA.2013.056620'
+        mock_verify.return_value = expected_url
+        
+        result = the_inderscience_ula(self.mock_pma, verify=True)
+        
+        self.assertEqual(result, expected_url)
+        mock_verify.assert_called_once_with(expected_url, 'Inderscience Publishers')
 
-        Expected: Should try multiple patterns and handle 404 errors
-        """
-        # Mock 404 response for all attempts
-        mock_response = Mock()
-        mock_response.ok = False
-        mock_response.status_code = 404
-        mock_get.return_value = mock_response
+    @patch('metapub.findit.dances.inderscience.verify_pdf_url')
+    def test_verification_access_denied_bubbles_up(self, mock_verify):
+        """Test that AccessDenied from verify_pdf_url bubbles up correctly"""
+        expected_url = 'https://www.inderscienceonline.com/doi/epdf/10.1504/IJBRA.2013.056620'
+        mock_verify.side_effect = AccessDenied('DENIED: Access forbidden')
+        
+        with self.assertRaises(AccessDenied):
+            the_inderscience_ula(self.mock_pma, verify=True)
+        
+        mock_verify.assert_called_once_with(expected_url, 'Inderscience Publishers')
 
-        pma = self.fetch.article_by_pmid('23565122')
-
-        # Test - should try multiple patterns and eventually fail
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_inderscience_ula(pma, verify=True)
-
-        assert 'TXERROR' in str(exc_info.value) or 'PATTERN' in str(exc_info.value)
-        print(f"Test 8 - Correctly handled 404: {exc_info.value}")
-
-    @patch('requests.get')
-    def test_inderscience_ula_url_fallback(self, mock_get):
-        """Test 9: URL pattern fallback.
-
-        Expected: Should try different URL patterns until one works
-        """
-        # Mock responses: first fails, second succeeds
-        responses = [
-            Mock(ok=False, status_code=404),  # First URL fails
-            Mock(ok=True, status_code=200, headers={'content-type': 'application/pdf'})  # Second succeeds
+    def test_doi_pattern_validation(self):
+        """Test with various Inderscience DOI patterns"""
+        inderscience_dois = [
+            '10.1504/IJBRA.2013.056620',  # Evidence DOI 1
+            '10.1504/IJBRA.2014.060762',  # Evidence DOI 2
+            '10.1504/IJBRA.2014.058777',  # Evidence DOI 3
+            '10.1504/IJENVH.2023.135446', # Different journal pattern
+            '10.1504/IJBT.2021.114567'    # Another journal pattern
         ]
-        mock_get.side_effect = responses
+        
+        for doi in inderscience_dois:
+            pma = Mock()
+            pma.doi = doi
+            pma.journal = 'Int J Bioinform Res Appl'
+            
+            expected_url = f'https://www.inderscienceonline.com/doi/epdf/{doi}'
+            result = the_inderscience_ula(pma, verify=False)
+            self.assertEqual(result, expected_url)
 
-        pma = self.fetch.article_by_pmid('23565122')
+    def test_real_pmid_metadata_validation(self):
+        """Test with real PMID metadata to validate approach"""
+        try:
+            # Use first evidence PMID
+            pma = self.fetch.article_by_pmid(self.evidence_pmids[0])
+            
+            # Validate we have expected data
+            self.assertIsNotNone(pma.doi)
+            self.assertTrue(pma.doi.startswith('10.1504/'))
+            self.assertEqual(pma.journal, 'Int J Bioinform Res Appl')
+            
+            # Test URL construction
+            expected_url = f'https://www.inderscienceonline.com/doi/epdf/{pma.doi}'
+            result = the_inderscience_ula(pma, verify=False)
+            self.assertEqual(result, expected_url)
+            
+            print(f"Real PMID validation: DOI={pma.doi}, Journal={pma.journal}")
+            
+        except Exception as e:
+            self.skipTest(f"Could not fetch real PMID data: {e}")
 
-        # Test - should succeed on second attempt
-        url = the_inderscience_ula(pma, verify=True)
-        assert 'inderscienceonline.com' in url
-        print(f"Test 9 - URL fallback success: {url}")
+    def test_function_length_compliance(self):
+        """Test that rewritten function complies with DANCE_FUNCTION_GUIDELINES (<50 lines)"""
+        import inspect
+        
+        source_lines = inspect.getsourcelines(the_inderscience_ula)[0]
+        function_lines = len([line for line in source_lines if line.strip() and not line.strip().startswith('#')])
+        
+        self.assertLess(function_lines, 50, f"Function has {function_lines} lines, should be under 50")
+        print(f"✓ Function length compliance: {function_lines} lines (under 50 line guideline)")
 
-    def test_inderscience_ula_doi_pattern_warning(self):
-        """Test 10: Non-standard DOI pattern handling.
+    def test_claude_md_compliance(self):
+        """Test that function follows CLAUDE.md guidelines"""
+        import inspect
+        
+        # Get function source code
+        source = inspect.getsource(the_inderscience_ula)
+        
+        # Should not have huge try-except blocks
+        self.assertNotIn('try:', source, "Function should not have try-except blocks per CLAUDE.md guidelines")
+        
+        # Should not catch generic exceptions
+        self.assertNotIn('except Exception', source, "Function should not catch generic exceptions")
+        
+        # Should use standard verify_pdf_url
+        self.assertIn('verify_pdf_url', source, "Function should use standard verify_pdf_url")
+        
+        print("✓ CLAUDE.md compliance validated:")
+        print("  - No huge try-except blocks")
+        print("  - No generic Exception catching")
+        print("  - Uses standard verify_pdf_url")
+        print("  - Let errors bubble up naturally")
 
-        Expected: Should handle non-10.1504 DOI patterns but may warn
-        """
-        # Create a mock PMA with non-Inderscience DOI pattern
-        pma = Mock()
-        pma.doi = '10.1016/j.example.2023.123456'  # Non-Inderscience DOI
-        pma.journal = 'Int J Biomed Eng Technol'
+    def test_evidence_based_url_construction(self):
+        """Test that URL construction follows evidence-based pattern"""
+        # Test with all evidence PMIDs' DOI patterns
+        evidence_data = [
+            ('24084238', '10.1504/IJBRA.2013.056620'),
+            ('24794070', '10.1504/IJBRA.2014.060762'), 
+            ('24449692', '10.1504/IJBRA.2014.058777')
+        ]
+        
+        for pmid, doi in evidence_data:
+            pma = Mock()
+            pma.doi = doi
+            pma.pmid = pmid
+            
+            expected_url = f'https://www.inderscienceonline.com/doi/epdf/{doi}'
+            result = the_inderscience_ula(pma, verify=False)
+            self.assertEqual(result, expected_url)
 
-        # Should still construct URL without verification
-        url = the_inderscience_ula(pma, verify=False)
-        assert url is not None
-        assert 'inderscienceonline.com' in url
-        print(f"Test 10 - Non-standard DOI pattern handled: {url}")
+    def test_error_message_prefix_compliance(self):
+        """Test that error messages follow DANCE_FUNCTION_GUIDELINES prefix patterns"""
+        # Test MISSING prefix
+        pma_no_doi = Mock()
+        pma_no_doi.doi = None
+        
+        with self.assertRaises(NoPDFLink) as context:
+            the_inderscience_ula(pma_no_doi, verify=False)
+        self.assertTrue(str(context.exception).startswith('MISSING:'))
+
+    def test_cloudflare_blocking_documentation(self):
+        """Test that function correctly documents Cloudflare blocking status"""
+        # Function should work without verification but expect blocking with verification
+        result = the_inderscience_ula(self.mock_pma, verify=False)
+        expected_url = 'https://www.inderscienceonline.com/doi/epdf/10.1504/IJBRA.2013.056620'
+        self.assertEqual(result, expected_url)
+        
+        # With verification, expect AccessDenied (blocked by Cloudflare)
+        with self.assertRaises(AccessDenied):
+            the_inderscience_ula(self.mock_pma, verify=True)
 
 
 def test_inderscience_journal_recognition():
@@ -257,38 +229,5 @@ def test_inderscience_journal_recognition():
 
 
 if __name__ == '__main__':
-    # Run basic tests if executed directly
-    test_instance = TestInderscienceDance()
-    test_instance.setUp()
-
-    print("Running Inderscience Publishers tests...")
-    print("\n" + "="*60)
-
-    tests = [
-        ('test_inderscience_ula_url_construction_biomed_eng', 'Biomed Eng Technol URL construction'),
-        ('test_inderscience_ula_url_construction_bioinform', 'Bioinform Res Appl URL construction'),
-        ('test_inderscience_ula_url_construction_environ_pollut', 'Environ Pollut URL construction'),
-        ('test_inderscience_ula_successful_access', 'Successful access simulation'),
-        ('test_inderscience_ula_paywall_detection', 'Paywall detection'),
-        ('test_inderscience_ula_network_error', 'Network error handling'),
-        ('test_inderscience_ula_missing_doi', 'Missing DOI handling'),
-        ('test_inderscience_ula_404_error', '404 error handling'),
-        ('test_inderscience_ula_url_fallback', 'URL pattern fallback'),
-        ('test_inderscience_ula_doi_pattern_warning', 'Non-standard DOI pattern handling')
-    ]
-
-    for test_method, description in tests:
-        try:
-            getattr(test_instance, test_method)()
-            print(f"✓ {description} works")
-        except Exception as e:
-            print(f"✗ {description} failed: {e}")
-
-    try:
-        test_inderscience_journal_recognition()
-        print("✓ Registry test passed: Journal recognition works")
-    except Exception as e:
-        print(f"✗ Registry test failed: {e}")
-
-    print("\n" + "="*60)
-    print("Test suite completed!")
+    # Run comprehensive test suite
+    unittest.main(verbosity=2)

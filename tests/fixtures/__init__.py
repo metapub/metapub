@@ -156,3 +156,22 @@ OATEXT_EVIDENCE_PMIDS = {
     '99999902': {'doi': '10.15761/CCRR.1000123', 'journal': 'Clin Case Rep Rev'},
     '99999903': {'doi': '10.15761/HMO.1000456', 'journal': 'HMO'},
 }
+
+# Hilaris Publisher PMIDs with metadata
+HILARIS_EVIDENCE_PMIDS = {
+    '34094707': {'doi': '10.4172/2161-0525.1000551', 'journal': 'J Environ Anal Toxicol', 'pmc': 'PMC8176869'},
+    '26568896': {'doi': '10.4172/2161-0525.1000239', 'journal': 'J Environ Anal Toxicol', 'pmc': 'PMC4643289'},
+}
+
+# Walsh Medical Media PMIDs with metadata
+WALSHMEDIA_EVIDENCE_PMIDS = {
+    '29226023': {'doi': '10.4172/2161-1122.1000448', 'journal': 'Dentistry (Sunnyvale)', 'pmc': 'PMC5722253'},
+}
+
+# Brill Academic Publishers PMIDs with metadata
+BRILL_EVIDENCE_PMIDS = {
+    '26415349': {'doi': '10.1163/15733823-00202p03', 'journal': 'Early Sci Med'},
+    '11873782': {'doi': '10.1163/157338201x00154', 'journal': 'Early Sci Med'},
+    '11618220': {'doi': '10.1163/156853287x00032', 'journal': 'Toung Pao'},
+    '11636720': {'doi': '10.1163/156852873x00014', 'journal': 'Phronesis (Barc)'},
+}

@@ -16,13 +16,15 @@ Implementation approach:
 """
 
 import unittest
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
+import pytest
 from metapub.findit.dances.generic import the_doi_2step, verify_pdf_url
 from metapub.findit.dances import the_walshmedia_bora
 from metapub.findit.registry import JournalRegistry
 from metapub.pubmedfetcher import PubMedFetcher
 from metapub.exceptions import NoPDFLink
 from tests.test_compat import skip_network_tests
+from tests.fixtures import load_pmid_xml, WALSHMEDIA_EVIDENCE_PMIDS
 
 
 class TestWalshMediaRewrite(unittest.TestCase):
@@ -281,6 +283,172 @@ class TestWalshMediaRewriteBenefits(unittest.TestCase):
             self.assertIn(element, source, f"Should use proven element: {element}")
         
         print("✅ Follows proven evidence-driven approach")
+
+
+class TestWalshMediaXMLFixtures:
+    """Test WalshMedia dance function with real XML fixtures."""
+
+    def test_walshmedia_authentic_metadata_validation(self):
+        """Validate authentic metadata from XML fixtures matches expected patterns."""
+        for pmid, expected in WALSHMEDIA_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            
+            # Validate DOI follows WalshMedia pattern (10.4172/)
+            assert pma.doi == expected['doi']
+            assert pma.doi.startswith('10.4172/'), f"WalshMedia DOI must start with 10.4172/, got: {pma.doi}"
+            
+            # Validate journal name matches expected
+            assert pma.journal == expected['journal']
+            
+            # Validate PMID matches
+            assert pma.pmid == pmid
+            
+            print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
+
+    @patch('metapub.findit.dances.walshmedia.the_doi_2step')
+    def test_walshmedia_url_construction_without_verification(self, mock_doi_2step):
+        """Test URL construction without verification using XML fixtures."""
+        for pmid in WALSHMEDIA_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            
+            # Mock DOI resolution to WalshMedia URL
+            expected_url = f'https://www.walshmedicalmedia.com/open-access/test-article-{pmid}.pdf'
+            mock_doi_2step.return_value = expected_url
+            
+            # Test URL construction without verification
+            result = the_walshmedia_bora(pma, verify=False)
+            
+            # Should return the DOI resolution result
+            assert result == expected_url
+            mock_doi_2step.assert_called_with(pma.doi)
+            
+            print(f"✓ PMID {pmid} URL construction: {result}")
+
+    @patch('metapub.findit.dances.walshmedia.verify_pdf_url')
+    @patch('metapub.findit.dances.walshmedia.the_doi_2step')
+    def test_walshmedia_url_construction_with_mocked_verification(self, mock_doi_2step, mock_verify):
+        """Test URL construction with mocked verification."""
+        for pmid in WALSHMEDIA_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            
+            expected_url = f'https://www.walshmedicalmedia.com/open-access/test-article-{pmid}.pdf'
+            mock_doi_2step.return_value = expected_url
+            # Mock successful verification returns the URL
+            mock_verify.return_value = expected_url
+            
+            result = the_walshmedia_bora(pma, verify=True)
+            
+            assert result == expected_url
+            mock_verify.assert_called_with(expected_url, 'Walsh Medical Media')
+            
+            print(f"✓ PMID {pmid} verified URL: {result}")
+
+    @patch('metapub.findit.dances.walshmedia.verify_pdf_url')
+    @patch('metapub.findit.dances.walshmedia.the_doi_2step')
+    def test_walshmedia_paywall_handling(self, mock_doi_2step, mock_verify):
+        """Test paywall detection and error handling."""
+        expected_url = 'https://www.walshmedicalmedia.com/open-access/test-article.pdf'
+        mock_doi_2step.return_value = expected_url
+        
+        # Mock paywall response
+        from metapub.exceptions import AccessDenied
+        mock_verify.side_effect = AccessDenied('PAYWALL: Article requires subscription')
+        
+        pma = load_pmid_xml('29226023')  # Use test PMID
+        
+        with pytest.raises(AccessDenied):
+            the_walshmedia_bora(pma, verify=True)
+
+    def test_walshmedia_journal_coverage(self):
+        """Test journal coverage across different WalshMedia publications."""
+        journals_found = set()
+        
+        for pmid in WALSHMEDIA_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            journals_found.add(pma.journal)
+        
+        # Should have at least 1 WalshMedia journal
+        assert len(journals_found) >= 1, f"Expected at least 1 journal, got: {journals_found}"
+        
+        # All should be from Dentistry (Sunnyvale) based on our evidence
+        expected_journals = {'Dentistry (Sunnyvale)'}
+        assert journals_found == expected_journals, f"Unexpected journals: {journals_found - expected_journals}"
+
+    def test_walshmedia_doi_pattern_consistency(self):
+        """Test that all WalshMedia PMIDs use 10.4172 DOI prefix."""
+        doi_prefix = '10.4172'
+        
+        for pmid, data in WALSHMEDIA_EVIDENCE_PMIDS.items():
+            assert data['doi'].startswith(doi_prefix), f"PMID {pmid} has unexpected DOI prefix: {data['doi']}"
+            
+            pma = load_pmid_xml(pmid)
+            assert pma.doi.startswith(doi_prefix), f"PMID {pmid} XML fixture has unexpected DOI: {pma.doi}"
+
+    @patch('metapub.findit.dances.walshmedia.the_doi_2step')
+    def test_walshmedia_error_handling_missing_doi(self, mock_doi_2step):
+        """Test error handling for articles without DOI."""
+        # Create mock article without DOI
+        class MockPMA:
+            def __init__(self):
+                self.doi = None
+                self.journal = 'Dentistry (Sunnyvale)'
+        
+        mock_pma = MockPMA()
+        
+        with pytest.raises(NoPDFLink) as excinfo:
+            the_walshmedia_bora(mock_pma)
+        
+        assert 'MISSING' in str(excinfo.value) and 'DOI required' in str(excinfo.value)
+
+    @patch('metapub.findit.dances.walshmedia.the_doi_2step')
+    def test_walshmedia_template_flexibility(self, mock_doi_2step):
+        """Test template flexibility for WalshMedia URL patterns."""
+        pma = load_pmid_xml('29226023')  # Dentistry (Sunnyvale)
+        
+        # Mock DOI resolution
+        expected_url = 'https://www.walshmedicalmedia.com/open-access/dental-whitening-example.pdf'
+        mock_doi_2step.return_value = expected_url
+        
+        # Test URL construction
+        result = the_walshmedia_bora(pma, verify=False)
+        
+        # Should follow WalshMedia URL pattern
+        assert result == expected_url
+        assert 'walshmedicalmedia.com' in result
+        mock_doi_2step.assert_called_with(pma.doi)
+
+    def test_walshmedia_pmc_availability(self):
+        """Test coverage of PMC-available WalshMedia articles."""
+        # Our test article has PMC ID
+        for pmid, expected in WALSHMEDIA_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            
+            assert 'pmc' in expected, f"PMID {pmid} should have PMC ID"
+            
+            # Test URL construction still works even with PMC availability
+            with patch('metapub.findit.dances.walshmedia.the_doi_2step') as mock_doi:
+                mock_doi.return_value = f'https://www.walshmedicalmedia.com/open-access/test-{pmid}.pdf'
+                result = the_walshmedia_bora(pma, verify=False)
+                assert result is not None
+                assert 'walshmedicalmedia.com' in result
+            
+            print(f"✓ PMID {pmid} (PMC: {expected['pmc']}) works with WalshMedia infrastructure")
+
+    def test_walshmedia_follows_guidelines_pattern(self):
+        """Test that WalshMedia follows DANCE_FUNCTION_GUIDELINES pattern."""
+        pma = load_pmid_xml('29226023')
+        
+        # Should use the_doi_2step approach (evidenced by test design)
+        with patch('metapub.findit.dances.walshmedia.the_doi_2step') as mock_doi:
+            mock_doi.return_value = 'https://www.walshmedicalmedia.com/open-access/test.pdf'
+            
+            result = the_walshmedia_bora(pma, verify=False)
+            
+            # Function should delegate to the_doi_2step
+            mock_doi.assert_called_with(pma.doi)
+            assert 'walshmedicalmedia.com' in result
+            
+            print(f"✓ WalshMedia follows DANCE_FUNCTION_GUIDELINES pattern")
 
 
 if __name__ == '__main__':

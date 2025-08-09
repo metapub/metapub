@@ -10,6 +10,7 @@ from metapub.findit.dances import the_brill_bridge
 from metapub.exceptions import AccessDenied, NoPDFLink
 from metapub.findit.registry import JournalRegistry
 from metapub.findit.journals.brill import brill_journals
+from tests.fixtures import load_pmid_xml, BRILL_EVIDENCE_PMIDS
 
 
 class TestBrillDance(BaseDanceTest):
@@ -347,6 +348,184 @@ def test_brill_journal_recognition():
         print(f"✓ Found {found_count} properly mapped Brill journals")
 
     registry.close()
+
+
+class TestBrillXMLFixtures:
+    """Test Brill dance function with real XML fixtures."""
+
+    def test_brill_authentic_metadata_validation(self):
+        """Validate authentic metadata from XML fixtures matches expected patterns."""
+        for pmid, expected in BRILL_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            
+            # Validate DOI follows Brill pattern (10.1163/)
+            assert pma.doi == expected['doi']
+            assert pma.doi.startswith('10.1163/'), f"Brill DOI must start with 10.1163/, got: {pma.doi}"
+            
+            # Validate journal name matches expected
+            assert pma.journal == expected['journal']
+            
+            # Validate PMID matches
+            assert pma.pmid == pmid
+            
+            print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
+
+    @patch('metapub.findit.dances.brill.unified_uri_get')
+    @patch('metapub.findit.dances.brill.the_doi_2step')
+    def test_brill_url_construction_without_verification(self, mock_doi_2step, mock_uri_get):
+        """Test URL construction without verification using XML fixtures."""
+        for pmid in BRILL_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            
+            # Mock DOI resolution and response with citation_pdf_url meta tag
+            expected_article_url = f'https://brill.com/view/journals/test-article-{pmid}'
+            expected_pdf_url = f'https://brill.com/downloadpdf/view/journals/test-{pmid}.pdf'
+            mock_doi_2step.return_value = expected_article_url
+            
+            mock_response = Mock()
+            mock_response.status_code = 200
+            mock_response.text = f'<html><head><meta name="citation_pdf_url" content="{expected_pdf_url}" /></head></html>'
+            mock_uri_get.return_value = mock_response
+            
+            # Test URL construction without verification
+            result = the_brill_bridge(pma, verify=False)
+            
+            # Should extract PDF URL from meta tag
+            assert result == expected_pdf_url
+            assert 'brill.com' in result
+            
+            print(f"✓ PMID {pmid} URL construction: {result}")
+
+    @patch('metapub.findit.dances.brill.verify_pdf_url')
+    @patch('metapub.findit.dances.brill.unified_uri_get')
+    @patch('metapub.findit.dances.brill.the_doi_2step')
+    def test_brill_url_construction_with_mocked_verification(self, mock_doi_2step, mock_uri_get, mock_verify):
+        """Test URL construction with mocked verification."""
+        # Mock successful response with citation_pdf_url meta tag
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.text = '<html><head><meta name="citation_pdf_url" content="https://brill.com/downloadpdf/view/journals/test.pdf" /></head></html>'
+        mock_uri_get.return_value = mock_response
+        
+        # Mock successful verification
+        mock_verify.return_value = None
+        
+        for pmid in BRILL_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            
+            expected_article_url = f'https://brill.com/view/journals/test-article-{pmid}'
+            expected_pdf_url = f'https://brill.com/downloadpdf/view/journals/test-{pmid}.pdf'
+            mock_doi_2step.return_value = expected_article_url
+            mock_response.text = f'<html><head><meta name="citation_pdf_url" content="{expected_pdf_url}" /></head></html>'
+            
+            result = the_brill_bridge(pma, verify=True)
+            
+            # Should find and return PDF URL from meta tag
+            assert result == expected_pdf_url
+            mock_verify.assert_called_with(expected_pdf_url, 'Brill')
+            
+            print(f"✓ PMID {pmid} verified URL: {result}")
+
+    @patch('metapub.findit.dances.brill.unified_uri_get')
+    @patch('metapub.findit.dances.brill.the_doi_2step')
+    def test_brill_paywall_handling(self, mock_doi_2step, mock_uri_get):
+        """Test paywall detection and error handling."""
+        # Mock response without citation_pdf_url meta tag (indicates no access)
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.text = '<html><body><div class="paywall">Please subscribe to access</div></body></html>'
+        mock_uri_get.return_value = mock_response
+        
+        expected_article_url = 'https://brill.com/view/journals/test-article'
+        mock_doi_2step.return_value = expected_article_url
+        
+        pma = load_pmid_xml('26415349')  # Use first test PMID
+        
+        with pytest.raises(NoPDFLink) as excinfo:
+            the_brill_bridge(pma, verify=True)
+        
+        assert 'No PDF URL found' in str(excinfo.value)
+
+    def test_brill_journal_coverage(self):
+        """Test journal coverage across different Brill publications."""
+        journals_found = set()
+        
+        for pmid in BRILL_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            journals_found.add(pma.journal)
+        
+        # Should have multiple different Brill journals
+        assert len(journals_found) >= 3, f"Expected at least 3 different journals, got: {journals_found}"
+        
+        # All should be known Brill journals
+        expected_journals = {'Early Sci Med', 'Toung Pao', 'Phronesis (Barc)'}
+        assert journals_found == expected_journals, f"Unexpected journals: {journals_found - expected_journals}"
+
+    def test_brill_doi_pattern_consistency(self):
+        """Test that all Brill PMIDs use 10.1163 DOI prefix."""
+        doi_prefix = '10.1163'
+        
+        for pmid, data in BRILL_EVIDENCE_PMIDS.items():
+            assert data['doi'].startswith(doi_prefix), f"PMID {pmid} has unexpected DOI prefix: {data['doi']}"
+            
+            pma = load_pmid_xml(pmid)
+            assert pma.doi.startswith(doi_prefix), f"PMID {pmid} XML fixture has unexpected DOI: {pma.doi}"
+
+    @patch('metapub.findit.dances.brill.the_doi_2step')
+    def test_brill_error_handling_missing_doi(self, mock_doi_2step):
+        """Test error handling for articles without DOI."""
+        # Create mock article without DOI
+        class MockPMA:
+            def __init__(self):
+                self.doi = None
+                self.journal = 'Early Sci Med'
+        
+        mock_pma = MockPMA()
+        
+        with pytest.raises(NoPDFLink) as excinfo:
+            the_brill_bridge(mock_pma)
+        
+        assert 'DOI' in str(excinfo.value)
+
+    @patch('metapub.findit.dances.brill.unified_uri_get')
+    @patch('metapub.findit.dances.brill.the_doi_2step')
+    def test_brill_template_flexibility(self, mock_doi_2step, mock_uri_get):
+        """Test template flexibility for Brill URL patterns."""
+        pma = load_pmid_xml('26415349')  # Early Sci Med
+        
+        # Mock successful response with citation_pdf_url meta tag
+        mock_response = Mock()
+        mock_response.status_code = 200
+        expected_pdf_url = 'https://brill.com/downloadpdf/view/journals/early-sci-med-test.pdf'
+        mock_response.text = f'<html><head><meta name="citation_pdf_url" content="{expected_pdf_url}" /></head></html>'
+        mock_uri_get.return_value = mock_response
+        
+        # Mock DOI resolution
+        expected_article_url = 'https://brill.com/view/journals/early-sci-med-test'
+        mock_doi_2step.return_value = expected_article_url
+        
+        # Test URL construction
+        result = the_brill_bridge(pma, verify=False)
+        
+        # Should follow Brill URL pattern
+        assert result == expected_pdf_url
+        assert 'brill.com' in result
+        mock_doi_2step.assert_called_with(pma.doi)
+
+    def test_brill_historical_journals_coverage(self):
+        """Test coverage of historical academic journals from Brill."""
+        # Brill specializes in historical and academic journals
+        historical_journals = set()
+        
+        for pmid in BRILL_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            historical_journals.add(pma.journal)
+        
+        # Should include historical/academic journals
+        expected_historical = {'Early Sci Med', 'Toung Pao', 'Phronesis (Barc)'}
+        assert historical_journals == expected_historical
+        
+        print(f"✓ Historical journals covered: {historical_journals}")
 
 
 if __name__ == '__main__':

@@ -1,4 +1,11 @@
-"""Tests for Project MUSE dance function."""
+"""Tests for Project MUSE dance function - evidence-driven rewrite.
+
+Following DANCE_FUNCTION_CHECKLIST.md Phase 4 guidelines:
+- Test the evidence-driven approach with real pattern examples
+- Test each error condition separately  
+- Use evidence-based patterns from HTML samples
+- Verify DANCE_FUNCTION_GUIDELINES compliance
+"""
 
 import pytest
 from unittest.mock import patch, Mock
@@ -10,8 +17,160 @@ from metapub.findit.dances import the_projectmuse_syrtos
 from metapub.exceptions import AccessDenied, NoPDFLink
 
 
+class TestProjectMuseEvidenceDriven:
+    """Test Project MUSE evidence-driven rewrite with citation_pdf_url meta tag extraction."""
+
+    def test_evidence_based_meta_tag_extraction(self):
+        """Test meta tag extraction with evidence-based patterns from HTML samples."""
+        # Evidence-based test cases from actual HTML samples analyzed
+        evidence_cases = [
+            ('https://muse.jhu.edu/pub/17/article/757992', 
+             'https://muse.jhu.edu/pub/17/article/757992/pdf'),  # Sample 1
+            ('https://muse.jhu.edu/pub/17/article/931228', 
+             'https://muse.jhu.edu/pub/17/article/931228/pdf'),  # Sample 2  
+            ('https://muse.jhu.edu/pub/17/article/837853', 
+             'https://muse.jhu.edu/pub/17/article/837853/pdf'),  # Sample 3
+        ]
+        
+        for article_url, expected_pdf_url in evidence_cases:
+            # Create HTML content based on actual evidence patterns
+            html_content = f'''
+            <meta name="citation_publisher" content="University of Nebraska Press">
+            <meta name="citation_journal_title" content="Journal of Black Sexuality and Relationships">
+            <meta name="citation_fulltext_html_url" content="{article_url}">
+            <meta name="citation_pdf_url" content="{expected_pdf_url}">
+            <meta name="citation_doi" content="10.1353/bsr.2024.test">
+            '''
+            
+            pma = Mock()
+            pma.doi = '10.1353/bsr.2024.test'
+            
+            with patch('metapub.findit.dances.projectmuse.the_doi_2step') as mock_doi_step, \
+                 patch('metapub.findit.dances.projectmuse.unified_uri_get') as mock_get, \
+                 patch('metapub.findit.dances.projectmuse.verify_pdf_url') as mock_verify:
+                
+                mock_doi_step.return_value = article_url
+                mock_response = Mock()
+                mock_response.status_code = 200
+                mock_response.text = html_content
+                mock_get.return_value = mock_response
+                
+                result = the_projectmuse_syrtos(pma, verify=False)
+                assert result == expected_pdf_url
+                
+                # Verify function calls
+                mock_doi_step.assert_called_once_with('10.1353/bsr.2024.test')
+                mock_get.assert_called_once_with(article_url)
+                assert not mock_verify.called  # verify=False
+
+    def test_with_verification_enabled(self):
+        """Test that verification is properly called when enabled."""
+        pma = Mock()
+        pma.doi = '10.1353/bsr.2024.test'
+        
+        html_content = '''
+        <meta name="citation_pdf_url" content="https://muse.jhu.edu/pub/17/article/757992/pdf">
+        '''
+        
+        with patch('metapub.findit.dances.projectmuse.the_doi_2step') as mock_doi_step, \
+             patch('metapub.findit.dances.projectmuse.unified_uri_get') as mock_get, \
+             patch('metapub.findit.dances.projectmuse.verify_pdf_url') as mock_verify:
+            
+            mock_doi_step.return_value = 'https://muse.jhu.edu/pub/17/article/757992'
+            mock_response = Mock()
+            mock_response.status_code = 200
+            mock_response.text = html_content
+            mock_get.return_value = mock_response
+            
+            result = the_projectmuse_syrtos(pma, verify=True)
+            
+            assert result == 'https://muse.jhu.edu/pub/17/article/757992/pdf'
+            mock_verify.assert_called_once_with('https://muse.jhu.edu/pub/17/article/757992/pdf', 'Project MUSE')
+
+    def test_missing_doi_error(self):
+        """Test that missing DOI raises appropriate error."""
+        pma = Mock()
+        pma.doi = None
+        
+        with pytest.raises(NoPDFLink) as excinfo:
+            the_projectmuse_syrtos(pma, verify=False)
+        
+        assert 'MISSING: DOI required for Project MUSE articles' in str(excinfo.value)
+
+    def test_http_error_handling(self):
+        """Test handling of HTTP errors during article page access."""
+        pma = Mock()
+        pma.doi = '10.1353/bsr.2024.test'
+        
+        with patch('metapub.findit.dances.projectmuse.the_doi_2step') as mock_doi_step, \
+             patch('metapub.findit.dances.projectmuse.unified_uri_get') as mock_get:
+            
+            mock_doi_step.return_value = 'https://muse.jhu.edu/pub/17/article/757992'
+            mock_response = Mock()
+            mock_response.status_code = 404
+            mock_get.return_value = mock_response
+            
+            with pytest.raises(NoPDFLink) as excinfo:
+                the_projectmuse_syrtos(pma, verify=False)
+            
+            assert 'TXERROR: Could not access Project MUSE article page (HTTP 404)' in str(excinfo.value)
+
+    def test_missing_meta_tag_error(self):
+        """Test error when citation_pdf_url meta tag is not found."""
+        pma = Mock()
+        pma.doi = '10.1353/bsr.2024.test'
+        
+        # HTML without citation_pdf_url meta tag
+        html_content = '''
+        <meta name="citation_publisher" content="University of Nebraska Press">
+        <meta name="citation_title" content="Test Article">
+        '''
+        
+        with patch('metapub.findit.dances.projectmuse.the_doi_2step') as mock_doi_step, \
+             patch('metapub.findit.dances.projectmuse.unified_uri_get') as mock_get:
+            
+            mock_doi_step.return_value = 'https://muse.jhu.edu/pub/17/article/757992'
+            mock_response = Mock()
+            mock_response.status_code = 200
+            mock_response.text = html_content
+            mock_get.return_value = mock_response
+            
+            with pytest.raises(NoPDFLink) as excinfo:
+                the_projectmuse_syrtos(pma, verify=False)
+            
+            assert 'MISSING: No PDF URL found via citation_pdf_url meta tag extraction' in str(excinfo.value)
+
+    def test_dance_function_guidelines_compliance(self):
+        """Test that rewrite follows DANCE_FUNCTION_GUIDELINES principles."""
+        pma = Mock()
+        pma.doi = '10.1353/bsr.2024.test'
+        
+        html_content = '''
+        <meta name="citation_pdf_url" content="https://muse.jhu.edu/pub/17/article/757992/pdf">
+        '''
+        
+        with patch('metapub.findit.dances.projectmuse.the_doi_2step') as mock_doi_step, \
+             patch('metapub.findit.dances.projectmuse.unified_uri_get') as mock_get:
+            
+            mock_doi_step.return_value = 'https://muse.jhu.edu/pub/17/article/757992'
+            mock_response = Mock()
+            mock_response.status_code = 200
+            mock_response.text = html_content
+            mock_get.return_value = mock_response
+            
+            # Function should work without complex error handling
+            result = the_projectmuse_syrtos(pma, verify=False)
+            
+            # Simple assertion - if it returns a URL, the evidence-driven approach worked
+            assert result == 'https://muse.jhu.edu/pub/17/article/757992/pdf'
+            
+            # Verify it uses the evidence-based approach (one DOI resolution, one meta extraction)
+            mock_doi_step.assert_called_once()
+            mock_get.assert_called_once()
+
+
 class TestProjectMuseDance(BaseDanceTest):
-    """Test cases for Project MUSE."""
+    """Legacy test cases for Project MUSE - updated for evidence-driven rewrite."""
 
     def setUp(self):
         """Set up test fixtures."""

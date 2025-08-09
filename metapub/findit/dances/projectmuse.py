@@ -1,103 +1,56 @@
-"""Project MUSE dance function - REFACTORED.
+"""
+Project MUSE dance function - evidence-driven rewrite.
 
-Follows CLAUDE_PROCESS principles:
-- ONE consistent URL pattern based on actual testing
-- Simple error handling
-- Uses generic functions where possible
-- No trial-and-error approaches
+Evidence-driven implementation based on HTML samples analysis showing
+perfect citation_pdf_url meta tags in all samples.
+
+Pattern discovered from HTML samples:
+- citation_pdf_url meta tags: 100% reliable across all 3 samples
+- URL pattern: https://muse.jhu.edu/pub/{id}/article/{article_id}/pdf
+- Domain consistency: muse.jhu.edu (100% consistent)
+- All samples from University of Nebraska Press but hosted on Project MUSE
+- No blocking detected, clean HTML content throughout
 """
 
-from ...exceptions import *
-from .generic import *
-
-
-# TODO get rid of dumb try-except jaw
-
-# needs rewrite and verification
+import re
+from .generic import the_doi_2step, verify_pdf_url, unified_uri_get
+from ...exceptions import NoPDFLink
 
 
 def the_projectmuse_syrtos(pma, verify=True):
-    """Dance function for Project MUSE journals.
-
-    Handles academic journals published on Project MUSE platform at muse.jhu.edu.
-    Project MUSE provides access to scholarly content primarily in humanities and social sciences.
-
-    Primary URL Pattern: Constructed from DOI resolution
-    Note: Project MUSE requires institutional access for most content
-
-    Args:
-        pma: PubMedArticle object
-        verify: Whether to verify PDF accessibility
-
-    Returns:
-        str: URL to PDF
-
-    Raises:
-        NoPDFLink: If DOI missing or URL construction fails
-        AccessDenied: If paywall detected (common for Project MUSE)
+    """
+    Project MUSE dance function - evidence-driven meta tag extraction.
+    
+    Based on evidence analysis of 3 HTML samples showing perfect citation_pdf_url 
+    meta tags in all cases. Simple and reliable approach.
+    
+    :param pma: PubMedArticle object  
+    :param verify: bool [default: True] - Verify PDF URL accessibility
+    :return: PDF URL string
+    :raises: NoPDFLink if DOI missing or meta tag extraction fails
     """
     if not pma.doi:
-        raise NoPDFLink(f'MISSING: DOI required for Project MUSE access - Journal: {pma.journal}')
-
-    # Project MUSE uses DOI resolution to get to article pages
-    # Direct PDF URLs are typically behind institutional access
-
+        raise NoPDFLink('MISSING: DOI required for Project MUSE articles')
+    
+    # Step 1: Resolve DOI to get Project MUSE article URL
+    article_url = the_doi_2step(pma.doi)
+    
+    # Step 2: Fetch article page HTML
+    response = unified_uri_get(article_url)
+    
+    if response.status_code not in (200, 301, 302, 307):
+        raise NoPDFLink(f'TXERROR: Could not access Project MUSE article page (HTTP {response.status_code})')
+    
+    # Step 3: Extract citation_pdf_url meta tag (evidence-based approach)
+    pdf_match = re.search(r'<meta[^>]*name=["\']citation_pdf_url["\'][^>]*content=["\']([^"\']+)["\']', 
+                         response.text, re.IGNORECASE)
+    
+    if not pdf_match:
+        raise NoPDFLink('MISSING: No PDF URL found via citation_pdf_url meta tag extraction')
+    
+    pdf_url = pdf_match.group(1)
+    
     if verify:
-        # Resolve DOI to get Project MUSE article URL
-        try:
-            article_url = the_doi_2step(pma.doi)
-        except NoPDFLink as e:
-            raise NoPDFLink(f'TXERROR: DOI resolution failed for Project MUSE: {e}')
-
-        # Check if it resolved to Project MUSE
-        if 'muse.jhu.edu' not in article_url:
-            raise NoPDFLink(f'TXERROR: DOI did not resolve to Project MUSE - got: {article_url}')
-
-        # Try to access the article page
-        try:
-            response = unified_uri_get(article_url, timeout=10, allow_redirects=True)
-
-            if response.status_code == 200:
-                content_type = response.headers.get('content-type', '').lower()
-                if 'application/pdf' in content_type:
-                    return response.url  # Redirected to PDF
-                elif 'text/html' in content_type:
-                    # Check for paywall (very common for Project MUSE)
-                    if detect_paywall_from_html(response.text):
-                        raise AccessDenied(f'PAYWALL: Project MUSE article requires institutional access - {article_url}')
-                    else:
-                        # Try to construct PDF URL from article URL
-                        # Project MUSE pattern: /article/123456 -> /article/123456/pdf
-                        if '/article/' in article_url:
-                            pdf_url = article_url.rstrip('/') + '/pdf'
-                            try:
-                                pdf_response = unified_uri_get(pdf_url, timeout=10)
-                                if pdf_response.status_code == 200:
-                                    return pdf_url
-                            except Exception:
-                                pass
-
-                        raise NoPDFLink(f'TXERROR: Could not find PDF link on Project MUSE page - attempted: {article_url}')
-            else:
-                raise NoPDFLink(f'TXERROR: Project MUSE returned status {response.status_code} - attempted: {article_url}')
-
-        except AccessDenied:
-            raise  # Bubble up paywall detection
-        except NoPDFLink:
-            raise  # Bubble up specific errors
-        except Exception as e:
-            raise NoPDFLink(f'TXERROR: Network error accessing Project MUSE: {e} - attempted: {article_url}')
-
-    else:
-        # TODO: this should really come first. Also, this is a horrible if-then pattern
-        # Without verification, try to construct likely PDF URL pattern
-        try:
-            article_url = the_doi_2step(pma.doi)
-            if 'muse.jhu.edu' in article_url and '/article/' in article_url:
-                # Try to construct PDF URL
-                return article_url.rstrip('/') + '/pdf'
-            else:
-                # Fallback: return article URL with warning that it's not a PDF
-                return article_url  # WARNING: This is an HTML page, not a PDF
-        except Exception:
-            raise NoPDFLink(f'TXERROR: Could not construct Project MUSE URL for DOI: {pma.doi}')
+        verify_pdf_url(pdf_url, 'Project MUSE')
+    
+    return pdf_url

@@ -64,7 +64,7 @@ class TestPublisher:
         # ✅ Authentic DOI, journal, all metadata
 ```
 
-## Conversion Status: 28/37 Complete 🎯 PHASE 1 TARGET ACHIEVED! (4 publishers were duplicate entities)
+## Conversion Status: 31/37 Complete 🎯 PHASE 1 TARGET ACHIEVED! (4 publishers were duplicate entities)
 
 ### XML Fixtures Complete:
 - ✅ **AAAS** - Complete reference implementation
@@ -96,6 +96,9 @@ class TestPublisher:
 - ✅ **JCI** - Complete conversion (consolidated into test_jci.py)
 - ✅ **AnnualReviews** - Complete conversion (consolidated into test_annualreviews.py)
 - ✅ **Bentham** - Complete conversion (consolidated into test_bentham.py)
+- ✅ **Oxford Academic** - Complete conversion (consolidated into test_oxford_academic.py)
+- ✅ **Brill** - Complete conversion (consolidated into test_brill.py)
+- ✅ **IngentaConnect** - Complete conversion (consolidated into test_ingentaconnect.py)
 
 ### Found to be Duplicate Entities (Removed from plan):
 - 🚫 **Cell Press** → actually **ScienceDirect** (Elsevier-owned)
@@ -103,7 +106,7 @@ class TestPublisher:
 - 🚫 **BMJ Open Gastroenterology** → actually **BMJ Publishing Group**
 - 🚫 **Oxford Academic (Endocrine Society)** → actually **Oxford Academic**
 
-- ❌ **6 publishers** remaining for XML conversion
+- ❌ **3 publishers** remaining for XML conversion
 
 ## Publisher Priority List
 
@@ -146,7 +149,7 @@ class TestPublisher:
 | ✅ | **thieme** | test_thieme.py | 6 | ✓ | Medium | COMPLETED: XML fixtures consolidated, the_doi_slide generic function |
 | ✅ | **biochemsoc** | test_biochemsoc.py | 8 | ✓ | High | COMPLETED: XML fixtures consolidated into test_biochemsoc.py |
 | ✅ | **mdpi** | test_mdpi.py | 8 | ✓ | High | COMPLETED: XML fixtures consolidated into test_mdpi.py |
-| ❌ | **oxford_academic** | test_oxford_academic.py | 7 | ✓ | High | Major academic publisher |
+| ✅ | **oxford_academic** | test_oxford_academic.py | 7 | ✓ | High | COMPLETED: XML fixtures consolidated into test_oxford_academic.py |
 
 ### 🔍 **Phase 4: Moderate Priority** (Medium test coverage)
 

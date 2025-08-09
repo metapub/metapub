@@ -268,3 +268,22 @@ DOVEPRESS_EVIDENCE_PMIDS = {
     '37822558': {'doi': '10.2147/AHMT.S429238', 'journal': 'Adolesc Health Med Ther', 'pmc': 'PMC10562508'},
     '35592492': {'doi': '10.2147/AHMT.S358140', 'journal': 'Adolesc Health Med Ther', 'pmc': 'PMC9113550'},
 }
+
+# Oxford University Press PMIDs with metadata (from verified_pmids)
+OXFORD_EVIDENCE_PMIDS = {
+    '38118002': {'doi': '10.1093/nar/gkad1193', 'journal': 'Nucleic Acids Res', 'pmc': 'PMC10954454'},
+    '35767459': {'doi': '10.1093/ajh/hpac079', 'journal': 'Am J Hypertens'},
+    '39345789': {'doi': '10.1093/jamiaopen/ooae099', 'journal': 'JAMIA Open'},
+}
+
+# Brill PMIDs with metadata (from verified_pmids)
+BRILL_EVIDENCE_PMIDS = {
+    '38988993': {'doi': '10.1163/1568539X-bja10251', 'journal': 'Behaviour', 'pmc': 'PMC7616155'},
+    '36176722': {'doi': '10.1163/1568539x-bja10109', 'journal': 'Behaviour', 'pmc': 'PMC9518721'},
+}
+
+# IngentaConnect PMIDs with metadata (from verified_pmids)
+INGENTACONNECT_EVIDENCE_PMIDS = {
+    '38884108': {'doi': '10.5129/001041522x16222193902161', 'journal': 'Comp Polit', 'pmc': 'PMC11177781'},
+    '34707797': {'doi': '10.21300/21.4.2021.7', 'journal': 'Technol Innov', 'pmc': 'PMC8547312'},
+}

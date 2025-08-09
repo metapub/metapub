@@ -241,7 +241,6 @@ def test_ingentaconnect_journal_recognition():
     """Test that Ingenta Connect journals are properly recognized in the registry."""
     from metapub.findit.registry import JournalRegistry
     from metapub.findit.journals.ingentaconnect import ingentaconnect_journals
-from tests.fixtures import load_pmid_xml, INGENTACONNECT_EVIDENCE_PMIDS
 
     registry = JournalRegistry()
 

@@ -13,6 +13,7 @@ from metapub import PubMedFetcher
 from metapub.findit.dances.oxford_academic import the_oxford_academic_foxtrot
 from metapub.exceptions import NoPDFLink
 from metapub.crossref import CrossRefWork
+from tests.fixtures import load_pmid_xml, OXFORD_EVIDENCE_PMIDS
 
 
 class TestOxfordAcademic(BaseDanceTest):
@@ -367,3 +368,32 @@ if __name__ == '__main__':
     print("Test suite completed!")
     print("\nNote: Oxford Academic dance uses CrossRef API to bypass Cloudflare")
     print("protection. PDF URLs contain session tokens and work directly.")
+
+
+class TestOxfordAcademicXMLFixtures:
+    """Test Oxford Academic dance function with real XML fixtures."""
+
+    def test_oxford_authentic_metadata_validation(self):
+        """Validate authentic metadata from XML fixtures matches expected patterns."""
+        for pmid, expected in OXFORD_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi == expected['doi']
+            assert pma.journal == expected['journal']
+            assert pma.pmid == pmid
+            print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
+
+    def test_oxford_doi_pattern_consistency(self):
+        """Test Oxford DOI patterns (10.1093/)."""
+        for pmid, data in OXFORD_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi.startswith('10.1093/'), f"Oxford DOI must start with 10.1093/, got: {pma.doi}"
+            print(f"✓ PMID {pmid} DOI pattern: {pma.doi}")
+
+    def test_oxford_journal_coverage(self):
+        """Test Oxford journal coverage."""
+        journals = set()
+        for pmid in OXFORD_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            journals.add(pma.journal)
+        assert len(journals) >= 2
+        print(f"✓ Journals covered: {journals}")

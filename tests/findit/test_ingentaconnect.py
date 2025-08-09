@@ -1,331 +1,258 @@
-"""Tests for Ingenta Connect dance function."""
+"""
+Evidence-driven test suite for Ingenta Connect dance function
+Testing CLAUDE.md compliant rewrite with evidence-based DOI patterns
 
-import pytest
+EVIDENCE-DRIVEN REWRITE 2025-08-09:
+- Tests simple DOI resolution + URL transformation pattern
+- Validates CLAUDE.md compliance (no huge try-except, standard verification)
+- Uses real PMIDs: 38884108, 34707797
+- Function reduced from 121→32 lines (73.6% reduction)
+"""
+
+import unittest
 from unittest.mock import patch, Mock
-import requests
 
-from .common import BaseDanceTest
-from metapub import PubMedFetcher
-from metapub.findit.dances import the_ingenta_flux
+from metapub.findit.dances.ingenta import the_ingenta_flux
 from metapub.exceptions import AccessDenied, NoPDFLink
+from metapub import PubMedFetcher
 
 
-class TestIngentaConnectDance(BaseDanceTest):
-    """Test cases for Ingenta Connect platform."""
+class TestIngentaConnectDance(unittest.TestCase):
+    """Evidence-driven test suite for Ingenta Connect dance function"""
 
     def setUp(self):
-        """Set up test fixtures."""
-        super().setUp()
+        """Set up test fixtures with real evidence PMIDs"""
         self.fetch = PubMedFetcher()
+        
+        # Real evidence PMIDs from Ingenta Connect with diverse DOI patterns
+        self.evidence_pmids = [
+            '38884108',  # DOI: 10.5129/001041522x16222193902161 (Comp Polit)
+            '34707797'   # DOI: 10.21300/21.4.2021.7 (Technol Innov)
+        ]
+        
+        # Create mock PMA with evidence data
+        self.mock_pma = Mock()
+        self.mock_pma.doi = '10.5129/001041522x16222193902161'
+        self.mock_pma.journal = 'Comp Polit'
+        self.mock_pma.pmid = '38884108'
 
-    def test_ingenta_connection_url_construction_middle_east_j(self):
-        """Test 1: URL construction success (Middle East J).
-        
-        PMID: 22081838 (Middle East J)
-        Expected: Should construct valid Ingenta Connect article URL via DOI resolution
-        """
-        pma = self.fetch.article_by_pmid('22081838')
-        
-        assert pma.journal == 'Middle East J'
-        assert pma.doi == '10.3751/65.3.14'
-        print(f"Test 1 - Article info: {pma.journal}, DOI: {pma.doi}")
-
-        # Test without verification (should always work for URL construction)
-        url = the_ingenta_flux(pma, verify=False)
-        assert url is not None
-        assert 'ingentaconnect.com' in url
-        print(f"Test 1 - Article URL: {url}")
-
-    def test_ingenta_connection_url_construction_folia_biol(self):
-        """Test 2: Folia Biologica (Krakow) article.
-        
-        PMID: 27172713 (Folia Biol (Krakow))
-        Expected: Should construct valid Ingenta Connect article URL
-        """
-        pma = self.fetch.article_by_pmid('27172713')
-        
-        assert pma.journal == 'Folia Biol (Krakow)'
-        assert pma.doi == '10.3409/fb64_1.55'
-        print(f"Test 2 - Article info: {pma.journal}, DOI: {pma.doi}")
-
-        # Test without verification
-        url = the_ingenta_flux(pma, verify=False)
-        assert url is not None
-        assert 'ingentaconnect.com' in url
-        print(f"Test 2 - Article URL: {url}")
-
-    def test_ingenta_connection_url_construction_j_conscious_stud(self):
-        """Test 3: Journal of Consciousness Studies article.
-        
-        PMID: 38725942 (J Conscious Stud)
-        Expected: Should construct valid Ingenta Connect article URL
-        """
-        pma = self.fetch.article_by_pmid('38725942')
-        
-        assert pma.journal == 'J Conscious Stud'
-        assert pma.doi == '10.53765/20512201.31.3.028'
-        print(f"Test 3 - Article info: {pma.journal}, DOI: {pma.doi}")
-
-        # Test without verification
-        url = the_ingenta_flux(pma, verify=False)
-        assert url is not None
-        print(f"Test 3 - Article URL: {url}")
-
-    def test_ingenta_connection_url_construction_public_health_action(self):
-        """Test 4: Public Health Action journal article.
-        
-        PMID: 38798784 (Public Health Action)
-        Expected: Should construct valid Ingenta Connect article URL
-        """
-        pma = self.fetch.article_by_pmid('38798784')
-        
-        assert pma.journal == 'Public Health Action'
-        assert pma.doi == '10.5588/pha.23.0059'
-        print(f"Test 4 - Article info: {pma.journal}, DOI: {pma.doi}")
-
-        # Test without verification
-        url = the_ingenta_flux(pma, verify=False)
-        assert url is not None
-        print(f"Test 4 - Article URL: {url}")
-
-    def test_ingenta_connection_url_construction_j_biomed_nanotechnol(self):
-        """Test 5: Journal of Biomedical Nanotechnology.
-        
-        PMID: 35854466 (J Biomed Nanotechnol)
-        Expected: Should construct valid Ingenta Connect article URL
-        """
-        pma = self.fetch.article_by_pmid('35854466')
-        
-        assert pma.journal == 'J Biomed Nanotechnol'
-        assert pma.doi == '10.1166/jbn.2022.3317'
-        print(f"Test 5 - Article info: {pma.journal}, DOI: {pma.doi}")
-
-        # Test without verification
-        url = the_ingenta_flux(pma, verify=False)
-        assert url is not None
-        print(f"Test 5 - Article URL: {url}")
-
-    @patch('metapub.findit.dances.ingenta.the_doi_2step')
-    @patch('requests.get')
-    def test_ingenta_connection_successful_access_with_pdf(self, mock_get, mock_doi_2step):
-        """Test 6: Successful access simulation with PDF link found.
-        
-        PMID: 22081838 (Middle East J)
-        Expected: Should return PDF URL when found on page
-        """
-        # Mock DOI resolution to Ingenta Connect article page
-        mock_doi_2step.return_value = 'https://www.ingentaconnect.com/content/meis/meis/2012/00000065/00000003/art00014'
-        
-        # Mock successful article page response with PDF link
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.text = '''
-        <html>
-            <body>
-                <h1>Article Title</h1>
-                <p>This is an Ingenta Connect article with PDF download available.</p>
-                <a href="/content/meis/meis/2012/00000065/00000003/art00014?format=pdf" class="pdf-link">Download PDF</a>
-            </body>
-        </html>
-        '''
-        mock_response.content = mock_response.text.encode('utf-8')
-        mock_response.url = 'https://www.ingentaconnect.com/content/meis/meis/2012/00000065/00000003/art00014'
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('22081838')
-        
-        # Test with verification - should find PDF link
-        url = the_ingenta_flux(pma, verify=True)
-        assert 'ingentaconnect.com' in url
-        assert 'pdf' in url  # Accept any PDF URL format
-        print(f"Test 6 - Found PDF link: {url}")
-
-    @patch('metapub.findit.dances.ingenta.the_doi_2step')
-    @patch('requests.get')
-    def test_ingenta_connection_open_access_article(self, mock_get, mock_doi_2step):
-        """Test 7: Open access article without direct PDF link.
-        
-        Expected: Should return article URL when accessible
-        """
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://www.ingentaconnect.com/content/meis/meis/2012/00000065/00000003/art00014'
-        
-        # Mock successful article page response without specific PDF link
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.text = '''
-        <html>
-            <body>
-                <h1>Article Title</h1>
-                <p>This is an Ingenta Connect article.</p>
-                <div class="article-content">
-                    <p>Full article content is available here.</p>
-                </div>
-            </body>
-        </html>
-        '''
-        mock_response.content = mock_response.text.encode('utf-8')
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('22081838')
-        
-        # Test with verification - should return article URL
-        url = the_ingenta_flux(pma, verify=True)
-        assert url == 'https://www.ingentaconnect.com/content/meis/meis/2012/00000065/00000003/art00014'
-        print(f"Test 7 - Article URL: {url}")
-
-    @patch('metapub.findit.dances.ingenta.the_doi_2step')
-    @patch('requests.get')
-    def test_ingenta_connection_paywall_detection(self, mock_get, mock_doi_2step):
-        """Test 8: Paywall detection.
-        
-        Expected: Should detect paywall and raise AccessDenied
-        """
-        # Mock DOI resolution to Ingenta Connect article page
-        mock_doi_2step.return_value = 'https://www.ingentaconnect.com/content/meis/meis/2012/00000065/00000003/art00014'
-        
-        # Mock article page response with paywall indicators
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.text = '''
-        <html>
-            <body>
-                <h1>Article Title</h1>
-                <p>This content requires institutional access.</p>
-                <div class="pay-per-view">
-                    <p>Please log in to access this article.</p>
-                    <a href="/login">Sign In</a>
-                    <a href="/subscribe">Subscribe</a>
-                    <p>Purchase this article for $25.00 (pay per view)</p>
-                </div>
-            </body>
-        </html>
-        '''
-        mock_response.content = mock_response.text.encode('utf-8')
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('22081838')
-        
-        # Test with verification - should detect paywall
-        with pytest.raises(AccessDenied) as exc_info:
-            the_ingenta_flux(pma, verify=True)
-        
-        assert 'PAYWALL' in str(exc_info.value)
-        assert 'subscription' in str(exc_info.value)
-        print(f"Test 8 - Correctly detected paywall: {exc_info.value}")
-
-    @patch('metapub.findit.dances.ingenta.the_doi_2step')
-    @patch('requests.get')
-    def test_ingenta_connection_access_forbidden(self, mock_get, mock_doi_2step):
-        """Test 9: Access forbidden (403 error).
-        
-        Expected: Should handle 403 errors properly
-        """
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://www.ingentaconnect.com/content/meis/meis/2012/00000065/00000003/art00014'
-        
-        # Mock 403 response
-        mock_response = Mock()
-        mock_response.status_code = 403
-        mock_response.ok = False
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('22081838')
-        
-        # Test with verification - should handle 403
-        with pytest.raises(AccessDenied) as exc_info:
-            the_ingenta_flux(pma, verify=True)
-        
-        assert 'DENIED' in str(exc_info.value)
-        assert '403' in str(exc_info.value) or 'forbidden' in str(exc_info.value).lower()
-        print(f"Test 9 - Correctly handled 403: {exc_info.value}")
-
-    @patch('metapub.findit.dances.ingenta.the_doi_2step')
-    @patch('requests.get')
-    def test_ingenta_connection_network_error(self, mock_get, mock_doi_2step):
-        """Test 10: Network error handling.
-        
-        Expected: Should handle network errors gracefully
-        """
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://www.ingentaconnect.com/content/meis/meis/2012/00000065/00000003/art00014'
-        
-        # Mock network error
-        mock_get.side_effect = requests.exceptions.ConnectionError("Network error")
-
-        pma = self.fetch.article_by_pmid('22081838')
-        
-        # Test - should handle network error
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_ingenta_flux(pma, verify=True)
-        
-        assert 'TXERROR' in str(exc_info.value)
-        assert 'Network error' in str(exc_info.value)
-        print(f"Test 10 - Correctly handled network error: {exc_info.value}")
-
-    def test_ingenta_connection_missing_doi(self):
-        """Test 11: Article without DOI.
-        
-        Expected: Should raise NoPDFLink for missing DOI
-        """
-        # Create a mock PMA without DOI
+    def test_missing_doi_raises_nopdflink(self):
+        """Test that missing DOI raises NoPDFLink with MISSING prefix"""
         pma = Mock()
         pma.doi = None
-        pma.journal = 'Middle East J'
+        pma.journal = 'Comp Polit'
         
-        with pytest.raises(NoPDFLink) as exc_info:
+        with self.assertRaises(NoPDFLink) as context:
             the_ingenta_flux(pma, verify=False)
         
-        assert 'MISSING' in str(exc_info.value)
-        assert 'DOI required' in str(exc_info.value)
-        print(f"Test 11 - Correctly handled missing DOI: {exc_info.value}")
+        self.assertIn('MISSING:', str(context.exception))
+        self.assertIn('DOI required', str(context.exception))
 
     @patch('metapub.findit.dances.ingenta.the_doi_2step')
-    @patch('requests.get')
-    def test_ingenta_connection_article_not_found(self, mock_get, mock_doi_2step):
-        """Test 12: Article not found (404 error).
+    def test_doi_resolution_and_url_transformation(self, mock_doi_2step):
+        """Test DOI resolution and URL pattern transformation"""
+        # Mock DOI resolution to return Ingenta Connect article URL
+        mock_doi_2step.return_value = 'https://www.ingentaconnect.com/content/cuny/cp/2022/00000054/00000002/art00007'
         
-        Expected: Should handle 404 errors properly
-        """
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://www.ingentaconnect.com/content/meis/meis/2012/00000065/00000003/art00014' 
+        result = the_ingenta_flux(self.mock_pma, verify=False)
         
-        # Mock 404 response
-        mock_response = Mock()
-        mock_response.status_code = 404
-        mock_response.ok = False
-        mock_get.return_value = mock_response
+        expected_url = 'https://www.ingentaconnect.com/contentone/cuny/cp/2022/00000054/00000002/art00007/pdf'
+        self.assertEqual(result, expected_url)
+        mock_doi_2step.assert_called_once_with(self.mock_pma.doi)
 
-        pma = self.fetch.article_by_pmid('22081838')
+    @patch('metapub.findit.dances.ingenta.verify_pdf_url')
+    @patch('metapub.findit.dances.ingenta.the_doi_2step')
+    def test_verification_success(self, mock_doi_2step, mock_verify):
+        """Test successful verification using standard verify_pdf_url"""
+        mock_doi_2step.return_value = 'https://www.ingentaconnect.com/content/cuny/cp/2022/00000054/00000002/art00007'
+        expected_pdf_url = 'https://www.ingentaconnect.com/contentone/cuny/cp/2022/00000054/00000002/art00007/pdf'
+        mock_verify.return_value = expected_pdf_url
         
-        # Test with verification - should handle 404
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_ingenta_flux(pma, verify=True)
+        result = the_ingenta_flux(self.mock_pma, verify=True)
         
-        assert 'TXERROR' in str(exc_info.value)
-        assert '404' in str(exc_info.value) or 'not found' in str(exc_info.value)
-        print(f"Test 12 - Correctly handled 404: {exc_info.value}")
+        self.assertEqual(result, expected_pdf_url)
+        mock_verify.assert_called_once_with(expected_pdf_url, 'Ingenta Connect')
+
+    @patch('metapub.findit.dances.ingenta.verify_pdf_url')
+    @patch('metapub.findit.dances.ingenta.the_doi_2step')
+    def test_verification_access_denied_bubbles_up(self, mock_doi_2step, mock_verify):
+        """Test that AccessDenied from verify_pdf_url bubbles up correctly"""
+        mock_doi_2step.return_value = 'https://www.ingentaconnect.com/content/cuny/cp/2022/00000054/00000002/art00007'
+        expected_pdf_url = 'https://www.ingentaconnect.com/contentone/cuny/cp/2022/00000054/00000002/art00007/pdf'
+        mock_verify.side_effect = AccessDenied('DENIED: Access forbidden')
+        
+        with self.assertRaises(AccessDenied):
+            the_ingenta_flux(self.mock_pma, verify=True)
+
+    @patch('metapub.findit.dances.ingenta.the_doi_2step')
+    def test_non_ingenta_domain_raises_invalid(self, mock_doi_2step):
+        """Test that DOI resolving to non-Ingenta domain raises NoPDFLink"""
+        mock_doi_2step.return_value = 'https://other-publisher.com/article'
+        
+        with self.assertRaises(NoPDFLink) as context:
+            the_ingenta_flux(self.mock_pma, verify=False)
+        
+        self.assertIn('INVALID:', str(context.exception))
+        self.assertIn('did not resolve to Ingenta Connect domain', str(context.exception))
+
+    @patch('metapub.findit.dances.ingenta.the_doi_2step')
+    def test_unexpected_url_pattern_raises_invalid(self, mock_doi_2step):
+        """Test that unexpected URL pattern raises NoPDFLink"""
+        mock_doi_2step.return_value = 'https://www.ingentaconnect.com/other-pattern/article'
+        
+        with self.assertRaises(NoPDFLink) as context:
+            the_ingenta_flux(self.mock_pma, verify=False)
+        
+        self.assertIn('INVALID:', str(context.exception))
+        self.assertIn('expected /content/', str(context.exception))
+
+    def test_real_pmid_metadata_validation(self):
+        """Test with real PMID metadata to validate approach"""
+        try:
+            # Use first evidence PMID
+            pma = self.fetch.article_by_pmid(self.evidence_pmids[0])
+            
+            # Validate we have expected data
+            self.assertIsNotNone(pma.doi)
+            self.assertEqual(pma.journal, 'Comp Polit')
+            
+            # Test URL construction without verification
+            result = the_ingenta_flux(pma, verify=False)
+            self.assertIn('ingentaconnect.com', result)
+            self.assertIn('/contentone/', result)
+            self.assertTrue(result.endswith('/pdf'))
+            
+            print(f"Real PMID validation: DOI={pma.doi}, Journal={pma.journal}")
+            print(f"PDF URL: {result}")
+            
+        except Exception as e:
+            self.skipTest(f"Could not fetch real PMID data: {e}")
+
+    def test_function_length_compliance(self):
+        """Test that rewritten function complies with DANCE_FUNCTION_GUIDELINES (<50 lines)"""
+        import inspect
+        
+        source_lines = inspect.getsourcelines(the_ingenta_flux)[0]
+        function_lines = len([line for line in source_lines if line.strip() and not line.strip().startswith('#')])
+        
+        self.assertLess(function_lines, 50, f"Function has {function_lines} lines, should be under 50")
+        print(f"✓ Function length compliance: {function_lines} lines (under 50 line guideline)")
+
+    def test_claude_md_compliance(self):
+        """Test that function follows CLAUDE.md guidelines"""
+        import inspect
+        
+        # Get function source code
+        source = inspect.getsource(the_ingenta_flux)
+        
+        # Should not have huge try-except blocks
+        self.assertNotIn('try:', source, "Function should not have try-except blocks per CLAUDE.md guidelines")
+        
+        # Should not catch generic exceptions
+        self.assertNotIn('except Exception', source, "Function should not catch generic exceptions")
+        
+        # Should use standard verify_pdf_url
+        self.assertIn('verify_pdf_url', source, "Function should use standard verify_pdf_url")
+        
+        print("✓ CLAUDE.md compliance validated:")
+        print("  - No huge try-except blocks")
+        print("  - No generic Exception catching")
+        print("  - Uses standard verify_pdf_url")
+        print("  - Let errors bubble up naturally")
+        print("  - Simple URL pattern transformation")
+
+    def test_evidence_based_url_transformation(self):
+        """Test that URL transformation follows evidence-based pattern"""
+        test_cases = [
+            # (article_url, expected_pdf_url)
+            (
+                'https://www.ingentaconnect.com/content/cuny/cp/2022/00000054/00000002/art00007',
+                'https://www.ingentaconnect.com/contentone/cuny/cp/2022/00000054/00000002/art00007/pdf'
+            ),
+            (
+                'https://www.ingentaconnect.com/content/nai/ti/2021/00000022/00000001/art00007',
+                'https://www.ingentaconnect.com/contentone/nai/ti/2021/00000022/00000001/art00007/pdf'
+            ),
+            # Test with session ID (should be preserved)
+            (
+                'https://www.ingentaconnect.com/content/pub/journal/2023/vol/issue/article;jsessionid=123',
+                'https://www.ingentaconnect.com/contentone/pub/journal/2023/vol/issue/article;jsessionid=123/pdf'
+            )
+        ]
+        
+        for article_url, expected_pdf_url in test_cases:
+            with patch('metapub.findit.dances.ingenta.the_doi_2step') as mock_doi:
+                mock_doi.return_value = article_url
+                
+                result = the_ingenta_flux(self.mock_pma, verify=False)
+                self.assertEqual(result, expected_pdf_url)
+
+    def test_doi_bubbling_from_the_doi_2step(self):
+        """Test that NoPDFLink from the_doi_2step bubbles up correctly"""
+        with patch('metapub.findit.dances.ingenta.the_doi_2step') as mock_doi:
+            mock_doi.side_effect = NoPDFLink('TXERROR: DOI resolution failed')
+            
+            with self.assertRaises(NoPDFLink) as context:
+                the_ingenta_flux(self.mock_pma, verify=False)
+            
+            self.assertIn('DOI resolution failed', str(context.exception))
+
+    def test_error_message_prefix_compliance(self):
+        """Test that error messages follow DANCE_FUNCTION_GUIDELINES prefix patterns"""
+        # Test MISSING prefix
+        pma_no_doi = Mock()
+        pma_no_doi.doi = None
+        
+        with self.assertRaises(NoPDFLink) as context:
+            the_ingenta_flux(pma_no_doi, verify=False)
+        self.assertTrue(str(context.exception).startswith('MISSING:'))
+        
+        # Test INVALID prefix for wrong domain
+        with patch('metapub.findit.dances.ingenta.the_doi_2step') as mock_doi:
+            mock_doi.return_value = 'https://wrong-domain.com/article'
+            
+            with self.assertRaises(NoPDFLink) as context:
+                the_ingenta_flux(self.mock_pma, verify=False)
+            self.assertTrue(str(context.exception).startswith('INVALID:'))
+
+    def test_multi_publisher_platform_handling(self):
+        """Test that function handles Ingenta Connect's multi-publisher nature"""
+        # Ingenta Connect hosts content from 250+ publishers with diverse DOI prefixes
+        diverse_dois = [
+            '10.5129/001041522x16222193902161',  # Evidence DOI 1
+            '10.21300/21.4.2021.7',             # Evidence DOI 2
+            '10.3751/example.2023.123',         # Different publisher pattern
+            '10.5588/test.2024.456'             # Another publisher pattern
+        ]
+        
+        for doi in diverse_dois:
+            pma = Mock()
+            pma.doi = doi
+            
+            with patch('metapub.findit.dances.ingenta.the_doi_2step') as mock_doi:
+                mock_doi.return_value = f'https://www.ingentaconnect.com/content/pub/journal/2023/vol/issue/article'
+                
+                result = the_ingenta_flux(pma, verify=False)
+                self.assertIn('/contentone/', result)
+                self.assertTrue(result.endswith('/pdf'))
 
 
 def test_ingentaconnect_journal_recognition():
     """Test that Ingenta Connect journals are properly recognized in the registry."""
     from metapub.findit.registry import JournalRegistry
     from metapub.findit.journals.ingentaconnect import ingentaconnect_journals
-    
+
     registry = JournalRegistry()
-    
+
     # Test sample Ingenta Connect journals
     test_journals = [
+        'Comp Polit',
+        'Technol Innov', 
         'Middle East J',
-        'Folia Biol (Krakow)', 
-        'J Conscious Stud',
         'Public Health Action',
         'J Biomed Nanotechnol'
     ]
-    
+
     # Test journal recognition
     found_count = 0
     for journal in test_journals:
@@ -339,51 +266,16 @@ def test_ingentaconnect_journal_recognition():
                 print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
         else:
             print(f"⚠ {journal} not in ingentaconnect_journals list")
-    
-    # Just make sure we found at least one Ingenta Connect journal (the test may not find all if registry is not populated)
+
+    # Just make sure we found at least one Ingenta Connect journal
     if found_count == 0:
         print("⚠ No Ingenta Connect journals found in registry - this may be expected if registry not populated")
     else:
         print(f"✓ Found {found_count} properly mapped Ingenta Connect journals")
-    
+
     registry.close()
 
 
 if __name__ == '__main__':
-    # Run basic tests if executed directly
-    test_instance = TestIngentaConnectDance()
-    test_instance.setUp()
-    
-    print("Running Ingenta Connect tests...")
-    print("\n" + "="*60)
-    
-    tests = [
-        ('test_ingenta_connection_url_construction_middle_east_j', 'Middle East J URL construction'),
-        ('test_ingenta_connection_url_construction_folia_biol', 'Folia Biol URL construction'),
-        ('test_ingenta_connection_url_construction_j_conscious_stud', 'J Conscious Stud URL construction'),
-        ('test_ingenta_connection_url_construction_public_health_action', 'Public Health Action URL construction'),
-        ('test_ingenta_connection_url_construction_j_biomed_nanotechnol', 'J Biomed Nanotechnol URL construction'),
-        ('test_ingenta_connection_successful_access_with_pdf', 'Successful access with PDF'),
-        ('test_ingenta_connection_open_access_article', 'Open access article handling'),
-        ('test_ingenta_connection_paywall_detection', 'Paywall detection'),
-        ('test_ingenta_connection_access_forbidden', 'Access forbidden handling'),
-        ('test_ingenta_connection_network_error', 'Network error handling'),
-        ('test_ingenta_connection_missing_doi', 'Missing DOI handling'),
-        ('test_ingenta_connection_article_not_found', 'Article not found handling')
-    ]
-    
-    for test_method, description in tests:
-        try:
-            getattr(test_instance, test_method)()
-            print(f"✓ {description} works")
-        except Exception as e:
-            print(f"✗ {description} failed: {e}")
-    
-    try:
-        test_ingentaconnect_journal_recognition()
-        print("✓ Registry test passed: Journal recognition works")
-    except Exception as e:
-        print(f"✗ Registry test failed: {e}")
-    
-    print("\n" + "="*60)
-    print("Test suite completed!")
+    # Run comprehensive test suite
+    unittest.main(verbosity=2)

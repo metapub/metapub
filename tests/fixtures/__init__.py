@@ -182,9 +182,11 @@ INGENTACONNECT_EVIDENCE_PMIDS = {
 }
 
 # Scielo PMIDs with metadata  
+# Scielo PMIDs with metadata (from verified_pmids)
 SCIELO_EVIDENCE_PMIDS = {
-    '23657305': {'doi': '10.1590/s0004-28032013000100008', 'journal': 'Arq Gastroenterol'},
-    '32294727': {'doi': '10.1590/S0004-2803.202000000-01', 'journal': 'Arq Gastroenterol'},
+    '33889184': {'doi': '10.1590/1678-9199-JVATITD-2020-0147', 'journal': 'J Venom Anim Toxins Incl Trop Dis', 'pmc': 'PMC8040910'},
+    '35830032': {'doi': '10.1590/S0004-2803.202202000-40', 'journal': 'Arq Gastroenterol'},
+    '32490903': {'doi': '10.1590/s0004-2803.202000000-27', 'journal': 'Arq Gastroenterol'},
 }
 
 # Inderscience PMIDs with metadata
@@ -252,4 +254,11 @@ MDPI_EVIDENCE_PMIDS = {
     '39337530': {'doi': '10.3390/ijms251810046', 'journal': 'Int J Mol Sci', 'pmc': 'PMC11432526'},
     '39337454': {'doi': '10.3390/ijms25189966', 'journal': 'Int J Mol Sci', 'pmc': 'PMC11432652'},
     '39769357': {'doi': '10.3390/ijms252413596', 'journal': 'Int J Mol Sci', 'pmc': 'PMC11678738'},
+}
+
+# Inderscience PMIDs with metadata
+INDERSCIENCE_EVIDENCE_PMIDS = {
+    '24084238': {'doi': '10.1504/IJBRA.2013.056620', 'journal': 'Int J Bioinform Res Appl'},
+    '24794070': {'doi': '10.1504/IJBRA.2014.060762', 'journal': 'Int J Bioinform Res Appl'},
+    '24449692': {'doi': '10.1504/IJBRA.2014.058777', 'journal': 'Int J Bioinform Res Appl'},
 }

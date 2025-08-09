@@ -15,6 +15,7 @@ from unittest.mock import patch, Mock
 from metapub.findit.dances.inderscience import the_inderscience_ula
 from metapub.exceptions import AccessDenied, NoPDFLink
 from metapub import PubMedFetcher
+from tests.fixtures import load_pmid_xml, INDERSCIENCE_EVIDENCE_PMIDS
 
 
 class TestInderscienceDance(unittest.TestCase):
@@ -195,7 +196,6 @@ def test_inderscience_journal_recognition():
     """Test that Inderscience journals are properly recognized in the registry."""
     from metapub.findit.registry import JournalRegistry
     from metapub.findit.journals.inderscience import inderscience_journals
-from tests.fixtures import load_pmid_xml, INDERSCIENCE_EVIDENCE_PMIDS
 
     registry = JournalRegistry()
 

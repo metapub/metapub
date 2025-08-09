@@ -6,6 +6,7 @@ from unittest.mock import patch, Mock
 from .common import BaseDanceTest
 from metapub.findit.dances import the_biochemsoc_saunter
 from metapub.exceptions import NoPDFLink
+from tests.fixtures import load_pmid_xml, BIOCHEMSOC_EVIDENCE_PMIDS
 
 
 class TestBiochemSoc(BaseDanceTest):
@@ -297,3 +298,88 @@ if __name__ == '__main__':
         sys.exit(1)
     else:
         print("All tests passed! ✅")
+
+
+class TestBiochemSocXMLFixtures:
+    """Test BiochemSoc XML fixtures for evidence-driven testing."""
+
+    @patch('metapub.findit.dances.biochemsoc.CrossRefFetcher')
+    def test_biochemsoc_xml_39302109_biochem_j(self, mock_crossref):
+        """Test PMID 39302109 - Biochem J with DOI 10.1042/BCJ20240037."""
+        
+        # Mock CrossRef work object with dictionary-style links (not Mock attributes)
+        mock_work = Mock()
+        mock_link = {
+            'URL': 'https://portlandpress.com/biochemj/article-pdf/doi/10.1042/BCJ20240037/951142/bcj-2024-0037.pdf',
+            'content-type': 'application/pdf',
+            'content-version': 'vor'
+        }
+        mock_work.link = [mock_link]
+        
+        mock_crossref_instance = Mock()
+        mock_crossref_instance.article_by_doi.return_value = mock_work
+        mock_crossref.return_value = mock_crossref_instance
+        
+        pma = load_pmid_xml('39302109')
+        
+        assert pma.pmid == '39302109'
+        assert pma.doi == '10.1042/BCJ20240037'
+        assert 'Biochem J' in pma.journal
+        
+        result = the_biochemsoc_saunter(pma, verify=False)
+        expected_url = 'https://portlandpress.com/biochemj/article-pdf/doi/10.1042/BCJ20240037/951142/bcj-2024-0037.pdf'
+        assert result == expected_url
+
+    @patch('metapub.findit.dances.biochemsoc.CrossRefFetcher')
+    def test_biochemsoc_xml_38270460_biochem_j(self, mock_crossref):
+        """Test PMID 38270460 - Biochem J with DOI 10.1042/BCJ20220325."""
+        
+        # Mock CrossRef work object with dictionary-style links (not Mock attributes)
+        mock_work = Mock()
+        mock_link = {
+            'URL': 'https://portlandpress.com/biochemj/article-pdf/doi/10.1042/BCJ20220325/951143/bcj-2022-0325.pdf',
+            'content-type': 'application/pdf',
+            'content-version': 'vor'
+        }
+        mock_work.link = [mock_link]
+        
+        mock_crossref_instance = Mock()
+        mock_crossref_instance.article_by_doi.return_value = mock_work
+        mock_crossref.return_value = mock_crossref_instance
+        
+        pma = load_pmid_xml('38270460')
+        
+        assert pma.pmid == '38270460'
+        assert pma.doi == '10.1042/BCJ20220325'
+        assert 'Biochem J' in pma.journal
+        
+        result = the_biochemsoc_saunter(pma, verify=False)
+        expected_url = 'https://portlandpress.com/biochemj/article-pdf/doi/10.1042/BCJ20220325/951143/bcj-2022-0325.pdf'
+        assert result == expected_url
+
+    @patch('metapub.findit.dances.biochemsoc.CrossRefFetcher')
+    def test_biochemsoc_xml_34751700_biochem_j(self, mock_crossref):
+        """Test PMID 34751700 - Biochem J with DOI 10.1042/BCJ20210185."""
+        
+        # Mock CrossRef work object with dictionary-style links (not Mock attributes)
+        mock_work = Mock()
+        mock_link = {
+            'URL': 'https://portlandpress.com/biochemj/article-pdf/doi/10.1042/BCJ20210185/951144/bcj-2021-0185.pdf',
+            'content-type': 'application/pdf',
+            'content-version': 'vor'
+        }
+        mock_work.link = [mock_link]
+        
+        mock_crossref_instance = Mock()
+        mock_crossref_instance.article_by_doi.return_value = mock_work
+        mock_crossref.return_value = mock_crossref_instance
+        
+        pma = load_pmid_xml('34751700')
+        
+        assert pma.pmid == '34751700'
+        assert pma.doi == '10.1042/BCJ20210185'
+        assert 'Biochem J' in pma.journal
+        
+        result = the_biochemsoc_saunter(pma, verify=False)
+        expected_url = 'https://portlandpress.com/biochemj/article-pdf/doi/10.1042/BCJ20210185/951144/bcj-2021-0185.pdf'
+        assert result == expected_url

@@ -17,7 +17,7 @@ This document tracks the systematic transition from extensive mocking to XML fix
 
 ### For Each Publisher:
 
-1. **Identify PMIDs**: Use verified PMIDs from `output/verified_pmids/` and extract from existing tests
+1. **Identify PMIDs**: Use verified PMIDs from `output/verified_pmids/` and/or extract from existing tests
 2. **Download XML**: Use `PubMedFetcher.qs.efetch()` to get real XML data
 3. **Create Fixtures**: Save XML files to `tests/fixtures/pmid_xml/`
 4. **Update Constants**: Add publisher PMIDs to `tests/fixtures/__init__.py`
@@ -64,7 +64,7 @@ class TestPublisher:
         # ✅ Authentic DOI, journal, all metadata
 ```
 
-## Conversion Status: 12/37 Complete (4 publishers were duplicate entities)
+## Conversion Status: 15/37 Complete (4 publishers were duplicate entities)
 
 ### XML Fixtures Complete:
 - ✅ **AAAS** - Complete reference implementation
@@ -80,6 +80,9 @@ class TestPublisher:
 - ✅ **ASM** - Complete conversion (consolidated into single test_asm.py)
 - ✅ **Wiley** - Complete conversion (consolidated into single test_wiley.py, uses the_doi_slide)
 - ✅ **Thieme** - Complete conversion (consolidated into single test_thieme.py, uses the_doi_slide)
+- ✅ **WoltersKluwer** - Complete conversion (consolidated into test_wolterskluwer.py)
+- ✅ **BiochemSoc** - Complete conversion (consolidated into test_biochemsoc.py)
+- ✅ **MDPI** - Complete conversion (consolidated into test_mdpi.py)
 
 ### Found to be Duplicate Entities (Removed from plan):
 - 🚫 **Cell Press** → actually **ScienceDirect** (Elsevier-owned)
@@ -87,7 +90,7 @@ class TestPublisher:
 - 🚫 **BMJ Open Gastroenterology** → actually **BMJ Publishing Group**
 - 🚫 **Oxford Academic (Endocrine Society)** → actually **Oxford Academic**
 
-- ❌ **22 publishers** remaining for XML conversion
+- ❌ **19 publishers** remaining for XML conversion
 
 ## Publisher Priority List
 
@@ -119,7 +122,7 @@ class TestPublisher:
 | ❌ | **jci** | test_jci.py | 11 | ✓ | High | Journal of Clinical Investigation |
 | ❌ | **annualreviews** | test_annualreviews.py | 9 | ✓ | High | Review journals |
 | ❌ | **bentham** | test_bentham.py | 9 | ✓ | High | Chemistry/medicine |
-| ❌ | **wolterskluwer** | test_wolterskluwer.py | 8 | ✓ | High | Medical publisher |
+| ✅ | **wolterskluwer** | test_wolterskluwer.py | 8 | ✓ | High | COMPLETED: XML fixtures consolidated into test_wolterskluwer.py |
 
 ### ⚠️ **Phase 3: Recently Updated** (Priority based on recent changes)
 
@@ -128,8 +131,8 @@ class TestPublisher:
 | ✅ | **asm** | test_asm.py | 15 | ✓ | Medium | COMPLETED: XML fixtures consolidated into single file |
 | ✅ | **wiley** | test_wiley.py | 8 | ✓ | Medium | COMPLETED: XML fixtures consolidated, the_doi_slide generic function |
 | ✅ | **thieme** | test_thieme.py | 6 | ✓ | Medium | COMPLETED: XML fixtures consolidated, the_doi_slide generic function |
-| ❌ | **biochemsoc** | test_biochemsoc.py | 8 | ✓ | High | Biochemistry journals |
-| ❌ | **mdpi** | test_mdpi.py | 8 | ✓ | High | Open access publisher |
+| ✅ | **biochemsoc** | test_biochemsoc.py | 8 | ✓ | High | COMPLETED: XML fixtures consolidated into test_biochemsoc.py |
+| ✅ | **mdpi** | test_mdpi.py | 8 | ✓ | High | COMPLETED: XML fixtures consolidated into test_mdpi.py |
 | ❌ | **oxford_academic** | test_oxford_academic.py | 7 | ✓ | High | Major academic publisher |
 
 ### 🔍 **Phase 4: Moderate Priority** (Medium test coverage)
@@ -250,6 +253,36 @@ class TestPublisher:
 - **DOI Pattern**: Mixed patterns (10.5761/, 10.33160/) representing different J-STAGE publishers
 - **Features Tested**: Open access articles with PMC availability
 
+#### WoltersKluwer (Batch 5)
+- **Status**: ✅ Complete
+- **XML Fixtures**: 3 evidence PMIDs downloaded (33967209, 36727757, 31789841)
+- **Tests Updated**: Added `TestWoltersKluwerXMLFixtures` class to existing `test_wolterskluwer.py`
+- **Mocking Removed**: No `PubMedFetcher` network calls in XML fixture tests
+- **Results**: 3/3 XML fixture tests passing, authentic journal data validation
+- **Evidence Coverage**: 2 different WoltersKluwer journals (Curr Opin Crit Care, Acad Med)
+- **DOI Pattern**: Verified 10.1097/ format for all PMIDs
+- **Features Tested**: URL construction patterns, verify=False mode for simplified testing
+
+#### BiochemSoc (Batch 5)
+- **Status**: ✅ Complete
+- **XML Fixtures**: 3 evidence PMIDs downloaded (39302109, 38270460, 34751700)
+- **Tests Updated**: Added `TestBiochemSocXMLFixtures` class to existing `test_biochemsoc.py`
+- **Mocking Removed**: No `PubMedFetcher` network calls, CrossRef API properly mocked with dictionary-style links
+- **Results**: 3/3 XML fixture tests passing, authentic journal data validation
+- **Evidence Coverage**: Biochem J journal (all evidence from same journal)
+- **DOI Pattern**: Verified 10.1042/ format for all PMIDs
+- **Features Tested**: CrossRef API integration with dictionary-style link access, VoR PDF prioritization
+
+#### MDPI (Batch 5)
+- **Status**: ✅ Complete
+- **XML Fixtures**: 3 evidence PMIDs downloaded (39337530, 39337454, 39769357)
+- **Tests Updated**: Added `TestMDPIXMLFixtures` class to existing `test_mdpi.py`
+- **Mocking Removed**: No `PubMedFetcher` network calls, verify_pdf_url properly mocked
+- **Results**: 3/3 XML fixture tests passing, authentic journal data validation
+- **Evidence Coverage**: Int J Mol Sci journal (all evidence from same journal)
+- **DOI Pattern**: Verified 10.3390/ format for all PMIDs
+- **Features Tested**: DOI resolution + /pdf URL construction, verify_pdf_url integration
+
 ### 🔧 In Progress
 
 *None currently*
@@ -302,9 +335,9 @@ def validate_publisher_fixtures(publisher_name):
 ```
 
 ### Progress Tracking  
-- **Current**: 12/37 publishers with XML fixtures complete (32.4%)
+- **Current**: 15/37 publishers with XML fixtures complete (40.5%)
 - **Duplicate entities removed**: 4 publishers found to be duplicate entities (no separate conversion needed)
-- **Remaining**: 25/37 publishers need XML conversion (67.6%)
+- **Remaining**: 19/37 publishers need XML conversion (51.4%)
 - **Phase 1 Target**: 20/37 publishers (54.1%) 
 - **Phase 2 Target**: 30/37 publishers (81.1%)
 - **Full Completion**: 37/37 publishers (100%)

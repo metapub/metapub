@@ -6,6 +6,7 @@ from unittest.mock import patch, Mock
 from .common import BaseDanceTest
 from metapub.findit.dances import the_wolterskluwer_volta
 from metapub.exceptions import NoPDFLink
+from tests.fixtures import load_pmid_xml, WOLTERSKLUWER_EVIDENCE_PMIDS
 
 
 class TestWoltersKluwerDance(BaseDanceTest):
@@ -315,3 +316,46 @@ if __name__ == '__main__':
         sys.exit(1)
     else:
         print("All tests passed! ✅")
+
+
+class TestWoltersKluwerXMLFixtures:
+    """Test WoltersKluwer XML fixtures for evidence-driven testing."""
+
+    def test_wolterskluwer_xml_33967209_curr_opin_crit_care(self):
+        """Test PMID 33967209 - Curr Opin Crit Care with DOI 10.1097/MCC.0000000000000838."""
+        pma = load_pmid_xml('33967209')
+        
+        assert pma.pmid == '33967209'
+        assert pma.doi == '10.1097/MCC.0000000000000838'
+        assert 'Curr Opin Crit Care' in pma.journal
+        
+        result = the_wolterskluwer_volta(pma, verify=False)
+        # WoltersKluwer constructs URLs based on DOI patterns
+        assert result.startswith('http')
+        assert '10.1097' in result or 'lww.com' in result or 'journals.lww.com' in result
+
+    def test_wolterskluwer_xml_36727757_curr_opin_crit_care(self):
+        """Test PMID 36727757 - Curr Opin Crit Care with DOI 10.1097/MCC.0000000000001017."""
+        pma = load_pmid_xml('36727757')
+        
+        assert pma.pmid == '36727757'
+        assert pma.doi == '10.1097/MCC.0000000000001017'
+        assert 'Curr Opin Crit Care' in pma.journal
+        
+        result = the_wolterskluwer_volta(pma, verify=False)
+        # WoltersKluwer constructs URLs based on DOI patterns
+        assert result.startswith('http')
+        assert '10.1097' in result or 'lww.com' in result or 'journals.lww.com' in result
+
+    def test_wolterskluwer_xml_31789841_acad_med(self):
+        """Test PMID 31789841 - Acad Med with DOI 10.1097/ACM.0000000000003093."""
+        pma = load_pmid_xml('31789841')
+        
+        assert pma.pmid == '31789841'
+        assert pma.doi == '10.1097/ACM.0000000000003093'
+        assert 'Acad Med' in pma.journal
+        
+        result = the_wolterskluwer_volta(pma, verify=False)
+        # WoltersKluwer constructs URLs based on DOI patterns
+        assert result.startswith('http')
+        assert '10.1097' in result or 'lww.com' in result or 'journals.lww.com' in result

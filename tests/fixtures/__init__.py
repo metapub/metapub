@@ -233,3 +233,24 @@ BENTHAM_EVIDENCE_PMIDS = {
     '36635930': {'doi': '10.2174/1872208317666230111105223', 'journal': 'Recent Pat Biotechnol', 'pmc': 'PMC10242760'},
     '33568043': {'doi': '10.2174/1874467214666210210122628', 'journal': 'Curr Mol Pharmacol'},
 }
+
+# WoltersKluwer PMIDs with metadata (from verified_pmids)
+WOLTERSKLUWER_EVIDENCE_PMIDS = {
+    '33967209': {'doi': '10.1097/MCC.0000000000000838', 'journal': 'Curr Opin Crit Care', 'pmc': 'PMC8243821'},
+    '36727757': {'doi': '10.1097/MCC.0000000000001017', 'journal': 'Curr Opin Crit Care', 'pmc': 'PMC9994841'},
+    '31789841': {'doi': '10.1097/ACM.0000000000003093', 'journal': 'Acad Med'},
+}
+
+# BiochemSoc PMIDs with metadata (from verified_pmids)
+BIOCHEMSOC_EVIDENCE_PMIDS = {
+    '39302109': {'doi': '10.1042/BCJ20240037', 'journal': 'Biochem J', 'pmc': 'PMC11555715'},
+    '38270460': {'doi': '10.1042/BCJ20220325', 'journal': 'Biochem J', 'pmc': 'PMC10903481'},
+    '34751700': {'doi': '10.1042/BCJ20210185', 'journal': 'Biochem J'},
+}
+
+# MDPI PMIDs with metadata (from verified_pmids)
+MDPI_EVIDENCE_PMIDS = {
+    '39337530': {'doi': '10.3390/ijms251810046', 'journal': 'Int J Mol Sci', 'pmc': 'PMC11432526'},
+    '39337454': {'doi': '10.3390/ijms25189966', 'journal': 'Int J Mol Sci', 'pmc': 'PMC11432652'},
+    '39769357': {'doi': '10.3390/ijms252413596', 'journal': 'Int J Mol Sci', 'pmc': 'PMC11678738'},
+}

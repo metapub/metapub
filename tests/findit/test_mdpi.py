@@ -6,6 +6,7 @@ from unittest.mock import patch, Mock
 from .common import BaseDanceTest
 from metapub.findit.dances import the_mdpi_moonwalk
 from metapub.exceptions import NoPDFLink
+from tests.fixtures import load_pmid_xml, MDPI_EVIDENCE_PMIDS
 
 
 class TestMDPI(BaseDanceTest):
@@ -228,3 +229,52 @@ if __name__ == '__main__':
         sys.exit(1)
     else:
         print("All tests passed! ✅")
+
+
+class TestMDPIXMLFixtures:
+    """Test MDPI XML fixtures for evidence-driven testing."""
+
+    @patch('metapub.findit.dances.mdpi.verify_pdf_url')
+    def test_mdpi_xml_39337530_int_j_mol_sci(self, mock_verify):
+        """Test PMID 39337530 - Int J Mol Sci with DOI 10.3390/ijms251810046."""
+        mock_verify.return_value = None
+        pma = load_pmid_xml('39337530')
+        
+        assert pma.pmid == '39337530'
+        assert pma.doi == '10.3390/ijms251810046'
+        assert 'Int J Mol Sci' in pma.journal
+        
+        result = the_mdpi_moonwalk(pma, verify=True)
+        expected_url = 'https://www.mdpi.com/1422-0067/25/18/10046/pdf'
+        assert result == expected_url
+        mock_verify.assert_called_once_with(expected_url, 'MDPI')
+
+    @patch('metapub.findit.dances.mdpi.verify_pdf_url')
+    def test_mdpi_xml_39337454_int_j_mol_sci(self, mock_verify):
+        """Test PMID 39337454 - Int J Mol Sci with DOI 10.3390/ijms25189966."""
+        mock_verify.return_value = None
+        pma = load_pmid_xml('39337454')
+        
+        assert pma.pmid == '39337454'
+        assert pma.doi == '10.3390/ijms25189966'
+        assert 'Int J Mol Sci' in pma.journal
+        
+        result = the_mdpi_moonwalk(pma, verify=True)
+        expected_url = 'https://www.mdpi.com/1422-0067/25/18/9966/pdf'
+        assert result == expected_url
+        mock_verify.assert_called_once_with(expected_url, 'MDPI')
+
+    @patch('metapub.findit.dances.mdpi.verify_pdf_url')
+    def test_mdpi_xml_39769357_int_j_mol_sci(self, mock_verify):
+        """Test PMID 39769357 - Int J Mol Sci with DOI 10.3390/ijms252413596."""
+        mock_verify.return_value = None
+        pma = load_pmid_xml('39769357')
+        
+        assert pma.pmid == '39769357'
+        assert pma.doi == '10.3390/ijms252413596'
+        assert 'Int J Mol Sci' in pma.journal
+        
+        result = the_mdpi_moonwalk(pma, verify=True)
+        expected_url = 'https://www.mdpi.com/1422-0067/25/24/13596/pdf'
+        assert result == expected_url
+        mock_verify.assert_called_once_with(expected_url, 'MDPI')

@@ -2,6 +2,11 @@
 
 from .common import BaseDanceTest
 from metapub import FindIt
+from tests.fixtures import load_pmid_xml, JSTAGE_EVIDENCE_PMIDS
+from metapub.findit.dances.generic import the_doi_slide
+from metapub.exceptions import NoPDFLink, AccessDenied
+import pytest
+from unittest.mock import patch
 
 
 class TestJStageDance(BaseDanceTest):
@@ -35,3 +40,61 @@ class TestJStageDance(BaseDanceTest):
                 assert 'NOFORMAT' not in source.reason
             if source.url:
                 assert 'jstage.jst.go.jp' in source.url
+
+
+class TestJSTAGEXMLFixtures:
+    """Test J-STAGE dance function with real XML fixtures."""
+
+    def test_jstage_authentic_metadata_validation(self):
+        """Validate authentic metadata from XML fixtures."""
+        for pmid, expected in JSTAGE_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            
+            assert pma.doi == expected['doi']
+            assert pma.journal == expected['journal']
+            assert pma.pmid == pmid
+            
+            print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
+
+    def test_jstage_url_construction_without_verification(self):
+        """Test URL construction using XML fixtures."""
+        for pmid in JSTAGE_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            
+            result = the_doi_slide(pma, verify=False)
+            
+            # Should be J-STAGE URL pattern
+            assert 'jstage.jst.go.jp' in result
+            assert pma.doi in result
+            
+            print(f"✓ PMID {pmid} URL: {result}")
+
+    @patch('metapub.findit.dances.generic.verify_pdf_url')
+    def test_jstage_paywall_handling(self, mock_verify):
+        """Test paywall detection."""
+        mock_verify.side_effect = AccessDenied('J-STAGE subscription required')
+        
+        pma = load_pmid_xml('31588070')  # Use first test PMID
+        
+        with pytest.raises(AccessDenied):
+            the_doi_slide(pma, verify=True)
+
+    def test_jstage_journal_coverage(self):
+        """Test journal coverage across different J-STAGE publications."""
+        journals_found = set()
+        
+        for pmid in JSTAGE_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            journals_found.add(pma.journal)
+        
+        assert len(journals_found) >= 2
+        print(f"✅ Coverage: {len(journals_found)} different J-STAGE journals")
+
+    def test_jstage_doi_pattern_consistency(self):
+        """Test J-STAGE DOI patterns."""
+        for pmid, data in JSTAGE_EVIDENCE_PMIDS.items():
+            # J-STAGE uses various DOI patterns like 10.5761/, 10.33160/
+            assert '10.' in data['doi'], f"PMID {pmid} has invalid DOI: {data['doi']}"
+            
+            pma = load_pmid_xml(pmid)
+            assert pma.doi == data['doi']

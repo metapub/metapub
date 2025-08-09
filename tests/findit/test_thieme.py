@@ -7,6 +7,7 @@ from .common import BaseDanceTest
 from metapub import PubMedFetcher
 from metapub.findit.dances import the_doi_slide as the_thieme_tap
 from metapub.exceptions import AccessDenied, NoPDFLink
+from tests.fixtures import load_pmid_xml, THIEME_EVIDENCE_PMIDS
 
 
 class TestThiemeTap(BaseDanceTest):
@@ -293,3 +294,67 @@ class TestThiemeWithVerifiedPMIDs:
             except Exception as e:
                 print(f"⚠ Sample PMID {pmid} failed: {e}")
                 # Don't fail for network issues
+
+
+class TestThiemeXMLFixtures:
+    """Test Thieme dance function with real XML fixtures."""
+
+    def test_thieme_authentic_metadata_validation(self):
+        """Validate authentic metadata from XML fixtures."""
+        for pmid, expected in THIEME_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            
+            assert pma.doi == expected['doi']
+            assert pma.journal == expected['journal']
+            assert pma.pmid == pmid
+            assert pma.doi.startswith('10.1055/'), f"Thieme DOI must start with 10.1055/, got: {pma.doi}"
+            
+            print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
+
+    def test_thieme_url_construction_without_verification(self):
+        """Test URL construction using XML fixtures."""
+        for pmid in THIEME_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            
+            result = the_thieme_tap(pma, verify=False)
+            expected_url = f'http://www.thieme-connect.de/products/ejournals/pdf/{pma.doi}.pdf'
+            assert result == expected_url
+            
+            print(f"✓ PMID {pmid} URL: {result}")
+
+    @patch('metapub.findit.dances.generic.verify_pdf_url')
+    def test_thieme_paywall_handling(self, mock_verify):
+        """Test paywall detection."""
+        mock_verify.side_effect = AccessDenied('Thieme subscription required')
+        
+        pma = load_pmid_xml('38048813')  # Use first test PMID
+        
+        with pytest.raises(AccessDenied):
+            the_thieme_tap(pma, verify=True)
+
+    def test_thieme_journal_coverage(self):
+        """Test journal coverage across different Thieme publications."""
+        journals_found = set()
+        
+        for pmid in THIEME_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            journals_found.add(pma.journal)
+        
+        assert len(journals_found) >= 4
+        expected_journals = {'Psychother Psychosom Med Psychol', 'Evid Based Spine Care J', 'Neuropadiatrie', 'ACI open', 'Methods Inf Med'}
+        assert journals_found == expected_journals
+
+    def test_thieme_doi_pattern_diversity(self):
+        """Test DOI pattern diversity across Thieme eras."""
+        doi_patterns = {'10.1055/a-': 'Recent articles', '10.1055/s-': 'Standard articles'}
+        patterns_found = set()
+        
+        for pmid in THIEME_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            
+            for pattern in doi_patterns.keys():
+                if pma.doi.startswith(pattern):
+                    patterns_found.add(pattern)
+                    break
+        
+        assert len(patterns_found) >= 2, f"Expected at least 2 DOI patterns, got: {patterns_found}"

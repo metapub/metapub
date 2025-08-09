@@ -7,6 +7,7 @@ from .common import BaseDanceTest
 from metapub import PubMedFetcher
 from metapub.findit.dances import the_doi_slide as the_wiley_shuffle
 from metapub.exceptions import AccessDenied, NoPDFLink
+from tests.fixtures import load_pmid_xml, WILEY_EVIDENCE_PMIDS
 
 
 class TestWileyDance(BaseDanceTest):
@@ -313,3 +314,65 @@ class TestWileyWithVerifiedPMIDs:
             except Exception as e:
                 print(f"⚠ Sample PMID {pmid} failed: {e}")
                 # Don't fail for network issues
+
+
+class TestWileyXMLFixtures:
+    """Test Wiley dance function with real XML fixtures."""
+
+    def test_wiley_authentic_metadata_validation(self):
+        """Validate authentic metadata from XML fixtures."""
+        for pmid, expected in WILEY_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            
+            assert pma.doi == expected['doi']
+            assert pma.journal == expected['journal']
+            assert pma.pmid == pmid
+            
+            print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
+
+    def test_wiley_url_construction_without_verification(self):
+        """Test URL construction using XML fixtures."""
+        for pmid in WILEY_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            
+            result = the_wiley_shuffle(pma, verify=False)
+            expected_url = f'https://onlinelibrary.wiley.com/doi/epdf/{pma.doi}'
+            assert result == expected_url
+            
+            print(f"✓ PMID {pmid} URL: {result}")
+
+    @patch('metapub.findit.dances.generic.verify_pdf_url')
+    def test_wiley_paywall_handling(self, mock_verify):
+        """Test paywall detection."""
+        mock_verify.side_effect = AccessDenied('Wiley subscription required')
+        
+        pma = load_pmid_xml('39077977')  # Use first test PMID
+        
+        with pytest.raises(AccessDenied):
+            the_wiley_shuffle(pma, verify=True)
+
+    def test_wiley_journal_coverage(self):
+        """Test journal coverage across different Wiley publications."""
+        journals_found = set()
+        
+        for pmid in WILEY_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            journals_found.add(pma.journal)
+        
+        assert len(journals_found) >= 4
+        print(f"✅ Coverage: {len(journals_found)} different Wiley journals")
+
+    def test_wiley_doi_pattern_diversity(self):
+        """Test DOI pattern diversity across Wiley divisions."""
+        doi_patterns = {'10.1002/': 'Standard Wiley', '10.1111/': 'Wiley-Blackwell', '10.1155/': 'Hindawi (acquired)'}
+        patterns_found = set()
+        
+        for pmid in WILEY_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            
+            for pattern in doi_patterns.keys():
+                if pma.doi.startswith(pattern):
+                    patterns_found.add(pattern)
+                    break
+        
+        assert len(patterns_found) >= 3, f"Expected at least 3 DOI patterns, got: {patterns_found}"

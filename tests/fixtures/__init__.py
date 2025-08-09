@@ -106,3 +106,30 @@ JSTAGE_EVIDENCE_PMIDS = {
     '34334504': {'doi': '10.5761/atcs.ra.21-00040', 'journal': 'Ann Thorac Cardiovasc Surg', 'pmc': 'PMC8915931'},
     '38028269': {'doi': '10.33160/yam.2023.11.001', 'journal': 'Yonago Acta Med', 'pmc': 'PMC10674056'},
 }
+
+# ASM (American Society for Microbiology) PMIDs with metadata
+ASM_EVIDENCE_PMIDS = {
+    '35856662': {'doi': '10.1128/aac.00216-22', 'journal': 'Antimicrob Agents Chemother', 'pmc': 'PMC9380527'},
+    '39382274': {'doi': '10.1128/aac.00924-24', 'journal': 'Antimicrob Agents Chemother', 'pmc': 'PMC11539232'},
+    '36598232': {'doi': '10.1128/jb.00337-22', 'journal': 'J Bacteriol'},
+    '38591913': {'doi': '10.1128/jb.00024-24', 'journal': 'J Bacteriol', 'pmc': 'PMC11112993'},
+    '38329942': {'doi': '10.1128/msystems.01299-23', 'journal': 'mSystems', 'pmc': 'PMC10949424'},
+}
+
+# Wiley PMIDs with metadata
+WILEY_EVIDENCE_PMIDS = {
+    '39077977': {'doi': '10.1002/acr2.11726', 'journal': 'ACR Open Rheumatol'},
+    '35726897': {'doi': '10.1002/acr2.11476', 'journal': 'ACR Open Rheumatol'},
+    '33474827': {'doi': '10.1111/1759-7714.13823', 'journal': 'Thorac Cancer'},
+    '36247735': {'doi': '10.1111/jofi.13173', 'journal': 'J Finance'},
+    '35573891': {'doi': '10.1155/2021/5792975', 'journal': 'Wirel Commun Mob Comput'},
+}
+
+# Thieme Medical Publishers PMIDs with metadata
+THIEME_EVIDENCE_PMIDS = {
+    '38048813': {'doi': '10.1055/a-2189-0166', 'journal': 'Psychother Psychosom Med Psychol'},
+    '25364329': {'doi': '10.1055/s-0034-1387804', 'journal': 'Evid Based Spine Care J', 'pmc': 'PMC4212699'},
+    '219391': {'doi': '10.1055/s-0028-1085314', 'journal': 'Neuropadiatrie'},
+    '36644330': {'doi': '10.1055/s-0040-1721489', 'journal': 'ACI open', 'pmc': 'PMC9838214'},
+    '32894878': {'doi': '10.1055/s-0040-1715580', 'journal': 'Methods Inf Med'},
+}

@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../'))
 
 from metapub.findit.dances.generic import the_doi_slide
 from metapub.findit.journals.apa import apa_journals
-from metapub.exceptions import NoPDFLink, MetaPubError
+from metapub.exceptions import NoPDFLink, MetaPubError, AccessDenied
 from tests.fixtures import load_pmid_xml, APA_EVIDENCE_PMIDS
 
 
@@ -196,6 +196,131 @@ class TestAPAIntegration:
             url = the_doi_slide(article, verify=False)
             assert url is not None
             assert article.doi in url
+
+
+class TestAPAXMLFixturesComprehensive:
+    """Comprehensive XML fixtures tests following TRANSITION_TESTS_TO_REAL_DATA.md guidelines."""
+    
+    def test_apa_xml_fixtures_metadata_validation(self):
+        """Test comprehensive metadata validation from XML fixtures."""
+        for pmid, expected_data in APA_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            
+            # Verify authentic metadata matches expectations
+            assert pma.pmid == pmid, f"PMID mismatch: {pma.pmid} != {pmid}"
+            assert pma.doi == expected_data['doi'], f"DOI mismatch for {pmid}: {pma.doi} != {expected_data['doi']}"
+            assert expected_data['journal'] in pma.journal, f"Journal mismatch for {pmid}: {expected_data['journal']} not in {pma.journal}"
+            
+            print(f"✓ Real PMID {pmid} - {expected_data['journal']}: {pma.doi}")
+        
+        print(f"✅ All {len(APA_EVIDENCE_PMIDS)} XML fixtures validated")
+
+    @patch('metapub.findit.dances.generic.verify_pdf_url')
+    def test_apa_url_construction_with_mocked_verification(self, mock_verify):
+        """Test URL construction with mocked verification."""
+        mock_verify.return_value = True
+        
+        for pmid, expected_data in APA_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            
+            result = the_doi_slide(pma, verify=True)
+            expected_url = f"https://psycnet.apa.org/fulltext/{pma.doi}.pdf"
+            
+            assert result == expected_url
+            mock_verify.assert_called_with(expected_url)
+            print(f"✓ PMID {pmid} URL with verification: {result}")
+
+    @patch('metapub.findit.dances.generic.verify_pdf_url')
+    def test_apa_paywall_handling(self, mock_verify):
+        """Test paywall detection and error handling."""
+        mock_verify.side_effect = AccessDenied('APA subscription required')
+        
+        pma = load_pmid_xml('34843274')  # Use first test PMID
+        
+        with pytest.raises(AccessDenied):
+            the_doi_slide(pma, verify=True)
+
+    def test_apa_journal_coverage_comprehensive(self):
+        """Test journal coverage across different APA publications."""
+        journal_coverage = {}
+        
+        for pmid, expected_data in APA_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            
+            journal = expected_data['journal']
+            if journal not in journal_coverage:
+                journal_coverage[journal] = []
+            journal_coverage[journal].append(pmid)
+            
+            assert journal in pma.journal, f"Journal mismatch: {journal} not in {pma.journal}"
+            print(f"✓ {journal} PMID {pmid}: DOI={pma.doi}")
+        
+        # Should have multiple different APA journals
+        assert len(journal_coverage) >= 4, f"Expected at least 4 different journals, got: {journal_coverage}"
+        
+        for journal, pmids in journal_coverage.items():
+            print(f"✓ {journal}: {len(pmids)} PMIDs - {pmids}")
+        
+        print(f"✅ Coverage: {len(journal_coverage)} different APA journals")
+
+    def test_apa_doi_pattern_consistency(self):
+        """Test that all APA PMIDs use 10.1037 DOI prefix."""
+        doi_prefix = '10.1037'
+        
+        for pmid, data in APA_EVIDENCE_PMIDS.items():
+            assert data['doi'].startswith(doi_prefix), f"PMID {pmid} has unexpected DOI prefix: {data['doi']}"
+            
+            pma = load_pmid_xml(pmid)
+            assert pma.doi.startswith(doi_prefix), f"PMID {pmid} XML fixture has unexpected DOI: {pma.doi}"
+
+    def test_apa_authentic_data_consistency(self):
+        """Test consistency between expected and authentic XML data."""
+        for pmid, expected_data in APA_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            
+            # Compare DOI exactly
+            assert pma.doi == expected_data['doi'], \
+                f"DOI inconsistency for {pmid}: expected {expected_data['doi']}, got {pma.doi}"
+            
+            # Compare journal (flexible matching for abbreviations)
+            expected_journal = expected_data['journal']
+            actual_journal = pma.journal
+            
+            assert expected_journal in actual_journal or actual_journal in expected_journal, \
+                f"Journal inconsistency for {pmid}: expected '{expected_journal}', got '{actual_journal}'"
+            
+            print(f"✓ Consistency check PMID {pmid}: DOI={pma.doi}, Journal={actual_journal}")
+        
+        print(f"✅ All {len(APA_EVIDENCE_PMIDS)} PMIDs show consistent authentic data")
+
+    def test_apa_error_handling_comprehensive(self):
+        """Test comprehensive error handling scenarios."""
+        # Test missing DOI
+        class MockPMA:
+            def __init__(self):
+                self.doi = None
+        
+        mock_pma = MockPMA()
+        
+        with pytest.raises(NoPDFLink) as excinfo:
+            the_doi_slide(mock_pma)
+        
+        assert 'MISSING' in str(excinfo.value)
+        assert 'DOI required' in str(excinfo.value)
+
+    def test_apa_template_flexibility(self):
+        """Test template flexibility for APA URL patterns."""
+        pma = load_pmid_xml('34843274')  # Am Psychol
+        
+        # Test with registry-based template lookup
+        result = the_doi_slide(pma, verify=False)
+        
+        expected = f'https://psycnet.apa.org/fulltext/{pma.doi}.pdf'
+        assert result == expected
+        
+        # Should work with any APA DOI
+        assert pma.doi in result
+        assert 'psycnet.apa.org/fulltext/' in result
 
 
 if __name__ == '__main__':

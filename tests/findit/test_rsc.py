@@ -8,6 +8,7 @@ from .common import BaseDanceTest
 from metapub import PubMedFetcher
 from metapub.findit.dances import the_rsc_reaction
 from metapub.exceptions import AccessDenied, NoPDFLink
+from tests.fixtures import load_pmid_xml, RSC_EVIDENCE_PMIDS
 
 
 class TestRSCDance(BaseDanceTest):
@@ -405,3 +406,111 @@ if __name__ == '__main__':
     
     print("\n" + "="*60)
     print("Test suite completed!")
+
+
+class TestRSCXMLFixtures:
+    """Test Royal Society of Chemistry dance function with real XML fixtures."""
+
+    def test_rsc_authentic_metadata_validation(self):
+        """Validate authentic metadata from XML fixtures matches expected patterns."""
+        for pmid, expected in RSC_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            
+            # Validate DOI follows RSC pattern
+            assert pma.doi == expected['doi']
+            assert pma.doi.startswith('10.1039/'), f"RSC DOI must start with 10.1039/, got: {pma.doi}"
+            
+            # Validate journal name matches expected
+            assert pma.journal == expected['journal']
+            
+            # Validate PMID matches
+            assert pma.pmid == pmid
+            
+            print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
+
+    @patch('metapub.findit.dances.rsc.the_doi_2step')
+    @patch('metapub.findit.dances.rsc.unified_uri_get')
+    def test_rsc_url_construction_without_verification(self, mock_get, mock_doi):
+        """Test URL construction without verification using XML fixtures."""
+        for pmid in RSC_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            
+            # Mock DOI resolution and HTML response with citation_pdf_url
+            expected_url = f"https://pubs.rsc.org/en/content/articlepdf/2020/em/{pma.doi.split('/')[-1]}"
+            mock_html = f'<meta content="{expected_url}" name="citation_pdf_url" />'
+            
+            mock_response = Mock()
+            mock_response.status_code = 200
+            mock_response.text = mock_html
+            
+            mock_doi.return_value = 'https://pubs.rsc.org/article/'
+            mock_get.return_value = mock_response
+            
+            url = the_rsc_reaction(pma, verify=False)
+            
+            # Verify returned URL follows RSC pattern
+            assert url == expected_url
+            assert 'pubs.rsc.org' in url
+            assert '/articlepdf/' in url
+            
+            print(f"✓ PMID {pmid} URL: {url}")
+
+    def test_rsc_journal_coverage(self):
+        """Test journal coverage across different RSC publications."""
+        journals_found = set()
+        
+        for pmid in RSC_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            journals_found.add(pma.journal)
+        
+        # Should have multiple different RSC journals
+        assert len(journals_found) >= 2, f"Expected at least 2 different journals, got: {journals_found}"
+        
+        # All should be known RSC journals
+        expected_journals = {'Nat Prod Rep', 'Environ Sci Process Impacts'}
+        assert journals_found == expected_journals, f"Unexpected journals: {journals_found - expected_journals}"
+
+    def test_rsc_doi_pattern_consistency(self):
+        """Test that all RSC PMIDs use 10.1039 DOI prefix."""
+        doi_prefix = '10.1039'
+        
+        for pmid, data in RSC_EVIDENCE_PMIDS.items():
+            assert data['doi'].startswith(doi_prefix), f"PMID {pmid} has unexpected DOI prefix: {data['doi']}"
+            
+            pma = load_pmid_xml(pmid)
+            assert pma.doi.startswith(doi_prefix), f"PMID {pmid} XML fixture has unexpected DOI: {pma.doi}"
+
+    @patch('metapub.findit.dances.rsc.the_doi_2step')
+    @patch('metapub.findit.dances.rsc.unified_uri_get')
+    def test_rsc_paywall_handling_with_fixtures(self, mock_get, mock_doi):
+        """Test paywall detection with XML fixtures."""
+        pma = load_pmid_xml('31712796')  # Environmental Science article
+        
+        # Mock paywall response
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.text = '<html><div>Subscription required</div></html>'
+        
+        mock_doi.return_value = 'https://pubs.rsc.org/article/'
+        mock_get.return_value = mock_response
+        
+        # Should handle missing citation_pdf_url meta tag
+        with patch('metapub.findit.dances.rsc.verify_pdf_url') as mock_verify:
+            mock_verify.side_effect = AccessDenied('RSC subscription required')
+            
+            with pytest.raises(AccessDenied):
+                the_rsc_reaction(pma, verify=True)
+
+    def test_rsc_error_handling_missing_doi(self):
+        """Test error handling for articles without DOI."""
+        # Create mock article without DOI
+        class MockPMA:
+            def __init__(self):
+                self.doi = None
+        
+        mock_pma = MockPMA()
+        
+        with pytest.raises(NoPDFLink) as excinfo:
+            the_rsc_reaction(mock_pma)
+        
+        assert 'DOI required' in str(excinfo.value) or 'MISSING' in str(excinfo.value)

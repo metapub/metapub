@@ -64,7 +64,7 @@ from .scirp import the_scirp_timewarp
 # Spandidos now uses the_doi_slide generic function
 # Springer now uses the_doi_slide generic function
 # Thieme now uses the_doi_slide generic function
-from .uchicago import the_uchicago_walk
+# UChicago now uses the_doi_slide generic function
 from .walshmedia import the_walshmedia_bora
 # Wiley now uses the_doi_slide generic function
 from .wjgnet import the_wjgnet_wave

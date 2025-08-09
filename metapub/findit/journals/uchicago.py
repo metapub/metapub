@@ -20,7 +20,9 @@
 #   - Articles are indexed in PubMed with PMIDs across multiple disciplines
 #   - DOI resolution typically redirects to article pages
 
-# URL format template - will be used in the dance function
+# URL format template - now used with the_doi_slide generic function
+# Based on evidence from HTML samples: /doi/epdf/ and /doi/pdf/ both work,
+# using /doi/pdf/ as primary pattern
 uchicago_format = 'https://www.journals.uchicago.edu/doi/pdf/{doi}'
 
 # Complete list of University of Chicago Press journals (59 total)

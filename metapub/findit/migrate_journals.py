@@ -63,7 +63,7 @@ from metapub.findit.journals.bioone import bioone_journals, bioone_template
 from metapub.findit.journals.emerald import emerald_journals, emerald_format
 from metapub.findit.journals.acm import acm_journals, acm_format
 from metapub.findit.journals.worldscientific import worldscientific_journals
-from metapub.findit.journals.uchicago import uchicago_journals
+from metapub.findit.journals.uchicago import uchicago_journals, uchicago_format
 from metapub.findit.journals.iospress import iospress_journals, iospress_format
 from metapub.findit.journals.longdom import longdom_journals
 from metapub.findit.journals.iop import iop_journals
@@ -416,8 +416,8 @@ PUBLISHER_CONFIGS = [
     },
     {
         'name': 'uchicago',
-        'dance_function': 'the_uchicago_walk',
-        'format_template': None,
+        'dance_function': 'the_doi_slide',
+        'format_template': uchicago_format,
         'journals': uchicago_journals,
     },
     {

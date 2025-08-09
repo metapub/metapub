@@ -8,6 +8,7 @@ from .common import BaseDanceTest
 from metapub import PubMedFetcher
 from metapub.findit.dances import the_asme_animal
 from metapub.exceptions import AccessDenied, NoPDFLink
+from tests.fixtures import load_pmid_xml, ASME_EVIDENCE_PMIDS
 
 
 class TestASMEDance(BaseDanceTest):
@@ -291,3 +292,145 @@ if __name__ == '__main__':
     
     print("\n" + "="*60)
     print("Test suite completed!")
+
+
+class TestASMEXMLFixtures:
+    """Test ASME dance function with real XML fixtures."""
+
+    def test_asme_authentic_metadata_validation(self):
+        """Validate authentic metadata from XML fixtures matches expected patterns."""
+        for pmid, expected in ASME_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            
+            # Validate DOI follows ASME pattern (10.1115/)
+            assert pma.doi == expected['doi']
+            assert pma.doi.startswith('10.1115/'), f"ASME DOI must start with 10.1115/, got: {pma.doi}"
+            
+            # Validate journal name matches expected
+            assert pma.journal == expected['journal']
+            
+            # Validate PMID matches
+            assert pma.pmid == pmid
+            
+            print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
+
+    def test_asme_url_construction_without_verification(self):
+        """Test URL construction without verification using XML fixtures."""
+        for pmid in ASME_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            
+            # Test URL construction without verification
+            result = the_asme_animal(pma, verify=False)
+            
+            # Should be ASME URL pattern
+            assert result is not None
+            assert 'asmedigitalcollection.asme.org' in result
+            assert result.startswith('https://')
+            
+            print(f"✓ PMID {pmid} URL: {result}")
+
+    @patch('requests.get')
+    def test_asme_url_construction_with_mocked_verification(self, mock_get):
+        """Test URL construction with mocked verification."""
+        # Mock successful PDF response
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.ok = True
+        mock_response.headers = {'content-type': 'application/pdf'}
+        mock_get.return_value = mock_response
+        
+        for pmid in ASME_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            
+            result = the_asme_animal(pma, verify=True)
+            
+            assert result is not None
+            assert 'asmedigitalcollection.asme.org' in result
+            print(f"✓ PMID {pmid} verified URL: {result}")
+
+    @patch('requests.get')
+    def test_asme_paywall_handling(self, mock_get):
+        """Test paywall detection and error handling."""
+        # Mock paywall response
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.ok = True
+        mock_response.headers = {'content-type': 'text/html'}
+        mock_response.text = '''<html><body>
+            <h1>Subscription Required</h1>
+            <p>ASME membership required for access</p>
+        </body></html>'''
+        mock_get.return_value = mock_response
+        
+        pma = load_pmid_xml('38449742')  # Use first test PMID
+        
+        with pytest.raises((AccessDenied, NoPDFLink)):
+            the_asme_animal(pma, verify=True)
+
+    def test_asme_journal_coverage(self):
+        """Test journal coverage across different ASME publications."""
+        journals_found = set()
+        
+        for pmid in ASME_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            journals_found.add(pma.journal)
+        
+        # Should have multiple different ASME journals
+        assert len(journals_found) >= 3, f"Expected at least 3 different journals, got: {journals_found}"
+        
+        # All should be known ASME journals
+        expected_journals = {'J Appl Mech', 'J Biomech Eng', 'J Heat Transfer'}
+        assert journals_found == expected_journals, f"Unexpected journals: {journals_found - expected_journals}"
+
+    def test_asme_doi_pattern_consistency(self):
+        """Test that all ASME PMIDs use 10.1115 DOI prefix."""
+        doi_prefix = '10.1115'
+        
+        for pmid, data in ASME_EVIDENCE_PMIDS.items():
+            assert data['doi'].startswith(doi_prefix), f"PMID {pmid} has unexpected DOI prefix: {data['doi']}"
+            
+            pma = load_pmid_xml(pmid)
+            assert pma.doi.startswith(doi_prefix), f"PMID {pmid} XML fixture has unexpected DOI: {pma.doi}"
+
+    def test_asme_error_handling_missing_doi(self):
+        """Test error handling for articles without DOI."""
+        # Create mock article without DOI
+        class MockPMA:
+            def __init__(self):
+                self.doi = None
+                self.journal = 'J Appl Mech'
+        
+        mock_pma = MockPMA()
+        
+        with pytest.raises(NoPDFLink) as excinfo:
+            the_asme_animal(mock_pma)
+        
+        assert 'MISSING' in str(excinfo.value) or 'DOI required' in str(excinfo.value)
+
+    def test_asme_template_flexibility(self):
+        """Test template flexibility for ASME URL patterns."""
+        pma = load_pmid_xml('38449742')  # J Appl Mech
+        
+        # Test URL construction 
+        result = the_asme_animal(pma, verify=False)
+        
+        # Should follow ASME URL pattern
+        assert result is not None
+        assert 'asmedigitalcollection.asme.org' in result
+        assert result.startswith('https://')
+        assert pma.doi in result
+
+    def test_asme_pmc_availability(self):
+        """Test coverage of PMC-available ASME articles."""
+        # All our test articles have PMC IDs
+        for pmid, expected in ASME_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            
+            assert 'pmc' in expected, f"PMID {pmid} should have PMC ID"
+            
+            # Test URL construction still works even with PMC availability
+            result = the_asme_animal(pma, verify=False)
+            assert result is not None
+            assert 'asmedigitalcollection.asme.org' in result
+            
+            print(f"✓ PMID {pmid} (PMC: {expected['pmc']}) works with ASME infrastructure: {result}")

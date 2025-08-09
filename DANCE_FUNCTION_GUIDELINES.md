@@ -2,9 +2,13 @@
 
 Guidelines for writing proper dance functions in metapub FindIt system.
 
+ALWAYS: Follow basic coding principles in CLAUDE.md in this same directory (metapub).
+
 ## Core Principles
 
 Publisher Dance Development Process
+
+Core principle: use evidence, understand, then implement simply.
 
   Phase 1: Evidence Collection
 
@@ -102,9 +106,13 @@ Publisher Dance Development Process
  5. **Load PubMedArticle from XML**: Instead of `PubMedFetcher` calls, use PubMedArticle's `load_pmid_xml()`
  6. **Remove Mocking**: Delete `Mock()` objects and `@patch` decorators for PubMed data
  7. **Validate**: Ensure all tests pass with authentic data
- 
 
-Core principle: use evidence, understand, then implement simply.
+
+ DO NOT TEST:
+
+ * "wrong" DOI or PMID (PMID -> journal -> pub routing guarantees this)
+ * length of dance function in lines of codes
+ 
 
 
 

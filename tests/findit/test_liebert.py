@@ -1,4 +1,9 @@
-"""Tests for Mary Ann Liebert Publishers dance function."""
+"""Tests for Mary Ann Liebert Publishers dance function.
+
+Evidence-driven update 2025-08-09: Updated tests to reflect new URL pattern
+https://www.liebertpub.com/doi/pdf/{doi}?download=true based on analysis 
+of 5/8 accessible HTML samples.
+"""
 
 from .common import BaseDanceTest
 from metapub import FindIt
@@ -23,7 +28,7 @@ class TestLiebertDance(BaseDanceTest):
             # Liebert journals should be recognized and generate access-related messages
             if source.reason:
                 assert ('PAYWALL' in source.reason or 'DENIED' in source.reason)
-                assert 'liebertpub.com' in source.reason
+                assert 'www.liebertpub.com' in source.reason
             assert 'NOFORMAT' not in str(source.reason or '')
 
     def test_liebert_url_generation(self):
@@ -41,11 +46,11 @@ class TestLiebertDance(BaseDanceTest):
         result = registry.get_publisher_for_journal('Cyberpsychol Behav')
         assert result is not None
         assert result['name'] == 'Mary Ann Liebert Publishers'
-        assert result['format_template'] == 'http://online.liebertpub.com/doi/pdf/{doi}'
+        assert result['format_template'] == 'https://www.liebertpub.com/doi/pdf/{doi}?download=true'
         registry.close()
         
-        # Test URL construction
-        expected_url = f"http://online.liebertpub.com/doi/pdf/{pma.doi}"
+        # Test URL construction (evidence-driven update 2025-08-09)
+        expected_url = f"https://www.liebertpub.com/doi/pdf/{pma.doi}?download=true"
         # The URL should follow the Liebert DOI template pattern
         assert 'liebertpub.com' in expected_url
         assert pma.doi in expected_url

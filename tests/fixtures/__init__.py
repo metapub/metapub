@@ -175,3 +175,22 @@ BRILL_EVIDENCE_PMIDS = {
     '11618220': {'doi': '10.1163/156853287x00032', 'journal': 'Toung Pao'},
     '11636720': {'doi': '10.1163/156852873x00014', 'journal': 'Phronesis (Barc)'},
 }
+
+# IngentaConnect PMIDs with metadata
+INGENTACONNECT_EVIDENCE_PMIDS = {
+    '38884108': {'doi': '10.5129/001041522x16222193902161', 'journal': 'Comp Polit'},
+    '34707797': {'doi': '10.21300/21.4.2021.7', 'journal': 'Technol Innov'},
+}
+
+# Scielo PMIDs with metadata  
+SCIELO_EVIDENCE_PMIDS = {
+    '23657305': {'doi': '10.1590/s0004-28032013000100008', 'journal': 'Arq Gastroenterol'},
+    '32294727': {'doi': '10.1590/S0004-2803.202000000-01', 'journal': 'Arq Gastroenterol'},
+}
+
+# Inderscience PMIDs with metadata
+INDERSCIENCE_EVIDENCE_PMIDS = {
+    '24084238': {'doi': '10.1504/IJBRA.2013.056620', 'journal': 'Int J Bioinform Res Appl'},
+    '24794070': {'doi': '10.1504/IJBRA.2014.060762', 'journal': 'Int J Bioinform Res Appl'},
+    '24449692': {'doi': '10.1504/IJBRA.2014.058777', 'journal': 'Int J Bioinform Res Appl'},
+}

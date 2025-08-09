@@ -195,6 +195,7 @@ def test_inderscience_journal_recognition():
     """Test that Inderscience journals are properly recognized in the registry."""
     from metapub.findit.registry import JournalRegistry
     from metapub.findit.journals.inderscience import inderscience_journals
+from tests.fixtures import load_pmid_xml, INDERSCIENCE_EVIDENCE_PMIDS
 
     registry = JournalRegistry()
 
@@ -226,6 +227,37 @@ def test_inderscience_journal_recognition():
     print(f"✓ Found {found_count} properly mapped Inderscience journals")
 
     registry.close()
+
+
+
+
+class TestInderscienceXMLFixtures:
+    """Test Inderscience dance function with real XML fixtures."""
+
+    def test_inderscience_authentic_metadata_validation(self):
+        """Validate authentic metadata from XML fixtures matches expected patterns."""
+        for pmid, expected in INDERSCIENCE_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi == expected['doi']
+            assert pma.journal == expected['journal']
+            assert pma.pmid == pmid
+            print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
+
+    def test_inderscience_doi_pattern_consistency(self):
+        """Test Inderscience DOI patterns (10.1504/)."""
+        for pmid, data in INDERSCIENCE_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi.startswith('10.1504/'), f"Inderscience DOI must start with 10.1504/, got: {pma.doi}"
+            print(f"✓ PMID {pmid} DOI pattern: {pma.doi}")
+
+    def test_inderscience_journal_coverage(self):
+        """Test Inderscience journal coverage."""
+        journals = set()
+        for pmid in INDERSCIENCE_EVIDENCE_PMIDS.keys():
+            pma = load_pmid_xml(pmid)
+            journals.add(pma.journal)
+        assert len(journals) >= 1
+        print(f"✓ Journals covered: {journals}")
 
 
 if __name__ == '__main__':

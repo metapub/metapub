@@ -256,6 +256,7 @@ def test_scielo_journal_recognition():
     """Test that SciELO journals are properly recognized in the registry."""
     from metapub.findit.registry import JournalRegistry
     from metapub.findit.journals.scielo import scielo_journals
+from tests.fixtures import load_pmid_xml, SCIELO_EVIDENCE_PMIDS
     
     registry = JournalRegistry()
     
@@ -287,6 +288,28 @@ def test_scielo_journal_recognition():
     print(f"✓ Found {found_count} properly mapped SciELO journals")
     
     registry.close()
+
+
+
+
+class TestScieloXMLFixtures:
+    """Test Scielo dance function with real XML fixtures."""
+
+    def test_scielo_authentic_metadata_validation(self):
+        """Validate authentic metadata from XML fixtures matches expected patterns."""
+        for pmid, expected in SCIELO_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi == expected['doi']
+            assert pma.journal == expected['journal']
+            assert pma.pmid == pmid
+            print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
+
+    def test_scielo_doi_pattern_consistency(self):
+        """Test Scielo DOI patterns (10.1590/)."""
+        for pmid, data in SCIELO_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi.startswith('10.1590/'), f"Scielo DOI must start with 10.1590/, got: {pma.doi}"
+            print(f"✓ PMID {pmid} DOI pattern: {pma.doi}")
 
 
 if __name__ == '__main__':

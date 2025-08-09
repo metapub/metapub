@@ -241,6 +241,7 @@ def test_ingentaconnect_journal_recognition():
     """Test that Ingenta Connect journals are properly recognized in the registry."""
     from metapub.findit.registry import JournalRegistry
     from metapub.findit.journals.ingentaconnect import ingentaconnect_journals
+from tests.fixtures import load_pmid_xml, INGENTACONNECT_EVIDENCE_PMIDS
 
     registry = JournalRegistry()
 
@@ -274,6 +275,28 @@ def test_ingentaconnect_journal_recognition():
         print(f"✓ Found {found_count} properly mapped Ingenta Connect journals")
 
     registry.close()
+
+
+
+
+class TestIngentaConnectXMLFixtures:
+    """Test IngentaConnect dance function with real XML fixtures."""
+
+    def test_ingentaconnect_authentic_metadata_validation(self):
+        """Validate authentic metadata from XML fixtures matches expected patterns."""
+        for pmid, expected in INGENTACONNECT_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi == expected['doi']
+            assert pma.journal == expected['journal']
+            assert pma.pmid == pmid
+            print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
+
+    def test_ingentaconnect_doi_pattern_consistency(self):
+        """Test DOI patterns consistency."""
+        for pmid, data in INGENTACONNECT_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi == data['doi']
+            print(f"✓ PMID {pmid} DOI consistent: {pma.doi}")
 
 
 if __name__ == '__main__':

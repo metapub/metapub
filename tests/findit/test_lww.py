@@ -2,6 +2,7 @@
 
 from .common import BaseDanceTest
 from metapub import FindIt
+from tests.fixtures import load_pmid_xml, LWW_EVIDENCE_PMIDS
 
 
 class TestLWWDance(BaseDanceTest):
@@ -28,3 +29,23 @@ class TestLWWDance(BaseDanceTest):
             
             # If we get a reason, it should not be NOFORMAT since LWW journals are now covered
             self.assertNoFormatError(source)
+
+
+class TestLWWXMLFixtures:
+    """Test Lippincott Williams & Wilkins with real XML fixtures."""
+
+    def test_lww_authentic_metadata_validation(self):
+        """Validate authentic metadata from XML fixtures matches expected patterns."""
+        for pmid, expected in LWW_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi == expected['doi']
+            assert pma.journal == expected['journal']
+            assert pma.pmid == pmid
+            print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
+
+    def test_lww_doi_pattern_consistency(self):
+        """Test LWW DOI patterns (10.1007/ in this case, varies by journal)."""
+        for pmid, data in LWW_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi == data['doi'], f"LWW DOI must match expected, got: {pma.doi}"
+            print(f"✓ PMID {pmid} DOI pattern: {pma.doi}")

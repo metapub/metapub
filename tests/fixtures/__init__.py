@@ -306,3 +306,24 @@ SCIENCEDIRECT_EVIDENCE_PMIDS = {
     '37652022': {'doi': '10.1016/j.ajhg.2023.08.003', 'journal': 'Am J Hum Genet', 'pmc': 'PMC10502871'},
     '39142283': {'doi': '10.1016/j.ajhg.2024.07.013', 'journal': 'Am J Hum Genet', 'pmc': 'PMC11393667'},
 }
+
+# Mary Ann Liebert PMIDs with metadata (from verified_pmids)
+LIEBERT_EVIDENCE_PMIDS = {
+    '37424520': {'doi': '10.1089/AID.2023.0011', 'journal': 'AIDS Res Hum Retroviruses', 'pmc': 'PMC10621655'},
+    '32160763': {'doi': '10.1089/AID.2020.0058', 'journal': 'AIDS Res Hum Retroviruses'},
+    '36825522': {'doi': '10.1089/AID.2022.0062', 'journal': 'AIDS Res Hum Retroviruses'},
+}
+
+# Cambridge University Press PMIDs with metadata (from verified_pmids)
+CAMBRIDGE_EVIDENCE_PMIDS = {
+    '32051057': {'doi': '10.1017/S0954422419000301', 'journal': 'Nutr Res Rev', 'pmc': 'PMC7653990'},
+    '37905428': {'doi': '10.1017/S0954422423000240', 'journal': 'Nutr Res Rev', 'pmc': 'PMC7617046'},
+    '38356364': {'doi': '10.1017/S0954422424000088', 'journal': 'Nutr Res Rev'},
+}
+
+# Lippincott Williams & Wilkins PMIDs with metadata (from verified_pmids)
+LWW_EVIDENCE_PMIDS = {
+    '33786689': {'doi': '10.1007/s10554-021-02227-x', 'journal': 'Int J Cardiovasc Imaging', 'pmc': 'PMC8009459'},
+    '38878148': {'doi': '10.1007/s10554-024-03145-4', 'journal': 'Int J Cardiovasc Imaging', 'pmc': 'PMC11258094'},
+    '35195805': {'doi': '10.1007/s10554-022-02558-3', 'journal': 'Int J Cardiovasc Imaging'},
+}

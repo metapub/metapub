@@ -7,6 +7,7 @@ of 5/8 accessible HTML samples.
 
 from .common import BaseDanceTest
 from metapub import FindIt
+from tests.fixtures import load_pmid_xml, LIEBERT_EVIDENCE_PMIDS
 
 
 class TestLiebertDance(BaseDanceTest):
@@ -54,3 +55,23 @@ class TestLiebertDance(BaseDanceTest):
         # The URL should follow the Liebert DOI template pattern
         assert 'liebertpub.com' in expected_url
         assert pma.doi in expected_url
+
+
+class TestLiebertXMLFixtures:
+    """Test Mary Ann Liebert Publishers with real XML fixtures."""
+
+    def test_liebert_authentic_metadata_validation(self):
+        """Validate authentic metadata from XML fixtures matches expected patterns."""
+        for pmid, expected in LIEBERT_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi == expected['doi']
+            assert pma.journal == expected['journal']
+            assert pma.pmid == pmid
+            print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
+
+    def test_liebert_doi_pattern_consistency(self):
+        """Test Liebert DOI patterns (10.1089/)."""
+        for pmid, data in LIEBERT_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi.startswith('10.1089/'), f"Liebert DOI must start with 10.1089/, got: {pma.doi}"
+            print(f"✓ PMID {pmid} DOI pattern: {pma.doi}")

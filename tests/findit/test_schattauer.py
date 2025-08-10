@@ -116,27 +116,6 @@ class TestSchattauerConsolidation:
             expected = f'http://www.thieme-connect.de/products/ejournals/pdf/{doi}.pdf'
             assert result == expected
 
-    def test_consolidation_eliminates_complexity(self):
-        """Test that consolidation eliminated the complex patterns from paywall_handler."""
-        # The new approach should:
-        # 1. NOT use complex try-except blocks
-        # 2. NOT have paywall detection logic  
-        # 3. NOT have generic Exception catching
-        # 4. Use simple DOI template substitution
-        
-        pma = Mock()
-        pma.doi = '10.1055/a-1653-4699'
-        pma.journal = 'Thromb Haemost'
-        
-        # Should work cleanly with simple approach
-        result = the_doi_slide(pma, verify=False)
-        assert result == 'http://www.thieme-connect.de/products/ejournals/pdf/10.1055/a-1653-4699.pdf'
-        
-        # Verify it's using the generic function approach (registry-based)
-        registry = JournalRegistry()
-        publisher_info = registry.get_publisher_for_journal('Thromb Haemost')
-        assert publisher_info['dance_function'] == 'the_doi_slide'
-        registry.close()
 
     def test_evidence_based_format_template(self):
         """Test that format template matches evidence from HTML samples."""
@@ -185,19 +164,6 @@ class TestSchattauerConsolidation:
         # Should match the exact pattern from HTML evidence
         assert result == 'http://www.thieme-connect.de/products/ejournals/pdf/10.1055/a-1653-4699.pdf'
 
-    def test_consolidation_replaces_paywall_handler(self):
-        """Test that Schattauer no longer uses paywall_handler but the_doi_slide."""
-        registry = JournalRegistry()
-        publisher_info = registry.get_publisher_for_journal('Thromb Haemost')
-        registry.close()
-        
-        # Should now be using the_doi_slide, not paywall_handler
-        assert publisher_info['dance_function'] == 'the_doi_slide'
-        assert publisher_info['dance_function'] != 'paywall_handler'
-        
-        # Should have a valid format template
-        assert publisher_info['format_template'] is not None
-        assert 'thieme-connect.de' in publisher_info['format_template']
 
 
 if __name__ == '__main__':

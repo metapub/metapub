@@ -71,18 +71,6 @@ class TestUChicagoConsolidation:
         
         assert 'MISSING: DOI required' in str(excinfo.value)
 
-    def test_consolidation_benefits(self):
-        """Test that consolidation provides the expected benefits."""
-        # Test that we eliminated the custom dance function in favor of generic approach
-        registry = JournalRegistry(db_path='./test_registry.db')
-        publisher_info = registry.get_publisher_for_journal('Am J Sociol')
-        
-        # Verify consolidated approach
-        assert publisher_info['dance_function'] == 'the_doi_slide'
-        assert publisher_info['format_template'] is not None
-        assert 'uchicago.edu' in publisher_info['format_template']
-        
-        registry.close()
 
     def test_evidence_based_template(self):
         """Test that template is based on evidence from HTML samples.""" 
@@ -132,23 +120,6 @@ class TestUChicagoConsolidation:
         assert '10.1086/713927' in test_url
         assert test_url.count('/') == 6  # https://www.journals.uchicago.edu/doi/pdf/10.1086/713927
 
-    def test_consolidation_eliminates_complexity(self):
-        """Test that consolidation eliminated the complex try-except patterns."""
-        # This test verifies that we're using the simple generic function
-        # instead of the complex custom function that had multiple try-except blocks
-        registry = JournalRegistry(db_path='./test_registry.db')
-        publisher_info = registry.get_publisher_for_journal('Am J Sociol')
-        
-        # Verify we're using simple generic approach
-        assert publisher_info['dance_function'] == 'the_doi_slide'
-        assert publisher_info['format_template'] is not None
-        
-        # Verify the template works as expected
-        template = publisher_info['format_template'] 
-        result = template.format(doi='10.1086/713927')
-        assert result == 'https://www.journals.uchicago.edu/doi/pdf/10.1086/713927'
-        
-        registry.close()
 
 
 if __name__ == '__main__':

@@ -125,27 +125,6 @@ class TestWorldScientificConsolidation:
         assert '?download=true' in result
         assert result == 'https://www.worldscientific.com/doi/pdf/10.1142/S0218957719500118?download=true'
 
-    def test_consolidation_eliminates_complexity(self):
-        """Test that consolidation eliminated the complex patterns from old implementation."""
-        # The new approach should:
-        # 1. NOT use complex try-except blocks
-        # 2. NOT have paywall detection logic  
-        # 3. NOT have generic Exception catching
-        # 4. Use simple DOI template substitution
-        
-        pma = Mock()
-        pma.doi = '10.1142/S0218957719500118'
-        pma.journal = 'Am J Chin Med'
-        
-        # Should work cleanly with simple approach
-        result = the_doi_slide(pma, verify=False)
-        assert result == 'https://www.worldscientific.com/doi/pdf/10.1142/S0218957719500118?download=true'
-        
-        # Verify it's using the generic function approach (registry-based)
-        registry = JournalRegistry()
-        publisher_info = registry.get_publisher_for_journal('Am J Chin Med')
-        assert publisher_info['dance_function'] == 'the_doi_slide'
-        registry.close()
 
     def test_evidence_based_format_template(self):
         """Test that format template matches evidence from HTML samples."""

@@ -97,10 +97,6 @@ from metapub.findit.journals.spandidos import spandidos_format, spandidos_doi_fo
 from metapub.findit.journals.sage import sage_vip_template
 from metapub.findit.journals.informa import informa_template
 
-# Import paywalled journals
-from metapub.findit.journals.paywalled import (
-    weird_paywall_publishers
-)
 
 # Only configure logging if this is run as a script, not when imported
 log = logging.getLogger(__name__)
@@ -535,12 +531,6 @@ PUBLISHER_CONFIGS = [
         'dance_function': 'the_doi_slide',
         'format_template': schattauer_template,
         'journals': schattauer_journals,
-    },
-    {
-        'name': 'weird_paywall',
-        'dance_function': 'paywall_handler',
-        'format_template': None,
-        'journals': weird_paywall_publishers,
     },
 ]
 

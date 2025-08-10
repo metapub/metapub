@@ -90,7 +90,7 @@ class TestRSCDance(BaseDanceTest):
         print(f"Test 4 - Article URL: {url}")
 
     def test_rsc_reaction_url_construction_nat_prod_rep(self):
-        """Test 5: Natural Product Reports (from existing paywalled list).
+        """Test 5: Natural Product Reports.
         
         PMID: 28290569 (Nat Prod Rep)
         Expected: Should construct valid RSC article URL

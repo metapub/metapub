@@ -137,13 +137,6 @@ metapub.findit.journals.nature module
    :show-inheritance:
    :undoc-members:
 
-metapub.findit.journals.paywalled module
-----------------------------------------
-
-.. automodule:: metapub.findit.journals.paywalled
-   :members:
-   :show-inheritance:
-   :undoc-members:
 
 metapub.findit.journals.scielo module
 -------------------------------------

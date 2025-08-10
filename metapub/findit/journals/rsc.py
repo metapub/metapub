@@ -71,7 +71,5 @@ rsc_journals = [
     'Mol Omics',
     'Medchemcomm', 
     'Food Funct',
-    
-    # Include the existing journal from paywalled.py
     'Nat Prod Rep'
 ]

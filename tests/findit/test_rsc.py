@@ -25,10 +25,10 @@ class TestRSCDance(BaseDanceTest):
         PMID: 38916454 (Chem Commun (Camb))
         Expected: Should construct valid RSC article URL via DOI resolution
         """
-        pma = self.fetch.article_by_pmid('38916454')
+        pma = load_pmid_xml('32935693')
         
-        assert pma.journal == 'Chem Commun (Camb)'
-        assert pma.doi == '10.1039/d4cc02638a'
+        assert pma.journal == 'Nat Prod Rep'
+        assert pma.doi == '10.1039/d0np00027b'
         print(f"Test 1 - Article info: {pma.journal}, DOI: {pma.doi}")
 
         # Test without verification (should always work for URL construction)
@@ -43,10 +43,10 @@ class TestRSCDance(BaseDanceTest):
         PMID: 38912871 (Chem Soc Rev)
         Expected: Should construct valid RSC article URL
         """
-        pma = self.fetch.article_by_pmid('38912871')
+        pma = load_pmid_xml('38170905')
         
-        assert pma.journal == 'Chem Soc Rev'
-        assert pma.doi == '10.1039/d4cs00390j'
+        assert pma.journal == 'Nat Prod Rep'
+        assert pma.doi == '10.1039/d3np00037k'
         print(f"Test 2 - Article info: {pma.journal}, DOI: {pma.doi}")
 
         # Test without verification
@@ -61,10 +61,10 @@ class TestRSCDance(BaseDanceTest):
         PMID: 38903241 (Chem Sci)
         Expected: Should construct valid RSC article URL
         """
-        pma = self.fetch.article_by_pmid('38903241')
+        pma = load_pmid_xml('31712796')
         
-        assert pma.journal == 'Chem Sci'
-        assert pma.doi == '10.1039/d4sc01708k'
+        assert pma.journal == 'Environ Sci Process Impacts'
+        assert pma.doi == '10.1039/c9em00386j'
         print(f"Test 3 - Article info: {pma.journal}, DOI: {pma.doi}")
 
         # Test without verification
@@ -78,10 +78,10 @@ class TestRSCDance(BaseDanceTest):
         PMID: 38916038 (Lab Chip)
         Expected: Should construct valid RSC article URL
         """
-        pma = self.fetch.article_by_pmid('38916038')
+        pma = load_pmid_xml('34817495')
         
-        assert pma.journal == 'Lab Chip'
-        assert pma.doi == '10.1039/d4lc00276h'
+        assert pma.journal == 'Environ Sci Process Impacts'
+        assert pma.doi == '10.1039/d1em00296a'
         print(f"Test 4 - Article info: {pma.journal}, DOI: {pma.doi}")
 
         # Test without verification
@@ -95,10 +95,10 @@ class TestRSCDance(BaseDanceTest):
         PMID: 28290569 (Nat Prod Rep)
         Expected: Should construct valid RSC article URL
         """
-        pma = self.fetch.article_by_pmid('28290569')
+        pma = load_pmid_xml('35699396')
         
-        assert pma.journal == 'Nat Prod Rep'
-        assert pma.doi == '10.1039/c6np00124f'
+        assert pma.journal == 'Environ Sci Process Impacts'
+        assert pma.doi == '10.1039/d1em00553g'
         print(f"Test 5 - Article info: {pma.journal}, DOI: {pma.doi}")
 
         # Test without verification
@@ -106,58 +106,68 @@ class TestRSCDance(BaseDanceTest):
         assert url is not None
         print(f"Test 5 - Article URL: {url}")
 
+    @patch('metapub.findit.dances.rsc.verify_pdf_url')
     @patch('metapub.findit.dances.rsc.the_doi_2step')
-    @patch('requests.get')
-    def test_rsc_reaction_successful_access_with_pdf(self, mock_get, mock_doi_2step):
+    @patch('metapub.findit.dances.rsc.unified_uri_get')
+    def test_rsc_reaction_successful_access_with_pdf(self, mock_get, mock_doi_2step, mock_verify):
         """Test 6: Successful access simulation with PDF link found.
         
-        PMID: 38916454 (Chem Commun)
+        PMID: 37787043 (Environ Sci Process Impacts)
         Expected: Should return PDF URL when found on page
         """
         # Mock DOI resolution to RSC article page
-        mock_doi_2step.return_value = 'https://pubs.rsc.org/en/content/articlelanding/2024/cc/d4cc02638a'
+        mock_doi_2step.return_value = 'https://pubs.rsc.org/en/content/articlelanding/2023/em/d3em00224a'
         
-        # Mock successful article page response with PDF link
+        # Mock successful article page response with citation_pdf_url meta tag
         mock_response = Mock()
         mock_response.status_code = 200
         mock_response.ok = True
         mock_response.text = '''
         <html>
+            <head>
+                <meta content="https://pubs.rsc.org/en/content/articlepdf/2023/em/d3em00224a" name="citation_pdf_url" />
+            </head>
             <body>
                 <h1>Article Title</h1>
                 <p>This is an RSC article with PDF download available.</p>
-                <a href="/en/content/articlepdf/2024/cc/d4cc02638a" class="pdf-link">Download PDF</a>
             </body>
         </html>
         '''
         mock_response.content = mock_response.text.encode('utf-8')
-        mock_response.url = 'https://pubs.rsc.org/en/content/articlelanding/2024/cc/d4cc02638a'
+        mock_response.url = 'https://pubs.rsc.org/en/content/articlelanding/2023/em/d3em00224a'
         mock_get.return_value = mock_response
 
-        pma = self.fetch.article_by_pmid('38916454')
+        pma = load_pmid_xml('37787043')
+        
+        # Mock PDF verification to succeed
+        mock_verify.return_value = 'https://pubs.rsc.org/en/content/articlepdf/2023/em/d3em00224a'
         
         # Test with verification - should find PDF link
         url = the_rsc_reaction(pma, verify=True)
+        assert url == 'https://pubs.rsc.org/en/content/articlepdf/2023/em/d3em00224a'
         assert 'pubs.rsc.org' in url
-        assert 'pdf' in url  # Accept any PDF URL format
+        assert 'pdf' in url
         print(f"Test 6 - Found PDF link: {url}")
 
     @patch('metapub.findit.dances.rsc.the_doi_2step')
-    @patch('requests.get')
+    @patch('metapub.findit.dances.rsc.unified_uri_get')
     def test_rsc_reaction_open_access_article(self, mock_get, mock_doi_2step):
         """Test 7: Open access article without direct PDF link.
         
-        Expected: Should return article URL when accessible
+        Expected: Should raise NoPDFLink when no citation_pdf_url found
         """
         # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://pubs.rsc.org/en/content/articlelanding/2024/cc/d4cc02638a'
+        mock_doi_2step.return_value = 'https://pubs.rsc.org/en/content/articlelanding/2023/em/d3em00235g'
         
-        # Mock successful article page response without specific PDF link
+        # Mock successful article page response without citation_pdf_url meta tag
         mock_response = Mock()
         mock_response.status_code = 200
         mock_response.ok = True
         mock_response.text = '''
         <html>
+            <head>
+                <title>RSC Article</title>
+            </head>
             <body>
                 <h1>Article Title</h1>
                 <p>This is an RSC article.</p>
@@ -170,15 +180,18 @@ class TestRSCDance(BaseDanceTest):
         mock_response.content = mock_response.text.encode('utf-8')
         mock_get.return_value = mock_response
 
-        pma = self.fetch.article_by_pmid('38916454')
+        pma = load_pmid_xml('37655634')
         
-        # Test with verification - should return article URL
-        url = the_rsc_reaction(pma, verify=True)
-        assert url == 'https://pubs.rsc.org/en/content/articlelanding/2024/cc/d4cc02638a'
-        print(f"Test 7 - Article URL: {url}")
+        # Test with verification - should raise NoPDFLink
+        with pytest.raises(NoPDFLink) as exc_info:
+            the_rsc_reaction(pma, verify=True)
+        
+        assert 'MISSING' in str(exc_info.value)
+        assert 'citation_pdf_url' in str(exc_info.value)
+        print(f"Test 7 - Correctly detected missing PDF URL: {exc_info.value}")
 
     @patch('metapub.findit.dances.rsc.the_doi_2step')
-    @patch('requests.get')
+    @patch('metapub.findit.dances.rsc.unified_uri_get')
     def test_rsc_reaction_paywall_detection(self, mock_get, mock_doi_2step):
         """Test 8: Paywall detection.
         
@@ -208,18 +221,18 @@ class TestRSCDance(BaseDanceTest):
         mock_response.content = mock_response.text.encode('utf-8')
         mock_get.return_value = mock_response
 
-        pma = self.fetch.article_by_pmid('38916454')
+        pma = load_pmid_xml('35485580')
         
-        # Test with verification - should detect paywall
-        with pytest.raises(AccessDenied) as exc_info:
+        # Test with verification - should detect missing citation_pdf_url
+        with pytest.raises(NoPDFLink) as exc_info:
             the_rsc_reaction(pma, verify=True)
         
-        assert 'PAYWALL' in str(exc_info.value)
-        assert 'subscription' in str(exc_info.value)
-        print(f"Test 8 - Correctly detected paywall: {exc_info.value}")
+        assert 'MISSING' in str(exc_info.value)
+        assert 'citation_pdf_url' in str(exc_info.value)
+        print(f"Test 8 - Correctly detected missing PDF URL: {exc_info.value}")
 
     @patch('metapub.findit.dances.rsc.the_doi_2step')
-    @patch('requests.get')
+    @patch('metapub.findit.dances.rsc.unified_uri_get')
     def test_rsc_reaction_access_forbidden(self, mock_get, mock_doi_2step):
         """Test 9: Access forbidden (403 error).
         
@@ -234,18 +247,18 @@ class TestRSCDance(BaseDanceTest):
         mock_response.ok = False
         mock_get.return_value = mock_response
 
-        pma = self.fetch.article_by_pmid('38916454')
+        pma = load_pmid_xml('32935693')
         
         # Test with verification - should handle 403
-        with pytest.raises(AccessDenied) as exc_info:
+        with pytest.raises(NoPDFLink) as exc_info:
             the_rsc_reaction(pma, verify=True)
         
-        assert 'DENIED' in str(exc_info.value)
-        assert '403' in str(exc_info.value) or 'forbidden' in str(exc_info.value).lower()
+        assert 'TXERROR' in str(exc_info.value)
+        assert '403' in str(exc_info.value)
         print(f"Test 9 - Correctly handled 403: {exc_info.value}")
 
     @patch('metapub.findit.dances.rsc.the_doi_2step')
-    @patch('requests.get')
+    @patch('metapub.findit.dances.rsc.unified_uri_get')
     def test_rsc_reaction_network_error(self, mock_get, mock_doi_2step):
         """Test 10: Network error handling.
         
@@ -257,15 +270,14 @@ class TestRSCDance(BaseDanceTest):
         # Mock network error
         mock_get.side_effect = requests.exceptions.ConnectionError("Network error")
 
-        pma = self.fetch.article_by_pmid('38916454')
+        pma = load_pmid_xml('38170905')
         
-        # Test - should handle network error
-        with pytest.raises(NoPDFLink) as exc_info:
+        # Test - should let network error bubble up
+        with pytest.raises(requests.exceptions.ConnectionError) as exc_info:
             the_rsc_reaction(pma, verify=True)
         
-        assert 'TXERROR' in str(exc_info.value)
         assert 'Network error' in str(exc_info.value)
-        print(f"Test 10 - Correctly handled network error: {exc_info.value}")
+        print(f"Test 10 - Correctly let network error bubble up: {exc_info.value}")
 
     def test_rsc_reaction_missing_doi(self):
         """Test 11: Article without DOI.
@@ -302,7 +314,7 @@ class TestRSCDance(BaseDanceTest):
         print(f"Test 12 - Correctly handled invalid DOI: {exc_info.value}")
 
     @patch('metapub.findit.dances.rsc.the_doi_2step')
-    @patch('requests.get')
+    @patch('metapub.findit.dances.rsc.unified_uri_get')
     def test_rsc_reaction_article_not_found(self, mock_get, mock_doi_2step):
         """Test 13: Article not found (404 error).
         
@@ -317,7 +329,7 @@ class TestRSCDance(BaseDanceTest):
         mock_response.ok = False
         mock_get.return_value = mock_response
 
-        pma = self.fetch.article_by_pmid('38916454')
+        pma = load_pmid_xml('31712796')
         
         # Test with verification - should handle 404
         with pytest.raises(NoPDFLink) as exc_info:
@@ -494,12 +506,12 @@ class TestRSCXMLFixtures:
         mock_doi.return_value = 'https://pubs.rsc.org/article/'
         mock_get.return_value = mock_response
         
-        # Should handle missing citation_pdf_url meta tag
-        with patch('metapub.findit.dances.rsc.verify_pdf_url') as mock_verify:
-            mock_verify.side_effect = AccessDenied('RSC subscription required')
-            
-            with pytest.raises(AccessDenied):
-                the_rsc_reaction(pma, verify=True)
+        # Should detect missing citation_pdf_url meta tag
+        with pytest.raises(NoPDFLink) as exc_info:
+            the_rsc_reaction(pma, verify=True)
+        
+        assert 'MISSING' in str(exc_info.value)
+        assert 'citation_pdf_url' in str(exc_info.value)
 
     def test_rsc_error_handling_missing_doi(self):
         """Test error handling for articles without DOI."""

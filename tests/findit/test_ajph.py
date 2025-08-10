@@ -115,15 +115,17 @@ class TestAJPHDance(BaseDanceTest):
         # Generic function may use different message
         self.assertTrue('subscription' in error_msg.lower() or 'access' in error_msg.lower())
 
-    @patch('metapub.findit.dances.generic.unified_uri_get')
+    @patch('requests.Session.get')
     def test_ajph_successful_pdf_access(self, mock_get):
         """Test successful PDF access (rare but possible)."""
         expected_url = 'https://ajph.aphapublications.org/doi/pdf/10.2105/AJPH.2021.306453?download=true'
-        mock_get.return_value = MockResponse(
-            status_code=200,
-            content_type='application/pdf',
-            url=expected_url
-        )
+        
+        # Mock response with PDF content
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.headers = {'Content-Type': 'application/pdf'}
+        mock_response.content = b'%PDF-1.4'  # PDF header
+        mock_get.return_value = mock_response
         
         pma = load_pmid_xml('34529508')
         result = the_doi_slide(pma, verify=True)

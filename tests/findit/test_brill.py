@@ -27,7 +27,7 @@ class TestBrillDance(BaseDanceTest):
         PMID: 26415349 (Early Sci Med)
         Expected: Should construct valid Brill article URL via DOI resolution
         """
-        pma = self.fetch.article_by_pmid('26415349')
+        pma = load_pmid_xml('26415349')
 
         assert pma.journal == 'Early Sci Med'
         assert pma.doi == '10.1163/15733823-00202p03'
@@ -45,7 +45,7 @@ class TestBrillDance(BaseDanceTest):
         PMID: 11873782 (Early Sci Med)
         Expected: Should construct valid Brill article URL
         """
-        pma = self.fetch.article_by_pmid('11873782')
+        pma = load_pmid_xml('11873782')
 
         assert pma.journal == 'Early Sci Med'
         assert pma.doi == '10.1163/157338201x00154'
@@ -63,7 +63,7 @@ class TestBrillDance(BaseDanceTest):
         PMID: 11618220 (Toung Pao)
         Expected: Should construct valid Brill article URL
         """
-        pma = self.fetch.article_by_pmid('11618220')
+        pma = load_pmid_xml('11618220')
 
         assert pma.journal == 'Toung Pao'
         assert pma.doi == '10.1163/156853287x00032'
@@ -80,7 +80,7 @@ class TestBrillDance(BaseDanceTest):
         PMID: 11636720 (Phronesis)
         Expected: Should construct valid Brill article URL
         """
-        pma = self.fetch.article_by_pmid('11636720')
+        pma = load_pmid_xml('11636720')
 
         assert pma.journal == 'Phronesis (Barc)'
         assert pma.doi == '10.1163/156852873x00014'
@@ -92,8 +92,9 @@ class TestBrillDance(BaseDanceTest):
         print(f"Test 4 - Article URL: {url}")
 
     @patch('metapub.findit.dances.brill.the_doi_2step')
-    @patch('requests.get')
-    def test_brill_bridge_successful_access_with_pdf(self, mock_get, mock_doi_2step):
+    @patch('metapub.findit.dances.brill.unified_uri_get')
+    @patch('metapub.findit.dances.brill.verify_pdf_url')
+    def test_brill_bridge_successful_access_with_pdf(self, mock_verify, mock_get, mock_doi_2step):
         """Test 5: Successful access simulation with PDF link found.
 
         PMID: 26415349 (Early Sci Med)
@@ -102,16 +103,18 @@ class TestBrillDance(BaseDanceTest):
         # Mock DOI resolution to Brill article page
         mock_doi_2step.return_value = 'https://brill.com/view/journals/esm/20/2/article-p153_3.xml'
 
-        # Mock successful article page response with PDF link
+        # Mock successful article page response with citation_pdf_url meta tag
         mock_response = Mock()
         mock_response.status_code = 200
         mock_response.ok = True
         mock_response.text = '''
         <html>
+            <head>
+                <meta name="citation_pdf_url" content="https://brill.com/downloadpdf/view/journals/esm/20/2/article-p153_3.pdf" />
+            </head>
             <body>
                 <h1>Article Title</h1>
                 <p>This is a Brill article with PDF download available.</p>
-                <a href="/downloadpdf/journals/esm/20/2/article-p153_3.pdf" class="pdf-link">Download PDF</a>
             </body>
         </html>
         '''
@@ -119,7 +122,11 @@ class TestBrillDance(BaseDanceTest):
         mock_response.url = 'https://brill.com/view/journals/esm/20/2/article-p153_3.xml'
         mock_get.return_value = mock_response
 
-        pma = self.fetch.article_by_pmid('26415349')
+        pma = load_pmid_xml('26415349')
+
+        # Mock verify_pdf_url to return the URL (successful verification)
+        expected_url = "https://brill.com/downloadpdf/view/journals/esm/20/2/article-p153_3.pdf"
+        mock_verify.return_value = expected_url
 
         # Test with verification - should find PDF link
         url = the_brill_bridge(pma, verify=True)
@@ -128,7 +135,7 @@ class TestBrillDance(BaseDanceTest):
         print(f"Test 5 - Found PDF link: {url}")
 
     @patch('metapub.findit.dances.brill.the_doi_2step')
-    @patch('requests.get')
+    @patch('metapub.findit.dances.brill.unified_uri_get')
     def test_brill_bridge_open_access_article(self, mock_get, mock_doi_2step):
         """Test 6: Open access article without direct PDF link.
 
@@ -155,7 +162,7 @@ class TestBrillDance(BaseDanceTest):
         mock_response.content = mock_response.text.encode('utf-8')
         mock_get.return_value = mock_response
 
-        pma = self.fetch.article_by_pmid('26415349')
+        pma = load_pmid_xml('26415349')
 
         # Test with verification - should return article URL
         url = the_brill_bridge(pma, verify=True)
@@ -163,7 +170,7 @@ class TestBrillDance(BaseDanceTest):
         print(f"Test 6 - Article URL: {url}")
 
     @patch('metapub.findit.dances.brill.the_doi_2step')
-    @patch('requests.get')
+    @patch('metapub.findit.dances.brill.unified_uri_get')
     def test_brill_bridge_paywall_detection(self, mock_get, mock_doi_2step):
         """Test 7: Paywall detection.
 
@@ -193,18 +200,18 @@ class TestBrillDance(BaseDanceTest):
         mock_response.content = mock_response.text.encode('utf-8')
         mock_get.return_value = mock_response
 
-        pma = self.fetch.article_by_pmid('26415349')
+        pma = load_pmid_xml('26415349')
 
-        # Test with verification - should detect paywall
-        with pytest.raises(AccessDenied) as exc_info:
+        # Test with verification - should detect missing meta tag
+        with pytest.raises(NoPDFLink) as exc_info:
             the_brill_bridge(pma, verify=True)
 
-        assert 'PAYWALL' in str(exc_info.value)
-        assert 'subscription' in str(exc_info.value)
+        assert 'MISSING' in str(exc_info.value)
+        assert 'citation_pdf_url' in str(exc_info.value)
         print(f"Test 7 - Correctly detected paywall: {exc_info.value}")
 
     @patch('metapub.findit.dances.brill.the_doi_2step')
-    @patch('requests.get')
+    @patch('metapub.findit.dances.brill.unified_uri_get')
     def test_brill_bridge_access_forbidden(self, mock_get, mock_doi_2step):
         """Test 8: Access forbidden (403 error).
 
@@ -219,18 +226,18 @@ class TestBrillDance(BaseDanceTest):
         mock_response.ok = False
         mock_get.return_value = mock_response
 
-        pma = self.fetch.article_by_pmid('26415349')
+        pma = load_pmid_xml('26415349')
 
         # Test with verification - should handle 403
-        with pytest.raises(AccessDenied) as exc_info:
+        with pytest.raises(NoPDFLink) as exc_info:
             the_brill_bridge(pma, verify=True)
 
-        assert 'DENIED' in str(exc_info.value)
-        assert '403' in str(exc_info.value) or 'forbidden' in str(exc_info.value).lower()
+        assert 'TXERROR' in str(exc_info.value)
+        assert '403' in str(exc_info.value)
         print(f"Test 8 - Correctly handled 403: {exc_info.value}")
 
     @patch('metapub.findit.dances.brill.the_doi_2step')
-    @patch('requests.get')
+    @patch('metapub.findit.dances.brill.unified_uri_get')
     def test_brill_bridge_network_error(self, mock_get, mock_doi_2step):
         """Test 9: Network error handling.
 
@@ -242,7 +249,7 @@ class TestBrillDance(BaseDanceTest):
         # Mock network error
         mock_get.side_effect = requests.exceptions.ConnectionError("Network error")
 
-        pma = self.fetch.article_by_pmid('26415349')
+        pma = load_pmid_xml('26415349')
 
         # Test - should handle network error
         with pytest.raises(NoPDFLink) as exc_info:
@@ -287,7 +294,7 @@ class TestBrillDance(BaseDanceTest):
         print(f"Test 11 - Correctly handled invalid DOI: {exc_info.value}")
 
     @patch('metapub.findit.dances.brill.the_doi_2step')
-    @patch('requests.get')
+    @patch('metapub.findit.dances.brill.unified_uri_get')
     def test_brill_bridge_article_not_found(self, mock_get, mock_doi_2step):
         """Test 12: Article not found (404 error).
 
@@ -302,7 +309,7 @@ class TestBrillDance(BaseDanceTest):
         mock_response.ok = False
         mock_get.return_value = mock_response
 
-        pma = self.fetch.article_by_pmid('26415349')
+        pma = load_pmid_xml('26415349')
 
         # Test with verification - should handle 404
         with pytest.raises(NoPDFLink) as exc_info:

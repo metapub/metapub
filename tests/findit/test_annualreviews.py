@@ -24,18 +24,18 @@ class TestAnnualReviewsDance(BaseDanceTest):
         PMID: 38885471 (Annu Rev Phytopathol)
         Expected: Should construct valid Annual Reviews PDF URL directly
         """
-        pma = self.fetch.article_by_pmid('38885471')
+        pma = load_pmid_xml('35320699')
         
-        assert pma.journal == 'Annu Rev Phytopathol'
-        assert pma.doi == '10.1146/annurev-phyto-021722-034823'
+        assert pma.journal == 'Annu Rev Chem Biomol Eng'
+        assert pma.doi == '10.1146/annurev-chembioeng-092220-030853'
         print(f"Test 1 - Article info: {pma.journal}, DOI: {pma.doi}")
 
         # Test without verification (should always work for URL construction)
         url = the_annualreviews_round(pma, verify=False)
         assert url is not None
         assert 'annualreviews.org' in url
-        assert '/deliver/fulltext/phyto/' in url
-        assert 'annurev-phyto-021722-034823.pdf' in url
+        assert '/deliver/fulltext/chembioeng/' in url
+        assert 'annurev-chembioeng-092220-030853.pdf' in url
         print(f"Test 1 - PDF URL: {url}")
 
     def test_annualreviews_round_url_construction_genomics(self):
@@ -44,18 +44,18 @@ class TestAnnualReviewsDance(BaseDanceTest):
         PMID: 38724024 (Annu Rev Genomics Hum Genet)
         Expected: Should construct valid Annual Reviews PDF URL directly
         """
-        pma = self.fetch.article_by_pmid('38724024')
+        pma = load_pmid_xml('36917814')
         
-        assert pma.journal == 'Annu Rev Genomics Hum Genet'
-        assert pma.doi == '10.1146/annurev-genom-121222-105345'
+        assert pma.journal == 'Annu Rev Chem Biomol Eng'
+        assert pma.doi == '10.1146/annurev-chembioeng-101121-084508'
         print(f"Test 2 - Article info: {pma.journal}, DOI: {pma.doi}")
 
         # Test without verification  
         url = the_annualreviews_round(pma, verify=False)
         assert url is not None
         assert 'annualreviews.org' in url
-        assert '/deliver/fulltext/genom/' in url
-        assert 'annurev-genom-121222-105345.pdf' in url
+        assert '/deliver/fulltext/chembioeng/' in url
+        assert 'annurev-chembioeng-101121-084508.pdf' in url
         print(f"Test 2 - PDF URL: {url}")
 
     def test_annualreviews_round_url_construction_marine_sci(self):
@@ -64,10 +64,10 @@ class TestAnnualReviewsDance(BaseDanceTest):
         PMID: 38896540 (Ann Rev Mar Sci)
         Expected: Should construct valid Annual Reviews PDF URL directly
         """
-        pma = self.fetch.article_by_pmid('38896540')
+        pma = load_pmid_xml('32976730')
         
         assert pma.journal == 'Ann Rev Mar Sci'
-        assert pma.doi == '10.1146/annurev-marine-121422-015323'
+        assert pma.doi == '10.1146/annurev-marine-032720-095144'
         print(f"Test 3 - Article info: {pma.journal}, DOI: {pma.doi}")
 
         # Test without verification
@@ -75,25 +75,25 @@ class TestAnnualReviewsDance(BaseDanceTest):
         assert url is not None
         assert 'annualreviews.org' in url
         assert '/deliver/fulltext/marine/' in url
-        assert 'annurev-marine-121422-015323.pdf' in url
+        assert 'annurev-marine-032720-095144.pdf' in url
         print(f"Test 3 - PDF URL: {url}")
 
     @patch('metapub.findit.dances.annualreviews.verify_pdf_url')
     def test_annualreviews_round_successful_access_with_verification(self, mock_verify):
         """Test 4: Successful access with verification.
         
-        PMID: 38885471 (Annu Rev Phytopathol)
+        PMID: 35320699 (Annu Rev Chem Biomol Eng)
         Expected: Should return PDF URL when verification passes
         """
-        # Mock successful PDF verification
-        mock_verify.return_value = True
+        # Mock successful PDF verification (no exception raised)
+        mock_verify.return_value = None  # Success
 
-        pma = self.fetch.article_by_pmid('38885471')
+        pma = load_pmid_xml('35320699')
         
         # Test with verification - should return PDF URL
         url = the_annualreviews_round(pma, verify=True)
         assert 'annualreviews.org' in url
-        assert '/deliver/fulltext/phyto/' in url
+        assert '/deliver/fulltext/chembioeng/' in url
         assert '.pdf' in url
         
         # Verify that verify_pdf_url was called
@@ -106,10 +106,10 @@ class TestAnnualReviewsDance(BaseDanceTest):
         
         Expected: Should detect paywall when PDF verification fails
         """
-        # Mock failed PDF verification (paywall)
-        mock_verify.return_value = False
+        # Mock failed PDF verification (paywall) - verify_pdf_url raises AccessDenied
+        mock_verify.side_effect = AccessDenied("PAYWALL: PDF access requires subscription")
 
-        pma = self.fetch.article_by_pmid('38885471')
+        pma = load_pmid_xml('35320699')
         
         # Test with verification - should detect paywall
         with pytest.raises(AccessDenied) as exc_info:

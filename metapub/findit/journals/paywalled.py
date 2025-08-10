@@ -1,11 +1,5 @@
 # Below: Journals with really annoying paywalls guarding their precious
 # secrets.
-schattauer_journals = [
-    'Thromb Haemost',
-]
-
-# Royal Society of Chemistry (moved to proper RSC publisher - see rsc.py)  
-RSC_journals = []
 
 # thieme journals so far don't seem to have any open access content.
 # example links to article page: https://www.thieme-connect.com/DOI/DOI?10.1055/s-0028-1085467

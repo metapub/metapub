@@ -23,7 +23,7 @@ pnas_template = 'https://www.pnas.org/doi/pdf/{doi}'
 
 # AJPH - American Journal of Public Health (single journal publisher)
 ajph_journals = ['Am J Public Health']
-ajph_template = 'https://ajph.aphapublications.org/doi/pdf/{doi}'
+ajph_template = 'https://ajph.aphapublications.org/doi/pdf/{doi}?download=true'
 
 # BMJ Open Gastroenterology - Single specialized medical journal
 bmj_open_gastro_journals = ['BMJ Open Gastroenterol']

@@ -167,13 +167,7 @@ WALSHMEDIA_EVIDENCE_PMIDS = {
     '29226023': {'doi': '10.4172/2161-1122.1000448', 'journal': 'Dentistry (Sunnyvale)', 'pmc': 'PMC5722253'},
 }
 
-# Brill Academic Publishers PMIDs with metadata
-BRILL_EVIDENCE_PMIDS = {
-    '26415349': {'doi': '10.1163/15733823-00202p03', 'journal': 'Early Sci Med'},
-    '11873782': {'doi': '10.1163/157338201x00154', 'journal': 'Early Sci Med'},
-    '11618220': {'doi': '10.1163/156853287x00032', 'journal': 'Toung Pao'},
-    '11636720': {'doi': '10.1163/156852873x00014', 'journal': 'Phronesis (Barc)'},
-}
+# Brill Academic Publishers PMIDs with metadata (moved to consolidated definition below)
 
 # IngentaConnect PMIDs with metadata
 INGENTACONNECT_EVIDENCE_PMIDS = {
@@ -276,8 +270,14 @@ OXFORD_EVIDENCE_PMIDS = {
     '39345789': {'doi': '10.1093/jamiaopen/ooae099', 'journal': 'JAMIA Open'},
 }
 
-# Brill PMIDs with metadata (from verified_pmids)
+# Brill PMIDs with metadata (combined historical and verified_pmids)
 BRILL_EVIDENCE_PMIDS = {
+    # Historical journals (original evidence)
+    '26415349': {'doi': '10.1163/15733823-00202p03', 'journal': 'Early Sci Med'},
+    '11873782': {'doi': '10.1163/157338201x00154', 'journal': 'Early Sci Med'},
+    '11618220': {'doi': '10.1163/156853287x00032', 'journal': 'Toung Pao'},
+    '11636720': {'doi': '10.1163/156852873x00014', 'journal': 'Phronesis (Barc)'},
+    # Recent journals (from verified_pmids)
     '38988993': {'doi': '10.1163/1568539X-bja10251', 'journal': 'Behaviour', 'pmc': 'PMC7616155'},
     '36176722': {'doi': '10.1163/1568539x-bja10109', 'journal': 'Behaviour', 'pmc': 'PMC9518721'},
 }

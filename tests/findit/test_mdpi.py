@@ -20,7 +20,7 @@ class TestMDPI(BaseDanceTest):
         pma.journal = journal
         return pma
 
-    @patch('metapub.findit.dances.generic.the_doi_2step')
+    @patch('metapub.findit.dances.mdpi.the_doi_2step')
     def test_mdpi_moonwalk_success(self, mock_doi_2step):
         """Test 1: Successful PDF URL construction.
         
@@ -37,7 +37,7 @@ class TestMDPI(BaseDanceTest):
         mock_doi_2step.assert_called_once_with('10.3390/cardiogenetics11030017')
         print("Test 1 - Successfully constructed MDPI PDF URL from DOI resolution")
 
-    @patch('metapub.findit.dances.generic.the_doi_2step')
+    @patch('metapub.findit.dances.mdpi.the_doi_2step')
     def test_mdpi_moonwalk_different_journals(self, mock_doi_2step):
         """Test 2: Test different MDPI journal patterns.
         
@@ -101,25 +101,25 @@ class TestMDPI(BaseDanceTest):
                 'TXERROR: dx.doi.org lookup failed' in str(exc_info.value))
         print("Test 4 - Correctly rejected non-MDPI DOI")
 
-    @patch('metapub.findit.dances.generic.the_doi_2step')
+    @patch('metapub.findit.dances.mdpi.the_doi_2step')
     def test_mdpi_moonwalk_doi_resolution_fails(self, mock_doi_2step):
         """Test 5: Error when DOI resolution fails.
         
         Expected: Should raise NoPDFLink when DOI can't be resolved
         """
-        # Mock DOI resolution failure
-        mock_doi_2step.side_effect = Exception("DOI resolution failed")
+        # Mock DOI resolution failure - should raise NoPDFLink directly
+        mock_doi_2step.side_effect = NoPDFLink("TXERROR: dx.doi.org lookup failed (test error)")
         
         pma = self._create_mock_pma(doi='10.3390/cardiogenetics11030017')
         
         with pytest.raises(NoPDFLink) as exc_info:
             the_mdpi_moonwalk(pma, verify=False)
         
-        assert 'MISSING: MDPI PDF construction failed' in str(exc_info.value)
+        assert 'TXERROR: dx.doi.org lookup failed' in str(exc_info.value)
         print("Test 5 - Correctly handled DOI resolution failure")
 
-    @patch('metapub.findit.dances.generic.verify_pdf_url')
-    @patch('metapub.findit.dances.generic.the_doi_2step')
+    @patch('metapub.findit.dances.mdpi.verify_pdf_url')
+    @patch('metapub.findit.dances.mdpi.the_doi_2step')
     def test_mdpi_moonwalk_verification_enabled(self, mock_doi_2step, mock_verify):
         """Test 6: PDF URL verification when verify=True.
         
@@ -136,8 +136,8 @@ class TestMDPI(BaseDanceTest):
         mock_verify.assert_called_once_with('https://www.mdpi.com/2035-8148/11/3/17/pdf', 'MDPI')
         print("Test 6 - Successfully called PDF verification")
 
-    @patch('metapub.findit.dances.generic.verify_pdf_url')
-    @patch('metapub.findit.dances.generic.the_doi_2step')
+    @patch('metapub.findit.dances.mdpi.verify_pdf_url')
+    @patch('metapub.findit.dances.mdpi.the_doi_2step')
     def test_mdpi_moonwalk_verification_fails(self, mock_doi_2step, mock_verify):
         """Test 7: Error when PDF verification fails.
         

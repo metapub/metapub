@@ -210,71 +210,95 @@ class TestProjectMuseDance(BaseDanceTest):
         assert 'muse.jhu.edu' in url
         print(f"Test 3 - PDF URL: {url}")
 
-    @patch('requests.get')
-    def test_projectmuse_melody_successful_access(self, mock_get):
+    @patch('metapub.findit.dances.projectmuse.verify_pdf_url')
+    @patch('metapub.findit.dances.projectmuse.unified_uri_get')
+    @patch('metapub.findit.dances.projectmuse.the_doi_2step')
+    def test_projectmuse_melody_successful_access(self, mock_doi_2step, mock_uri_get, mock_verify):
         """Test 4: Successful PDF access simulation.
         
         Expected: Should return PDF URL when accessible
         """
-        # Mock successful PDF response
+        # Mock DOI resolution
+        mock_doi_2step.return_value = 'https://muse.jhu.edu/pub/17/article/test'
+        
+        # Mock HTML response with citation_pdf_url meta tag
         mock_response = Mock()
         mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'application/pdf'}
-        mock_get.return_value = mock_response
+        mock_response.text = '''<html><head>
+            <meta name="citation_pdf_url" content="https://muse.jhu.edu/pub/17/article/test/pdf">
+        </head></html>'''
+        mock_uri_get.return_value = mock_response
+        
+        # Mock successful PDF verification
+        mock_verify.return_value = True
 
-        pma = self.fetch.article_by_pmid('38661995')
+        # Create mock PMA instead of fetching real PMID
+        pma = Mock()
+        pma.doi = '10.1353/test.2024.a123'
+        pma.journal = 'Test Journal'
         
         # Test with verification - should succeed
         url = the_projectmuse_syrtos(pma, verify=True)
+        assert url == 'https://muse.jhu.edu/pub/17/article/test/pdf'
         assert 'muse.jhu.edu' in url
+        mock_verify.assert_called_once()
         print(f"Test 4 - Successful verified access: {url}")
 
-    @patch('requests.get')
-    def test_projectmuse_melody_paywall_detection(self, mock_get):
+    @patch('metapub.findit.dances.projectmuse.unified_uri_get')
+    @patch('metapub.findit.dances.projectmuse.the_doi_2step')
+    def test_projectmuse_melody_paywall_detection(self, mock_doi_2step, mock_uri_get):
         """Test 5: Paywall detection.
         
-        Expected: Should detect paywall and raise AccessDenied
+        Expected: Should detect paywall and raise NoPDFLink when no citation_pdf_url meta tag found
         """
-        # Mock paywall response
+        # Mock DOI resolution
+        mock_doi_2step.return_value = 'https://muse.jhu.edu/pub/17/article/test'
+        
+        # Mock paywall response without citation_pdf_url meta tag
         mock_response = Mock()
         mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'text/html'}
         mock_response.text = '''<html><body>
             <h1>Project MUSE</h1>
             <p>Institutional access required to view this article</p>
             <button>Subscribe for access</button>
         </body></html>'''
-        mock_get.return_value = mock_response
+        mock_uri_get.return_value = mock_response
 
-        pma = self.fetch.article_by_pmid('38661995')
+        # Create mock PMA instead of fetching real PMID
+        pma = Mock()
+        pma.doi = '10.1353/test.2024.a123'
+        pma.journal = 'Test Journal'
         
-        # Test with verification - should detect paywall
-        with pytest.raises(AccessDenied) as exc_info:
+        # Test with verification - should raise NoPDFLink due to missing meta tag
+        with pytest.raises(NoPDFLink) as exc_info:
             the_projectmuse_syrtos(pma, verify=True)
         
-        assert 'PAYWALL' in str(exc_info.value)
+        assert 'No PDF URL found via citation_pdf_url meta tag extraction' in str(exc_info.value)
         print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
 
-    @patch('requests.get')
-    def test_projectmuse_melody_network_error(self, mock_get):
+    @patch('metapub.findit.dances.projectmuse.unified_uri_get')
+    @patch('metapub.findit.dances.projectmuse.the_doi_2step')
+    def test_projectmuse_melody_network_error(self, mock_doi_2step, mock_uri_get):
         """Test 6: Network error handling.
         
         Expected: Should handle network errors gracefully
         """
+        # Mock DOI resolution
+        mock_doi_2step.return_value = 'https://muse.jhu.edu/pub/17/article/test'
+        
         # Mock network error
-        mock_get.side_effect = requests.exceptions.ConnectionError("Network error")
+        mock_uri_get.side_effect = requests.exceptions.ConnectionError("Network error")
 
-        pma = self.fetch.article_by_pmid('38661995')
+        # Create mock PMA instead of fetching real PMID
+        pma = Mock()
+        pma.doi = '10.1353/test.2024.a123'
+        pma.journal = 'Test Journal'
         
         # Test - should handle network error
-        with pytest.raises(NoPDFLink) as exc_info:
+        with pytest.raises(requests.exceptions.ConnectionError):
             the_projectmuse_syrtos(pma, verify=True)
         
-        # Should contain either TXERROR (network error) or PATTERN (DOI mismatch)
-        assert 'TXERROR' in str(exc_info.value) or 'PATTERN' in str(exc_info.value)
-        print(f"Test 6 - Correctly handled network error or pattern mismatch: {exc_info.value}")
+        print(f"Test 6 - Correctly propagated network error")
 
     def test_projectmuse_melody_missing_doi(self):
         """Test 7: Article without DOI.
@@ -314,18 +338,27 @@ class TestProjectMuseDance(BaseDanceTest):
         assert 'TXERROR' in str(exc_info.value) or 'PATTERN' in str(exc_info.value)
         print(f"Test 8 - Correctly handled 404: {exc_info.value}")
 
-    @patch('requests.get')
-    def test_projectmuse_melody_article_id_construction(self, mock_get):
+    @patch('metapub.findit.dances.projectmuse.verify_pdf_url')
+    @patch('metapub.findit.dances.projectmuse.unified_uri_get')
+    @patch('metapub.findit.dances.projectmuse.the_doi_2step')
+    def test_projectmuse_melody_article_id_construction(self, mock_doi_2step, mock_uri_get, mock_verify):
         """Test 9: Article ID URL construction.
         
         Expected: Should use article ID from DOI in URL when available
         """
-        # Mock successful response
+        # Mock DOI resolution
+        mock_doi_2step.return_value = 'https://muse.jhu.edu/pub/17/article/926149'
+        
+        # Mock HTML response with citation_pdf_url meta tag
         mock_response = Mock()
         mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'application/pdf'}
-        mock_get.return_value = mock_response
+        mock_response.text = '''<html><head>
+            <meta name="citation_pdf_url" content="https://muse.jhu.edu/pub/17/article/926149/pdf">
+        </head></html>'''
+        mock_uri_get.return_value = mock_response
+        
+        # Mock PDF verification
+        mock_verify.return_value = True
 
         # Create mock PMA with article ID in DOI
         pma = Mock()
@@ -334,37 +367,63 @@ class TestProjectMuseDance(BaseDanceTest):
         
         # Test - should use article ID in URL
         url = the_projectmuse_syrtos(pma, verify=True)
+        assert url == 'https://muse.jhu.edu/pub/17/article/926149/pdf'
         assert 'muse.jhu.edu' in url
         print(f"Test 9 - Article ID URL construction: {url}")
 
-    def test_projectmuse_syrtos_multiple_doi_prefixes(self):
+    @patch('metapub.findit.dances.projectmuse.unified_uri_get')
+    @patch('metapub.findit.dances.projectmuse.the_doi_2step')
+    def test_projectmuse_syrtos_multiple_doi_prefixes(self, mock_doi_2step, mock_uri_get):
         """Test 10: Multiple DOI prefix handling.
         
         Expected: Should handle various DOI prefixes due to acquisitions
         """
+        # Mock HTML response with citation_pdf_url meta tag
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.text = '''<html><head>
+            <meta name="citation_pdf_url" content="https://muse.jhu.edu/pub/17/article/test/pdf">
+        </head></html>'''
+        mock_uri_get.return_value = mock_response
+        
         # Test different DOI prefixes that Project MUSE might use
-        test_dois = [
-            '10.1353/nib.2024.a926149',     # Primary Project MUSE DOI
-            '10.1080/example.2023.123',     # University press DOI
-            '10.1017/acquired.2023.456'     # Academic press DOI
+        test_cases = [
+            ('10.1353/nib.2024.a926149', 'https://muse.jhu.edu/pub/17/article/926149'),
+            ('10.1080/example.2023.123', 'https://muse.jhu.edu/pub/17/article/123'),
+            ('10.1017/acquired.2023.456', 'https://muse.jhu.edu/pub/17/article/456')
         ]
         
-        for doi in test_dois:
+        for doi, mock_article_url in test_cases:
+            mock_doi_2step.return_value = mock_article_url
+            
             pma = Mock()
             pma.doi = doi
             pma.journal = 'Narrat Inq Bioeth'
             
             # Should construct URL regardless of DOI prefix
             url = the_projectmuse_syrtos(pma, verify=False)
-            assert url is not None
+            assert url == 'https://muse.jhu.edu/pub/17/article/test/pdf'
             assert 'muse.jhu.edu' in url
             print(f"Test 10 - DOI {doi}: {url}")
 
-    def test_projectmuse_melody_multiple_journals(self):
+    @patch('metapub.findit.dances.projectmuse.unified_uri_get')
+    @patch('metapub.findit.dances.projectmuse.the_doi_2step')
+    def test_projectmuse_melody_multiple_journals(self, mock_doi_2step, mock_uri_get):
         """Test 11: Multiple Project MUSE journal coverage.
         
         Expected: Should work with various Project MUSE journals
         """
+        # Mock DOI resolution
+        mock_doi_2step.return_value = 'https://muse.jhu.edu/pub/17/article/926149'
+        
+        # Mock HTML response with citation_pdf_url meta tag
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.text = '''<html><head>
+            <meta name="citation_pdf_url" content="https://muse.jhu.edu/pub/17/article/926149/pdf">
+        </head></html>'''
+        mock_uri_get.return_value = mock_response
+        
         # Test different journal patterns
         test_journals = [
             'Narrat Inq Bioeth',
@@ -376,11 +435,11 @@ class TestProjectMuseDance(BaseDanceTest):
         
         for journal in test_journals:
             pma = Mock()
-            pma.doi = '10.1353/nib.2024.a926149'
+            pma.doi = '10.1353/test.2024.a123'  # Use a test DOI
             pma.journal = journal
             
             url = the_projectmuse_syrtos(pma, verify=False)
-            assert url is not None
+            assert url == 'https://muse.jhu.edu/pub/17/article/926149/pdf'
             assert 'muse.jhu.edu' in url
             print(f"Test 11 - {journal}: {url}")
 

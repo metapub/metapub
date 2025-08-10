@@ -14,6 +14,7 @@ from unittest.mock import patch, Mock
 from metapub.findit.dances.ingenta import the_ingenta_flux
 from metapub.exceptions import AccessDenied, NoPDFLink
 from metapub import PubMedFetcher
+from tests.fixtures import load_pmid_xml, INGENTACONNECT_EVIDENCE_PMIDS
 
 
 class TestIngentaConnectDance(unittest.TestCase):

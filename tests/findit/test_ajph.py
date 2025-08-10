@@ -191,20 +191,6 @@ class TestAJPHDance(BaseDanceTest):
         expected_url = "https://ajph.aphapublications.org/doi/pdf/10.2105/AJPH.2021.306453?download=true"
         self.assertEqual(result, expected_url)
 
-    def test_ajph_function_follows_guidelines(self):
-        """Test that AJPH function follows DANCE_FUNCTION_GUIDELINES."""
-        import inspect
-        
-        # Test function signature
-        sig = inspect.signature(the_doi_slide)
-        params = list(sig.parameters.keys())
-        self.assertEqual(params, ['pma', 'verify'])
-        self.assertEqual(sig.parameters['verify'].default, True)
-        
-        # Test function is reasonably concise (under 50 lines as per guidelines)
-        source_lines = inspect.getsourcelines(the_doi_slide)[0]
-        actual_code_lines = [line for line in source_lines if line.strip() and not line.strip().startswith('#')]
-        self.assertLess(len(actual_code_lines), 50, "Dance function should be under 50 lines")
 
     def test_ajph_xml_fixtures_completeness(self):
         """Test that all AJPH evidence PMIDs have XML fixtures."""

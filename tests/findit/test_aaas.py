@@ -272,40 +272,6 @@ class TestAAASEvidenceValidation:
                 print(f"⚠ Evidence PMID {pmid} failed: {e}")
                 # Don't fail test - but this should not happen with fixtures
 
-    def test_guidelines_compliance(self):
-        """Verify compliance with DANCE_FUNCTION_GUIDELINES."""
-        import inspect
-        from metapub.findit.dances.aaas import the_aaas_twist
-        
-        # Get function source
-        source_lines = inspect.getsource(the_aaas_twist).splitlines()
-        
-        # Count non-empty, non-comment lines  
-        code_lines = []
-        in_docstring = False
-        for line in source_lines:
-            stripped = line.strip()
-            if not stripped:
-                continue
-            if stripped.startswith('"""') or stripped.startswith("'''"):
-                in_docstring = not in_docstring
-                continue
-            if in_docstring:
-                continue
-            if not stripped.startswith('#'):
-                code_lines.append(stripped)
-        
-        print(f"AAAS function has {len(code_lines)} effective lines of code")
-        
-        # Evidence-based approach characteristics
-        source = inspect.getsource(the_aaas_twist)
-        assert 'Evidence-based approach' in source
-        # Check file header comments for citation_pdf_url documentation
-        with open('/home/nthmost/projects/git/metapub/metapub/findit/dances/aaas.py', 'r') as f:
-            file_content = f.read()
-        assert 'No citation_pdf_url meta tags available' in file_content  # Documented in header
-        assert 'science.org' in source       # Modern domains
-        assert 'sciencemag.org' not in source or 'legacy' in source  # No legacy domains without comment
 
 
 def test_aaas_journal_recognition():

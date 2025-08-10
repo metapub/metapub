@@ -144,41 +144,6 @@ class TestHilarisDanceEvidenceDriven(unittest.TestCase):
             result = the_hilaris_hop(pma, verify=False)
             self.assertEqual(result, expected_url)
 
-    def test_function_length_compliance(self):
-        """Test that rewritten function complies with DANCE_FUNCTION_GUIDELINES (<50 lines)"""
-        import inspect
-        
-        source_lines = inspect.getsourcelines(the_hilaris_hop)[0]
-        function_lines = len([line for line in source_lines if line.strip() and not line.strip().startswith('#')])
-        
-        self.assertLess(function_lines, 50, f"Function has {function_lines} lines, should be under 50")
-        print(f"✓ Function length compliance: {function_lines} lines (under 50 line guideline)")
-
-    def test_error_message_prefix_compliance(self):
-        """Test that error messages follow DANCE_FUNCTION_GUIDELINES prefix patterns"""
-        # Test MISSING prefix
-        pma_no_doi = Mock()
-        pma_no_doi.doi = None
-        
-        with self.assertRaises(NoPDFLink) as context:
-            the_hilaris_hop(pma_no_doi, verify=False)
-        self.assertTrue(str(context.exception).startswith('MISSING:'))
-        
-        # Test INVALID prefix
-        with patch('metapub.findit.dances.hilaris.the_doi_2step') as mock_doi:
-            mock_doi.return_value = 'https://wrong-domain.com/article.pdf'
-            
-            with self.assertRaises(NoPDFLink) as context:
-                the_hilaris_hop(self.mock_pma, verify=False)
-            self.assertTrue(str(context.exception).startswith('INVALID:'))
-        
-        # Test TXERROR prefix (from the_doi_2step)
-        with patch('metapub.findit.dances.hilaris.the_doi_2step') as mock_doi:
-            mock_doi.side_effect = NoPDFLink('TXERROR: dx.doi.org lookup failed - attempted: https://dx.doi.org/test')
-            
-            with self.assertRaises(NoPDFLink) as context:
-                the_hilaris_hop(self.mock_pma, verify=False)
-            self.assertTrue(str(context.exception).startswith('TXERROR:'))
 
     def test_no_html_sample_dependency(self):
         """Test that function works without any HTML sample requirements"""

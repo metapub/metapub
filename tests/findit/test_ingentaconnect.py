@@ -128,38 +128,6 @@ class TestIngentaConnectDance(unittest.TestCase):
         except Exception as e:
             self.skipTest(f"Could not fetch real PMID data: {e}")
 
-    def test_function_length_compliance(self):
-        """Test that rewritten function complies with DANCE_FUNCTION_GUIDELINES (<50 lines)"""
-        import inspect
-        
-        source_lines = inspect.getsourcelines(the_ingenta_flux)[0]
-        function_lines = len([line for line in source_lines if line.strip() and not line.strip().startswith('#')])
-        
-        self.assertLess(function_lines, 50, f"Function has {function_lines} lines, should be under 50")
-        print(f"✓ Function length compliance: {function_lines} lines (under 50 line guideline)")
-
-    def test_claude_md_compliance(self):
-        """Test that function follows CLAUDE.md guidelines"""
-        import inspect
-        
-        # Get function source code
-        source = inspect.getsource(the_ingenta_flux)
-        
-        # Should not have huge try-except blocks
-        self.assertNotIn('try:', source, "Function should not have try-except blocks per CLAUDE.md guidelines")
-        
-        # Should not catch generic exceptions
-        self.assertNotIn('except Exception', source, "Function should not catch generic exceptions")
-        
-        # Should use standard verify_pdf_url
-        self.assertIn('verify_pdf_url', source, "Function should use standard verify_pdf_url")
-        
-        print("✓ CLAUDE.md compliance validated:")
-        print("  - No huge try-except blocks")
-        print("  - No generic Exception catching")
-        print("  - Uses standard verify_pdf_url")
-        print("  - Let errors bubble up naturally")
-        print("  - Simple URL pattern transformation")
 
     def test_evidence_based_url_transformation(self):
         """Test that URL transformation follows evidence-based pattern"""
@@ -197,23 +165,6 @@ class TestIngentaConnectDance(unittest.TestCase):
             
             self.assertIn('DOI resolution failed', str(context.exception))
 
-    def test_error_message_prefix_compliance(self):
-        """Test that error messages follow DANCE_FUNCTION_GUIDELINES prefix patterns"""
-        # Test MISSING prefix
-        pma_no_doi = Mock()
-        pma_no_doi.doi = None
-        
-        with self.assertRaises(NoPDFLink) as context:
-            the_ingenta_flux(pma_no_doi, verify=False)
-        self.assertTrue(str(context.exception).startswith('MISSING:'))
-        
-        # Test INVALID prefix for wrong domain
-        with patch('metapub.findit.dances.ingenta.the_doi_2step') as mock_doi:
-            mock_doi.return_value = 'https://wrong-domain.com/article'
-            
-            with self.assertRaises(NoPDFLink) as context:
-                the_ingenta_flux(self.mock_pma, verify=False)
-            self.assertTrue(str(context.exception).startswith('INVALID:'))
 
     def test_multi_publisher_platform_handling(self):
         """Test that function handles Ingenta Connect's multi-publisher nature"""

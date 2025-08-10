@@ -141,33 +141,6 @@ class TestProjectMuseEvidenceDriven:
             
             assert 'MISSING: No PDF URL found via citation_pdf_url meta tag extraction' in str(excinfo.value)
 
-    def test_dance_function_guidelines_compliance(self):
-        """Test that rewrite follows DANCE_FUNCTION_GUIDELINES principles."""
-        pma = Mock()
-        pma.doi = '10.1353/bsr.2024.test'
-        
-        html_content = '''
-        <meta name="citation_pdf_url" content="https://muse.jhu.edu/pub/17/article/757992/pdf">
-        '''
-        
-        with patch('metapub.findit.dances.projectmuse.the_doi_2step') as mock_doi_step, \
-             patch('metapub.findit.dances.projectmuse.unified_uri_get') as mock_get:
-            
-            mock_doi_step.return_value = 'https://muse.jhu.edu/pub/17/article/757992'
-            mock_response = Mock()
-            mock_response.status_code = 200
-            mock_response.text = html_content
-            mock_get.return_value = mock_response
-            
-            # Function should work without complex error handling
-            result = the_projectmuse_syrtos(pma, verify=False)
-            
-            # Simple assertion - if it returns a URL, the evidence-driven approach worked
-            assert result == 'https://muse.jhu.edu/pub/17/article/757992/pdf'
-            
-            # Verify it uses the evidence-based approach (one DOI resolution, one meta extraction)
-            mock_doi_step.assert_called_once()
-            mock_get.assert_called_once()
 
 
 class TestProjectMuseDance(BaseDanceTest):

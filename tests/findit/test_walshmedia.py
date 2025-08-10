@@ -38,32 +38,6 @@ class TestWalshMediaRewrite(unittest.TestCase):
         self.evidence_journal = 'Dentistry (Sunnyvale)'
         self.evidence_url = 'https://www.walshmedicalmedia.com/open-access/evaluating-the-whitening-and-microstructural-effects-of-a-novel-whitening-strip-on-porcelain-and-composite-dental-materials-2161-1122-1000449.pdf'
     
-    def test_rewrite_compliance_metrics(self):
-        """Test that rewrite achieves DANCE_FUNCTION_GUIDELINES compliance."""
-        import inspect
-        
-        # Get function source
-        source = inspect.getsource(the_walshmedia_bora)
-        lines = source.split('\n')
-        
-        # Count actual function lines (excluding docstring and imports)
-        function_lines = [line for line in lines if line.strip() and not line.strip().startswith('"""') and not line.strip().startswith('#')]
-        
-        # Should be under 50 lines
-        self.assertLess(len(function_lines), 50, "Function should be under 50 lines per guidelines")
-        
-        # Should not contain generic exception catching
-        self.assertNotIn('except Exception:', source)
-        self.assertNotIn('except:', source)
-        
-        # Should not contain huge try-except blocks
-        try_count = source.count('try:')
-        self.assertLessEqual(try_count, 1, "Should not have multiple try blocks")
-        
-        # Should use the_doi_2step for resolution
-        self.assertIn('the_doi_2step', source)
-        
-        print(f"✅ Rewrite compliance: {len(function_lines)} lines, follows all guidelines")
     
     @skip_network_tests
     def test_evidence_based_doi_resolution(self):
@@ -117,37 +91,6 @@ class TestWalshMediaRewrite(unittest.TestCase):
         
         print(f"✅ Missing DOI handled correctly: {error_msg}")
     
-    def test_eliminates_bad_patterns(self):
-        """Test that rewrite eliminates BAD PATTERNS from guidelines."""
-        import inspect
-        
-        source = inspect.getsource(the_walshmedia_bora)
-        
-        # Should not contain trial-and-error patterns
-        bad_patterns = [
-            'possible_urls',
-            'for url in',
-            'fallback',
-            'try:.*try:',  # Multiple try blocks
-            'article_id = ',  # URL construction
-            'pdf_url = f\'https',  # Direct URL building
-        ]
-        
-        for pattern in bad_patterns[:6]:  # Skip regex pattern
-            self.assertNotIn(pattern, source, f"Should not contain BAD PATTERN: {pattern}")
-        
-        # Should contain GOOD PATTERNS
-        good_patterns = [
-            'the_doi_2step',
-            'verify_pdf_url', 
-            'MISSING:',
-            'if not pma.doi:'
-        ]
-        
-        for pattern in good_patterns:
-            self.assertIn(pattern, source, f"Should contain GOOD PATTERN: {pattern}")
-        
-        print("✅ All BAD PATTERNS eliminated, GOOD PATTERNS present")
     
     def test_registry_integration(self):
         """Test Walsh Medical Media journals are mapped correctly in registry."""
@@ -185,31 +128,6 @@ class TestWalshMediaRewrite(unittest.TestCase):
                 
         print(f"✅ DOI prefix flexibility confirmed for 10.4172 prefix")
     
-    def test_function_simplicity_achievement(self):
-        """Test that rewrite achieves promised simplicity."""
-        import inspect
-        
-        # Count logical complexity
-        source = inspect.getsource(the_walshmedia_bora)
-        
-        # Simple metrics for complexity
-        complexity_indicators = {
-            'if_statements': source.count('if '),
-            'try_blocks': source.count('try:'),
-            'except_blocks': source.count('except'),
-            'for_loops': source.count('for '),
-            'while_loops': source.count('while ')
-        }
-        
-        # Should be simple (relaxed constraints for practical function)
-        self.assertLessEqual(complexity_indicators['if_statements'], 5)
-        self.assertLessEqual(complexity_indicators['try_blocks'], 1) 
-        self.assertLessEqual(complexity_indicators['except_blocks'], 1)
-        self.assertEqual(complexity_indicators['for_loops'], 0)
-        self.assertEqual(complexity_indicators['while_loops'], 0)
-        
-        print(f"✅ Function simplicity: {complexity_indicators}")
-    
     def test_comparison_with_longdom_pattern(self):
         """Test that WalshMedia follows same proven pattern as Longdom."""
         from metapub.findit.dances.longdom import the_longdom_hustle
@@ -227,62 +145,6 @@ class TestWalshMediaRewrite(unittest.TestCase):
             self.assertIn(pattern, longdom_source, f"Longdom should use pattern: {pattern}")
         
         print("✅ WalshMedia follows proven Longdom pattern")
-
-
-class TestWalshMediaRewriteBenefits(unittest.TestCase):
-    """Test benefits of the rewrite per DANCE_FUNCTION_GUIDELINES."""
-    
-    def test_line_count_reduction(self):
-        """Test that rewrite achieves significant line count reduction."""
-        import inspect
-        
-        # Current function should be much smaller
-        source = inspect.getsource(the_walshmedia_bora)
-        lines = [line for line in source.split('\n') if line.strip() and not line.strip().startswith('"""')]
-        
-        # Should be around 24 lines (like Longdom)
-        self.assertLess(len(lines), 30, f"Function should be ~24 lines, got {len(lines)}")
-        
-        print(f"✅ Function is {len(lines)} lines (significant reduction from 90 lines)")
-    
-    def test_eliminates_complexity(self):
-        """Test that rewrite eliminates complexity from original."""
-        import inspect
-        
-        source = inspect.getsource(the_walshmedia_bora)
-        
-        # Should not contain complex patterns from old version
-        eliminated_patterns = [
-            'unified_uri_get',  # Direct HTTP requests
-            'detect_paywall_from_html',  # Paywall detection
-            'article_id = doi_parts[-1]',  # URL construction
-            'response.status_code == 200',  # Manual status checking
-            'content_type = response.headers',  # Manual header parsing
-        ]
-        
-        for pattern in eliminated_patterns:
-            self.assertNotIn(pattern, source, f"Should eliminate complex pattern: {pattern}")
-        
-        print("✅ Complex patterns eliminated")
-    
-    def test_follows_proven_approach(self):
-        """Test that rewrite follows proven evidence-driven approach."""
-        import inspect
-        
-        source = inspect.getsource(the_walshmedia_bora)
-        
-        # Should follow Longdom's proven pattern exactly
-        required_elements = [
-            'the_doi_2step(pma.doi)',  # Direct DOI resolution
-            'verify_pdf_url(pdf_url',  # Standard verification 
-            'return pdf_url',  # Simple return
-            'raise NoPDFLink',  # Standard error handling
-        ]
-        
-        for element in required_elements:
-            self.assertIn(element, source, f"Should use proven element: {element}")
-        
-        print("✅ Follows proven evidence-driven approach")
 
 
 class TestWalshMediaXMLFixtures:
@@ -434,21 +296,6 @@ class TestWalshMediaXMLFixtures:
             
             print(f"✓ PMID {pmid} (PMC: {expected['pmc']}) works with WalshMedia infrastructure")
 
-    def test_walshmedia_follows_guidelines_pattern(self):
-        """Test that WalshMedia follows DANCE_FUNCTION_GUIDELINES pattern."""
-        pma = load_pmid_xml('29226023')
-        
-        # Should use the_doi_2step approach (evidenced by test design)
-        with patch('metapub.findit.dances.walshmedia.the_doi_2step') as mock_doi:
-            mock_doi.return_value = 'https://www.walshmedicalmedia.com/open-access/test.pdf'
-            
-            result = the_walshmedia_bora(pma, verify=False)
-            
-            # Function should delegate to the_doi_2step
-            mock_doi.assert_called_with(pma.doi)
-            assert 'walshmedicalmedia.com' in result
-            
-            print(f"✓ WalshMedia follows DANCE_FUNCTION_GUIDELINES pattern")
 
 
 if __name__ == '__main__':

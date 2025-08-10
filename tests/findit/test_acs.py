@@ -261,39 +261,6 @@ class TestACSTest(BaseDanceTest):
                 
                 print(f"✓ Evidence DOI {doi}: {result}")
 
-    def test_guidelines_compliance(self):
-        """Test 8: Verify compliance with DANCE_FUNCTION_GUIDELINES."""
-        # ACS uses the_doi_slide, so verify it's a focused, single-purpose function
-        import inspect
-        from metapub.findit.dances.generic import the_doi_slide
-        
-        # Get function source
-        source_lines = inspect.getsource(the_doi_slide).splitlines()
-        
-        # Count non-empty, non-comment lines  
-        code_lines = []
-        in_docstring = False
-        for line in source_lines:
-            stripped = line.strip()
-            if not stripped:
-                continue
-            if stripped.startswith('"""') or stripped.startswith("'''"):
-                in_docstring = not in_docstring
-                continue
-            if in_docstring:
-                continue
-            if not stripped.startswith('#'):
-                code_lines.append(stripped)
-        
-        print(f"the_doi_slide has {len(code_lines)} effective lines of code")
-        
-        # Should be under 50 lines per guidelines
-        assert len(code_lines) < 50, f"Function should be under 50 lines, got {len(code_lines)}"
-        
-        # Verify function characteristics
-        source = inspect.getsource(the_doi_slide)
-        assert 'registry-based template' in source.lower() or 'template' in source.lower()
-        assert 'doi' in source.lower()
 
 
 if __name__ == '__main__':

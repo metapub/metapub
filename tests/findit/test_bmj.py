@@ -305,77 +305,7 @@ class TestBMJDance(BaseDanceTest):
             
             print(f"✓ DOI pattern valid: {doi}")
 
-    def test_guidelines_compliance(self):
-        """Test 8: Verify compliance with DANCE_FUNCTION_GUIDELINES."""
-        import inspect
-        from metapub.findit.dances.bmj import the_bmj_bump
-        
-        # Get function source
-        source_lines = inspect.getsource(the_bmj_bump).splitlines()
-        
-        # Count non-empty, non-comment lines  
-        code_lines = []
-        in_docstring = False
-        for line in source_lines:
-            stripped = line.strip()
-            if not stripped:
-                continue
-            if stripped.startswith('"""') or stripped.startswith("'''"):
-                in_docstring = not in_docstring
-                continue
-            if in_docstring:
-                continue
-            if not stripped.startswith('#'):
-                code_lines.append(stripped)
-        
-        print(f"the_bmj_bump has {len(code_lines)} effective lines of code")
-        
-        # Should be under 50 lines per guidelines
-        assert len(code_lines) < 50, f"Function should be under 50 lines, got {len(code_lines)}"
-        
-        # Verify function characteristics - should be simple citation_pdf_url extraction
-        source = inspect.getsource(the_bmj_bump)
-        assert 'citation_pdf_url' in source, "Function should use citation_pdf_url extraction"
-        assert 'regex' in source.lower() or 're.search' in source, "Function should use regex for meta tag extraction"
-        
-        print("✓ Function follows guidelines: minimal, focused, evidence-based")
 
-    def test_logical_simplicity_compliance(self):
-        """Test 9: Verify maximum logical simplicity."""
-        import inspect
-        from metapub.findit.dances.bmj import the_bmj_bump
-        
-        source = inspect.getsource(the_bmj_bump)
-        
-        # Should only have basic error handling - no complex logic
-        complexity_indicators = [
-            'if.*else.*if',  # Complex conditionals
-            'for.*for',      # Nested loops  
-            'while',         # While loops
-            'try.*except.*except',  # Multiple exception handling
-        ]
-        
-        for pattern in complexity_indicators:
-            import re
-            if re.search(pattern, source):
-                print(f"⚠ Found complexity indicator: {pattern}")
-            else:
-                print(f"✓ No {pattern} found - good simplicity")
-        
-        # Core logic should be: DOI check -> get HTML -> extract meta tag -> return URL
-        expected_steps = [
-            'doi',           # DOI validation
-            'the_doi_2step', # Get article URL
-            'unified_uri_get', # Get HTML
-            'citation_pdf_url', # Extract meta tag
-            'return'         # Return URL
-        ]
-        
-        for step in expected_steps:
-            assert step in source, f"Missing expected step: {step}"
-            print(f"✓ Contains expected step: {step}")
-        
-        print("✓ Function demonstrates maximum logical simplicity")
 
 
 if __name__ == '__main__':

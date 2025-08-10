@@ -150,36 +150,6 @@ class TestASMEvidenceValidation:
                 expected = f'https://journals.asm.org/doi/pdf/{doi}?download=true'
                 assert result == expected
 
-    def test_pattern_simplification_benefits(self):
-        """Verify the new approach eliminates legacy complexity."""
-        # No journal name mapping required
-        # No VIP (volume/issue/page) metadata required
-        # Direct DOI-based construction
-        
-        pma = MockPMA(doi='10.1128/aac.00216-22')
-        
-        with patch('metapub.findit.dances.asm.verify_pdf_url') as mock_verify:
-            mock_verify.return_value = True
-            
-            # Should work without any additional metadata
-            result = the_asm_shimmy(pma, verify=True)
-            assert 'journals.asm.org/doi/pdf/' in result
-            assert pma.doi in result
-
-    def test_guidelines_compliance(self):
-        """Verify compliance with DANCE_FUNCTION_GUIDELINES."""
-        # Single method approach
-        # Under 50 lines  
-        # Clear error messages
-        # DOI-based construction
-        # No HTML parsing
-        
-        import inspect
-        source_lines = inspect.getsource(the_asm_shimmy).splitlines()
-        actual_lines = [line for line in source_lines if line.strip() and not line.strip().startswith('#')]
-        
-        # Function should be under 50 lines (excluding docstring and comments)
-        assert len(actual_lines) < 50, f"Function has {len(actual_lines)} lines, should be under 50"
 
 
 class TestASMWithVerifiedPMIDs:

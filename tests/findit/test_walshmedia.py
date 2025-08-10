@@ -1,7 +1,7 @@
-"""Evidence-driven tests for rewritten Walsh Medical Media dance function.
+"""Tests for Walsh Medical Media dance function.
 
-This test suite validates the rewritten WalshMedia function following 
-DANCE_FUNCTION_GUIDELINES.md Phase 4: Test Development.
+This test suite validates the WalshMedia function following 
+dance function guidelines Phase 4: Test Development.
 
 Evidence analyzed:
 - PMID 29226023: DOI resolution works perfectly 
@@ -27,7 +27,7 @@ from tests.test_compat import skip_network_tests
 from tests.fixtures import load_pmid_xml, WALSHMEDIA_EVIDENCE_PMIDS
 
 
-class TestWalshMediaRewrite(unittest.TestCase):
+class TestWalshMedia(unittest.TestCase):
     """Test rewritten Walsh Medical Media dance function."""
     
     def setUp(self):

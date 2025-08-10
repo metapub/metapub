@@ -1,9 +1,9 @@
 """
 Test suite for APS (American Physiological Society) dance function.
 
-Following TRANSITION_TESTS_TO_REAL_DATA.md approach:
+Test approach:
 - Uses XML fixtures from real PMIDs to avoid network dependencies
-- Tests evidence-based DOI approach based on HTML analysis
+- Tests DOI approach based on HTML analysis
 - Comprehensive coverage of dance function requirements
 """
 

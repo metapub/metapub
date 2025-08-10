@@ -1,9 +1,9 @@
 """
 Test suite for De Gruyter publisher dance function.
 
-Following TRANSITION_TESTS_TO_REAL_DATA.md approach:
+Test approach:
 - Uses XML fixtures from real PMIDs to avoid network dependencies  
-- Tests evidence-based DOI approach for true De Gruyter journals (10.1515 prefix)
+- Tests DOI approach for true De Gruyter journals (10.1515 prefix)
 - Comprehensive coverage of the_doi_slide generic function requirements
 """
 

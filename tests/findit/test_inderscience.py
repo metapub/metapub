@@ -1,12 +1,11 @@
 """
-Evidence-driven test suite for Inderscience Publishers dance function
-Testing CLAUDE.md compliant rewrite with evidence-based DOI patterns
+Test suite for Inderscience Publishers dance function.
+Tests CLAUDE.md compliant implementation with DOI patterns.
 
-EVIDENCE-DRIVEN REWRITE 2025-08-09:
-- Tests evidence-based DOI pattern (10.1504/*) 
+Test approach:
+- Tests DOI pattern (10.1504/*) based on evidence
 - Validates CLAUDE.md compliance (no huge try-except, standard verification)
 - Uses real PMIDs: 24084238, 24794070, 24449692
-- Function reduced from 72→24 lines (66.7% reduction)
 """
 
 import unittest

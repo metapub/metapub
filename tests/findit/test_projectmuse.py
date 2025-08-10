@@ -1,10 +1,10 @@
-"""Tests for Project MUSE dance function - evidence-driven rewrite.
+"""Tests for Project MUSE dance function.
 
-Following DANCE_FUNCTION_CHECKLIST.md Phase 4 guidelines:
-- Test the evidence-driven approach with real pattern examples
+This test suite validates the Project MUSE function following Phase 4 guidelines:
+- Test patterns with real examples from HTML samples
 - Test each error condition separately  
-- Use evidence-based patterns from HTML samples
-- Verify DANCE_FUNCTION_GUIDELINES compliance
+- Use evidence-based patterns from HTML analysis
+- Verify dance function guidelines compliance
 """
 
 import pytest
@@ -144,7 +144,7 @@ class TestProjectMuseEvidenceDriven:
 
 
 class TestProjectMuseDance(BaseDanceTest):
-    """Legacy test cases for Project MUSE - updated for evidence-driven rewrite."""
+    """Test cases for Project MUSE dance function."""
 
     def setUp(self):
         """Set up test fixtures."""

@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 """
-Evidence-driven test suite for Hilaris Publisher dance function
-Following DOI resolution approach - no HTML samples required
+Test suite for Hilaris Publisher dance function.
+Uses DOI resolution approach - no HTML samples required.
 
-EVIDENCE-DRIVEN REWRITE 2025-08-09:
-- Tests DOI resolution approach instead of HTML parsing
-- Bypasses corrupted HTML sample issue
+Test approach:
+- Tests DOI resolution instead of HTML parsing
 - Uses real DOI from evidence: 10.4172/2161-0525.1000551
-- Validates DANCE_FUNCTION_GUIDELINES compliance
+- Validates dance function guidelines compliance
 """
 
 import unittest

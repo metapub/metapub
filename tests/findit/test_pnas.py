@@ -1,5 +1,5 @@
 """
-Evidence-based tests for PNAS (Proceedings of the National Academy of Sciences) configuration.
+Tests for PNAS (Proceedings of the National Academy of Sciences) configuration.
 
 Based on HTML sample analysis showing simple DOI-based PDF URL pattern:
 - Pattern: https://www.pnas.org/doi/pdf/10.1073/pnas.{DOI_SUFFIX}
@@ -8,7 +8,7 @@ Based on HTML sample analysis showing simple DOI-based PDF URL pattern:
 
 This represents optimal simplicity through DOI-based URL construction.
 
-Following TRANSITION_TESTS_TO_REAL_DATA.md - using XML fixtures instead of mocking.
+Uses XML fixtures instead of mocking for reliable testing.
 """
 
 import pytest

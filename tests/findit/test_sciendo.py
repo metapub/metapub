@@ -1,7 +1,7 @@
-"""Evidence-driven tests for Sciendo consolidation into the_doi_slide.
+"""Tests for Sciendo using the_doi_slide function.
 
-This test suite validates Sciendo's consolidation into the_doi_slide generic function
-following DANCE_FUNCTION_GUIDELINES.md Phase 4: Test Development.
+This test suite validates Sciendo's use of the_doi_slide generic function
+following dance function guidelines Phase 4: Test Development.
 
 Evidence analyzed:
 - 6 HTML samples with perfect pattern consistency

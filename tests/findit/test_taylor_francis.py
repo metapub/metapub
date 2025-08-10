@@ -1,5 +1,5 @@
 """
-Evidence-based tests for Taylor & Francis configuration.
+Tests for Taylor & Francis configuration.
 
 Based on HTML sample analysis showing consistent DOI-based PDF URL pattern:
 - Pattern: https://www.tandfonline.com/doi/epdf/{DOI}?needAccess=true
@@ -8,7 +8,7 @@ Based on HTML sample analysis showing consistent DOI-based PDF URL pattern:
 
 This represents optimal simplicity through DOI-based URL construction.
 
-Following TRANSITION_TESTS_TO_REAL_DATA.md - using XML fixtures instead of mocking.
+Uses XML fixtures instead of mocking for reliable testing.
 """
 
 import pytest

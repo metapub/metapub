@@ -1,14 +1,13 @@
 """
-Evidence-driven test suite for Longdom Publishing dance function
-Testing CLAUDE.md compliant rewrite with DOI resolution approach
+Test suite for Longdom Publishing dance function.
+Tests DOI resolution approach following CLAUDE.md guidelines.
 
-EVIDENCE-DRIVEN REWRITE 2025-08-09:
+Test approach:
 - Tests simple DOI resolution via the_doi_2step approach
 - Validates CLAUDE.md compliance (no huge try-except, standard verification)
 - Uses real PMIDs: 28299372, 28856068 with DOI prefix 10.4172
-- Function reduced from 90→24 lines (73.3% reduction)
 
-Evidence-Based Discovery:
+Evidence-based findings:
 - Longdom DOIs resolve directly to PDF URLs via CrossRef
 - Pattern: https://www.longdom.org/open-access/{article-slug}-{doi-suffix}.pdf  
 - Eliminates trial-and-error URL guessing (BAD PATTERN from guidelines)

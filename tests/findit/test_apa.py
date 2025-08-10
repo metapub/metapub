@@ -1,9 +1,9 @@
 """
 Test suite for APA (American Psychological Association) publisher dance function.
 
-Following TRANSITION_TESTS_TO_REAL_DATA.md approach:
+Test approach:
 - Uses XML fixtures from real PMIDs to avoid network dependencies  
-- Tests evidence-based subscription model with proper paywall detection
+- Tests subscription model with proper paywall detection
 - Comprehensive coverage of the_apa_dab dance function requirements
 """
 

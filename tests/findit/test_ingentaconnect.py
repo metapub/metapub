@@ -1,12 +1,11 @@
 """
-Evidence-driven test suite for Ingenta Connect dance function
-Testing CLAUDE.md compliant rewrite with evidence-based DOI patterns
+Test suite for Ingenta Connect dance function.
+Tests CLAUDE.md compliant implementation with DOI patterns.
 
-EVIDENCE-DRIVEN REWRITE 2025-08-09:
+Test approach:
 - Tests simple DOI resolution + URL transformation pattern
 - Validates CLAUDE.md compliance (no huge try-except, standard verification)
 - Uses real PMIDs: 38884108, 34707797
-- Function reduced from 121→32 lines (73.6% reduction)
 """
 
 import unittest

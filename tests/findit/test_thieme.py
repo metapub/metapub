@@ -42,11 +42,11 @@ class TestThiemeTap(BaseDanceTest):
         assert url == expected_url
         print(f"Test 1 - PDF URL: {url}")
 
-    def test_thieme_tap_url_construction_older(self):
-        """Test 2: URL construction for older article.
+    def test_thieme_tap_url_construction_s_prefix_pattern_a(self):
+        """Test 2: URL construction for s-prefix DOI pattern.
         
         PMID: 25364329 (Evid Based Spine Care J)
-        Expected: Should construct valid URL for older Thieme article with s-prefix DOI
+        Expected: Should construct valid URL for Thieme article with s-prefix DOI
         """
         pma = self.fetch.article_by_pmid('25364329')
         
@@ -54,7 +54,7 @@ class TestThiemeTap(BaseDanceTest):
         assert pma.doi == '10.1055/s-0034-1387804'
         print(f"Test 2 - Article info: {pma.journal}, DOI: {pma.doi}")
 
-        # Test URL construction for older article with s-prefix
+        # Test URL construction for s-prefix DOI pattern
         url = the_thieme_tap(pma, verify=False)
         assert url is not None
         assert 'thieme-connect.de' in url
@@ -63,13 +63,13 @@ class TestThiemeTap(BaseDanceTest):
         
         expected_url = f"http://www.thieme-connect.de/products/ejournals/pdf/{pma.doi}.pdf"
         assert url == expected_url
-        print(f"Test 2 - Older article URL: {url}")
+        print(f"Test 2 - S-prefix DOI URL: {url}")
 
-    def test_thieme_tap_url_construction_very_old(self):
-        """Test 3: URL construction for very old article.
+    def test_thieme_tap_url_construction_s_prefix_pattern_b(self):
+        """Test 3: URL construction for s-prefix DOI pattern variant.
         
         PMID: 219391 (Neuropadiatrie)
-        Expected: Should construct valid URL even for very old articles
+        Expected: Should construct valid URL for s-prefix DOI pattern
         """
         pma = self.fetch.article_by_pmid('219391')
         
@@ -82,7 +82,7 @@ class TestThiemeTap(BaseDanceTest):
         assert 'thieme-connect.de' in url
         assert pma.doi in url
         assert url.endswith('.pdf')
-        print(f"Test 3 - Very old article URL: {url}")
+        print(f"Test 3 - S-prefix DOI variant URL: {url}")
 
     @patch('metapub.findit.dances.generic.verify_pdf_url')
     def test_thieme_tap_successful_access_with_verification(self, mock_verify):
@@ -148,7 +148,7 @@ class TestThiemeTap(BaseDanceTest):
         
         Expected: Should handle both s-prefix and a-prefix DOIs
         """
-        # Test s-prefix DOI (older articles) - real PMID from verified list
+        # Test s-prefix DOI patterns - real PMID from verified list
         pma_s = self.fetch.article_by_pmid('36644330')  # ACI open with s-prefix DOI
         assert pma_s.doi == '10.1055/s-0040-1721489'
         
@@ -199,8 +199,8 @@ if __name__ == '__main__':
     
     tests = [
         ('test_thieme_tap_url_construction_recent', 'Recent article URL construction'),
-        ('test_thieme_tap_url_construction_older', 'Older article URL construction'),
-        ('test_thieme_tap_url_construction_very_old', 'Very old article URL construction'),
+        ('test_thieme_tap_url_construction_s_prefix_pattern_a', 'S-prefix DOI pattern A'),
+        ('test_thieme_tap_url_construction_s_prefix_pattern_b', 'S-prefix DOI pattern B'),
         ('test_thieme_tap_successful_access_with_verification', 'Successful access with verification'),
         ('test_thieme_tap_paywall_detection', 'Paywall detection via verification'),
         ('test_thieme_tap_missing_doi', 'Missing DOI handling'),

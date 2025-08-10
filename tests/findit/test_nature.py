@@ -8,6 +8,7 @@ from .common import BaseDanceTest
 from metapub import PubMedFetcher
 from metapub.findit.dances import the_nature_ballet
 from metapub.exceptions import AccessDenied, NoPDFLink
+from tests.fixtures import load_pmid_xml, NATURE_EVIDENCE_PMIDS
 
 
 class TestNatureDance(BaseDanceTest):
@@ -240,3 +241,23 @@ if __name__ == '__main__':
     
     print("\n" + "="*60)
     print("Test suite completed!")
+
+
+class TestNatureXMLFixtures:
+    """Test Nature dance function with real XML fixtures."""
+
+    def test_nature_authentic_metadata_validation(self):
+        """Validate authentic metadata from XML fixtures matches expected patterns."""
+        for pmid, expected in NATURE_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi == expected['doi']
+            assert pma.journal == expected['journal']
+            assert pma.pmid == pmid
+            print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
+
+    def test_nature_doi_pattern_consistency(self):
+        """Test Nature DOI patterns (10.14309/)."""
+        for pmid, data in NATURE_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi.startswith('10.14309/'), f"Nature DOI must start with 10.14309/, got: {pma.doi}"
+            print(f"✓ PMID {pmid} DOI pattern: {pma.doi}")

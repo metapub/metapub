@@ -287,3 +287,22 @@ INGENTACONNECT_EVIDENCE_PMIDS = {
     '38884108': {'doi': '10.5129/001041522x16222193902161', 'journal': 'Comp Polit', 'pmc': 'PMC11177781'},
     '34707797': {'doi': '10.21300/21.4.2021.7', 'journal': 'Technol Innov', 'pmc': 'PMC8547312'},
 }
+
+# SciRP PMIDs with metadata (from verified_pmids)
+SCIRP_EVIDENCE_PMIDS = {
+    '39035045': {'doi': '10.4236/aad.2024.131002', 'journal': 'Adv Alzheimer Dis'},
+    '38873169': {'doi': '10.4236/aad.2023.123004', 'journal': 'Adv Alzheimer Dis'},
+}
+
+# Nature PMIDs with metadata (from verified_pmids)
+NATURE_EVIDENCE_PMIDS = {
+    '35354777': {'doi': '10.14309/ajg.0000000000001680', 'journal': 'Am J Gastroenterol', 'pmc': 'PMC10259184'},
+    '39626064': {'doi': '10.14309/ajg.0000000000002968', 'journal': 'Am J Gastroenterol'},
+    '38958301': {'doi': '10.14309/ajg.0000000000002857', 'journal': 'Am J Gastroenterol'},
+}
+
+# ScienceDirect PMIDs with metadata (from verified_pmids)
+SCIENCEDIRECT_EVIDENCE_PMIDS = {
+    '37652022': {'doi': '10.1016/j.ajhg.2023.08.003', 'journal': 'Am J Hum Genet', 'pmc': 'PMC10502871'},
+    '39142283': {'doi': '10.1016/j.ajhg.2024.07.013', 'journal': 'Am J Hum Genet', 'pmc': 'PMC11393667'},
+}

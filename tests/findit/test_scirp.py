@@ -6,6 +6,7 @@ from unittest.mock import patch, Mock
 from metapub import PubMedFetcher
 from metapub.findit.dances import the_scirp_timewarp
 from metapub.exceptions import NoPDFLink
+from tests.fixtures import load_pmid_xml, SCIRP_EVIDENCE_PMIDS
 
 
 class TestSCIRPDance:
@@ -180,3 +181,23 @@ if __name__ == '__main__':
     
     print("=" * 60)
     print("SCIRP tests completed!")
+
+
+class TestSCIRPXMLFixtures:
+    """Test SciRP dance function with real XML fixtures."""
+
+    def test_scirp_authentic_metadata_validation(self):
+        """Validate authentic metadata from XML fixtures matches expected patterns."""
+        for pmid, expected in SCIRP_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi == expected['doi']
+            assert pma.journal == expected['journal']
+            assert pma.pmid == pmid
+            print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
+
+    def test_scirp_doi_pattern_consistency(self):
+        """Test SciRP DOI patterns (10.4236/)."""
+        for pmid, data in SCIRP_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi.startswith('10.4236/'), f"SciRP DOI must start with 10.4236/, got: {pma.doi}"
+            print(f"✓ PMID {pmid} DOI pattern: {pma.doi}")

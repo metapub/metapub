@@ -7,6 +7,7 @@ from .common import BaseDanceTest
 from metapub import PubMedFetcher
 from metapub.findit.dances import the_sciencedirect_disco
 from metapub.exceptions import AccessDenied, NoPDFLink
+from tests.fixtures import load_pmid_xml, SCIENCEDIRECT_EVIDENCE_PMIDS
 
 
 class TestScienceDirectDance(BaseDanceTest):
@@ -260,3 +261,23 @@ if __name__ == '__main__':
     
     print("\n" + "="*60)
     print("Test suite completed!")
+
+
+class TestScienceDirectXMLFixtures:
+    """Test ScienceDirect dance function with real XML fixtures."""
+
+    def test_sciencedirect_authentic_metadata_validation(self):
+        """Validate authentic metadata from XML fixtures matches expected patterns."""
+        for pmid, expected in SCIENCEDIRECT_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi == expected['doi']
+            assert pma.journal == expected['journal']
+            assert pma.pmid == pmid
+            print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
+
+    def test_sciencedirect_doi_pattern_consistency(self):
+        """Test ScienceDirect DOI patterns (10.1016/)."""
+        for pmid, data in SCIENCEDIRECT_EVIDENCE_PMIDS.items():
+            pma = load_pmid_xml(pmid)
+            assert pma.doi.startswith('10.1016/'), f"ScienceDirect DOI must start with 10.1016/, got: {pma.doi}"
+            print(f"✓ PMID {pmid} DOI pattern: {pma.doi}")

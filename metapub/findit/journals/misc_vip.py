@@ -44,8 +44,6 @@ vip_journals = {
     'J Cell Biol': {'host': 'jcb.rupress.org'},
     'J Cell Sci': {'host': 'jcs.biologists.org'},
     'J Clin Oncol': {'host': 'jco.ascopubs.org'},
-    #'J Endocrinol': {'host': 'joe.endocrinology-journals.org'},   #moved
-    #'J Mol Endocrinol': {'host': 'jme.endocrinology-journals.org'}, # moved to endo.py
     'J Exp Med': {'host': 'jem.rupress.org'},
     'J Immunol': {'host': 'jimmunol.org'},
     'J Lipid Res': {'host': 'www.jlr.org'},
@@ -83,7 +81,6 @@ vip_journals_nonstandard = {
     # TODO: backup_url: pmid lookup strategy, e.g.
     # http://www.bloodjournal.org/cgi/pmidlookup?view=long&pmid=1586703
     'Blood': 'http://www.bloodjournal.org/content/bloodjournal/{a.volume}/{a.issue}/{a.first_page}.full.pdf',
-    # 'BMJ': moved to journals/bmj.py with standard VIP format
 }
 
 # Non-VIP, not sure where to put yet

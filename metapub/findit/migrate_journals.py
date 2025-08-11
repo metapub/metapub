@@ -20,7 +20,6 @@ from metapub.findit.registry import JournalRegistry
 from metapub.findit.journals.aaas import aaas_journals
 from metapub.findit.journals.biochemsoc import biochemsoc_journals
 from metapub.findit.journals.bmc import BMC_journals
-# De Gruyter now in single_journal_publishers
 from metapub.findit.journals.dustri import dustri_journals
 from metapub.findit.journals.endo import endo_journals
 from metapub.findit.journals.jama import jama_journals
@@ -79,7 +78,6 @@ from metapub.findit.journals.aip import aip_journals, aip_doi_format
 from metapub.findit.journals.frontiers import frontiers_journals, frontiers_format
 from metapub.findit.journals.cancerbiomed import cancerbiomed_journals, cancerbiomed_vip_format
 from metapub.findit.journals.sciendo import sciendo_journals, sciendo_doi_format
-# Schattauer consolidated into Thieme Medical Publishers - no longer needed
 from metapub.findit.journals.single_journal_publishers import (
     nejm_journals, nejm_template, science_journals, science_vip_template,
     pnas_journals, pnas_template, ajph_journals, ajph_template,
@@ -526,7 +524,6 @@ PUBLISHER_CONFIGS = [
         'format_template': None,
         'journals': dustri_journals,
     },
-    # Schattauer consolidated into Thieme Medical Publishers - entry removed
 ]
 
 # Legacy compatibility - these were previously separate but are now consolidated

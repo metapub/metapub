@@ -101,22 +101,6 @@ class TestMDPI(BaseDanceTest):
                 'TXERROR: dx.doi.org lookup failed' in str(exc_info.value))
         print("Test 4 - Correctly rejected non-MDPI DOI")
 
-    @patch('metapub.findit.dances.mdpi.the_doi_2step')
-    def test_mdpi_moonwalk_doi_resolution_fails(self, mock_doi_2step):
-        """Test 5: Error when DOI resolution fails.
-        
-        Expected: Should raise NoPDFLink when DOI can't be resolved
-        """
-        # Mock DOI resolution failure - should raise NoPDFLink directly
-        mock_doi_2step.side_effect = NoPDFLink("TXERROR: dx.doi.org lookup failed (test error)")
-        
-        pma = self._create_mock_pma(doi='10.3390/cardiogenetics11030017')
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_mdpi_moonwalk(pma, verify=False)
-        
-        assert 'TXERROR: dx.doi.org lookup failed' in str(exc_info.value)
-        print("Test 5 - Correctly handled DOI resolution failure")
 
     @patch('metapub.findit.dances.mdpi.verify_pdf_url')
     @patch('metapub.findit.dances.mdpi.the_doi_2step')

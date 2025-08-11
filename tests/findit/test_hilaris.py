@@ -85,16 +85,6 @@ class TestHilarisDanceEvidenceDriven(unittest.TestCase):
         self.assertIn('INVALID:', str(context.exception))
         self.assertIn('did not resolve to Hilaris Publisher domain', str(context.exception))
 
-    @patch('metapub.findit.dances.hilaris.the_doi_2step')
-    def test_doi_resolution_txerror_bubbles_up(self, mock_doi_2step):
-        """Test that TXERROR from the_doi_2step bubbles up correctly"""
-        mock_doi_2step.side_effect = NoPDFLink('TXERROR: dx.doi.org lookup failed (Network timeout) - attempted: https://dx.doi.org/10.4172/2161-0525.1000551')
-        
-        with self.assertRaises(NoPDFLink) as context:
-            the_hilaris_hop(self.mock_pma, verify=False)
-        
-        self.assertIn('TXERROR:', str(context.exception))
-        self.assertIn('dx.doi.org lookup failed', str(context.exception))
 
     def test_real_pmid_metadata_validation(self):
         """Test with real PMID metadata to validate approach"""

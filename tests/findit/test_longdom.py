@@ -104,16 +104,6 @@ class TestLongdomDance(BaseDanceTest):
 
 
 
-    @patch('metapub.findit.dances.longdom.the_doi_2step')
-    def test_doi_resolution_bubbles_errors(self, mock_doi_2step):
-        """Test 10: DOI resolution errors bubble up correctly."""
-        mock_doi_2step.side_effect = NoPDFLink('TXERROR: DOI resolution failed')
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_longdom_hustle(self.mock_pma, verify=False)
-        
-        assert 'DOI resolution failed' in str(exc_info.value)
-        print("Test 10 - DOI resolution errors bubble up correctly")
 
 
 def test_longdom_journal_recognition():

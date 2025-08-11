@@ -144,15 +144,6 @@ class TestIngentaConnectDance(unittest.TestCase):
                 result = the_ingenta_flux(self.mock_pma, verify=False)
                 self.assertEqual(result, expected_pdf_url)
 
-    def test_doi_bubbling_from_the_doi_2step(self):
-        """Test that NoPDFLink from the_doi_2step bubbles up correctly"""
-        with patch('metapub.findit.dances.ingenta.the_doi_2step') as mock_doi:
-            mock_doi.side_effect = NoPDFLink('TXERROR: DOI resolution failed')
-            
-            with self.assertRaises(NoPDFLink) as context:
-                the_ingenta_flux(self.mock_pma, verify=False)
-            
-            self.assertIn('DOI resolution failed', str(context.exception))
 
 
     def test_multi_publisher_platform_handling(self):

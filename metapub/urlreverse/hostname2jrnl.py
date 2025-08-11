@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 HOSTNAME_TO_JOURNAL_MAP = {
 		'molbiolcell.org': 'Mol Biol Cell',
 		'biomedgerontology.oxfordjournals.org': 'J Gerontol A Biol Sci Med Sci',

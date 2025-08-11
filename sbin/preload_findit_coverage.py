@@ -1,5 +1,3 @@
-from __future__ import absolute_import, print_function, unicode_literals
-
 from metapub import FindIt, PubMedFetcher
 
 from metapub.findit.dances import the_doi_2step

@@ -1,5 +1,3 @@
-from __future__ import absolute_import, print_function, unicode_literals
-
 from metapub import FindIt
 
 pmids = ['25906962' #Acad Pediatr / sciencedirect

@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 # Springer journals
 #
 # Evidence-driven rewrite showed consistent DOI-based pattern:

@@ -22,7 +22,7 @@ def rebuild_journal_registry():
 
 class PostInstallCommand(install):
     """Custom install command that rebuilds the journal registry."""
-    
+
     def run(self):
         install.run(self)
         self.execute(rebuild_journal_registry, [], msg="Rebuilding journal registry...")
@@ -30,7 +30,7 @@ class PostInstallCommand(install):
 
 class PostDevelopCommand(develop):
     """Custom develop command that rebuilds the journal registry."""
-    
+
     def run(self):
         develop.run(self)
         self.execute(rebuild_journal_registry, [], msg="Rebuilding journal registry...")
@@ -38,11 +38,11 @@ class PostDevelopCommand(develop):
 
 setup(
     name="metapub",
-    version="0.6.4",  # Increment version for registry refactor
+    version="0.6.4a",
     description="Pubmed / NCBI / eutils interaction library, handling the metadata of pubmed papers.",
     long_description=open("README.rst").read(),
     long_description_content_type="text/x-rst",
-    url="https://github.com/metapub/metapub",
+    url="https://metapub.org",
     author="Naomi Most",
     maintainer="Naomi Most",
     author_email="naomi@nthmost.com",

@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 """metapub.MedGenFetcher -- tools to deal with NCBI's E-utilities interface to the MedGen db"""
 
 from lxml import etree

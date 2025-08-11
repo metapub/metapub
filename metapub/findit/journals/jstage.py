@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 # JSTAGE: mostly free (yay)
 # Examples:
 # J Biochem: https://www.jstage.jst.go.jp/article/biochemistry1922/125/4/125_4_803/_pdf

@@ -1,5 +1,3 @@
-from __future__ import absolute_import, print_function, unicode_literals
-
 from metapub import FindIt
 
 from config import JOURNAL_LIST_FILENAME, JOURNAL_ISOABBR_LIST_FILENAME

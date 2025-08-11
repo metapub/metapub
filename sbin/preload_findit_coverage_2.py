@@ -1,5 +1,3 @@
-from __future__ import absolute_import, print_function, unicode_literals
-
 # "preload" for FindIt #2: iterate over same journal list, but actually
 # load a PubMedArticle object on each PMID.  (no list output created)
 

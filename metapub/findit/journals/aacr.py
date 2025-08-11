@@ -1,7 +1,7 @@
 """
 American Association for Cancer Research (AACR) journal patterns and mappings.
 
-AACR publishes cancer research journals using Volume-Issue-Page (VIP) 
+AACR publishes cancer research journals using Volume-Issue-Page (VIP)
 format URLs with journal-specific subdomains.
 
 URL Pattern: http://{host}.aacrjournals.org/content/{volume}/{issue}/{first_page}.full.pdf
@@ -16,7 +16,6 @@ aacr_journals = [
     'Clin Cancer Res',
     'Mol Canc Therapeut',
     'Mol Cancer Ther',
-    # Additional real AACR journals from aacrjournals.org
     'Cancer Prev Res (Phila)',
     'Cancer Immunol Res',
     'Blood Cancer Discov',
@@ -25,16 +24,15 @@ aacr_journals = [
 
 # Host mappings for VIP format journals
 aacr_journal_params = {
+    'Blood Cancer Discov': {'host': 'bloodcancerdiscov'},
     'Cancer Discov': {'host': 'cancerdiscovery'},
     'Cancer Epidemiol Biomarkers Prev': {'host': 'cebp'},
+    'Cancer Immunol Res': {'host': 'cancerimmunolres'},
+    'Cancer Prev Res (Phila)': {'host': 'cancerpreventionresearch'},
     'Cancer Res': {'host': 'cancerres'},
     'Clin Cancer Res': {'host': 'clincancerres'},
     'Mol Canc Therapeut': {'host': 'mct'},
     'Mol Cancer Ther': {'host': 'mct'},
-    # Additional real AACR journals
-    'Cancer Prev Res (Phila)': {'host': 'cancerpreventionresearch'},
-    'Cancer Immunol Res': {'host': 'cancerimmunolres'},
-    'Blood Cancer Discov': {'host': 'bloodcancerdiscov'},
     'Mol Cancer Res': {'host': 'mcr'},
 }
 

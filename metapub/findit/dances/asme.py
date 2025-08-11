@@ -14,6 +14,8 @@ def the_asme_animal(pma, verify=True):
     ASME publishes technical journals in mechanical engineering, biomechanical
     engineering, manufacturing, energy, and related fields through their
     Digital Collection platform.
+    
+    Includes CrossRef API fallback for blocked access.
 
     Args:
         pma: PubMedArticle object
@@ -26,6 +28,18 @@ def the_asme_animal(pma, verify=True):
         NoPDFLink: If DOI missing or PDF not accessible
         AccessDenied: If paywall detected
     """
+    if not pma.doi:
+        raise NoPDFLink('MISSING: doi needed for ASME article.')
+
+    # Try CrossRef API first since ASME blocks automated access
+    try:
+        crossref_urls = get_crossref_pdf_links(pma.doi)
+        if crossref_urls:
+            # Use the first PDF URL from CrossRef
+            return crossref_urls[0]
+    except NoPDFLink:
+        # Fall through to original approach if CrossRef fails
+        pass
 
     try:
         if not pma.doi:

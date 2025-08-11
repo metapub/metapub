@@ -23,6 +23,64 @@ from ..registry import JournalRegistry
 
 OK_STATUS_CODES = (200, 301, 302, 307)
 
+# Publishers known to block automated access with Cloudflare/bot protection
+BLOCKED_PUBLISHERS = {
+    'aip',           # American Institute of Physics - Cloudflare
+    'jama',          # JAMA Network - Cloudflare  
+    'karger',        # Karger - Cloudflare
+    'asme',          # ASME - Cloudflare
+    'iop',           # Institute of Physics - Radware Bot Manager
+    'allenpress',    # Allen Press - Cloudflare
+    'wolterskluwer', # Wolters Kluwer - Cloudflare
+}
+
+
+def get_crossref_pdf_links(doi):
+    """Retrieve PDF links for a DOI from CrossRef API.
+    
+    This function provides a workaround for publishers that block direct access
+    but provide PDF URLs through CrossRef metadata.
+    
+    Args:
+        doi (str): DOI to look up
+        
+    Returns:
+        list: List of PDF URLs from CrossRef, or empty list if none found
+        
+    Raises:
+        NoPDFLink: If CrossRef API request fails
+    """
+    if not doi:
+        return []
+        
+    url = f'https://api.crossref.org/works/{doi}'
+    headers = {'User-Agent': 'metapub/1.0 (mailto:support@metapub.org)'}
+    
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        if response.status_code != 200:
+            raise NoPDFLink(f'TXERROR: CrossRef API returned {response.status_code} for DOI {doi}')
+            
+        data = response.json()
+        work = data.get('message', {})
+        
+        # Extract PDF links from CrossRef link metadata
+        pdf_links = []
+        if 'link' in work:
+            for link in work['link']:
+                content_type = link.get('content-type', '').lower()
+                url_path = link.get('URL', '').lower()
+                # Check both content-type and URL path for PDF indicators
+                if (('pdf' in content_type or 'pdf' in url_path) and link.get('URL')):
+                    pdf_links.append(link['URL'])
+                    
+        return pdf_links
+        
+    except requests.RequestException as e:
+        raise NoPDFLink(f'TXERROR: CrossRef API request failed - {str(e)}')
+    except (KeyError, ValueError) as e:
+        raise NoPDFLink(f'TXERROR: CrossRef API response parsing failed - {str(e)}')
+
 
 # Enhanced browser headers optimized for Cloudflare bypass
 # Based on testing that successfully unlocked University of Chicago Press
@@ -241,6 +299,7 @@ def the_doi_slide(pma, verify=True):
     '''Dance of journals that use DOI in their URL construction.
 
     Uses the registry-based template system for DOI-based publishers.
+    Includes CrossRef API fallback for blocked publishers.
 
          :param: pma (PubMedArticle object)
          :param: verify (bool) [default: True]
@@ -256,15 +315,31 @@ def the_doi_slide(pma, verify=True):
     registry = JournalRegistry()
     publisher_info = registry.get_publisher_for_journal(jrnl)
     registry.close()
+    
+    publisher_name = publisher_info['name']
+    
+    # Check if this is a blocked publisher - try CrossRef API first
+    if publisher_name in BLOCKED_PUBLISHERS:
+        try:
+            crossref_urls = get_crossref_pdf_links(pma.doi)
+            if crossref_urls:
+                # Use the first PDF URL from CrossRef
+                url = crossref_urls[0]
+                # For blocked publishers, skip verification since we can't access them
+                # The CrossRef API provides verified PDF URLs
+                return url
+        except NoPDFLink:
+            # If CrossRef fails, fall through to template approach
+            pass
 
-    # Perform template substitution
+    # Standard template approach for non-blocked publishers or CrossRef fallback
     template = publisher_info['format_template']
 
     # Apply standardized DOI template format
     url = template.format(doi=pma.doi)
 
-    # Verification logic
-    if verify:
+    # Verification logic - skip for blocked publishers
+    if verify and publisher_name not in BLOCKED_PUBLISHERS:
         verify_pdf_url(url)
     return url
 

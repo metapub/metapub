@@ -13,6 +13,8 @@ def the_iop_fusion(pma, verify=True):
 
     IOP Publishing operates multiple domains including iopscience.iop.org
     and validate.perfdrive.com. Most IOP journals use DOI pattern 10.1088/*.
+    
+    Includes CrossRef API fallback for blocked access.
 
     Args:
         pma: PubMedArticle object
@@ -25,6 +27,18 @@ def the_iop_fusion(pma, verify=True):
         NoPDFLink: If DOI missing, wrong pattern, or PDF not accessible
         AccessDenied: If paywall detected
     """
+    if not pma.doi:
+        raise NoPDFLink('MISSING: doi needed for IOP article.')
+
+    # Try CrossRef API first since IOP blocks automated access
+    try:
+        crossref_urls = get_crossref_pdf_links(pma.doi)
+        if crossref_urls:
+            # Use the first PDF URL from CrossRef
+            return crossref_urls[0]
+    except NoPDFLink:
+        # Fall through to original approach if CrossRef fails
+        pass
 
     try:
         # WHY IS THIS ALL WITHIN A TRY-EXCEPT BLOCK, CLAUDE?

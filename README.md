@@ -13,7 +13,7 @@ ClinVar, and CrossRef, and intends to encompass as many types of
 database lookups and summaries as can be provided via Eutils / Entrez.
 
 Metapub can also help build scholarly paper libraries through the use of
-the FindIt class.
+the FindIt class. See the [FindIt documentation](https://metapub.readthedocs.org/en/latest/advanced.html#findit-publisher-specific-pdf-access) for comprehensive coverage of 68+ publishers.
 
 MetaPub features include:
 
@@ -37,6 +37,8 @@ arcane magic of classic Python setuptools:
 
     pip install metapub
 
+For step-by-step examples and tutorials, see the [Quick Start Guide](https://metapub.readthedocs.org/en/latest/quickstart.html).
+
 When the package is installed, you\'ll have a few command line utilities
 available to you:
 
@@ -47,7 +49,7 @@ available to you:
     pubmed_article <pmid>
 
 All of these utilities contain their own help screens, by which you will
-be able to see options and usage.
+be able to see options and usage. For complete API documentation, see the [API Overview](https://metapub.readthedocs.org/en/latest/api.html).
 
 Here\'s an example:
 
@@ -220,7 +222,7 @@ None:
     get_pmcid_for_otherid(string)
 
 As implied by the function names, you can supply any valid ID type
-(\"otherid\") to acquire the desired ID type.
+(\"otherid\") to acquire the desired ID type. For advanced ID conversion patterns, see the [conversion utilities documentation](https://metapub.readthedocs.org/en/latest/api.html#conversion-and-citation).
 
 MedGenConcept / MedGenFetcher
 =============================
@@ -242,6 +244,8 @@ Basic usage:
     print(concept.modes_of_inheritance)
     print(concept.OMIM)
     print(concept.synonyms)
+
+For advanced MedGen usage including disease-gene mapping and clinical queries, see the [Advanced Usage guide](https://metapub.readthedocs.org/en/latest/advanced.html#medgen-and-clinvar-integration).
 
 ClinVarVariation / ClinVarFetcher
 =================================
@@ -271,6 +275,8 @@ Basic usage:
     pubmed_citations = clinvar.pmids_for_hgvs('NM_000249.3:c.1958T>G')
     print(pubmed_citations)
 
+For comprehensive ClinVar variant analysis examples, see the [ClinVar Integration documentation](https://metapub.readthedocs.org/en/latest/advanced.html#clinvar-variant-analysis).
+
 CrossRefFetcher
 ===============
 
@@ -287,7 +293,7 @@ library by \@sckott.
 In metapub, the CrossRefFetcher object contains convenience methods into
 the crossref.works() query that allows us to abstract away a lot of the
 string-handshaking between PubMedArticles and CrossRef and just get what
-we need as quickly and accurately as possible.
+we need as quickly and accurately as possible. For advanced CrossRef usage patterns including batch processing, see the [CrossRef Integration documentation](https://metapub.readthedocs.org/en/latest/advanced.html#crossref-integration).
 
 Basic usage:
 
@@ -343,7 +349,9 @@ If FindIt couldn\'t get a URL, you can take a look at the \"reason\"
 attribute to find out why. For example:
 
     src = FindIt('1234567')
-    if src.url is None: print(src.reason) 
+    if src.url is None: print(src.reason)
+
+For a complete list of possible error responses and troubleshooting, see the [FindIt Error Handling documentation](https://metapub.readthedocs.org/en/latest/advanced.html#error-handling-patterns).
 
 The FindIt object is cached (keyed to PMID), so while initialization the
 first time around for a given PMID or DOI may take a few seconds, the
@@ -380,6 +388,8 @@ Usage is very similar to FindIt:
     print(urlrev.pmid)
     print(urlrev.doi)
     print(urlrev.steps)
+
+For advanced URL reverse engineering patterns, see the [URL Reverse Engineering documentation](https://metapub.readthedocs.org/en/latest/advanced.html#url-reverse-engineering).
 
 UrlReverse is cached (keyed to URL); by default its cache db can be
 found in \~/.cache/urlreverse-cache.db

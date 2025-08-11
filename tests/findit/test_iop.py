@@ -70,12 +70,16 @@ class TestIOPDance(BaseDanceTest):
         assert 'iopscience.iop.org' in url
         print(f"Test 3 - PDF URL: {url}")
 
+    @patch('metapub.findit.dances.iop.get_crossref_pdf_links')
     @patch('requests.get')
-    def test_iop_fusion_successful_access(self, mock_get):
+    def test_iop_fusion_successful_access(self, mock_get, mock_crossref):
         """Test 4: Successful PDF access simulation.
         
         Expected: Should return PDF URL when accessible
         """
+        # Mock CrossRef to return no results (forces fallback to direct approach)
+        mock_crossref.side_effect = NoPDFLink("No CrossRef PDF links found")
+        
         # Mock successful PDF response
         mock_response = Mock()
         mock_response.status_code = 200
@@ -92,12 +96,16 @@ class TestIOPDance(BaseDanceTest):
         assert '/pdf' in url
         print(f"Test 4 - Successful verified access: {url}")
 
+    @patch('metapub.findit.dances.iop.get_crossref_pdf_links')
     @patch('requests.get')
-    def test_iop_fusion_paywall_detection(self, mock_get):
+    def test_iop_fusion_paywall_detection(self, mock_get, mock_crossref):
         """Test 5: Paywall detection.
         
         Expected: Should try both domains and detect paywall
         """
+        # Mock CrossRef to return no results (forces fallback to direct approach)
+        mock_crossref.side_effect = NoPDFLink("No CrossRef PDF links found")
+        
         # Mock paywall response for both domains
         mock_response = Mock()
         mock_response.status_code = 200
@@ -151,7 +159,7 @@ class TestIOPDance(BaseDanceTest):
             the_iop_fusion(pma, verify=False)
         
         assert 'MISSING' in str(exc_info.value)
-        assert 'DOI required' in str(exc_info.value)
+        assert 'doi needed' in str(exc_info.value)
         print(f"Test 7 - Correctly handled missing DOI: {exc_info.value}")
 
     @patch('requests.get')

@@ -43,14 +43,18 @@ class TestJAMADance(BaseDanceTest):
         assert pma.doi is not None
         print(f"Test 2 - Second article: {pma.journal}, DOI: {pma.doi}")
 
+    @patch('metapub.findit.dances.jama.get_crossref_pdf_links')
     @patch('metapub.findit.dances.jama.the_doi_2step')
     @patch('requests.get')
-    def test_jama_dance_successful_access(self, mock_get, mock_doi_2step):
+    def test_jama_dance_successful_access(self, mock_get, mock_doi_2step, mock_crossref):
         """Test 3: Successful PDF access simulation.
         
         PMID: 26575068 (JAMA)
         Expected: Should return PDF URL when accessible
         """
+        # Mock CrossRef to return no results (forces fallback to direct approach)
+        mock_crossref.side_effect = NoPDFLink("No CrossRef PDF links found")
+        
         # Mock DOI resolution
         mock_doi_2step.return_value = 'https://jamanetwork.com/article.aspx?doi=10.1001/jama.2015.12931'
         
@@ -72,14 +76,18 @@ class TestJAMADance(BaseDanceTest):
         assert 'jamanetwork.com' in url
         print(f"Test 3 - Successful access: {url}")
 
+    @patch('metapub.findit.dances.jama.get_crossref_pdf_links')
     @patch('metapub.findit.dances.jama.the_doi_2step')
     @patch('requests.get')
-    def test_jama_dance_no_pdf_link(self, mock_get, mock_doi_2step):
+    def test_jama_dance_no_pdf_link(self, mock_get, mock_doi_2step, mock_crossref):
         """Test 4: Missing PDF link detection.
         
         PMID: 36301627 (JAMA Psychiatry)
         Expected: Should detect missing PDF link and raise NoPDFLink
         """
+        # Mock CrossRef to return no results (forces fallback to direct approach)
+        mock_crossref.side_effect = NoPDFLink("No CrossRef PDF links found")
+        
         # Mock DOI resolution
         mock_doi_2step.return_value = 'https://jamanetwork.com/article.aspx?doi=10.1001/jama.2015.12931'
         

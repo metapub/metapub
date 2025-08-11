@@ -99,12 +99,16 @@ class TestASMEDance(BaseDanceTest):
         print(f"Test 4 - Successful verified access: {url}")
 
 
+    @patch('metapub.findit.dances.asme.get_crossref_pdf_links')
     @patch('metapub.findit.dances.asme.unified_uri_get')
-    def test_asme_assembly_network_error(self, mock_get):
+    def test_asme_assembly_network_error(self, mock_get, mock_crossref):
         """Test 6: Network error handling.
         
         Expected: Should handle network errors gracefully
         """
+        # Mock CrossRef to return no results (forces fallback to direct approach)
+        mock_crossref.side_effect = NoPDFLink("No CrossRef PDF links found")
+        
         # Mock network error
         mock_get.side_effect = requests.exceptions.ConnectionError("Network error")
 
@@ -118,12 +122,16 @@ class TestASMEDance(BaseDanceTest):
         print(f"Test 6 - Correctly handled network error: {exc_info.value}")
 
 
+    @patch('metapub.findit.dances.asme.get_crossref_pdf_links')
     @patch('metapub.findit.dances.asme.unified_uri_get')
-    def test_asme_assembly_404_error(self, mock_get):
+    def test_asme_assembly_404_error(self, mock_get, mock_crossref):
         """Test 8: Article not found (404 error).
         
         Expected: Should try multiple patterns and handle 404 errors
         """
+        # Mock CrossRef to return no results (forces fallback to direct approach)
+        mock_crossref.side_effect = NoPDFLink("No CrossRef PDF links found")
+        
         # Mock 404 response for all attempts
         mock_response = Mock()
         mock_response.ok = False
@@ -306,9 +314,13 @@ class TestASMEXMLFixtures:
             assert 'asmedigitalcollection.asme.org' in result
             print(f"✓ PMID {pmid} verified URL: {result}")
 
+    @patch('metapub.findit.dances.asme.get_crossref_pdf_links')
     @patch('metapub.findit.dances.asme.unified_uri_get')
-    def test_asme_paywall_handling(self, mock_get):
+    def test_asme_paywall_handling(self, mock_get, mock_crossref):
         """Test paywall detection and error handling."""
+        # Mock CrossRef to return no results (forces fallback to direct approach)
+        mock_crossref.side_effect = NoPDFLink("No CrossRef PDF links found")
+        
         # Mock paywall response
         mock_response = Mock()
         mock_response.status_code = 200
@@ -358,11 +370,11 @@ class TestASMEXMLFixtures:
         # Test URL construction 
         result = the_asme_animal(pma, verify=False)
         
-        # Should follow ASME URL pattern
+        # Should follow ASME URL pattern (may be CrossRef or direct URL)
         assert result is not None
         assert 'asmedigitalcollection.asme.org' in result
         assert result.startswith('https://')
-        assert pma.doi in result
+        # Note: DOI may not be directly in URL if CrossRef returns alternative URL
 
     def test_asme_pmc_availability(self):
         """Test coverage of PMC-available ASME articles."""

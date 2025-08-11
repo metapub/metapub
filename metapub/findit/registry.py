@@ -6,6 +6,7 @@ that can efficiently handle thousands of journals with lazy loading and caching.
 
 import sqlite3
 import logging
+import os
 from typing import Optional, Dict, Tuple, List
 from ..config import DEFAULT_CACHE_DIR
 from ..cache_utils import get_cache_path
@@ -21,10 +22,18 @@ class JournalRegistry:
         """Initialize the journal registry.
         
         Args:
-            db_path: Path to the SQLite database. If None, uses default cache directory.
+            db_path: Path to the SQLite database. If None, uses shipped database.
         """
         if db_path is None:
-            db_path = get_cache_path(DEFAULT_CACHE_DIR, REGISTRY_DB_FILENAME)
+            # Use shipped registry database by default
+            shipped_db_path = os.path.join(os.path.dirname(__file__), 'data', 'registry.db')
+            if os.path.exists(shipped_db_path):
+                db_path = shipped_db_path
+                log.debug(f"Using shipped registry database: {db_path}")
+            else:
+                # Fallback to cache directory for development/migration
+                db_path = get_cache_path(DEFAULT_CACHE_DIR, REGISTRY_DB_FILENAME)
+                log.warning(f"Shipped registry not found, using cache: {db_path}")
         
         self.db_path = db_path
         self._conn = None
@@ -85,8 +94,14 @@ class JournalRegistry:
         conn.commit()
         log.debug('Journal registry database initialized at %s', self.db_path)
         
-        # Auto-populate if database is empty (for PyPI distribution)
-        self._auto_populate_if_empty()
+        # Auto-populate if database is empty and not using shipped database
+        if not self._is_using_shipped_database():
+            self._auto_populate_if_empty()
+    
+    def _is_using_shipped_database(self) -> bool:
+        """Check if we're using the shipped registry database."""
+        shipped_db_path = os.path.join(os.path.dirname(__file__), 'data', 'registry.db')
+        return os.path.abspath(self.db_path) == os.path.abspath(shipped_db_path)
     
     def _auto_populate_if_empty(self):
         """Auto-populate database from embedded journal modules if empty.

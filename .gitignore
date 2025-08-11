@@ -5,9 +5,11 @@ tests/cachedir/*.db
 default/
 output/
 
-# ignore registry database files (should be in ~/.cache, not in source tree)
+# ignore errant database files in root of tree
 **/journal_registry.db
 test_registry.db
+# BUT allow the shipped registry database
+!metapub/findit/data/registry.db
 
 # ignore dev utility directories
 CLEANUP/

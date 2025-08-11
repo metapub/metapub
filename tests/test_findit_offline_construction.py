@@ -72,16 +72,6 @@ class TestOfflineURLConstruction(unittest.TestCase):
             self.assertTrue(url.startswith('http'))
             self.assertIn('biomedcentral.com', url)
 
-    def test_wiley_offline_vs_online_construction(self):
-        """Test Wiley URL construction difference between offline and online modes."""
-        from metapub.findit.dances import the_doi_slide
-        
-        mock_pma = Mock()
-        mock_pma.doi = "10.1002/ajmg.a.37609"
-        mock_pma.journal = "American Journal of Medical Genetics Part A"
-        
-        # Skip this test since the_doi_slide requires registry lookup which is not pure offline
-        self.skipTest("Wiley now uses the_doi_slide which requires registry lookup - not pure offline construction")
 
     def test_findit_verify_flag_integration(self):
         """Test that verify flag is properly integrated in FindIt API."""
@@ -154,20 +144,21 @@ class TestOfflineURLConstruction(unittest.TestCase):
             {
                 'name': 'Nature (VIP)',
                 'dance': 'the_nature_ballet',
-                'mock_setup': lambda m: setattr(m, 'journal', 'Nature') or 
-                              setattr(m, 'volume', '500') or
-                              setattr(m, 'issue', '1') or
-                              setattr(m, 'first_page', '123')
+                'mock_setup': lambda m: (
+                    setattr(m, 'journal', 'Nature'),
+                    setattr(m, 'volume', '500'),
+                    setattr(m, 'issue', '1'), 
+                    setattr(m, 'first_page', '123'),
+                    setattr(m, 'doi', '10.1038/nature12373')
+                )
             },
             {
                 'name': 'BMC (DOI)',
                 'dance': 'the_bmc_boogie', 
-                'mock_setup': lambda m: setattr(m, 'doi', '10.1186/s12864-023-09123-4')
-            },
-            {
-                'name': 'Springer (DOI)',
-                'dance': 'the_doi_slide', 
-                'mock_setup': lambda m: setattr(m, 'doi', '10.1007/s00439-023-02345-6')
+                'mock_setup': lambda m: (
+                    setattr(m, 'doi', '10.1186/s12864-023-09123-4'),
+                    setattr(m, 'journal', 'BMC Genomics')
+                )
             }
         ]
         
@@ -179,20 +170,15 @@ class TestOfflineURLConstruction(unittest.TestCase):
                 # Import the dance function dynamically
                 try:
                     from metapub.findit.dances import (
-                        the_nature_ballet, the_bmc_boogie, the_doi_slide
+                        the_nature_ballet, the_bmc_boogie
                     )
                     dance_functions = {
                         'the_nature_ballet': the_nature_ballet,
-                        'the_bmc_boogie': the_bmc_boogie,
-                        'the_doi_slide': the_doi_slide
+                        'the_bmc_boogie': the_bmc_boogie
                     }
                     
                     dance_func = dance_functions.get(case['dance'])
                     if dance_func:
-                        # Skip the_doi_slide since it requires registry lookup
-                        if case['dance'] == 'the_doi_slide':
-                            self.skipTest(f"{case['name']} uses the_doi_slide which requires registry lookup")
-                            
                         with patch('metapub.findit.dances.verify_pdf_url') as mock_verify:
                             try:
                                 url = dance_func(mock_pma, verify=False)
@@ -203,6 +189,7 @@ class TestOfflineURLConstruction(unittest.TestCase):
                                 if url:  # Some may return None for missing data
                                     self.assertTrue(url.startswith('http'), 
                                                   f"{case['name']} should return HTTP URL")
+                                    print(f"✓ {case['name']} offline URL: {url}")
                                     
                             except Exception as e:
                                 # Some publishers may require additional data

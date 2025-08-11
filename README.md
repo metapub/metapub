@@ -499,15 +499,8 @@ type of data or API that you wish Metapub would support. Examples are
 often crucial for reproducing bugs and for creating tests in the wake of
 a bug fix.
 
-Extra special help is requested with the following items:
-
--   Logging more consistently \-- if you have a logging \"philosophy\"
-    I\'d love to hear from you.
--   Test coverage \-- especially clever testing strategies to handle
-    data that change all the time.
-
-Email inquiries to the maintainer address in this package. Or just
-submit a pull request.
+For easy places to get involved, see https://github.com/metapub/metapub/issues
+and looked at the "good first issue" and "help wanted" tags.
 
 About Python 2 and Python 3 Support
 -----------------------------------

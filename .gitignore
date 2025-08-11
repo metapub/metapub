@@ -7,6 +7,7 @@ output/
 
 # ignore registry database files (should be in ~/.cache, not in source tree)
 **/journal_registry.db
+test_registry.db
 
 # ignore dev utility directories
 CLEANUP/

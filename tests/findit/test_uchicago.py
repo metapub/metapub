@@ -9,6 +9,8 @@ Following DANCE_FUNCTION_CHECKLIST.md Phase 4 guidelines:
 """
 
 import pytest
+import tempfile
+import os
 from unittest.mock import patch, Mock
 from metapub import PubMedFetcher
 from metapub.findit.registry import JournalRegistry
@@ -18,11 +20,28 @@ from metapub.exceptions import NoPDFLink, AccessDenied
 
 class TestUChicagoConsolidation:
     """Test University of Chicago Press consolidation into the_doi_slide."""
+    
+    @classmethod
+    def setup_class(cls):
+        """Create temporary database for testing."""
+        cls.temp_db_file = tempfile.NamedTemporaryFile(suffix='.db', delete=False)
+        cls.temp_db_path = cls.temp_db_file.name
+        cls.temp_db_file.close()
+    
+    @classmethod
+    def teardown_class(cls):
+        """Clean up temporary database."""
+        if os.path.exists(cls.temp_db_path):
+            os.unlink(cls.temp_db_path)
+    
+    def setup_method(self):
+        """Set up instance method access to temp db path."""
+        self.temp_db_path = self.__class__.temp_db_path
 
     def test_registry_integration(self):
         """Test that University of Chicago Press journals are correctly registered."""
         # Use local test database to verify updated configuration
-        registry = JournalRegistry(db_path='./test_registry.db')
+        registry = JournalRegistry(db_path=self.temp_db_path)
         
         # Test a few key UChicago journals
         test_journals = [
@@ -43,7 +62,7 @@ class TestUChicagoConsolidation:
     def test_url_construction_evidence_based(self):
         """Test URL construction with evidence-based DOI patterns from HTML samples."""
         # Test that template format is correctly applied based on our evidence
-        registry = JournalRegistry(db_path='./test_registry.db')
+        registry = JournalRegistry(db_path=self.temp_db_path)
         publisher_info = registry.get_publisher_for_journal('Am J Sociol')
         template = publisher_info['format_template']
         registry.close()
@@ -74,7 +93,7 @@ class TestUChicagoConsolidation:
 
     def test_evidence_based_template(self):
         """Test that template is based on evidence from HTML samples.""" 
-        registry = JournalRegistry(db_path='./test_registry.db')
+        registry = JournalRegistry(db_path=self.temp_db_path)
         publisher_info = registry.get_publisher_for_journal('Am J Sociol')
         template = publisher_info['format_template']
         registry.close()
@@ -89,7 +108,7 @@ class TestUChicagoConsolidation:
     def test_doi_pattern_flexibility(self):
         """Test that the consolidation accepts various DOI patterns (not just 10.1086)."""
         # University of Chicago Press has acquired journals that might have different DOI patterns
-        registry = JournalRegistry(db_path='./test_registry.db')
+        registry = JournalRegistry(db_path=self.temp_db_path)
         publisher_info = registry.get_publisher_for_journal('Am J Sociol')
         template = publisher_info['format_template']
         registry.close()
@@ -107,7 +126,7 @@ class TestUChicagoConsolidation:
 
     def test_template_structure_evidence_based(self):
         """Test that the template structure matches evidence from HTML samples."""
-        registry = JournalRegistry(db_path='./test_registry.db')
+        registry = JournalRegistry(db_path=self.temp_db_path)
         publisher_info = registry.get_publisher_for_journal('Am J Sociol')
         template = publisher_info['format_template']
         registry.close()

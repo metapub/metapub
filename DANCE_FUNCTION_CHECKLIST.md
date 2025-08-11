@@ -441,12 +441,12 @@ This checklist tracks our progress rewriting ALL dance functions using the evide
 - **Priority:** Medium (social sciences)
 - **Notes:** **ELIMINATED MIDDLEMAN 2025-08-06**: Evidence showed SAGE uses consistent `/doi/reader/{DOI}` pattern for PDF/EPUB access across all journals with 10.1177/ DOI prefix. Since the function used simple direct URL construction (`https://journals.sagepub.com/doi/reader/{DOI}`), eliminated the middleman dance function entirely. **Registry updated**: SAGE journals now directly assigned to `the_doi_slide` generic function with format template `https://journals.sagepub.com/doi/reader/{doi}`. **Files removed**: `metapub/findit/dances/sage.py`, `tests/findit/test_sage.py`. This reduces codebase complexity while maintaining identical functionality - `the_doi_slide` handles the reader URL construction pattern perfectly.
 
-### ✅ Schattauer
-- **Dance Function:** Consolidated into `the_doi_slide` (via registry)
-- **HTML Samples:** `output/article_html/schattauer/`
-- **Status:** COMPLETED ✅ (consolidated with Thieme platform)
-- **Priority:** Low (single journal: Thromb Haemost)
-- **Notes:** **EVIDENCE-BASED CONSOLIDATION 2025-08-09**: Evidence from HTML samples revealed that Schattauer articles are hosted on Thieme's platform (`thieme-connect.de`) using identical URL patterns. All 6 HTML samples showed consistent `citation_pdf_url` meta tags: `http://www.thieme-connect.de/products/ejournals/pdf/{doi}.pdf`. **Registry updated**: Schattauer publisher entry changed from `paywall_handler` to `the_doi_slide` with format template `http://www.thieme-connect.de/products/ejournals/pdf/{doi}.pdf`. **Tests created**: `tests/findit/test_schattauer.py` with evidence-based test cases using real DOI patterns from HTML samples (10.1055/a-XXXX-XXXX). This eliminates the need for a separate dance function while ensuring reliable PDF access through proven Thieme infrastructure.
+### ✅ Schattauer - FULLY CONSOLIDATED INTO THIEME ✅
+- **Status:** PUBLISHER CONSOLIDATION COMPLETED ✅
+- **Action:** Moved `Thromb Haemost` journal to Thieme Medical Publishers
+- **Registry:** Schattauer publisher entry completely removed (2025-08-11)
+- **Infrastructure:** Now uses proven Thieme platform (`thieme-connect.de`)
+- **Notes:** **COMPLETE CONSOLIDATION 2025-08-11**: Final step completed - moved Schattauer's single journal (`Thromb Haemost`) to Thieme Medical Publishers and removed redundant publisher entry. Evidence showed both publishers used identical infrastructure and URL patterns. Registry count reduced from 70 to 69 publishers. All cleanup completed: removed `schattauer.py`, updated `migrate_journals.py`. Perfect consolidation - maintains functionality while eliminating architectural duplication.
 - **Priority:** Low (German medical publisher)
 - **Notes:** German medical publisher with HTML samples available
 

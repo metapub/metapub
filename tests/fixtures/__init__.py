@@ -167,7 +167,6 @@ WALSHMEDIA_EVIDENCE_PMIDS = {
     '29226023': {'doi': '10.4172/2161-1122.1000448', 'journal': 'Dentistry (Sunnyvale)', 'pmc': 'PMC5722253'},
 }
 
-# Brill Academic Publishers PMIDs with metadata (moved to consolidated definition below)
 
 # IngentaConnect PMIDs with metadata
 INGENTACONNECT_EVIDENCE_PMIDS = {

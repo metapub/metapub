@@ -30,7 +30,7 @@ from metapub.findit.journals.scielo import scielo_journals
 from metapub.findit.journals.sciencedirect import sciencedirect_journals
 from metapub.findit.journals.springer import springer_journals, springer_doi_format
 from metapub.findit.journals.spandidos import spandidos_journals
-from metapub.findit.journals.wiley import wiley_journals, wiley_template, wiley_doi_format
+from metapub.findit.journals.wiley import wiley_journals, wiley_doi_format
 from metapub.findit.journals.wolterskluwer import wolterskluwer_journals
 from metapub.findit.journals.sage import sage_journals, sage_additional_journals, sage_format
 from metapub.findit.journals.informa import informa_journals
@@ -50,7 +50,7 @@ from metapub.findit.journals.ats import ats_journals, ats_template
 from metapub.findit.journals.plos import plos_journals
 from metapub.findit.journals.mdpi import mdpi_journals, mdpi_template
 from metapub.findit.journals.eurekaselect import eurekaselect_journals, eurekaselect_template
-from metapub.findit.journals.thieme import thieme_journals, thieme_template, thieme_doi_format
+from metapub.findit.journals.thieme import thieme_journals, thieme_doi_format
 from metapub.findit.journals.dovepress import dovepress_journals
 from metapub.findit.journals.apa import apa_journals
 from metapub.findit.journals.scirp import scirp_journals
@@ -91,7 +91,7 @@ from metapub.findit.journals.bmc import BMC_format
 from metapub.findit.journals.karger import karger_format
 from metapub.findit.journals.nature import nature_format
 from metapub.findit.journals.scielo import scielo_format
-from metapub.findit.journals.spandidos import spandidos_format, spandidos_doi_format
+from metapub.findit.journals.spandidos import spandidos_doi_format
 from metapub.findit.journals.sage import sage_vip_template
 from metapub.findit.journals.informa import informa_template
 
@@ -526,10 +526,6 @@ PUBLISHER_CONFIGS = [
     },
 ]
 
-# Legacy compatibility - these were previously separate but are now consolidated
-# into PUBLISHER_CONFIGS. Keep empty lists for backward compatibility.
-SPECIAL_JOURNALS = []
-PAYWALL_PUBLISHERS = []
 
 def extract_journal_info(journals_data):
     """Extract journal names and format parameters from various data structures."""

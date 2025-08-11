@@ -47,5 +47,3 @@ sciendo_journals = (
 # DOI-based format template (for the_doi_slide)
 sciendo_doi_format = 'https://sciendo.com/pdf/{doi}'
 
-# Legacy format (no longer used)
-sciendo_format = "https://sciendo.com/article/{doi}"

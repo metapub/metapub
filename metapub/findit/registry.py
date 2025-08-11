@@ -132,7 +132,7 @@ class JournalRegistry:
         """
         # Import the migration logic
         try:
-            from .migrate_journals import PUBLISHER_CONFIGS, SPECIAL_JOURNALS, PAYWALL_PUBLISHERS
+            from .migrate_journals import PUBLISHER_CONFIGS
             from .migrate_journals import extract_journal_info
             
             total_publishers = 0
@@ -148,40 +148,6 @@ class JournalRegistry:
                 total_publishers += 1
                 
                 # Extract and add journals
-                journals = extract_journal_info(config['journals'])
-                for journal_name, format_params in journals:
-                    self.add_journal(
-                        name=journal_name,
-                        publisher_id=publisher_id,
-                        format_params=format_params
-                    )
-                    total_journals += 1
-            
-            # Migrate special single journals
-            for config in SPECIAL_JOURNALS:
-                publisher_id = self.add_publisher(
-                    name=config['name'],
-                    dance_function=config['dance_function'],
-                )
-                total_publishers += 1
-                
-                journals = extract_journal_info(config['journals'])
-                for journal_name, format_params in journals:
-                    self.add_journal(
-                        name=journal_name,
-                        publisher_id=publisher_id,
-                        format_params=format_params
-                    )
-                    total_journals += 1
-            
-            # Migrate paywalled publishers
-            for config in PAYWALL_PUBLISHERS:
-                publisher_id = self.add_publisher(
-                    name=config['name'],
-                    dance_function=config['dance_function'],
-                )
-                total_publishers += 1
-                
                 journals = extract_journal_info(config['journals'])
                 for journal_name, format_params in journals:
                     self.add_journal(

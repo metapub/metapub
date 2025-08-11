@@ -6,8 +6,6 @@
 # DOI-based format template (for the_doi_slide)
 spandidos_doi_format = 'http://www.spandidos-publications.com/{doi}/download'
 
-# Legacy VIP-based format (now unused after consolidation)
-spandidos_format = 'http://www.spandidos-publications.com/{ja}/{a.volume}/{a.issue}/{a.first_page}/download'
 
 # Journal list converted to simple tuple for generic function usage
 spandidos_journals = (

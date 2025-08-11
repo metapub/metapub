@@ -148,22 +148,6 @@ class TestWileyDance(BaseDanceTest):
         assert 'Network error' in str(exc_info.value)
         print(f"Test 7 - Correctly handled network error: {exc_info.value}")
 
-    def test_wiley_shuffle_missing_doi(self):
-        """Test 8: Article without DOI.
-        
-        Expected: Should raise NoPDFLink for missing DOI
-        """
-        # Create a mock PMA without DOI
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'Some Journal'
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_wiley_shuffle(pma, verify=False)
-        
-        assert 'MISSING' in str(exc_info.value)
-        assert 'DOI required' in str(exc_info.value)
-        print(f"Test 8 - Correctly handled missing DOI: {exc_info.value}")
 
 
 

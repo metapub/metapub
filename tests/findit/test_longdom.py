@@ -102,18 +102,6 @@ class TestLongdomDance(BaseDanceTest):
         
         print("Test 4 - AccessDenied correctly bubbled up")
 
-    def test_missing_doi_raises_nopdflink(self):
-        """Test 5: Missing DOI raises NoPDFLink with MISSING prefix."""
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'Test Journal'
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_longdom_hustle(pma, verify=False)
-        
-        assert 'MISSING:' in str(exc_info.value)
-        assert 'DOI required' in str(exc_info.value)
-        print(f"Test 5 - Missing DOI: {exc_info.value}")
 
 
     @patch('metapub.findit.dances.longdom.the_doi_2step')

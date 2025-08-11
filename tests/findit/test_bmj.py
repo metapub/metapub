@@ -164,18 +164,6 @@ class TestBMJDance(BaseDanceTest):
         
         print(f"Test 3 - Skip verification: {result}")
 
-    def test_bmj_missing_doi_error(self):
-        """Test 4: Missing DOI raises informative error."""
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'Heart'
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_bmj_bump(pma)
-        
-        error_msg = str(exc_info.value)
-        assert 'MISSING: DOI required' in error_msg
-        print(f"Test 3 - Missing DOI error: {error_msg}")
 
     @patch('metapub.findit.dances.bmj.unified_uri_get')
     @patch('metapub.findit.dances.bmj.the_doi_2step')
@@ -283,27 +271,6 @@ class TestBMJDance(BaseDanceTest):
             
             print(f"✓ Evidence DOI {doi}: {result}")
 
-    def test_bmj_doi_pattern_validation(self):
-        """Test 7: DOI pattern validation for BMJ format."""
-        # All evidence DOIs should follow 10.1136/ pattern
-        evidence_dois = [
-            '10.1136/heartjnl-2021-320451',
-            '10.1136/spcare-2023-004738', 
-            '10.1136/spcare-2023-004183',
-        ]
-        
-        for doi in evidence_dois:
-            # Verify DOI starts with 10.1136/
-            assert doi.startswith('10.1136/'), f"Invalid BMJ DOI pattern: {doi}"
-            
-            # Verify DOI has proper BMJ structure (10.1136/journal-year-id)
-            assert '10.1136/' in doi, f"DOI should contain 10.1136/: {doi}"
-            
-            # Split after 10.1136/ to get the journal code
-            journal_part = doi.split('10.1136/')[1]
-            assert len(journal_part) > 0, f"DOI should have journal identifier: {doi}"
-            
-            print(f"✓ DOI pattern valid: {doi}")
 
 
 

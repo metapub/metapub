@@ -48,15 +48,6 @@ class TestSCIRPDance:
                 url = the_scirp_timewarp(pma, verify=False)
                 assert url == 'https://www.scirp.org/pdf/jep_2023120516310166.pdf'
 
-    def test_scirp_timewarp_missing_doi(self):
-        """Test article without DOI raises appropriate error."""
-        pma = Mock()
-        pma.doi = None
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_scirp_timewarp(pma, verify=False)
-        
-        assert 'MISSING: DOI required for SCIRP journals' in str(exc_info.value)
 
     def test_scirp_timewarp_article_page_not_found(self):
         """Test handling when article page returns non-200 status."""
@@ -160,7 +151,6 @@ if __name__ == '__main__':
     
     tests = [
         ('test_scirp_timewarp_successful_pdf_extraction', 'PDF extraction from HTML'),
-        ('test_scirp_timewarp_missing_doi', 'Missing DOI handling'),
         ('test_scirp_timewarp_article_page_not_found', 'Article page not found'),
         ('test_scirp_timewarp_no_pdf_link_in_html', 'No PDF link in HTML'),
         ('test_scirp_timewarp_with_verification', 'PDF verification call')

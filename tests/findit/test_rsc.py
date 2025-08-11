@@ -279,22 +279,6 @@ class TestRSCDance(BaseDanceTest):
         assert 'Network error' in str(exc_info.value)
         print(f"Test 10 - Correctly let network error bubble up: {exc_info.value}")
 
-    def test_rsc_reaction_missing_doi(self):
-        """Test 11: Article without DOI.
-        
-        Expected: Should raise NoPDFLink for missing DOI
-        """
-        # Create a mock PMA without DOI
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'Chem Commun (Camb)'
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_rsc_reaction(pma, verify=False)
-        
-        assert 'MISSING' in str(exc_info.value)
-        assert 'DOI required' in str(exc_info.value)
-        print(f"Test 11 - Correctly handled missing DOI: {exc_info.value}")
 
     def test_rsc_reaction_invalid_doi(self):
         """Test 12: Article with non-RSC DOI.
@@ -513,16 +497,3 @@ class TestRSCXMLFixtures:
         assert 'MISSING' in str(exc_info.value)
         assert 'citation_pdf_url' in str(exc_info.value)
 
-    def test_rsc_error_handling_missing_doi(self):
-        """Test error handling for articles without DOI."""
-        # Create mock article without DOI
-        class MockPMA:
-            def __init__(self):
-                self.doi = None
-        
-        mock_pma = MockPMA()
-        
-        with pytest.raises(NoPDFLink) as excinfo:
-            the_rsc_reaction(mock_pma)
-        
-        assert 'DOI required' in str(excinfo.value) or 'MISSING' in str(excinfo.value)

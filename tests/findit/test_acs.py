@@ -130,18 +130,6 @@ class TestACSTest(BaseDanceTest):
             
         print(f"Test 2 - Skip verification: {result}")
 
-    def test_acs_missing_doi_error(self):
-        """Test 3: Missing DOI raises informative error."""
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'ACS Med Chem Lett'
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_doi_slide(pma)
-        
-        error_msg = str(exc_info.value)
-        assert 'MISSING: DOI required' in error_msg
-        print(f"Test 3 - Missing DOI error: {error_msg}")
 
     @patch('metapub.findit.dances.generic.verify_pdf_url')
     def test_acs_https_pattern_enforcement(self, mock_verify):

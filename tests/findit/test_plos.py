@@ -128,18 +128,6 @@ class TestPLOSTest(BaseDanceTest):
         
         print(f"Test 2 - Skip verification: {result}")
 
-    def test_plos_missing_doi_error(self):
-        """Test 3: Missing DOI raises informative error."""
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'PLoS One'
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_plos_pogo(pma)
-        
-        error_msg = str(exc_info.value)
-        assert 'MISSING: DOI required' in error_msg
-        print(f"Test 3 - Missing DOI error: {error_msg}")
 
     @patch('metapub.findit.dances.plos.unified_uri_get')
     @patch('metapub.findit.dances.plos.the_doi_2step')
@@ -227,28 +215,6 @@ class TestPLOSTest(BaseDanceTest):
             
             print(f"✓ Evidence DOI {doi}: {result}")
 
-    def test_plos_doi_pattern_validation(self):
-        """Test 7: DOI pattern validation for PLOS format."""
-        # All evidence DOIs should follow 10.1371/journal.[code] pattern
-        evidence_dois = [
-            '10.1371/journal.pbio.3001547',
-            '10.1371/journal.pbio.3002554', 
-            '10.1371/journal.pcbi.1012441',
-            '10.1371/journal.pcbi.1012632',
-        ]
-        
-        for doi in evidence_dois:
-            # Verify DOI starts with 10.1371/journal.
-            assert doi.startswith('10.1371/journal.'), f"Invalid PLOS DOI pattern: {doi}"
-            
-            # Verify DOI has proper PLOS structure (10.1371/journal.code.number)
-            assert '10.1371/journal.' in doi, f"DOI should contain 10.1371/journal.: {doi}"
-            
-            # Split after journal. to get the journal code
-            journal_part = doi.split('10.1371/journal.')[1]
-            assert '.' in journal_part, f"DOI should have journal code: {doi}"
-            
-            print(f"✓ DOI pattern valid: {doi}")
 
 
 

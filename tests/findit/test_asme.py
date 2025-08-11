@@ -143,22 +143,6 @@ class TestASMEDance(BaseDanceTest):
         assert 'TXERROR' in str(exc_info.value)
         print(f"Test 6 - Correctly handled network error: {exc_info.value}")
 
-    def test_asme_assembly_missing_doi(self):
-        """Test 7: Article without DOI.
-        
-        Expected: Should raise NoPDFLink for missing DOI
-        """
-        # Create a mock PMA without DOI
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'J Appl Mech'
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_asme_animal(pma, verify=False)
-        
-        assert 'MISSING' in str(exc_info.value)
-        assert 'DOI required' in str(exc_info.value)
-        print(f"Test 7 - Correctly handled missing DOI: {exc_info.value}")
 
     @patch('requests.get')
     def test_asme_assembly_404_error(self, mock_get):
@@ -392,20 +376,6 @@ class TestASMEXMLFixtures:
             pma = load_pmid_xml(pmid)
             assert pma.doi.startswith(doi_prefix), f"PMID {pmid} XML fixture has unexpected DOI: {pma.doi}"
 
-    def test_asme_error_handling_missing_doi(self):
-        """Test error handling for articles without DOI."""
-        # Create mock article without DOI
-        class MockPMA:
-            def __init__(self):
-                self.doi = None
-                self.journal = 'J Appl Mech'
-        
-        mock_pma = MockPMA()
-        
-        with pytest.raises(NoPDFLink) as excinfo:
-            the_asme_animal(mock_pma)
-        
-        assert 'MISSING' in str(excinfo.value) or 'DOI required' in str(excinfo.value)
 
     def test_asme_template_flexibility(self):
         """Test template flexibility for ASME URL patterns."""

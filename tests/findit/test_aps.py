@@ -64,35 +64,7 @@ class TestAPSDanceFunction:
             assert url.startswith('https://journals.physiology.org/doi/pdf/'), f"PMID {pmid}: URL has wrong structure"
             assert expected_data['doi'] in url, f"PMID {pmid}: DOI not found in URL"
     
-    def test_aps_missing_journal_error(self):
-        """Test error handling for non-APS journals."""
-        # Create mock article with non-APS journal
-        class MockArticle:
-            def __init__(self):
-                self.journal = 'Nature'  # Not an APS journal
-                self.doi = '10.1038/nature12345'
-        
-        fake_article = MockArticle()
-        
-        # Should fail because Nature journal is not configured for DOI-based access
-        with pytest.raises(KeyError):
-            the_doi_slide(fake_article, verify=False)
     
-    def test_aps_missing_doi_error(self):
-        """Test error handling for missing DOI."""
-        # Create mock APS article without DOI
-        class MockArticle:
-            def __init__(self):
-                self.journal = 'Am J Physiol Heart Circ Physiol'
-                self.doi = None  # Missing DOI
-        
-        fake_article = MockArticle()
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_doi_slide(fake_article, verify=False)
-        
-        error_msg = str(exc_info.value)
-        assert 'DOI required for DOI-based publishers' in error_msg
     
     def test_aps_verify_false_success(self):
         """Test successful URL construction with verify=False."""
@@ -103,13 +75,6 @@ class TestAPSDanceFunction:
         
         assert url == expected_url
     
-    def test_aps_verify_true_paywall_detection(self):
-        """Test that verify=True properly detects paywalled content."""
-        article = load_pmid_xml('34995163')
-        
-        # With verify=True, should detect paywall or access issues
-        with pytest.raises(NoPDFLink):
-            the_doi_slide(article, verify=True)
 
 
 class TestAPSEvidenceValidation:

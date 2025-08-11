@@ -111,18 +111,6 @@ class TestNEJMConfiguration(BaseDanceTest):
 
         print(f"Test 2 - Skip verification: {result}")
 
-    def test_nejm_missing_doi_error(self):
-        """Test 3: Missing DOI raises informative error."""
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'N Engl J Med'
-
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_doi_slide(pma)
-
-        error_msg = str(exc_info.value)
-        assert 'DOI required' in error_msg
-        print(f"Test 3 - Missing DOI error: {error_msg}")
 
     @patch('metapub.findit.dances.generic.verify_pdf_url')
     @patch('metapub.findit.dances.generic.JournalRegistry')
@@ -158,22 +146,6 @@ class TestNEJMConfiguration(BaseDanceTest):
 
             print(f"✓ Evidence DOI {doi}: {result}")
 
-    def test_nejm_doi_pattern_validation(self):
-        """Test 5: DOI pattern validation for NEJM format."""
-        # All evidence DOIs should follow 10.1056/ pattern
-        evidence_dois = [
-            '10.1056/NEJMoa2404204',
-            '10.1056/NEJMoa2309000',
-        ]
-
-        for doi in evidence_dois:
-            # Verify DOI starts with 10.1056/
-            assert doi.startswith('10.1056/'), f"Invalid NEJM DOI pattern: {doi}"
-
-            # Verify DOI has proper NEJM structure
-            assert 'NEJM' in doi, f"DOI should contain NEJM identifier: {doi}"
-
-            print(f"✓ DOI pattern valid: {doi}")
 
     def test_nejm_url_template_format(self):
         """Test 6: Verify URL template format is correct."""

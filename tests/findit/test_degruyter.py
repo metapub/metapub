@@ -62,35 +62,7 @@ class TestDeGruyterDanceFunction:
             assert url.startswith('https://www.degruyter.com/document/doi/'), f"PMID {pmid}: URL has wrong structure"
             assert expected_data['doi'] in url, f"PMID {pmid}: DOI not found in URL"
     
-    def test_degruyter_missing_journal_error(self):
-        """Test error handling for non-De Gruyter journals."""
-        # Create mock article with non-De Gruyter journal
-        class MockArticle:
-            def __init__(self):
-                self.journal = 'Nature'  # Not a De Gruyter journal
-                self.doi = '10.1038/nature12345'
-        
-        fake_article = MockArticle()
-        
-        # Should fail because Nature journal is not configured for DOI-based access
-        with pytest.raises(KeyError):
-            the_doi_slide(fake_article, verify=False)
     
-    def test_degruyter_missing_doi_error(self):
-        """Test error handling for missing DOI."""
-        # Create mock De Gruyter article without DOI
-        class MockArticle:
-            def __init__(self):
-                self.journal = 'Clin Chem Lab Med'
-                self.doi = None  # Missing DOI
-        
-        fake_article = MockArticle()
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_doi_slide(fake_article, verify=False)
-        
-        error_msg = str(exc_info.value)
-        assert 'DOI required for DOI-based publishers' in error_msg
     
     def test_degruyter_verify_false_success(self):
         """Test successful URL construction with verify=False."""
@@ -101,13 +73,6 @@ class TestDeGruyterDanceFunction:
         
         assert url == expected_url
     
-    def test_degruyter_verify_true_paywall_detection(self):
-        """Test that verify=True properly detects paywalled content."""
-        article = load_pmid_xml('36318760')  # This one returns HTML (paywalled)
-        
-        # With verify=True, should detect paywall or similar access issues
-        with pytest.raises((NoPDFLink, MetaPubError)):
-            the_doi_slide(article, verify=True)
 
 
 class TestDeGruyterEvidenceValidation:

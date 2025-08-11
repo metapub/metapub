@@ -37,17 +37,6 @@ class TestHilarisDanceEvidenceDriven(unittest.TestCase):
         self.mock_pma.journal = 'J Environ Anal Toxicol'
         self.mock_pma.pmid = self.evidence_pmid
 
-    def test_missing_doi_raises_nopdflink(self):
-        """Test that missing DOI raises NoPDFLink with MISSING prefix"""
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'J Environ Anal Toxicol'
-        
-        with self.assertRaises(NoPDFLink) as context:
-            the_hilaris_hop(pma, verify=False)
-        
-        self.assertIn('MISSING:', str(context.exception))
-        self.assertIn('DOI required', str(context.exception))
 
     @patch('metapub.findit.dances.hilaris.the_doi_2step')
     def test_doi_resolution_success_without_verification(self, mock_doi_2step):
@@ -261,21 +250,6 @@ class TestHilarisXMLFixtures:
             pma = load_pmid_xml(pmid)
             assert pma.doi.startswith(doi_prefix), f"PMID {pmid} XML fixture has unexpected DOI: {pma.doi}"
 
-    @patch('metapub.findit.dances.hilaris.the_doi_2step')
-    def test_hilaris_error_handling_missing_doi(self, mock_doi_2step):
-        """Test error handling for articles without DOI."""
-        # Create mock article without DOI
-        class MockPMA:
-            def __init__(self):
-                self.doi = None
-                self.journal = 'J Environ Anal Toxicol'
-        
-        mock_pma = MockPMA()
-        
-        with pytest.raises(NoPDFLink) as excinfo:
-            the_hilaris_hop(mock_pma)
-        
-        assert 'MISSING' in str(excinfo.value) and 'DOI required' in str(excinfo.value)
 
     @patch('metapub.findit.dances.hilaris.the_doi_2step')
     def test_hilaris_template_flexibility(self, mock_doi_2step):

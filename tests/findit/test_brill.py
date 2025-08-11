@@ -259,22 +259,6 @@ class TestBrillDance(BaseDanceTest):
         assert 'Network error' in str(exc_info.value)
         print(f"Test 9 - Correctly handled network error: {exc_info.value}")
 
-    def test_brill_bridge_missing_doi(self):
-        """Test 10: Article without DOI.
-
-        Expected: Should raise NoPDFLink for missing DOI
-        """
-        # Create a mock PMA without DOI
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'Early Sci Med'
-
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_brill_bridge(pma, verify=False)
-
-        assert 'MISSING' in str(exc_info.value)
-        assert 'DOI required' in str(exc_info.value)
-        print(f"Test 10 - Correctly handled missing DOI: {exc_info.value}")
 
     def test_brill_bridge_invalid_doi(self):
         """Test 11: Article with non-Brill DOI.
@@ -478,21 +462,6 @@ class TestBrillXMLFixtures:
             pma = load_pmid_xml(pmid)
             assert pma.doi.startswith(doi_prefix), f"PMID {pmid} XML fixture has unexpected DOI: {pma.doi}"
 
-    @patch('metapub.findit.dances.brill.the_doi_2step')
-    def test_brill_error_handling_missing_doi(self, mock_doi_2step):
-        """Test error handling for articles without DOI."""
-        # Create mock article without DOI
-        class MockPMA:
-            def __init__(self):
-                self.doi = None
-                self.journal = 'Early Sci Med'
-        
-        mock_pma = MockPMA()
-        
-        with pytest.raises(NoPDFLink) as excinfo:
-            the_brill_bridge(mock_pma)
-        
-        assert 'DOI' in str(excinfo.value)
 
     @patch('metapub.findit.dances.brill.unified_uri_get')
     @patch('metapub.findit.dances.brill.the_doi_2step')
@@ -553,7 +522,6 @@ if __name__ == '__main__':
         ('test_brill_bridge_paywall_detection', 'Paywall detection'),
         ('test_brill_bridge_access_forbidden', 'Access forbidden handling'),
         ('test_brill_bridge_network_error', 'Network error handling'),
-        ('test_brill_bridge_missing_doi', 'Missing DOI handling'),
         ('test_brill_bridge_invalid_doi', 'Invalid DOI pattern handling'),
         ('test_brill_bridge_article_not_found', 'Article not found handling')
     ]

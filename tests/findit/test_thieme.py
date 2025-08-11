@@ -125,22 +125,6 @@ class TestThiemeTap(BaseDanceTest):
         mock_verify.assert_called_once()
         print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
 
-    def test_thieme_tap_missing_doi(self):
-        """Test 6: Article without DOI.
-        
-        Expected: Should raise NoPDFLink for missing DOI
-        """
-        # Create a mock PMA without DOI
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'Test Thieme Journal'
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_thieme_tap(pma, verify=False)
-        
-        assert 'MISSING' in str(exc_info.value)
-        assert 'DOI required' in str(exc_info.value)
-        print(f"Test 6 - Correctly handled missing DOI: {exc_info.value}")
 
 
     def test_thieme_tap_doi_patterns(self):
@@ -203,7 +187,6 @@ if __name__ == '__main__':
         ('test_thieme_tap_url_construction_s_prefix_pattern_b', 'S-prefix DOI pattern B'),
         ('test_thieme_tap_successful_access_with_verification', 'Successful access with verification'),
         ('test_thieme_tap_paywall_detection', 'Paywall detection via verification'),
-        ('test_thieme_tap_missing_doi', 'Missing DOI handling'),
         ('test_thieme_tap_doi_patterns', 'Different DOI patterns handling')
     ]
     

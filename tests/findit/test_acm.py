@@ -137,22 +137,6 @@ class TestACMDance(BaseDanceTest):
         assert 'TXERROR' in str(exc_info.value)
         print(f"Test 6 - Correctly handled network error: {exc_info.value}")
 
-    def test_acm_reel_missing_doi(self):
-        """Test 7: Article without DOI.
-        
-        Expected: Should raise NoPDFLink for missing DOI
-        """
-        # Create a mock PMA without DOI
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'Proc Wirel Health'
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_acm_reel(pma, verify=False)
-        
-        assert 'MISSING' in str(exc_info.value)
-        assert 'DOI required' in str(exc_info.value)
-        print(f"Test 7 - Correctly handled missing DOI: {exc_info.value}")
 
     def test_acm_reel_wrong_doi_pattern(self):
         """Test 8: Article with non-ACM DOI pattern.

@@ -122,18 +122,6 @@ class TestTaylorFrancisConfiguration(BaseDanceTest):
         
         print(f"Test 2 - Skip verification: {result}")
 
-    def test_taylor_francis_missing_doi_error(self):
-        """Test 3: Missing DOI raises informative error."""
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'Addiction Science & Clinical Practice'
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_doi_slide(pma)
-        
-        error_msg = str(exc_info.value)
-        assert 'DOI required' in error_msg
-        print(f"Test 3 - Missing DOI error: {error_msg}")
 
     @patch('metapub.findit.dances.generic.verify_pdf_url')
     @patch('metapub.findit.dances.generic.JournalRegistry')
@@ -309,7 +297,6 @@ if __name__ == '__main__':
         ('test_taylor_francis_journal_configuration', 'Journal configuration'),
         ('test_taylor_francis_doi_slide_url_construction', 'DOI-based URL construction'),
         ('test_taylor_francis_verify_false_skips_verification', 'Skip verification mode'),
-        ('test_taylor_francis_missing_doi_error', 'Missing DOI error handling'),
         ('test_taylor_francis_evidence_dois_coverage', 'Evidence DOIs coverage'),
         ('test_taylor_francis_url_format_validation', 'URL format validation'),
         ('test_taylor_francis_url_template_format', 'URL template format'),

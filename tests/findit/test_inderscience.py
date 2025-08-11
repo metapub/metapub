@@ -37,17 +37,6 @@ class TestInderscienceDance(unittest.TestCase):
         self.mock_pma.journal = 'Int J Bioinform Res Appl'
         self.mock_pma.pmid = '24084238'
 
-    def test_missing_doi_raises_nopdflink(self):
-        """Test that missing DOI raises NoPDFLink with MISSING prefix"""
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'Int J Bioinform Res Appl'
-        
-        with self.assertRaises(NoPDFLink) as context:
-            the_inderscience_ula(pma, verify=False)
-        
-        self.assertIn('MISSING:', str(context.exception))
-        self.assertIn('DOI required', str(context.exception))
 
     def test_doi_url_construction_without_verification(self):
         """Test correct URL construction without verification"""

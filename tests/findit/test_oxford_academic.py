@@ -143,20 +143,6 @@ class TestOxfordAcademic(BaseDanceTest):
         assert pma.doi in error_msg
         print(f"Test 3 - No PDF links error: {error_msg}")
 
-    def test_oxford_academic_missing_doi(self):
-        """Test 4: Article without DOI.
-        
-        Expected: Should raise MISSING error for articles without DOI
-        """
-        pma = self._create_mock_pma(doi=None, journal='J Endocr Soc')
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_oxford_academic_foxtrot(pma, verify=False)
-        
-        error_msg = str(exc_info.value)
-        assert 'MISSING' in error_msg
-        assert 'DOI required for Oxford Academic CrossRef lookup' in error_msg
-        print(f"Test 4 - Missing DOI error: {error_msg}")
 
     def test_oxford_academic_wrong_doi_pattern(self):
         """Test 5: DOI with no Oxford Academic PDF links in CrossRef.

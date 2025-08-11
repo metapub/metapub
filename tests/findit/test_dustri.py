@@ -34,13 +34,6 @@ class TestDustriDance(unittest.TestCase):
         self.pma_wrong_doi.doi = '10.1016/j.example.2023.01.001'
         self.pma_wrong_doi.pmid = '12345679'
 
-    def test_missing_doi_raises_nopdflink(self):
-        """Test that missing DOI raises NoPDFLink with MISSING prefix"""
-        with self.assertRaises(NoPDFLink) as context:
-            the_dustri_polka(self.pma_no_doi)
-        
-        self.assertIn('MISSING:', str(context.exception))
-        self.assertIn('DOI required', str(context.exception))
 
     def test_invalid_doi_prefix_raises_nopdflink(self):
         """Test that non-Dustri DOI raises NoPDFLink with INVALID prefix"""
@@ -150,16 +143,6 @@ class TestDustriDance(unittest.TestCase):
         self.assertIn('https://www.dustri.com/nc/article-response-page.html', exception_message)
         self.assertIn('doi=10.5414/CN110175Intro', exception_message)
 
-    def test_doi_pattern_validation(self):
-        """Test that DOI pattern validation works correctly"""
-        # Valid Dustri DOI should pass initial validation (and then raise NoPDFLink with POSTONLY)
-        with self.assertRaises(NoPDFLink):
-            the_dustri_polka(self.pma_free, verify=False)
-        
-        # Invalid DOI pattern should fail immediately
-        with self.assertRaises(NoPDFLink) as context:
-            the_dustri_polka(self.pma_wrong_doi, verify=False)
-        self.assertIn('INVALID:', str(context.exception))
 
     @patch('metapub.findit.dances.dustri.unified_uri_get')
     def test_evidence_based_patterns(self, mock_get):

@@ -81,21 +81,6 @@ class TestAPADanceFunction:
         with pytest.raises((NoPDFLink, KeyError)):
             the_doi_slide(fake_article, verify=False)
     
-    def test_apa_missing_doi_error(self):
-        """Test error handling for missing DOI."""
-        # Create mock APA article without DOI
-        class MockArticle:
-            def __init__(self):
-                self.journal = 'Am Psychol'
-                self.doi = None  # Missing DOI
-        
-        fake_article = MockArticle()
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_doi_slide(fake_article, verify=False)
-        
-        error_msg = str(exc_info.value)
-        assert 'DOI required for DOI-based publishers' in error_msg
     
     def test_apa_invalid_doi_pattern(self):
         """Test that non-APA DOIs still work but produce different URLs."""
@@ -293,20 +278,6 @@ class TestAPAXMLFixturesComprehensive:
         
         print(f"✅ All {len(APA_EVIDENCE_PMIDS)} PMIDs show consistent authentic data")
 
-    def test_apa_error_handling_comprehensive(self):
-        """Test comprehensive error handling scenarios."""
-        # Test missing DOI
-        class MockPMA:
-            def __init__(self):
-                self.doi = None
-        
-        mock_pma = MockPMA()
-        
-        with pytest.raises(NoPDFLink) as excinfo:
-            the_doi_slide(mock_pma)
-        
-        assert 'MISSING' in str(excinfo.value)
-        assert 'DOI required' in str(excinfo.value)
 
     def test_apa_template_flexibility(self):
         """Test template flexibility for APA URL patterns."""

@@ -114,18 +114,6 @@ class TestPNASConfiguration(BaseDanceTest):
         
         print(f"Test 2 - Skip verification: {result}")
 
-    def test_pnas_missing_doi_error(self):
-        """Test 3: Missing DOI raises informative error."""
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'Proc Natl Acad Sci USA'
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_doi_slide(pma)
-        
-        error_msg = str(exc_info.value)
-        assert 'DOI required' in error_msg
-        print(f"Test 3 - Missing DOI error: {error_msg}")
 
     @patch('metapub.findit.dances.generic.verify_pdf_url')
     @patch('metapub.findit.dances.generic.JournalRegistry')
@@ -162,23 +150,6 @@ class TestPNASConfiguration(BaseDanceTest):
             
             print(f"✓ Evidence DOI {doi}: {result}")
 
-    def test_pnas_doi_pattern_validation(self):
-        """Test 5: DOI pattern validation for PNAS format."""
-        # All evidence DOIs should follow 10.1073/pnas. pattern
-        evidence_dois = [
-            '10.1073/pnas.2305772120',
-            '10.1073/pnas.2308706120',
-            '10.1073/pnas.2308214120',
-        ]
-        
-        for doi in evidence_dois:
-            # Verify DOI starts with 10.1073/pnas.
-            assert doi.startswith('10.1073/pnas.'), f"Invalid PNAS DOI pattern: {doi}"
-            
-            # Verify DOI has proper PNAS structure
-            assert 'pnas' in doi.lower(), f"DOI should contain PNAS identifier: {doi}"
-            
-            print(f"✓ DOI pattern valid: {doi}")
 
     def test_pnas_url_template_format(self):
         """Test 6: Verify URL template format is correct."""

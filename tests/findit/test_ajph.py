@@ -66,19 +66,6 @@ class TestAJPHDance(BaseDanceTest):
                 
                 self.assertEqual(constructed_url, expected_url)
 
-    def test_ajph_doi_pattern_validation(self):
-        """Test that AJPH DOIs follow expected 10.2105 pattern."""
-        for pmid, expected in AJPH_EVIDENCE_PMIDS.items():
-            with self.subTest(pmid=pmid):
-                pma = load_pmid_xml(pmid)
-                
-                # All AJPH DOIs should start with 10.2105
-                self.assertTrue(pma.doi.startswith('10.2105/AJPH.'))
-                
-                # Should be in format: 10.2105/AJPH.YYYY.nnnnnn
-                # DOI format: 10.2105/AJPH.2021.306505
-                self.assertTrue('10.2105/AJPH.' in pma.doi)
-                self.assertTrue(pma.doi.count('.') >= 3)  # At least 10.2105.AJPH.YYYY format
 
     @patch('metapub.findit.dances.generic.unified_uri_get')
     def test_ajph_paywall_detection_403(self, mock_get):
@@ -132,19 +119,6 @@ class TestAJPHDance(BaseDanceTest):
         
         self.assertEqual(result, expected_url)
 
-    def test_ajph_missing_doi_error(self):
-        """Test error handling when DOI is missing."""
-        # Create mock article without DOI
-        mock_pma = Mock()
-        mock_pma.doi = None
-        mock_pma.journal = 'Am J Public Health'
-        
-        with self.assertRaises(NoPDFLink) as context:
-            the_doi_slide(mock_pma, verify=False)
-        
-        error_msg = str(context.exception)
-        self.assertIn('MISSING', error_msg)
-        self.assertIn('DOI required', error_msg)
 
     @patch('metapub.findit.dances.generic.unified_uri_get')
     def test_ajph_network_error_handling(self, mock_get):

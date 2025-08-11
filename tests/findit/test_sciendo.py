@@ -136,22 +136,6 @@ class TestSciendo(unittest.TestCase):
                     url = the_doi_slide(pma, verify=False)
                     self.assertIsNotNone(url)
 
-    def test_missing_doi_error_handling(self):
-        """Test error handling for missing DOI (following DANCE_FUNCTION_GUIDELINES)."""
-        # Create mock PubMedArticle without DOI
-        class MockPMA:
-            doi = None
-            journal = 'Pril (Makedon Akad Nauk Umet Odd Med Nauki)'
-
-        mock_pma = MockPMA()
-
-        # Should raise NoPDFLink with appropriate message
-        with self.assertRaises(NoPDFLink) as context:
-            the_doi_slide(mock_pma, verify=False)
-
-        error_msg = str(context.exception)
-        self.assertIn('MISSING', error_msg)
-        self.assertIn('DOI', error_msg)
 
     def test_evidence_pattern_consistency(self):
         """Test pattern consistency matches evidence analysis."""

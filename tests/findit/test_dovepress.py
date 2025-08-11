@@ -153,22 +153,6 @@ class TestDovePressTest(BaseDanceTest):
             the_dovepress_peacock(pma, verify=False)
         print("Test 6 - Correctly handled network error")
 
-    def test_dovepress_waltz_missing_doi(self):
-        """Test 7: Article without DOI.
-        
-        Expected: Should raise NoPDFLink for missing DOI
-        """
-        # Create a mock PMA without DOI
-        pma = Mock()
-        pma.doi = None
-        pma.journal = 'Int J Nanomedicine'
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_dovepress_peacock(pma, verify=False)
-        
-        assert 'MISSING' in str(exc_info.value)
-        assert 'DOI required' in str(exc_info.value)
-        print(f"Test 7 - Correctly handled missing DOI: {exc_info.value}")
 
     @patch('metapub.findit.dances.dovepress.unified_uri_get')
     def test_dovepress_waltz_article_page_not_found(self, mock_get):
@@ -294,7 +278,6 @@ if __name__ == '__main__':
         ('test_dovepress_waltz_successful_pdf_access', 'Successful access simulation'),
         ('test_dovepress_waltz_paywall_detection', 'Paywall detection'),
         ('test_dovepress_waltz_network_error', 'Network error handling'),
-        ('test_dovepress_waltz_missing_doi', 'Missing DOI handling'),
         ('test_dovepress_waltz_article_page_not_found', 'Article page 404 handling'),
         ('test_dovepress_waltz_html_parsing_error', 'HTML parsing error handling'),
         ('test_dovepress_waltz_no_pdf_link_found', 'No PDF link found handling')

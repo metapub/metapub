@@ -186,7 +186,7 @@ Ready to transform your biomedical research workflow? Start with our comprehensi
    :maxdepth: 2
    :caption: API Reference:
 
-   api_overview
+   api
    api_fetchers
    api_models
    api_findit
@@ -216,7 +216,7 @@ For peer-reviewed academic citations, see `metapub.org/citations <https://metapu
 
 📚 **New to Metapub?** Start with :doc:`quickstart` for basic usage patterns.
 
-🔧 **Building Applications?** See :doc:`api_overview` for architectural guidance.
+🔧 **Building Applications?** See :doc:`api` for architectural guidance.
 
 💡 **Looking for Examples?** Check :doc:`examples` and :doc:`tutorials` for complete workflows.
 

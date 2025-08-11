@@ -67,7 +67,7 @@ Full-Text Discovery
    findit.FindIt
 
 **FindIt**
-   Sophisticated system for locating full-text PDFs using publisher-specific strategies. Supports 15+ major publishers with embargo detection and legal access verification.
+   Sophisticated system for locating full-text PDFs using publisher-specific strategies. Supports 68+ major publishers (97.1% coverage) with embargo detection, CrossRef API integration, and legal access verification. Includes pre-populated journal registry for out-of-the-box functionality.
 
 Utility Functions
 ~~~~~~~~~~~~~~~~

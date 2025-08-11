@@ -26,6 +26,21 @@ Basic FindIt Usage
        if src.backup_url:
            print(f"Backup URL: {src.backup_url}")
 
+Publisher Registry
+~~~~~~~~~~~~~~~~~
+
+FindIt includes a comprehensive, pre-populated journal registry with 68+ publishers (97.1% coverage) that ships with the package. This provides out-of-the-box functionality without requiring setup or database initialization:
+
+.. code-block:: python
+
+   # Registry is automatically available - no setup needed
+   from metapub.findit.registry import JournalRegistry
+   
+   registry = JournalRegistry()  # Uses shipped database
+   stats = registry.get_stats()
+   print(f"Publishers: {stats['publishers']}")
+   print(f"Journals: {stats['journals']}")
+
 Advanced FindIt Options
 ~~~~~~~~~~~~~~~~~~~~~~
 

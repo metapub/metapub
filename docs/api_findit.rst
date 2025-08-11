@@ -18,7 +18,7 @@ Key Features
 ~~~~~~~~~~~
 
 **Publisher Coverage**
-   - 15+ major academic publishers supported
+   - 68+ major academic publishers supported (97.1% coverage)
    - Publisher-specific URL patterns and access methods
    - Dynamic strategy selection based on journal/publisher
    
@@ -26,6 +26,7 @@ Key Features
    - HTTP verification of PDF availability
    - Embargo detection and date checking
    - Legal access validation
+   - CrossRef API integration for blocked access workarounds
 
 **Caching System**
    - SQLite-based result caching

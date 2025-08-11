@@ -12,6 +12,7 @@ Pattern discovered from HTML samples:
 """
 
 import re
+import requests
 from .generic import the_doi_2step, verify_pdf_url, unified_uri_get
 from ...exceptions import NoPDFLink
 
@@ -33,7 +34,11 @@ def the_brill_bridge(pma, verify=True):
     
     # Resolve DOI to get article HTML page
     article_url = the_doi_2step(pma.doi)
-    response = unified_uri_get(article_url)
+    
+    try:
+        response = unified_uri_get(article_url)
+    except requests.exceptions.ConnectionError as e:
+        raise NoPDFLink(f'TXERROR: Network error accessing Brill article: {e}')
     
     if response.status_code not in (200, 301, 302, 307):
         raise NoPDFLink(f'TXERROR: Could not access Brill article page (HTTP {response.status_code})')

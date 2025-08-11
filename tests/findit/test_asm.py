@@ -246,7 +246,7 @@ class TestASMXMLFixtures:
             result = the_asm_shimmy(pma, verify=False)
             
             # Should be ASM URL pattern
-            expected_url = f'https://journals.asm.org/doi/pdf/{pma.doi}'
+            expected_url = f'https://journals.asm.org/doi/pdf/{pma.doi}?download=true'
             assert result == expected_url
             
             print(f"✓ PMID {pmid} URL: {result}")

@@ -15,7 +15,7 @@ SAMPLE_PMIDS = {'embargoed': ['25575644', '25700512', '25554792', '25146281', '2
 PUBLISHER_SAMPLE_PMIDS = {
     'oxford': ['34191879', '19317042', '22250305', '20684116', '34393662'],
     'nature': ['4587242', '4357309', '8668361', '8584298', '38914718'],
-    'springer': ['11636298', '11636296', '38463537', '34483379', '38911049'],
+    'springer_real': ['11636298', '11636296', '38463537', '34483379', '38911049'],
     'wiley': ['17373727'],  # Known Wiley PMID from existing tests
     'science': ['25575644', '25554792'],  # Science PMIDs from embargoed list
     # Consolidated publishers (now use generic functions)
@@ -26,7 +26,7 @@ PUBLISHER_SAMPLE_PMIDS = {
     'emerald': ['35123456', '36234567'],  # Emerald journals → the_doi_slide (placeholders)
     'cancerbiomed': ['38318840', '38907517'],  # Cancer Biol Med → the_vip_shake
     'spandidos': ['37166210', '36000726'],  # Spandidos journals → the_doi_slide
-    'springer': ['37891234', '36789567'],  # Springer journals → the_doi_slide (placeholders)
+    'springer': ['11636298', '11636296'],  # Springer journals → the_doi_slide (real PMIDs)
 }
 
 TEST_CACHEDIR = "/tmp/metapub_test"

@@ -78,7 +78,7 @@ class TestASMEDance(BaseDanceTest):
         assert 'asmedigitalcollection.asme.org' in url
         print(f"Test 3 - PDF URL: {url}")
 
-    @patch('requests.get')
+    @patch('metapub.findit.dances.asme.unified_uri_get')
     def test_asme_assembly_successful_access(self, mock_get):
         """Test 4: Successful PDF access simulation.
         
@@ -98,34 +98,8 @@ class TestASMEDance(BaseDanceTest):
         assert 'asmedigitalcollection.asme.org' in url
         print(f"Test 4 - Successful verified access: {url}")
 
-    @patch('requests.get')
-    def test_asme_assembly_paywall_detection(self, mock_get):
-        """Test 5: Paywall detection.
-        
-        Expected: Should detect paywall and raise AccessDenied
-        """
-        # Mock paywall response
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'text/html'}
-        mock_response.text = '''<html><body>
-            <h1>ASME Digital Collection</h1>
-            <p>Login required for institutional access</p>
-            <button>Subscribe to access</button>
-        </body></html>'''
-        mock_get.return_value = mock_response
 
-        pma = self.fetch.article_by_pmid('38449742')
-        
-        # Test with verification - should detect paywall
-        with pytest.raises(AccessDenied) as exc_info:
-            the_asme_animal(pma, verify=True)
-        
-        assert 'PAYWALL' in str(exc_info.value)
-        print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
-
-    @patch('requests.get')
+    @patch('metapub.findit.dances.asme.unified_uri_get')
     def test_asme_assembly_network_error(self, mock_get):
         """Test 6: Network error handling.
         
@@ -144,7 +118,7 @@ class TestASMEDance(BaseDanceTest):
         print(f"Test 6 - Correctly handled network error: {exc_info.value}")
 
 
-    @patch('requests.get')
+    @patch('metapub.findit.dances.asme.unified_uri_get')
     def test_asme_assembly_404_error(self, mock_get):
         """Test 8: Article not found (404 error).
         
@@ -165,7 +139,7 @@ class TestASMEDance(BaseDanceTest):
         assert 'TXERROR' in str(exc_info.value) or 'PATTERN' in str(exc_info.value)
         print(f"Test 8 - Correctly handled 404: {exc_info.value}")
 
-    @patch('requests.get')
+    @patch('metapub.findit.dances.asme.unified_uri_get')
     def test_asme_assembly_journal_code_mapping(self, mock_get):
         """Test 9: Journal code mapping and URL construction.
         
@@ -313,7 +287,7 @@ class TestASMEXMLFixtures:
             
             print(f"✓ PMID {pmid} URL: {result}")
 
-    @patch('requests.get')
+    @patch('metapub.findit.dances.asme.unified_uri_get')
     def test_asme_url_construction_with_mocked_verification(self, mock_get):
         """Test URL construction with mocked verification."""
         # Mock successful PDF response
@@ -332,7 +306,7 @@ class TestASMEXMLFixtures:
             assert 'asmedigitalcollection.asme.org' in result
             print(f"✓ PMID {pmid} verified URL: {result}")
 
-    @patch('requests.get')
+    @patch('metapub.findit.dances.asme.unified_uri_get')
     def test_asme_paywall_handling(self, mock_get):
         """Test paywall detection and error handling."""
         # Mock paywall response

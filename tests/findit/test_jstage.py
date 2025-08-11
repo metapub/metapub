@@ -3,7 +3,7 @@
 from .common import BaseDanceTest
 from metapub import FindIt
 from tests.fixtures import load_pmid_xml, JSTAGE_EVIDENCE_PMIDS
-from metapub.findit.dances.generic import the_doi_slide
+from metapub.findit.dances.jstage import the_jstage_dive
 from metapub.exceptions import NoPDFLink, AccessDenied
 import pytest
 from unittest.mock import patch
@@ -61,15 +61,15 @@ class TestJSTAGEXMLFixtures:
         for pmid in JSTAGE_EVIDENCE_PMIDS.keys():
             pma = load_pmid_xml(pmid)
             
-            result = the_doi_slide(pma, verify=False)
+            result = the_jstage_dive(pma, verify=False)
             
             # Should be J-STAGE URL pattern
             assert 'jstage.jst.go.jp' in result
-            assert pma.doi in result
+            assert '_pdf' in result
             
             print(f"✓ PMID {pmid} URL: {result}")
 
-    @patch('metapub.findit.dances.generic.verify_pdf_url')
+    @patch('metapub.findit.dances.jstage.verify_pdf_url')
     def test_jstage_paywall_handling(self, mock_verify):
         """Test paywall detection."""
         mock_verify.side_effect = AccessDenied('J-STAGE subscription required')
@@ -77,7 +77,7 @@ class TestJSTAGEXMLFixtures:
         pma = load_pmid_xml('31588070')  # Use first test PMID
         
         with pytest.raises(AccessDenied):
-            the_doi_slide(pma, verify=True)
+            the_jstage_dive(pma, verify=True)
 
     def test_jstage_journal_coverage(self):
         """Test journal coverage across different J-STAGE publications."""

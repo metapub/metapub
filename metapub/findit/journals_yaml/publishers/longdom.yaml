@@ -5,7 +5,7 @@ publisher:
   description: ''
 url_patterns:
   primary_template: https://www.longdom.org/articles-pdfs/{article_slug}.pdf
-dance_function: the_doi_slide
+dance_function: the_longdom_hustle
 journals:
   simple_list:
   - Adv Tech Biol Med

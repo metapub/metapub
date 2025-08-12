@@ -8,7 +8,7 @@ publisher:
     Dance Function: the_vip_shake (VIP format)"
 url_patterns:
   primary_template: http://{host}/content/{volume}/{issue}/{first_page}.full.pdf
-dance_function: the_doi_slide
+dance_function: the_oxford_academic_foxtrot
 journals:
   parameterized:
     Am J Hypertens:

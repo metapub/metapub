@@ -22,7 +22,7 @@ publisher:
     DOI patterns: Various (depends on the society/journal)'
 url_patterns:
   primary_template: https://meridian.allenpress.com/{journal_code}/article-pdf/{doi}
-dance_function: the_doi_slide
+dance_function: the_allenpress_advance
 journals:
   simple_list:
   - Ment Retard

@@ -12,7 +12,7 @@ publisher:
     access to humanities and social sciences journals.'
 url_patterns:
   primary_template: https://muse.jhu.edu/article/{article_id}/pdf
-dance_function: the_doi_slide
+dance_function: the_projectmuse_syrtos
 journals:
   simple_list:
   - Am Stud (Lawrence)

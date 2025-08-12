@@ -5,7 +5,7 @@ publisher:
   description: ''
 url_patterns:
   primary_template: http://www.jci.org/articles/view/{pii}/files/pdf
-dance_function: the_doi_slide
+dance_function: the_jci_jig
 journals:
   simple_list:
   - J Clin Invest

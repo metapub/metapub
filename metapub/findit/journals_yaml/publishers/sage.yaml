@@ -18,7 +18,7 @@ publisher:
     Dance Function: the_sage_hula'
 url_patterns:
   primary_template: http://{host}/content/{volume}/{issue}/{first_page}.full.pdf
-dance_function: the_doi_slide
+dance_function: the_vip_shake
 journals:
   simple_list:
   - Acupunct Electrother Res

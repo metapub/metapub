@@ -9,7 +9,7 @@ publisher:
     \nDOI patterns: Various (need to determine specific patterns)"
 url_patterns:
   primary_template: https://www.oatext.com/pdf/{article_id}.pdf
-dance_function: the_doi_slide
+dance_function: the_oatext_orbit
 journals:
   simple_list:
   - J Syst Integr Neurosci

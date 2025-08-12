@@ -10,7 +10,7 @@ publisher:
     which publishes the "World Journal of ..." series through wjgnet.com.'
 url_patterns:
   primary_template: https://www.wjgnet.com/1007-9327/full/v{volume}/i{issue}/{doi}.htm
-dance_function: the_doi_slide
+dance_function: the_wjgnet_wave
 journals:
   simple_list:
   - World J Obstet Gynecol

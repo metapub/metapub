@@ -26,7 +26,7 @@ publisher:
     Dance Function: the_bmj_bump'
 url_patterns:
   primary_template: https://{host}/content/{volume}/{issue}/{first_page}.full.pdf
-dance_function: the_doi_slide
+dance_function: the_bmj_bump
 journals:
   parameterized:
     Acupunct Med:

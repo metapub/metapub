@@ -10,7 +10,7 @@ publisher:
     which publishes academic journals through walshmedicalmedia.com.'
 url_patterns:
   primary_template: https://www.walshmedicalmedia.com/articles/{article_slug}.pdf
-dance_function: the_doi_slide
+dance_function: the_walshmedia_bora
 journals:
   simple_list:
   - Dentistry

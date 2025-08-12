@@ -10,7 +10,7 @@ publisher:
     which publishes academic journals through hilarispublisher.com.'
 url_patterns:
   primary_template: https://www.hilarispublisher.com/articles/{article_slug}.pdf
-dance_function: the_doi_slide
+dance_function: the_hilaris_hop
 journals:
   simple_list:
   - J Environ Anal Toxicol

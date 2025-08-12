@@ -22,7 +22,7 @@ publisher:
     DOI patterns: Typically 10.1115/* for ASME journals'
 url_patterns:
   primary_template: https://asmedigitalcollection.asme.org/{journal_code}/article-pdf/{doi}
-dance_function: the_doi_slide
+dance_function: the_asme_animal
 journals:
   simple_list:
   - Appl Mech Rev

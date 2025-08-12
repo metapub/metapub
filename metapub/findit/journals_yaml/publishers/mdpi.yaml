@@ -14,7 +14,7 @@ publisher:
     URL pattern: https://www.mdpi.com/{ISSN}/{volume}/{issue}/{article}/pdf'
 url_patterns:
   primary_template: '{url}/pdf'
-dance_function: the_doi_slide
+dance_function: the_mdpi_moonwalk
 journals:
   simple_list:
   - Membranes

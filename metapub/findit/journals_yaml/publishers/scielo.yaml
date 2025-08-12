@@ -5,7 +5,7 @@ publisher:
   description: ''
 url_patterns:
   primary_template: http://www.biomedcentral.com/content/pdf/{aid}.pdf
-dance_function: the_doi_slide
+dance_function: the_scielo_chula
 journals:
   simple_list:
   - Arq Gastroenterol

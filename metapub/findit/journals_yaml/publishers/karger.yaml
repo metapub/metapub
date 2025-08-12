@@ -5,7 +5,7 @@ publisher:
   description: ''
 url_patterns:
   primary_template: http://www.karger.com/Article/Pdf/{kid}
-dance_function: the_doi_slide
+dance_function: the_karger_conga
 journals:
   simple_list:
   - AMA Arch Ophthalmol

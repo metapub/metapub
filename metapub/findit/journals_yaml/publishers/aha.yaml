@@ -8,7 +8,7 @@ publisher:
     Dance Function: the_aha_waltz"
 url_patterns:
   primary_template: http://{host}.ahajournals.org/content/{volume}/{issue}/{first_page}.full.pdf
-dance_function: the_doi_slide
+dance_function: the_aha_waltz
 journals:
   parameterized:
     Arterioscler Thromb Vasc Biol:

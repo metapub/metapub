@@ -10,7 +10,7 @@ publisher:
     which is published at cancerbiomed.org.'
 url_patterns:
   primary_template: https://www.cancerbiomed.org/content/cbm/{volume}/{issue}/{first_page}.full.pdf
-dance_function: the_doi_slide
+dance_function: the_vip_shake
 journals:
   simple_list:
   - Cancer Biol Med

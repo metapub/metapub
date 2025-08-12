@@ -9,9 +9,9 @@ publisher:
 
     which publishes physics and related science journals through pubs.aip.org.'
 url_patterns:
-  doi_template: https://pubs.aip.org/aip/article-pdf/doi/{doi}
+  # doi_template: https://pubs.aip.org/aip/article-pdf/doi/{doi}  # DOI-based access for future reference
   primary_template: https://pubs.aip.org/aip/{journal}/{article}/{volume}/{article_id}/pdf
-dance_function: the_doi_slide
+dance_function: the_vip_shake
 journals:
   simple_list:
   - Struct Dyn

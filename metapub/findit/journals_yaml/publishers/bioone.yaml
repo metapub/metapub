@@ -31,8 +31,8 @@ publisher:
 
     BioOne focuses on content from small societies and non-commercial publishers.'
 url_patterns:
-  primary_template: https://doi.org/{doi}
-dance_function: the_doi_slide
+  primary_template: https://bioone.org/journals/{journal_short}/volume-{volume}/issue-{issue}/{article_id}/content
+dance_function: the_vip_shake
 journals:
   simple_list:
   - J Raptor Res

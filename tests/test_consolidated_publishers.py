@@ -51,23 +51,23 @@ class TestConsolidatedPublishers:
             publisher_info = self.registry.get_publisher_for_journal(journal)
             if publisher_info:
                 assert publisher_info['dance_function'] == 'the_doi_slide', f'{journal} not using the_doi_slide'
-                assert publisher_info['name'] == 'frontiers', f'{journal} not assigned to Frontiers'
+                assert publisher_info['name'] == 'Frontiers', f'{journal} not assigned to Frontiers'
                 expected_template = 'https://www.frontiersin.org/articles/{doi}/full'
                 assert publisher_info['format_template'] == expected_template, f'{journal} wrong template'
                 print(f"✓ {journal} → the_doi_slide")
 
     def test_sage_registry_assignment(self):
         """Test SAGE journals are assigned to the_doi_slide."""
-        test_journals = ['Assessment', 'Angiology', 'J Child Neurol', 'Lupus']
+        test_journals = ['Assessment', 'Angiology', 'Ann Clin Biochem', 'Clin Appl Thromb Hemost']
         
         for journal in test_journals:
             publisher_info = self.registry.get_publisher_for_journal(journal)
             if publisher_info:
-                assert publisher_info['dance_function'] == 'the_doi_slide', f'{journal} not using the_doi_slide'
-                assert publisher_info['name'] == 'SAGE Publications', f'{journal} not assigned to SAGE'
-                expected_template = 'https://journals.sagepub.com/doi/reader/{doi}'
+                assert publisher_info['dance_function'] == 'the_vip_shake', f'{journal} not using the_vip_shake'
+                assert publisher_info['name'] == 'Sage', f'{journal} not assigned to SAGE'
+                expected_template = 'http://{host}/content/{volume}/{issue}/{first_page}.full.pdf'
                 assert publisher_info['format_template'] == expected_template, f'{journal} wrong template'
-                print(f"✓ {journal} → the_doi_slide")
+                print(f"✓ {journal} → the_vip_shake")
 
     def test_bioone_vip_shake_functionality(self):
         """Test that BioOne articles are properly assigned to the_vip_shake."""
@@ -85,27 +85,28 @@ class TestConsolidatedPublishers:
         assert 'frontiersin.org' in publisher_info['format_template']
         print("✓ Frontiers correctly assigned to the_doi_slide with proper template")
 
-    def test_sage_doi_slide_functionality(self):
-        """Test that SAGE articles are properly assigned to the_doi_slide."""
+    def test_sage_vip_shake_functionality(self):
+        """Test that SAGE articles are properly assigned to the_vip_shake."""
         # Just verify the registry assignment and template
         publisher_info = self.registry.get_publisher_for_journal('Assessment')
-        assert publisher_info['dance_function'] == 'the_doi_slide'
-        assert 'sagepub.com' in publisher_info['format_template']
-        assert '/doi/reader/' in publisher_info['format_template']
-        print("✓ SAGE correctly assigned to the_doi_slide with proper reader template")
+        assert publisher_info['dance_function'] == 'the_vip_shake'
+        assert '{volume}' in publisher_info['format_template']
+        assert '{issue}' in publisher_info['format_template']
+        assert '{first_page}' in publisher_info['format_template']
+        print("✓ SAGE correctly assigned to the_vip_shake with proper VIP template")
 
     def test_aip_registry_assignment(self):
-        """Test AIP journals are assigned to the_doi_slide."""
+        """Test AIP journals are assigned to the_vip_shake."""
         test_journals = ['Appl Phys Lett', 'J Chem Phys', 'J Appl Phys', 'AIP Adv']
         
         for journal in test_journals:
             publisher_info = self.registry.get_publisher_for_journal(journal)
             if publisher_info:
-                assert publisher_info['dance_function'] == 'the_doi_slide', f'{journal} not using the_doi_slide'
-                assert publisher_info['name'] == 'aip', f'{journal} not assigned to AIP'
-                expected_template = 'https://pubs.aip.org/aip/article-pdf/doi/{doi}'
+                assert publisher_info['dance_function'] == 'the_vip_shake', f'{journal} not using the_vip_shake'
+                assert publisher_info['name'] == 'Aip', f'{journal} not assigned to AIP'
+                expected_template = 'https://pubs.aip.org/aip/{journal}/{article}/{volume}/{article_id}/pdf'
                 assert publisher_info['format_template'] == expected_template, f'{journal} wrong template'
-                print(f"✓ {journal} → the_doi_slide")
+                print(f"✓ {journal} → the_vip_shake")
 
     def test_emerald_registry_assignment(self):
         """Test Emerald journals are assigned to the_doi_slide."""
@@ -115,7 +116,7 @@ class TestConsolidatedPublishers:
             publisher_info = self.registry.get_publisher_for_journal(journal)
             if publisher_info:
                 assert publisher_info['dance_function'] == 'the_doi_slide', f'{journal} not using the_doi_slide'
-                assert publisher_info['name'] == 'emerald', f'{journal} not assigned to Emerald'
+                assert publisher_info['name'] == 'Emerald', f'{journal} not assigned to Emerald'
                 expected_template = 'https://www.emerald.com/insight/content/doi/{doi}/full/pdf'
                 assert publisher_info['format_template'] == expected_template, f'{journal} wrong template'
                 print(f"✓ {journal} → the_doi_slide")
@@ -128,7 +129,7 @@ class TestConsolidatedPublishers:
             publisher_info = self.registry.get_publisher_for_journal(journal)
             if publisher_info:
                 assert publisher_info['dance_function'] == 'the_vip_shake', f'{journal} not using the_vip_shake'
-                assert publisher_info['name'] == 'cancerbiomed', f'{journal} not assigned to CancerBiomed'
+                assert publisher_info['name'] == 'Cancerbiomed', f'{journal} not assigned to CancerBiomed'
                 expected_template = 'https://www.cancerbiomed.org/content/cbm/{volume}/{issue}/{first_page}.full.pdf'
                 assert publisher_info['format_template'] == expected_template, f'{journal} wrong template'
                 print(f"✓ {journal} → the_vip_shake")
@@ -141,7 +142,7 @@ class TestConsolidatedPublishers:
             publisher_info = self.registry.get_publisher_for_journal(journal)
             if publisher_info:
                 assert publisher_info['dance_function'] == 'the_doi_slide', f'{journal} not using the_doi_slide'
-                assert publisher_info['name'] == 'spandidos', f'{journal} not assigned to Spandidos'
+                assert publisher_info['name'] == 'Spandidos', f'{journal} not assigned to Spandidos'
                 expected_template = 'http://www.spandidos-publications.com/{doi}/download'
                 assert publisher_info['format_template'] == expected_template, f'{journal} wrong template'
                 print(f"✓ {journal} → the_doi_slide")
@@ -154,7 +155,7 @@ class TestConsolidatedPublishers:
             publisher_info = self.registry.get_publisher_for_journal(journal)
             if publisher_info:
                 assert publisher_info['dance_function'] == 'the_doi_slide', f'{journal} not using the_doi_slide'
-                assert publisher_info['name'] == 'springer', f'{journal} not assigned to Springer'
+                assert publisher_info['name'] == 'Springer', f'{journal} not assigned to Springer'
                 expected_template = 'https://link.springer.com/content/pdf/{doi}.pdf'
                 assert publisher_info['format_template'] == expected_template, f'{journal} wrong template'
                 print(f"✓ {journal} → the_doi_slide")
@@ -167,7 +168,7 @@ class TestConsolidatedPublishers:
             publisher_info = self.registry.get_publisher_for_journal(journal)
             if publisher_info:
                 assert publisher_info['dance_function'] == 'the_doi_slide', f'{journal} not using the_doi_slide'
-                assert publisher_info['name'] == 'Thieme Medical Publishers', f'{journal} not assigned to Thieme'
+                assert publisher_info['name'] == 'Thieme', f'{journal} not assigned to Thieme'
                 expected_template = 'http://www.thieme-connect.de/products/ejournals/pdf/{doi}.pdf'
                 assert publisher_info['format_template'] == expected_template, f'{journal} wrong template'
                 print(f"✓ {journal} → the_doi_slide")
@@ -180,7 +181,7 @@ class TestConsolidatedPublishers:
             publisher_info = self.registry.get_publisher_for_journal(journal)
             if publisher_info:
                 assert publisher_info['dance_function'] == 'the_doi_slide', f'{journal} not using the_doi_slide'
-                assert publisher_info['name'] == 'wiley', f'{journal} not assigned to Wiley'
+                assert publisher_info['name'] == 'Wiley', f'{journal} not assigned to Wiley'
                 expected_template = 'https://onlinelibrary.wiley.com/doi/epdf/{doi}'
                 assert publisher_info['format_template'] == expected_template, f'{journal} wrong template'
                 print(f"✓ {journal} → the_doi_slide")
@@ -212,13 +213,13 @@ class TestConsolidatedPublishers:
                 'publisher': 'SAGE',
                 'journal': 'Assessment',
                 'doi': '10.1177/0048393118767084',
-                'expected_function': 'the_doi_slide'
+                'expected_function': 'the_vip_shake'
             },
             {
                 'publisher': 'AIP',
                 'journal': 'Appl Phys Lett',
                 'doi': '10.1063/1.5093924',
-                'expected_function': 'the_doi_slide'
+                'expected_function': 'the_vip_shake'
             },
             {
                 'publisher': 'Emerald',
@@ -337,7 +338,7 @@ if __name__ == '__main__':
         test_instance.test_wiley_registry_assignment()
         test_instance.test_bioone_vip_shake_functionality()
         test_instance.test_frontiers_doi_slide_functionality()
-        test_instance.test_sage_doi_slide_functionality()
+        test_instance.test_sage_vip_shake_functionality()
         test_instance.test_missing_doi_handling()
         test_instance.test_consolidation_maintains_functionality()
         

@@ -94,8 +94,8 @@ class TestFindIt(unittest.TestCase):
                 # Should find a URL or have a reasonable reason for failure
                 self.assertTrue(src.url is not None or src.reason is not None)
                 if src.url:
-                    # Oxford URLs can be oxford.com or europepmc.org for PMC content
-                    self.assertTrue('oxford' in src.url.lower() or 'europepmc.org' in src.url.lower())
+                    # Oxford URLs can be oup.com (Oxford University Press), oxford.com, or europepmc.org for PMC content
+                    self.assertTrue(any(domain in src.url.lower() for domain in ['oxford', 'oup.com', 'europepmc.org']))
 
     @skip_network_tests
     def test_nature_journals_handler(self):

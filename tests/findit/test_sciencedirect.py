@@ -207,7 +207,7 @@ def test_sciencedirect_journal_recognition():
     for journal in test_journals:
         publisher_info = registry.get_publisher_for_journal(journal)
         if publisher_info and publisher_info['name'] == 'sciencedirect':
-            assert publisher_info['dance_function'] == 'the_doi_slide'
+            assert publisher_info['dance_function'] == 'the_sciencedirect_disco'
             print(f"✓ {journal} correctly mapped to ScienceDirect")
             found_count += 1
         elif publisher_info and publisher_info['name'] == 'cell':

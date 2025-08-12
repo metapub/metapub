@@ -108,7 +108,7 @@ class TestWalshMedia(unittest.TestCase):
                 publisher_info = registry.get_publisher_for_journal(journal)
                 if publisher_info:  # Some may not be in registry
                     self.assertEqual(publisher_info['name'], 'Walshmedia')
-                    self.assertEqual(publisher_info['dance_function'], 'the_doi_slide')
+                    self.assertEqual(publisher_info['dance_function'], 'the_walshmedia_bora')
         
         registry.close()
         print("✅ Registry integration verified")

@@ -2,8 +2,7 @@
 # TODO JOURNALS
 # doiserbia (Library of Serbia) articles can be grabbed by doing the_doi_2step,
 # then ...?
-doiserbia_journals = ('Genetika')
-
+doiserbia_journals = []  # Journal list moved to YAML configuration
 
 todo_journals = {
     'Pharmacol Rep': {'example': 'https://www.ncbi.nlm.nih.gov/pubmed/?term=23238479[uid] --> www.if-pan.krakow.pl/pjp/pdf/2012/5_1234.pdf'},

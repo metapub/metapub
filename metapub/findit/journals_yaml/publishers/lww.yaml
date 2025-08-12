@@ -1,0 +1,522 @@
+schema_version: '1.0'
+publisher:
+  name: Lww
+  id: lww
+  description: 'Wolters Kluwer LWW (Lippincott Williams & Wilkins) platform journals.
+
+
+    These journals are hosted on the journals.lww.com platform and use DOI-based URLs.
+
+    This is separate from the core Wolters Kluwer journals that use custom dance functions.'
+url_patterns:
+  primary_template: https://journals.lww.com/doi/pdf/{doi}
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - A A Case Rep
+  - A A Pract
+  - ACG Case Rep J
+  - ACSMs Health Fit J
+  - ANS Adv Nurs Sci
+  - ARN J
+  - Addict Disord Their Treat
+  - Adv Biomed Res
+  - Adv Emerg Nurs J
+  - Adv Neonatal Care
+  - Adv Skin Wound Care
+  - Afr J Paediatr Surg
+  - Am J Med Qual
+  - Am J Nurs
+  - Am J Optom Arch Am Acad Optom
+  - Am J Optom Physiol Opt
+  - Am J Pediatr Hematol Oncol
+  - Am J Phys Med Rehabil
+  - Anc Sci Life
+  - Anesth Essays Res
+  - Ann Afr Med
+  - Ann Card Anaesth
+  - Ann Indian Acad Neurol
+  - Ann Maxillofac Surg
+  - Ann Med Surg (Lond)
+  - Ann Pediatr Cardiol
+  - Ann Surg Open
+  - Ann Thorac Med
+  - Asia Pac Allergy
+  - Asian J Androl
+  - Asian J Transfus Sci
+  - Ayu
+  - Blood Press Monit
+  - Brain Circ
+  - Can J Addict
+  - Can J Rural Med
+  - Cancer Nurs
+  - Cardiol Plus
+  - Cardiol Rev
+  - Cardiopulm Phys Ther J
+  - Cardiovasc Endocrinol
+  - Cardiovasc Endocrinol Metab
+  - Chin J Physiol
+  - Chin Med J (Engl)
+  - Clin J Am Soc Nephrol
+  - Clin Liver Dis (Hoboken)
+  - Clin Neurosurg
+  - Clin Nucl Med
+  - Clin Nurse Spec
+  - Clin Orthop Relat Res Glob Res Rev
+  - Clin Pulm Med
+  - Clin Transplant
+  - Cltn Med J
+  - Cogn Behav Neurol
+  - Community Oncol
+  - Cornea Plus
+  - Curr Pharmacogenom Person Med
+  - CytoJournal
+  - Dallas Med J
+  - Delta Dent
+  - Dent Today
+  - Dermatol Online J
+  - Dermatol Surg
+  - Diabetes Self Manag
+  - Diagn Cytopathol
+  - Digit J Ophthalmol
+  - Dimens Crit Care Nurs
+  - Drug Dev Res
+  - Ear Nose Throat J
+  - Ecology
+  - Environ Health Prev Med
+  - Epidemiol Perspect Innov
+  - Eur J Ophthalmol
+  - Expert Rev Anticancer Ther
+  - Expert Rev Med Devices
+  - Expert Rev Mol Med
+  - Fam Med
+  - Glob Pediatr Health
+  - Head Neck Pathol
+  - Health Aff (Millwood)
+  - Heart Lung Circ
+  - Heart Views
+  - Hepat Mon
+  - Home Care Provid
+  - Home Healthc Nurse
+  - Hypertens Res
+  - IEEE Trans Biomed Eng
+  - IEEE Trans Med Imaging
+  - Indian Dermatol Online J
+  - Indian Heart J
+  - Indian J Anaesth
+  - Indian J Cancer
+  - Indian J Crit Care Med
+  - Indian J Dent Res
+  - Indian J Dermatol
+  - Indian J Dermatol Venereol Leprol
+  - Indian J Endocrinol Metab
+  - Indian J Gastroenterol
+  - Indian J Hematol Blood Transfus
+  - Indian J Hum Genet
+  - Indian J Med Microbiol
+  - Indian J Med Res
+  - Indian J Med Sci
+  - Indian J Nephrol
+  - Indian J Occup Environ Med
+  - Indian J Ophthalmol
+  - Indian J Orthop
+  - Indian J Otolaryngol Head Neck Surg
+  - Indian J Palliat Care
+  - Indian J Pathol Microbiol
+  - Indian J Pediatr
+  - Indian J Pharmacol
+  - Indian J Pharm Sci
+  - Indian J Plast Surg
+  - Indian J Psychol Med
+  - Indian J Radiol Imaging
+  - Indian J Sex Transm Dis AIDS
+  - Indian J Thorac Cardiovasc Surg
+  - Indian J Urol
+  - Indian Pediatr
+  - Infect Control Hosp Epidemiol
+  - Infect Dis Obstet Gynecol
+  - Int Anesthesiol Res Soc
+  - Int J Adv Res
+  - Int J Burn Trauma
+  - Int J Cardiovasc Imaging
+  - Int J Clin Exp Pathol
+  - Int J Gynaecol Obstet
+  - Int J Health Sci (Qassim)
+  - Int J Med Sci
+  - Int J Nurs Pract
+  - Int J Prev Med
+  - Int J Surg Case Rep
+  - Int J Yoga
+  - Int Ophthalmol
+  - Iran J Nurs Midwifery Res
+  - Iran J Parasitol
+  - Iran J Public Health
+  - Iran Red Crescent Med J
+  - J AAPOS
+  - J Adv Pract Oncol
+  - J Air Waste Manag Assoc
+  - J Am Acad Audiol
+  - J Am Acad Nurse Pract
+  - J Am Coll Health
+  - J Anaesthesiol Clin Pharmacol
+  - J Basic Clin Physiol Pharmacol
+  - J Cancer Educ
+  - J Cardiovasc Dis Res
+  - J Cardiovasc Nurs
+  - J Clin Diagn Res
+  - J Clin Monit Comput
+  - J Clin Nurs
+  - J Clin Res Pediatr Endocrinol
+  - J Coll Physicians Surg Pak
+  - J Community Health Nurs
+  - J Continuing Education in Nursing
+  - J Cutan Aesthet Surg
+  - J Cutan Pathol
+  - J Dent Educ
+  - J Dent Hyg
+  - J Dent Res
+  - J Diabetes Metab Disord
+  - J Emerg Nurs
+  - J Endourol
+  - J Fam Nurs
+  - J Formos Med Assoc
+  - J Gerontol Nurs
+  - J Infus Nurs
+  - J Invest Surg
+  - J Lab Physicians
+  - J Maxillofac Oral Surg
+  - J Med Case Rep
+  - J Med Internet Res
+  - J Midwifery Womens Health
+  - J Natl Med Assoc
+  - J Neurosci Rural Pract
+  - J Nurs Adm
+  - J Nurs Care Qual
+  - J Nurs Educ
+  - J Nurs Scholarsh
+  - J Obstet Gynaecol India
+  - J Obstet Gynaecol Res
+  - J Oral Biol Craniofac Res
+  - J Oral Maxillofac Pathol
+  - J Pak Med Assoc
+  - J Parasit Dis
+  - J Pediatr Nurs
+  - J Pharm Bioallied Sci
+  - J Postgrad Med
+  - J Prof Nurs
+  - J Radiol Case Rep
+  - J Res Med Sci
+  - J Rural Health
+  - J Sci Med Sport
+  - J Sports Med Phys Fitness
+  - J Turk Ger Gynecol Assoc
+  - J Vector Borne Dis
+  - J Wound Ostomy Continence Nurs
+  - JMIR Mhealth Uhealth
+  - JMIR Public Health Surveill
+  - JMIR Res Protoc
+  - JONAS Healthc Law Ethics Regul
+  - Korean J Parasitol
+  - Lab Med
+  - Lipids Health Dis
+  - Lung India
+  - Lupus
+  - Matern Child Nutr
+  - Med Dosim
+  - Med J Armed Forces India
+  - Med J Islam Repub Iran
+  - Med Phys
+  - Med Princ Pract
+  - Med Teach
+  - Medscape J Med
+  - Mobius
+  - Neonatal Netw
+  - Nephrol Nurs J
+  - Neurol India
+  - Niger J Clin Pract
+  - Niger Med J
+  - Noise Health
+  - North Am J Med Sci
+  - Nurs Clin North Am
+  - Nurs Econ
+  - Nurs Forum
+  - Nurs Health Sci
+  - Nurs Manag (Harrow)
+  - Nurs Outlook
+  - Nurs Res
+  - Nurs Sci Q
+  - Nursing
+  - Nutr Clin Pract
+  - Obstet Gynecol Int
+  - Oncol Nurs Forum
+  - Online J Health Allied Sci
+  - Open Med (Wars)
+  - Ophthal Plast Reconstr Surg Glob Open
+  - Orthop Nurs
+  - P T
+  - Pak J Med Sci
+  - Patient Educ Couns
+  - Pediatr Dent
+  - Pediatr Nurs
+  - Perspect Psychiatr Care
+  - Plast Reconstr Surg Glob Open
+  - Prof Case Manag
+  - Prog Transplant
+  - Qual Manag Health Care
+  - Rehabil Nurs
+  - Reprod Health
+  - Res Dev Disabil
+  - Res Nurs Health
+  - Rev Bras Anestesiol
+  - Rev Bras Cir Cardiovasc
+  - Rev Bras Ginecol Obstet
+  - Sao Paulo Med J
+  - Sch Nurse News
+  - Simul Healthc
+  - Spine Deform
+  - Sports Health
+  - Telemed J E Health
+  - Ther Adv Chronic Dis
+  - Ther Adv Drug Saf
+  - Ther Adv Gastroenterol
+  - Ther Adv Hematol
+  - Ther Adv Med Oncol
+  - Ther Adv Neurol Disord
+  - Ther Adv Psychopharmacol
+  - Ther Adv Respir Dis
+  - Ther Adv Urol
+  - Top Clin Nutr
+  - Top Geriatr Rehabil
+  - Top Stroke Rehabil
+  - Transplant Proc
+  - Trop Parasitol
+  - Ultrasound Q
+  - Urol Ann
+  - Urol Nurs
+  - Vaccine
+  - Worldviews Evid Based Nurs
+  - Workplace Health Saf
+  - Wound Manag Prev
+  - Yale J Biol Med
+  - Clin Orthop
+  - Clin Spine Surg
+  - Clin Transl Gastroenterol
+  - Comput Inform Nurs
+  - Contemp Clin Dent
+  - Contemp Neurosurg
+  - Continuum
+  - Crit Care Explor
+  - Crit Care Nurs Q
+  - Crit Pathw Cardiol
+  - Curr Med Issues
+  - Curr Opin Anaesthesiol
+  - Curr Opin Endocrinol Diabetes
+  - Curr Opin Endocrinol Diabetes Obes
+  - Curr Opin Neurol
+  - Curr Opin Orthop
+  - Curr Opin Otolaryngol Head Neck Surg
+  - Curr Opin Pediatr
+  - Curr Opin Psychiatry
+  - Curr Opin Support Palliat Care
+  - Curr Orthop Pract
+  - Curr Sports Med Rep
+  - Curr Urol
+  - Dent Hypotheses
+  - Digit Med
+  - ET J
+  - Endocrinologist
+  - Endosc Ultrasound
+  - Environ Dis
+  - Environ Epidemiol
+  - Eur J Anaesthesiol Suppl
+  - Eur J Emerg Med
+  - Exerc Sport Sci Rev
+  - Female Pelvic Med Reconstr Surg
+  - Front Health Serv Manage
+  - G Chir
+  - Gastroenterol Nurs
+  - Glob Reprod Health
+  - Gynecol Minim Invasive Ther
+  - Harv Rev Psychiatry
+  - Health Care Manage Rev
+  - Hear J
+  - Hepatol Commun
+  - Holist Nurs Pract
+  - Home Healthc Now
+  - Immunometabolism
+  - Ind Psychiatry J
+  - Indian J Community Med
+  - Indian J Nucl Med
+  - Indian J Psychiatry
+  - Indian J Rheumatol
+  - Indian J Soc Psychiatry
+  - Infants Young Child
+  - Int Anesthesiol Clin
+  - Int J Appl Basic Med Res
+  - Int J Crit Illn Inj Sci
+  - Int J Dermatol Venereol
+  - Int J Evid Based Healthc
+  - Int J Mycobacteriol
+  - Int J Pediatr Adolesc Med
+  - Int J Rehabil Res
+  - Int J Surg
+  - Int J Surg Protoc
+  - Int J Trichology
+  - Int J Womens Dermatol
+  - Int Ophthalmol Clin
+  - J Acute Care Phys Ther
+  - J Addict Nurs
+  - J Adv Pharm Technol Res
+  - J Am Acad Orthop Surg
+  - J Am Acad Orthop Surg Glob Res Rev
+  - J Ambul Care Manage
+  - J Assoc Nurses AIDS Care
+  - J Bronchology Interv Pulmonol
+  - J Cancer Res Ther
+  - J Cardiopulm Rehabil
+  - J Cardiopulm Rehabil Prev
+  - J Cardiothorac Trauma
+  - J Cardiovasc Echogr
+  - J Christ Nurs
+  - J Cleft Lip Palate Craniofacial Anomalies
+  - J Clin Eng
+  - J Clin Neonatol
+  - J Conserv Dent
+  - J Contin Educ Health Prof
+  - J Craniovertebr Junction Spine
+  - J Curr Ophthalmol
+  - J Cytol
+  - J Dermatol Nurses Assoc
+  - J ECT
+  - J ET Nurs
+  - J Educ Health Promot
+  - J Emerg Trauma Shock
+  - J Family Community Med
+  - J Family Med Prim Care
+  - J Forensic Nurs
+  - J Geriatr Phys Ther
+  - J Glob Infect Dis
+  - J Healthc Manag
+  - J Healthc Qual
+  - J Hosp Palliat Nurs
+  - J Hum Reprod Sci
+  - J Immunother Emphasis Tumor Immunol
+  - J Indian Assoc Pediatr Surg
+  - J Indian Prosthodont Soc
+  - J Indian Soc Pedod Prev Dent
+  - J Indian Soc Periodontol
+  - J Int Soc Phys Rehabil Med
+  - J Int Soc Prev Community Dent
+  - J Low Genit Tract Dis
+  - J Med Educ
+  - J Med Phys
+  - J Med Signals Sens
+  - J Med Trop
+  - J Med Ultrasound
+  - J Microsc Ultrastruct
+  - J Midlife Health
+  - J Minim Access Surg
+  - J Nerv Ment Dis
+  - J Neurol Phys Ther
+  - J Neurosci Nurs
+  - J Neurosurg Nurs
+  - J Nurses Prof Dev
+  - J Nurses Staff Dev
+  - J Orofac Sci
+  - J Orthod Sci
+  - J Orthop Trauma
+  - J Pancreatol
+  - J Patient Saf
+  - J Pediatr Neurosci
+  - J Pelvic Med Surg
+  - J Phys Ther Educ
+  - J Physician Assist Educ
+  - J Prosthet Orthot
+  - J Psychosoc Oncol Res Pract
+  - J Public Health Manag Pract
+  - J Qual Assur
+  - J Res Pharm Pract
+  - J Spinal Disord
+  - J Thorac Imaging
+  - J Trauma Acute Care Surg
+  - J Trauma Nurs
+  - J West Afr Coll Surg
+  - J Womens Health Phys Therap
+  - JAAPA
+  - JB JS Open Access
+  - JBI Database System Rev Implement Rep
+  - JBI Evid Implement
+  - JBI Evid Synth
+  - JBI Libr Syst Rev
+  - JBJS Case Connect
+  - JBJS Essent Surg Tech
+  - JBJS Rev
+  - JCRS Online Case Rep
+  - Kidney360
+  - Lippincotts Case Manag
+  - Matern Fetal Med
+  - Med Gas Res
+  - Middle East Afr J Ophthalmol
+  - Natl J Maxillofac Surg
+  - Neural Regen Res
+  - Neurosurg Q
+  - Niger J Med
+  - Niger J Surg
+  - Niger Postgrad Med J
+  - Nurs Adm Q
+  - Nurs Educ Perspect
+  - Nurs Manage
+  - Nurse Educ
+  - Nurse Pract
+  - Nutr Today
+  - OTA Int
+  - Oman J Ophthalmol
+  - Ophthalmic Plast Reconstr Surg
+  - Pain Rep
+  - Pediatr Infect Dis
+  - Pediatr Phys Ther
+  - Pediatr Qual Saf
+  - Perspect Clin Res
+  - Plast Reconstr Surg Transplant Bull
+  - Plast Surg Nurs
+  - Point Care
+  - Porto Biomed J
+  - Prosthet Orthot Int
+  - Psychopharm Rev
+  - Rehabil Oncol
+  - Res Cardiovasc Med
+  - Res Med Educ
+  - Res Pharm Sci
+  - Rev Med Microbiol
+  - Saudi J Anaesth
+  - Saudi J Gastroenterol
+  - Saudi J Kidney Dis Transpl
+  - Saudi J Med Med Sci
+  - Saudi J Ophthalmol
+  - Singapore Med J
+  - Soil Sci
+  - Strength Cond J
+  - Surg Forum
+  - Surg Laparosc Endosc Percutan Tech
+  - Taiwan J Ophthalmol
+  - Tech Foot Ankle Surg
+  - Tech Hand Up Extrem Surg
+  - Tech Orthop
+  - Tech Shoulder Elb Surg
+  - Top Lang Disord
+  - Top Magn Reson Imaging
+  - Toxicol Int
+  - Transl J Am Coll Sports Med
+  - Transplant Bull
+  - Transplant Direct
+  - Tumor Microenviron
+  - Turk J Emerg Med
+  - Tzu Chi Med J
+  - Urol Sci
+  - WHO South East Asia J Public Health
+  - West Afr J Radiol
+  - World J Tradit Chin Med
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

@@ -1,0 +1,85 @@
+schema_version: '1.0'
+publisher:
+  name: dovepress
+  id: dovepress
+  description: ''
+url_patterns:
+  primary_template: https://www.dovepress.com/article/download/{article_id}
+dance_function: the_dovepress_peacock
+journals:
+  simple_list:
+  - Adolesc Health Med Ther
+  - Adv Appl Bioinform Chem
+  - Adv Med Educ Pract
+  - Breast Cancer (Dove Med Press)
+  - Cancer Manag Res
+  - Chronic Wound Care Management Res
+  - Clin Exp Gastroenterol
+  - Clin Epidemiol
+  - Clin Interv Aging
+  - Clin Ophthalmol
+  - Clin Optom (Auckl)
+  - Clin Pharmacol
+  - Clin Cosmet Investig Dent
+  - Clin Cosmet Investig Dermatol
+  - Clinicoecon Outcomes Res
+  - Degener Neurol Neuromuscul Dis
+  - Diabetes Metab Syndr Obes
+  - Drug Des Devel Ther
+  - Drug Healthc Patient Saf
+  - Eye Brain
+  - Hepat Med
+  - HIV AIDS (Auckl)
+  - Immunotargets Ther
+  - Infect Drug Resist
+  - Integr Pharm Res Pract
+  - Int J Chron Obstruct Pulmon Dis
+  - Int J Gen Med
+  - Int J Nanomedicine
+  - Int J Nephrol Renovasc Dis
+  - Int J Womens Health
+  - Int Med Case Rep J
+  - J Asthma Allergy
+  - J Blood Med
+  - J Exp Pharmacol
+  - J Healthc Leadersh
+  - J Hepatocell Carcinoma
+  - J Inflamm Res
+  - J Multidiscip Healthc
+  - J Pain Res
+  - Local Reg Anesth
+  - Lung Cancer (Auckl)
+  - Med Devices (Auckl)
+  - Nanotechnol Sci Appl
+  - Nat Sci Sleep
+  - Neuropsychiatr Dis Treat
+  - Nurs Res Rev
+  - Nutr Diet Suppl
+  - Onco Targets Ther
+  - Open Access Emerg Med
+  - Open Access J Clin Trials
+  - Open Access J Contracept
+  - Open Access J Sports Med
+  - Open Access Rheumatol
+  - Orthop Res Rev
+  - Patient Prefer Adherence
+  - Patient Relat Outcome Meas
+  - Pediatr Health Med Ther
+  - Pharmacogenomics Pers Med
+  - Pragmat Obs Res
+  - Psoriasis (Auckl)
+  - Psychol Res Behav Manag
+  - Res Rep Trop Med
+  - Res Rep Urol
+  - Res Rep Clin Cardiol
+  - Risk Manag Healthc Policy
+  - Stem Cells Cloning
+  - Subst Abuse Rehabil
+  - Appl Clin Genet
+  - Ther Clin Risk Manag
+  - Vasc Health Risk Manag
+  - Vet Med (Auckl)
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

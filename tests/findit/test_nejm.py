@@ -41,16 +41,26 @@ class TestNEJMConfiguration(BaseDanceTest):
 
     def test_nejm_journal_configuration(self):
         """Test that NEJM journals are properly configured."""
+        from metapub.findit.registry import JournalRegistry
 
-        # Verify NEJM configuration
+        # Verify NEJM template configuration
         assert nejm_template == 'https://www.nejm.org/doi/pdf/{doi}'
-        assert len(nejm_journals) > 0, "NEJM journals list should not be empty"
-
-        # Check expected journal names are in the list
+        
+        # Check expected journal names are in registry
+        registry = JournalRegistry()
         expected_journals = ['N Engl J Med']
-        for expected in expected_journals:
-            assert expected in nejm_journals, f"{expected} should be in NEJM journals list"
-            print(f"✓ {expected} found in NEJM journals list")
+        
+        found_count = 0
+        for journal in expected_journals:
+            publisher_info = registry.get_publisher_for_journal(journal)
+            if publisher_info and publisher_info['name'] == 'Nejm':
+                print(f"✓ {journal} correctly mapped to NEJM")
+                found_count += 1
+            else:
+                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
+        
+        assert found_count > 0, "No NEJM journals found in registry"
+        registry.close()
 
         print(f"✓ Found {len(nejm_journals)} NEJM journal variants in configuration")
         print(f"✓ Template uses HTTPS: {nejm_template}")

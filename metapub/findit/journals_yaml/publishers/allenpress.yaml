@@ -1,0 +1,70 @@
+schema_version: '1.0'
+publisher:
+  name: Allenpress
+  id: allenpress
+  description: 'Allen Press journal list.
+
+
+    Allen Press is a scholarly publishing services company that partners with
+
+    scholarly and professional societies to publish their journals and books.
+
+    They provide publishing services for journals in medicine, science, education,
+
+    and other academic fields.
+
+
+    URL format: https://meridian.allenpress.com/[journal-code]/article-pdf/{doi}
+
+    Alternative: https://meridian.allenpress.com/[journal-code]/article/{doi}
+
+
+    DOI patterns: Various (depends on the society/journal)'
+url_patterns:
+  primary_template: https://meridian.allenpress.com/{journal_code}/article-pdf/{doi}
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - Ment Retard
+  - Oper Dent
+  - J Am Anim Hosp Assoc
+  - Earth Sci Hist
+  - Am J Ment Retard
+  - Appl Anthropol
+  - Am J Intellect Dev Disabil
+  - Am Indian Cult Res J
+  - Am Arch
+  - Harv Educ Rev
+  - J Insur Med
+  - Tex Heart Inst J
+  - Ethn Dis
+  - J Oral Implantol
+  - J Am Mosq Control Assoc
+  - J Grad Med Educ
+  - J Pediatr Pharmacol Ther
+  - Hum Organ
+  - Int Surg
+  - J Chiropr Educ
+  - Biophysicist (Rockv)
+  - J Immunother Precis Oncol
+  - Inclusion (Wash)
+  - Top Spinal Cord Inj Rehabil
+  - Intellect Dev Disabil
+  - Pract Anthropol
+  - Int J MS Care
+  - Wildl Dis
+  - Ment Health Clin
+  - J Clin Exerc Physiol
+  - Arch Pathol Lab Med
+  - J Athl Train
+  - Angle Orthod
+  - Adv Pulm Hypertens
+  - Int J Yoga Therap
+  - J Ment Health Couns
+  - Mobilization
+  - Tire Sci Technol
+  - J Med Regul
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

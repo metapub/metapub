@@ -1,0 +1,30 @@
+schema_version: '1.0'
+publisher:
+  name: jama
+  id: jama
+  description: ''
+url_patterns: {}
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - AMA Arch Intern Med
+  - Arch Dermatol
+  - Arch Gen Psychiatry
+  - Arch Neurol
+  - Arch Ophthalmol
+  - Arch Surg
+  - JAMA
+  - JAMA Dermatol
+  - JAMA Facial Plast Surg
+  - JAMA Intern Med
+  - JAMA Neurol
+  - JAMA Oncol
+  - JAMA Ophthalmol
+  - JAMA Otolaryngol Head Neck Surg
+  - JAMA Pediatr
+  - JAMA Psychiatry
+  - JAMA Surg
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

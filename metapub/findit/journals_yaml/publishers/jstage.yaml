@@ -1,0 +1,170 @@
+schema_version: '1.0'
+publisher:
+  name: Jstage
+  id: jstage
+  description: ''
+url_patterns: {}
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - Agric Biol Chem
+  - Anal Sci
+  - Ann Thorac Cardiovasc Surg
+  - Biol Pharm Bull
+  - Biomed Res
+  - Biosci Trends
+  - Cell Struct Funct
+  - Chem Pharm Bull
+  - Circ J
+  - Crit Rev Immunol
+  - Dent Mater J
+  - Drug Metab Pharmacokinet
+  - Endocr J
+  - Exp Anim
+  - Fukushima J Med Sci
+  - Genes Genet Syst
+  - Int Heart J
+  - Intern Med
+  - J Atheroscler Thromb
+  - J Biochem
+  - J Clin Exp Hematop
+  - J Epidemiol
+  - J Gen Appl Microbiol
+  - J Med Invest
+  - J Nippon Med Sch
+  - J Nutr Sci Vitaminol
+  - J Occup Health
+  - J Oleo Sci
+  - J Pharmacobio-dyn
+  - J Reprod Dev
+  - J Toxicol Sci
+  - J Vet Med Sci
+  - Jpn Circ J
+  - Jpn Heart J
+  - Jpn J Infect Dis
+  - Jpn J Med
+  - Jpn J Med Sci Biol
+  - Jpn J Pharmacol
+  - Jpn J Physiol
+  - Kansenshogaku Zasshi
+  - Keio J Med
+  - Kurume Med J
+  - Microbes Environ
+  - Neurol Med Chir (Tokyo)
+  - Nihon Hansenbyo Gakkai Zasshi
+  - Nihon Ishinkin Gakkai Zasshi
+  - Nihon Naibunpi Gakkai Zasshi
+  - Nihon Rinsho Meneki Gakkai Kaishi
+  - Nihon Ronen Igakkai Zasshi
+  - Nihon Shishubyo Gakkai Kaishi
+  - Nippon Ika Daigaku Zasshi
+  - Nippon Jibiinkoka Gakkai Kaiho
+  - Nippon Juigaku Zasshi
+  - Nippon Naika Gakkai Zasshi
+  - Nippon Saikingaku Zasshi
+  - Nippon Yakurigaku Zasshi
+  - Rinsho Ketsueki
+  - Rinsho Shinkeigaku
+  - Sangyo Igaku
+  - Shokuhin Eiseigaku Zasshi
+  - Tohoku J Exp Med
+  - Yakugaku Zasshi
+  - Acoust Sci Technol
+  - Adv Biomed Eng
+  - Aerobiol Monogr
+  - Agric Biol Chem
+  - Am J Primatol
+  - Ann Rep Ceram Res Lab Nagoya Inst Technol
+  - Appl Entomol Zool
+  - Arch Histol Cytol
+  - Arch Histol Jpn
+  - Artif Organs
+  - BUNSEKI KAGAKU
+  - Biochem Biophys Res Commun
+  - Bioimages
+  - Biophys Physicobiol
+  - Biosci Biotechnol Biochem
+  - Biosci Microbiota Food Health
+  - Biosci Microflora
+  - Bull Jpn Soc Coord Chem
+  - Bull Tokyo Dent Coll
+  - Chem Pharm Bull
+  - Childs Nerv Syst
+  - Chromosoma
+  - Cytologia
+  - Drug Discov Ther
+  - Endocrinol Jpn
+  - Environ Mutagen Res
+  - Fukuoka Igaku Zasshi
+  - Hinyokika Kiyo
+  - Human Cell
+  - IEICE Trans Electron
+  - IEICE Trans Fundamentals
+  - IEICE Trans Inf Syst
+  - Ind Health
+  - Interdiscip Inf Sci
+  - J Biomech
+  - J Equine Sci
+  - J Hard Tissue Biol
+  - J Health Sci
+  - J Japan Soc Colour Mater
+  - J Jpn Soc Biomech
+  - J Jpn Vet Cancer Soc
+  - J Mamm Ova Res
+  - J Photopolym Sci Technol
+  - J Poultry Sci
+  - J Smooth Muscle Res
+  - Jikken Dobutsu
+  - Jpn J Antibiot
+  - Jpn J Appl Phys
+  - Jpn J Clin Oncol
+  - Jpn J Clin Pathol
+  - Jpn J Complement Alternat Med
+  - Jpn J Hyg
+  - Jpn J Infect Dis
+  - Jpn J Med Mycol
+  - Jpn J Ophthalmol
+  - Jpn J Oral Biol
+  - Jpn J Parasitol
+  - Jpn J Pharmacol
+  - Jpn J Public Health
+  - Jpn J Radiol
+  - Jpn J Toxicol Environ Health
+  - Jpn J Transplant
+  - Jpn J Vet Res
+  - Kona
+  - Low Temp Phys
+  - Magn Reson Med Sci
+  - Mass Spectrom (Tokyo)
+  - Mol Genet Genomics
+  - Nagoya J Med Sci
+  - Neoplasma
+  - Nihon Hotetsu Shika Gakkai Zasshi
+  - Nihon Kango Kagakkaishi
+  - Nihon Koshu Eisei Zasshi
+  - Nihon Rinsho
+  - Nippon Eiseigaku Zasshi
+  - Nippon Geka Gakkai Zasshi
+  - Nippon Hinyokika Gakkai Zasshi
+  - Nippon Hoshasen Gijutsu Gakkai Zasshi
+  - Nippon Jinzo Gakkai Shi
+  - Nippon Koshokai Zasshi
+  - Nippon Shokuhin Kagaku Kogaku Kaishi
+  - Okajimas Folia Anat Jpn
+  - Pediatr Int
+  - Plast Reconstr Surg
+  - Psychiatry Clin Neurosci
+  - Radiat Prot Dosimetry
+  - Rep Prog Polym Phys Jpn
+  - Repura
+  - Rinsho Byori
+  - Rinsho Ganka
+  - Sex Plant Reprod
+  - Shinkei Kenkyu No Shimpo
+  - Surg Today
+  - Yonago Acta Med
+  - Zygote
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

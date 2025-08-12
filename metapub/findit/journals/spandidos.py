@@ -8,13 +8,4 @@ spandidos_doi_format = 'http://www.spandidos-publications.com/{doi}/download'
 
 
 # Journal list converted to simple tuple for generic function usage
-spandidos_journals = (
-    'Int J Oncol',
-    'Int J Mol Med', 
-    'Oncol Lett',
-    'Oncol Rep',
-    'Mol Med Rep',
-    'Biomed Rep',
-    'Exp Ther Med',
-    'Mol Clin Oncol',
-)
+spandidos_journals = []  # Journal list moved to YAML configuration

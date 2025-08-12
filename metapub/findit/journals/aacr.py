@@ -9,18 +9,7 @@ Dance Function: the_aacr_jitterbug
 """
 
 # AACR journals using VIP format (extracted from misc_vip.py)
-aacr_journals = [
-    'Cancer Discov',
-    'Cancer Epidemiol Biomarkers Prev',
-    'Cancer Res',
-    'Clin Cancer Res',
-    'Mol Canc Therapeut',
-    'Mol Cancer Ther',
-    'Cancer Prev Res (Phila)',
-    'Cancer Immunol Res',
-    'Blood Cancer Discov',
-    'Mol Cancer Res',
-]
+aacr_journals = []  # Journal list moved to YAML configuration
 
 # Host mappings for VIP format journals
 aacr_journal_params = {

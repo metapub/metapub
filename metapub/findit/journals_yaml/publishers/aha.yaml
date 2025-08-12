@@ -1,0 +1,39 @@
+schema_version: '1.0'
+publisher:
+  name: Aha
+  id: aha
+  description: "American Heart Association (AHA) journal patterns and mappings.\n\n\
+    AHA publishes cardiovascular research journals using Volume-Issue-Page (VIP) \n\
+    format URLs with journal-specific subdomains.\n\nURL Pattern: http://{host}.ahajournals.org/content/{volume}/{issue}/{first_page}.full.pdf\n\
+    Dance Function: the_aha_waltz"
+url_patterns:
+  primary_template: http://{host}.ahajournals.org/content/{volume}/{issue}/{first_page}.full.pdf
+dance_function: the_doi_slide
+journals:
+  parameterized:
+    Arterioscler Thromb Vasc Biol:
+      host: atvb
+    Circulation:
+      host: circ
+    Circ Arrhythm Electrophysiol:
+      host: circep
+    Circ Cardiovasc Genet:
+      host: circgenetics
+    Circ Res:
+      host: circres
+    Hypertension:
+      host: hyper
+    Stroke:
+      host: stroke
+  simple_list:
+  - Arterioscler Thromb Vasc Biol
+  - Circulation
+  - Circ Arrhythm Electrophysiol
+  - Circ Cardiovasc Genet
+  - Circ Res
+  - Hypertension
+  - Stroke
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

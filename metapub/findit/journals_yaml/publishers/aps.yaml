@@ -1,0 +1,30 @@
+schema_version: '1.0'
+publisher:
+  name: Aps
+  id: aps
+  description: 'American Physiological Society (APS) publisher configuration.
+
+
+    Physiology journals covering multiple specialties with DOI-based PDF access.'
+url_patterns:
+  primary_template: https://journals.physiology.org/doi/pdf/{doi}
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - Am J Physiol Cell Physiol
+  - Am J Physiol Endocrinol Metab
+  - Am J Physiol Gastrointest Liver Physiol
+  - Am J Physiol Heart Circ Physiol
+  - Am J Physiol Lung Cell Mol Physiol
+  - Am J Physiol Regul Integr Comp Physiol
+  - Am J Physiol Renal Physiol
+  - J Appl Physiol
+  - J Neurophysiol
+  - Physiology (Bethesda)
+  - Physiol Genomics
+  - Physiol Rep
+  - Physiol Rev
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

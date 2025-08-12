@@ -23,6 +23,4 @@
 
 jci_format = 'http://www.jci.org/articles/view/{pii}/files/pdf'
 
-jci_journals = (
-    'J Clin Invest',
-)
+jci_journals = []  # Journal list moved to YAML configuration

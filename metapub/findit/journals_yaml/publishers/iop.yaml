@@ -1,0 +1,104 @@
+schema_version: '1.0'
+publisher:
+  name: Iop
+  id: iop
+  description: 'IOP Publishing (Institute of Physics Publishing) journal list.
+
+
+    IOP Publishing (formerly Institute of Physics Publishing) is a British publisher
+
+    focused on physics and related fields. They publish journals through both
+
+    iopscience.iop.org and validate.perfdrive.com domains.
+
+
+    URL format: https://iopscience.iop.org/article/{doi}/pdf
+
+    Alternative formats: https://validate.perfdrive.com/article/{doi}/pdf
+
+
+    DOI patterns: various (10.1088/* is most common for IOP)'
+url_patterns:
+  primary_template: https://iopscience.iop.org/article/{doi}/pdf
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - Phys Med Biol
+  - Biomed Phys Eng Express
+  - J Electrochem Soc
+  - J Micromech Microeng
+  - Europhys Lett
+  - Supercond Sci Technol
+  - Astrophys J
+  - Publ Astron Soc Pac
+  - Fluid Dyn Res
+  - Biofabrication
+  - Methods Appl Fluoresc
+  - J Phys A Math Theor
+  - Biomed Mater
+  - Planet Sci J
+  - J Phys Commun
+  - Nanotechnology
+  - J Phys A Math Gen
+  - Inverse Probl
+  - ECS J Solid State Sci Technol
+  - Metrologia
+  - IOP Conf Ser Mater Sci Eng
+  - Prog Biomed Eng (Bristol)
+  - Environ Res Commun
+  - J Phys Condens Matter
+  - J Phys G Nucl Part Phys
+  - J Phys D Appl Phys
+  - Meas Sci Technol
+  - Bioinspir Biomim
+  - 2d Mater
+  - Mater Res Express
+  - Quantum Sci Technol
+  - Class Quantum Gravity
+  - J Opt
+  - Comput Sci Discov
+  - Nonlinearity
+  - Quantum Elec (Woodbury)
+  - JPhys Photonics
+  - J Opt B Quantum Semiclassical Opt
+  - J Convex Anal
+  - Jpn J Appl Phys (2008)
+  - Surf Topogr
+  - Phys Scr
+  - IOP Conf Ser Earth Environ Sci
+  - Astrophys J Lett
+  - Converg Sci Phys Oncol
+  - Environ Res Lett
+  - Rep Prog Phys
+  - Clin Phys Physiol Meas
+  - Smart Mater Struct
+  - Laser Phys
+  - Physiol Meas
+  - J Sci Instrum
+  - Plasma Sources Sci Technol
+  - J Radiol Prot
+  - Astron J
+  - J Breath Res
+  - J Phys Conf Ser
+  - ECS Trans
+  - New J Phys
+  - J Stat Mech
+  - Plasma Phys Control Fusion
+  - Phys Biol
+  - J Instrum
+  - Laser Phys Lett
+  - Chin Phys B
+  - Res Notes AAS
+  - J Neural Eng
+  - Phys Educ
+  - Apex
+  - Nano Futures
+  - J Phys E
+  - Semicond Sci Technol
+  - Electrochem Soc Interface
+  - Res Astron Astrophys
+  - Commun Theor Phys
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

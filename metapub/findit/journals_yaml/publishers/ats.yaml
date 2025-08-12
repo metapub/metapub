@@ -1,0 +1,24 @@
+schema_version: '1.0'
+publisher:
+  name: Ats
+  id: ats
+  description: "American Thoracic Society (ATS) journal patterns and mappings.\n\n\
+    ATS publishes respiratory medicine journals using DOI-based URLs \nwith a standardized\
+    \ format.\n\nURL Pattern: https://www.thoracic.org/doi/pdf/{doi}?download=true\n\
+    Dance Function: the_doi_slide\n\nEvidence-Based Update: 2025-08-09\n- Updated\
+    \ from legacy atsjournals.org to current thoracic.org domain\n- Added ?download=true\
+    \ parameter for direct PDF downloads\n- Enforced HTTPS instead of HTTP\n- Pattern\
+    \ discovered through evidence-driven analysis of HTML samples"
+url_patterns:
+  primary_template: https://www.thoracic.org/doi/pdf/{doi}?download=true
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - Am J Respir Cell Mol Biol
+  - Am J Respir Crit Care Med
+  - Ann Am Thorac Soc
+  - Proc Am Thorac Soc
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

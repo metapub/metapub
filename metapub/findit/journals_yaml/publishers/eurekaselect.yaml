@@ -1,0 +1,208 @@
+schema_version: '1.0'
+publisher:
+  name: Eurekaselect
+  id: eurekaselect
+  description: 'Bentham Science Publishers (eurekaselect.com) journals.
+
+
+    Bentham Science is an academic publisher specializing in science, technology,
+    and medical journals.
+
+    Their journals are hosted on eurekaselect.com and use DOI-based URLs.
+
+
+    Based on investigation, their PDF access appears to be behind a paywall,
+
+    but we can attempt DOI-based URL construction for potential access.
+
+
+    URL pattern investigation showed articles redirect from DOI to:
+
+    https://www.eurekaselect.com/{ARTICLE_ID}/article
+
+
+    For PDFs, we can try appending ''/pdf'' or using similar patterns,
+
+    but access likely requires subscription.'
+url_patterns:
+  primary_template: https://www.eurekaselect.com/openurl/openurl.php?genre=article&doi={doi}
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - Adolesc Psychiatry
+  - Anticancer Agents Med Chem
+  - Antiinfect Agents
+  - Antiinflamm Antiallergy Agents Med Chem
+  - Appl NMR Spectrosc
+  - CNS Neurol Disord Drug Targets
+  - Cardiovasc Hematol Agents Med Chem
+  - Cardiovasc Hematol Disord Drug Targets
+  - Cent Nerv Syst Agents Med Chem
+  - Clin Cancer Drugs
+  - Comb Chem High Throughput Screen
+  - Curr Aging Sci
+  - Curr Anal Chem
+  - Curr Angiogenes
+  - Curr Bioact Compd
+  - Curr Bioinform
+  - Curr Biotechnol
+  - Curr Cancer Drug Targets
+  - Curr Cancer Ther Rev
+  - Curr Cardiol Rev
+  - Curr Chem Biol
+  - Curr Chromatogr
+  - Curr Clin Pharmacol
+  - Curr Comput Aided Drug Des
+  - Curr Diabetes Rev
+  - Curr Drug Abuse Rev
+  - Curr Drug Discov Technol
+  - Curr Drug Metab
+  - Curr Drug Saf
+  - Curr Drug ther
+  - Curr Enzym Inhib
+  - Curr Gene Ther
+  - Curr Genomics
+  - Curr Hypertens Rev
+  - Curr Immunol Rev
+  - Curr Med Chem
+  - Curr Med Chem Anti Inflamm Anti Allergy Agents
+  - Curr Med Chem Immunol Endocr Metab Agents
+  - Curr Med Imaging
+  - Curr Med Imaging Rev
+  - Curr Metabolomics
+  - Curr Mol Imaging
+  - Curr Mol Med
+  - Curr Mol Pharmacol
+  - Curr Nanosci
+  - Curr Neuropharmacol
+  - Curr Neurovasc Res
+  - Curr Nutr Food Sci
+  - Curr Org Chem
+  - Curr Org Synth
+  - Curr Organocatal
+  - Curr Pediatr Rev
+  - Curr Pharm Anal
+  - Curr Pharm Des
+  - Curr Pharmacogenomics Person Med
+  - Curr Phys Chem
+  - Curr Protein Pept Sci
+  - Curr Proteomics
+  - Curr Psychiatry Rev
+  - Curr Psychopharmacol
+  - Curr Radiopharm
+  - Curr Respir Med Rev
+  - Curr Rheumatol Rev
+  - Curr Signal Transduct Ther
+  - Curr Stem Cell Res Ther
+  - Curr Tissue Eng
+  - Curr Top Med Chem
+  - Curr Womens Health Rev
+  - Drug Deliv Lett
+  - Drug Metab Lett
+  - Endocr Metab Immune Disord Drug Targets
+  - Immunol Endocr Metab Agents Med Chem
+  - Infect Disord Drug Targets
+  - Inflamm Allergy Drug Targets
+  - Lett Drug Design Discov
+  - Lett Org Chem
+  - Med Chem
+  - Microrna
+  - Nat Prod J
+  - Pharm Nanotechnol
+  - Protein Pept Lett
+  - Recent Adv Cardiovasc Drug Discov
+  - Recent Adv DNA Gene Seq
+  - Recent Pat Anticancer Drug Discov
+  - Recent Pat Antiinfect Drug Discov
+  - Recent Pat Biomed Eng
+  - Recent Pat Biotechnol
+  - Recent Pat CNS Drug Discov
+  - Recent Pat Cardiovasc Drug Discov
+  - Recent Pat DNA Gene Seq
+  - Recent Pat Drug Deliv Formul
+  - Recent Pat Food Nutr Agric
+  - Recent Pat Inflamm Allergy Drug Discov
+  - Recent Pat Nanomed
+  - Recent Pat Nanotechnol
+  - Recent Pat Regen Med
+  - Recent Pat Space Technol
+  - Rev Recent Clin Trials
+  - Curr Chem Genom Transl Med
+  - Curr Chem Genomics
+  - J Epithel Biol Pharmacol
+  - Open Addict J
+  - Open Allergy J
+  - Open Anal Chem J
+  - Open Anthropol J
+  - Open Autoimmun J
+  - Open Bone J
+  - Open Cancer J
+  - Open Cell Dev Biol J
+  - Open Circ Vasc J
+  - Open Clin Cancer J
+  - Open Complement Med J
+  - Open Conf Proc J
+  - Open Crit Care Med J
+  - Open Endocrinol J
+  - Open Enzym Inhib J
+  - Open Forensic Sci J
+  - Open Gene Ther J
+  - Open Genomics J
+  - Open Geriatr Med J
+  - Open Glycosci
+  - Open Health Serv Policy J
+  - Open Immunol J
+  - Open Inf Syst J
+  - Open Inflamm J
+  - Open Inorg Chem J
+  - Open Longev Sci
+  - Open Magn Reson Rev
+  - Open Med Imaging J
+  - Open Nanomed J
+  - Open Neuroendocrinol J
+  - Open Neuropsychopharmacol J
+  - Open Nucl Med J
+  - Open Pacing Electrophysiol Ther J
+  - Open Pathol J
+  - Open Pediatr Med Journal
+  - Open Prost Cancer J
+  - Open Proteomics J
+  - Open Rehabil J
+  - Open Reprod Sci J
+  - Open Sleep J
+  - Open Spectrosc J
+  - Open Stem Cell J
+  - Open Surg Oncol J
+  - Open Tissue Eng Regen Med J
+  - Open Toxicol J
+  - Open Transl Med J
+  - Open Transplant J
+  - Open Trop Med J
+  - Open Vaccine J
+  - Open Virol J
+  - Open Womens Health J
+  - Adolesc Psychiatry (Hilversum)
+  - Lett Drug Des Discov
+  - Curr Drug Res Rev
+  - Mini Rev Med Chem
+  - Curr Drug Targets Infect Disord
+  - Curr Med Chem Anticancer Agents
+  - Curr Drug Targets CNS Neurol Disord
+  - Curr Drug Targets Cardiovasc Haematol Disord
+  - Curr Pharm Biotechnol
+  - Curr Drug Targets
+  - Curr Drug Targets Inflamm Allergy
+  - Curr HIV Res
+  - Curr Vasc Pharmacol
+  - Curr Med Chem Cardiovasc Hematol Agents
+  - Curr Alzheimer Res
+  - Curr Drug Deliv
+  - Recent Pat Endocr Metab Immune Drug Discov
+  - Recent Pat Biomark
+  - Epigenet Diagn Ther
+  - Mini Rev Org Chem
+  - Antiinfect Agents Med Chem
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

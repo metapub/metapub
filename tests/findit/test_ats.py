@@ -34,7 +34,7 @@ class TestATSConfiguration:
         ]
         self.expected_template = "https://www.thoracic.org/doi/pdf/{doi}?download=true"
         self.expected_function = "the_doi_slide"
-        self.expected_publisher = "American Thoracic Society"
+        self.expected_publisher = "Ats"
 
     def test_ats_registry_assignment(self):
         """Test that all ATS journals are correctly assigned in registry."""
@@ -202,7 +202,7 @@ class TestATSConfiguration:
             'Am J Respir Cell Mol Biol',  # American Journal of Respiratory Cell and Molecular Biology
             'Am J Respir Crit Care Med',   # American Journal of Respiratory and Critical Care Medicine  
             'Ann Am Thorac Soc',          # Annals of the American Thoracic Society
-            'Proc Am Thoracic Soc'         # Proceedings of the American Thoracic Society (legacy)
+            'Proc Am Thorac Soc'         # Proceedings of the American Thoracic Society (legacy)
         ]
         
         registered_journals = []

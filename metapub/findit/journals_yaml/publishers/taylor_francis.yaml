@@ -1,0 +1,1721 @@
+schema_version: '1.0'
+publisher:
+  name: Taylor Francis
+  id: taylor_francis
+  description: 'Taylor & Francis journal patterns and mappings.
+
+
+    Taylor & Francis publishes a vast array of academic journals across multiple disciplines
+
+    using DOI-based URLs through their tandfonline.com platform.
+
+
+    URL Pattern: https://www.tandfonline.com/doi/epdf/{DOI}?needAccess=true
+
+    Dance Function: the_doi_slide
+
+
+    Evidence-driven pattern discovered from HTML sample analysis:
+
+    - All samples showed consistent /doi/epdf/{DOI}?needAccess=true pattern
+
+    - HTTPS required (not HTTP)
+
+    - needAccess=true parameter required for access'
+url_patterns:
+  primary_template: https://www.tandfonline.com/doi/epdf/{doi}?needAccess=true
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - AIDS Care
+  - AIHA J (Fairfax, Va)
+  - AIHAJ
+  - AJOB Empir Bioeth
+  - AJOB Neurosci
+  - AJOB Prim Res
+  - ANQ
+  - Account Res
+  - Act Adapt Aging
+  - Acta Agric Scand A Anim Sci
+  - Acta Biomater Odontol Scand
+  - Acta Bot Gall
+  - Acta Chir Belg
+  - Acta Clin Belg
+  - Acta Clin Belg Suppl
+  - Acta Odontol Scand
+  - Acta Orthop Scand
+  - Acta Orthop Scand Suppl
+  - Acta Orthop Suppl
+  - Acta Otolaryngol
+  - Acta Otolaryngol Case Rep
+  - Acta Otolaryngol Suppl
+  - Acta Otorhinolaryngol Belg
+  - Acta Radiol Oncol
+  - Acta Radiol Oncol Radiat Phys Biol
+  - Acta Radiol Ther Phys Biol
+  - Acta Rheumatol Scand
+  - Acta Rheumatol Scand Suppl
+  - Action Learn
+  - Acute Card Care
+  - Addict Res Theory
+  - Adipocyte
+  - Adm Soc Work
+  - Adopt Q
+  - Adv Alcohol Subst Abuse
+  - Adv Eat Disord
+  - Adv Phys
+  - Adv Phys X
+  - Adv Physiother
+  - Adv Robot
+  - Adv Sch Ment Health Promot
+  - Aerosol Sci Technol
+  - Afr J AIDS Res
+  - Afr J Herpetol
+  - Afr J Range Forage Sci
+  - Afr Stud
+  - Agenda
+  - Aging Male
+  - Aging Ment Health
+  - Aging health
+  - Air Waste
+  - Alcohol Treat Q
+  - Am Ind Hyg Assoc J
+  - Am Ind Hyg Assoc Q
+  - Am J Bioeth
+  - Am J Clin Hypn
+  - Am J Distance Educ
+  - Am J Drug Alcohol Abuse
+  - Am J Fam Ther
+  - Am J Health Educ
+  - Am J Psychiatr Rehabil
+  - Am J Sex Educ
+  - Am Math Mon
+  - Am Orthopt J
+  - Am Rev Can Stud
+  - Am Stat
+  - Ambix
+  - Amerasia J
+  - Amyloid
+  - Amyotroph Lateral Scler
+  - Amyotroph Lateral Scler Frontotemporal Degener
+  - Amyotroph Lateral Scler Other Motor Neuron Disord
+  - Angelaki
+  - Anim Biotechnol
+  - Anim Cells Syst (Seoul)
+  - Ann Am Assoc Geogr
+  - Ann Assoc Am Geogr
+  - Ann GIS
+  - Ann Hum Biol
+  - Ann Int Commun Assoc
+  - Ann Med
+  - Ann Sci
+  - Ann Trop Med Parasitol
+  - Ann Trop Paediatr
+  - Anthropol Archeol Eurasia
+  - Anthropol Forum
+  - Anthropol Med
+  - Anthropol Now
+  - Anthrozoos
+  - Anxiety Stress Coping
+  - Aphasiology
+  - Appl Anal
+  - Appl Artif Intell
+  - Appl Dev Sci
+  - Appl Econ
+  - Appl Econ Lett
+  - Appl Environ Educ Commun
+  - Appl Math Finance
+  - Appl Neuropsychol
+  - Appl Neuropsychol Adult
+  - Appl Neuropsychol Child
+  - Appl Occup Environ Hyg
+  - Appl Spectrosc Rev
+  - Aquat Insects
+  - Arab J Urol
+  - Arboric J
+  - Arch Acker Pflanzenbau Bodenkd
+  - Arch Androl
+  - Arch Anim Nutr
+  - Arch Environ Health
+  - Arch Environ Occup Health
+  - Arch Int Physiol
+  - Arch Int Physiol Biochim
+  - Arch Int Physiol Biochim Biophys
+  - Arch Physiol Biochem
+  - Arch Rec (Abingdon)
+  - Arch Suicide Res
+  - Arch Tierernahr
+  - Archit Sci Rev
+  - Arct Antarct Alp Res
+  - Art Bull
+  - Art Ther (Alex)
+  - Artif Cells Blood Substit Immobil Biotechnol
+  - Artif Cells Nanomed Biotechnol
+  - Artif DNA PNA XNA
+  - Arts Health
+  - Asia Pac J Couns Psychother
+  - Asia Pac J Soc Work
+  - Asia Pac J Soc Work Dev
+  - Asia Pac J Speech Lang Hear
+  - Asian Aff (Lond)
+  - Asian Anthropol
+  - Asian Geogr
+  - Asian J Commun
+  - Asian J Women Stud
+  - Asian Popul Stud
+  - Assess Educ
+  - Assess Eval High Educ
+  - Assist Technol
+  - Atl J Commun
+  - Atl Stud (Abingdon)
+  - Attach Hum Dev
+  - Audiol Med
+  - Audiology
+  - Audit Percept Cogn
+  - Augment Altern Commun
+  - Aust Fem Stud
+  - Aust Geogr
+  - Aust Hist Stud
+  - Aust J Forensic Sci
+  - Aust J Learn Diffic
+  - Aust J Ment Retard
+  - Aust J Optom
+  - Aust J Polit Sci
+  - Aust J Psychol
+  - Aust N Z J Art
+  - Aust Outlook
+  - Aust Psychol
+  - Australas J Optom
+  - Australas J Philos
+  - Autobiogr Stud
+  - Autoimmunity
+  - Autophagy
+  - Avian Pathol
+  - Azania
+  - Bacteriophage
+  - Baptist Q
+  - Basic Appl Soc Psych
+  - Behav Med
+  - Behav Sleep Med
+  - Behav Soc Sci Librar
+  - Bereave Care
+  - Big Earth Data
+  - Bijdragen
+  - Biling Res J
+  - Bioacoustics
+  - Bioanalysis
+  - Bioarchitecture
+  - Biocatal Biotransformation
+  - Biodemography Soc Biol
+  - Biodiversity (Nepean)
+  - Bioelectron Med (Lond)
+  - Bioeng Bugs
+  - Bioengineered
+  - Biofouling
+  - Biofuels
+  - Biol Rhythm Res
+  - Biomark Med
+  - Biomarkers
+  - Biomater Artif Cells Artif Organs
+  - Biomater Artif Cells Immobilization Biotechnol
+  - Biomater Investig Dent
+  - Biomater Med Devices Artif Organs
+  - Biomatter
+  - Bioremediat J
+  - Biosci Biotechnol Biochem
+  - Biostat Epidemiol
+  - Biotech Histochem
+  - Biotechniques
+  - Biotechnol Biotechnol Equip
+  - Biotechnol Genet Eng Rev
+  - Black Scholar
+  - Blood Press
+  - Blood Press Suppl
+  - Body Mov Dance Psychother
+  - Br J Audiol
+  - Br J Audiol Suppl
+  - Br J Guid Counc
+  - Br J Hist Philos
+  - Br J Neurosurg
+  - Br J Orthod
+  - Br J Sociol Educ
+  - Br J Sports Hist
+  - Br Poult Sci
+  - Brain Comput Interfaces (Abingdon)
+  - Brain Inj
+  - Breast Cancer Manag
+  - Bronte Soc Trans
+  - Bull At Sci
+  - Bull Br Soc Middle East Stud
+  - Bull Concern Asian Sch
+  - Bull Indones Econ Stud
+  - Bus Hist
+  - CNS Oncol
+  - COPD
+  - CRC Crit Rev Biochem
+  - CRC Crit Rev Clin Lab Sci
+  - CRC Crit Rev Food Sci Nutr
+  - CRC Crit Rev Microbiol
+  - CRC Crit Rev Plant Sci
+  - CRC Crit Rev Toxicol
+  - Can J Afr Stud
+  - Can J Lat Am Caribb Stud
+  - Can J Pain
+  - Can Slavon Pap
+  - Cancer Biol Ther
+  - Cancer Invest
+  - Carbon Manag
+  - Care Giver
+  - Caribb Q
+  - Cartogr Geogr Inf Sci
+  - Cartogr J
+  - Case Reports Plast Surg Hand Surg
+  - Cat Classif Q
+  - Catal Rev Sci Eng
+  - Celebr Stud
+  - Cell Adhes Commun
+  - Cell Commun Adhes
+  - Cell Cycle
+  - Cell Logist
+  - Cent States Speech J
+  - Centr Asian Surv
+  - Chance (N Y)
+  - Change
+  - Channels
+  - Channels (Austin)
+  - Chem Eng Commun
+  - Child Adolesc Obes
+  - Child Care Pract
+  - Child Educ
+  - Child Fam Behav Ther
+  - Child Geogr
+  - Child Health Care
+  - Child Neuropsychol
+  - Child Youth Serv
+  - Chimerism
+  - Chin Sociol Rev
+  - China Economic J
+  - Chronobiol Int
+  - Cities Health
+  - Citizensh Stud
+  - City (Lond)
+  - Claustrum
+  - Clearing House
+  - Clim Dev
+  - Climacteric
+  - Clin Exp Dial Apheresis
+  - Clin Exp Hypertens
+  - Clin Exp Hypertens (1978)
+  - Clin Exp Hypertens A
+  - Clin Exp Hypertens B
+  - Clin Exp Optom
+  - Clin Gerontol
+  - Clin Linguist Phon
+  - Clin Lipidol
+  - Clin Neuropsychol
+  - Clin Psychol (Aust Psychol Soc)
+  - Clin Res Pr Drug Regul Aff
+  - Clin Res Regul Aff
+  - Clin Superv
+  - Clin Toxicol
+  - Clin Toxicol (Phila)
+  - CoDesign
+  - Coast Manage
+  - Cochlear Implants Int
+  - Coevolution
+  - Cogent Arts Humanit
+  - Cogent Biol
+  - Cogent Chem
+  - Cogent Eng
+  - Cogent Environ Sci
+  - Cogent Food Agric
+  - Cogent Geosci
+  - Cogent Math Stat
+  - Cogent Med
+  - Cogent Psychol
+  - Cogent Soc Sci
+  - Cogn Behav Ther
+  - Cogn Emot
+  - Cogn Instr
+  - Cogn Neuropsychiatry
+  - Cogn Neuropsychol
+  - Cogn Neurosci
+  - Cold War Hist
+  - Colon latin Am Rev
+  - Combust Sci Technol
+  - Comments Mod Chem A Comments Inorg Chem
+  - Commonw Comp Polit
+  - Commun Algebra
+  - Commun Educ
+  - Commun Integr Biol
+  - Commun Methods Meas
+  - Commun Monogr
+  - Commun Q
+  - Commun Res Rep
+  - Commun Soil Sci Plant Anal
+  - Commun Stat Case Stud Data Anal Appl
+  - Commun Stat Simul Comput
+  - Commun Stat Theory Methods
+  - Commun Stud
+  - Commun Yearb
+  - Communist Econ
+  - Communist Econ Econ Transform
+  - Community Coll J Res Pract
+  - Community Dev (Columb)
+  - Community Ment Health Rev
+  - Community Work Fam
+  - Comp Educ
+  - Compare
+  - Compost Sci Util
+  - Compr Child Adolesc Nurs
+  - Compr Results Soc Psychol
+  - Comput Aided Surg
+  - Comput Assist Surg (Abingdon)
+  - Comput Methods Biomech Biomed Eng Imaging Vis
+  - Comput Methods Biomech Biomed Engin
+  - Comput Sch
+  - Conn Sci
+  - Connect Tissue Res
+  - Contemp Br Hist
+  - Contemp Nurse
+  - Contemp Phys
+  - Contemp Psychoanal
+  - Contemp Secur Policy
+  - Contemp Soc Sci
+  - Contemp South Asia
+  - Continuum (Mount Lawley)
+  - Corrections
+  - Couns Psychol Q
+  - Cranio
+  - Creat Res J
+  - Crim Justice Ethics
+  - Crim Justice Stud (Abingdon)
+  - Crit Afr Stud
+  - Crit Arts
+  - Crit Asian Stud
+  - Crit Mil Stud
+  - Crit Policy Stud
+  - Crit Public Health
+  - Crit Rev (N Y)
+  - Crit Rev Anal Chem
+  - Crit Rev Biochem Mol Biol
+  - Crit Rev Biotechnol
+  - Crit Rev Clin Lab Sci
+  - Crit Rev Environ Sci Technol
+  - Crit Rev Food Sci Nutr
+  - Crit Rev Int Soc Political Philos
+  - Crit Rev Microbiol
+  - Crit Rev Toxicol
+  - Crit Stud Mass Commun
+  - Crit Stud Media Commun
+  - Crit Stud Secur
+  - Crit Stud Terror
+  - Crystallogr Rev
+  - Cult Health Sex
+  - Cult Relig
+  - Cult Soc Hist
+  - Curr Eye Res
+  - Curr Med Res Opin
+  - Cutan Ocul Toxicol
+  - Cybern Syst
+  - Cytokines Cell Mol Ther
+  - DISP
+  - DNA Seq
+  - Deafness Educ Int
+  - Death Educ
+  - Death Stud
+  - Dermatoendocrinol
+  - Des Monomers Polym
+  - Design Health (Abingdon)
+  - Dev Neuropsychol
+  - Dev Neurorehabil
+  - Dev Pract
+  - Dev South Afr
+  - Deviant Behav
+  - Diabet Foot Ankle
+  - Dialogues Clin Neurosci
+  - Diatom Res
+  - Dipl Statecraft
+  - Disabil Handicap Soc
+  - Disabil Rehabil
+  - Disabil Rehabil Assist Technol
+  - Disabil Soc
+  - Disaster Health
+  - Discourse Process
+  - Doc Med Ethics
+  - Dress
+  - Drug Chem Toxicol
+  - Drug Deliv
+  - Drug Dev Ind Pharm
+  - Drug Metab Rev
+  - Drugs (Abingdon Engl)
+  - Drugs Soc (New York)
+  - EMI Educ Media Int
+  - Early Educ Dev
+  - Early Years (Stoke-on-Trent)
+  - East Afri Agric For J
+  - East Asian Sci Technol Soc
+  - East Eur Jew Aff
+  - East Europ Econ
+  - Eat Disord
+  - Ecol Food Nutr
+  - Ecol Psychol
+  - Econ Geogr
+  - Econ Hist (Sweden)
+  - Econ Polit Stud
+  - Econ Soc
+  - Econ Syst Res
+  - Econom Rev
+  - Ecosyst People (Abingdon)
+  - Educ 3 13
+  - Educ Action Res
+  - Educ Econ
+  - Educ Forum
+  - Educ Gerontol
+  - Educ Prim Care
+  - Educ Psychol
+  - Educ Psychol (Lond)
+  - Educ Psychol Pract
+  - Educ Res (Windsor)
+  - Educ Res Eval
+  - Educ Rev (Birm)
+  - Educ Stud
+  - Electromagn Biol Med
+  - Emerg Health Serv Q
+  - Emerg Health Serv Rev
+  - Emerg Health Threats J
+  - Emerg Microbes Infect
+  - Emot Behav Diffic
+  - Emu
+  - Enantiomer
+  - Endocr Disruptors (Austin)
+  - Endocr Res Commun
+  - Endothelium
+  - Eng Econ
+  - Engl Stud (Amst)
+  - Enterp Inf Syst
+  - Env Polit
+  - Environ Bioindic
+  - Environ Educ Res
+  - Environ Lett
+  - Environ Pract
+  - Environ Sociol
+  - Environ Technol
+  - Epigenetics
+  - Epigenomics
+  - Equity Excell Educ
+  - Ergonomics
+  - Essays Stud (Lond)
+  - Ethics Behav
+  - Ethics Policy Environ
+  - Ethics Soc Welf
+  - Ethn Health
+  - Ethn Racial Stud
+  - Ethnopolitics
+  - Ethnos
+  - Ethol Ecol Evol
+  - Eugen Q
+  - Eur Account Rev
+  - Eur Asia Stud
+  - Eur Clin Respir J
+  - Eur J Behav Anal
+  - Eur J Cogn Psychol
+  - Eur J Contracept Reprod Health Care
+  - Eur J Cult Polit Sociol
+  - Eur J Dev Psychol
+  - Eur J Engl Stud
+  - Eur J Gen Pract
+  - Eur J Genet Soc
+  - Eur J Hist Econ Thought
+  - Eur J Inf Syst
+  - Eur J Phycol
+  - Eur J Physiother
+  - Eur J Psychother Couns
+  - Eur J Psychotraumatol
+  - Eur J Remote Sens
+  - Eur J Spec Needs Educ
+  - Eur Leg Towar New Paradig
+  - Eur Rev Hist
+  - Eur Rev Soc Psychol
+  - Eurasian Geogr Econ
+  - Evid Based Commun Assess Interv
+  - Evid Based Pract Child Adolesc Ment Health
+  - Exceptionality
+  - Exp Aging Res
+  - Exp Lung Res
+  - Exp Math
+  - Expert Opin Biol Ther
+  - Expert Opin Drug Deliv
+  - Expert Opin Drug Discov
+  - Expert Opin Drug Metab Toxicol
+  - Expert Opin Drug Saf
+  - Expert Opin Emerg Drugs
+  - Expert Opin Investig Drugs
+  - Expert Opin Med Diagn
+  - Expert Opin Orphan Drugs
+  - Expert Opin Pharmacother
+  - Expert Opin Ther Pat
+  - Expert Opin Ther Targets
+  - Expert Rev Anti Infect Ther
+  - Expert Rev Anticancer Ther
+  - Expert Rev Cardiovasc Ther
+  - Expert Rev Clin Immunol
+  - Expert Rev Clin Pharmacol
+  - Expert Rev Dermatol
+  - Expert Rev Endocrinol Metab
+  - Expert Rev Gastroenterol Hepatol
+  - Expert Rev Hematol
+  - Expert Rev Med Devices
+  - Expert Rev Mol Diagn
+  - Expert Rev Neurother
+  - Expert Rev Obstet Gynecol
+  - Expert Rev Ophthalmol
+  - Expert Rev Pharmacoecon Outcomes Res
+  - Expert Rev Precis Med Drug Dev
+  - Expert Rev Proteomics
+  - Expert Rev Qual Life Cancer Care
+  - Expert Rev Respir Med
+  - Expert Rev Vaccines
+  - Fam Community Hist
+  - Fam Sci
+  - Fatigue
+  - Fem Econ
+  - Fem Media Stud
+  - Ferroelectrics
+  - Fetal Pediatr Pathol
+  - Fly (Austin)
+  - Focus Gend
+  - Folklore
+  - Food Addit Contam
+  - Food Addit Contam Part A Chem Anal Control Expo Risk Assess
+  - Food Addit Contam Part B Surveill
+  - Food Agric Immunol
+  - Food Biotechnol
+  - Food Cult Soc
+  - Food Foodways
+  - Footwear Sci
+  - Forum Dev Stud
+  - Free Radic Res
+  - Free Radic Res Commun
+  - Futur HIV Ther
+  - Future Cardiol
+  - Future Drug Discov
+  - Future Lipidol
+  - Future Med Chem
+  - Future Microbiol
+  - Future Neurol
+  - Future Oncol
+  - Future Sci OA
+  - Future Virol
+  - GIsci Remote Sens
+  - GM Crops
+  - GM Crops Food
+  - Gend Dev
+  - Gend Educ
+  - Gend Place Cult
+  - Gend Technol Dev
+  - Genet Soc Gen Psychol Monogr
+  - Geo Spat Inf Sci
+  - GeoHumanities
+  - Geocarto Int
+  - Geogr Ann Ser B
+  - Geogr Rev
+  - Geogr Tidsskr
+  - Geomicrobiol J
+  - Ger Polit
+  - Gerontol Geriatr Educ
+  - Gifted Talent Int
+  - Glob Bioeth
+  - Glob Food Hist
+  - Glob Health Action
+  - Glob Health Commun
+  - Glob Public Health
+  - Glob Soc
+  - Globalizations
+  - Grana
+  - Green Chem Lett Rev
+  - Growth Factors
+  - Gut Microbes
+  - Gynecol Endocrinol
+  - HFSP J
+  - HIV Clin Trials
+  - HIV Res Clin Pract
+  - HIV Ther
+  - Hemoglobin
+  - Health Care Women Int
+  - Health Commun
+  - Health Mark Q
+  - Health Psychol Behav Med
+  - Health Psychol Rev
+  - Health Risk Soc
+  - Health Sociol Rev
+  - Health Syst (Basingstoke)
+  - Health Syst Reform
+  - Hematology
+  - Hemoglobin
+  - Hepat Oncol
+  - High Educ Pedagog
+  - High Press Res
+  - Hist Anthropol
+  - Hist Anthropol Chur
+  - Hist Biol
+  - Hist Educ
+  - Hist Eur Ideas
+  - Hist Fam
+  - Hist J Film Radio Telev
+  - Hist Methods
+  - Hist Neurosci
+  - Hist Photogr
+  - Hist Stud
+  - Hist Technol
+  - Historian
+  - Historian (Lond)
+  - Home Health Care Serv Q
+  - Hosp J
+  - Hosp Pract
+  - Hosp Pract (1995)
+  - Hosp Pract (Hosp Ed)
+  - Hosp Pract (Off Ed)
+  - Hosp Top
+  - Hous Policy Debate
+  - Hous Soc
+  - Hous Stud
+  - Howard J Commun
+  - Hum Comput Interact
+  - Hum Ecol Risk Assess
+  - Hum Fertil (Camb)
+  - Hum Perf Extrem Environ
+  - Hum Perform
+  - Hum Reprod Genet Ethics
+  - Hum Serv Organ Manag Leadersh Gov
+  - Hum Vaccin
+  - Hum Vaccin Immunother
+  - Hydrol Sci J
+  - Hypertens Pregnancy
+  - IETE J Res
+  - IIE Trans
+  - IIE Trans Healthc Syst Eng
+  - IIE Trans Occup
+  - IISE Trans
+  - IISE Trans Healthc Syst Eng
+  - IISE Trans Occup Ergon Hum Factors
+  - INFOR
+  - Identities (Yverdon)
+  - Identity (Mahwah, N J)
+  - Imago Mundi
+  - Immigr Minor
+  - Immunol Commun
+  - Immunol Invest
+  - Immunol Med
+  - Immunopharmacol Immunotoxicol
+  - Immunotherapy
+  - Ind Innov
+  - Indones Malay World
+  - Inf Commun Soc
+  - Inf Technol Dev
+  - Infect Dis (Lond)
+  - Infect Ecol Epidemiol
+  - Inform Health Soc Care
+  - Inhal Toxicol
+  - Inj Control Saf Promot
+  - Inland Waters
+  - Innovation (Abingdon)
+  - Innovation (North Syd)
+  - Inquiry (Oslo)
+  - Instrum Sci Technol
+  - Int Biomech
+  - Int Disabil Stud
+  - Int Econ J
+  - Int Fem J Polit
+  - Int Gambl Stud
+  - Int Geol Rev
+  - Int Hist Rev
+  - Int J Acarol
+  - Int J Addict
+  - Int J Adolesc Youth
+  - Int J Advert
+  - Int J Agric Sustain
+  - Int J Audiol
+  - Int J Biling Educ Biling
+  - Int J Biodivers Sci Ecosyst Serv Manag
+  - Int J Cardiovasc Intervent
+  - Int J Circumpolar Health
+  - Int J Clin Exp Hypn
+  - Int J Cogn Ergon
+  - Int J Comp Appl Crim Justice
+  - Int J Comput Integr Manuf
+  - Int J Comput Math
+  - Int J Comut Fluid Dyn
+  - Int J Constr Educ Res
+  - Int J Control
+  - Int J Crude Drug Res
+  - Int J Cult Ment Health
+  - Int J Dev Disabil
+  - Int J Digit Earth
+  - Int J Early Years Educ
+  - Int J Econ Bus
+  - Int J Endocr Oncol
+  - Int J Environ Anal Chem
+  - Int J Environ Health Res
+  - Int J Environ Stud
+  - Int J Food Sci Nutr
+  - Int J Forensic Ment Health
+  - Int J Gen Syst
+  - Int J Geogr Inf Sci
+  - Int J Green Energy
+  - Int J Green Nanotechnol Biomed
+  - Int J Group Psychother
+  - Int J Health Promot Educ
+  - Int J Healthc Manag
+  - Int J Hematol Oncol
+  - Int J Hist Sport
+  - Int J Hum Genet
+  - Int J Hyperthermia
+  - Int J Image Data Fusion
+  - Int J Inj Contr Saf Promot
+  - Int J Math Educ Sci Technol
+  - Int J Ment Health
+  - Int J Ment Health Promot
+  - Int J Min Reclam Environ
+  - Int J Mult Res Approaches
+  - Int J Multiling
+  - Int J Neurosci
+  - Int J Occup Environ Health
+  - Int J Occup Saf Ergon
+  - Int J Optomechatronics
+  - Int J Parallel Emergent Distrib Syst
+  - Int J Perform Anal Sport
+  - Int J Perform Arts Digit Media
+  - Int J Pest Manag
+  - Int J Pharmacokinet
+  - Int J Philos Stud
+  - Int J Phytoremediation
+  - Int J Play
+  - Int J Polym Mater
+  - Int J Prod Res
+  - Int J Psychiatry Clin Pract
+  - Int J Psychoanal
+  - Int J Psychoanal Psychother
+  - Int J Psychoanal Self Psychol
+  - Int J Psychol Relig
+  - Int J Qual Stud Educ
+  - Int J Qual Stud Health Well-being
+  - Int J Radiat Biol
+  - Int J Radiat Biol Relat Stud Phys Chem Med
+  - Int J Remote Sens
+  - Int J Sch Educ Psychol
+  - Int J Sci Educ
+  - Int J Sci Educ B Commun Public Engagem
+  - Int J Sex Health
+  - Int J Smart Nano Mater
+  - Int J Soc Res Methodol
+  - Int J Sociol
+  - Int J Speech Lang Pathol
+  - Int J Sport Exerc Psychol
+  - Int J Sustain Transp
+  - Int J Syst Sci
+  - Int J Transgend
+  - Int J Transgend Health
+  - Int J Vet Sci Med
+  - Int J Water Resour Dev
+  - Int Libr Rev
+  - Int Musculoskelet Med
+  - Int Peacekeep
+  - Int Plan Stud
+  - Int Public Manag J
+  - Int Rehabil Med
+  - Int Rev Appl Econ
+  - Int Rev Immunol
+  - Int Rev Phys Chem
+  - Int Rev Psychiatry
+  - Int Rev Sport Exerc Psychol
+  - Int Spect (Rome)
+  - Int multiling res j
+  - Integral Transform Spec Funct
+  - Intellect Hist Rev
+  - Interpret Transl Train
+  - Interventions (Lond)
+  - Intl J Disabil Dev Educ
+  - Intravital
+  - Intrinsically Disord Proteins
+  - Inverse Probl Sci Eng
+  - Invertebr Reprod Dev
+  - Ir Geogr
+  - Ir J Psychol
+  - Ir Stud Rev
+  - Islets
+  - Isotopes Environ Health Stud
+  - Issues Compr Pediatr Nurs
+  - Issues Health Care Women
+  - Issues Ment Health Nurs
+  - Ital Stud
+  - J 3D Print Med
+  - J Access Serv
+  - J Addict Dis
+  - J Adhes
+  - J Adhes Sci Technol
+  - J Advert
+  - J Aggress Maltreat Trauma
+  - J Aging Soc Policy
+  - J Agromedicine
+  - J Air Pollut Control Assoc
+  - J Air Waste Manag Assoc
+  - J Air Waste Manage Assoc
+  - J Am Coll Health
+  - J Am Coll Health Assoc
+  - J Am Coll Nutr
+  - J Am Inst Plann
+  - J Am Paraplegia Soc
+  - J Am Plann Assoc
+  - J Am Stat Assoc
+  - J Ambul Care Mark
+  - J Apic Res
+  - J Appl Anim Welf Sci
+  - J Appl Econ
+  - J Appl Sch Psychol
+  - J Appl Sport Psychol
+  - J Appl Stat
+  - J Asia Pac Econ
+  - J Asian Nat Prod Res
+  - J Asian Public Policy
+  - J Assoc Care Child Health
+  - J Assoc Care Child Hosp
+  - J Asthma
+  - J Asthma Res
+  - J Audiov Media Med
+  - J Balt Stud
+  - J Behav Financ
+  - J Binocul Vis Ocul Motil
+  - J Biol Dyn
+  - J Biol Educ
+  - J Biomater Sci Polym Ed
+  - J Biomol Struct Dyn
+  - J Biopharm Stat
+  - J Bisex
+  - J Borderl Stud
+  - J Broadcast Electron Media
+  - J Bryol
+  - J Build Perform Simul
+  - J Bus Econ Stat
+  - J Calif Dent Assoc
+  - J Care Serv Manag
+  - J Chemother
+  - J Child Adolesc Couns
+  - J Child Adolesc Subst Abuse
+  - J Child Custody
+  - J Child Media
+  - J Child Poverty
+  - J Child Sex Abus
+  - J Clin Child Adolesc Psychol
+  - J Clin Child Psychol
+  - J Clin Exp Neuropsychol
+  - J Clin Neuropsychol
+  - J Cogn Dev
+  - J Cogn Psychol (Hove)
+  - J College Stud Psychother
+  - J Commonw Comp Polit
+  - J Commonw Polit Stud
+  - J Commun Healthc
+  - J Community Dev Soc
+  - J Community Health Nurs
+  - J Community Pract
+  - J Comput Graph Stat
+  - J Constr Psychol
+  - J Consum Health Internet
+  - J Contemp Afr Stud
+  - J Contemp Asia
+  - J Contemp China
+  - J Coord Chem
+  - J Cosmet Laser Ther
+  - J Couple Relatsh Ther
+  - J Craniomandibular Pract
+  - J Creat Ment Health
+  - J Crime Justice
+  - J Crit Realism
+  - J Crop Improv
+  - J Cult Econ
+  - J Cutan Laser Ther
+  - J Decis Syst
+  - J Dermatolog Treat
+  - J Dev Effect
+  - J Dev Stud
+  - J Dial
+  - J Diet Suppl
+  - J Dispers Sci Technol
+  - J Divorce
+  - J Divorce Remarriage
+  - J Drug Assess
+  - J Drug Target
+  - J Dual Diagn
+  - J Early Child Teach Educ
+  - J East Afr Stud
+  - J East West Stud
+  - J Econ Educ
+  - J Econ Issues
+  - J Educ Adm Hist
+  - J Educ Psychol Consult
+  - J Educ Res
+  - J Educ Stud Placed Risk
+  - J Educ Teach
+  - J Elder Abuse Negl
+  - J Elect Public Opin Parties
+  - J Electromagn Waves Appl
+  - J Environ Educ
+  - J Environ Sci Health A Environ Sci Eng
+  - J Environ Sci Health A Environ Sci Eng Toxic Hazard Subst Control
+  - J Environ Sci Health A Tox Hazard Subst Environ Eng
+  - J Environ Sci Health B
+  - J Environ Sci Health C Environ Carcinog Ecotoxicol Rev
+  - J Environ Sci Health C Toxicol Carcinog
+  - J Enzyme Inhib
+  - J Enzyme Inhib Med Chem
+  - J Ethn Crim Justice
+  - J Ethn Cult Divers Soc Work
+  - J Ethn Migr Stud
+  - J Ethn Subst Abuse
+  - J Eur CME
+  - J Eur Integr
+  - J Eur Public Policy
+  - J Evid Based Soc Work
+  - J Evid Based Soc Work (2019)
+  - J Evid Inf Soc Work
+  - J Exp Educ
+  - J Exp Nanosci
+  - J Exp Theor Artif Intell
+  - J Fam Commun
+  - J Fam Psychother
+  - J Fam Soc Work
+  - J Fam Stud
+  - J Fem Fam Ther
+  - J Field Archaeol
+  - J Forens Psychiatry Psychol
+  - J Forensic Psychol Pract
+  - J Forensic Psychol Res Pract
+  - J Furth High Educ
+  - J GLBT Fam Stud
+  - J Gay Lesbian Ment Health
+  - J Gay Lesbian Soc Serv
+  - J Gen Psychol
+  - J Gend Stud
+  - J Genet Psychol
+  - J Genocide Res
+  - J Geog
+  - J Gerontol Soc Work
+  - J Glob Ethics
+  - J Groups Addict Recover
+  - J HIV AIDS Prev Child Youth
+  - J HIV AIDS Soc Serv
+  - J Health Care Chaplain
+  - J Health Commun
+  - J Health Educ
+  - J Health Soc Policy
+  - J Herb Pharmacother
+  - J Herbs Spices Med Plants
+  - J Higher Educ
+  - J Hist Neurosci
+  - J Histotechnol
+  - J Homosex
+  - J Hosp Librariansh
+  - J Hosp Mark
+  - J Hosp Mark Public Relations
+  - J Hous Elderly
+  - J Hum Behav Soc Environ
+  - J Hum Ecol
+  - J Hum Rights
+  - J Hum Traffick
+  - J Hum Transcr
+  - J Human Dev Capabil
+  - J Human Stress
+  - J Hunger Environ Nutr
+  - J Iber Lat Am Stud
+  - J Immigr Refug Stud
+  - J Immunoassay
+  - J Immunoassay Immunochem
+  - J Immunopharmacol
+  - J Immunotoxicol
+  - J Imp Commonw Hist
+  - J Infant Child Adolesc Psychother
+  - J Int Soc Sports Nutr
+  - J Int Trade Econ Dev
+  - J Intell Transp Syst
+  - J Intellect Dev Disabil
+  - J Intercult Commun Res
+  - J Intercult Stud
+  - J Interdiscipl Cycle Res
+  - J Intergener Relatsh
+  - J Interprof Care
+  - J Invest Surg
+  - J Isr Hist
+  - J LGBT Health Res
+  - J LGBT Issues Couns
+  - J LGBT Youth
+  - J Land Use Sci
+  - J Lat Educ
+  - J Leg Med
+  - J Legal Hist
+  - J Leis Res
+  - J Lesbian Stud
+  - J Libr Adm
+  - J Libr Metadata
+  - J Life Sci
+  - J Liposome Res
+  - J Liq Chromatogr
+  - J Liq Chromatogr Relat Technol
+  - J Loss Trauma
+  - J Macromol Sci Phys
+  - J Maint Addict
+  - J Man Manip Ther
+  - J Manag Inf Syst
+  - J Map Geogr Libr
+  - J Maps
+  - J Marit Res
+  - J Matern Fetal Neonatal Med
+  - J Math Sociol
+  - J Med Econ
+  - J Med Eng Technol
+  - J Media Bus Stud
+  - J Mediev Hist
+  - J Mediev Iber Stud
+  - J Ment Health
+  - J Ment Health Res Intellect Disabil
+  - J Ment Subnorm
+  - J Microencapsul
+  - J Microw Power
+  - J Microw Power Electromagn Energy
+  - J Middle East Afr
+  - J Mod Ital Stud
+  - J Mod Jew Stud
+  - J Mod Opt
+  - J Moral Educ
+  - J Mot Behav
+  - J Multicult Soc Work
+  - J Multiling Commun Disord
+  - J Multiling Multicult Dev
+  - J Mus Educ
+  - J Musculoskelet Pain
+  - J Muslim Ment Health
+  - J Muslim Minor Aff
+  - J Nat Hist
+  - J Natal Zulu Hist
+  - J NeuroAIDS
+  - J Neurogenet
+  - J Neuropathic Pain Symptom Palliation
+  - J New Music Res
+  - J Nonparametr Stat
+  - J Nutr Elder
+  - J Nutr Environ Med
+  - J Nutr Gerontol Geriatr
+  - J Obstet Gynaecol
+  - J Obstet Gynaecol (Lahore)
+  - J Occup Environ Hyg
+  - J Occup Sci
+  - J Occup Ther Sch Early Interv
+  - J Offender Rehabil
+  - J Oper Res Soc
+  - J Oral Microbiol
+  - J Organ Behav Manage
+  - J Organ Dysfunct
+  - J Pac Hist
+  - J Pain Palliat Care Pharmacother
+  - J Peasant Stud
+  - J Pediatr Perinat Nutr
+  - J Pers Assess
+  - J Pharm Mark Manage
+  - J Pharm Policy Pract
+  - J Philos Sport
+  - J Phys Educ Recreat Dance
+  - J Plant Nutr
+  - J Poet Ther
+  - J Police Crisis Negot
+  - J Policy Pract
+  - J Pop Film Telev
+  - J Posit Psychol
+  - J Post Keynes Econ
+  - J Postcolon Writ
+  - J Poverty
+  - J Prev Interv Community
+  - J Prof Serv Mark
+  - J Progress Hum Serv
+  - J Proj Tech
+  - J Proj Tech Pers Assess
+  - J Psychedelic Drugs
+  - J Psychoactive Drugs
+  - J Psychol
+  - J Psychol Afr
+  - J Psychol Human Sex
+  - J Psychosoc Oncol
+  - J Psychosom Obstet Gynaecol
+  - J Public Child Welf
+  - J Quant Linguist
+  - J R Soc N Z
+  - J Recept Res
+  - J Recept Signal Transduct Res
+  - J Relig Aging
+  - J Relig Gerontol
+  - J Relig Spiritual Aging
+  - J Relig Spiritual Soc Work
+  - J Reprod Infant Psychol
+  - J Res Child Educ
+  - J Res Educ Eff
+  - J Responsible Innov
+  - J Risk Res
+  - J Sch Choice
+  - J Sch Violence
+  - J Sci Teacher Educ
+  - J Sex Aggress
+  - J Sex Educ Ther
+  - J Sex Marital Ther
+  - J Sex Res
+  - J Simul
+  - J Soc Arch
+  - J Soc Distress Homeless
+  - J Soc Psychol
+  - J Soc Serv Res
+  - J Soc Welf Fam Law
+  - J Soc Welfare Law
+  - J Soc Work Disabil Rehabil
+  - J Soc Work Educ
+  - J Soc Work End Life Palliat Care
+  - J Soc Work Hum Sex
+  - J Soc Work Pract
+  - J Soc Work Pract Addict
+  - J South Afr Stud
+  - J Spat Sci
+  - J Spinal Cord Med
+  - J Spiritual Ment Health
+  - J Sport Psychol Action
+  - J Sports Sci
+  - J Stat Comput Simul
+  - J Stat Educ
+  - J Stud Aff Res Pract
+  - J Subst Use
+  - J Sulphur Chem
+  - J Sustain Cem Based Mater
+  - J Syst Palaeontol
+  - J Teach Soc Work
+  - J Technol Hum Serv
+  - J Toxicol Clin Toxicol
+  - J Toxicol Cutaneous Ocul Toxicol
+  - J Toxicol Environ Health
+  - J Toxicol Environ Health A
+  - J Toxicol Environ Health B Crit Rev
+  - J Trauma Dissociation
+  - J Urban
+  - J Urban Aff
+  - J Urban Des (Abingdon)
+  - J Vertebr Paleontol
+  - J Vis Art Pract
+  - J Vis Commun Med
+  - J War Cult Stud
+  - J Wine Res
+  - J Women Aging
+  - J Women High Educ
+  - J Women Polit Policy
+  - J Workplace Behav Health
+  - J Youth Stud
+  - JAKSTAT
+  - JBSP
+  - Japanese Econ Stud
+  - Jew Cult Hist
+  - Journal Stud
+  - Justice Q
+  - Kiva
+  - Kleio
+  - Korean J Biol Sci
+  - Labor Hist
+  - Lake Reserv Manag
+  - Landsc Hist
+  - Landsc Res
+  - Lang Acquis
+  - Lang Assess Q
+  - Lang Cogn Neurosci
+  - Lang Cogn Process
+  - Lang Learn Dev
+  - Laterality
+  - Law Innov Technol
+  - Law Teach
+  - Leadersh Policy Sch
+  - Learn Media Technol
+  - Leg Ethics
+  - Legal Ref Serv Q
+  - Leis Sci
+  - Leisure (Waterloo)
+  - Leuk Lymphoma
+  - Liq Cryst
+  - Liq Cryst Rev
+  - Lit Res Instr
+  - Local Environ
+  - Logoped Phoniatr Vocol
+  - London J Prim Care (Abingdon)
+  - Lung Cancer Manag
+  - MAbs
+  - Mar Behav Physiol
+  - Mar Freshw Behav Physiol
+  - Mar Mirror
+  - Marriage Fam Rev
+  - Masaq
+  - Mass Commun Soc
+  - Mater Relig
+  - Mater Res Lett
+  - Mater Technol (N Y N Y)
+  - Math Comput Model Dyn Syst
+  - Math Popul Stud
+  - Math Think Learn
+  - Meas Eval Couns Dev
+  - Meas Phys Educ Exerc Sci
+  - Measurement ( Mahwah N J)
+  - Med Anthropol
+  - Med Confl Surviv
+  - Med Educ Online
+  - Med Inform (Lond)
+  - Med Inform Internet Med
+  - Med Ref Serv Q
+  - Med Teach
+  - Med War
+  - Media Asia
+  - Media Hist
+  - Media Psychol
+  - Mediev Archaeol
+  - Melanoma Manag
+  - Membr Biochem
+  - Memory
+  - Ment Health Relig Cult
+  - Ment Health Subst Use
+  - Mentor Tutoring
+  - Metaphor Symb
+  - Microb Ecol Health Dis
+  - Middle East Crit
+  - Middle East Dev J
+  - Middle East Stud
+  - Midl Hist
+  - Mil Behav Health
+  - Mil Psychol
+  - Mind Cult Act
+  - Ming Stud
+  - Minim Invasive Ther Allied Technol
+  - Mitochondrial DNA
+  - Mitochondrial DNA A DNA Mapp Seq Anal
+  - Mitochondrial DNA B Resour
+  - Mob Genet Elements
+  - Mod Contemp Fr
+  - Mol Cell Oncol
+  - Mol Membr Biol
+  - Mol Phys
+  - Mol Simul
+  - Mortality (Abingdon)
+  - Multivariate Behav Res
+  - Mus Hist J
+  - Mus Soc Issues
+  - Mycobiology
+  - Mycologia
+  - Mycology
+  - Myopain
+  - N Am Actuar J
+  - N Z J Bot
+  - N Z Vet J
+  - NHSA Dialog
+  - Nano Rev
+  - Nano Rev Exp
+  - Nanomedicine (Lond)
+  - Nanotoxicology
+  - Nat Prod Lett
+  - Nat Prod Res
+  - Nationalism Ethn Polit
+  - Neotrop Biodivers
+  - Network
+  - Neurocase
+  - Neurodegener Dis Manag
+  - Neurodiagn J
+  - Neurogenesis (Austin)
+  - Neurol Res
+  - Neuroophthalmology
+  - Neuropsychol Dev Cogn B Aging Neuropsychol Cogn
+  - Neuropsychol Rehabil
+  - New Bioeth
+  - New Rev Bioeth
+  - New Rev Hypermedia Multimed
+  - New community
+  - Ninet Century Contexts
+  - Nor Geogr Tidsskr
+  - Nord J Music Ther
+  - Nord J Psychiatry
+  - Nord Psychol
+  - Nord Psykiatr Tidsskr
+  - Nord Psykol
+  - North Hist
+  - Nucl Sci Eng
+  - Nucl Technol
+  - Nucleosides Nucleotides
+  - Nucleosides Nucleotides Nucleic Acids
+  - Nucleus
+  - Numer Funct Anal Optim
+  - Nutr Cancer
+  - Nutr Neurosci
+  - Occup Ther Health Care
+  - Occup Ther Ment Health
+  - Ocul Immunol Inflamm
+  - Oncoimmunology
+  - Oncol Issues
+  - Oper Res Q
+  - Ophthalmic Epidemiol
+  - Ophthalmic Genet
+  - Ophthalmic Paediatr Genet
+  - Opt Acta (Lond)
+  - Optim Methods Softw
+  - Optimization
+  - Oral Hist Rev
+  - Orbit
+  - Org Prep Proced Int
+  - Organogenesis
+  - Orthod Waves
+  - Oxf Rev Educ
+  - Ozone Sci Eng
+  - Paedagog Hist
+  - Paediatr Int Child Health
+  - Pain Manag
+  - Palest Explor Q
+  - Parent Sci Pract
+  - Pastor Care Educ
+  - Pathobiol Aging Age Relat Dis
+  - Pathog Glob Health
+  - Patterns Prejudice
+  - Peabody J Educ
+  - Ped Health
+  - Pedagog Semin J Genet Psychol
+  - Pediatr Hematol Oncol
+  - Pediatr Pathol
+  - Pediatr Pathol Mol Med
+  - Pediatr Rehabil
+  - Per Med
+  - Perform Res
+  - Pet Sci Technol
+  - Pharm Biol
+  - Pharm Dev Technol
+  - Pharm Pat Anal
+  - Pharmacogenomics
+  - Philos Explor
+  - Philos Forum (1968)
+  - Philos Mag (Abingdon)
+  - Philos Mag Lett
+  - Philos Psychol
+  - Phosphorus Sulfur Silicon Relat Elem
+  - Photographies
+  - Phys Chem Liquids
+  - Phys Educ Sport Pedagogy
+  - Phys Geogr
+  - Phys Occup Ther Pediatr
+  - Phys Sportsmed
+  - Phys Ther Rev
+  - Physiother Theory Pract
+  - Plains Anthropol
+  - Plan Perspect
+  - Plant Biosyst
+  - Plant Ecol Divers
+  - Plant Prod Sci
+  - Plant Signal Behav
+  - Platelets
+  - Polar Geogr (Palm Beach)
+  - Polar J
+  - Police Pract Res
+  - Policing Soc
+  - Policy Stud
+  - Polit Commun
+  - Polit Groups Identities
+  - Polit Sci
+  - Politics (Syd)
+  - Polycycl Aromat Compd
+  - Polym Plast Technol Eng
+  - Polym Rev (Phila Pa)
+  - Popul Stud (Camb)
+  - Post Sov Aff
+  - Postcommunist Econ
+  - Postgrad Med
+  - Postmediev Archaeol
+  - Practice (Birm)
+  - Prehosp Emerg Care
+  - Prep Biochem
+  - Prep Biochem Biotechnol
+  - Prev Hum Serv
+  - Prev Sch Fail
+  - Prion
+  - Probl Econ
+  - Probl Econ Transit
+  - Proc (Bayl Univ Med Cent)
+  - Prod Manuf Res
+  - Prof Geogr
+  - Prog Palliat Care
+  - Prose Stud
+  - Psychiatr Psychol Law
+  - Psychoanal Dialogues
+  - Psychoanal Inq
+  - Psychoanal Psychother
+  - Psychoanal Q
+  - Psychoanal Study Child
+  - Psychodyn Couns
+  - Psychodyn Pract
+  - Psychol Crime Law
+  - Psychol Health
+  - Psychol Health Med
+  - Psychol Inq
+  - Psychol Sex
+  - Psychosis
+  - Psychother Res
+  - Q J Crude Drug Res
+  - Q J Speech
+  - Qual Assur
+  - Qual Eng
+  - Qual Res Psychol
+  - Qual Res Sport Exerc
+  - Qual Res Sport Exerc Health
+  - Qual Technol Quant Manag
+  - Quant Finance
+  - Quant Infrared Thermogr J
+  - RMLE Online
+  - RNA Biol
+  - Race Ethn Educ
+  - Radiat Eff
+  - Rare Dis
+  - Read Psychol
+  - Read Res Instr
+  - Read Writ Q
+  - Recept Channels
+  - Redox Rep
+  - Ref Libr
+  - Reg Stud
+  - Reg Stud Reg Sci
+  - Regen Med
+  - Relig Educ
+  - Relig State Soc
+  - Religion Brain Behav
+  - Remote Sens Lett
+  - Ren Fail
+  - Renaiss Mod Stud
+  - Representation (McDougall Trust)
+  - Reprod Health Matters
+  - Res Drama Educ
+  - Res Hum Dev
+  - Res Lang Soc Interact
+  - Res Manage
+  - Res Pap Educ
+  - Res Q Exerc Sport
+  - Res Sports Med
+  - Resid Treat Child Youth
+  - Rethink Hist
+  - Rev Can Etudes Dev
+  - Rev Comm
+  - Rev Faith Int Aff
+  - Rev Int Polit Econ
+  - Rev Soc Econ
+  - Rhetor Soc Q
+  - Roeper Rev
+  - Rorschach Res Exch J Proj Tech
+  - Round Table
+  - Russ Soc Sci Rev
+  - Russ Stud Hist
+  - S Afr Geogr J
+  - S Afr Hist J
+  - S Afr J Hum Rights
+  - S Afr Tydskr Sosiol
+  - SAHARA J
+  - SAR QSAR Environ Res
+  - Scand Actuar J
+  - Scand Audiol
+  - Scand Audiol Suppl
+  - Scand Cardiovasc J
+  - Scand Cardiovasc J Suppl
+  - Scand Econ Hist Rev
+  - Scand J Clin Lab Invest
+  - Scand J Clin Lab Invest Suppl
+  - Scand J Gastroenterol
+  - Scand J Gastroenterol Suppl
+  - Scand J Hist
+  - Scand J Infect Dis
+  - Scand J Infect Dis Suppl
+  - Scand J Occup Ther
+  - Scand J Plast Reconstr Surg
+  - Scand J Plast Reconstr Surg Hand Surg
+  - Scand J Prim Health Care
+  - Scand J Prim Health Care Suppl
+  - Scand J Rheumatol
+  - Scand J Rheumatol Suppl
+  - Scand J Thorac Cardiovasc Surg
+  - Scand J Urol Nephrol
+  - Scand J Urol Nephrol Suppl
+  - Sch Eff Sch Improv
+  - School Psych Rev
+  - Sci Cult (Lond)
+  - Sci Stud Read
+  - Sci Technol Adv Mater
+  - Sci Technol Built Environ
+  - Sci Technol Libr (New York, NY)
+  - Scott Geogr Mag
+  - Self Identity
+  - Self Nonself
+  - Semin Ophthalmol
+  - Sep Sci Technol
+  - Seq Anal
+  - Ser Libr
+  - Seventeenth Century
+  - Sex Addict Compulsivity
+  - Sex Educ
+  - Sex Marital Ther
+  - Sex Reprod Health Matters
+  - Slavery Abol
+  - Small GTPases
+  - Smith Coll Stud Soc Work
+  - Soc Biol
+  - Soc Cult Geogr
+  - Soc Dyn
+  - Soc Epistemol
+  - Soc Hist
+  - Soc Influ
+  - Soc Mov Stud
+  - Soc Nat Resour
+  - Soc Neurosci
+  - Soc Sci J
+  - Soc Stud
+  - Soc Thought
+  - Soc Work Groups
+  - Soc Work Health Care
+  - Soc Work Ment Health
+  - Soc Work Public Health
+  - Soccer Soc
+  - Socioaffect Neurosci Psychol
+  - Sociol Focus
+  - Sociol Q
+  - Sociol Res
+  - Sociol Spectr
+  - Soft Mater
+  - Soil Sediment Contam
+  - Somatosens Mot Res
+  - Somatosens Res
+  - Souls
+  - South Afr J Clin Nutr
+  - South Asia
+  - South Asian Hist Cult
+  - South Commun J
+  - South East Asia Res
+  - South Eur Soc Polit
+  - Sov Anthropol Archeol
+  - Sov Educ
+  - Sov Jew Aff
+  - Sov Law Gov
+  - Sov Rev
+  - Sov Soc
+  - Sov Stud
+  - Sov Stud Philos
+  - Space Polity
+  - Spat Econ Anal
+  - Spec Collect
+  - Spectrosc Lett
+  - Speech Lang Hear
+  - Spermatogenesis
+  - Sport Educ Soc
+  - Sport Ethics Philos
+  - Sport Soc
+  - Sports Biomech
+  - Sports Hist
+  - Stain Technol
+  - Star
+  - Stat Biopharm Res
+  - Stat Public Policy (Phila)
+  - Stat Theory Relat Fields
+  - Statistics (Ber)
+  - Stoch Anal Appl
+  - Stoch Model
+  - Stochastics (Abingdon)
+  - Strabismus
+  - Stress
+  - Struct Equ Modeling
+  - Stud Conserv
+  - Stud Gend Sex
+  - Stud Neophilol
+  - Stud Polit Econ
+  - Stud Sci Educ
+  - Stud Travel Writ
+  - Subst Use Misuse
+  - Supramol Chem
+  - Survival (Lond)
+  - Sustain Resilient Infrastruct
+  - Symb Oslo
+  - Synchrotron Radiat News
+  - Synth Commun
+  - Syst Biodivers
+  - Syst Biol Reprod Med
+  - Syst Biomed (Austin)
+  - Teach Learn Med
+  - Teach Polit Sci
+  - Technol Anal Strateg Manag
+  - Technometrics
+  - Tellus B Chem Phys Meteorol
+  - Temperature (Austin)
+  - Terr Incogn
+  - Territ Politic Gov
+  - Terrorism
+  - Text Hist
+  - Textual Pract
+  - Theor Issues Ergon Sci
+  - Theory Pract
+  - Theory Res Soc Educ
+  - Ther Deliv
+  - Think Reason
+  - Third World Q
+  - Tissue Barriers
+  - Top Stroke Rehabil
+  - Toxic Subst Mech
+  - Toxicol Commun
+  - Toxicol Environ Chem
+  - Toxicol Mech Methods
+  - Toxin Rev
+  - Traffic Inj Prev
+  - Transcription
+  - Transl Dev Psychiatry
+  - Translation (Austin)
+  - Transp Rev
+  - Transp Theory Stat Phys
+  - Trends Hist
+  - Ultrastruct Pathol
+  - Urban Geogr
+  - Urban Plan Transp Res
+  - Urban Res Pract
+  - Urban Water J
+  - Uremia Invest
+  - Vet Q
+  - Vict Offender
+  - Virtual Phys Prototyp
+  - Virulence
+  - Vis Anthropol
+  - Vis Cult Br
+  - Vis Impair Res
+  - Vis Stud
+  - Vis cogn
+  - Voice Speech Rev
+  - Vulnerable Child Youth Stud
+  - War Soc
+  - Water Int
+  - West Eur Polit
+  - West J Commun
+  - West J Speech Commun
+  - Women Crim Justice
+  - Women Health
+  - Women Polit
+  - Women Ther
+  - Womens Hist Rev
+  - Womens Reprod Health (Phila)
+  - Womens Stud
+  - Womens Writ
+  - Wood Mater Sci Eng
+  - Word Image (Lond)
+  - Work Stress
+  - World Archaeol
+  - World Futures
+  - World J Biol Psychiatry
+  - World Leis J
+  - Worlds Poult Sci J
+  - Worm
+  - Writ Syst Res
+  - Xenobiotica
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

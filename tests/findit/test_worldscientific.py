@@ -32,7 +32,7 @@ class TestWorldScientificConsolidation:
         for journal in test_journals:
             publisher_info = registry.get_publisher_for_journal(journal)
             assert publisher_info is not None, f"Journal {journal} not found in registry"
-            assert publisher_info['name'] == 'worldscientific'
+            assert publisher_info['name'] == 'Worldscientific'
             assert publisher_info['dance_function'] == 'the_doi_slide'
             assert publisher_info['format_template'] == 'https://www.worldscientific.com/doi/pdf/{doi}?download=true'
             

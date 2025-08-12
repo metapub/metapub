@@ -56,7 +56,7 @@ class TestACSTest(BaseDanceTest):
         found_count = 0
         for journal in acs_journals:
             publisher_info = registry.get_publisher_for_journal(journal)
-            if publisher_info and 'American Chemical Society' in publisher_info.get('name', ''):
+            if publisher_info and publisher_info.get('name', '') == 'acs':
                 assert publisher_info['dance_function'] == 'the_doi_slide'
                 print(f"✓ {journal} correctly mapped to ACS")
                 found_count += 1

@@ -41,25 +41,27 @@ class TestPLOSTest(BaseDanceTest):
 
     def test_plos_journal_recognition(self):
         """Test that PLOS journals are properly recognized in the registry."""
-        # Test the function directly with known PLOS patterns rather than registry lookup
-        # since registry may not be populated during tests
+        # Test PLOS journal recognition using registry
+        from metapub.findit.registry import JournalRegistry
         
-        from metapub.findit.journals.plos import plos_journals
+        registry = JournalRegistry()
         
-        # Verify PLOS configuration
-        assert len(plos_journals) > 0, "PLOS journals list should not be empty"
-        
-        # Check some expected PLOS journals are in the list
+        # Check expected PLOS journals are in registry
         expected_journals = ['PLoS Biol', 'PLoS One', 'PLoS Comput Biol']
-        found_journals = []
+        found_count = 0
         
-        for expected in expected_journals:
-            if expected in plos_journals:
-                found_journals.append(expected)
-                print(f"✓ {expected} found in PLOS journals list")
+        for journal in expected_journals:
+            publisher_info = registry.get_publisher_for_journal(journal)
+            if publisher_info and publisher_info['name'] == 'Plos':
+                print(f"✓ {journal} correctly mapped to PLOS")
+                found_count += 1
+            else:
+                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
         
-        assert len(found_journals) > 0, f"Should find at least some expected journals, found: {found_journals}"
-        print(f"✓ Found {len(found_journals)} expected PLOS journals in configuration")
+        assert found_count > 0, f"No PLOS journals found in registry"
+        print(f"✓ Found {found_count} properly mapped PLOS journals")
+        
+        registry.close()
 
     @patch('metapub.findit.dances.plos.verify_pdf_url')
     @patch('metapub.findit.dances.plos.unified_uri_get')

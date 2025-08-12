@@ -10,15 +10,7 @@ Dance Function: the_doi_slide
 
 # Informa Healthcare journals (extracted from misc_doi.py)
 # Acta Oncol removed (uses medicaljournalssweden.se domain, not Informa Healthcare)
-informa_journals = [
-    'J Matern Fetal Neonatal Med',
-    'Ophthalmic Genet', 
-    'Platelets',
-    'Ren Fail',
-    'Scand J Rheumatol',
-    'Scand J Urol Nephrol',
-    'Xenobiotica',
-]
+informa_journals = []  # Journal list moved to YAML configuration
 
 # URL template for Informa Healthcare journals
 informa_template = 'http://informahealthcare.com/doi/pdf/{doi}'

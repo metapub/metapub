@@ -9,40 +9,7 @@ DOI patterns: Various (10.2478/*, 10.1515/*, etc.) due to publisher diversity
 """
 
 # All Sciendo journals from cluster analysis
-sciendo_journals = (
-    'Pril (Makedon Akad Nauk Umet Odd Med Nauki)',
-    'J Soc Struct',
-    'Gravit Space Res',
-    'J Nematol',
-    'Endocr Regul',
-    'Rom J Intern Med',
-    'Dev Period Med',
-    'Balkan J Med Genet',
-    'Scand J Child Adolesc Psychiatr Psychol',
-    'Interdiscip Toxicol',
-    'J Electr Bioimpedance',
-    'Zdr Varst',
-    'Radiol Oncol',
-    'Asian Biomed (Res Rev News)',
-    'Beitr Tab Int',
-    'Biomed Hum Kinet',
-    'J Mother Child',
-    'Arh Hig Rada',
-    'Acta Pharm',
-    'Immunohematology',
-    'Pol J Microbiol',
-    'Helminthologia',
-    'J Crit Care Med (Targu Mures)',
-    'J Vet Res',
-    'Forum Clin Oncol',
-    'Rev Rom Med Lab',
-    'Acta Med Marisiensis',
-    'Prilozi',
-    'J Data Inf Sci',
-    'Int Agrophys',
-    'Int Rev Soc Res',
-    'Acta Bot Croat',
-)
+sciendo_journals = []  # Journal list moved to YAML configuration
 
 # DOI-based format template (for the_doi_slide)
 sciendo_doi_format = 'https://sciendo.com/pdf/{doi}'

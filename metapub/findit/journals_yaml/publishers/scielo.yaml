@@ -1,0 +1,74 @@
+schema_version: '1.0'
+publisher:
+  name: Scielo
+  id: scielo
+  description: ''
+url_patterns:
+  primary_template: http://www.biomedcentral.com/content/pdf/{aid}.pdf
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - Arq Gastroenterol
+  - Acta Amazon
+  - Acta Cir Bras
+  - Acta Ortop Bras
+  - An Acad Bras Cienc
+  - Anim Reprod
+  - Arq Bras Cir Dig
+  - Arq Bras Endocrinol Metabol
+  - Arq Bras Oftalmol
+  - Braz Dent J
+  - Braz J Biol
+  - Braz J Med Biol Res
+  - Braz Oral Res
+  - Cad Saude Colet
+  - Cad Saude Publica
+  - Cien Saude Colet
+  - Codas
+  - Dement Neuropsychol
+  - Dental Press J Orthod
+  - Educ Soc
+  - Epidemiol Serv Saude
+  - Fractal
+  - Genet Mol Biol
+  - Hist Cienc Saude Manguinhos
+  - Int Braz J Urol
+  - J Appl Oral Sci
+  - J Bras Nefrol
+  - J Bras Psiquiatr
+  - J Soc Bras Fonoaudiol
+  - J Vasc Bras
+  - J Venom Anim Toxins Incl Trop Dis
+  - Mem Inst Oswaldo Cruz
+  - Motriz
+  - Nova Econ
+  - Pesqui Agropecu Bras
+  - Pesqui Odontol Bras
+  - Physis
+  - Pro Fono
+  - Psicol Estud
+  - Quim Nova
+  - Radiol Bras
+  - Rev Assoc Med Bras
+  - Rev Bras Biol
+  - Rev Bras Educ Med
+  - Rev Bras Enferm
+  - Rev Bras Epidemiol
+  - Rev Bras Fisioter
+  - Rev Bras Hist
+  - Rev Bras Parasitol Vet
+  - Rev Col Bras Cir
+  - Rev Esc Enferm USP
+  - Rev Gaucha Enferm
+  - Rev Hosp Clin Fac Med Sao Paulo
+  - Rev Inst Med Trop Sao Paulo
+  - Rev Lat Am Enfermagem
+  - Rev Paul Pediatr
+  - Rev Psiquiatr Clin
+  - Rev Soc Bras Med Trop
+  - Sex Salud Soc
+  - Vibrant
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

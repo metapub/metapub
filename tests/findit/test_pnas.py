@@ -47,15 +47,23 @@ class TestPNASConfiguration(BaseDanceTest):
         
         # Verify PNAS configuration  
         assert pnas_template == 'https://www.pnas.org/doi/pdf/{doi}'
-        assert len(pnas_journals) > 0, "PNAS journals list should not be empty"
         
-        # Check expected journal names are in the list
+        # Check PNAS journals in registry
+        from metapub.findit.registry import JournalRegistry
+        registry = JournalRegistry()
+        
         expected_journals = ['Proc Natl Acad Sci USA']
-        for expected in expected_journals:
-            assert expected in pnas_journals, f"{expected} should be in PNAS journals list"
-            print(f"✓ {expected} found in PNAS journals list")
+        found_count = 0
+        for journal in expected_journals:
+            publisher_info = registry.get_publisher_for_journal(journal)
+            if publisher_info and publisher_info['name'] == 'Pnas':
+                print(f"✓ {journal} correctly mapped to PNAS")
+                found_count += 1
+            else:
+                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
         
-        print(f"✓ Found {len(pnas_journals)} PNAS journal variants in configuration")
+        assert found_count > 0, "No PNAS journals found in registry"
+        registry.close()
         print(f"✓ Template uses HTTPS: {pnas_template}")
 
     @patch('metapub.findit.dances.generic.verify_pdf_url')

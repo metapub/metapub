@@ -9,24 +9,7 @@ Dance Function: the_asm_shimmy
 """
 
 # ASM journals using VIP format (extracted from misc_vip.py)
-asm_journals = [
-    'Antimicrob Agents Chemother',
-    'Appl Environ Microbiol', 
-    'Clin Microbiol Rev',
-    'Clin Vaccine Immunol',
-    'Eukaryot Cell',
-    'Genome Announc',
-    'Infect Immun',
-    'J Bacteriol',
-    'J Clin Microbiol',
-    'J Virol',
-    'MBio',
-    'mSystems',
-    'mSphere', 
-    'Microbiol Mol Biol Rev',
-    'Microbiol Spectr',
-    'Mol Cell Biol',
-]
+asm_journals = []  # Journal list moved to YAML configuration
 
 # Host mappings for VIP format journals
 asm_journal_params = {

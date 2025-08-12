@@ -1,0 +1,22 @@
+schema_version: '1.0'
+publisher:
+  name: Spandidos
+  id: spandidos
+  description: ''
+url_patterns:
+  doi_template: http://www.spandidos-publications.com/{doi}/download
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - Int J Oncol
+  - Int J Mol Med
+  - Oncol Lett
+  - Oncol Rep
+  - Mol Med Rep
+  - Biomed Rep
+  - Exp Ther Med
+  - Mol Clin Oncol
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

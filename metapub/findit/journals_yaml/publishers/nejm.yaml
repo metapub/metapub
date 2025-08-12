@@ -1,0 +1,18 @@
+schema_version: '1.0'
+publisher:
+  name: Nejm
+  id: nejm
+  description: 'New England Journal of Medicine (NEJM) publisher configuration.
+
+
+    High-impact medical journal with straightforward DOI-based PDF access.'
+url_patterns:
+  primary_template: https://www.nejm.org/doi/pdf/{doi}
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - N Engl J Med
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

@@ -9,15 +9,7 @@ Dance Function: the_aha_waltz
 """
 
 # AHA journals using VIP format (extracted from misc_vip.py)
-aha_journals = [
-    'Arterioscler Thromb Vasc Biol',
-    'Circulation',
-    'Circ Arrhythm Electrophysiol',
-    'Circ Cardiovasc Genet',
-    'Circ Res',
-    'Hypertension',
-    'Stroke',
-]
+aha_journals = []  # Journal list moved to YAML configuration
 
 # Host mappings for VIP format journals
 aha_journal_params = {

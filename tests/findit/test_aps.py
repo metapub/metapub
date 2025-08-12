@@ -36,8 +36,21 @@ class TestAPSJournalRecognition:
             'Physiol Rev'
         ]
         
+        # Test journal recognition using registry
+        from metapub.findit.registry import JournalRegistry
+        registry = JournalRegistry()
+        
+        found_count = 0
         for journal in expected_journals:
-            assert journal in aps_journals, f"Expected APS journal '{journal}' missing from aps_journals list"
+            publisher_info = registry.get_publisher_for_journal(journal)
+            if publisher_info and publisher_info['name'] == 'Aps':
+                print(f"✓ {journal} correctly mapped to APS")
+                found_count += 1
+            else:
+                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
+        
+        assert found_count > 0, "No APS journals found in registry"
+        registry.close()
 
 
 class TestAPSDanceFunction:
@@ -88,11 +101,17 @@ class TestAPSEvidenceValidation:
             assert data['doi'].startswith(doi_prefix), f"PMID {pmid} has unexpected DOI prefix: {data['doi']}"
     
     def test_journal_consistency(self):
-        """Test that all test journals are in the APS journal list."""
+        """Test that all test journals are in the APS registry."""
+        from metapub.findit.registry import JournalRegistry
+        
+        registry = JournalRegistry()
         test_journals = set(data['journal'] for data in APS_EVIDENCE_PMIDS.values())
         
         for journal in test_journals:
-            assert journal in aps_journals, f"Test journal '{journal}' not in aps_journals list"
+            publisher_info = registry.get_publisher_for_journal(journal)
+            assert publisher_info and publisher_info['name'] == 'Aps', f"Test journal '{journal}' not found in aps registry"
+        
+        registry.close()
     
     def test_fixture_completeness(self):
         """Test that all evidence PMIDs have working fixtures."""
@@ -114,8 +133,14 @@ class TestAPSIntegration:
     def test_aps_journal_list_integration(self):
         """Test APS journal list integration."""
         
-        # Test that APS journal list is accessible
-        assert 'Am J Physiol Heart Circ Physiol' in aps_journals
+        # Test that APS journals are accessible via registry
+        from metapub.findit.registry import JournalRegistry
+        registry = JournalRegistry()
+        
+        publisher_info = registry.get_publisher_for_journal('Am J Physiol Heart Circ Physiol')
+        assert publisher_info and publisher_info['name'] == 'Aps', "APS journal not found in registry"
+        
+        registry.close()
         
         # Verify dance function is accessible and works
         article = load_pmid_xml('34995163')

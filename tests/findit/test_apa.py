@@ -38,8 +38,14 @@ class TestAPAJournalRecognition:
             'J Pers Soc Psychol'
         ]
         
+        from metapub.findit.registry import JournalRegistry
+        registry = JournalRegistry()
+        
         for journal in expected_journals:
-            assert journal in apa_journals, f"Expected APA journal '{journal}' missing from apa_journals list"
+            publisher_info = registry.get_publisher_for_journal(journal)
+            assert publisher_info and publisher_info['name'] == 'apa', f"Expected APA journal '{journal}' not found in registry or mapped to wrong publisher"
+        
+        registry.close()
 
 
 class TestAPADanceFunction:
@@ -127,11 +133,17 @@ class TestAPAEvidenceValidation:
             assert data['doi'].startswith(doi_prefix), f"PMID {pmid} has unexpected DOI prefix: {data['doi']}"
     
     def test_journal_consistency(self):
-        """Test that all test journals are in the APA journal list."""
+        """Test that all test journals are in the APA registry."""
+        from metapub.findit.registry import JournalRegistry
+        registry = JournalRegistry()
+        
         test_journals = set(data['journal'] for data in APA_EVIDENCE_PMIDS.values())
         
         for journal in test_journals:
-            assert journal in apa_journals, f"Test journal '{journal}' not in apa_journals list"
+            publisher_info = registry.get_publisher_for_journal(journal)
+            assert publisher_info and publisher_info['name'] == 'apa', f"Test journal '{journal}' not found in APA registry"
+        
+        registry.close()
     
     def test_fixture_completeness(self):
         """Test that all evidence PMIDs have working fixtures."""
@@ -151,10 +163,13 @@ class TestAPAIntegration:
     """Integration tests with metapub components."""
     
     def test_apa_journal_list_integration(self):
-        """Test APA journal list integration."""
+        """Test APA registry integration."""
+        from metapub.findit.registry import JournalRegistry
+        registry = JournalRegistry()
         
-        # Test that APA journal list is accessible
-        assert 'Am Psychol' in apa_journals
+        # Test that APA journals are accessible via registry
+        publisher_info = registry.get_publisher_for_journal('Am Psychol')
+        assert publisher_info and publisher_info['name'] == 'apa'
         
         # Verify dance function works with registry system
         article = load_pmid_xml('34843274')
@@ -162,6 +177,8 @@ class TestAPAIntegration:
         
         assert url.startswith('https://psycnet.apa.org/fulltext/')
         assert '10.1037/amp0000904' in url
+        
+        registry.close()
     
     def test_apa_multiple_journal_types(self):
         """Test APA dance function across different journal types."""

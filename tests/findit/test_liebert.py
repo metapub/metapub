@@ -46,7 +46,7 @@ class TestLiebertDance(BaseDanceTest):
         registry = JournalRegistry()
         result = registry.get_publisher_for_journal('Cyberpsychol Behav')
         assert result is not None
-        assert result['name'] == 'Mary Ann Liebert Publishers'
+        assert result['name'] == 'Liebert'
         assert result['format_template'] == 'https://www.liebertpub.com/doi/pdf/{doi}?download=true'
         registry.close()
         

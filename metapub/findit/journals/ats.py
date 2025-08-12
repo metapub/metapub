@@ -15,12 +15,7 @@ Evidence-Based Update: 2025-08-09
 """
 
 # ATS journals using DOI format (evidence-based expansion)
-ats_journals = [
-    'Am J Respir Cell Mol Biol',
-    'Am J Respir Crit Care Med',
-    'Ann Am Thorac Soc',
-    'Proc Am Thorac Soc',
-]
+ats_journals = []  # Journal list moved to YAML configuration
 
 # DOI template for ATS journals (updated based on evidence)
 ats_template = 'https://www.thoracic.org/doi/pdf/{doi}?download=true'

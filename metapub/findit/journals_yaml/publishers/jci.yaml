@@ -1,0 +1,15 @@
+schema_version: '1.0'
+publisher:
+  name: jci
+  id: jci
+  description: ''
+url_patterns:
+  primary_template: http://www.jci.org/articles/view/{pii}/files/pdf
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - J Clin Invest
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

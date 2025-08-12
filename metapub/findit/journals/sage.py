@@ -10,20 +10,7 @@ Dance Function: the_sage_hula
 """
 
 # SAGE journals using VIP format (extracted from misc_vip.py)
-sage_journals = [
-    'Ann Clin Biochem',
-    'Angiology',
-    'Assessment',
-    'Clin Appl Thromb Hemost',
-    'Clin Pediatr',
-    'Clin Pediatr (Phila)',
-    'J Aging Health',
-    'J Child Neurol',
-    'J Dent Res',
-    'J Hum Lact',
-    'J Renin Angiotensin Aldosterone Syst',
-    'Lupus',
-]
+sage_journals = []  # Journal list moved to YAML configuration
 
 # Host mappings for VIP format journals
 sage_journal_params = {
@@ -50,10 +37,4 @@ sage_format = 'https://journals.sagepub.com/doi/reader/{doi}'
 # TODO: pull these into sage_journal_params by finding their host subdomain
 # Additional SAGE journals that may use the main DOI-based system
 # These would be added as more SAGE journals are identified
-sage_additional_journals = [
-    'South Asia Res',      # From test data
-    'Med Sci Law',         # From test data
-    'Sex Abuse',           # From test data
-    'Urban Stud',          # From test data
-    'Med Decis Making',    # From test data
-]
+sage_additional_journals = []  # Journal list moved to YAML configuration

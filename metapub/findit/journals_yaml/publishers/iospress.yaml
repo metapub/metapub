@@ -1,0 +1,68 @@
+schema_version: '1.0'
+publisher:
+  name: Iospress
+  id: iospress
+  description: ''
+url_patterns:
+  primary_template: https://content.iospress.com/doi/pdf/{doi}?download=true
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - Adv Neuroimmune Biol
+  - Appl Ontol
+  - Biomed Mater Eng
+  - Biomed Spectrosc Imaging
+  - Biorheology
+  - Biorheology Suppl
+  - Bladder Cancer
+  - Brain Plast
+  - Breast Dis
+  - Cancer Biomark
+  - Clin Hemorheol
+  - Clin Hemorheol Microcirc
+  - Fundam Inform
+  - Hum Antibodies
+  - In Silico Biol
+  - Inf Knowl Syst Manage
+  - Inf Serv Use
+  - Integr Comput Aided Eng
+  - Int J Dev Sci
+  - Int J Hybrid Intell Syst
+  - Int J Risk Saf Med
+  - Isokinet Exerc Sci
+  - J Alzheimers Dis
+  - J Alzheimers Dis Rep
+  - J Ambient Intell Smart Environ
+  - J Back Musculoskelet Rehabil
+  - J Berry Res
+  - J Comput Secur
+  - J Econ Soc Meas
+  - J Huntingtons Dis
+  - J Neonatal Perinatal Med
+  - J Neuromuscul Dis
+  - J Parkinsons Dis
+  - J Pediatr Neuroradiol
+  - J Pediatr Rehabil Med
+  - J Vestib Res
+  - J Vocat Rehabil
+  - J Xray Sci Technol
+  - Kidney Cancer
+  - Med J Nutrition Metab
+  - Model Assist Stat Appl
+  - NeuroRehabilitation
+  - Nutr Aging (Amst)
+  - Nutr Healthy Aging
+  - Occup Ergon
+  - Physiother Pract Res
+  - Restor Neurol Neurosci
+  - Semant Web
+  - Stat J IAOS
+  - Strength Fract Complex
+  - Technol Disabil
+  - Technol Health Care
+  - Transl Sci Rare Dis
+  - Work
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

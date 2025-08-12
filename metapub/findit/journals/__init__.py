@@ -3,16 +3,14 @@ __path__ = extend_path(__path__, __name__)
 
 from .misc_pii import simple_formats_pii
 from .misc_vip import vip_format, vip_journals, vip_journals_nonstandard
-from .bmc import BMC_journals, BMC_format
-from .cambridge import cambridge_journals
-from .sage import sage_journals, sage_journal_params, sage_vip_template
-from .informa import informa_journals, informa_template
+from .bmc import BMC_format
+from .sage import sage_journal_params, sage_vip_template
+from .informa import informa_template
 from .oxford import oxford_vip_template
-from .bmj import bmj_journals, bmj_vip_template
-from .lww import lww_journals, lww_template
-from .acs import acs_journals, acs_template
-from .taylor_francis import taylor_francis_journals, taylor_francis_template
-from .wiley import wiley_journals
+from .bmj import bmj_vip_template
+from .lww import lww_template
+from .acs import acs_template
+from .taylor_francis import taylor_francis_template
 from .cantdo_list import JOURNAL_CANTDO_LIST
 
 # simple_formats_pmid: links to PDFs that can be constructed using the

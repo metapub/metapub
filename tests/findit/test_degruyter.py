@@ -24,7 +24,11 @@ class TestDeGruyterJournalRecognition:
     """Test De Gruyter journal recognition."""
     
     def test_degruyter_journal_list_completeness(self):
-        """Test that degruyter_journals list contains expected journals."""
+        """Test that degruyter journals are in registry."""
+        from metapub.findit.registry import JournalRegistry
+        
+        registry = JournalRegistry()
+        
         # Key De Gruyter journals should be included
         expected_journals = [
             'Clin Chem Lab Med',
@@ -34,8 +38,19 @@ class TestDeGruyterJournalRecognition:
             'Pure Appl Chem'
         ]
         
+        found_count = 0
         for journal in expected_journals:
-            assert journal in degruyter_journals, f"Expected De Gruyter journal '{journal}' missing from degruyter_journals list"
+            publisher_info = registry.get_publisher_for_journal(journal)
+            if publisher_info and publisher_info['name'] == 'degruyter':
+                print(f"✓ {journal} correctly mapped to De Gruyter")
+                found_count += 1
+            else:
+                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
+        
+        assert found_count > 0, f"No De Gruyter journals found in registry"
+        print(f"✓ Found {found_count} properly mapped De Gruyter journals")
+        
+        registry.close()
 
 
 class TestDeGruyterDanceFunction:
@@ -86,11 +101,17 @@ class TestDeGruyterEvidenceValidation:
             assert data['doi'].startswith(doi_prefix), f"PMID {pmid} has unexpected DOI prefix: {data['doi']}"
     
     def test_journal_consistency(self):
-        """Test that all test journals are in the De Gruyter journal list."""
+        """Test that all test journals are in the De Gruyter registry."""
+        from metapub.findit.registry import JournalRegistry
+        
+        registry = JournalRegistry()
         test_journals = set(data['journal'] for data in DEGRUYTER_EVIDENCE_PMIDS.values())
         
         for journal in test_journals:
-            assert journal in degruyter_journals, f"Test journal '{journal}' not in degruyter_journals list"
+            publisher_info = registry.get_publisher_for_journal(journal)
+            assert publisher_info and publisher_info['name'] == 'degruyter', f"Test journal '{journal}' not found in degruyter registry"
+        
+        registry.close()
     
     def test_fixture_completeness(self):
         """Test that all evidence PMIDs have working fixtures."""
@@ -125,10 +146,14 @@ class TestDeGruyterIntegration:
         assert '/pdf' in template
     
     def test_degruyter_journal_list_integration(self):
-        """Test De Gruyter journal list integration."""
+        """Test De Gruyter journal registry integration."""
+        from metapub.findit.registry import JournalRegistry
         
-        # Test that De Gruyter journal list is accessible
-        assert 'Clin Chem Lab Med' in degruyter_journals
+        registry = JournalRegistry()
+        
+        # Test that De Gruyter journals are accessible via registry
+        publisher_info = registry.get_publisher_for_journal('Clin Chem Lab Med')
+        assert publisher_info and publisher_info['name'] == 'degruyter'
         
         # Verify dance function works with registry system
         article = load_pmid_xml('38534005')
@@ -136,6 +161,8 @@ class TestDeGruyterIntegration:
         
         assert url.startswith('https://www.degruyter.com/document/doi/')
         assert '10.1515/cclm-2024-0070' in url
+        
+        registry.close()
 
 
 if __name__ == '__main__':

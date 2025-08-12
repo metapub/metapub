@@ -66,7 +66,7 @@ class TestSciendo(unittest.TestCase):
             with self.subTest(journal=journal):
                 publisher_info = registry.get_publisher_for_journal(journal)
                 self.assertIsNotNone(publisher_info, f"Journal '{journal}' should be in registry")
-                self.assertEqual(publisher_info['name'], 'sciendo')
+                self.assertEqual(publisher_info['name'], 'Sciendo')
                 self.assertEqual(publisher_info['dance_function'], 'the_doi_slide')
                 self.assertEqual(publisher_info['format_template'], 'https://sciendo.com/pdf/{doi}')
 

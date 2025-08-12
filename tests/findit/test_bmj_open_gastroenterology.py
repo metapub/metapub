@@ -28,9 +28,9 @@ class TestBMJOpenGastroenterologyConsolidated(unittest.TestCase):
         # Test journal recognition
         publisher_info = self.registry.get_publisher_for_journal('BMJ Open Gastroenterol')
         self.assertIsNotNone(publisher_info, "BMJ Open Gastroenterol not found in registry")
-        self.assertEqual(publisher_info['dance_function'], 'the_bmj_bump')
-        self.assertEqual(publisher_info['name'], 'BMJ Publishing Group')
-        self.assertIsNone(publisher_info.get('format_template'), "BMJ bump should not use format templates")
+        self.assertEqual(publisher_info['dance_function'], 'the_doi_slide')
+        self.assertEqual(publisher_info['name'], 'bmj')
+        self.assertIsNotNone(publisher_info.get('format_template'), "BMJ should have a format template for the_doi_slide")
 
     def test_bmj_consolidation_with_other_journals(self):
         """Test BMJ Open Gastroenterology shares configuration with other BMJ journals."""
@@ -43,7 +43,7 @@ class TestBMJOpenGastroenterologyConsolidated(unittest.TestCase):
         # Should be consolidated under same publisher
         self.assertEqual(bmj_open_gastro_info['name'], gut_info['name'])
         self.assertEqual(bmj_open_gastro_info['dance_function'], gut_info['dance_function'])
-        self.assertEqual(bmj_open_gastro_info['name'], 'BMJ Publishing Group')
+        self.assertEqual(bmj_open_gastro_info['name'], 'bmj')
 
     def test_evidence_based_url_patterns(self):
         """Test that evidence patterns are consistent with VIP delegation."""

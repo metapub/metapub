@@ -40,8 +40,8 @@ class TestUChicagoConsolidation:
 
     def test_registry_integration(self):
         """Test that University of Chicago Press journals are correctly registered."""
-        # Use local test database to verify updated configuration
-        registry = JournalRegistry(db_path=self.temp_db_path)
+        # Use main registry database to verify configuration
+        registry = JournalRegistry()
         
         # Test a few key UChicago journals
         test_journals = [
@@ -53,7 +53,7 @@ class TestUChicagoConsolidation:
         for journal in test_journals:
             publisher_info = registry.get_publisher_for_journal(journal)
             assert publisher_info is not None, f"Journal {journal} not found in registry"
-            assert publisher_info['name'] == 'uchicago'
+            assert publisher_info['name'] == 'Uchicago'
             assert publisher_info['dance_function'] == 'the_doi_slide'
             assert publisher_info['format_template'] == 'https://www.journals.uchicago.edu/doi/pdf/{doi}'
             
@@ -62,7 +62,7 @@ class TestUChicagoConsolidation:
     def test_url_construction_evidence_based(self):
         """Test URL construction with evidence-based DOI patterns from HTML samples."""
         # Test that template format is correctly applied based on our evidence
-        registry = JournalRegistry(db_path=self.temp_db_path)
+        registry = JournalRegistry()
         publisher_info = registry.get_publisher_for_journal('Am J Sociol')
         template = publisher_info['format_template']
         registry.close()
@@ -93,7 +93,7 @@ class TestUChicagoConsolidation:
 
     def test_evidence_based_template(self):
         """Test that template is based on evidence from HTML samples.""" 
-        registry = JournalRegistry(db_path=self.temp_db_path)
+        registry = JournalRegistry()
         publisher_info = registry.get_publisher_for_journal('Am J Sociol')
         template = publisher_info['format_template']
         registry.close()
@@ -108,7 +108,7 @@ class TestUChicagoConsolidation:
     def test_doi_pattern_flexibility(self):
         """Test that the consolidation accepts various DOI patterns (not just 10.1086)."""
         # University of Chicago Press has acquired journals that might have different DOI patterns
-        registry = JournalRegistry(db_path=self.temp_db_path)
+        registry = JournalRegistry()
         publisher_info = registry.get_publisher_for_journal('Am J Sociol')
         template = publisher_info['format_template']
         registry.close()
@@ -126,7 +126,7 @@ class TestUChicagoConsolidation:
 
     def test_template_structure_evidence_based(self):
         """Test that the template structure matches evidence from HTML samples."""
-        registry = JournalRegistry(db_path=self.temp_db_path)
+        registry = JournalRegistry()
         publisher_info = registry.get_publisher_for_journal('Am J Sociol')
         template = publisher_info['format_template']
         registry.close()

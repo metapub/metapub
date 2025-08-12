@@ -1,0 +1,19 @@
+schema_version: '1.0'
+publisher:
+  name: Ajph
+  id: ajph
+  description: 'American Journal of Public Health (AJPH) publisher configuration.
+
+
+    Public health journal published by the American Public Health Association with
+    DOI-based PDF access.'
+url_patterns:
+  primary_template: https://ajph.aphapublications.org/doi/pdf/{doi}?download=true
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - Am J Public Health
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

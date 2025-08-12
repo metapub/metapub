@@ -1,0 +1,56 @@
+schema_version: '1.0'
+publisher:
+  name: Hilaris
+  id: hilaris
+  description: 'Hilaris Publisher journal data.
+
+
+    This module contains journal data for Hilaris Publisher,
+
+    which publishes academic journals through hilarispublisher.com.'
+url_patterns:
+  primary_template: https://www.hilarispublisher.com/articles/{article_slug}.pdf
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - J Environ Anal Toxicol
+  - J Comput Sci Syst Biol
+  - J Mol Genet Med
+  - J Cytol Histol
+  - J Cancer Sci Ther
+  - J Neurol Disord
+  - J Cardiovasc Dis Diagn
+  - J Nucl Med Radiat Ther
+  - Metabolomics (Los Angel)
+  - Med Chem (Los Angeles)
+  - J Pulm Respir Med
+  - J Nephrol Ther
+  - J Health Med Inform
+  - J Tissue Sci Eng
+  - J Bioeng Biomed Sci
+  - J Mol Biomark Diagn
+  - J Clin Case Rep
+  - J Biosens Bioelectron
+  - J Oncol Transl Res
+  - J Infect Dis Med
+  - J AIDS Clin Res
+  - J Bioanal Biomed
+  - J Biom Biostat
+  - J Vet Sci Technol
+  - J Bioprocess Biotech
+  - J Trauma Treat
+  - J Gen Pract (Los Angel)
+  - Hum Genet Embryol
+  - J Phylogenetics Evol Biol
+  - Altern Integr Med
+  - Int J Neurorehabil
+  - J Sports Med Doping Stud
+  - Epilepsy J
+  - J Health Educ Res Dev
+  - J Pharmacogn Nat Prod
+  - J Physiother Phys Rehabil
+  - J Lasers Opt Photonics
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

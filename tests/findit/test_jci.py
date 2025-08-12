@@ -202,16 +202,13 @@ def test_jci_journal_recognition():
     # Test journal recognition
     found_count = 0
     for journal in test_journals:
-        if journal in jci_journals:
-            publisher_info = registry.get_publisher_for_journal(journal)
-            if publisher_info and publisher_info['name'] == 'jci':
-                assert publisher_info['dance_function'] == 'the_jci_jig'
-                print(f"✓ {journal} correctly mapped to JCI")
-                found_count += 1
-            else:
-                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
+        publisher_info = registry.get_publisher_for_journal(journal)
+        if publisher_info and publisher_info['name'] == 'jci':
+            assert publisher_info['dance_function'] == 'the_doi_slide'
+            print(f"✓ {journal} correctly mapped to JCI")
+            found_count += 1
         else:
-            print(f"⚠ {journal} not in jci_journals list")
+            print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
     
     # Just make sure we found at least one JCI journal
     assert found_count > 0, "No JCI journals found in registry with jci publisher"

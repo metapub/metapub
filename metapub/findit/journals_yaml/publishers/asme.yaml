@@ -1,0 +1,70 @@
+schema_version: '1.0'
+publisher:
+  name: asme
+  id: asme
+  description: 'ASME (American Society of Mechanical Engineers) journal list.
+
+
+    ASME is a professional engineering society that publishes technical journals
+
+    covering mechanical engineering, biomechanical engineering, manufacturing,
+
+    energy, and related fields. Their journals are hosted on the ASME Digital
+
+    Collection platform.
+
+
+    URL format: https://asmedigitalcollection.asme.org/[journal]/article-pdf/{doi}
+
+    Alternative: https://asmedigitalcollection.asme.org/[journal]/article/{doi}
+
+
+    DOI patterns: Typically 10.1115/* for ASME journals'
+url_patterns:
+  primary_template: https://asmedigitalcollection.asme.org/{journal_code}/article-pdf/{doi}
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - Appl Mech Rev
+  - J Appl Mech
+  - J Comput Nonlinear Dyn
+  - J Comput Inf Sci Eng
+  - J Eng Gas Turbine Power
+  - J Press Vessel Technol
+  - J Sol Energy Eng
+  - J Turbomach
+  - J Med Device
+  - J Vib Acoust
+  - J Biomech Eng
+  - Proc ASME Dyn Syst Control Conf
+  - Proc ASME Des Eng Tech Conf
+  - J Heat Transfer
+  - J Tribol
+  - J Energy Resour Technol
+  - J Eng Sci Med Diagn Ther
+  - Mater Perform Charact
+  - J Dyn Syst Meas Control
+  - J Mech Des N Y
+  - J Manuf Sci Eng
+  - J Micro Nanomanuf
+  - Smart Sustain Manuf Syst
+  - J Verif Valid Uncertain Quantif
+  - J Fluids Eng
+  - J Test Eval
+  - J Mech Robot
+  - J ASTM Int
+  - J Electron Packag
+  - J Fuel Cell Sci Technol
+  - Proc ASME Micro Nanoscale Heat Mass Transf Int Conf (2012)
+  - Int Mech Eng Congress Expo
+  - J Nanotechnol Eng Med
+  - J Therm Sci Eng Appl
+  - Proc ASME Conf Smart Mater Adapt Struct Intell Syst
+  - Adv Civ Eng Mater
+  - Proc Int Conf Nanochannels Microchannels Minichannels
+  - Proc ASME Int Conf Manuf Sci Eng
+  - J Eng Mater Technol
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

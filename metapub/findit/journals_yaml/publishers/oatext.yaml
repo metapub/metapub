@@ -1,0 +1,59 @@
+schema_version: '1.0'
+publisher:
+  name: Oatext
+  id: oatext
+  description: "OAText Publishing journal list.\n\nOAText is an open access academic\
+    \ publisher specializing in medical, \nscientific, and healthcare journals. They\
+    \ publish peer-reviewed journals\nacross various medical and scientific disciplines.\n\
+    \nURL format: https://www.oatext.com/[article-title].php\nAlternative: https://oatext.com/pdf/[JOURNAL_CODE]-[VOLUME]-[ARTICLE_ID].pdf\n\
+    \nDOI patterns: Various (need to determine specific patterns)"
+url_patterns:
+  primary_template: https://www.oatext.com/pdf/{article_id}.pdf
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - J Syst Integr Neurosci
+  - Clin Case Rep Rev
+  - HMO
+  - Health Educ Care
+  - Integr Cancer Sci Ther
+  - Clin Res Trials
+  - Integr Mol Med
+  - Integr Obes Diabetes
+  - Prev Med Community Health
+  - Front Womens Health
+  - Pulm Crit Care Med
+  - New Front Ophthalmol
+  - J Integr Cardiol
+  - Transl Brain Rhythm
+  - Pediatr Dimens
+  - Glob Vaccines Immunol
+  - Biomed Genet Genom
+  - Glob Surg
+  - Biomed Res Rev
+  - Integr Food Nutr Metab
+  - Dent Oral Craniofac Res
+  - Forensic Sci Criminol
+  - Biol Eng Med
+  - Ment Health Addict Res
+  - Trends Diabetes Metab
+  - Trends Res
+  - Anaesth Anaesth
+  - Glob Imaging Insights
+  - Clin Microbiol Infect Dis
+  - Med Res Innov
+  - Pharmacol Drug Dev Ther
+  - Glob Drugs Ther
+  - Cancer Rep Rev
+  - Glob Anesth Perioper Med
+  - Integr Clin Med
+  - Nucl Med Biomed Imaging
+  - Contemp Behav Health Care
+  - Otorhinolaryngol Head Neck Surg
+  - Hematol Med Oncol
+  - Trauma Emerg Care
+  - Biomed Res Clin Pract
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

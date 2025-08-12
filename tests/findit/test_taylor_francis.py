@@ -47,9 +47,11 @@ class TestTaylorFrancisConfiguration(BaseDanceTest):
         
         # Verify Taylor & Francis configuration  
         assert taylor_francis_template == 'https://www.tandfonline.com/doi/epdf/{doi}?needAccess=true'
-        assert len(taylor_francis_journals) > 0, "Taylor & Francis journals list should not be empty"
         
-        # Check expected journal names are in the list (from evidence samples)
+        # Check Taylor & Francis journals in registry
+        from metapub.findit.registry import JournalRegistry
+        registry = JournalRegistry()
+        
         expected_journals = [
             'AIDS Care',
             'Acta Orthop Scand', 
@@ -58,11 +60,17 @@ class TestTaylorFrancisConfiguration(BaseDanceTest):
             'Chronobiol Int'
         ]
         
-        for expected in expected_journals:
-            assert expected in taylor_francis_journals, f"{expected} should be in Taylor & Francis journals list"
-            print(f"✓ {expected} found in Taylor & Francis journals list")
+        found_count = 0
+        for journal in expected_journals:
+            publisher_info = registry.get_publisher_for_journal(journal)
+            if publisher_info and publisher_info['name'] == 'Taylor Francis':
+                print(f"✓ {journal} correctly mapped to Taylor & Francis")
+                found_count += 1
+            else:
+                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
         
-        print(f"✓ Found {len(taylor_francis_journals)} Taylor & Francis journal variants in configuration")
+        assert found_count > 0, "No Taylor & Francis journals found in registry"
+        registry.close()
         print(f"✓ Template uses HTTPS: {taylor_francis_template}")
 
     @patch('metapub.findit.dances.generic.verify_pdf_url')

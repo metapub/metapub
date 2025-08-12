@@ -10,7 +10,7 @@ from .registry import JournalRegistry, standardize_journal_name
 from .handlers import RegistryBackedLookupSystem
 from .journals import (simple_formats_pii, simple_formats_pmid,
                       vip_journals, vip_journals_nonstandard,
-                      BMC_journals, JOURNAL_CANTDO_LIST)
+                      JOURNAL_CANTDO_LIST)
 
 log = logging.getLogger('metapub.findit.logic')
 
@@ -168,7 +168,8 @@ def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None):
     # === PUBLISHER BASED LISTS === #
 
     # Many Biomed Central journals start with "BMC", but many more don't.
-    if jrnl.find('BMC') == 0 or jrnl in BMC_journals:
+    # Registry-based lookup will handle all BMC journals after this section
+    if jrnl.find('BMC') == 0:
         try:
             url = the_bmc_boogie(pma, verify)
         except MetaPubError as error:

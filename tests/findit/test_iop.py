@@ -239,16 +239,13 @@ def test_iop_journal_recognition():
     # Test journal recognition
     found_count = 0
     for journal in test_journals:
-        if journal in iop_journals:
-            publisher_info = registry.get_publisher_for_journal(journal)
-            if publisher_info and publisher_info['name'] == 'iop':
-                assert publisher_info['dance_function'] == 'the_iop_fusion'
-                print(f"✓ {journal} correctly mapped to IOP Publishing")
-                found_count += 1
-            else:
-                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
+        publisher_info = registry.get_publisher_for_journal(journal)
+        if publisher_info and publisher_info['name'] == 'Iop':
+            assert publisher_info['dance_function'] == 'the_doi_slide'
+            print(f"✓ {journal} correctly mapped to IOP Publishing")
+            found_count += 1
         else:
-            print(f"⚠ {journal} not in iop_journals list")
+            print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
     
     # Just make sure we found at least one IOP journal
     assert found_count > 0, "No IOP journals found in registry with iop publisher"

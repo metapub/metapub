@@ -1,0 +1,59 @@
+schema_version: '1.0'
+publisher:
+  name: inderscience
+  id: inderscience
+  description: "Inderscience Publishers journal list.\n\nInderscience Publishers is\
+    \ an independent academic publisher of journals\nin engineering, technology, science,\
+    \ and management. They publish over \n400 peer-reviewed journals, with many titles\
+    \ starting with \"International\nJournal of...\"\n\nURL format: https://www.inderscienceonline.com/doi/pdf/{doi}\n\
+    Alternative: https://www.inderscienceonline.com/doi/{doi}\n\nDOI patterns: Various\
+    \ (typically 10.1504/*)"
+url_patterns:
+  primary_template: https://www.inderscienceonline.com/doi/pdf/{doi}
+dance_function: the_inderscience_ula
+journals:
+  simple_list:
+  - Int J Biomed Eng Technol
+  - Int J Public Pol
+  - Int J Funct Inform Personal Med
+  - Int J Biomed Nanosci Nanotechnol
+  - Int J Bioinform Res Appl
+  - Int J Electron Healthc
+  - Int J Data Min Bioinform
+  - Int J Min Miner Eng
+  - Botulinum J
+  - Int J Environ Pollut
+  - Int J Quant Res Educ
+  - Int J Biotechnol
+  - Int J Metadata Semant Ontol
+  - Int J Behav Healthc Res
+  - Int J Risk Assess Manag
+  - Int J Veh Saf
+  - Int J Immunol Stud
+  - Int J Comput Biol Drug Des
+  - Int J Biom
+  - Int J Migr Bord Stud
+  - Int J Auton Adapt Commun Syst
+  - Int J Comput Vis Robot
+  - Int J Exp Comput Biomech
+  - Int J Bus Inf Syst
+  - Int J Chin Cult Manag
+  - Int J Nanotechnol
+  - Int J Heavy Veh Syst
+  - Int J Inf Syst Change Manag
+  - Int J Environ Waste Manag
+  - Int J Comput Healthc
+  - Int J Knowl Eng Soft Data Paradig
+  - Int J Med Eng Inform
+  - Int J Nanomanuf
+  - Int J Prod Lifecycle Manag
+  - Int J Model Identif Control
+  - Int J Entrep Innov Manag
+  - Int J Contin Eng Educ Life Long Learn
+  - Int J Learn Chang
+  - Int J Soc Syst Sci
+  - Int J Low Radiat
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

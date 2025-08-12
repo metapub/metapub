@@ -10,25 +10,19 @@ that happen to use simple patterns.
 """
 
 # NEJM - Single high-impact medical journal
-nejm_journals = ['N Engl J Med']
-nejm_template = 'https://www.nejm.org/doi/pdf/{doi}'
+nejm_journals = []  # Journal list moved to YAML configuration
 
 # Science (AAAS) - Single journal (Science magazine)
-science_journals = ['Science']
-science_vip_template = 'https://science.org/doi/reader/{doi}'
+science_journals = []  # Journal list moved to YAML configuration
 
 # PNAS - Single prestigious multidisciplinary journal
-pnas_journals = ['Proc Natl Acad Sci USA']
-pnas_template = 'https://www.pnas.org/doi/pdf/{doi}'
+pnas_journals = []  # Journal list moved to YAML configuration
 
 # AJPH - American Journal of Public Health (single journal publisher)
-ajph_journals = ['Am J Public Health']
-ajph_template = 'https://ajph.aphapublications.org/doi/pdf/{doi}?download=true'
+ajph_journals = []  # Journal list moved to YAML configuration
 
 # BMJ Open Gastroenterology - Single specialized medical journal
-bmj_open_gastro_journals = ['BMJ Open Gastroenterol']
-bmj_open_gastro_template = 'https://bmjopengastro.bmj.com/content/bmjgast/{year}/{volume}/{issue}/{article}.full.pdf'
+bmj_open_gastro_journals = []  # Journal list moved to YAML configuration
 
 # Microbiology Spectrum - Single ASM journal (not multi-journal ASM publisher)
-microbiol_spectr_journals = ['Microbiol Spectr']
-microbiol_spectr_template = 'https://journals.asm.org/doi/pdf/{doi}?download=true'
+microbiol_spectr_journals = []  # Journal list moved to YAML configuration

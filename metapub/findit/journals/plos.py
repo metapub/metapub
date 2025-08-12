@@ -15,18 +15,7 @@ Dance Function: the_plos_pogo
 
 
 # PLOS journals using DOI format (extracted from misc_doi.py)
-plos_journals = [
-    'J Data Mining Genomics Proteomics',
-    'J Pet Environ Biotechnol',
-    'PLoS Biol',
-    'PLoS Clin Trials',
-    'PLoS Comput Biol',
-    'PLoS Genet',
-    'PLoS Med',
-    'PLoS Negl Trop Dis',
-    'PLoS One',
-    'PLoS Pathog',
-]
+plos_journals = []  # Journal list moved to YAML configuration
 
 # PLOS uses citation_pdf_url meta tag extraction - no template needed
 # Evidence shows pattern: https://journals.plos.org/[journal]/article/file?id=[DOI]&type=printable

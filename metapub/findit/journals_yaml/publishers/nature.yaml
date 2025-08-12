@@ -1,0 +1,102 @@
+schema_version: '1.0'
+publisher:
+  name: nature
+  id: nature
+  description: Nature Publishing Group journals with custom URL parameters
+url_patterns:
+  primary_template: 'http://www.nature.com/{ja}/journal/v{volume}/n{issue}/pdf/{pii}.pdf'
+dance_function: the_nature_ballet
+journals:
+  parameterized:
+    'Am J Gastroenterol': {ja: ajg}
+    'Eur J Clin Nutr': {ja: ejcn}
+    'Eur J Hum Genet': {ja: ejhg}
+    'Eye (Lond)': {ja: eye}
+    'Genes Immun': {ja: gene}
+    'Genet Med': {ja: gim}
+    'Hypertens Res': {ja: hr}
+    'Int J Obes Relat Metab Disord': {ja: ijo}
+    'Int J Obes (Lond)': {ja: ijo}
+    'J Invest Dermatol': {ja: jid}
+    'J Hum Genet': {ja: jhg}
+    'J Hum Hypertens': {ja: jhh}
+    'Kidney Int': {ja: ki}
+    'Leukemia': {ja: leu}
+    'Mod Pathol': {ja: modpathol}
+    'Mol Psychiatry': {ja: mp}
+    'Nature': {ja: nature}
+    'Nat Biotechnol': {ja: nbt}
+    'Nat Cell Biol': {ja: ncb}
+    'Nat Chem': {ja: nchem}
+    'Nat Clin Pract Endocrinol Metab': {ja: nrendo}
+    'Nat Clin Pract Cardiovasc Med': {ja: nrcardio}
+    'Nat Clin Pract Oncol': {ja: nrclinonc}
+    'Nat Clin Pract Gastroenterol Hepatol': {ja: nrgastro}
+    'Nat Clin Pract Urol': {ja: nrurol}
+    'Nat Clin Pract Neurol': {ja: nrneurol}
+    'Nat Clin Pract Nephrol': {ja: nrneph}
+    'Nat Clin Pract Rheumatol': {ja: nrrheum}
+    'Nat Genet': {ja: ng}
+    'Nat Commun': {ja: ncomms}
+    'Nat Nanotechnol': {ja: nnano}
+    'Nat Neurosci': {ja: neuro}
+    'Nat Mater': {ja: nmat}
+    'Nat Med': {ja: nm}
+    'Nat Methods': {ja: nmeth}
+    'Nat Protoc': {ja: nprot}
+    'Nat Rev Drug Discov': {ja: nrd}
+    'Nat Rev Cardiol': {ja: nrcardio}
+    'Nat Rev Clin Oncol': {ja: nrclinonc}
+    'Nat Rev Endocrinol': {ja: nrendo}
+    'Nat Rev Genet': {ja: nrg}
+    'Nat Rev Gastroenterol Hepatol': {ja: nrgastro}
+    'Nat Rev Mol Cell Biol': {ja: nrm}
+    'Nat Rev Nephrol': {ja: nrneph}
+    'Nat Rev Neurol': {ja: nrneurol}
+    'Nat Rev Rheumatol': {ja: nrrheum}
+    'Nat Rev Urol': {ja: nrurol}
+    'Nat Rev Immunol': {ja: nri}
+    'Neuropsychopharmacology': {ja: npp}
+    'Oncogene': {ja: onc}
+    'Pediatr Res': {ja: pr}
+    'Pharmacogenomics J': {ja: tpj}
+    'Nat Rev Microbiol': {ja: nrmicro}
+    'Nat Immunol': {ja: ni}
+    'Cell Mol Immunol': {ja: cmi}
+    'Nat Rev Cancer': {ja: nrc}
+    'Nat Ecol Evol': {ja: natecolevol}
+    'Nat Hum Behav': {ja: nathumbehav}
+    'Nat Rev Dis Primers': {ja: nrdp}
+    'Nat Rev Chem': {ja: natrevchem}
+    'Nat Struct Mol Biol': {ja: nsmb}
+    'Nat Food': {ja: natfood}
+    'Nat Metab': {ja: natmetab}
+    'Nat Cancer': {ja: natcancer}
+    'Nat Chem Biol': {ja: nchembio}
+    'Nat Rev Neurosci': {ja: nrn}
+    'Nat Aging': {ja: nataging}
+    'Nat Plants': {ja: nplants}
+    'Nat Biomed Eng': {ja: natbiomedeng}
+    'Nat Struct Biol': {ja: nsb}
+    'Nat New Biol': {ja: newbio}
+    'Paraplegia': {ja: sc}
+    'Spinal Cord': {ja: sc}
+    'Int J Impot Res': {ja: ijir}
+    'J Expo Anal Environ Epidemiol': {ja: jea}
+    'J Expo Sci Environ Epidemiol': {ja: jes}
+    'Bone Marrow Transplant': {ja: bmt}
+    'Acta Pharmacol Sin': {ja: aps}
+    'Lab Anim (NY)': {ja: laban}
+    'Evid Based Dent': {ja: ebd}
+    'Cell Death Differ': {ja: cdd}
+    'Gene Ther': {ja: gt}
+    'J Perinatol': {ja: jp}
+    'Br Dent J': {ja: bdj}
+    'Prostate Cancer Prostatic Dis': {ja: pcan}
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: 'Manually created from nature.py - Nature journals with ja parameter mapping'
+  special_handling:
+    - 'Journals use {ja} parameter for URL construction'
+    - 'Uses custom dance function the_nature_hop'
+    - 'URL pattern: http://www.nature.com/{ja}/journal/v{volume}/n{issue}/pdf/{pii}.pdf'

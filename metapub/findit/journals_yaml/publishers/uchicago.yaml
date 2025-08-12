@@ -1,0 +1,73 @@
+schema_version: '1.0'
+publisher:
+  name: Uchicago
+  id: uchicago
+  description: ''
+url_patterns:
+  primary_template: https://www.journals.uchicago.edu/doi/pdf/{doi}
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - AJS
+  - Am J Educ (Chic Ill)
+  - Am J Health Econ
+  - Am J Sociol
+  - Am Nat
+  - Biol Bull
+  - Bot Gaz
+  - Br J Philos Sci
+  - China J
+  - Class Philol
+  - Comp Educ Rev
+  - Crime Justice
+  - Crit Inq
+  - Curr Anthropol
+  - Econ Dev Cult Change
+  - Elem Sch J
+  - Engl Lit Renaiss
+  - Environ Hist Durh N C
+  - Ethics
+  - HAU
+  - Hist Relig
+  - Int J Plant Sci
+  - Isis
+  - J Anthropol Res
+  - J Assoc Consum Res
+  - J Assoc Environ Resour Econ
+  - J Clin Ethics
+  - J Geol
+  - J Hum Cap
+  - J Labor Econ
+  - J Law Econ
+  - J Legal Stud
+  - J Mod Hist
+  - J Near East Stud
+  - J Polit
+  - J Polit Econ
+  - J Relig
+  - J Soc Social Work Res
+  - Libr Q
+  - Mod Philol
+  - NBER Macroecon Annu
+  - Natl Tax J
+  - Osiris
+  - Pap Bibliogr Soc Am
+  - Physiol Biochem Zool
+  - Physiol Zool
+  - Q Rev Biol
+  - Renaiss Drama
+  - Rev Environ Econ Policy
+  - Signs (Chic)
+  - Signs Soc (Chic)
+  - Soc Hist Alcohol Drugs
+  - Soc Serv Rev
+  - Source Notes Hist Art
+  - Southwest J Anthropol
+  - Speculum
+  - Stud Decor Arts
+  - Supreme Court Rev
+  - Winterthur Portf
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

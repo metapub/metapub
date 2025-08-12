@@ -42,26 +42,39 @@ class TestBMJDance(BaseDanceTest):
 
     def test_bmj_journal_recognition(self):
         """Test that BMJ journals are properly configured."""
-        # Test the function directly with known BMJ patterns rather than registry lookup
-        # since registry may not be populated during tests
+        # Test BMJ journal recognition using registry
+        from metapub.findit.registry import JournalRegistry
+        from metapub.findit.journals.bmj import bmj_journal_params
         
-        from metapub.findit.journals.bmj import bmj_journals, bmj_journal_params
+        registry = JournalRegistry()
         
-        # Verify BMJ configuration  
-        assert len(bmj_journals) > 0, "BMJ journals list should not be empty"
+        # Verify BMJ configuration parameters still exist
         assert len(bmj_journal_params) > 0, "BMJ journal parameters should not be empty"
         
-        # Check some expected BMJ journals are in the list
-        expected_journals = ['Heart', 'BMJ Support Palliat Care', 'Gut', 'BMJ Open']
-        found_journals = []
+        # Test sample BMJ journals (using PubMed abbreviated names)
+        expected_bmj_journals = [
+            'BMJ',
+            'Heart',
+            'Gut', 
+            'BMJ Open',
+            'Thorax'
+        ]
         
-        for expected in expected_journals:
-            if expected in bmj_journals:
-                found_journals.append(expected)
-                print(f"✓ {expected} found in BMJ journals list")
+        # Check journals are in registry with BMJ publisher
+        found_count = 0
+        for journal in expected_bmj_journals:
+            publisher_info = registry.get_publisher_for_journal(journal)
+            if publisher_info and publisher_info['name'] == 'bmj':
+                print(f"✓ {journal} correctly mapped to BMJ")
+                found_count += 1
+            else:
+                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
         
-        assert len(found_journals) > 0, f"Should find at least some expected journals, found: {found_journals}"
-        print(f"✓ Found {len(found_journals)} expected BMJ journals in configuration")
+        # Should find at least some BMJ journals in registry
+        assert found_count > 0, f"No BMJ journals found in registry with bmj publisher"
+        print(f"✓ Found {found_count} properly mapped BMJ journals")
+        
+        registry.close()
 
     @patch('metapub.findit.dances.bmj.verify_pdf_url')
     def test_bmj_vip_construction_primary(self, mock_verify):

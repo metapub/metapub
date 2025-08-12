@@ -77,4 +77,7 @@ bmj_journal_params = {
 }
 
 # Generate journal list from parameters (eliminates duplication)
-bmj_journals = list(bmj_journal_params.keys())
+# BMJ template
+bmj_template = 'https://{host}/content/{volume}/{issue}/{first_page}.full.pdf'
+
+bmj_journals = []  # Journal list moved to YAML configuration

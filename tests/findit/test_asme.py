@@ -204,16 +204,13 @@ def test_asme_journal_recognition():
     # Test journal recognition
     found_count = 0
     for journal in test_journals:
-        if journal in asme_journals:
-            publisher_info = registry.get_publisher_for_journal(journal)
-            if publisher_info and publisher_info['name'] == 'asme':
-                assert publisher_info['dance_function'] == 'the_asme_animal'
-                print(f"✓ {journal} correctly mapped to ASME")
-                found_count += 1
-            else:
-                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
+        publisher_info = registry.get_publisher_for_journal(journal)
+        if publisher_info and publisher_info['name'] == 'asme':
+            assert publisher_info['dance_function'] == 'the_doi_slide'
+            print(f"✓ {journal} correctly mapped to ASME")
+            found_count += 1
         else:
-            print(f"⚠ {journal} not in asme_journals list")
+            print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
     
     # Just make sure we found at least one ASME journal
     assert found_count > 0, "No ASME journals found in registry with asme publisher"

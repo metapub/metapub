@@ -1,0 +1,273 @@
+schema_version: '1.0'
+publisher:
+  name: Cambridge
+  id: cambridge
+  description: 'Cambridge University Press journal patterns and mappings.
+
+
+    Cambridge University Press publishes 250+ journals, all using DOI-based URLs
+
+    starting with 10.1017/ and hosted on cambridge.org/core.
+
+
+    URL Pattern: https://www.cambridge.org/core/services/aop-pdf-file/content/view/{DOI}
+
+    Dance Function: the_cambridge_foxtrot'
+url_patterns: {}
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - AJS Rev
+  - Acta Genet Med Gemellol (Roma)
+  - Adv Appl Math Mech
+  - Adv Appl Probab
+  - Adv Psychiatr Treat
+  - Afr Stud Rev
+  - Africa (Lond)
+  - Ageing Soc
+  - Aging Soc
+  - Agric Resour Econ Rev
+  - Am Antiq
+  - Am J Law Med
+  - Am Polit Sci Rev
+  - Americas (Acad Am Francisc Hist)
+  - Anglo Sax Engl
+  - Anim Health Res Rev
+  - Anim Prod
+  - Anim Welf
+  - Ann Glaciol
+  - Annu Rev Appl Linguist
+  - Antarct Sci
+  - Antichthon
+  - Antiquity
+  - Appl Psycholinguist
+  - Arab Sci Philos
+  - Arch Eur Sociol
+  - Artif Intell Eng Des Anal Manuf
+  - Austrian Hist Yearb
+  - BJHS Themes
+  - BJPsych Bull
+  - BJPsych Int
+  - BJPsych Open
+  - Behav Brain Sci
+  - Behav Change
+  - Behav Cogn Psychother
+  - Behav Public Policy
+  - Biling (Camb Engl)
+  - Biofilms
+  - Bird Conserv Int
+  - Br J Hist Sci
+  - Br J Int Stud
+  - Br J Nutr
+  - Br J Polit Sci
+  - Br J Psychiatry
+  - Br J Psychiatry Suppl
+  - Brain Impair
+  - Breast Cancer Online
+  - Bull Entomol Res
+  - Bull Sch Orient Afr Stud
+  - Bus Ethics Q
+  - Bus Polit
+  - CNS Spectr
+  - Camb Law J
+  - Camb Q Healthc Ethics
+  - Can Entomol
+  - Can J Aging
+  - Can J Law Soc
+  - Can J Linguist
+  - Can J Neurol Sci
+  - Can J Philos
+  - Can J Polit Sci
+  - Cardiol Young
+  - Cent Eur Hist
+  - China Q
+  - Church Hist
+  - Class Q
+  - Clay Miner
+  - Clays Clay Miner
+  - Cogn Behav Therap
+  - Comb Probab Comput
+  - Commun Comput Phys
+  - Comp Stud Soc Hist
+  - Contemp Eur Hist
+  - Contin Chang
+  - Dev Psychopathol
+  - Dialogue Can Philos Assoc
+  - Disaster Med Public Health Prep
+  - Du Bois Rev
+  - East Asian J Applied Math
+  - Econ Philos
+  - Environ Conserv
+  - Environ Dev Econ
+  - Epidemiol Infect
+  - Epidemiol Psichiatr Soc
+  - Epidemiol Psychiatr Sci
+  - Episteme (Edinb)
+  - Ethics Int Aff
+  - Eur J Appl Math
+  - Eur J Archaeol
+  - Eur J Risk Regul
+  - Eur Rev
+  - Evol Hum Sci
+  - Exp Agric
+  - Exp Results
+  - Expert Rev Mol Med
+  - Fetal Matern Med Rev
+  - Genet Res
+  - Glob Health Epidemiol Genom
+  - Glob Ment Health (Camb)
+  - Health Econ Policy Law
+  - Hist J
+  - Ind Organ Psychol
+  - Infect Control
+  - Infect Control Hosp Epidemiol
+  - Int Comp Law Q
+  - Int J Astrobiol
+  - Int J Law Context
+  - Int J Microw Wirel Technol
+  - Int J Middle East Stud
+  - Int J Technol Assess Health Care
+  - Int Organ
+  - Int Psychogeriatr
+  - Int Rev Soc Hist
+  - Ir Hist Stud
+  - Ir J Psychol Med
+  - Iran Stud
+  - Isr Law Rev
+  - Itinerario
+  - J Afr Hist
+  - J Agric Sci
+  - J Am Stud
+  - J Appl Probab
+  - J Benefit Cost Anal
+  - J Biosoc Sci
+  - J Biosoc Sci Suppl
+  - J Br Stud
+  - J Child Lang
+  - J Clin Transl Sci
+  - J Demogr Economics
+  - J Dev Orig Health Dis
+  - J Ecclesiast Hist
+  - J Econ Hist
+  - J Fluid Mech
+  - J Glaciol
+  - J Glob Hist
+  - J Hell Stud
+  - J Helminthol
+  - J Hyg (Lond)
+  - J Inst Actuar
+  - J Int Neuropsychol Soc
+  - J Int Phon Assoc
+  - J Laryngol Otol
+  - J Laryngol Otol Suppl
+  - J Lat Am Stud
+  - J Law Med Ethics
+  - J Linguist
+  - J Mar Biol Assoc U K
+  - J Ment Sci
+  - J Mod Afr Stud
+  - J Nutr Sci
+  - J Pension Econ Financ
+  - J Plasma Phys
+  - J Policy Hist
+  - J Public Policy
+  - J R Asiat Soc GB Irel
+  - J Race Ethn Polit
+  - J Radiother Pract
+  - J Relatsh Res
+  - J Smok Cessat
+  - J Soc Policy
+  - J Southeast Asian Stud
+  - Knowl Eng Rev
+  - Lang Cogn
+  - Lang Var Change
+  - Lat Am Res Rev
+  - Law Med Health Care
+  - Law Soc Inq
+  - Law Soc Rev
+  - Leg Stud
+  - Leg Stud (Soc Leg Scholars)
+  - Lichenologist (Lond)
+  - Macroecon Dyn
+  - Manag Organ Rev
+  - Med Hist
+  - Medicoleg News
+  - Middle East Stud Assoc Bull
+  - Mineral Mag
+  - Mod Asian Stud
+  - Mod Italy
+  - NTQ New Theatre Q
+  - Nat Lang Eng
+  - Natl Inst Econ Rev
+  - Natl Pap
+  - Netw Sci (Camb Univ Press)
+  - Neuron Glia Biol
+  - New Blackfriars
+  - New Perspect Turk
+  - Nutr Res Rev
+  - Oryx
+  - PS Polit Sci Polit
+  - Palliat Support Care
+  - Pap Br Sch Rome
+  - Parasitol Open
+  - Parasitology
+  - Personal Neurosci
+  - Philos Sci
+  - Philosophy
+  - Phonology
+  - Polar Rec (Gr Brit)
+  - Political Sci Res Methods
+  - Politics Life Sci
+  - Politics Relig
+  - Powder Diffr
+  - Prehosp Disaster Med
+  - Prim Health Care Res Dev
+  - Probab Eng Inf Sci
+  - Proc Int Astron Union
+  - Proc Nutr Soc
+  - Proc R Soc Edinb Biol
+  - Proc R Soc Edinb Nat Environ
+  - Psychiatr Bull (2014)
+  - Psychiatr Bull R Coll Psychiatr
+  - Psychiatrist
+  - Psychol Med
+  - Psychol Med Monogr Suppl
+  - Publ Astron Soc Aust
+  - Public Health Nutr
+  - Q Rev Biophys
+  - QRB Discov
+  - Quat Res
+  - Radiocarbon
+  - Renaiss Q
+  - Rev Clin Gerontol
+  - Rev Int Stud
+  - Rev Polit
+  - Robotica
+  - Rural Hist
+  - Sci Context
+  - Seed Sci Res
+  - Soc Philos Policy
+  - Soc Policy Soc
+  - Soc Sci Hist
+  - Span J Psychol
+  - State Polit Policy Q
+  - Stud Second Lang Acquis
+  - Theatre Surv
+  - Think (Lond)
+  - Traditio
+  - Trans R Hist Soc
+  - Trans R Soc Edinb Earth Sci
+  - Twin Res Hum Genet
+  - Univ West Ont Law Rev
+  - Urban Hist Yearb
+  - Urban History
+  - Utilitas
+  - Vic Lit Cult
+  - Vis Neurosci
+  - Weed Sci
+  - Zwingliana
+  - Zygote
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

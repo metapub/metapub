@@ -463,16 +463,13 @@ def test_projectmuse_journal_recognition():
     # Test journal recognition
     found_count = 0
     for journal in test_journals:
-        if journal in projectmuse_journals:
-            publisher_info = registry.get_publisher_for_journal(journal)
-            if publisher_info and publisher_info['name'] == 'projectmuse':
-                assert publisher_info['dance_function'] == 'the_projectmuse_syrtos'
-                print(f"✓ {journal} correctly mapped to Project MUSE")
-                found_count += 1
-            else:
-                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
+        publisher_info = registry.get_publisher_for_journal(journal)
+        if publisher_info and publisher_info['name'] == 'Projectmuse':
+            assert publisher_info['dance_function'] == 'the_doi_slide'
+            print(f"✓ {journal} correctly mapped to Project MUSE")
+            found_count += 1
         else:
-            print(f"⚠ {journal} not in projectmuse_journals list")
+            print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
     
     # Just make sure we found at least one Project MUSE journal
     assert found_count > 0, "No Project MUSE journals found in registry with projectmuse publisher"

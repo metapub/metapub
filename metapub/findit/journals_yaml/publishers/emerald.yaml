@@ -1,0 +1,82 @@
+schema_version: '1.0'
+publisher:
+  name: Emerald
+  id: emerald
+  description: ''
+url_patterns:
+  primary_template: https://www.emerald.com/insight/content/doi/{doi}/full/pdf
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - Adv Dual Diagn
+  - Adv Group Process
+  - Adv Health Care Manag
+  - Adv Health Econ Health Serv Res
+  - Adv Med Sociol
+  - Adv Ment Health Intellect Disabil
+  - Adv Motiv Achiev
+  - Aslib Proc
+  - Br Food J
+  - Clin Gov
+  - Digit Libr Perspect
+  - Drugs Alcohol Today
+  - Eng Comput (Swansea)
+  - Ethn Inequal Health Soc Care
+  - Eur J Mark
+  - Gend Manag
+  - Health Manpow Manage
+  - Ind Rob
+  - Inf Discov Deliv
+  - Int J Clim Chang Strateg Manag
+  - Int J Disaster Resil Built Environ
+  - Int J Health Care Qual Assur
+  - Int J Health Care Qual Assur Inc Leadersh Health Serv
+  - Int J Hum Rights Healthc
+  - Int J Manpow
+  - Int J Migr Health Soc Care
+  - Int J Numer Methods Heat Fluid Flow
+  - Int J Pharm Healthc Mark
+  - Int J Prison Health
+  - Int J Soc Econ
+  - Int J Sociol Soc Policy
+  - Int J Workplace Health Manag
+  - J Aggress Confl Peace Res
+  - J Agribus Dev Emerg Econ
+  - J Assist Technol
+  - J Bus Strategy
+  - J Child Serv
+  - J Consum Mark
+  - J Crim Psychol
+  - J Doc
+  - J Econ Stud
+  - J Enabling Technol
+  - J Financ Crime
+  - J Health Organ Manag
+  - J Integr Care (Brighton)
+  - J Intellect Disabil Offending Behav
+  - J Manag Med
+  - J Public Ment Health
+  - J Qual Maint Eng
+  - J Soc Mark
+  - J Workplace Learn
+  - Leadersh Health Serv (Bradf Engl)
+  - Libr Rev (Lond)
+  - Ment Health Rev (Brighton)
+  - Ment Illn
+  - Nutr Food Sci
+  - Policing
+  - Qual Ageing
+  - Qual Ageing Older Adults
+  - Rapid Prototyp J
+  - Ref Serv Rev
+  - Res Econ Inequal
+  - Res Sociol Educ
+  - Res Sociol Health Care
+  - Res Sociol Work
+  - Sociol Stud Child Youth
+  - Ther Communities
+  - Work Older People
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

@@ -439,7 +439,7 @@ class TestOATextRegistryIntegration:
         publisher_info = registry.get_publisher_for_journal(test_journal)
         
         if publisher_info and publisher_info['name'] == 'Oatext':
-            assert publisher_info['dance_function'] == 'the_doi_slide'
+            assert publisher_info['dance_function'] == 'the_oatext_orbit'
             print(f"✓ OAText properly configured with dance function: {publisher_info['dance_function']}")
         else:
             print(f"⚠ Test journal mapped to: {publisher_info['name'] if publisher_info else 'None'}")

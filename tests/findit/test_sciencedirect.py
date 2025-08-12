@@ -60,7 +60,7 @@ class TestScienceDirectDance(BaseDanceTest):
         """Test 3: Article without PII.
         
         PMID: 34263017 (Curr Opin Behav Sci) - has no PII
-        Expected: Should raise NoPDFLink since PII is required
+        Expected: Should now succeed due to improved the_sciencedirect_disco fallback
         """
         pma = self.fetch.article_by_pmid('34263017')
         
@@ -68,13 +68,13 @@ class TestScienceDirectDance(BaseDanceTest):
         assert pma.doi == '10.1016/j.cobeha.2021.03.029'
         assert pma.pii is None
         
-        # Should raise error for missing PII
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_sciencedirect_disco(pma, verify=False)
+        # Should now succeed despite missing PII (improvement in the_sciencedirect_disco)
+        url = the_sciencedirect_disco(pma, verify=False)
         
-        assert 'MISSING' in str(exc_info.value)
-        assert 'PII required' in str(exc_info.value)
-        print(f"Test 3 - Correctly handled missing PII: {exc_info.value}")
+        assert url is not None
+        assert 'sciencedirect.com' in url
+        assert '/pdfft?' in url
+        print(f"Test 3 - Successfully generated URL despite missing PII: {url}")
 
     def test_sciencedirect_disco_short_pii(self):
         """Test 4: Article with short PII format.

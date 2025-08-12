@@ -10,14 +10,36 @@ from setuptools.command.develop import develop
 def rebuild_journal_registry():
     """Rebuild the journal registry database after installation."""
     try:
-        # Import here to avoid circular imports during setup
-        from metapub.findit.migrate_journals import migrate_journals
-        print("Rebuilding journal registry...")
-        stats = migrate_journals()
-        print(f"Journal registry rebuilt: {stats}")
+        import subprocess
+        import sys
+        from pathlib import Path
+        
+        # Find the registry builder script  
+        package_root = Path(__file__).parent
+        registry_script = package_root / 'metapub' / 'scripts' / 'build_registry_from_yaml.py'
+        
+        if not registry_script.exists():
+            raise FileNotFoundError(f"Registry builder script not found at {registry_script}")
+        
+        print("Rebuilding journal registry from YAML configuration...")
+        
+        # Run the registry builder
+        result = subprocess.run([
+            sys.executable, str(registry_script),
+            '--yaml-dir', str(package_root / 'metapub' / 'findit' / 'journals_yaml' / 'publishers'),
+            '--output-db', str(package_root / 'metapub' / 'findit' / 'data' / 'registry.db')
+        ], capture_output=True, text=True, cwd=str(package_root))
+        
+        if result.returncode == 0:
+            print("Journal registry rebuilt successfully!")
+            if result.stdout:
+                print(result.stdout.strip())
+        else:
+            raise RuntimeError(f"Registry build failed: {result.stderr}")
+            
     except Exception as e:
         print(f"Warning: Could not rebuild journal registry: {e}")
-        print("You can manually rebuild it later with: metapub_migrate_journals --force")
+        print("You can manually rebuild it later with: python scripts/build_registry_from_yaml.py")
 
 
 class PostInstallCommand(install):
@@ -58,7 +80,7 @@ setup(
             "pubmed_article = metapub.pubmedfetcher_cli:main",
             "convert = metapub.convert:main",
             "ncbi_health_check = metapub.ncbi_health_check:main",
-            "metapub_migrate_journals = metapub.findit.migrate_journals:main",
+            "metapub_build_registry = metapub.scripts.build_registry_from_yaml:main",
         ]
     },
     # Include all Python files in the package
@@ -83,6 +105,7 @@ setup(
         "six",
         "coloredlogs",
         "python-Levenshtein",
+        "pyyaml",
     ],
     classifiers=[
         "Development Status :: 4 - Beta",

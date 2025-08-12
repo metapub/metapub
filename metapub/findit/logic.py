@@ -43,9 +43,8 @@ def _get_lookup_system(cachedir=None):
             # Disable caching - create in-memory database
             _registries[cache_key] = JournalRegistry(db_path=':memory:')
         else:
-            from ..cache_utils import get_cache_path
-            db_path = get_cache_path(cachedir, 'journal_registry.db')
-            _registries[cache_key] = JournalRegistry(db_path=db_path)
+            # Use JournalRegistry's default logic - it prefers shipped database over cache
+            _registries[cache_key] = JournalRegistry()
 
         _lookup_systems[cache_key] = RegistryBackedLookupSystem(_registries[cache_key])
         log.debug("Initialized registry-backed lookup system for cachedir: %s", cache_key)

@@ -21,6 +21,7 @@ url_patterns:
 dance_function: the_doi_slide
 journals:
   simple_list:
+  - Acupunct Electrother Res
   - Ann Clin Biochem
   - Angiology
   - Assessment

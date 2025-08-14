@@ -242,19 +242,26 @@ class FindIt(object):
         if retry_errors:
             retry_reasons.extend(['PAYWALL', 'TODO', 'CANTDO', 'TXERROR'])
 
-
-        # TODO: This section's logic is too convoluted. Thanks, younger me >:-[  -NM
         cache_result = self._query_cache(self.pmid)
 
         if cache_result:
             url = cache_result['url']
-            reason = '' if cache_result['reason'] is None else cache_result['reason']
+            reason = cache_result.get('reason', '') or ''  # Handle None
+            verified = cache_result.get('verify', False)
 
-            # Prefer cached results that were verified.
-            # Don't return cached results in retry_reasons list above. (i.e. retry)
-            if cache_result.get('verify', False) or verify == False:
-                if not reason.split(':')[0] in retry_reasons:
-                    return (url, reason)
+            # Extract the error code (part before ':' if present)
+            reason_code = reason.split(':')[0] if reason else ''
+
+            # Decision logic in ranked order
+            # 1. Always retry certain errors.
+            # 2. Cache result is unverified && we're still not verifying.
+            # 3. Cache result is verified && no error retries called for.
+
+            must_retry = reason_code in retry_reasons
+
+            if not must_retry and (verified or not verify):
+                return (url, reason)
+
 
         # === RETRY === #
         # we're here for one of the following reasons:

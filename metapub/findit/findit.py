@@ -242,14 +242,10 @@ class FindIt(object):
         if retry_errors:
             retry_reasons.extend(['PAYWALL', 'TODO', 'CANTDO', 'TXERROR'])
 
+
+        # TODO: This section's logic is too convoluted. Thanks, younger me >:-[  -NM
         cache_result = self._query_cache(self.pmid)
 
-        # Check for stale dance function references in cached results
-        if cache_result and cache_result.get('reason'):
-            reason = cache_result.get('reason', '')
-            # Auto-retry if cache contains reference to old/missing dance functions
-            if 'has no attribute' in reason and ('_shuffle' in reason or '_tango' in reason or '_dance' in reason):
-                retry_reasons.append('TXERROR')
         if cache_result:
             url = cache_result['url']
             reason = '' if cache_result['reason'] is None else cache_result['reason']

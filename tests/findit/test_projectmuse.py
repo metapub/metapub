@@ -61,7 +61,7 @@ class TestProjectMuseEvidenceDriven:
                 
                 # Verify function calls
                 mock_doi_step.assert_called_once_with('10.1353/bsr.2024.test')
-                mock_get.assert_called_once_with(article_url)
+                mock_get.assert_called_once_with(article_url, timeout=10, max_redirects=3)
                 assert not mock_verify.called  # verify=False
 
     def test_with_verification_enabled(self):
@@ -86,7 +86,7 @@ class TestProjectMuseEvidenceDriven:
             result = the_projectmuse_syrtos(pma, verify=True)
             
             assert result == 'https://muse.jhu.edu/pub/17/article/757992/pdf'
-            mock_verify.assert_called_once_with('https://muse.jhu.edu/pub/17/article/757992/pdf', 'Project MUSE')
+            mock_verify.assert_called_once_with('https://muse.jhu.edu/pub/17/article/757992/pdf', 'Project MUSE', request_timeout=10, max_redirects=3)
 
     def test_missing_doi_error(self):
         """Test that missing DOI raises appropriate error."""
@@ -335,7 +335,7 @@ class TestProjectMuseDance(BaseDanceTest):
         with pytest.raises(NoPDFLink) as exc_info:
             the_projectmuse_syrtos(pma, verify=True)
         
-        assert 'TXERROR' in str(exc_info.value) or 'PATTERN' in str(exc_info.value)
+        assert 'DENIED' in str(exc_info.value) or 'TXERROR' in str(exc_info.value) or 'PATTERN' in str(exc_info.value)
         print(f"Test 8 - Correctly handled 404: {exc_info.value}")
 
     @patch('metapub.findit.dances.projectmuse.verify_pdf_url')
@@ -545,7 +545,7 @@ class TestProjectMuseXMLFixtures:
         result = the_projectmuse_syrtos(pma, verify=True)
         expected_url = 'https://muse.jhu.edu/pub/3/article/123456/pdf'
         assert result == expected_url
-        mock_verify.assert_called_once_with(expected_url, 'Project MUSE')
+        mock_verify.assert_called_once_with(expected_url, 'Project MUSE', request_timeout=10, max_redirects=3)
 
     @patch('metapub.findit.dances.projectmuse.verify_pdf_url')
     @patch('metapub.findit.dances.projectmuse.unified_uri_get')
@@ -572,7 +572,7 @@ class TestProjectMuseXMLFixtures:
         result = the_projectmuse_syrtos(pma, verify=True)
         expected_url = 'https://muse.jhu.edu/pub/3/article/789012/pdf'
         assert result == expected_url
-        mock_verify.assert_called_once_with(expected_url, 'Project MUSE')
+        mock_verify.assert_called_once_with(expected_url, 'Project MUSE', request_timeout=10, max_redirects=3)
 
     @patch('metapub.findit.dances.projectmuse.verify_pdf_url')
     @patch('metapub.findit.dances.projectmuse.unified_uri_get')
@@ -599,4 +599,4 @@ class TestProjectMuseXMLFixtures:
         result = the_projectmuse_syrtos(pma, verify=True)
         expected_url = 'https://muse.jhu.edu/pub/3/article/345678/pdf'
         assert result == expected_url
-        mock_verify.assert_called_once_with(expected_url, 'Project MUSE')
+        mock_verify.assert_called_once_with(expected_url, 'Project MUSE', request_timeout=10, max_redirects=3)

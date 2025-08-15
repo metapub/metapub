@@ -4,7 +4,7 @@ from ...crossref import CrossRefFetcher
 from ...exceptions import NoPDFLink
 
 
-def the_oxford_academic_foxtrot(pma, verify=True):
+def the_oxford_academic_foxtrot(pma, verify=True, request_timeout=10, max_redirects=3):
     """Oxford Academic dance function - uses CrossRef API to bypass Cloudflare protection.
     
     Oxford Academic (academic.oup.com) blocks direct HTML scraping with Cloudflare protection.

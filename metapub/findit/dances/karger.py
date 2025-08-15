@@ -8,7 +8,7 @@ from .generic import the_doi_2step, verify_pdf_url, get_crossref_pdf_links
 
 
 
-def the_karger_conga(pma, verify=True):
+def the_karger_conga(pma, verify=True, request_timeout=10, max_redirects=3):
     '''Karger dance function with CrossRef API fallback for blocked access.
     
          :param: pma (PubMedArticle object)

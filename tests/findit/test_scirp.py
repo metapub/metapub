@@ -120,7 +120,9 @@ class TestSCIRPDance:
                 mock_verify.assert_called_once_with(
                     'https://www.scirp.org/pdf/test.pdf', 
                     'SCIRP', 
-                    referrer='https://www.scirp.org/journal/paperinformation?paperid=129647'
+                    referrer='https://www.scirp.org/journal/paperinformation?paperid=129647',
+                    request_timeout=10,
+                    max_redirects=3
                 )
                 
                 assert url == 'https://www.scirp.org/pdf/test.pdf'

@@ -11,7 +11,7 @@ from ..journals.allenpress import allenpress_format
 ## Also THIS APPROACH IS BAD -- we shouldn't be guessing at patterns. we'll get banned.
 
 
-def the_allenpress_advance(pma, verify=True):
+def the_allenpress_advance(pma, verify=True, request_timeout=10, max_redirects=3):
     """Allen Press dance function.
 
     Allen Press provides publishing services for scholarly and professional
@@ -21,6 +21,8 @@ def the_allenpress_advance(pma, verify=True):
     Args:
         pma: PubMedArticle object
         verify: Whether to verify PDF access
+        request_timeout: HTTP request timeout in seconds
+        max_redirects: Maximum redirects to follow
 
     Returns:
         PDF URL if accessible
@@ -83,7 +85,7 @@ def the_allenpress_advance(pma, verify=True):
         if verify:
             for pdf_url in possible_urls:
                 try:
-                    response = unified_uri_get(pdf_url, timeout=10, allow_redirects=True)
+                    response = unified_uri_get(pdf_url, timeout=request_timeout, max_redirects=max_redirects)
 
                     if response.ok:
                         # Check content type

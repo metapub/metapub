@@ -6,7 +6,7 @@ from ...exceptions import NoPDFLink
 from .generic import the_doi_2step, verify_pdf_url, unified_uri_get
 
 
-def the_scielo_chula(pma, verify=True):
+def the_scielo_chula(pma, verify=True, request_timeout=10, max_redirects=3):
     '''SciELO: The Scientific Electronic Library Online
 
     SciELO is an electronic library covering a selected collection of Brazilian
@@ -20,13 +20,13 @@ def the_scielo_chula(pma, verify=True):
     page_text = None
     baseurl_pii = 'http://www.scielo.br/scielo.php?script=sci_arttext&pid=%s'
     if pma.pii:
-        response = unified_uri_get(baseurl_pii % pma.pii)
+        response = unified_uri_get(baseurl_pii % pma.pii, timeout=request_timeout, max_redirects=max_redirects)
         if response.ok:
             page_text = response.content
 
     if page_text is None:
         if pma.doi:
-            response = unified_uri_get(the_doi_2step(pma.doi))
+            response = unified_uri_get(the_doi_2step(pma.doi), timeout=request_timeout, max_redirects=max_redirects)
             if response.ok:
                 page_text = response.content
         else:
@@ -62,7 +62,7 @@ def the_scielo_chula(pma, verify=True):
         
         if pdf_url:
             if verify:
-                verify_pdf_url(pdf_url, 'SciELO')
+                verify_pdf_url(pdf_url, 'SciELO', request_timeout=request_timeout, max_redirects=max_redirects)
             return pdf_url
         else:
             raise NoPDFLink('TXERROR: SciELO article page lacks PDF download link.')

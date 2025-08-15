@@ -296,7 +296,7 @@ class TestAnnualReviewsXMLFixtures:
         # AnnualReviews uses direct URL construction based on DOI pattern
         expected_url = 'https://www.annualreviews.org/deliver/fulltext/chembioeng/13/1/annurev-chembioeng-092220-030853.pdf'
         assert result == expected_url
-        mock_verify.assert_called_once_with(expected_url)
+        mock_verify.assert_called_once_with(expected_url, request_timeout=10, max_redirects=3)
 
     @patch('metapub.findit.dances.annualreviews.verify_pdf_url')
     def test_annualreviews_xml_36917814_annu_rev_chem_biomol_eng(self, mock_verify):
@@ -312,7 +312,7 @@ class TestAnnualReviewsXMLFixtures:
         result = the_annualreviews_round(pma, verify=True)
         expected_url = 'https://www.annualreviews.org/deliver/fulltext/chembioeng/14/1/annurev-chembioeng-101121-084508.pdf'
         assert result == expected_url
-        mock_verify.assert_called_once_with(expected_url)
+        mock_verify.assert_called_once_with(expected_url, request_timeout=10, max_redirects=3)
 
     @patch('metapub.findit.dances.annualreviews.verify_pdf_url')
     def test_annualreviews_xml_32976730_ann_rev_mar_sci(self, mock_verify):
@@ -328,4 +328,4 @@ class TestAnnualReviewsXMLFixtures:
         result = the_annualreviews_round(pma, verify=True)
         expected_url = 'https://www.annualreviews.org/deliver/fulltext/marine/13/1/annurev-marine-032720-095144.pdf'
         assert result == expected_url
-        mock_verify.assert_called_once_with(expected_url)
+        mock_verify.assert_called_once_with(expected_url, request_timeout=10, max_redirects=3)

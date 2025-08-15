@@ -81,7 +81,7 @@ class TestWorldScientificConsolidation:
         result = the_doi_slide(pma, verify=True)
         
         assert result == 'https://www.worldscientific.com/doi/pdf/10.1142/S0218957719500118?download=true'
-        mock_verify.assert_called_once_with('https://www.worldscientific.com/doi/pdf/10.1142/S0218957719500118?download=true')
+        mock_verify.assert_called_once_with('https://www.worldscientific.com/doi/pdf/10.1142/S0218957719500118?download=true', request_timeout=10, max_redirects=3)
 
     @patch('metapub.findit.dances.generic.verify_pdf_url')
     def test_verification_failure(self, mock_verify):

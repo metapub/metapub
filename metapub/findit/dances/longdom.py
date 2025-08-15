@@ -18,7 +18,7 @@ from ...exceptions import *
 from .generic import the_doi_2step, verify_pdf_url
 
 
-def the_longdom_hustle(pma, verify=True):
+def the_longdom_hustle(pma, verify=True, request_timeout=10, max_redirects=3):
     """Longdom Publishing: Evidence-driven DOI resolution approach
     
     Uses DOI resolution since Longdom DOIs (10.4172 prefix) resolve directly 
@@ -44,7 +44,7 @@ def the_longdom_hustle(pma, verify=True):
     
     # Use standard verification if requested
     if verify:
-        return verify_pdf_url(pdf_url, 'Longdom')
+        return verify_pdf_url(pdf_url, 'Longdom', request_timeout=request_timeout, max_redirects=max_redirects)
     else:
         return pdf_url
 

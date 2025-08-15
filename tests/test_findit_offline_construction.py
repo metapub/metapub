@@ -112,7 +112,7 @@ class TestOfflineURLConstruction(unittest.TestCase):
             url, reason = handler.get_pdf_url(mock_pma, verify=False)
             
             # Should call dance function with verify=False
-            mock_dance.assert_called_once_with(mock_pma, verify=False)
+            mock_dance.assert_called_once_with(mock_pma, verify=False, request_timeout=10, max_redirects=3)
 
     def test_registry_lookup_system_preserves_verify_flag(self):
         """Test that RegistryBackedLookupSystem passes verify flag to handlers."""
@@ -136,7 +136,7 @@ class TestOfflineURLConstruction(unittest.TestCase):
                 url, reason = lookup_system.find_pdf_url(mock_pma, verify=False)
                 
                 # Should call handler with verify=False
-                mock_handler.get_pdf_url.assert_called_once_with(mock_pma, verify=False)
+                mock_handler.get_pdf_url.assert_called_once_with(mock_pma, verify=False, request_timeout=10, max_redirects=3)
 
     def test_multiple_publishers_offline_capability(self):
         """Test that various publishers support offline URL construction."""

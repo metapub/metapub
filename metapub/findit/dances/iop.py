@@ -8,7 +8,7 @@ from ..journals.iop import iop_format, iop_alt_format
 # also i'm not convinced any of this works
 
 
-def the_iop_fusion(pma, verify=True):
+def the_iop_fusion(pma, verify=True, request_timeout=10, max_redirects=3):
     """IOP Publishing (Institute of Physics) dance function.
 
     IOP Publishing operates multiple domains including iopscience.iop.org
@@ -55,7 +55,7 @@ def the_iop_fusion(pma, verify=True):
         if verify:
             for pdf_url in possible_urls:
                 try:
-                    response = unified_uri_get(pdf_url, timeout=10, allow_redirects=True)
+                    response = unified_uri_get(pdf_url, timeout=request_timeout, max_redirects=max_redirects)
 
                     if response.ok:
                         # Check content type

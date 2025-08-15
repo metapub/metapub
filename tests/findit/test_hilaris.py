@@ -61,7 +61,7 @@ class TestHilarisDanceEvidenceDriven(unittest.TestCase):
         
         self.assertEqual(result, expected_url)
         mock_doi_2step.assert_called_once_with(self.evidence_doi)
-        mock_verify.assert_called_once_with(expected_url, 'Hilaris Publisher')
+        mock_verify.assert_called_once_with(expected_url, 'Hilaris Publisher', request_timeout=10, max_redirects=3)
 
     @patch('metapub.findit.dances.hilaris.verify_pdf_url')
     @patch('metapub.findit.dances.hilaris.the_doi_2step')
@@ -196,7 +196,7 @@ class TestHilarisXMLFixtures:
             result = the_hilaris_hop(pma, verify=True)
             
             assert result == expected_url
-            mock_verify.assert_called_with(expected_url, 'Hilaris Publisher')
+            mock_verify.assert_called_with(expected_url, 'Hilaris Publisher', request_timeout=10, max_redirects=3)
             
             print(f"✓ PMID {pmid} verified URL: {result}")
 

@@ -229,7 +229,7 @@ class TestAPAXMLFixturesComprehensive:
             expected_url = f"https://psycnet.apa.org/fulltext/{pma.doi}.pdf"
             
             assert result == expected_url
-            mock_verify.assert_called_with(expected_url)
+            mock_verify.assert_called_with(expected_url, request_timeout=10, max_redirects=3)
             print(f"✓ PMID {pmid} URL with verification: {result}")
 
     @patch('metapub.findit.dances.generic.verify_pdf_url')

@@ -5,7 +5,7 @@ from ...crossref import CrossRefFetcher
 from .generic import unified_uri_get
 
 
-def the_wolterskluwer_volta(pma, verify=True):
+def the_wolterskluwer_volta(pma, verify=True, request_timeout=10, max_redirects=3):
     """Wolters Kluwer dance function - bypasses Cloudflare using CrossRef + URL construction.
     
     Uses CrossRef API to verify DOI existence, then constructs PDF URLs based on
@@ -59,7 +59,7 @@ def the_wolterskluwer_volta(pma, verify=True):
     for pdf_url in pdf_urls:
         if verify:
             try:
-                response = unified_uri_get(pdf_url)
+                response = unified_uri_get(pdf_url, timeout=request_timeout, max_redirects=max_redirects)
                 if response.ok:
                     # Check if response looks like a PDF or valid article page
                     content_type = response.headers.get('content-type', '').lower()

@@ -37,24 +37,30 @@ class PublisherHandler:
         # This will be overridden by registry lookup
         return False
 
-    def get_pdf_url(self, pma, verify: bool = True) -> Tuple[Optional[str], Optional[str]]:
+    def get_pdf_url(self, pma, verify: bool = True, request_timeout: int = 10, 
+                   max_redirects: int = 3) -> Tuple[Optional[str], Optional[str]]:
         """Get PDF URL for the given PubMed article.
 
         Args:
             pma: PubMedArticle object
             verify: Whether to verify the URL
+            request_timeout: HTTP request timeout in seconds
+            max_redirects: Maximum number of redirects to follow
 
         Returns:
             Tuple of (url, reason)
         """
-        return self._dispatch_dance_function(pma, verify)
+        return self._dispatch_dance_function(pma, verify, request_timeout, max_redirects)
 
-    def _dispatch_dance_function(self, pma, verify: bool = True) -> Tuple[Optional[str], Optional[str]]:
+    def _dispatch_dance_function(self, pma, verify: bool = True, request_timeout: int = 10,
+                               max_redirects: int = 3) -> Tuple[Optional[str], Optional[str]]:
         """Dispatch to the appropriate dance function.
 
         Args:
             pma: PubMedArticle object
             verify: Whether to verify the URL
+            request_timeout: HTTP request timeout in seconds
+            max_redirects: Maximum number of redirects to follow
 
         Returns:
             Tuple of (url, reason)
@@ -66,7 +72,8 @@ class PublisherHandler:
 
             log.debug("Calling dance function: %s for journal: %s",
                      self.dance_function, pma.journal)
-            result = dance_func(pma, verify=verify)
+            result = dance_func(pma, verify=verify, request_timeout=request_timeout, 
+                              max_redirects=max_redirects)
 
             # Normalize return value to always be (url, reason) tuple
             if isinstance(result, tuple):
@@ -95,7 +102,8 @@ class PublisherHandler:
 class PaywallHandler(PublisherHandler):
     """Special handler for paywalled publishers."""
 
-    def get_pdf_url(self, pma, verify: bool = True) -> Tuple[Optional[str], Optional[str]]:
+    def get_pdf_url(self, pma, verify: bool = True, request_timeout: int = 10,
+                   max_redirects: int = 3) -> Tuple[Optional[str], Optional[str]]:
         """Always returns paywall message for paywalled journals."""
         return None, "PAYWALL"
 
@@ -150,12 +158,15 @@ class RegistryBackedLookupSystem:
         handler = HandlerFactory.create_handler(publisher_data)
         return handler
 
-    def find_pdf_url(self, pma, verify: bool = True) -> Tuple[Optional[str], Optional[str]]:
+    def find_pdf_url(self, pma, verify: bool = True, request_timeout: int = 10,
+                    max_redirects: int = 3) -> Tuple[Optional[str], Optional[str]]:
         """Find PDF URL for a PubMed article using the registry system.
 
         Args:
             pma: PubMedArticle object
             verify: Whether to verify URLs
+            request_timeout: HTTP request timeout in seconds
+            max_redirects: Maximum number of redirects to follow
 
         Returns:
             Tuple of (url, reason)
@@ -166,6 +177,7 @@ class RegistryBackedLookupSystem:
         handler = self.get_handler_for_journal(journal_name)
 
         if handler:
-            return handler.get_pdf_url(pma, verify=verify)
+            return handler.get_pdf_url(pma, verify=verify, request_timeout=request_timeout,
+                                     max_redirects=max_redirects)
         else:
             return None, f"NOFORMAT: No handler found for journal '{journal_name}'. Report with sample PMID at https://github.com/metapub/metapub/issues"

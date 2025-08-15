@@ -43,10 +43,10 @@ class TestJAMADance(BaseDanceTest):
         assert pma.doi is not None
         print(f"Test 2 - Second article: {pma.journal}, DOI: {pma.doi}")
 
+    @patch('metapub.findit.dances.jama.unified_uri_get')
     @patch('metapub.findit.dances.jama.get_crossref_pdf_links')
     @patch('metapub.findit.dances.jama.the_doi_2step')
-    @patch('requests.get')
-    def test_jama_dance_successful_access(self, mock_get, mock_doi_2step, mock_crossref):
+    def test_jama_dance_successful_access(self, mock_doi_2step, mock_crossref, mock_get):
         """Test 3: Successful PDF access simulation.
         
         PMID: 26575068 (JAMA)
@@ -127,13 +127,17 @@ class TestJAMADance(BaseDanceTest):
         assert 'MISSING: doi needed for JAMA article' in str(exc_info.value)
         print(f"Test 5 - Correctly handled missing DOI: {exc_info.value}")
 
+    @patch('metapub.findit.dances.jama.unified_uri_get')
+    @patch('metapub.findit.dances.jama.get_crossref_pdf_links')
     @patch('metapub.findit.dances.jama.the_doi_2step')
-    @patch('requests.get')
-    def test_jama_dance_network_error(self, mock_get, mock_doi_2step):
+    def test_jama_dance_network_error(self, mock_doi_2step, mock_crossref, mock_get):
         """Test 6: Network error handling.
         
         Expected: Should handle network errors gracefully
         """
+        # Mock CrossRef to fail so it falls back to regular approach
+        mock_crossref.side_effect = NoPDFLink("CrossRef failed")
+        
         # Mock DOI resolution
         mock_doi_2step.return_value = 'https://jamanetwork.com/article.aspx?doi=10.1001/jama.2015.12931'
         

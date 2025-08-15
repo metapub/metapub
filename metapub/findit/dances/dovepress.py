@@ -7,13 +7,13 @@ from ...exceptions import NoPDFLink
 from .generic import the_doi_2step, verify_pdf_url, unified_uri_get
 
 
-def the_dovepress_peacock(pma, verify=True):
+def the_dovepress_peacock(pma, verify=True, request_timeout=10, max_redirects=3):
     """DovePress - extract PDF URL from article download link."""
     if not pma.doi:
         raise NoPDFLink('MISSING: DOI required for DovePress journals')
     
     article_url = the_doi_2step(pma.doi)
-    response = unified_uri_get(article_url)
+    response = unified_uri_get(article_url, timeout=request_timeout, max_redirects=max_redirects)
     
     if response.status_code != 200:
         raise NoPDFLink(f'TXERROR: Could not access DovePress article page (HTTP {response.status_code})')
@@ -37,7 +37,7 @@ def the_dovepress_peacock(pma, verify=True):
                     pdf_url = href
                 
                 if verify:
-                    verify_pdf_url(pdf_url, 'DovePress')
+                    verify_pdf_url(pdf_url, 'DovePress', request_timeout=request_timeout, max_redirects=max_redirects)
                 
                 return pdf_url
     
@@ -48,7 +48,7 @@ def the_dovepress_peacock(pma, verify=True):
             if elem.get('name') == 'citation_pdf_url':
                 pdf_url = elem.get('content')
                 if verify:
-                    verify_pdf_url(pdf_url, 'DovePress')
+                    verify_pdf_url(pdf_url, 'DovePress', request_timeout=request_timeout, max_redirects=max_redirects)
                 return pdf_url
     
     raise NoPDFLink('MISSING: No PDF download link found in DovePress article HTML')

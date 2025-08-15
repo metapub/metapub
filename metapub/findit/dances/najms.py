@@ -8,7 +8,7 @@ from ...exceptions import AccessDenied, NoPDFLink
 from .generic import verify_pdf_url, unified_uri_get
 
 
-def the_najms_mazurka(pma, verify=True):
+def the_najms_mazurka(pma, verify=True, request_timeout=10, max_redirects=3):
     '''Dance of the North Am J Med Sci, which should be largely free.
 
          :param: pma (PubMedArticle object)
@@ -27,7 +27,7 @@ def the_najms_mazurka(pma, verify=True):
         raise NoPDFLink('MISSING: pii, doi (doi lookup failed)')
 
     url = ''
-    response = unified_uri_get(starturl)
+    response = unified_uri_get(starturl, timeout=request_timeout, max_redirects=max_redirects)
     if response.ok:
         body = etree.fromstring(response.content, parser=HTMLParser()).find('body')
         href = body.findall('table/tr/td/p/a')[0].get('href')
@@ -39,5 +39,5 @@ def the_najms_mazurka(pma, verify=True):
         raise NoPDFLink('TXERROR: response from NAJMS website was %i' % response.status_code)
 
     if verify:
-        verify_pdf_url(url, 'NAJMS')
+        verify_pdf_url(url, 'NAJMS', request_timeout=request_timeout, max_redirects=max_redirects)
     return url

@@ -6,8 +6,12 @@ PII-based URLs, etc.
 """
 
 from urllib.parse import urlsplit, urljoin
+from urllib3.exceptions import InsecureRequestWarning
 from datetime import datetime
 import requests
+import ssl
+import certifi
+import warnings
 
 from ...dx_doi import DxDOI, DX_DOI_URL
 from ...pubmedarticle import square_voliss_data_for_pma
@@ -26,7 +30,7 @@ OK_STATUS_CODES = (200, 301, 302, 307)
 # Publishers known to block automated access with Cloudflare/bot protection
 BLOCKED_PUBLISHERS = {
     'aip',           # American Institute of Physics - Cloudflare
-    'jama',          # JAMA Network - Cloudflare  
+    'jama',          # JAMA Network - Cloudflare
     'karger',        # Karger - Cloudflare
     'asme',          # ASME - Cloudflare
     'iop',           # Institute of Physics - Radware Bot Manager
@@ -37,33 +41,38 @@ BLOCKED_PUBLISHERS = {
 
 def get_crossref_pdf_links(doi):
     """Retrieve PDF links for a DOI from CrossRef API.
-    
+
     This function provides a workaround for publishers that block direct access
     but provide PDF URLs through CrossRef metadata.
-    
+
     Args:
         doi (str): DOI to look up
-        
+
     Returns:
         list: List of PDF URLs from CrossRef, or empty list if none found
-        
+
     Raises:
         NoPDFLink: If CrossRef API request fails
     """
     if not doi:
         return []
-        
+
     url = f'https://api.crossref.org/works/{doi}'
     headers = {'User-Agent': 'metapub/1.0 (mailto:support@metapub.org)'}
-    
+
     try:
-        response = requests.get(url, headers=headers, timeout=10)
+        session = requests.Session()
+        adapter = requests.adapters.HTTPAdapter(max_retries=0)
+        adapter.max_retries.redirect = 3
+        session.mount('http://', adapter)
+        session.mount('https://', adapter)
+        response = session.get(url, headers=headers, timeout=10)
         if response.status_code != 200:
             raise NoPDFLink(f'TXERROR: CrossRef API returned {response.status_code} for DOI {doi}')
-            
+
         data = response.json()
         work = data.get('message', {})
-        
+
         # Extract PDF links from CrossRef link metadata
         pdf_links = []
         if 'link' in work:
@@ -73,9 +82,9 @@ def get_crossref_pdf_links(doi):
                 # Check both content-type and URL path for PDF indicators
                 if (('pdf' in content_type or 'pdf' in url_path) and link.get('URL')):
                     pdf_links.append(link['URL'])
-                    
+
         return pdf_links
-        
+
     except requests.RequestException as e:
         raise NoPDFLink(f'TXERROR: CrossRef API request failed - {str(e)}')
     except (KeyError, ValueError) as e:
@@ -113,9 +122,18 @@ PAYWALL_TERMS = [
 
 
 def unified_uri_get(uri, timeout=10, allow_redirects=True, params={},
-                    headers=COMMON_REQUEST_HEADERS):
-    response = requests.get(uri, headers=headers, allow_redirects=allow_redirects,
-                            timeout=timeout, params=params)
+                    headers=COMMON_REQUEST_HEADERS, max_redirects=3):
+    session = requests.Session()
+    session.headers.update(headers)
+    
+    if allow_redirects and max_redirects is not None:
+        adapter = requests.adapters.HTTPAdapter(max_retries=0)
+        adapter.max_retries.redirect = max_redirects
+        session.mount('http://', adapter)
+        session.mount('https://', adapter)
+    
+    response = session.get(uri, allow_redirects=allow_redirects,
+                          timeout=timeout, params=params)
     return response
 
 def detect_paywall_from_html(html_content, publisher_name=''):
@@ -171,7 +189,7 @@ def standardize_journal_name(journal_name):
     return remove_chars(journal_name, '.')
 
 
-def verify_pdf_url(pdfurl, publisher_name='', referrer=None):
+def verify_pdf_url(pdfurl, publisher_name='', referrer=None, request_timeout=15, max_redirects=3):
     """
     Enhanced PDF URL verification with robust handling for various publisher quirks.
 
@@ -192,11 +210,6 @@ def verify_pdf_url(pdfurl, publisher_name='', referrer=None):
         NoPDFLink: If PDF cannot be accessed or verified
         AccessDenied: If access requires authentication (401) or is forbidden (403)
     """
-    import ssl
-    import certifi
-    from urllib3.exceptions import InsecureRequestWarning
-    import warnings
-
     # Suppress SSL warnings when we need to disable verification
     warnings.filterwarnings('ignore', category=InsecureRequestWarning)
 
@@ -214,6 +227,12 @@ def verify_pdf_url(pdfurl, publisher_name='', referrer=None):
 
     session = requests.Session()
     session.headers.update(headers)
+    
+    # Set redirect limits
+    adapter = requests.adapters.HTTPAdapter(max_retries=0)
+    adapter.max_retries.redirect = max_redirects
+    session.mount('http://', adapter)
+    session.mount('https://', adapter)
 
     strategies = [
         # Strategy 1: Standard request with SSL verification
@@ -226,7 +245,7 @@ def verify_pdf_url(pdfurl, publisher_name='', referrer=None):
 
     for strategy in strategies:
         try:
-            response = session.get(pdfurl, timeout=15, allow_redirects=True,
+            response = session.get(pdfurl, timeout=request_timeout, allow_redirects=True,
                                  **{k: v for k, v in strategy.items() if k != 'name'})
 
             last_status_code = response.status_code
@@ -295,7 +314,7 @@ def rectify_pma_for_vip_links(pma):
     raise NoPDFLink('MISSING: vip (volume, issue, and/or first_page missing from PubMedArticle)')
 
 
-def the_doi_slide(pma, verify=True):
+def the_doi_slide(pma, verify=True, request_timeout=10, max_redirects=3):
     '''Dance of journals that use DOI in their URL construction.
 
     Uses the registry-based template system for DOI-based publishers.
@@ -303,6 +322,8 @@ def the_doi_slide(pma, verify=True):
 
          :param: pma (PubMedArticle object)
          :param: verify (bool) [default: True]
+         :param: request_timeout (int) [default: 10]
+         :param: max_redirects (int) [default: 3]
          :return: url (string)
          :raises: AccessDenied, NoPDFLink
     '''
@@ -315,9 +336,9 @@ def the_doi_slide(pma, verify=True):
     registry = JournalRegistry()
     publisher_info = registry.get_publisher_for_journal(jrnl)
     registry.close()
-    
+
     publisher_name = publisher_info['name']
-    
+
     # Check if this is a blocked publisher - try CrossRef API first
     if publisher_name in BLOCKED_PUBLISHERS:
         try:
@@ -340,15 +361,17 @@ def the_doi_slide(pma, verify=True):
 
     # Verification logic - skip for blocked publishers
     if verify and publisher_name not in BLOCKED_PUBLISHERS:
-        verify_pdf_url(url)
+        verify_pdf_url(url, request_timeout=request_timeout, max_redirects=max_redirects)
     return url
 
 
-def the_pmid_pogo(pma, verify=True):
+def the_pmid_pogo(pma, verify=True, request_timeout=10, max_redirects=3):
     '''Dance of the miscellaneous journals that use PMID in their URL construction.
 
          :param: pma (PubMedArticle object)
          :param: verify (bool) [default: True]
+         :param: request_timeout (int) [default: 10]
+         :param: max_redirects (int) [default: 3]
          :return: url (string)
          :raises: AccessDenied, NoPDFLink
     '''
@@ -356,16 +379,18 @@ def the_pmid_pogo(pma, verify=True):
     url = simple_formats_pmid[jrnl].format(pmid=pma.pmid)
 
     if verify:
-        verify_pdf_url(url)
+        verify_pdf_url(url, request_timeout=request_timeout, max_redirects=max_redirects)
     return url
 
 
-def the_vip_shake(pma, verify=True):
+def the_vip_shake(pma, verify=True, request_timeout=10, max_redirects=3):
     '''Dance of the miscellaneous journals that use volume-issue-page in their
         URL construction
 
          :param: pma (PubMedArticle object)
          :param: verify (bool) [default: True]
+         :param: request_timeout (int) [default: 10]
+         :param: max_redirects (int) [default: 3]
          :return: url (string)
          :raises: AccessDenied, NoPDFLink
     '''
@@ -374,16 +399,18 @@ def the_vip_shake(pma, verify=True):
     url = vip_format.format(host=vip_journals[jrnl]['host'], a=pma)
 
     if verify:
-        verify_pdf_url(url)
+        verify_pdf_url(url, request_timeout=request_timeout, max_redirects=max_redirects)
     return url
 
 
-def the_vip_nonstandard_shake(pma, verify=True):
+def the_vip_nonstandard_shake(pma, verify=True, request_timeout=10, max_redirects=3):
     '''Dance of the miscellaneous journals that use volume-issue-page in their
         URL construction (but are a little different).
 
          :param: pma (PubMedArticle object)
          :param: verify (bool) [default: True]
+         :param: request_timeout (int) [default: 10]
+         :param: max_redirects (int) [default: 3]
          :return: url (string)
          :raises: AccessDenied, NoPDFLink
     '''
@@ -392,16 +419,18 @@ def the_vip_nonstandard_shake(pma, verify=True):
     url = vip_journals_nonstandard[jrnl].format(a=pma)
 
     if verify:
-        verify_pdf_url(url)
+        verify_pdf_url(url, request_timeout=request_timeout, max_redirects=max_redirects)
     return url
 
 
-def the_pii_polka(pma, verify=True):
+def the_pii_polka(pma, verify=True, request_timeout=10, max_redirects=3):
     '''Dance of the miscellaneous journals that use a PII in their URL construction
         in their URL construction.
 
          :param: pma (PubMedArticle object)
          :param: verify (bool) [default: True]
+         :param: request_timeout (int) [default: 10]
+         :param: max_redirects (int) [default: 3]
          :return: url (string)
          :raises: AccessDenied, NoPDFLink
     '''
@@ -412,16 +441,16 @@ def the_pii_polka(pma, verify=True):
         raise NoPDFLink('MISSING: pii missing from PubMedArticle XML (pii format)')
 
     if url:
-        res = requests.get(url)
+        res = unified_uri_get(url, timeout=request_timeout, allow_redirects=True, max_redirects=max_redirects)
         if res.text.find('Access Denial') > -1:
             raise AccessDenied('DENIED: Access Denied by ScienceDirect (%s)' % url)
 
     if verify:
-        verify_pdf_url(url)
+        verify_pdf_url(url, request_timeout=request_timeout, max_redirects=max_redirects)
     return url
 
 
-def the_pmc_twist(pma, verify=True, use_nih=False):
+def the_pmc_twist(pma, verify=True, use_nih=False, request_timeout=10, max_redirects=3):
     '''Look up article in EuropePMC.org.  If not found there, fall back to NIH (if use_nih
     is True).
 
@@ -444,7 +473,7 @@ def the_pmc_twist(pma, verify=True, use_nih=False):
         return url
 
     try:
-        verify_pdf_url(url, 'EuropePMC')
+        verify_pdf_url(url, 'EuropePMC', request_timeout=request_timeout, max_redirects=max_redirects)
         return url
 
     except (NoPDFLink, AccessDenied):
@@ -454,18 +483,20 @@ def the_pmc_twist(pma, verify=True, use_nih=False):
             #
             #   <div class="el-exception-reason">Bulk downloading of content by IP address [162.217...,</div>
             url = PMC_PDF_URL.format(a=pma)
-            verify_pdf_url(url, 'NIH (EuropePMC fallback)')
+            verify_pdf_url(url, 'NIH (EuropePMC fallback)', request_timeout=request_timeout, max_redirects=max_redirects)
             return url
     raise NoPDFLink('TXERROR: could not get PDF from EuropePMC.org and USE_NIH set to False')
 
 
-def the_bmc_boogie(pma, verify=False):
+def the_bmc_boogie(pma, verify=False, request_timeout=10, max_redirects=3):
     '''Note: verification turned off by default because BMC is an all-open-access publisher.
 
        (You may still like to use verify=True to make sure it's a valid link.)
 
          :param: pma (PubMedArticle object)
          :param: verify (bool) [default: False]
+         :param: request_timeout (int) [default: 10]
+         :param: max_redirects (int) [default: 3]
          :return: url (string)
          :raises: AccessDenied, NoPDFLink
     '''
@@ -476,5 +507,5 @@ def the_bmc_boogie(pma, verify=False):
         raise NoPDFLink('MISSING: doi needed for BMC article')
     url = BMC_format.format(aid=article_id)
     if verify:
-        verify_pdf_url(url, 'BMC')
+        verify_pdf_url(url, 'BMC', request_timeout=request_timeout, max_redirects=max_redirects)
     return url

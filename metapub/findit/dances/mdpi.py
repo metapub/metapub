@@ -4,7 +4,7 @@ from .generic import the_doi_2step, verify_pdf_url
 from ...exceptions import NoPDFLink
 
 
-def the_mdpi_moonwalk(pma, verify=True):
+def the_mdpi_moonwalk(pma, verify=True, request_timeout=10, max_redirects=3):
     """MDPI dance - direct PDF URL construction from DOI.
 
     MDPI uses a consistent URL pattern where DOI 10.3390/journal[volume][issue][article]
@@ -35,7 +35,7 @@ def the_mdpi_moonwalk(pma, verify=True):
     pdf_url = f"{resolved_url}/pdf"
 
     if verify:
-        verify_pdf_url(pdf_url, 'MDPI')
+        verify_pdf_url(pdf_url, 'MDPI', request_timeout=request_timeout, max_redirects=max_redirects)
 
     return pdf_url
 

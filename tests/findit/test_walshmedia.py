@@ -201,7 +201,7 @@ class TestWalshMediaXMLFixtures:
             result = the_walshmedia_bora(pma, verify=True)
             
             assert result == expected_url
-            mock_verify.assert_called_with(expected_url, 'Walsh Medical Media')
+            mock_verify.assert_called_with(expected_url, 'Walsh Medical Media', request_timeout=10, max_redirects=3)
             
             print(f"✓ PMID {pmid} verified URL: {result}")
 

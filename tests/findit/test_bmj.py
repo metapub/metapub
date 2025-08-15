@@ -98,7 +98,7 @@ class TestBMJDance(BaseDanceTest):
         assert '.full.pdf' in result
         
         # Should verify PDF URL
-        mock_verify.assert_called_once_with(expected_url, 'BMJ')
+        mock_verify.assert_called_once_with(expected_url, 'BMJ', request_timeout=10, max_redirects=3)
         
         print(f"Test 1 - VIP construction (primary): {result}")
 
@@ -141,7 +141,7 @@ class TestBMJDance(BaseDanceTest):
         # Verify function calls - should use fallback method
         mock_doi_2step.assert_called_once_with('10.1136/heartjnl-2021-320451')
         mock_uri_get.assert_called_once()
-        mock_verify.assert_called_once_with(expected_url, 'BMJ')
+        mock_verify.assert_called_once_with(expected_url, 'BMJ', request_timeout=10, max_redirects=3)
         
         print(f"Test 2 - citation_pdf_url fallback: {result}")
 

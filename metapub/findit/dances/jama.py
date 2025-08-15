@@ -7,7 +7,7 @@ from ...exceptions import AccessDenied, NoPDFLink
 from .generic import the_doi_2step, verify_pdf_url, unified_uri_get, get_crossref_pdf_links
 
 
-def the_jama_dance(pma, verify=True):
+def the_jama_dance(pma, verify=True, request_timeout=10, max_redirects=3):
     '''JAMA dance function with CrossRef API fallback for blocked access.
     
          :param: pma (PubMedArticle object)
@@ -33,7 +33,7 @@ def the_jama_dance(pma, verify=True):
     # Original approach (likely to be blocked by Cloudflare)
     try:
         baseurl = the_doi_2step(pma.doi)
-        res = unified_uri_get(baseurl)
+        res = unified_uri_get(baseurl, timeout=request_timeout, max_redirects=max_redirects)
         parser = HTMLParser()
         tree = etree.fromstring(res.content, parser)
         

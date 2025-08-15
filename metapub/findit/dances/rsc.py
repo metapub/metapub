@@ -18,7 +18,7 @@ from ...exceptions import NoPDFLink, AccessDenied
 from .generic import the_doi_2step, verify_pdf_url, unified_uri_get
 
 
-def the_rsc_reaction(pma, verify=True):
+def the_rsc_reaction(pma, verify=True, request_timeout=10, max_redirects=3):
     """Royal Society of Chemistry: Leading chemistry publisher with 50+ journals.
     
     Uses citation_pdf_url meta tag extraction - 100% reliable across all evidence samples.
@@ -41,7 +41,7 @@ def the_rsc_reaction(pma, verify=True):
     
     # Get article HTML page via DOI resolution
     article_url = the_doi_2step(pma.doi)
-    response = unified_uri_get(article_url)
+    response = unified_uri_get(article_url, timeout=request_timeout, max_redirects=max_redirects)
     
     if response.status_code != 200:
         raise NoPDFLink(f'TXERROR: Could not access RSC article page (HTTP {response.status_code})')
@@ -55,6 +55,6 @@ def the_rsc_reaction(pma, verify=True):
     
     # Verify PDF accessibility if requested
     if verify:
-        verify_pdf_url(pdf_url, 'RSC')
+        verify_pdf_url(pdf_url, 'RSC', request_timeout=request_timeout, max_redirects=max_redirects)
     
     return pdf_url

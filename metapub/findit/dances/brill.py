@@ -17,7 +17,7 @@ from .generic import the_doi_2step, verify_pdf_url, unified_uri_get
 from ...exceptions import NoPDFLink
 
 
-def the_brill_bridge(pma, verify=True):
+def the_brill_bridge(pma, verify=True, request_timeout=10, max_redirects=3):
     """
     Brill dance function - evidence-driven meta tag extraction.
     
@@ -36,7 +36,7 @@ def the_brill_bridge(pma, verify=True):
     article_url = the_doi_2step(pma.doi)
     
     try:
-        response = unified_uri_get(article_url)
+        response = unified_uri_get(article_url, timeout=request_timeout, max_redirects=max_redirects)
     except requests.exceptions.ConnectionError as e:
         raise NoPDFLink(f'TXERROR: Network error accessing Brill article: {e}')
     
@@ -53,6 +53,6 @@ def the_brill_bridge(pma, verify=True):
     pdf_url = pdf_match.group(1)
     
     if verify:
-        verify_pdf_url(pdf_url, 'Brill')
+        verify_pdf_url(pdf_url, 'Brill', request_timeout=request_timeout, max_redirects=max_redirects)
     
     return pdf_url

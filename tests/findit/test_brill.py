@@ -378,7 +378,7 @@ class TestBrillXMLFixtures:
             
             # Should find and return PDF URL from meta tag
             assert result == expected_pdf_url
-            mock_verify.assert_called_with(expected_pdf_url, 'Brill')
+            mock_verify.assert_called_with(expected_pdf_url, 'Brill', request_timeout=10, max_redirects=3)
             
             print(f"✓ PMID {pmid} verified URL: {result}")
 

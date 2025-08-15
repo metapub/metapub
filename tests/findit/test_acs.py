@@ -99,8 +99,8 @@ class TestACSTest(BaseDanceTest):
             mock_registry.get_publisher_for_journal.assert_called_with('ACS Med Chem Lett')
             mock_registry.close.assert_called_once()
             
-            # Verify verification was called
-            mock_verify.assert_called_once_with(expected_url)
+            # Verify verification was called with timeout parameters
+            mock_verify.assert_called_once_with(expected_url, request_timeout=10, max_redirects=3)
             
         print(f"Test 1 - URL construction: {result}")
 

@@ -60,7 +60,7 @@ class TestIngentaConnectDance(unittest.TestCase):
         result = the_ingenta_flux(self.mock_pma, verify=True)
         
         self.assertEqual(result, expected_pdf_url)
-        mock_verify.assert_called_once_with(expected_pdf_url, 'Ingenta Connect')
+        mock_verify.assert_called_once_with(expected_pdf_url, 'Ingenta Connect', request_timeout=10, max_redirects=3)
 
     @patch('metapub.findit.dances.ingenta.verify_pdf_url')
     @patch('metapub.findit.dances.ingenta.the_doi_2step')

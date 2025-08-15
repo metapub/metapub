@@ -33,7 +33,7 @@ class TestASMShimmy:
             
             expected = 'https://journals.asm.org/doi/pdf/10.1128/aac.00216-22?download=true'
             assert result == expected
-            mock_verify.assert_called_once_with(expected, 'ASM')
+            mock_verify.assert_called_once_with(expected, 'ASM', request_timeout=10, max_redirects=3)
 
     def test_modern_url_construction_different_journals(self):
         """Test URL construction works for different ASM journals."""

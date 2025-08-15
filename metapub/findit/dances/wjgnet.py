@@ -6,7 +6,7 @@ from ...exceptions import NoPDFLink, AccessDenied
 from .generic import verify_pdf_url, unified_uri_get, the_doi_2step
 
 
-def the_wjgnet_wave(pma, verify=True):
+def the_wjgnet_wave(pma, verify=True, request_timeout=10, max_redirects=3):
     """WJGNet dance - resolve DOI then extract PDF link from article page.
     
     WJGNet uses a two-tier system where article pages are on wjgnet.com
@@ -36,7 +36,7 @@ def the_wjgnet_wave(pma, verify=True):
     article_url = the_doi_2step(pma.doi)
     
     # Step 2: Fetch article page and extract PDF link
-    response = unified_uri_get(article_url)
+    response = unified_uri_get(article_url, timeout=request_timeout, max_redirects=max_redirects)
     if not response.ok:
         raise NoPDFLink(f'TXERROR: Could not fetch WJGNet article page - Status: {response.status_code}')
     
@@ -56,6 +56,6 @@ def the_wjgnet_wave(pma, verify=True):
     pdf_url = pdf_url.replace('&amp;', '&')
     
     if verify:
-        verify_pdf_url(pdf_url, 'WJGNet')
+        verify_pdf_url(pdf_url, 'WJGNet', request_timeout=request_timeout, max_redirects=max_redirects)
     
     return pdf_url

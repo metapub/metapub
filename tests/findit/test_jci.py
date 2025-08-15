@@ -270,7 +270,7 @@ class TestJCIXMLFixtures:
         result = the_jci_jig(pma, verify=True)
         expected_url = 'http://www.jci.org/articles/view/170500/files/pdf'
         assert result == expected_url
-        mock_verify.assert_called_once_with(expected_url, 'JCI')
+        mock_verify.assert_called_once_with(expected_url, 'JCI', request_timeout=10, max_redirects=3)
 
     @patch('metapub.findit.dances.jci.verify_pdf_url')
     def test_jci_xml_35358095_j_clin_invest(self, mock_verify):
@@ -285,4 +285,4 @@ class TestJCIXMLFixtures:
         result = the_jci_jig(pma, verify=True)
         expected_url = 'http://www.jci.org/articles/view/154225/files/pdf'
         assert result == expected_url
-        mock_verify.assert_called_once_with(expected_url, 'JCI')
+        mock_verify.assert_called_once_with(expected_url, 'JCI', request_timeout=10, max_redirects=3)

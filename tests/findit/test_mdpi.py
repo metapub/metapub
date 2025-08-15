@@ -117,7 +117,7 @@ class TestMDPI(BaseDanceTest):
         result = the_mdpi_moonwalk(pma, verify=True)
         
         assert result == 'https://www.mdpi.com/2035-8148/11/3/17/pdf'
-        mock_verify.assert_called_once_with('https://www.mdpi.com/2035-8148/11/3/17/pdf', 'MDPI')
+        mock_verify.assert_called_once_with('https://www.mdpi.com/2035-8148/11/3/17/pdf', 'MDPI', request_timeout=10, max_redirects=3)
         print("Test 6 - Successfully called PDF verification")
 
     @patch('metapub.findit.dances.mdpi.verify_pdf_url')
@@ -231,7 +231,7 @@ class TestMDPIXMLFixtures:
         result = the_mdpi_moonwalk(pma, verify=True)
         expected_url = 'https://www.mdpi.com/1422-0067/25/18/10046/pdf'
         assert result == expected_url
-        mock_verify.assert_called_once_with(expected_url, 'MDPI')
+        mock_verify.assert_called_once_with(expected_url, 'MDPI', request_timeout=10, max_redirects=3)
 
     @patch('metapub.findit.dances.mdpi.verify_pdf_url')
     def test_mdpi_xml_39337454_int_j_mol_sci(self, mock_verify):
@@ -246,7 +246,7 @@ class TestMDPIXMLFixtures:
         result = the_mdpi_moonwalk(pma, verify=True)
         expected_url = 'https://www.mdpi.com/1422-0067/25/18/9966/pdf'
         assert result == expected_url
-        mock_verify.assert_called_once_with(expected_url, 'MDPI')
+        mock_verify.assert_called_once_with(expected_url, 'MDPI', request_timeout=10, max_redirects=3)
 
     @patch('metapub.findit.dances.mdpi.verify_pdf_url')
     def test_mdpi_xml_39769357_int_j_mol_sci(self, mock_verify):
@@ -261,4 +261,4 @@ class TestMDPIXMLFixtures:
         result = the_mdpi_moonwalk(pma, verify=True)
         expected_url = 'https://www.mdpi.com/1422-0067/25/24/13596/pdf'
         assert result == expected_url
-        mock_verify.assert_called_once_with(expected_url, 'MDPI')
+        mock_verify.assert_called_once_with(expected_url, 'MDPI', request_timeout=10, max_redirects=3)

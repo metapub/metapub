@@ -16,7 +16,7 @@ from ...exceptions import NoPDFLink, AccessDenied
 from .generic import the_doi_2step, verify_pdf_url, unified_uri_get
 
 
-def the_jstage_dive(pma, verify=True):
+def the_jstage_dive(pma, verify=True, request_timeout=10, max_redirects=3):
     """J-STAGE: Japan Science and Technology Information Aggregator, Electronic.
     
     Optimized approach: Try DOI resolution to get article URL first (minimal network request),
@@ -52,7 +52,7 @@ def the_jstage_dive(pma, verify=True):
     
     # If URL manipulation didn't work, fall back to loading page content
     if pdf_url is None:
-        response = unified_uri_get(article_url)
+        response = unified_uri_get(article_url, timeout=request_timeout, max_redirects=max_redirects)
         
         if response.status_code != 200:
             raise NoPDFLink(f'TXERROR: Could not access J-STAGE article page (HTTP {response.status_code})')
@@ -65,6 +65,6 @@ def the_jstage_dive(pma, verify=True):
     
     # Verify PDF accessibility if requested
     if verify:
-        verify_pdf_url(pdf_url, 'J-STAGE')
+        verify_pdf_url(pdf_url, 'J-STAGE', request_timeout=request_timeout, max_redirects=max_redirects)
     
     return pdf_url

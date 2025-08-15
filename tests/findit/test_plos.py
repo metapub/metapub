@@ -98,7 +98,7 @@ class TestPLOSTest(BaseDanceTest):
         # Verify function calls
         mock_doi_2step.assert_called_once_with('10.1371/journal.pbio.3001547')
         mock_uri_get.assert_called_once()
-        mock_verify.assert_called_once_with(expected_url, 'PLOS')
+        mock_verify.assert_called_once_with(expected_url, 'PLOS', request_timeout=10, max_redirects=3)
         
         print(f"Test 1 - citation_pdf_url extraction: {result}")
 

@@ -4,7 +4,7 @@ from ...exceptions import NoPDFLink
 from ...crossref import CrossRefFetcher
 
 
-def the_biochemsoc_saunter(pma, verify=True):
+def the_biochemsoc_saunter(pma, verify=True, request_timeout=10, max_redirects=3):
     """Biochemical Society dance - bypasses Cloudflare using CrossRef API.
     
     Portland Press (publisher of Biochemical Society journals) has advanced

@@ -6,7 +6,7 @@ from lxml import html
 import requests
 
 
-def the_eureka_frug(pma, verify=True):
+def the_eureka_frug(pma, verify=True, request_timeout=10, max_redirects=3):
     """EurekaSelect - requires POST-based download (not compatible with FindIt URL model).
 
     IMPORTANT: EurekaSelect PDFs cannot be accessed via simple GET requests.
@@ -32,7 +32,7 @@ def the_eureka_frug(pma, verify=True):
     # Step 1: Resolve DOI to article page
     try:
         article_url = the_doi_2step(pma.doi)
-        response = unified_uri_get(article_url)
+        response = unified_uri_get(article_url, timeout=request_timeout, max_redirects=max_redirects)
     except Exception as e:
         raise NoPDFLink(f'TXERROR: Could not resolve EurekaSelect DOI: {e}')
 

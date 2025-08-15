@@ -51,7 +51,7 @@ class TestPublisherHandler(unittest.TestCase):
         url, reason = self.handler.get_pdf_url(mock_pma, verify=True)
 
         # Check call was made correctly (the method passes verify as positional arg)
-        mock_dispatch.assert_called_once_with(mock_pma, True)
+        mock_dispatch.assert_called_once_with(mock_pma, True, 10, 3)
         self.assertEqual(url, "http://test.url")
         self.assertIsNone(reason)
 
@@ -189,7 +189,7 @@ class TestRegistryBackedLookupSystem(unittest.TestCase):
 
             mock_standardize.assert_called_once_with("Original Journal Name")
             mock_get_handler.assert_called_once_with("Standardized Journal")
-            mock_handler.get_pdf_url.assert_called_once_with(mock_pma, verify=True)
+            mock_handler.get_pdf_url.assert_called_once_with(mock_pma, verify=True, request_timeout=10, max_redirects=3)
 
     def test_find_pdf_url_no_handler_found(self):
         """Test find_pdf_url when no handler found for journal."""

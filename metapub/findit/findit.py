@@ -129,6 +129,8 @@ class FindIt(object):
                     results are always retried. Defaults to False.
                 debug (bool): Enable debug logging. Defaults to False.
                 tmpdir (str): Temporary directory for downloads. Defaults to '/tmp'.
+                request_timeout (int): Timeout in seconds for HTTP requests. Defaults to 10.
+                max_redirects (int): Maximum number of redirects to follow. Defaults to 3.
 
         Raises:
             MetaPubError: If neither pmid nor doi is provided.
@@ -159,6 +161,10 @@ class FindIt(object):
 
         self.verify = kwargs.get('verify', True)
         retry_errors = kwargs.get('retry_errors', False)
+        
+        # Network timeout and redirect settings
+        self.request_timeout = kwargs.get('request_timeout', 10)
+        self.max_redirects = kwargs.get('max_redirects', 3)
 
         # Store cachedir for registry system
         self._cachedir = cachedir
@@ -211,7 +217,9 @@ class FindIt(object):
         Note:
             If a ConnectionError occurs during lookup, returns (None, "TXERROR: <details>").
         """
-        return find_article_from_pma(self.pma, use_nih=self.use_nih, verify=verify, cachedir=self._cachedir)
+        return find_article_from_pma(self.pma, use_nih=self.use_nih, verify=verify, 
+                                   cachedir=self._cachedir, request_timeout=self.request_timeout,
+                                   max_redirects=self.max_redirects)
 
     def load_from_cache(self, verify=True, retry_errors=False):
         """Load article URL from cache, with fallback to fresh lookup.

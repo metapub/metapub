@@ -96,9 +96,9 @@ class TestIOPDance(BaseDanceTest):
         assert '/pdf' in url
         print(f"Test 4 - Successful verified access: {url}")
 
+    @patch('metapub.findit.dances.iop.unified_uri_get')
     @patch('metapub.findit.dances.iop.get_crossref_pdf_links')
-    @patch('requests.get')
-    def test_iop_fusion_paywall_detection(self, mock_get, mock_crossref):
+    def test_iop_fusion_paywall_detection(self, mock_crossref, mock_get):
         """Test 5: Paywall detection.
         
         Expected: Should try both domains and detect paywall
@@ -127,12 +127,16 @@ class TestIOPDance(BaseDanceTest):
         assert 'TXERROR' in str(exc_info.value)
         print(f"Test 5 - Correctly detected paywall/access issues: {exc_info.value}")
 
-    @patch('requests.get')
-    def test_iop_fusion_network_error(self, mock_get):
+    @patch('metapub.findit.dances.iop.unified_uri_get')
+    @patch('metapub.findit.dances.iop.get_crossref_pdf_links')
+    def test_iop_fusion_network_error(self, mock_crossref, mock_get):
         """Test 6: Network error handling.
         
         Expected: Should handle network errors gracefully
         """
+        # Mock CrossRef to fail so it falls back to regular approach
+        mock_crossref.side_effect = NoPDFLink("CrossRef failed")
+        
         # Mock network error
         mock_get.side_effect = requests.exceptions.ConnectionError("Network error")
 
@@ -162,12 +166,16 @@ class TestIOPDance(BaseDanceTest):
         assert 'doi needed' in str(exc_info.value)
         print(f"Test 7 - Correctly handled missing DOI: {exc_info.value}")
 
-    @patch('requests.get')
-    def test_iop_fusion_404_error(self, mock_get):
+    @patch('metapub.findit.dances.iop.unified_uri_get')
+    @patch('metapub.findit.dances.iop.get_crossref_pdf_links')
+    def test_iop_fusion_404_error(self, mock_crossref, mock_get):
         """Test 8: Article not found (404 error).
         
         Expected: Should try both domains and handle 404 errors
         """
+        # Mock CrossRef to fail so it falls back to regular approach
+        mock_crossref.side_effect = NoPDFLink("CrossRef failed")
+        
         # Mock 404 response for both domains
         mock_response = Mock()
         mock_response.ok = False

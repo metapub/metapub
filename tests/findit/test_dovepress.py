@@ -313,7 +313,7 @@ class TestDovepressXMLFixtures:
         result = the_dovepress_peacock(pma, verify=True)
         expected_url = 'https://www.dovepress.com/article/download/87183'
         assert result == expected_url
-        mock_verify.assert_called_once_with(expected_url, 'DovePress')
+        mock_verify.assert_called_once_with(expected_url, 'DovePress', request_timeout=10, max_redirects=3)
 
     @patch('metapub.findit.dances.dovepress.verify_pdf_url')
     def test_dovepress_xml_35592492_adolesc_health_med_ther(self, mock_verify):
@@ -328,4 +328,4 @@ class TestDovepressXMLFixtures:
         result = the_dovepress_peacock(pma, verify=True)
         expected_url = 'https://www.dovepress.com/article/download/75287'
         assert result == expected_url
-        mock_verify.assert_called_once_with(expected_url, 'DovePress')
+        mock_verify.assert_called_once_with(expected_url, 'DovePress', request_timeout=10, max_redirects=3)

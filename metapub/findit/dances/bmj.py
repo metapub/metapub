@@ -17,7 +17,7 @@ from .generic import the_doi_2step, verify_pdf_url, unified_uri_get, standardize
 from ...exceptions import NoPDFLink
 
 
-def the_bmj_bump(pma, verify=True):
+def the_bmj_bump(pma, verify=True, request_timeout=10, max_redirects=3):
     """
     BMJ dance function - VIP URL construction with meta tag extraction backup.
     
@@ -45,7 +45,7 @@ def the_bmj_bump(pma, verify=True):
             vip_url = f'https://{host}/content/{pma_vip.volume}/{pma_vip.issue}/{pma_vip.first_page}.full.pdf'
             
             if verify:
-                verify_pdf_url(vip_url, 'BMJ')
+                verify_pdf_url(vip_url, 'BMJ', request_timeout=request_timeout, max_redirects=max_redirects)
             return vip_url
             
     except (NoPDFLink, KeyError):
@@ -54,7 +54,7 @@ def the_bmj_bump(pma, verify=True):
     
     # Stage 2: Meta tag extraction backup (more reliable but requires page load)
     article_url = the_doi_2step(pma.doi)
-    response = unified_uri_get(article_url)
+    response = unified_uri_get(article_url, timeout=request_timeout, max_redirects=max_redirects)
     
     if response.status_code != 200:
         raise NoPDFLink(f'TXERROR: Could not access BMJ article page (HTTP {response.status_code})')
@@ -66,6 +66,6 @@ def the_bmj_bump(pma, verify=True):
     pdf_url = pdf_match.group(1)
     
     if verify:
-        verify_pdf_url(pdf_url, 'BMJ')
+        verify_pdf_url(pdf_url, 'BMJ', request_timeout=request_timeout, max_redirects=max_redirects)
     
     return pdf_url

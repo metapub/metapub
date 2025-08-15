@@ -84,7 +84,8 @@ def _get_lookup_system(cachedir=None):
         using any FindIt functionality.
 """
 
-def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None):
+def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None, 
+                        request_timeout=10, max_redirects=3):
     """ The real workhorse of FindIt.
 
         Based on the contents of the supplied PubMedArticle object, this function
@@ -113,6 +114,8 @@ def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None):
         :param verify: (bool) default: True
         :param use_nih: (bool) default: False
         :param cachedir: (str) cache directory for registry database
+        :param request_timeout: (int) HTTP request timeout in seconds, default: 10
+        :param max_redirects: (int) maximum redirects to follow, default: 3
         :return: (url, reason)
     """
     reason = ''
@@ -129,7 +132,7 @@ def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None):
 
     if pma.pmc:
         try:
-            url = the_pmc_twist(pma, verify, use_nih)
+            url = the_pmc_twist(pma, verify, use_nih, request_timeout, max_redirects)
             return (url, None)
         except MetaPubError as error:
             reason = str(error)
@@ -139,25 +142,25 @@ def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None):
 
     if jrnl in simple_formats_pii.keys():
         try:
-            url = the_pii_polka(pma, verify)
+            url = the_pii_polka(pma, verify, request_timeout, max_redirects)
         except MetaPubError as error:
             reason = str(error)
 
     elif jrnl in simple_formats_pmid.keys():
         try:
-            url = the_pmid_pogo(pma, verify)
+            url = the_pmid_pogo(pma, verify, request_timeout, max_redirects)
         except MetaPubError as error:
             reason = str(error)
 
     elif jrnl in vip_journals.keys():
         try:
-            url = the_vip_shake(pma, verify)
+            url = the_vip_shake(pma, verify, request_timeout, max_redirects)
         except MetaPubError as error:
             reason = str(error)
 
     elif jrnl in vip_journals_nonstandard.keys():
         try:
-            url = the_vip_nonstandard_shake(pma, verify)
+            url = the_vip_nonstandard_shake(pma, verify, request_timeout, max_redirects)
         except MetaPubError as error:
             reason = str(error)
 
@@ -170,7 +173,7 @@ def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None):
     # Registry-based lookup will handle all BMC journals after this section
     if jrnl.find('BMC') == 0:
         try:
-            url = the_bmc_boogie(pma, verify)
+            url = the_bmc_boogie(pma, verify, request_timeout, max_redirects)
         except MetaPubError as error:
             reason = str(error)
 
@@ -182,7 +185,9 @@ def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None):
 
     try:
         lookup_system = _get_lookup_system(cachedir=cachedir)
-        registry_url, registry_reason = lookup_system.find_pdf_url(pma, verify=verify)
+        registry_url, registry_reason = lookup_system.find_pdf_url(pma, verify=verify, 
+                                                                  request_timeout=request_timeout, 
+                                                                  max_redirects=max_redirects)
 
         if registry_url:
             return (registry_url, registry_reason)
@@ -205,15 +210,19 @@ def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None):
     return (url, reason)
 
 
-def find_article_from_doi(doi, verify=True, use_nih=False, cachedir=None):
+def find_article_from_doi(doi, verify=True, use_nih=False, cachedir=None, 
+                        request_timeout=10, max_redirects=3):
     """ Pull a PubMedArticle based on CrossRef lookup (using doi2pmid),
     then run it through find_article_from_pma.
 
     :param doi: (string)
     :param cachedir: (str) cache directory for registry database
+    :param request_timeout: (int) HTTP request timeout in seconds, default: 10
+    :param max_redirects: (int) maximum redirects to follow, default: 3
     :return: (url, reason)
     """
     fetch = PubMedFetcher()
     pma = fetch.article_by_pmid(doi2pmid(doi))
-    return find_article_from_pma(pma, verify=verify, use_nih=use_nih, cachedir=cachedir)
+    return find_article_from_pma(pma, verify=verify, use_nih=use_nih, cachedir=cachedir,
+                               request_timeout=request_timeout, max_redirects=max_redirects)
 

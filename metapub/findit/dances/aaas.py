@@ -28,7 +28,7 @@ AAAS_USERNAME = os.environ.get("AAAS_USERNAME", "set in env: AAAS_USERNAME and A
 AAAS_PASSWORD = os.environ.get("AAAS_PASSWORD", "")
 
 
-def the_aaas_twist(pma, verify=True):
+def the_aaas_twist(pma, verify=True, request_timeout=10, max_redirects=3):
     """
     AAAS dance function for Science journals with evidence-based URL construction.
     
@@ -37,6 +37,8 @@ def the_aaas_twist(pma, verify=True):
     
     :param pma: PubMedArticle object
     :param verify: bool [default: True] - Recommended for navigation handling
+    :param request_timeout: int [default: 10] - HTTP request timeout in seconds
+    :param max_redirects: int [default: 3] - Maximum redirects to follow
     :return: PDF URL string
     :raises: AccessDenied, NoPDFLink
     """
@@ -51,7 +53,7 @@ def the_aaas_twist(pma, verify=True):
         baseurl = 'https://www.science.org/cgi/pmidlookup?view=long&pmid=%s' % pma.pmid
         
         try:
-            res = unified_uri_get(baseurl)
+            res = unified_uri_get(baseurl, timeout=request_timeout, max_redirects=max_redirects)
             # Convert article URL to reader URL (evidence-based pattern)
             if '/doi/' in res.url:
                 # Extract DOI from redirected URL and construct reader URL
@@ -71,7 +73,7 @@ def the_aaas_twist(pma, verify=True):
 
     # Attempt PDF access with subscription handling
     try:
-        response = unified_uri_get(pdfurl)
+        response = unified_uri_get(pdfurl, timeout=request_timeout, max_redirects=max_redirects)
     except Exception as e:
         raise NoPDFLink('ERROR: AAAS PDF access failed for %s: %s' % (pdfurl, str(e)))
 
@@ -92,7 +94,7 @@ def the_aaas_twist(pma, verify=True):
             
             # Subscription required - attempt authentication if credentials provided
             if AAAS_USERNAME and AAAS_PASSWORD and 'set in env:' not in AAAS_USERNAME:
-                return _attempt_aaas_authentication(tree, response, pdfurl)
+                return _attempt_aaas_authentication(tree, response, pdfurl, request_timeout, max_redirects)
             else:
                 raise AccessDenied('DENIED: AAAS subscription required (url: %s). Set AAAS_USERNAME/AAAS_PASSWORD for authentication.' % pdfurl)
                 
@@ -104,13 +106,15 @@ def the_aaas_twist(pma, verify=True):
         raise NoPDFLink('ERROR: AAAS returned HTTP %s for %s' % (response.status_code, pdfurl))
 
 
-def _attempt_aaas_authentication(tree, response, pdfurl):
+def _attempt_aaas_authentication(tree, response, pdfurl, request_timeout, max_redirects):
     """
     Attempt AAAS authentication using credentials.
     
     :param tree: Parsed HTML tree
     :param response: Initial response object  
     :param pdfurl: Original PDF URL
+    :param request_timeout: HTTP request timeout in seconds
+    :param max_redirects: Maximum redirects to follow
     :return: Authenticated PDF URL
     :raises: AccessDenied, NoPDFLink
     """
@@ -135,7 +139,12 @@ def _attempt_aaas_authentication(tree, response, pdfurl):
             'remember_me': 1
         }
         
-        auth_response = requests.post(post_url, data=payload)
+        session = requests.Session()
+        adapter = requests.adapters.HTTPAdapter(max_retries=0)
+        adapter.max_retries.redirect = max_redirects
+        session.mount('http://', adapter)
+        session.mount('https://', adapter)
+        auth_response = session.post(post_url, data=payload, timeout=request_timeout)
         
         # Handle authentication response
         if auth_response.status_code == 403:

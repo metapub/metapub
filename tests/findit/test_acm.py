@@ -70,7 +70,7 @@ class TestACMDance(BaseDanceTest):
         assert '/doi/pdf/' in url
         print(f"Test 3 - PDF URL: {url}")
 
-    @patch('requests.get')
+    @patch('metapub.findit.dances.acm.unified_uri_get')
     def test_acm_reel_successful_access(self, mock_get):
         """Test 4: Successful PDF access simulation.
         
@@ -119,7 +119,7 @@ class TestACMDance(BaseDanceTest):
         assert 'PAYWALL' in str(exc_info.value)
         print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
 
-    @patch('requests.get')
+    @patch('metapub.findit.dances.acm.unified_uri_get')
     def test_acm_reel_network_error(self, mock_get):
         """Test 6: Network error handling.
         
@@ -155,7 +155,7 @@ class TestACMDance(BaseDanceTest):
         assert '10.1145' in str(exc_info.value)
         print(f"Test 8 - Correctly handled wrong DOI pattern: {exc_info.value}")
 
-    @patch('requests.get')
+    @patch('metapub.findit.dances.acm.unified_uri_get')
     def test_acm_reel_404_error(self, mock_get):
         """Test 9: Article not found (404 error).
         

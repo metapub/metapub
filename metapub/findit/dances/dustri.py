@@ -2,7 +2,7 @@ from ...exceptions import *
 from .generic import *
 
 
-def the_dustri_polka(pma, verify=True):
+def the_dustri_polka(pma, verify=True, request_timeout=10, max_redirects=3):
     """Dustri-Verlag dance function.
     
     Dustri-Verlag (www.dustri.com) is a German medical publisher that publishes

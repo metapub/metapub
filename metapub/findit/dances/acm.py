@@ -3,7 +3,7 @@ from ...exceptions import AccessDenied, NoPDFLink
 from .generic import *
 
 
-def the_acm_reel(pma, verify=True):
+def the_acm_reel(pma, verify=True, request_timeout=10, max_redirects=3):
     '''ACM Digital Library: Computing and information technology publications
 
     The ACM Digital Library is a comprehensive database of articles, proceedings,
@@ -16,6 +16,8 @@ def the_acm_reel(pma, verify=True):
 
     :param: pma (PubmedArticle)
     :param: verify (bool) [default: True]
+    :param: request_timeout (int) [default: 10]
+    :param: max_redirects (int) [default: 3]
     :return: url (string)
     :raises: AccessDenied, NoPDFLink
     '''
@@ -33,7 +35,7 @@ def the_acm_reel(pma, verify=True):
 
         if verify:
             try:
-                response = unified_uri_get(pdf_url, timeout=30)
+                response = unified_uri_get(pdf_url, timeout=request_timeout, max_redirects=max_redirects)
 
                 if response.status_code in OK_STATUS_CODES:
                     # Check if this is actually a PDF

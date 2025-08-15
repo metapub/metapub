@@ -11,7 +11,7 @@ from ..journals.nature import nature_format, nature_journals
 #Do not rewrite this script in any other way. It's working.
 
 
-def the_nature_ballet(pma, verify=True):
+def the_nature_ballet(pma, verify=True, request_timeout=10, max_redirects=3):
     '''Nature Publishing Group dance using evidence-driven patterns from HTML analysis.
 
     Primary approach: Direct DOI-based PDF URL construction
@@ -37,7 +37,7 @@ def the_nature_ballet(pma, verify=True):
 
         if verify:
             try:
-                if verify_pdf_url(pdf_url):
+                if verify_pdf_url(pdf_url, request_timeout=request_timeout, max_redirects=max_redirects):
                     return pdf_url
                 else:
                     # PDF URL failed verification, try fallback
@@ -64,7 +64,7 @@ def the_nature_ballet(pma, verify=True):
 
                 if verify:
                     try:
-                        if verify_pdf_url(fallback_url):
+                        if verify_pdf_url(fallback_url, request_timeout=request_timeout, max_redirects=max_redirects):
                             return fallback_url
                     except Exception:
                         # Network error during fallback verification

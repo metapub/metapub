@@ -3,7 +3,7 @@ from .generic import verify_pdf_url
 
 import re
 
-def the_annualreviews_round(pma, verify=True):
+def the_annualreviews_round(pma, verify=True, request_timeout=10, max_redirects=3):
     '''Annual Reviews Inc.: Direct PDF URL construction
 
     Evidence-based pattern from output/article_html/annualreviews/:
@@ -41,6 +41,6 @@ def the_annualreviews_round(pma, verify=True):
     pdf_url = f"https://www.annualreviews.org/deliver/fulltext/{journal_abbrev}/{volume}/{issue}/{doi_suffix}.pdf"
 
     if verify:
-        verify_pdf_url(pdf_url)
+        verify_pdf_url(pdf_url, request_timeout=request_timeout, max_redirects=max_redirects)
 
     return pdf_url

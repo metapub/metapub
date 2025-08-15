@@ -1,12 +1,16 @@
 """
 Oxford University Press journal patterns and mappings.
 
-Oxford University Press publishes over 270 academic journals using VIP 
+Oxford University Press publishes over 270 academic journals using VIP
 (Volume-Issue-Page) format URLs hosted on oxfordjournals.org.
 
 URL Pattern: http://{host}/content/{volume}/{issue}/{first_page}.full.pdf
 Dance Function: the_vip_shake (VIP format)
 """
+
+# VIP URL template for Oxford journals
+oxford_vip_template = 'http://{host}/content/{volume}/{issue}/{first_page}.full.pdf'
+
 
 # Oxford journals are available as keys in oxford_journal_params dictionary
 
@@ -284,5 +288,3 @@ oxford_journal_params = {
     'World Bank Res Obs': {'host': 'wbro.oxfordjournals.org'},
 }
 
-# VIP URL template for Oxford journals
-oxford_vip_template = 'http://{host}/content/{volume}/{issue}/{first_page}.full.pdf'

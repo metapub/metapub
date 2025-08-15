@@ -57,7 +57,7 @@ class TestOATextDance(BaseDanceTest):
         assert result == 'https://www.oatext.com/pdf/JSIN-6-229.pdf'
         mock_doi_2step.assert_called_once_with('10.15761/JSIN.1000229')
         mock_uri_get.assert_called_once()
-        mock_verify.assert_called_once_with('https://www.oatext.com/pdf/JSIN-6-229.pdf', 'OAText')
+        mock_verify.assert_called_once_with('https://www.oatext.com/pdf/JSIN-6-229.pdf', 'OAText', request_timeout=10, max_redirects=3)
 
     def test_oatext_dance_no_doi_raises_error(self):
         """Test that missing DOI raises appropriate error."""
@@ -396,7 +396,7 @@ class TestOATextXMLFixtures:
         result = the_oatext_orbit(pma, verify=True)
         expected_url = 'https://www.oatext.com/pdf/JSIN-6-229.pdf'
         assert result == expected_url
-        mock_verify.assert_called_once_with(expected_url, 'OAText')
+        mock_verify.assert_called_once_with(expected_url, 'OAText', request_timeout=10, max_redirects=3)
 
     @patch('metapub.findit.dances.oatext.verify_pdf_url')
     @patch('metapub.findit.dances.oatext.unified_uri_get')
@@ -422,7 +422,7 @@ class TestOATextXMLFixtures:
         result = the_oatext_orbit(pma, verify=True)
         expected_url = 'https://www.oatext.com/pdf/JSIN-6-228.pdf'
         assert result == expected_url
-        mock_verify.assert_called_once_with(expected_url, 'OAText')
+        mock_verify.assert_called_once_with(expected_url, 'OAText', request_timeout=10, max_redirects=3)
 
 
 class TestOATextRegistryIntegration:

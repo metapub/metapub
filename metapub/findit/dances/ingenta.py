@@ -10,7 +10,7 @@ Evidence-driven rewrite 2025-08-09:
 from ...exceptions import NoPDFLink
 from .generic import the_doi_2step, verify_pdf_url
 
-def the_ingenta_flux(pma, verify=True):
+def the_ingenta_flux(pma, verify=True, request_timeout=10, max_redirects=3):
     """Ingenta Connect dance using evidence-based DOI resolution pattern.
 
     Evidence from real PMIDs (38884108, 34707797):
@@ -55,6 +55,6 @@ def the_ingenta_flux(pma, verify=True):
 
     if verify:
         # Use standard verification - let AccessDenied bubble up naturally
-        return verify_pdf_url(pdf_url, 'Ingenta Connect')
+        return verify_pdf_url(pdf_url, 'Ingenta Connect', request_timeout=request_timeout, max_redirects=max_redirects)
 
     return pdf_url

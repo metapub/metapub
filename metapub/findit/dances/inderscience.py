@@ -10,7 +10,7 @@ Evidence-driven rewrite 2025-08-09:
 from ...exceptions import NoPDFLink
 from .generic import verify_pdf_url
 
-def the_inderscience_ula(pma, verify=True):
+def the_inderscience_ula(pma, verify=True, request_timeout=10, max_redirects=3):
     """Inderscience Publishers dance using evidence-based DOI pattern.
 
     Evidence from real PMIDs (24084238, 24794070, 24449692):
@@ -41,6 +41,6 @@ def the_inderscience_ula(pma, verify=True):
 
     if verify:
         # Use standard verification - let AccessDenied bubble up naturally
-        return verify_pdf_url(pdf_url, 'Inderscience Publishers')
+        return verify_pdf_url(pdf_url, 'Inderscience Publishers', request_timeout=request_timeout, max_redirects=max_redirects)
 
     return pdf_url

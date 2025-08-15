@@ -52,7 +52,7 @@ class TestWJGNetDance(BaseDanceTest):
         assert result == expected_url
         mock_doi_2step.assert_called_once_with('10.5495/wjcid.v10.i1.14')
         mock_uri_get.assert_called_once()
-        mock_verify.assert_called_once_with(expected_url, 'WJGNet')
+        mock_verify.assert_called_once_with(expected_url, 'WJGNet', request_timeout=10, max_redirects=3)
 
     @patch('metapub.findit.dances.wjgnet.verify_pdf_url')  
     @patch('metapub.findit.dances.wjgnet.unified_uri_get')
@@ -250,7 +250,7 @@ class TestWJGNetXMLFixtures:
         result = the_wjgnet_wave(pma, verify=True)
         expected_url = 'https://www.f6publishing.com/forms/main/DownLoadFile.aspx?Type=Digital&TypeId=1&id=10.5527%2fwjn.v11.i5.139&FilePath=6A4247D346110392065501C81D5D466E53E38B2A2665D5B6BE8824B66204A160082ECAB47942E514A44C5C35D97F94A64F5E83A741587ABA'
         assert result == expected_url
-        mock_verify.assert_called_once_with(expected_url, 'WJGNet')
+        mock_verify.assert_called_once_with(expected_url, 'WJGNet', request_timeout=10, max_redirects=3)
 
     @patch('metapub.findit.dances.wjgnet.verify_pdf_url')
     @patch('metapub.findit.dances.wjgnet.unified_uri_get')
@@ -277,4 +277,4 @@ class TestWJGNetXMLFixtures:
         result = the_wjgnet_wave(pma, verify=True)
         expected_url = 'https://www.f6publishing.com/forms/main/DownLoadFile.aspx?Type=Digital&TypeId=22&id=10.5527%2fwjn.v13.i1.89637&FilePath=DE686458A2BF16892F4B88612C01518D26AA3E447185B0240AE1546F2068C44ECF6E9742C6968B0E995CAC46EB1683AAF16B32515F46C322'
         assert result == expected_url
-        mock_verify.assert_called_once_with(expected_url, 'WJGNet')
+        mock_verify.assert_called_once_with(expected_url, 'WJGNet', request_timeout=10, max_redirects=3)

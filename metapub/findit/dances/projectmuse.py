@@ -17,7 +17,7 @@ from .generic import the_doi_2step, verify_pdf_url, unified_uri_get
 from ...exceptions import NoPDFLink
 
 
-def the_projectmuse_syrtos(pma, verify=True):
+def the_projectmuse_syrtos(pma, verify=True, request_timeout=10, max_redirects=3):
     """
     Project MUSE dance function - evidence-driven meta tag extraction.
     
@@ -36,7 +36,7 @@ def the_projectmuse_syrtos(pma, verify=True):
     article_url = the_doi_2step(pma.doi)
     
     # Step 2: Fetch article page HTML
-    response = unified_uri_get(article_url)
+    response = unified_uri_get(article_url, timeout=request_timeout, max_redirects=max_redirects)
     
     if response.status_code not in (200, 301, 302, 307):
         raise NoPDFLink(f'TXERROR: Could not access Project MUSE article page (HTTP {response.status_code})')
@@ -51,6 +51,6 @@ def the_projectmuse_syrtos(pma, verify=True):
     pdf_url = pdf_match.group(1)
     
     if verify:
-        verify_pdf_url(pdf_url, 'Project MUSE')
+        verify_pdf_url(pdf_url, 'Project MUSE', request_timeout=request_timeout, max_redirects=max_redirects)
     
     return pdf_url

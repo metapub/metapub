@@ -8,7 +8,7 @@ from ..journals.asme import asme_format
 # also i'm not convinced any of this works
 
 
-def the_asme_animal(pma, verify=True):
+def the_asme_animal(pma, verify=True, request_timeout=10, max_redirects=3):
     """ASME (American Society of Mechanical Engineers) dance function.
 
     ASME publishes technical journals in mechanical engineering, biomechanical
@@ -103,7 +103,7 @@ def the_asme_animal(pma, verify=True):
         if verify:
             for pdf_url in possible_urls:
                 try:
-                    response = unified_uri_get(pdf_url, timeout=10, allow_redirects=True)
+                    response = unified_uri_get(pdf_url, timeout=request_timeout, max_redirects=max_redirects)
 
                     if response.ok:
                         # Check content type

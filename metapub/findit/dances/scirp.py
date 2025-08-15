@@ -3,7 +3,7 @@ from ...exceptions import NoPDFLink, AccessDenied
 from .generic import the_doi_2step, unified_uri_get, verify_pdf_url
 
 
-def the_scirp_timewarp(pma, verify=True):
+def the_scirp_timewarp(pma, verify=True, request_timeout=10, max_redirects=3):
     """SCIRP (Scientific Research Publishing): Open access publisher backup for PMC
     
     SCIRP articles use consistent PDF link patterns in their HTML pages.
@@ -19,7 +19,7 @@ def the_scirp_timewarp(pma, verify=True):
 
     # Get the article page HTML
     article_url = the_doi_2step(pma.doi)
-    response = unified_uri_get(article_url)
+    response = unified_uri_get(article_url, timeout=request_timeout, max_redirects=max_redirects)
     
     if response.status_code != 200:
         raise NoPDFLink(f'TXERROR: Could not access SCIRP article page (HTTP {response.status_code})')
@@ -39,7 +39,7 @@ def the_scirp_timewarp(pma, verify=True):
         pdf_url = 'https:' + pdf_url
     
     if verify:
-        verify_pdf_url(pdf_url, 'SCIRP', referrer=article_url)
+        verify_pdf_url(pdf_url, 'SCIRP', referrer=article_url, request_timeout=request_timeout, max_redirects=max_redirects)
     
     return pdf_url
 

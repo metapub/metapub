@@ -103,7 +103,7 @@ class TestTaylorFrancisConfiguration(BaseDanceTest):
         
         # Verify function calls
         mock_registry.get_publisher_for_journal.assert_called_once()
-        mock_verify.assert_called_once_with(expected_url)
+        mock_verify.assert_called_once_with(expected_url, request_timeout=10, max_redirects=3)
         
         print(f"Test 1 - DOI-based URL construction: {result}")
 

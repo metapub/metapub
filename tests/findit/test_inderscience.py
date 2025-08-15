@@ -55,7 +55,7 @@ class TestInderscienceDance(unittest.TestCase):
         result = the_inderscience_ula(self.mock_pma, verify=True)
         
         self.assertEqual(result, expected_url)
-        mock_verify.assert_called_once_with(expected_url, 'Inderscience Publishers')
+        mock_verify.assert_called_once_with(expected_url, 'Inderscience Publishers', request_timeout=10, max_redirects=3)
 
     @patch('metapub.findit.dances.inderscience.verify_pdf_url')
     def test_verification_access_denied_bubbles_up(self, mock_verify):
@@ -66,7 +66,7 @@ class TestInderscienceDance(unittest.TestCase):
         with self.assertRaises(AccessDenied):
             the_inderscience_ula(self.mock_pma, verify=True)
         
-        mock_verify.assert_called_once_with(expected_url, 'Inderscience Publishers')
+        mock_verify.assert_called_once_with(expected_url, 'Inderscience Publishers', request_timeout=10, max_redirects=3)
 
     def test_doi_pattern_validation(self):
         """Test with various Inderscience DOI patterns"""

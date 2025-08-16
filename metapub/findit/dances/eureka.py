@@ -60,10 +60,7 @@ def the_eureka_frug(pma, verify=True, request_timeout=10, max_redirects=3):
     # FindIt's contract of returning only GET-able URLs.
     """
     # Step 2: Parse the page to find download form (DOCUMENTATION ONLY)
-    try:
-        tree = html.fromstring(response.content)
-    except:
-        raise NoPDFLink('TXERROR: Could not parse EurekaSelect article page')
+    tree = html.fromstring(response.content)
 
     # Find download form with PDF parameters
     forms = tree.xpath('//form[contains(@action, "download_file") and contains(@id, "download-form-pdf")]')

@@ -36,15 +36,9 @@ def the_nature_ballet(pma, verify=True, request_timeout=10, max_redirects=3):
         pdf_url = f'https://www.nature.com/articles/{doi_suffix}.pdf'
 
         if verify:
-            try:
-                if verify_pdf_url(pdf_url, request_timeout=request_timeout, max_redirects=max_redirects):
-                    return pdf_url
-                else:
-                    # PDF URL failed verification, try fallback
-                    pass
-            except Exception:
-                # Network error during verification, try fallback
-                pass
+            if verify_pdf_url(pdf_url, request_timeout=request_timeout, max_redirects=max_redirects):
+                return pdf_url
+            # PDF URL failed verification, try fallback
         else:
             return pdf_url
 
@@ -63,12 +57,8 @@ def the_nature_ballet(pma, verify=True, request_timeout=10, max_redirects=3):
                 fallback_url = f"https://www.nature.com/articles/{legacy_id}.pdf"
 
                 if verify:
-                    try:
-                        if verify_pdf_url(fallback_url, request_timeout=request_timeout, max_redirects=max_redirects):
-                            return fallback_url
-                    except Exception:
-                        # Network error during fallback verification
-                        pass
+                    if verify_pdf_url(fallback_url, request_timeout=request_timeout, max_redirects=max_redirects):
+                        return fallback_url
                 else:
                     return fallback_url
 

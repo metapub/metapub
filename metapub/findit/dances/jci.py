@@ -48,16 +48,12 @@ def the_jci_jig(pma, verify=True, request_timeout=10, max_redirects=3):
             verify_pdf_url(url, 'JCI', request_timeout=request_timeout, max_redirects=max_redirects)
         except NoPDFLink as e:
             # If verification fails, check if it's due to HTML content type
-            try:
-                response = unified_uri_get(url, timeout=request_timeout, max_redirects=max_redirects)
-                if response.status_code == 200 and 'text/html' in response.headers.get('content-type', ''):
-                    # JCI is returning HTML instead of PDF - this might be due to access control
-                    # For now, we'll return the URL anyway as it's the correct pattern
-                    pass  # Continue and return the URL
-                else:
-                    # Re-raise the original exception for other types of failures
-                    raise e
-            except Exception:
-                # Network error during verification - re-raise original exception
+            response = unified_uri_get(url, timeout=request_timeout, max_redirects=max_redirects)
+            if response.status_code == 200 and 'text/html' in response.headers.get('content-type', ''):
+                # JCI is returning HTML instead of PDF - this might be due to access control
+                # For now, we'll return the URL anyway as it's the correct pattern
+                pass  # Continue and return the URL
+            else:
+                # Re-raise the original exception for other types of failures
                 raise e
     return url

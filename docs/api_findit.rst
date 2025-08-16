@@ -14,6 +14,14 @@ FindIt Class
 
 The FindIt class is the primary interface for PDF discovery. It employs publisher-specific "dances" (custom algorithms) to locate downloadable PDFs while respecting publisher policies and embargo restrictions.
 
+**Network Timeout Configuration** (v0.11+)
+   The FindIt class now includes configurable timeout parameters to prevent infinite stalling during PDF discovery:
+   
+   - **request_timeout**: Maximum time (seconds) to wait for HTTP responses (default: 10)
+   - **max_redirects**: Maximum number of HTTP redirects to follow (default: 3)
+   
+   These parameters are passed to all network requests throughout the FindIt system to ensure reliable operation.
+
 Key Features
 ~~~~~~~~~~~
 
@@ -342,8 +350,9 @@ Error Message Examples
 .. code-block:: text
 
    TXERROR: Server returned 503 Service Unavailable - attempted: https://publisher.com/...
-   TXERROR: Connection timeout after 30s - attempted: https://journals.sagepub.com/...
+   TXERROR: Connection timeout after 10s - attempted: https://journals.sagepub.com/...
    TXERROR: dx.doi.org lookup failed (Network error) - attempted: http://dx.doi.org/10.1038/...
+   TXERROR: Too many redirects (>3) - attempted: https://publisher.com/...
 
 **Publisher Format Issues:**
 
@@ -399,8 +408,32 @@ Advanced Configuration
        verify=False,           # Skip URL verification for speed
        retry_errors=True,      # Retry cached error results
        debug=True,             # Enable debug logging
-       cachedir='/custom/cache' # Custom cache location
+       cachedir='/custom/cache',  # Custom cache location
+       request_timeout=15,     # Custom request timeout (seconds)
+       max_redirects=5         # Custom redirect limit
    )
+
+Network Timeout Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+   # Configure network behavior
+   src = FindIt(
+       pmid='12345678',
+       request_timeout=20,     # Wait up to 20 seconds for responses
+       max_redirects=2         # Follow max 2 redirects
+   )
+   
+   # For faster processing with tighter limits
+   src = FindIt(
+       pmid='12345678', 
+       request_timeout=5,      # Quick timeout for batch processing
+       max_redirects=1         # Minimal redirects
+   )
+   
+   # Default values (recommended for most use cases)
+   src = FindIt('12345678')   # Uses timeout=10s, redirects=3
 
 DOI-Based Discovery
 ~~~~~~~~~~~~~~~~~
@@ -563,6 +596,55 @@ Result Analysis
 Advanced Features
 ----------------
 
+Network Timeout and Reliability Improvements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Version 0.11+ Timeout System**
+
+The FindIt system now includes comprehensive network timeout controls to prevent infinite stalling during PDF discovery. This addresses cases where publisher servers might become unresponsive or network connections hang indefinitely.
+
+**Key Improvements:**
+
+- **Request Timeouts**: All HTTP requests have configurable timeouts (default: 10 seconds)
+- **Redirect Limits**: Maximum redirects are enforced to prevent infinite redirect loops (default: 3)
+- **Consistent Application**: Timeout controls apply to all publisher-specific dance functions
+- **Backward Compatibility**: All timeout parameters are optional with sensible defaults
+
+**Configuration Examples:**
+
+.. code-block:: python
+
+   # Default behavior (recommended)
+   src = FindIt('12345678')  # 10s timeout, 3 redirects max
+   
+   # Conservative settings for unreliable networks
+   src = FindIt('12345678', request_timeout=20, max_redirects=5)
+   
+   # Aggressive settings for fast batch processing
+   src = FindIt('12345678', request_timeout=5, max_redirects=1)
+   
+   # Disable redirects entirely
+   src = FindIt('12345678', max_redirects=0)
+
+**Error Handling:**
+
+Network timeout issues are now reported clearly in error messages:
+
+.. code-block:: text
+
+   TXERROR: Connection timeout after 10s - attempted: https://publisher.com/article
+   TXERROR: Too many redirects (>3) - attempted: https://journals.example.com/...
+
+**Publisher-Specific Behavior:**
+
+Some publishers (e.g., IOP, JAMA) use CrossRef API fallbacks when direct access is blocked. The timeout parameters apply to both primary and fallback access methods, ensuring reliable operation across all publishers.
+
+**Performance Impact:**
+
+- **Faster Failure Detection**: Network issues are detected within 10 seconds instead of hanging indefinitely
+- **Batch Processing**: Timeout controls make batch operations more predictable and reliable
+- **Resource Management**: Prevents accumulation of hanging network connections
+
 Cache Management
 ~~~~~~~~~~~~~~
 
@@ -596,7 +678,9 @@ Error Recovery
        """FindIt with automatic retry on network errors."""
        for attempt in range(max_retries):
            try:
-               src = FindIt(pmid)
+               # Use longer timeout on retries
+               timeout = 10 + (5 * attempt)  # 10s, 15s, 20s
+               src = FindIt(pmid, request_timeout=timeout)
                return src
            except (ConnectionError, Timeout) as e:
                if attempt < max_retries - 1:

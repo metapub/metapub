@@ -106,6 +106,16 @@ class FindIt(object):
 
         If CrossRef came into play during the process to find a DOI that was missing
         for the PubMedArticle object, the doi_score will come from CrossRef (0 to 100).
+
+        Network Timeout Configuration (v0.11+):
+        =======================================
+        
+        FindIt now includes timeout controls to prevent infinite stalling:
+        - request_timeout: HTTP request timeout in seconds (default: 10)
+        - max_redirects: Maximum redirects to follow (default: 3)
+        
+        These parameters are applied consistently across all publisher-specific
+        strategies to ensure reliable operation.
     """
 
     def __init__(self, pmid=None, cachedir=DEFAULT_CACHE_DIR, **kwargs):

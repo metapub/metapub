@@ -109,7 +109,6 @@ class TestLongdomDance(BaseDanceTest):
 def test_longdom_journal_recognition():
     """Test that Longdom journals are properly recognized in the registry."""
     from metapub.findit.registry import JournalRegistry
-    from metapub.findit.journals.longdom import longdom_journals
 
     registry = JournalRegistry()
 
@@ -117,24 +116,21 @@ def test_longdom_journal_recognition():
     test_journals = [
         'Immunotherapy (Los Angel)',     # Evidence PMID 28299372
         'Mycobact Dis',                  # Evidence PMID 28856068
-        'J Clin Toxicol',               # From longdom_journals list
-        'J Depress Anxiety',            # From longdom_journals list
-        'Pediatr Ther'                  # From longdom_journals list
+        'J Clin Toxicol',
+        'J Depress Anxiety',
+        'Pediatr Ther'
     ]
 
-    # Test journal recognition
+    # Test journal recognition using registry
     found_count = 0
     for journal in test_journals:
-        if journal in longdom_journals:
-            publisher_info = registry.get_publisher_for_journal(journal)
-            if publisher_info and publisher_info['name'] == 'longdom':
-                assert publisher_info['dance_function'] == 'the_longdom_hustle'
-                print(f"✓ {journal} correctly mapped to Longdom")
-                found_count += 1
-            else:
-                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
+        publisher_info = registry.get_publisher_for_journal(journal)
+        if publisher_info and publisher_info['name'] == 'longdom':
+            assert publisher_info['dance_function'] == 'the_longdom_hustle'
+            print(f"✓ {journal} correctly mapped to Longdom")
+            found_count += 1
         else:
-            print(f"⚠ {journal} not in longdom_journals list")
+            print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
 
     # Just make sure we found at least one Longdom journal
     if found_count == 0:

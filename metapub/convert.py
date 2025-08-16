@@ -12,6 +12,11 @@ from .crossref import CrossRefFetcher
 from .exceptions import *
 from .ncbi_errors import NCBIServiceError
 
+try:
+    from docopt import docopt
+except ImportError:
+    docopt = None
+
 log = logging.getLogger('metapub.convert')
 
 coloredlogs.install()
@@ -235,7 +240,8 @@ def bookid2pmid(book_id):
 
 
 def main():
-    from docopt import docopt
+    if docopt is None:
+        raise ImportError("docopt is required to run main()")
     args = docopt(__doc__, version=__version__)
 
     if args['--quiet']:

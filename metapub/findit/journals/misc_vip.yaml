@@ -1,0 +1,11 @@
+publisher:
+  name: misc_vip
+  dance_function: the_vip_shake
+  pattern_type: vip
+  description: Configuration for misc_vip journals
+url_patterns:
+  primary_template: http://{host}/content/{a.volume}/{a.issue}/{a.first_page}.full.pdf
+metadata:
+  migrated_from: misc_vip.py
+  migration_date: '2025-08-16'
+  pattern_type: vip

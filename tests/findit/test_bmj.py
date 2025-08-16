@@ -41,15 +41,15 @@ class TestBMJDance(BaseDanceTest):
         super().setUp()
 
     def test_bmj_journal_recognition(self):
-        """Test that BMJ journals are properly configured."""
-        # Test BMJ journal recognition using registry
+        """Test that BMJ journals are properly configured in registry."""
         from metapub.findit.registry import JournalRegistry
-        from metapub.findit.journals.bmj import bmj_journal_params
         
         registry = JournalRegistry()
         
-        # Verify BMJ configuration parameters still exist
-        assert len(bmj_journal_params) > 0, "BMJ journal parameters should not be empty"
+        # Get BMJ publisher configuration from registry
+        bmj_config = registry.get_publisher_config('bmj')
+        assert bmj_config is not None, "BMJ publisher should be found in registry"
+        assert bmj_config['dance_function'] == 'the_bmj_bump', "BMJ should use the_bmj_bump dance function"
         
         # Test sample BMJ journals (using PubMed abbreviated names)
         expected_bmj_journals = [
@@ -67,6 +67,13 @@ class TestBMJDance(BaseDanceTest):
             if publisher_info and publisher_info['name'] == 'bmj':
                 print(f"✓ {journal} correctly mapped to BMJ")
                 found_count += 1
+                
+                # Check if journal has VIP parameters
+                journal_params = registry.get_journal_params(journal)
+                if journal_params and 'host' in journal_params:
+                    print(f"  ✓ {journal} has VIP host parameter: {journal_params['host']}")
+                else:
+                    print(f"  ⚠ {journal} missing VIP host parameter")
             else:
                 print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
         

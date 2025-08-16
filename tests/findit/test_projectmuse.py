@@ -447,7 +447,6 @@ class TestProjectMuseDance(BaseDanceTest):
 def test_projectmuse_journal_recognition():
     """Test that Project MUSE journals are properly recognized in the registry."""
     from metapub.findit.registry import JournalRegistry
-    from metapub.findit.journals.projectmuse import projectmuse_journals
     
     registry = JournalRegistry()
     
@@ -460,7 +459,7 @@ def test_projectmuse_journal_recognition():
         'Rev High Ed'
     ]
     
-    # Test journal recognition
+    # Test journal recognition using registry
     found_count = 0
     for journal in test_journals:
         publisher_info = registry.get_publisher_for_journal(journal)

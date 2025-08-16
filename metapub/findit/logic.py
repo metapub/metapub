@@ -4,6 +4,7 @@ import logging
 from ..pubmedfetcher import PubMedFetcher
 from ..convert import doi2pmid
 from ..exceptions import MetaPubError
+from ..config import DEFAULT_CACHE_DIR
 
 from .dances import *
 from .registry import JournalRegistry, standardize_journal_name
@@ -28,8 +29,6 @@ def _get_lookup_system(cachedir=None):
         RegistryBackedLookupSystem instance for the specified cache directory.
     """
     global _registries, _lookup_systems
-
-    from ..config import DEFAULT_CACHE_DIR
 
     # Use default if not specified
     if cachedir is None:

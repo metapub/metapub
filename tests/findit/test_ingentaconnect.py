@@ -171,7 +171,6 @@ class TestIngentaConnectDance(unittest.TestCase):
 def test_ingentaconnect_journal_recognition():
     """Test that Ingenta Connect journals are properly recognized in the registry."""
     from metapub.findit.registry import JournalRegistry
-    from metapub.findit.journals.ingentaconnect import ingentaconnect_journals
 
     registry = JournalRegistry()
 
@@ -184,19 +183,16 @@ def test_ingentaconnect_journal_recognition():
         'J Biomed Nanotechnol'
     ]
 
-    # Test journal recognition
+    # Test journal recognition using registry
     found_count = 0
     for journal in test_journals:
-        if journal in ingentaconnect_journals:
-            publisher_info = registry.get_publisher_for_journal(journal)
-            if publisher_info and publisher_info['name'] == 'ingentaconnect':
-                assert publisher_info['dance_function'] == 'the_ingenta_flux'
-                print(f"✓ {journal} correctly mapped to Ingenta Connect")
-                found_count += 1
-            else:
-                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
+        publisher_info = registry.get_publisher_for_journal(journal)
+        if publisher_info and publisher_info['name'] == 'ingentaconnect':
+            assert publisher_info['dance_function'] == 'the_ingenta_flux'
+            print(f"✓ {journal} correctly mapped to Ingenta Connect")
+            found_count += 1
         else:
-            print(f"⚠ {journal} not in ingentaconnect_journals list")
+            print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
 
     # Just make sure we found at least one Ingenta Connect journal
     if found_count == 0:

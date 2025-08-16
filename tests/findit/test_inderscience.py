@@ -143,7 +143,6 @@ class TestInderscienceDance(unittest.TestCase):
 def test_inderscience_journal_recognition():
     """Test that Inderscience journals are properly recognized in the registry."""
     from metapub.findit.registry import JournalRegistry
-    from metapub.findit.journals.inderscience import inderscience_journals
 
     registry = JournalRegistry()
 

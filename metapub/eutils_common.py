@@ -3,6 +3,11 @@ import os, logging
 from .config import PKGNAME, API_KEY
 from .exceptions import MetaPubError
 
+try:
+    import eutils
+except ImportError:
+    eutils = None
+
 # == suppress the chatter of eutils and requests == #
 logging.getLogger('eutils').setLevel(logging.ERROR)
 logging.getLogger('requests').setLevel(logging.ERROR)
@@ -18,7 +23,8 @@ def get_eutils_client(cache_path, cache=None):
     :param api_key: (optional) NCBI API Key obtainable from https://www.ncbi.nlm.nih.gov
     :return: eutils Client object
     """
-    import eutils
+    if eutils is None:
+        raise ImportError("eutils is required but not installed")
     return eutils.QueryService(cache=cache_path, api_key=API_KEY)
 
 

@@ -230,7 +230,6 @@ class TestDovePressTest(BaseDanceTest):
 def test_dovepress_journal_recognition():
     """Test that DovePress journals are properly recognized in the registry."""
     from metapub.findit.registry import JournalRegistry
-    from metapub.findit.journals.dovepress import dovepress_journals
     
     registry = JournalRegistry()
     

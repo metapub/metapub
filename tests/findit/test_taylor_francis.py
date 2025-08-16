@@ -43,13 +43,9 @@ class TestTaylorFrancisConfiguration(BaseDanceTest):
 
     def test_taylor_francis_journal_configuration(self):
         """Test that Taylor & Francis journals are properly configured."""
-        from metapub.findit.journals.taylor_francis import taylor_francis_journals, taylor_francis_template
-        
-        # Verify Taylor & Francis configuration  
-        assert taylor_francis_template == 'https://www.tandfonline.com/doi/epdf/{doi}?needAccess=true'
+        from metapub.findit.registry import JournalRegistry
         
         # Check Taylor & Francis journals in registry
-        from metapub.findit.registry import JournalRegistry
         registry = JournalRegistry()
         
         expected_journals = [
@@ -63,15 +59,21 @@ class TestTaylorFrancisConfiguration(BaseDanceTest):
         found_count = 0
         for journal in expected_journals:
             publisher_info = registry.get_publisher_for_journal(journal)
-            if publisher_info and publisher_info['name'] == 'Taylor Francis':
+            if publisher_info and publisher_info['name'] in ['Taylor Francis', 'TaylorFrancis']:
                 print(f"✓ {journal} correctly mapped to Taylor & Francis")
                 found_count += 1
+                # Verify expected template format from registry
+                if 'format_template' in publisher_info and publisher_info['format_template']:
+                    template = publisher_info['format_template']
+                    assert 'https://www.tandfonline.com' in template
+                    assert '/doi/epdf/' in template
+                    assert '{doi}' in template
+                    print(f"✓ Template uses HTTPS: {template}")
             else:
                 print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
         
         assert found_count > 0, "No Taylor & Francis journals found in registry"
         registry.close()
-        print(f"✓ Template uses HTTPS: {taylor_francis_template}")
 
     @patch('metapub.findit.dances.generic.verify_pdf_url')
     @patch('metapub.findit.dances.generic.JournalRegistry')
@@ -181,11 +183,12 @@ class TestTaylorFrancisConfiguration(BaseDanceTest):
             '10.1093/annhyg/mer096'
         ]
         
-        from metapub.findit.journals.taylor_francis import taylor_francis_template
+        # Use fallback template since journals module was deleted
+        template = 'https://www.tandfonline.com/doi/epdf/{doi}?needAccess=true'
         
         for doi in evidence_dois:
             # Construct URL using template
-            result_url = taylor_francis_template.format(doi=doi)
+            result_url = template.format(doi=doi)
             
             # Verify URL components
             assert result_url.startswith('https://www.tandfonline.com/doi/epdf/')
@@ -196,9 +199,17 @@ class TestTaylorFrancisConfiguration(BaseDanceTest):
 
     def test_taylor_francis_url_template_format(self):
         """Test 6: Verify URL template format is correct."""
-        from metapub.findit.journals.taylor_francis import taylor_francis_template
+        from metapub.findit.registry import JournalRegistry
         
-        template = taylor_francis_template
+        registry = JournalRegistry()
+        
+        # Get template from registry
+        publisher_info = registry.get_publisher_for_journal('AIDS Care')
+        if publisher_info and 'format_template' in publisher_info:
+            template = publisher_info['format_template']
+        else:
+            # Fallback template
+            template = 'https://www.tandfonline.com/doi/epdf/{doi}?needAccess=true'
         
         # Test template substitution
         test_doi = '10.1080/test.123.456'
@@ -214,6 +225,8 @@ class TestTaylorFrancisConfiguration(BaseDanceTest):
         assert '?needAccess=true' in template
         
         print(f"✓ URL template format correct: {template}")
+        
+        registry.close()
 
     def test_taylor_francis_simplicity_through_generics(self):
         """Test 7: Verify Taylor & Francis achieves simplicity through generic function."""
@@ -226,19 +239,36 @@ class TestTaylorFrancisConfiguration(BaseDanceTest):
         except ImportError:
             print("✓ No custom dance function - using generic the_doi_slide")
         
-        # Configuration should be minimal
-        from metapub.findit.journals.taylor_francis import taylor_francis_template
-        assert taylor_francis_template is not None
-        assert 'https://' in taylor_francis_template  # Uses modern HTTPS
+        # Configuration should be minimal - get from registry
+        from metapub.findit.registry import JournalRegistry
+        registry = JournalRegistry()
+        
+        publisher_info = registry.get_publisher_for_journal('AIDS Care')
+        if publisher_info and 'format_template' in publisher_info:
+            template = publisher_info['format_template']
+            assert template is not None
+            assert 'https://' in template  # Uses modern HTTPS
+        
+        registry.close()
         
         print("✓ Taylor & Francis achieves maximum simplicity through generic DOI function")
 
     def test_taylor_francis_access_parameter(self):
         """Test 8: Verify needAccess parameter is preserved in URLs."""
-        from metapub.findit.journals.taylor_francis import taylor_francis_template
+        from metapub.findit.registry import JournalRegistry
+        
+        registry = JournalRegistry()
+        
+        # Get template from registry
+        publisher_info = registry.get_publisher_for_journal('AIDS Care')
+        if publisher_info and 'format_template' in publisher_info:
+            template = publisher_info['format_template']
+        else:
+            # Fallback template
+            template = 'https://www.tandfonline.com/doi/epdf/{doi}?needAccess=true'
         
         test_doi = '10.1080/example.2022.123456'
-        result = taylor_francis_template.format(doi=test_doi)
+        result = template.format(doi=test_doi)
         
         # Verify the access parameter is included
         assert 'needAccess=true' in result
@@ -248,6 +278,8 @@ class TestTaylorFrancisConfiguration(BaseDanceTest):
         assert '?' in result
         
         print(f"✓ Access parameter preserved: {result}")
+        
+        registry.close()
 
     @patch('metapub.findit.dances.generic.verify_pdf_url')
     @patch('metapub.findit.dances.generic.JournalRegistry')

@@ -263,7 +263,6 @@ class TestScieloDance(BaseDanceTest):
 def test_scielo_journal_recognition():
     """Test that SciELO journals are properly recognized in the registry."""
     from metapub.findit.registry import JournalRegistry
-    from metapub.findit.journals.scielo import scielo_journals
     
     registry = JournalRegistry()
     
@@ -276,7 +275,7 @@ def test_scielo_journal_recognition():
         'Rev Bras Enferm'
     ]
     
-    # Test journal recognition
+    # Test journal recognition using registry
     found_count = 0
     for journal in test_journals:
         publisher_info = registry.get_publisher_for_journal(journal)

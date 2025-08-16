@@ -7,6 +7,8 @@ that can efficiently handle thousands of journals with lazy loading and caching.
 import sqlite3
 import logging
 import os
+import json
+import re
 from typing import Optional, Dict, Tuple, List
 from ..config import DEFAULT_CACHE_DIR
 from ..cache_utils import get_cache_path
@@ -58,6 +60,9 @@ class JournalRegistry:
                 dance_function TEXT NOT NULL,
                 format_template TEXT,
                 base_url TEXT,
+                config_data TEXT,  -- JSON string for complex configuration
+                notes TEXT,        -- Migration notes/documentation
+                is_active BOOLEAN DEFAULT 1,  -- Enable/disable publishers
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         ''')
@@ -69,6 +74,9 @@ class JournalRegistry:
                 name TEXT UNIQUE NOT NULL,
                 publisher_id INTEGER NOT NULL,
                 format_params TEXT,  -- JSON string for format parameters
+                aliases TEXT,        -- JSON array of alternate names
+                is_active BOOLEAN DEFAULT 1,  -- Enable/disable journals
+                notes TEXT,          -- Special handling notes
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (publisher_id) REFERENCES publishers (id)
             )
@@ -91,12 +99,51 @@ class JournalRegistry:
         conn.execute('CREATE INDEX IF NOT EXISTS idx_journal_aliases_name ON journal_aliases (alias_name)')
         conn.execute('CREATE INDEX IF NOT EXISTS idx_publishers_name ON publishers (name)')
         
+        # Add new columns to existing tables if they don't exist
+        self._add_missing_columns(conn)
+        
         conn.commit()
         log.debug('Journal registry database initialized at %s', self.db_path)
         
         # Auto-populate if database is empty and not using shipped database
         if not self._is_using_shipped_database():
             self._auto_populate_if_empty()
+    
+    def _add_missing_columns(self, conn: sqlite3.Connection):
+        """Add missing columns to existing tables for backward compatibility."""
+        # Check what columns exist in publishers table
+        cursor = conn.execute("PRAGMA table_info(publishers)")
+        existing_cols = {row[1] for row in cursor.fetchall()}
+        
+        # Add missing columns to publishers table
+        if 'config_data' not in existing_cols:
+            conn.execute('ALTER TABLE publishers ADD COLUMN config_data TEXT')
+            log.debug('Added config_data column to publishers table')
+        
+        if 'notes' not in existing_cols:
+            conn.execute('ALTER TABLE publishers ADD COLUMN notes TEXT')
+            log.debug('Added notes column to publishers table')
+        
+        if 'is_active' not in existing_cols:
+            conn.execute('ALTER TABLE publishers ADD COLUMN is_active BOOLEAN DEFAULT 1')
+            log.debug('Added is_active column to publishers table')
+        
+        # Check what columns exist in journals table
+        cursor = conn.execute("PRAGMA table_info(journals)")
+        existing_cols = {row[1] for row in cursor.fetchall()}
+        
+        # Add missing columns to journals table
+        if 'aliases' not in existing_cols:
+            conn.execute('ALTER TABLE journals ADD COLUMN aliases TEXT')
+            log.debug('Added aliases column to journals table')
+        
+        if 'is_active' not in existing_cols:
+            conn.execute('ALTER TABLE journals ADD COLUMN is_active BOOLEAN DEFAULT 1')
+            log.debug('Added is_active column to journals table')
+        
+        if 'notes' not in existing_cols:
+            conn.execute('ALTER TABLE journals ADD COLUMN notes TEXT')
+            log.debug('Added notes column to journals table')
     
     def _is_using_shipped_database(self) -> bool:
         """Check if we're using the shipped registry database."""
@@ -180,33 +227,68 @@ class JournalRegistry:
         
         # First try direct journal name match
         cursor = conn.execute('''
-            SELECT p.name, p.dance_function, p.format_template, p.base_url, j.format_params
+            SELECT p.name, p.dance_function, p.format_template, p.base_url, p.config_data, 
+                   j.format_params, j.aliases, j.notes
             FROM journals j
             JOIN publishers p ON j.publisher_id = p.id
-            WHERE j.name = ?
+            WHERE j.name = ? AND j.is_active = 1 AND p.is_active = 1
         ''', (journal_name,))
         
         result = cursor.fetchone()
         if result:
             return dict(result)
         
-        # Try alias match
+        # Try alias match - check if journal_name is in the aliases JSON array
         cursor = conn.execute('''
-            SELECT p.name, p.dance_function, p.format_template, p.base_url, j.format_params
-            FROM journal_aliases ja
-            JOIN journals j ON ja.journal_id = j.id
+            SELECT p.name, p.dance_function, p.format_template, p.base_url, p.config_data,
+                   j.format_params, j.aliases, j.notes
+            FROM journals j
             JOIN publishers p ON j.publisher_id = p.id
-            WHERE ja.alias_name = ?
-        ''', (journal_name,))
+            WHERE j.aliases IS NOT NULL AND j.is_active = 1 AND p.is_active = 1
+        ''')
         
-        result = cursor.fetchone()
-        if result:
-            return dict(result)
+        for row in cursor.fetchall():
+            try:
+                aliases = json.loads(row['aliases'])
+                if journal_name in aliases:
+                    return dict(row)
+            except (json.JSONDecodeError, TypeError):
+                continue
         
         return None
     
+    def get_publisher_config(self, publisher_name: str) -> Optional[Dict]:
+        """Get detailed publisher configuration including JSON config data.
+        
+        Args:
+            publisher_name: Name of the publisher
+            
+        Returns:
+            Dictionary with full publisher config or None
+        """
+        conn = self._get_connection()
+        cursor = conn.execute('''
+            SELECT name, dance_function, format_template, base_url, config_data, notes, is_active
+            FROM publishers
+            WHERE name = ? AND is_active = 1
+        ''', (publisher_name,))
+        
+        result = cursor.fetchone()
+        if result:
+            config = dict(result)
+            # Parse JSON config_data if present
+            if config['config_data']:
+                try:
+                    config['config_data'] = json.loads(config['config_data'])
+                except (json.JSONDecodeError, TypeError):
+                    config['config_data'] = None
+            return config
+        return None
+    
     def add_publisher(self, name: str, dance_function: str, 
-                     format_template: str = None, base_url: str = None) -> int:
+                     format_template: str = None, base_url: str = None,
+                     config_data: str = None, notes: str = None, 
+                     is_active: bool = True) -> int:
         """Add a new publisher to the registry.
         
         Args:
@@ -214,20 +296,24 @@ class JournalRegistry:
             dance_function: Name of the dance function to call
             format_template: URL format template (optional)
             base_url: Base URL for the publisher (optional)
+            config_data: JSON string for complex configuration (optional)
+            notes: Migration notes/documentation (optional)
+            is_active: Enable/disable publisher (default True)
             
         Returns:
             Publisher ID
         """
         conn = self._get_connection()
         cursor = conn.execute('''
-            INSERT OR REPLACE INTO publishers (name, dance_function, format_template, base_url)
-            VALUES (?, ?, ?, ?)
-        ''', (name, dance_function, format_template, base_url))
+            INSERT OR REPLACE INTO publishers (name, dance_function, format_template, base_url, config_data, notes, is_active)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        ''', (name, dance_function, format_template, base_url, config_data, notes, is_active))
         conn.commit()
         return cursor.lastrowid
     
     def add_journal(self, name: str, publisher_id: int, 
-                   format_params: str = None, aliases: List[str] = None) -> int:
+                   format_params: str = None, aliases: List[str] = None,
+                   is_active: bool = True, notes: str = None) -> int:
         """Add a new journal to the registry.
         
         Args:
@@ -235,26 +321,25 @@ class JournalRegistry:
             publisher_id: ID of the publisher
             format_params: JSON string of format parameters (optional)
             aliases: List of alternate names for this journal (optional)
+            is_active: Enable/disable journal (default True)
+            notes: Special handling notes (optional)
             
         Returns:
             Journal ID
         """
         conn = self._get_connection()
         
+        # Convert aliases list to JSON string
+        aliases_json = None
+        if aliases:
+                aliases_json = json.dumps(aliases)
+        
         # Insert journal
         cursor = conn.execute('''
-            INSERT OR REPLACE INTO journals (name, publisher_id, format_params)
-            VALUES (?, ?, ?)
-        ''', (name, publisher_id, format_params))
+            INSERT OR REPLACE INTO journals (name, publisher_id, format_params, aliases, is_active, notes)
+            VALUES (?, ?, ?, ?, ?, ?)
+        ''', (name, publisher_id, format_params, aliases_json, is_active, notes))
         journal_id = cursor.lastrowid
-        
-        # Insert aliases if provided
-        if aliases:
-            for alias in aliases:
-                conn.execute('''
-                    INSERT OR REPLACE INTO journal_aliases (journal_id, alias_name)
-                    VALUES (?, ?)
-                ''', (journal_id, alias))
         
         conn.commit()
         return journal_id
@@ -265,6 +350,132 @@ class JournalRegistry:
         cursor = conn.execute('SELECT name FROM journals ORDER BY name')
         return [row[0] for row in cursor.fetchall()]
     
+    def get_journal_params(self, journal_name: str) -> Optional[Dict]:
+        """Get format parameters for a specific journal.
+        
+        Args:
+            journal_name: The journal name or abbreviation to look up.
+            
+        Returns:
+            Dictionary with journal format parameters or None.
+        """
+        
+        conn = self._get_connection()
+        
+        # Find journal matches, prioritizing entries with format_params
+        cursor = conn.execute('''
+            SELECT format_params
+            FROM journals
+            WHERE name = ? AND is_active = 1
+            ORDER BY CASE WHEN format_params IS NOT NULL THEN 0 ELSE 1 END
+        ''', (journal_name,))
+        
+        result = cursor.fetchone()
+        if result and result[0]:
+            try:
+                return json.loads(result[0])
+            except (json.JSONDecodeError, TypeError):
+                return None
+                
+        return None
+    
+    def get_publisher_by_url_pattern(self, url: str) -> Optional[Dict]:
+        """Find publisher by matching URL pattern.
+        
+        Args:
+            url: URL to match against publisher templates
+            
+        Returns:
+            Dictionary with publisher info or None if no match found
+        """
+        
+        conn = self._get_connection()
+        
+        # Get all publishers with their format templates and config data
+        cursor = conn.execute('''
+            SELECT name, dance_function, format_template, config_data
+            FROM publishers 
+            WHERE is_active = 1 AND (format_template IS NOT NULL OR config_data IS NOT NULL)
+        ''')
+        
+        for row in cursor.fetchall():
+            name, dance_function, format_template, config_data = row
+            
+            # Check format_template
+            if format_template and self._url_matches_template(url, format_template):
+                return {
+                    'name': name,
+                    'dance_function': dance_function,
+                    'format_template': format_template,
+                    'match_type': 'format_template'
+                }
+            
+            # Check templates in config_data
+            if config_data:
+                try:
+                    config = json.loads(config_data)
+                    url_patterns = config.get('url_patterns', {})
+                    
+                    for pattern_name, template in url_patterns.items():
+                        if template and self._url_matches_template(url, template):
+                            return {
+                                'name': name,
+                                'dance_function': dance_function,
+                                'format_template': template,
+                                'match_type': pattern_name,
+                                'config_data': config
+                            }
+                except (json.JSONDecodeError, TypeError):
+                    continue
+        
+        return None
+    
+    def _url_matches_template(self, url: str, template: str) -> bool:
+        """Check if URL matches a template pattern.
+        
+        Args:
+            url: Actual URL to check
+            template: Template with placeholders like {doi}, {host}, etc.
+            
+        Returns:
+            True if URL matches template pattern
+        """
+        
+        # Convert template to regex pattern
+        # Replace common placeholders with regex patterns
+        pattern = template
+        
+        # Escape special regex characters except our placeholders
+        pattern = re.escape(pattern)
+        
+        # Replace escaped placeholders with regex patterns
+        replacements = {
+            r'\{doi\}': r'[^\s]+',              # DOIs can contain slashes
+            r'\{host\}': r'[^/\s]+',            # Host names
+            r'\{volume\}': r'\d+',              # Volume numbers
+            r'\{issue\}': r'\d+',               # Issue numbers  
+            r'\{first_page\}': r'\d+',          # Page numbers
+            r'\{pii\}': r'[A-Za-z0-9\-().]+',  # PIIs can have various formats including dots
+            r'\{aid\}': r'[^/\s]+',             # Article IDs
+            r'\{pmid\}': r'\d+',                # PubMed IDs
+            r'\{ja\}': r'[^/\s]+',              # Journal abbreviations
+            r'\{a\.volume\}': r'\d+',           # Article volume
+            r'\{a\.issue\}': r'\d+',            # Article issue
+            r'\{a\.first_page\}': r'\d+',       # Article first page
+            r'\{a\.pii\}': r'[A-Za-z0-9\-().]+' # Article PII with dots
+        }
+        
+        for placeholder, regex in replacements.items():
+            pattern = pattern.replace(placeholder, regex)
+        
+        # Make pattern case-insensitive and allow http/https
+        pattern = pattern.replace('http://', r'https?://')
+        
+        try:
+            return bool(re.match(pattern + r'/?$', url, re.IGNORECASE))
+        except re.error:
+            return False
+
     def get_stats(self) -> Dict[str, int]:
         """Get registry statistics."""
         conn = self._get_connection()

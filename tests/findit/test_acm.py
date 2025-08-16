@@ -7,6 +7,7 @@ import requests
 from .common import BaseDanceTest
 from metapub import PubMedFetcher
 from metapub.findit.dances import the_acm_reel
+from metapub.findit.registry import JournalRegistry
 from metapub.exceptions import AccessDenied, NoPDFLink
 
 
@@ -180,9 +181,6 @@ class TestACMDance(BaseDanceTest):
 
 def test_acm_journal_recognition():
     """Test that ACM journals are properly recognized in the registry."""
-    from metapub.findit.registry import JournalRegistry
-    from metapub.findit.journals.acm import acm_journals
-    
     registry = JournalRegistry()
     
     # Test sample ACM journals (using PubMed abbreviated names)

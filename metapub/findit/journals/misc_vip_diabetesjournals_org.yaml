@@ -1,0 +1,23 @@
+schema_version: '1.0'
+publisher:
+  name: American Diabetes Association
+  id: misc_vip_diabetesjournals_org
+  description: VIP format journals from American Diabetes Association
+  dance_function: the_vip_shake
+  pattern_type: vip
+url_patterns:
+  primary_template: http://{host}/content/{volume}/{issue}/{first_page}.full.pdf
+journals:
+  parameterized:
+    Diabetes:
+      host: diabetes.diabetesjournals.org
+    Diabetes Care:
+      host: care.diabetesjournals.org
+  simple_list:
+  - Diabetes
+  - Diabetes Care
+metadata:
+  evidence_date: '2025-08-16'
+  verification_notes: Migrated from misc_vip.py
+  special_handling: []
+  domain: diabetesjournals.org

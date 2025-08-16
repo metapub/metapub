@@ -143,7 +143,7 @@ class TestOATextDance(BaseDanceTest):
 
 def test_oatext_journal_recognition():
     """Test that OAText journals are properly recognized."""
-    from metapub.findit.journals.oatext import oatext_journals
+    from metapub.findit.registry import JournalRegistry
     
     # Verify key OAText journals are in the list
     expected_journals = [
@@ -155,7 +155,6 @@ def test_oatext_journal_recognition():
     ]
     
     # Test journal recognition using registry
-    from metapub.findit.registry import JournalRegistry
     registry = JournalRegistry()
     
     found_count = 0

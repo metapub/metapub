@@ -21,7 +21,7 @@ from ...utils import remove_chars
 
 from ..journals import (
     simple_formats_pmid, vip_format, vip_journals, vip_journals_nonstandard,
-    simple_formats_pii, BMC_format
+    simple_formats_pii
 )
 from ..registry import JournalRegistry
 
@@ -337,6 +337,9 @@ def the_doi_slide(pma, verify=True, request_timeout=10, max_redirects=3):
     publisher_info = registry.get_publisher_for_journal(jrnl)
     registry.close()
 
+    if not publisher_info:
+        raise NoPDFLink(f'MISSING: Journal {pma.journal} not found in registry - attempted: none')
+    
     publisher_name = publisher_info['name']
 
     # Check if this is a blocked publisher - try CrossRef API first
@@ -505,7 +508,18 @@ def the_bmc_boogie(pma, verify=False, request_timeout=10, max_redirects=3):
         article_id = baseid.split('/')[1]
     else:
         raise NoPDFLink('MISSING: doi needed for BMC article')
-    url = BMC_format.format(aid=article_id)
+    
+    # Use registry to get BMC format or fallback to known format
+    registry = JournalRegistry()
+    publisher_config = registry.get_publisher_config('Bmc')
+    if publisher_config and publisher_config.get('format_template'):
+        bmc_format = publisher_config['format_template']
+    else:
+        # Fallback to known BMC format
+        bmc_format = 'http://www.biomedcentral.com/content/pdf/{aid}.pdf'
+    registry.close()
+    
+    url = bmc_format.format(aid=article_id)
     if verify:
         verify_pdf_url(url, 'BMC', request_timeout=request_timeout, max_redirects=max_redirects)
     return url

@@ -1,0 +1,136 @@
+publisher:
+  name: misc_pii
+  dance_function: the_pii_prance
+  pattern_type: pii
+  description: Configuration for misc_pii journals
+journals:
+  Am Heart J:
+    parameters:
+      template: http://www.ahjonline.com/article/{a.pii}/pdf
+  Am J Cardiol:
+    parameters:
+      template: http://www.ajconline.org/article/{a.pii}/pdf
+  Am J Ophthalmol:
+    parameters:
+      template: http://www.ajo.com/article/{a.pii}/pdf
+  Am J Med:
+    parameters:
+      template: http://www.amjmed.com/article/{a.pii}/pdf
+  Atherosclerosis:
+    parameters:
+      template: http://www.atherosclerosis-journal.com/article/{a.pii}/pdf
+  Arch Med Res:
+    parameters:
+      template: http://www.arcmedres.com/article/{a.pii}/pdf
+  Biol Psychiatry:
+    parameters:
+      template: http://www.biologicalpsychiatryjournal.com/article/{a.pii}/pdf
+  Bone:
+    parameters:
+      template: http://www.thebonejournal.com/article/{a.pii}/pdf
+  Brain Dev:
+    parameters:
+      template: http://www.brainanddevelopment.com/article/{a.pii}/pdf
+  Cancer Cell Int:
+    parameters:
+      template: http://www.cancerci.com/content/pdf/{a.pii}.pdf
+  Cancer Genet Cytogenet:
+    parameters:
+      template: http://www.cancergeneticsjournal.org/article/{a.pii}/pdf
+  Cancer Lett:
+    parameters:
+      template: http://www.cancerletters.info/article/{a.pii}/pdf
+  Clin Neurol Neurosurg:
+    parameters:
+      template: http://www.clineu-journal.com/article/{a.pii}/pdf
+  Diabetes Res Clin Pract:
+    parameters:
+      template: http://www.diabetesresearchclinicalpractice.com/article/{a.pii}/pdf
+  Epilepsy Res:
+    parameters:
+      template: http://www.epires-journal.com/article/{a.pii}/pdf
+  Eur J Paediatr Neurol:
+    parameters:
+      template: http://www.ejpn-journal.com/article/{a.pii}/pdf
+  Exp Hematol:
+    parameters:
+      template: http://www.exphem.org/article/{a.pii}/pdf
+  Fertil Steril:
+    parameters:
+      template: http://www.fertstert.org/article/{a.pii}/pdf
+  Gastroenterology:
+    parameters:
+      template: http://www.gastrojournal.org/article/{a.pii}/pdf
+  Gynecol Oncol:
+    parameters:
+      template: http://www.gynecologiconcology-online.net/article/{a.pii}/pdf
+  Heart Rhythm:
+    parameters:
+      template: http://www.heartrhythmjournal.com/article/{a.pii}/pdf
+  Int J Pediatr Otorhinolaryngol:
+    parameters:
+      template: http://www.ijporlonline.com/article/{a.pii}/pdf
+  Int J Cardiol:
+    parameters:
+      template: http://www.internationaljournalofcardiology.com/article/{a.pii}/pdf
+  J Dermatol:
+    parameters:
+      template: http://www.jdsjournal.com/article/{a.pii}/pdf
+  J Mol Cell Cardiol:
+    parameters:
+      template: http://www.jmmc-online.com/article/{a.pii}/pdf
+  J Mol Diagn:
+    parameters:
+      template: http://jmd.amjpathol.org/article/{a.pii}/pdf
+  J Neurol Sci:
+    parameters:
+      template: http://www.jns-journal.com/article/{a.pii}/pdf
+  J Pediatr:
+    parameters:
+      template: http://www.jpeds.com/article/{a.pii}/pdf
+  J Pediatr Urol:
+    parameters:
+      template: http://www.jpurol.com/article/{a.pii}/pdf
+  Ophthalmology:
+    parameters:
+      template: http://www.aaojournal.org/article/{a.pii}/pdf
+  Orv Hetil:
+    parameters:
+      template: http://www.akademiai.com/content/{a.pii}/fulltext.pdf
+  Med Hypotheses:
+    parameters:
+      template: http://www.medical-hypotheses.com/article/{a.pii}/pdf
+  Metabolism:
+    parameters:
+      template: http://www.metabolismjournal.com/article/{a.pii}/pdf
+  Metab Clin Exp:
+    parameters:
+      template: http://www.metabolismjournal.com/article/{a.pii}/pdf
+  Mol Genet Metab:
+    parameters:
+      template: http://www.mgmjournal.com/article/{a.pii}/pdf
+  Neurobiol Aging:
+    parameters:
+      template: http://www.neurobiologyofaging.org/article/{a.pii}/pdf
+  Neuromuscul Disord:
+    parameters:
+      template: http://www.nmd-journal.com/article/{a.pii}/pdf
+  Parkinsonism Relat Disord:
+    parameters:
+      template: http://www.prd-journal.com/article/{a.pii}/pdf
+  Pediatr Neurol:
+    parameters:
+      template: http://www.pedneur.com/article/{a.pii}/pdf
+  Placenta:
+    parameters:
+      template: http://www.placentajournal.org/article/{a.pii}/pdf
+  Surg Neurol:
+    parameters:
+      template: http://www.worldneurosurgery.org/article/{a.pii}/pdf
+  Thromb Res:
+    parameters:
+      template: http://www.thrombosisresearch.com/article/{a.pii}/pdf
+metadata:
+  migrated_from: misc_pii.py
+  migration_date: '2025-08-16'
+  pattern_type: pii

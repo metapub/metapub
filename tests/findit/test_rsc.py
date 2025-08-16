@@ -327,7 +327,6 @@ class TestRSCDance(BaseDanceTest):
 def test_rsc_journal_recognition():
     """Test that RSC journals are properly recognized in the registry."""
     from metapub.findit.registry import JournalRegistry
-    from metapub.findit.journals.rsc import rsc_journals
     
     registry = JournalRegistry()
     
@@ -340,19 +339,16 @@ def test_rsc_journal_recognition():
         'Nat Prod Rep'
     ]
     
-    # Test journal recognition
+    # Test journal recognition using registry
     found_count = 0
     for journal in test_journals:
-        if journal in rsc_journals:
-            publisher_info = registry.get_publisher_for_journal(journal)
-            if publisher_info and publisher_info['name'] == 'rsc':
-                assert publisher_info['dance_function'] == 'the_rsc_reaction'
-                print(f"✓ {journal} correctly mapped to Royal Society of Chemistry")
-                found_count += 1
-            else:
-                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
+        publisher_info = registry.get_publisher_for_journal(journal)
+        if publisher_info and publisher_info['name'] == 'rsc':
+            assert publisher_info['dance_function'] == 'the_rsc_reaction'
+            print(f"✓ {journal} correctly mapped to Royal Society of Chemistry")
+            found_count += 1
         else:
-            print(f"⚠ {journal} not in rsc_journals list")
+            print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
     
     # Just make sure we found at least one RSC journal (the test may not find all if registry is not populated)
     if found_count == 0:

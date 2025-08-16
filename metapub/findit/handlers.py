@@ -7,6 +7,7 @@ replacing the static PUBMED_SWITCHBOARD with a dynamic handler system.
 import logging
 from typing import Optional, Tuple, Dict, Any
 from ..exceptions import MetaPubError
+from .registry import standardize_journal_name
 
 log = logging.getLogger('metapub.findit.handlers')
 
@@ -171,8 +172,6 @@ class RegistryBackedLookupSystem:
         Returns:
             Tuple of (url, reason)
         """
-        from .registry import standardize_journal_name
-
         journal_name = standardize_journal_name(pma.journal)
         handler = self.get_handler_for_journal(journal_name)
 

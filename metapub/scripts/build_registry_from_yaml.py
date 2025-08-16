@@ -13,6 +13,7 @@ import sys
 import yaml
 import sqlite3
 import argparse
+import json
 from pathlib import Path
 
 # When run as a package module, no need to modify path
@@ -26,6 +27,9 @@ def create_registry_tables(conn):
             dance_function TEXT NOT NULL,
             format_template TEXT,
             base_url TEXT,
+            config_data TEXT,  -- JSON string for complex configuration
+            notes TEXT,        -- Migration notes/documentation
+            is_active BOOLEAN DEFAULT 1,  -- Enable/disable publishers
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     ''')
@@ -35,7 +39,10 @@ def create_registry_tables(conn):
             id INTEGER PRIMARY KEY,
             name TEXT NOT NULL,
             publisher_id INTEGER NOT NULL,
-            format_params TEXT,
+            format_params TEXT,  -- JSON string for format parameters
+            aliases TEXT,        -- JSON array of alternate names
+            is_active BOOLEAN DEFAULT 1,  -- Enable/disable journals
+            notes TEXT,          -- Special handling notes
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (publisher_id) REFERENCES publishers (id)
         )
@@ -53,54 +60,85 @@ def load_yaml_config(yaml_path):
         config = yaml.safe_load(f)
     
     # Basic validation
-    if not config.get('publisher', {}).get('id'):
-        raise ValueError(f"Missing publisher.id in {yaml_path}")
+    if not config.get('publisher', {}).get('name'):
+        raise ValueError(f"Missing publisher.name in {yaml_path}")
     
     return config
 
 def insert_publisher(conn, config):
     """Insert publisher data into the database."""
+    
     pub = config['publisher']
     url_patterns = config.get('url_patterns', {})
     
     # Use primary_template or doi_template as format_template
     format_template = url_patterns.get('primary_template') or url_patterns.get('doi_template', '')
     
+    # Get dance function from publisher config or top-level config
+    dance_function = pub.get('dance_function') or config.get('dance_function', 'the_doi_slide')
+    
+    # Create config_data JSON with URL patterns and other metadata
+    config_data = {
+        'url_patterns': url_patterns,
+        'pattern_type': pub.get('pattern_type'),
+        'description': pub.get('description')
+    }
+    
     cursor = conn.execute('''
-        INSERT INTO publishers (name, dance_function, format_template, base_url)
-        VALUES (?, ?, ?, ?)
+        INSERT INTO publishers (name, dance_function, format_template, base_url, config_data, notes, is_active)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
     ''', (
-        pub.get('name', pub['id']),
-        config.get('dance_function', 'the_doi_slide'),
+        pub['name'],
+        dance_function,
         format_template,
-        ''  # base_url not used in YAML configs
+        '',  # base_url not used in YAML configs
+        json.dumps(config_data),
+        config.get('metadata', {}).get('verification_notes', ''),
+        1  # is_active = True
     ))
     
     return cursor.lastrowid
 
 def insert_journals(conn, publisher_rowid, config):
     """Insert journal data into the database."""
+    
     journals_config = config.get('journals', {})
     
     # Handle simple journal lists
     simple_journals = journals_config.get('simple_list', [])
     for journal_name in simple_journals:
         conn.execute('''
-            INSERT INTO journals (name, publisher_id, format_params)
-            VALUES (?, ?, ?)
-        ''', (journal_name, publisher_rowid, None))
+            INSERT INTO journals (name, publisher_id, format_params, aliases, is_active, notes)
+            VALUES (?, ?, ?, ?, ?, ?)
+        ''', (journal_name, publisher_rowid, None, None, 1, None))
     
     # Handle parameterized journals (like BMJ with host configs)
     parameterized = journals_config.get('parameterized', {})
     for journal_name, params in parameterized.items():
         # Convert params dict to JSON string for format_params
-        import json
         format_params = json.dumps(params) if params else None
         
         conn.execute('''
-            INSERT INTO journals (name, publisher_id, format_params)
-            VALUES (?, ?, ?)
-        ''', (journal_name, publisher_rowid, format_params))
+            INSERT INTO journals (name, publisher_id, format_params, aliases, is_active, notes)
+            VALUES (?, ?, ?, ?, ?, ?)
+        ''', (journal_name, publisher_rowid, format_params, None, 1, None))
+    
+    # Handle direct journal dictionaries (like AAAS structure)
+    # Skip special keys like 'simple_list' and 'parameterized'
+    special_keys = {'simple_list', 'parameterized'}
+    for journal_name, journal_data in journals_config.items():
+        if journal_name in special_keys:
+            continue
+            
+        if isinstance(journal_data, dict):
+            # Extract parameters if present
+            params = journal_data.get('parameters', {})
+            format_params = json.dumps(params) if params else None
+            
+            conn.execute('''
+                INSERT INTO journals (name, publisher_id, format_params, aliases, is_active, notes)
+                VALUES (?, ?, ?, ?, ?, ?)
+            ''', (journal_name, publisher_rowid, format_params, None, 1, None))
 
 def build_registry(yaml_dir, output_db):
     """Build the complete registry database from YAML files."""

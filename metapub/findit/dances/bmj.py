@@ -15,6 +15,7 @@ Pattern discovered from HTML samples:
 import re
 from .generic import the_doi_2step, verify_pdf_url, unified_uri_get, standardize_journal_name, rectify_pma_for_vip_links
 from ...exceptions import NoPDFLink
+from ..registry import JournalRegistry
 
 
 def the_bmj_bump(pma, verify=True, request_timeout=10, max_redirects=3):
@@ -33,20 +34,23 @@ def the_bmj_bump(pma, verify=True, request_timeout=10, max_redirects=3):
     if not pma.doi:
         raise NoPDFLink('MISSING: DOI required for BMJ articles')
     
-    # Import BMJ journal mappings
-    from ..journals.bmj import bmj_journal_params
+    # Initialize registry
+    registry = JournalRegistry()
     
     # Stage 1: Try VIP URL construction (faster)
     try:
         jrnl = standardize_journal_name(pma.journal)
-        if jrnl in bmj_journal_params:
+        journal_params = registry.get_journal_params(jrnl)
+        
+        if journal_params:
             pma_vip = rectify_pma_for_vip_links(pma)  # Validates volume/issue/page
-            host = bmj_journal_params[jrnl]['host']
-            vip_url = f'https://{host}/content/{pma_vip.volume}/{pma_vip.issue}/{pma_vip.first_page}.full.pdf'
-            
-            if verify:
-                verify_pdf_url(vip_url, 'BMJ', request_timeout=request_timeout, max_redirects=max_redirects)
-            return vip_url
+            host = journal_params.get('host')
+            if host:
+                vip_url = f'https://{host}/content/{pma_vip.volume}/{pma_vip.issue}/{pma_vip.first_page}.full.pdf'
+                
+                if verify:
+                    verify_pdf_url(vip_url, 'BMJ', request_timeout=request_timeout, max_redirects=max_redirects)
+                return vip_url
             
     except (NoPDFLink, KeyError):
         # VIP construction failed - fall back to meta tag extraction

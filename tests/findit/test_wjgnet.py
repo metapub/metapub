@@ -172,7 +172,7 @@ class TestWJGNetDance(BaseDanceTest):
 
 def test_wjgnet_journal_recognition():
     """Test that WJGNet journals are properly recognized."""
-    from metapub.findit.journals.wjgnet import wjgnet_journals
+    from metapub.findit.registry import JournalRegistry
     
     # Verify key WJGNet journals are in the list
     expected_journals = [
@@ -183,7 +183,6 @@ def test_wjgnet_journal_recognition():
     ]
     
     # Test journal recognition using registry
-    from metapub.findit.registry import JournalRegistry
     registry = JournalRegistry()
     
     found_count = 0

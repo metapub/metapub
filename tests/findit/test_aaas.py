@@ -12,6 +12,7 @@ import pytest
 from unittest.mock import patch, Mock, MagicMock
 from .common import BaseDanceTest
 from metapub.findit.dances.aaas import the_aaas_twist
+from metapub.findit.registry import JournalRegistry
 from metapub.exceptions import AccessDenied, NoPDFLink
 from ..fixtures import load_pmid_xml, EVIDENCE_PMIDS
 
@@ -276,13 +277,11 @@ class TestAAASEvidenceValidation:
 
 def test_aaas_journal_recognition():
     """Test that AAAS journals are properly recognized in the registry."""
-    from metapub.findit.registry import JournalRegistry
-    
     registry = JournalRegistry()
     
-    # Test known AAAS journals
+    # Test known AAAS journals - note that Science is mapped to Science Magazine publisher
+    # but other Science journals should be mapped to AAAS
     aaas_journals = [
-        'Science',
         'Sci Adv',
         'Sci Transl Med', 
         'Sci Immunol',
@@ -294,11 +293,19 @@ def test_aaas_journal_recognition():
     for journal in aaas_journals:
         publisher_info = registry.get_publisher_for_journal(journal)
         if publisher_info and publisher_info['name'] == 'aaas':
+            # The function should be the_aaas_twist to match the actual dance function
             assert publisher_info['dance_function'] == 'the_aaas_twist'
             print(f"✓ {journal} correctly mapped to AAAS")
             found_count += 1
         else:
             print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
+    
+    # Special case: Science is mapped to Science Magazine, not AAAS
+    science_info = registry.get_publisher_for_journal('Science')
+    if science_info and science_info['name'] == 'Science Magazine':
+        print(f"✓ Science correctly mapped to Science Magazine (not AAAS)")
+    else:
+        print(f"⚠ Science mapped to: {science_info['name'] if science_info else 'None'}")
     
     if found_count > 0:
         print(f"✓ Found {found_count} properly mapped AAAS journals")

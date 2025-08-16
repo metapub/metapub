@@ -6,6 +6,7 @@ from unittest.mock import patch, Mock
 from .common import BaseDanceTest
 from metapub import PubMedFetcher
 from metapub.findit.dances import the_annualreviews_round
+from metapub.findit.registry import JournalRegistry
 from metapub.exceptions import AccessDenied, NoPDFLink
 from tests.fixtures import load_pmid_xml, ANNUALREVIEWS_EVIDENCE_PMIDS
 
@@ -208,9 +209,6 @@ class TestAnnualReviewsDance(BaseDanceTest):
 
 def test_annualreviews_journal_recognition():
     """Test that Annual Reviews journals are properly recognized in the registry."""
-    from metapub.findit.registry import JournalRegistry
-    from metapub.findit.journals.annualreviews import annualreviews_journals
-    
     registry = JournalRegistry()
     
     # Test sample Annual Reviews journals

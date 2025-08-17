@@ -10,8 +10,7 @@ from .dances import *
 from .registry import JournalRegistry, standardize_journal_name
 from .handlers import RegistryBackedLookupSystem
 from .journals import (simple_formats_pii, simple_formats_pmid,
-                      vip_journals, vip_journals_nonstandard,
-                      JOURNAL_CANTDO_LIST)
+                      vip_journals, vip_journals_nonstandard)
 
 log = logging.getLogger('metapub.findit.logic')
 
@@ -198,9 +197,6 @@ def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None,
         reason = f'REGISTRY_ERROR: {error}'
 
     # === FALLBACK CHECKS === #
-
-    if jrnl in JOURNAL_CANTDO_LIST:
-        reason = f'CANTDO: this journal ({jrnl}) has been marked as unsourceable'
 
     # aka if url is STILL None...
     if not url and not reason:

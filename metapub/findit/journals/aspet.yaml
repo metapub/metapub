@@ -1,7 +1,7 @@
 schema_version: '1.0'
 publisher:
   name: American Society for Pharmacology
-  id: misc_vip_aspetjournals_org
+  id: aspet
   description: VIP format journals from American Society for Pharmacology
   dance_function: the_vip_shake
   pattern_type: vip

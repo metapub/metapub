@@ -1,7 +1,7 @@
 schema_version: '1.0'
 publisher:
   name: American Society of Hematology
-  id: misc_vip_nonstandard_american_society_of_hematology
+  id: ash
   description: Nonstandard VIP format for American Society of Hematology
   dance_function: the_vip_shake_nonstandard
   pattern_type: vip_nonstandard

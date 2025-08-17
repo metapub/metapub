@@ -3,7 +3,6 @@ __path__ = extend_path(__path__, __name__)
 
 from .misc_pii import simple_formats_pii
 from .misc_vip import vip_format, vip_journals, vip_journals_nonstandard
-from .cantdo_list import JOURNAL_CANTDO_LIST
 
 try:
     from ..registry import JournalRegistry

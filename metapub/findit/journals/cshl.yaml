@@ -1,23 +1,23 @@
 schema_version: '1.0'
 publisher:
-  name: Rockefeller University Press
-  id: misc_vip_rupress_org
-  description: VIP format journals from Rockefeller University Press
+  name: Cold Spring Harbor Laboratory Press
+  id: cshl
+  description: VIP format journals from Cold Spring Harbor Laboratory Press
   dance_function: the_vip_shake
   pattern_type: vip
 url_patterns:
   primary_template: http://{host}/content/{volume}/{issue}/{first_page}.full.pdf
 journals:
   parameterized:
-    J Cell Biol:
-      host: jcb.rupress.org
-    J Exp Med:
-      host: jem.rupress.org
+    Genome Res:
+      host: genome.cshlp.org
+    Genes Dev:
+      host: genesdev.cshlp.org
   simple_list:
-  - J Cell Biol
-  - J Exp Med
+  - Genome Res
+  - Genes Dev
 metadata:
   evidence_date: '2025-08-16'
   verification_notes: Migrated from misc_vip.py
   special_handling: []
-  domain: rupress.org
+  domain: cshlp.org

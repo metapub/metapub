@@ -1,23 +1,23 @@
 schema_version: '1.0'
 publisher:
-  name: Cold Spring Harbor Laboratory Press
-  id: misc_vip_cshlp_org
-  description: VIP format journals from Cold Spring Harbor Laboratory Press
+  name: American Diabetes Association
+  id: ada
+  description: VIP format journals from American Diabetes Association
   dance_function: the_vip_shake
   pattern_type: vip
 url_patterns:
   primary_template: http://{host}/content/{volume}/{issue}/{first_page}.full.pdf
 journals:
   parameterized:
-    Genome Res:
-      host: genome.cshlp.org
-    Genes Dev:
-      host: genesdev.cshlp.org
+    Diabetes:
+      host: diabetes.diabetesjournals.org
+    Diabetes Care:
+      host: care.diabetesjournals.org
   simple_list:
-  - Genome Res
-  - Genes Dev
+  - Diabetes
+  - Diabetes Care
 metadata:
   evidence_date: '2025-08-16'
   verification_notes: Migrated from misc_vip.py
   special_handling: []
-  domain: cshlp.org
+  domain: diabetesjournals.org

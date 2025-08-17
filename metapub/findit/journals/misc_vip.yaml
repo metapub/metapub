@@ -1,11 +1,100 @@
+schema_version: '1.0'
 publisher:
-  name: misc_vip
+  name: Miscellaneous VIP Publishers
+  id: misc_vip
+  description: Ungrouped VIP format journals
   dance_function: the_vip_shake
   pattern_type: vip
-  description: Configuration for misc_vip journals
 url_patterns:
-  primary_template: http://{host}/content/{a.volume}/{a.issue}/{a.first_page}.full.pdf
+  primary_template: http://{host}/content/{volume}/{issue}/{first_page}.full.pdf
+journals:
+  parameterized:
+    Am J Clin Pathol:
+      host: ajcp.ascpjournals.org
+    Anticancer Res:
+      host: ar.iiarjournals.org
+    Breast Cancer Res:
+      host: breast-cancer-research.com
+    Can Fam Physician:
+      host: www.cfp.ca
+    Clin Chem:
+      host: clinchem.org
+    EMBO J:
+      host: emboj.embopress.org
+    Endocr Relat Cancer:
+      host: erc.endocrinology-journals.org
+    Eur J Endocrinol:
+      host: eje-online.org
+    Eur Respir J:
+      host: erj.ersjournals.com
+    FASEB J:
+      host: fasebj.org
+    Genome Biol:
+      host: genomebiology.com
+    Haematologica:
+      host: haematologica.org
+    J Am Soc Nephrol:
+      host: jasn.asnjournals.org
+    J Biol Chem:
+      host: www.jbc.org
+    J Bone Joint Surg Am:
+      host: jbjs.org
+    J Cell Sci:
+      host: jcs.biologists.org
+    J Clin Oncol:
+      host: jco.ascopubs.org
+    J Immunol:
+      host: jimmunol.org
+    J Lipid Res:
+      host: www.jlr.org
+    J Neurosci:
+      host: jneurosci.org
+    J Nutr:
+      host: jn.nutrition.org
+    J Rheumatol:
+      host: www.jrheum.org
+    Mol Biol Cell:
+      host: molbiolcell.org
+    Neurology:
+      host: neurology.org
+    Pediatrics:
+      host: pediatrics.aappublications.org
+    Plant Cell:
+      host: www.plantcell.org
+    Proc Natl Acad Sci USA:
+      host: pnas.org
+    Science:
+      host: sciencemag.org
+  simple_list:
+    - Am J Clin Pathol
+    - Anticancer Res
+    - Breast Cancer Res
+    - Can Fam Physician
+    - Clin Chem
+    - EMBO J
+    - Endocr Relat Cancer
+    - Eur J Endocrinol
+    - Eur Respir J
+    - FASEB J
+    - Genome Biol
+    - Haematologica
+    - J Am Soc Nephrol
+    - J Biol Chem
+    - J Bone Joint Surg Am
+    - J Cell Sci
+    - J Clin Oncol
+    - J Immunol
+    - J Lipid Res
+    - J Neurosci
+    - J Nutr
+    - J Rheumatol
+    - Mol Biol Cell
+    - Neurology
+    - Pediatrics
+    - Plant Cell
+    - Proc Natl Acad Sci USA
+    - Science
 metadata:
-  migrated_from: misc_vip.py
-  migration_date: '2025-08-16'
-  pattern_type: vip
+  evidence_date: '2025-08-16'
+  verification_notes: Migrated from misc_vip.py - remaining ungrouped journals
+  special_handling: []

@@ -156,18 +156,18 @@ class TestNatureDance(BaseDanceTest):
     def test_nature_ballet_network_error(self, mock_verify):
         """Test 8: Network error handling.
         
-        Expected: Should handle network errors gracefully
+        Expected: verify_pdf_url should translate network errors to NoPDFLink with TXERROR
         """
-        # Mock network error during verification
-        mock_verify.side_effect = requests.exceptions.ConnectionError("Network error")
+        # Mock verify_pdf_url to raise NoPDFLink with TXERROR as it would after handling network errors
+        mock_verify.side_effect = NoPDFLink("TXERROR: Connection error: Network error while accessing  url (https://www.nature.com/articles/s41598-022-10666-2.pdf)")
 
         pma = self.fetch.article_by_pmid('35459787')
         
-        # Test with verification - should handle network error
-        with pytest.raises(AccessDenied) as exc_info:
+        # Test with verification - should get NoPDFLink when verification fails
+        with pytest.raises(NoPDFLink) as exc_info:
             the_nature_ballet(pma, verify=True)
         
-        assert 'PAYWALL' in str(exc_info.value)
+        assert 'TXERROR' in str(exc_info.value)
         print(f"Test 8 - Correctly handled network error: {exc_info.value}")
 
 

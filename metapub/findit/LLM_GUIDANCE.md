@@ -38,15 +38,14 @@ This document provides guidance for AI assistants working on the FindIt system, 
 - **DON'T**: Assume all articles from a publisher will have the same DOI prefix
 
 ### Test Organization
-- **DO**: Consolidate related tests in `test_findit_dances.py`
+- **DO**: Consolidate related tests in `tests/findit/`
 - **DO**: Remove redundant test files after consolidating functionality
 - **DO**: Use descriptive test names that indicate what publisher/scenario is being tested
 
 ## Code Organization
 
 ### File Structure
-- **DO**: Keep publisher-specific journal lists in `metapub/findit/journals/{publisher}.py`
-- **DO**: Use simple lists for journal names rather than dictionaries with repetitive data
+- **DO**: Keep publisher-specific journal lists in `metapub/findit/journals/{publisher}.yaml`
 - **DO**: Document URL patterns and dance function mappings in journal files
 
 ### CLEANUP Directory
@@ -87,13 +86,11 @@ This document provides guidance for AI assistants working on the FindIt system, 
 ## Network and Verification
 
 ### URL Verification
-- **DO**: Implement proper paywall detection (check content-type, response content)
 - **DO**: Provide `verify=False` option for fast URL construction without network calls
 - **DO**: Handle network timeouts and errors gracefully
 - **DON'T**: Make network calls during unit tests unless necessary
 
 ### Fallback Mechanisms
-- **DO**: Implement PMC fallback for paywalled content when possible
 - **DO**: Provide meaningful error messages when fallbacks aren't available
 - **DO**: Log attempted URLs even when they fail
 
@@ -115,4 +112,3 @@ When faced with design decisions:
 4. **Test Thoroughly**: Cover different eras, DOI formats, and edge cases
 5. **Clean Up After Yourself**: Remove development artifacts once integration is complete
 
-This guidance reflects lessons learned during Cambridge University Press integration and SAGE Publications testing, where overly restrictive DOI validation caused more problems than it solved.

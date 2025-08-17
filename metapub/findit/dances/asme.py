@@ -1,12 +1,7 @@
 from ...exceptions import *
 from .generic import *
 
-from ..journals.asme import asme_format
-
-#TODO: get rid of this dumb try-except jaw
-
-# also i'm not convinced any of this works
-
+from ..registry import JournalRegistry
 
 def the_asme_animal(pma, verify=True, request_timeout=10, max_redirects=3):
     """ASME (American Society of Mechanical Engineers) dance function.
@@ -14,7 +9,7 @@ def the_asme_animal(pma, verify=True, request_timeout=10, max_redirects=3):
     ASME publishes technical journals in mechanical engineering, biomechanical
     engineering, manufacturing, energy, and related fields through their
     Digital Collection platform.
-    
+
     Includes CrossRef API fallback for blocked access.
 
     Args:
@@ -49,55 +44,39 @@ def the_asme_animal(pma, verify=True, request_timeout=10, max_redirects=3):
         # Still try to process, but note pattern mismatch
         pass
 
-    # Try to derive journal code from journal name
-    journal_name = pma.journal.lower() if pma.journal else ''
+    # Get URL templates and journal parameters from registry
+    registry = JournalRegistry()
+    templates = registry.get_url_templates('asme')
+    journal_params = registry.get_journal_parameters('asme', pma.journal)
 
-
-    # TODO: actually find the ASME journal code mappings, this is a stupid approach.
-    # Common ASME journal code mappings
-    journal_codes = {
-        'j appl mech': 'appliedmechanics',
-        'j biomech eng': 'biomechanical',
-        'j heat transfer': 'heattransfer',
-        'j fluids eng': 'fluidsengineering',
-        'j eng gas turbine power': 'gasturbinespower',
-        'j press vessel technol': 'pressurevesseltech',
-        'j manuf sci eng': 'manufacturingscience',
-        'j mech des': 'mechanicaldesign',
-        'j vib acoust': 'vibrationacoustics',
-        'j tribol': 'tribology',
-        'j dyn syst meas control': 'dynamicsystems',
-        'j energy resour technol': 'energyresources',
-        'j med device': 'medicaldevices',
-        'j turbomach': 'turbomachinery',
-        'j sol energy eng': 'solarenergyengineering'
-    }
-
-    # Try to find journal code
-    journal_code = None
-    for name_pattern, code in journal_codes.items():
-        if name_pattern in journal_name:
-            journal_code = code
-            break
-
-    # Try different URL construction approaches
     possible_urls = []
 
-    if journal_code:
-        possible_urls.extend([
-            f'https://asmedigitalcollection.asme.org/{journal_code}/article-pdf/{pma.doi}',
-            f'https://asmedigitalcollection.asme.org/{journal_code}/article/{pma.doi}',
-            f'https://asmedigitalcollection.asme.org/{journal_code}/article-pdf/doi/{pma.doi}',
-            f'https://asmedigitalcollection.asme.org/{journal_code}/article/doi/{pma.doi}'
-        ])
+    # Get journal abbreviation if available
+    ja = None
+    if journal_params and 'ja' in journal_params:
+        ja = journal_params['ja']
 
-    # Try generic patterns without journal code
-    possible_urls.extend([
-        f'https://asmedigitalcollection.asme.org/article-pdf/{pma.doi}',
-        f'https://asmedigitalcollection.asme.org/article/{pma.doi}',
-        f'https://asmedigitalcollection.asme.org/doi/pdf/{pma.doi}',
-        f'https://asmedigitalcollection.asme.org/doi/{pma.doi}'
-    ])
+    # Build URLs from templates
+    all_template_groups = [templates['primary'], templates['secondary']]
+
+    for template_group in all_template_groups:
+        for template_info in template_group:
+            template = template_info['template']
+            required_params = template_info.get('requires_params', [])
+
+            # Skip templates that require ja if we don't have it
+            if 'ja' in required_params and not ja:
+                continue
+
+            try:
+                if ja:
+                    url = template.format(doi=pma.doi, ja=ja)
+                else:
+                    url = template.format(doi=pma.doi)
+                possible_urls.append(url)
+            except KeyError:
+                # Template requires parameters we don't have
+                continue
 
     if verify:
         for pdf_url in possible_urls:
@@ -115,6 +94,5 @@ def the_asme_animal(pma, verify=True, request_timeout=10, max_redirects=3):
     else:
         # Return first URL pattern without verification
         return possible_urls[0] if possible_urls else f'https://asmedigitalcollection.asme.org/article-pdf/{pma.doi}'
-
 
 

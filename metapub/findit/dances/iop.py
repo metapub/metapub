@@ -1,8 +1,8 @@
 from ...exceptions import *
 from .generic import *
 
-# TODO: convert this to use registry's template, not python config
-from ..journals.iop import iop_format, iop_alt_format
+# Using registry-based approach for URL templates
+from ..registry import JournalRegistry
 
 
 def the_iop_fusion(pma, verify=True, request_timeout=10, max_redirects=3):
@@ -40,11 +40,21 @@ def the_iop_fusion(pma, verify=True, request_timeout=10, max_redirects=3):
     if not pma.doi:
         raise NoPDFLink('MISSING: DOI required for IOP article access')
 
-    # Try both IOP URL formats
-    possible_urls = [
-        iop_format.format(doi=pma.doi),
-        iop_alt_format.format(doi=pma.doi)
-    ]
+    # Get URL templates from registry
+    registry = JournalRegistry()
+    templates = registry.get_url_templates('iop')
+    
+    possible_urls = []
+    
+    # Add primary template
+    for template_info in templates['primary']:
+        url = template_info['template'].format(doi=pma.doi)
+        possible_urls.append(url)
+    
+    # Add secondary templates  
+    for template_info in templates['secondary']:
+        url = template_info['template'].format(doi=pma.doi)
+        possible_urls.append(url)
 
     #TODO: if we don't know what's going to work, then gating on "verify" is bad logic...
     if verify:

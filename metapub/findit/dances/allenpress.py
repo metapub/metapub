@@ -1,7 +1,7 @@
 from ...exceptions import *
 from .generic import *
 
-from ..journals.allenpress import allenpress_format
+from ..registry import JournalRegistry
 
 
 #TODO: get rid of this dumb try-except jaw
@@ -35,51 +35,39 @@ def the_allenpress_advance(pma, verify=True, request_timeout=10, max_redirects=3
     if not pma.doi:
         raise NoPDFLink('MISSING: DOI required for Allen Press article access')
 
-    # Allen Press journals may use various DOI patterns from different societies
-    # Try to derive journal code from journal name or DOI
-    journal_name = pma.journal.lower() if pma.journal else ''
-
-    # Common journal code mappings (will need to expand based on actual patterns)
-    journal_codes = {
-        'oper dent': 'od',
-        'j am anim hosp assoc': 'jaaha',
-        'arch pathol lab med': 'aplm',
-        'j athl train': 'jat',
-        'angle orthod': 'angl',
-        'tex heart inst j': 'thij',
-        'ethn dis': 'ethn',
-        'j oral implantol': 'joi',
-        'j am mosq control assoc': 'jamca',
-        'j grad med educ': 'jgme',
-        'j pediatr pharmacol ther': 'jppt'
-    }
-
-    # Try to find journal code
-    journal_code = None
-    for name_pattern, code in journal_codes.items():
-        if name_pattern in journal_name:
-            journal_code = code
-            break
-
-    # If we can't determine journal code, try generic patterns
+    # Get URL templates and journal parameters from registry
+    registry = JournalRegistry()
+    templates = registry.get_url_templates('allenpress')
+    journal_params = registry.get_journal_parameters('allenpress', pma.journal)
+    
     possible_urls = []
-
-    if journal_code:
-        possible_urls.extend([
-            f'https://meridian.allenpress.com/{journal_code}/article-pdf/{pma.doi}',
-            f'https://meridian.allenpress.com/{journal_code}/article/{pma.doi}',
-            f'https://meridian.allenpress.com/{journal_code}/article-pdf/doi/{pma.doi}',
-            f'https://meridian.allenpress.com/{journal_code}/article/doi/{pma.doi}'
-        ])
-
-    # Try generic patterns without journal code
-    doi_suffix = pma.doi.split('/')[-1] if '/' in pma.doi else pma.doi
-    possible_urls.extend([
-        f'https://meridian.allenpress.com/article-pdf/{pma.doi}',
-        f'https://meridian.allenpress.com/article/{pma.doi}',
-        f'https://meridian.allenpress.com/doi/pdf/{pma.doi}',
-        f'https://meridian.allenpress.com/doi/{pma.doi}'
-    ])
+    
+    # Get journal abbreviation if available
+    ja = None
+    if journal_params and 'ja' in journal_params:
+        ja = journal_params['ja']
+    
+    # Build URLs from templates
+    all_template_groups = [templates['primary'], templates['secondary']]
+    
+    for template_group in all_template_groups:
+        for template_info in template_group:
+            template = template_info['template']
+            required_params = template_info.get('requires_params', [])
+            
+            # Skip templates that require ja if we don't have it
+            if 'ja' in required_params and not ja:
+                continue
+            
+            try:
+                if ja:
+                    url = template.format(doi=pma.doi, ja=ja)
+                else:
+                    url = template.format(doi=pma.doi)
+                possible_urls.append(url)
+            except KeyError:
+                # Template requires parameters we don't have
+                continue
 
     if verify:
         for pdf_url in possible_urls:

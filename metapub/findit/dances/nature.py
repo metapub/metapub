@@ -3,8 +3,8 @@
 from ...exceptions import AccessDenied, NoPDFLink
 from .generic import *
 
-# Import Nature-specific constants
-from ..journals.nature import nature_format, nature_journals
+# Using registry-based approach for Nature journal configurations
+from ..registry import JournalRegistry
 
 
 # Uses detect_paywall_from_html() for consistent paywall detection
@@ -43,24 +43,49 @@ def the_nature_ballet(pma, verify=True, request_timeout=10, max_redirects=3):
             return pdf_url
 
     # Fallback approach: Legacy volume/issue construction for older articles
-    # This covers cases where articles have traditional journal formats
     if pma.volume and pma.issue and pma.first_page:
-        # Try to construct legacy-style URL for older Nature articles
-        # Pattern observed: some older articles use journal codes + year + page patterns
-        jrnl = standardize_journal_name(pma.journal)
-        if jrnl in nature_journals:
-            ja = nature_journals[jrnl]['ja']
-
-            # Some older articles follow {journal}{year}{page} pattern
-            if pma.year and len(pma.first_page) <= 4:  # Reasonable page number
-                legacy_id = f"{ja}{str(pma.year)[-2:]}{pma.first_page}"
-                fallback_url = f"https://www.nature.com/articles/{legacy_id}.pdf"
-
-                if verify:
-                    if verify_pdf_url(fallback_url, request_timeout=request_timeout, max_redirects=max_redirects):
-                        return fallback_url
-                else:
-                    return fallback_url
+        # Get legacy templates and journal parameters from registry
+        registry = JournalRegistry()
+        templates = registry.get_url_templates('nature')
+        journal_params = registry.get_journal_parameters('nature', standardize_journal_name(pma.journal))
+        
+        # Try legacy templates if journal has 'ja' parameter
+        if journal_params and 'ja' in journal_params:
+            ja = journal_params['ja']
+            
+            for template_info in templates['legacy']:
+                template = template_info['template']
+                required_params = template_info.get('requires_params', [])
+                
+                # Check if we have all required parameters
+                if all(hasattr(pma, param) or param == 'ja' for param in required_params):
+                    try:
+                        # Some older articles follow {journal}{year}{page} pattern
+                        if pma.year and pma.first_page and len(pma.first_page) <= 4:
+                            legacy_id = f"{ja}{str(pma.year)[-2:]}{pma.first_page}"
+                            fallback_url = f"https://www.nature.com/articles/{legacy_id}.pdf"
+                            
+                            if verify:
+                                if verify_pdf_url(fallback_url, request_timeout=request_timeout, max_redirects=max_redirects):
+                                    return fallback_url
+                            else:
+                                return fallback_url
+                        
+                        # Try the template pattern if above doesn't work
+                        url = template.format(
+                            ja=ja,
+                            volume=pma.volume,
+                            issue=pma.issue,
+                            pii=pma.pii if hasattr(pma, 'pii') else pma.first_page
+                        )
+                        
+                        if verify:
+                            if verify_pdf_url(url, request_timeout=request_timeout, max_redirects=max_redirects):
+                                return url
+                        else:
+                            return url
+                    except (KeyError, AttributeError):
+                        continue
 
     # Generate error message based on what data we have
     if pma.doi and pma.doi.startswith('10.1038/'):

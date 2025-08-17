@@ -159,23 +159,10 @@ def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None,
     if url:
         return (url, reason)
 
-    # === REGISTRY-BASED LOOKUP === #
     lookup_system = _get_lookup_system(cachedir=cachedir)
-    registry_url, registry_reason = lookup_system.find_pdf_url(pma, verify=verify, 
-                                                              request_timeout=request_timeout, 
-                                                              max_redirects=max_redirects)
-
-    if registry_url:
-        return (registry_url, registry_reason)
-    elif registry_reason:
-        reason = registry_reason
-
-    # === FALLBACK CHECKS === #
-
-    # aka if url is STILL None...
-    if not url and not reason:
-        reason = f'NOFORMAT: No URL format for journal "{jrnl}"'
-
+    url, reason = lookup_system.find_pdf_url(pma, verify=verify, 
+                                            request_timeout=request_timeout, 
+                                            max_redirects=max_redirects)
     return (url, reason)
 
 

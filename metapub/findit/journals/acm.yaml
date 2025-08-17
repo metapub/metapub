@@ -5,7 +5,7 @@ publisher:
   description: ''
 url_patterns:
   primary_template: https://dl.acm.org/doi/pdf/{doi}
-dance_function: the_doi_slide
+dance_function: the_acm_reel
 journals:
   simple_list:
   - 24th Int Conf 3D Web Technol (2019)

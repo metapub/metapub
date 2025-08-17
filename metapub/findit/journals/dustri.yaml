@@ -4,7 +4,7 @@ publisher:
   id: dustri
   description: ''
 url_patterns: {}
-dance_function: the_doi_slide
+dance_function: the_dustri_polka
 journals:
   simple_list:
   - Clin Nephrol

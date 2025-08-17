@@ -4,7 +4,7 @@ publisher:
   id: jama
   description: ''
 url_patterns: {}
-dance_function: the_doi_slide
+dance_function: the_jama_dance
 journals:
   simple_list:
   - AMA Arch Intern Med

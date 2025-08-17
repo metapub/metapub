@@ -4,7 +4,7 @@ publisher:
   id: scirp
   description: ''
 url_patterns: {}
-dance_function: the_doi_slide
+dance_function: the_scirp_timewarp
 journals:
   simple_list:
   - AQ

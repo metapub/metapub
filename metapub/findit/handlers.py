@@ -71,8 +71,8 @@ class PublisherHandler:
             from . import dances
             dance_func = getattr(dances, self.dance_function)
 
-            log.debug("Calling dance function: %s for journal: %s",
-                     self.dance_function, pma.journal)
+            log.debug("Calling dance function: %s for journal: %s (PMID: %s, Publisher: %s)",
+                     self.dance_function, pma.journal, pma.pmid, self.name)
             result = dance_func(pma, verify=verify, request_timeout=request_timeout, 
                               max_redirects=max_redirects)
 
@@ -95,8 +95,9 @@ class PublisherHandler:
                 log.debug("Dance function %s: %s", self.dance_function, error_msg)
                 return None, error_msg
             else:
-                # This is an unexpected error that should be logged
-                log.error("Dance function %s failed: %s", self.dance_function, e)
+                # This is an unexpected error that should be logged with full context
+                log.error("Dance function %s failed for PMID %s, journal '%s', publisher '%s': %s", 
+                         self.dance_function, pma.pmid, pma.journal, self.name, e)
                 return None, f"TXERROR: {e}"
 
 

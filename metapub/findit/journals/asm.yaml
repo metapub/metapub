@@ -15,7 +15,7 @@ publisher:
     Dance Function: the_asm_shimmy'
 url_patterns:
   primary_template: http://www.asmscience.org/content/journal/microbiolspec/{doi}
-dance_function: the_doi_slide
+dance_function: the_asm_shimmy
 journals:
   parameterized:
     Antimicrob Agents Chemother:

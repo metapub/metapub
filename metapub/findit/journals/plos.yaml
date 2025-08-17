@@ -24,7 +24,7 @@ publisher:
 
     Dance Function: the_plos_pogo'
 url_patterns: {}
-dance_function: the_doi_slide
+dance_function: the_plos_pogo
 journals:
   simple_list:
   - J Data Mining Genomics Proteomics

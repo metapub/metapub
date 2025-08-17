@@ -21,6 +21,9 @@ from ...utils import remove_chars
 
 from ..journals import simple_formats_pmid
 from ..registry import JournalRegistry
+import logging
+
+log = logging.getLogger('metapub.findit.dances')
 
 OK_STATUS_CODES = (200, 301, 302, 307)
 
@@ -327,14 +330,16 @@ def the_doi_slide(pma, verify=True, request_timeout=10, max_redirects=3):
         raise NoPDFLink('MISSING: DOI required for DOI-based publishers - attempted: none')
 
     jrnl = standardize_journal_name(pma.journal)
+    log.debug("the_doi_slide: Processing PMID %s, journal '%s' (standardized: '%s'), DOI: %s", 
+              pma.pmid, pma.journal, jrnl, pma.doi)
 
     # Registry-based template lookup
     registry = JournalRegistry()
     publisher_info = registry.get_publisher_for_journal(jrnl)
     registry.close()
 
-    if not publisher_info:
-        raise NoPDFLink(f'MISSING: Journal {pma.journal} not found in registry - attempted: none')
+    log.debug("the_doi_slide: Found publisher '%s' for journal '%s' - PMID %s", 
+              publisher_info['name'], jrnl, pma.pmid)
 
     publisher_name = publisher_info['name']
 
@@ -354,6 +359,8 @@ def the_doi_slide(pma, verify=True, request_timeout=10, max_redirects=3):
 
     # Standard template approach for non-blocked publishers or CrossRef fallback
     template = publisher_info['format_template']
+    log.debug("the_doi_slide: Using template '%s' for publisher '%s' - PMID %s", 
+              template, publisher_name, pma.pmid)
 
     # Apply standardized DOI template format
     url = template.format(doi=pma.doi)
@@ -393,15 +400,25 @@ def the_vip_shake(pma, verify=True, request_timeout=10, max_redirects=3):
          :raises: AccessDenied, NoPDFLink
     '''
     jrnl = standardize_journal_name(pma.journal)
+    log.debug("the_vip_shake: Processing PMID %s, journal '%s' (standardized: '%s')", 
+              pma.pmid, pma.journal, jrnl)
     pma = rectify_pma_for_vip_links(pma)
     
     registry = JournalRegistry()
     publisher_info = registry.get_publisher_for_journal(jrnl)
+    log.debug("the_vip_shake: Found publisher '%s' for journal '%s' - PMID %s", 
+              publisher_info['name'], jrnl, pma.pmid)
+    
     url_template = publisher_info['format_template']
     
     import json
     config = json.loads(publisher_info['config_data'])
+    log.debug("the_vip_shake: Loaded config for publisher '%s' - PMID %s", 
+              publisher_info['name'], pma.pmid)
+    
     host = config['journals']['parameterized'][jrnl]['host']
+    log.debug("the_vip_shake: Using host '%s' for journal '%s', publisher '%s' - PMID %s", 
+              host, jrnl, publisher_info['name'], pma.pmid)
     
     url = url_template.format(host=host, volume=pma.volume, issue=pma.issue, first_page=pma.first_page)
     registry.close()
@@ -423,8 +440,14 @@ def the_vip_nonstandard_shake(pma, verify=True, request_timeout=10, max_redirect
          :raises: AccessDenied, NoPDFLink
     '''
     jrnl = standardize_journal_name(pma.journal)
-    pma = rectify_pma_for_vip_links(pma)  #raises NoPDFLink if missing data.
-    url = vip_journals_nonstandard[jrnl].format(a=pma)
+    pma = rectify_pma_for_vip_links(pma)  # raises NoPDFLink if missing data.
+    
+    # Use registry to get VIP template
+    registry = JournalRegistry()
+    journal_params = registry.get_journal_params(jrnl)
+    template = journal_params['template']
+    url = template.format(a=pma)
+    registry.close()
 
     if verify:
         verify_pdf_url(url, request_timeout=request_timeout, max_redirects=max_redirects)
@@ -465,10 +488,14 @@ def the_pii_shuffle(pma, verify=True, request_timeout=10, max_redirects=3):
          :raises: AccessDenied, NoPDFLink
     '''
     jrnl = standardize_journal_name(pma.journal)
+    log.debug("the_pii_shuffle: Processing PMID %s, journal '%s' (standardized: '%s'), PII: %s", 
+              pma.pmid, pma.journal, jrnl, getattr(pma, 'pii', 'None'))
     
     registry = JournalRegistry()
     journal_params = registry.get_journal_params(jrnl)
     template = journal_params['template']
+    log.debug("the_pii_shuffle: Using template '%s' for journal '%s' - PMID %s", 
+              template, jrnl, pma.pmid)
     url = template.format(a=pma)
     registry.close()
 

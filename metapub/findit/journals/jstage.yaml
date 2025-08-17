@@ -4,7 +4,7 @@ publisher:
   id: jstage
   description: ''
 url_patterns: {}
-dance_function: the_doi_slide
+dance_function: the_jstage_dive
 journals:
   simple_list:
   - Agric Biol Chem

@@ -4,7 +4,7 @@ publisher:
   id: wolterskluwer
   description: ''
 url_patterns: {}
-dance_function: the_doi_slide
+dance_function: the_wolterskluwer_volta
 journals:
   simple_list:
   - Acad Med

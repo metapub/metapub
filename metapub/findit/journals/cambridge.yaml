@@ -14,7 +14,7 @@ publisher:
 
     Dance Function: the_cambridge_foxtrot'
 url_patterns: {}
-dance_function: the_doi_slide
+dance_function: the_cambridge_foxtrot
 journals:
   simple_list:
   - AJS Rev

@@ -24,7 +24,7 @@ publisher:
     open access or are available through various access models.'
 url_patterns:
   primary_template: https://doi.org/{doi}
-dance_function: the_doi_slide
+dance_function: the_rsc_reaction
 journals:
   simple_list:
   - Discuss Faraday Soc

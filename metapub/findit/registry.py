@@ -100,6 +100,11 @@ class JournalRegistry:
         conn.execute('CREATE INDEX IF NOT EXISTS idx_journal_aliases_name ON journal_aliases (alias_name)')
         conn.execute('CREATE INDEX IF NOT EXISTS idx_publishers_name ON publishers (name)')
         
+        # Create case-insensitive indexes for improved lookup performance
+        conn.execute('CREATE INDEX IF NOT EXISTS idx_journals_name_lower ON journals (LOWER(name))')
+        conn.execute('CREATE INDEX IF NOT EXISTS idx_journal_aliases_name_lower ON journal_aliases (LOWER(alias_name))')
+        conn.execute('CREATE INDEX IF NOT EXISTS idx_publishers_name_lower ON publishers (LOWER(name))')
+        
         # Add new columns to existing tables if they don't exist
         self._add_missing_columns(conn)
         
@@ -205,13 +210,13 @@ class JournalRegistry:
         """
         conn = self._get_connection()
         
-        # First try direct journal name match
+        # First try direct journal name match (case-insensitive)
         cursor = conn.execute('''
             SELECT p.name, p.dance_function, p.format_template, p.base_url, p.config_data, 
                    j.format_params, j.aliases, j.notes
             FROM journals j
             JOIN publishers p ON j.publisher_id = p.id
-            WHERE j.name = ? AND j.is_active = 1 AND p.is_active = 1
+            WHERE LOWER(j.name) = LOWER(?) AND j.is_active = 1 AND p.is_active = 1
         ''', (journal_name,))
         
         result = cursor.fetchone()
@@ -230,7 +235,8 @@ class JournalRegistry:
         for row in cursor.fetchall():
             try:
                 aliases = json.loads(row['aliases'])
-                if journal_name in aliases:
+                # Case-insensitive alias matching
+                if any(alias.lower() == journal_name.lower() for alias in aliases):
                     return dict(row)
             except (json.JSONDecodeError, TypeError):
                 continue

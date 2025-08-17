@@ -15,6 +15,9 @@ from .generic import (
     detect_paywall_from_html, PAYWALL_TERMS, unified_uri_get
 )
 
+# Backward compatibility aliases
+the_vip_shake_nonstandard = the_vip_nonstandard_shake
+
 # Publisher-specific dance functions (alphabetical order)
 from .aacr import the_aacr_jitterbug
 from .acm import the_acm_reel

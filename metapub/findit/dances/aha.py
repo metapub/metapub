@@ -18,43 +18,24 @@ def the_aha_waltz(pma, verify=True, request_timeout=10, max_redirects=3):
 
     jrnl = standardize_journal_name(pma.journal)
     
-    # Initialize registry
+    # Get configuration from registry - these MUST exist or it's a config bug
     registry = JournalRegistry()
+    templates = registry.get_url_templates('aha')
+    journal_params = registry.get_journal_parameters('aha', jrnl)
     
-    # Get publisher config from registry
-    publisher_config = registry.get_publisher_config('Aha')
-    if not publisher_config:
-        raise NoPDFLink(f'MISSING: AHA publisher not found in registry - attempted: none')
+    # Use primary template - it MUST exist for this dance to be valid
+    url_template = templates['primary'][0]['template']
     
-    # Get URL template from config
-    url_template = publisher_config.get('format_template')
-    if not url_template:
-        config_data = publisher_config.get('config_data', {})
-        url_patterns = config_data.get('url_patterns', {})
-        url_template = url_patterns.get('primary_template')
+    # Get host parameter - it MUST exist for VIP journals  
+    host = journal_params['host']
     
-    if not url_template:
-        raise NoPDFLink(f'MISSING: No URL template found for AHA in registry - attempted: none')
+    # Ensure we have VIP data
+    pma = rectify_pma_for_vip_links(pma)
+    
+    # Construct URL
+    url = url_template.format(host=host, volume=pma.volume, issue=pma.issue, first_page=pma.first_page)
 
-    # Get journal parameters from registry
-    journal_params = registry.get_journal_params(jrnl)
-    if not journal_params:
-        raise NoPDFLink(f'MISSING: Journal {pma.journal} not found in AHA registry - attempted: none')
-
-    try:
-        pma = rectify_pma_for_vip_links(pma)
-        
-        # Extract host parameter from journal params
-        host = journal_params.get('host')
-        if not host:
-            raise NoPDFLink(f'MISSING: Host parameter not found for journal {pma.journal} - attempted: none')
-        
-        url = url_template.format(host=host, volume=pma.volume, issue=pma.issue, first_page=pma.first_page)
-
-        if verify:
-            verify_pdf_url(url, 'AHA', request_timeout=request_timeout, max_redirects=max_redirects)
-        return url
-
-    except NoPDFLink:
-        raise NoPDFLink(f'MISSING: VIP data (volume/issue/page) required for AHA journals - attempted: none')
+    if verify:
+        verify_pdf_url(url, 'AHA', request_timeout=request_timeout, max_redirects=max_redirects)
+    return url
 

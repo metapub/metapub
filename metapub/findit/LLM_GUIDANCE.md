@@ -22,12 +22,21 @@ This document provides guidance for AI assistants working on the FindIt system, 
   - `"PAYWALL: Cambridge article requires subscription - attempted: {pdf_url}"`
   - `"TXERROR: Network error accessing publisher - attempted: {pdf_url}"`
 
+### Configuration Trust Philosophy
+- **DO**: Trust that registry configuration is complete and correct
+- **DO**: Let code fail fast with clear errors when configuration is missing
+- **DON'T**: Use defensive programming to "handle" missing configuration
+- **WHY**: If a dance function exists, the configuration MUST exist. Missing config is a bug to fix, not a runtime condition to handle gracefully.
+
 ### Dance Function Design
 - **DO**: Keep dance functions focused on URL construction and verification
 - **DO**: Provide fallback mechanisms when possible (e.g., PMC for paywalled content)
 - **DO**: Use a unique dance name for each publisher every time we're inventing a new dance.
+- **DO**: Access registry data directly without defensive checks (e.g., `templates['primary'][0]['template']`)
+- **DO**: Let KeyError/IndexError exceptions surface when configuration is incomplete
 - **DON'T**: Make assumptions about what DOI prefixes a publisher "should" use
 - **DON'T**: Reject articles based on DOI format unless absolutely required for URL construction
+- **DON'T**: Use `if not config:` or similar defensive patterns for configuration that MUST exist
 
 ## Testing Guidelines
 
@@ -101,6 +110,55 @@ This document provides guidance for AI assistants working on the FindIt system, 
 3. **Test Data Accuracy**: Verify that test PMIDs actually belong to the expected publisher
 4. **Overly Restrictive Validation**: Let the registry determine routing, not artificial restrictions
 5. **Incomplete Error Messages**: Always include attempted URLs in error messages
+6. **Defensive Programming**: Don't use `if not config:` checks for configuration that MUST exist
+7. **False Robustness**: Don't hide configuration bugs behind graceful error handling
+
+## Code Examples
+
+### ❌ **Bad Pattern - Defensive Programming:**
+```python
+# DON'T DO THIS
+publisher_config = registry.get_publisher_config('aha')
+if not publisher_config:
+    raise NoPDFLink('MISSING: AHA publisher not found in registry')
+
+url_template = publisher_config.get('format_template')
+if not url_template:
+    # Try alternative approach...
+    if not url_template:
+        raise NoPDFLink('MISSING: No URL template found')
+
+journal_params = registry.get_journal_params(jrnl)  
+if not journal_params:
+    raise NoPDFLink('MISSING: Journal not found')
+
+host = journal_params.get('host')
+if not host:
+    raise NoPDFLink('MISSING: Host parameter not found')
+```
+
+### ✅ **Good Pattern - Trust and Fail Fast:**
+```python
+# DO THIS INSTEAD
+# Get configuration - MUST exist or it's a config bug
+registry = JournalRegistry()
+templates = registry.get_url_templates('aha')
+journal_params = registry.get_journal_parameters('aha', jrnl)
+
+# Use primary template - MUST exist for this dance to be valid
+url_template = templates['primary'][0]['template']
+host = journal_params['host']  # Will fail fast with KeyError if missing
+
+# Construct URL
+url = url_template.format(host=host, volume=pma.volume, issue=pma.issue, first_page=pma.first_page)
+```
+
+### **Why This is Better:**
+- **Fail Fast**: Real configuration problems surface immediately as clear KeyErrors
+- **No False Robustness**: Stops pretending missing config is a runtime condition  
+- **Cleaner Code**: Focus on logic, not defensive nonsense
+- **Easier Debugging**: Clear tracebacks point to actual problems
+- **Confidence**: If the dance exists, the config MUST exist
 
 ## Decision Making Framework
 
@@ -111,4 +169,5 @@ When faced with design decisions:
 3. **Provide Meaningful Errors**: Users need to understand why PDF retrieval failed
 4. **Test Thoroughly**: Cover different eras, DOI formats, and edge cases
 5. **Clean Up After Yourself**: Remove development artifacts once integration is complete
+6. **Fail Fast on Config Issues**: Let missing configuration cause immediate, clear errors
 

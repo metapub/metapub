@@ -1,8 +1,12 @@
 """Dance function for ScienceDirect (Elsevier)."""
 
+import re
+
 from ...exceptions import AccessDenied, NoPDFLink
 from ...utils import remove_chars
 from .generic import verify_pdf_url
+from .generic import the_doi_2step
+from .generic import get_crossref_pdf_links
 
 
 def the_sciencedirect_disco(pma, verify=True, request_timeout=10, max_redirects=3):
@@ -54,7 +58,6 @@ def the_sciencedirect_disco(pma, verify=True, request_timeout=10, max_redirects=
     elif pma.doi:
         # Strategy 1: Try CrossRef API for PDF links
         try:
-            from .generic import get_crossref_pdf_links
             crossref_urls = get_crossref_pdf_links(pma.doi)
             if crossref_urls:
                 # Use the first PDF URL from CrossRef
@@ -66,12 +69,9 @@ def the_sciencedirect_disco(pma, verify=True, request_timeout=10, max_redirects=
                     return pdf_url
         except Exception:
             pass  # Continue to next strategy
-        
+
         # Strategy 2: DOI resolution to extract PII from ScienceDirect URLs
         try:
-            from .generic import the_doi_2step
-            import re
-            
             resolved_url = the_doi_2step(pma.doi)
             if 'sciencedirect.com' in resolved_url or 'elsevier.com' in resolved_url:
                 # Try to extract PII from URLs like:
@@ -83,7 +83,7 @@ def the_sciencedirect_disco(pma, verify=True, request_timeout=10, max_redirects=
                     # Clean and construct PDF URL
                     clean_pii = remove_chars(extracted_pii, '-()[]{}')
                     pdf_url = f'https://www.sciencedirect.com/science/article/pii/{clean_pii}/pdfft?isDTMRedir=true&download=true'
-                    
+
                     if verify:
                         if verify_pdf_url(pdf_url, request_timeout=request_timeout, max_redirects=max_redirects):
                             return pdf_url
@@ -96,8 +96,8 @@ def the_sciencedirect_disco(pma, verify=True, request_timeout=10, max_redirects=
                         return pdf_url
         except Exception:
             pass  # Continue to final fallback
-        
+
         # No more fallback strategies - maintain PDF URL contract
-        
+
         # If all strategies fail
         raise NoPDFLink(f'MISSING: ScienceDirect article could not be accessed via DOI fallback - Journal: {pma.journal}')

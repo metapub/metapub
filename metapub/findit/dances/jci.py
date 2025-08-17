@@ -13,16 +13,10 @@ def the_jci_jig(pma, verify=True, request_timeout=10, max_redirects=3):
          :return: url (string)
          :raises: AccessDenied, NoPDFLink
     '''
-    # Get JCI URL template from registry
+    # Get JCI URL template from registry - MUST exist or it's a config bug
     registry = JournalRegistry()
-    publisher_config = registry.get_publisher_config('jci')
-    if not publisher_config:
-        raise NoPDFLink('MISSING: JCI publisher not found in registry - attempted: none')
-    
-    url_template = publisher_config.get('format_template')
-    if not url_template:
-        # Fallback to hardcoded format for backward compatibility
-        url_template = 'http://www.jci.org/articles/view/{pii}/files/pdf'
+    templates = registry.get_url_templates('jci')
+    url_template = templates['primary'][0]['template']
     
     # JCI uses simple URL pattern: https://www.jci.org/articles/view/{pii}/pdf
     if pma.pii:

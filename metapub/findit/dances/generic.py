@@ -125,13 +125,13 @@ def unified_uri_get(uri, timeout=10, allow_redirects=True, params={},
                     headers=COMMON_REQUEST_HEADERS, max_redirects=3):
     session = requests.Session()
     session.headers.update(headers)
-    
+
     if allow_redirects and max_redirects is not None:
         adapter = requests.adapters.HTTPAdapter(max_retries=0)
         adapter.max_retries.redirect = max_redirects
         session.mount('http://', adapter)
         session.mount('https://', adapter)
-    
+
     response = session.get(uri, allow_redirects=allow_redirects,
                           timeout=timeout, params=params)
     return response
@@ -227,7 +227,7 @@ def verify_pdf_url(pdfurl, publisher_name='', referrer=None, request_timeout=15,
 
     session = requests.Session()
     session.headers.update(headers)
-    
+
     # Set redirect limits
     adapter = requests.adapters.HTTPAdapter(max_retries=0)
     adapter.max_retries.redirect = max_redirects
@@ -242,60 +242,59 @@ def verify_pdf_url(pdfurl, publisher_name='', referrer=None, request_timeout=15,
     ]
 
     last_status_code = 0
+    last_network_error = "No response"  # default for error msg if connection fails.
 
+    # Step 1: Try strategies until we get a valid HTTP response (not a network error)
+    response = None
     for strategy in strategies:
         try:
             response = session.get(pdfurl, timeout=request_timeout, allow_redirects=True,
                                  **{k: v for k, v in strategy.items() if k != 'name'})
-
-            last_status_code = response.status_code
-
-            # Handle specific status codes
-            if response.status_code == 401:
-                raise AccessDenied('DENIED: %s url (%s) requires login.' % (publisher_name, pdfurl))
-            elif response.status_code == 403:
-                # Try next strategy for 403 - might be SSL issue
-                continue
-            elif response.status_code == 404:
-                raise NoPDFLink('MISSING: %s url (%s) not found.' % (publisher_name, pdfurl))
-            elif response.status_code == 200:
-                # Verify it's actually PDF content
-                if response.content.startswith(b'%PDF'):
-                    return pdfurl
-                # Also check Content-Type header as fallback
-                elif 'application/pdf' in response.headers.get('Content-Type', ''):
-                    return pdfurl
-                # Check old way for backward compatibility
-                elif 'pdf' in response.headers.get('content-type', '').lower():
-                    return pdfurl
-                else:
-                    raise NoPDFLink('DENIED: %s url (%s) did not result in a PDF' % (publisher_name, pdfurl))
-            elif response.status_code in OK_STATUS_CODES:
-                # Handle redirects - if we got redirected and it's a PDF, accept it
-                if (response.content.startswith(b'%PDF') or
-                    'application/pdf' in response.headers.get('Content-Type', '') or
-                    'pdf' in response.headers.get('content-type', '').lower()):
-                    return pdfurl
-                else:
-                    continue  # Try next strategy
-            else:
-                # Other status codes - try next strategy
-                continue
-
-        except (requests.exceptions.SSLError, ssl.SSLError):
+            # Successfully got a response - break out of strategy loop
+            break
+        except (requests.exceptions.SSLError, ssl.SSLError) as e:
             # SSL errors - continue to next strategy
+            last_network_error = f"SSL error: {str(e)}"
             continue
-        except requests.exceptions.RequestException:
-            # Other request errors - continue to next strategy
+        except requests.exceptions.Timeout as e:
+            # Timeout errors - record but continue to next strategy
+            last_network_error = f"Timeout error: {str(e)}"
+            continue
+        except requests.exceptions.ConnectionError as e:
+            # Connection errors - record but continue to next strategy
+            last_network_error = f"Connection error: {str(e)}"
+            continue
+        except requests.exceptions.RequestException as e:
+            # Other request errors - record but continue to next strategy
+            last_network_error = f"Request error: {str(e)}"
             continue
 
-    # All strategies failed - raise appropriate error based on last status code
-    if last_status_code == 403:
+    # Step 2: If we couldn't get any response, report the last error as NoPDFLink (end).
+    if response is None:
+        raise NoPDFLink('TXERROR: %s while accessing %s url (%s)' % (last_network_error, publisher_name, pdfurl))
+
+    # Step 3: Analyze the response we got
+    status_code = response.status_code
+
+    # Handle specific status codes
+    if status_code == 401:
+        raise AccessDenied('DENIED: %s url (%s) requires login.' % (publisher_name, pdfurl))
+    elif status_code == 403:
         raise AccessDenied('DENIED: %s url (%s) access forbidden.' % (publisher_name, pdfurl))
-    elif last_status_code > 0:
-        raise NoPDFLink('TXERROR: %i status returned from %s url (%s)' % (last_status_code, publisher_name, pdfurl))
+    elif status_code == 404:
+        raise NoPDFLink('MISSING: %s url (%s) not found.' % (publisher_name, pdfurl))
+    elif status_code == 200 or status_code in OK_STATUS_CODES:
+        # Check if it's actually PDF content
+        if (response.content.startswith(b'%PDF') or
+            'application/pdf' in response.headers.get('Content-Type', '') or
+            'pdf' in response.headers.get('content-type', '').lower()):
+            return pdfurl
+        else:
+            # Got successful response but it's not a PDF
+            raise NoPDFLink('DENIED: %s url (%s) returned non-PDF content' % (publisher_name, pdfurl))
     else:
-        raise NoPDFLink('TXERROR: Could not access %s url (%s)' % (publisher_name, pdfurl))
+        # Other status codes
+        raise NoPDFLink('TXERROR: %i status returned from %s url (%s)' % (status_code, publisher_name, pdfurl))
 
 
 def rectify_pma_for_vip_links(pma):
@@ -339,7 +338,7 @@ def the_doi_slide(pma, verify=True, request_timeout=10, max_redirects=3):
 
     if not publisher_info:
         raise NoPDFLink(f'MISSING: Journal {pma.journal} not found in registry - attempted: none')
-    
+
     publisher_name = publisher_info['name']
 
     # Check if this is a blocked publisher - try CrossRef API first
@@ -508,7 +507,7 @@ def the_bmc_boogie(pma, verify=False, request_timeout=10, max_redirects=3):
         article_id = baseid.split('/')[1]
     else:
         raise NoPDFLink('MISSING: doi needed for BMC article')
-    
+
     # Use registry to get BMC format or fallback to known format
     registry = JournalRegistry()
     publisher_config = registry.get_publisher_config('Bmc')
@@ -518,7 +517,7 @@ def the_bmc_boogie(pma, verify=False, request_timeout=10, max_redirects=3):
         # Fallback to known BMC format
         bmc_format = 'http://www.biomedcentral.com/content/pdf/{aid}.pdf'
     registry.close()
-    
+
     url = bmc_format.format(aid=article_id)
     if verify:
         verify_pdf_url(url, 'BMC', request_timeout=request_timeout, max_redirects=max_redirects)

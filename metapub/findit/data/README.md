@@ -32,8 +32,12 @@ This directory contains the pre-populated journal registry database that ships w
 ## Developer Notes
 
 To update the shipped registry:
-1. Run `python metapub/findit/migrate_journals.py` 
-2. Copy new database: `cp ~/.cache/journal_registry.db metapub/findit/data/registry.db`
-3. Commit the updated registry.db file
+1. Run `metapub-registry rebuild` (builds directly to data/registry.db)
+2. Commit the updated registry.db file
+
+**CLI Commands:**
+- `metapub-registry rebuild` - Rebuild registry from YAML configurations
+- `metapub-registry stats` - Show registry statistics  
+- `metapub-registry validate` - Validate YAML configurations
 
 The shipped registry ensures metapub works out-of-the-box for all users.

@@ -16,7 +16,7 @@ publisher:
 
     DOI patterns: Various (10.2478/*, 10.1515/*, etc.) due to publisher diversity'
 url_patterns:
-  doi_template: https://sciendo.com/pdf/{doi}
+  primary_template: https://sciendo.com/pdf/{doi}
 dance_function: the_doi_slide
 journals:
   simple_list:

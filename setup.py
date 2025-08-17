@@ -81,6 +81,7 @@ setup(
             "convert = metapub.convert:main",
             "ncbi_health_check = metapub.ncbi_health_check:main",
             "metapub_build_registry = metapub.scripts.build_registry_from_yaml:main",
+            "metapub-registry = metapub.findit.cli:main",
         ]
     },
     # Include all Python files in the package

@@ -20,15 +20,15 @@ class TestNatureDance(BaseDanceTest):
 
     def test_nature_ballet_modern_doi_url_construction(self):
         """Test 1: Modern DOI-based URL construction.
-        
+
         PMID: 35459787 (Sci Rep - Scientific Reports)
         Expected: Should construct modern Nature DOI-based PDF URL
         """
         pma = self.fetch.article_by_pmid('35459787')
-        
+
         assert pma.journal == 'Sci Rep'
         assert pma.doi == '10.1038/s41598-022-10666-2'
-        
+
         # Test without verification (should always work for URL construction)
         url = the_nature_ballet(pma, verify=False)
         assert url is not None
@@ -38,17 +38,17 @@ class TestNatureDance(BaseDanceTest):
 
     def test_nature_ballet_traditional_fallback_url_construction(self):
         """Test 2: Traditional fallback URL construction.
-        
+
         PMID: 10201537 (J Invest Dermatol)
         Expected: Should construct legacy articles/{id}.pdf URL using our evidence-driven approach
         """
         pma = self.fetch.article_by_pmid('10201537')
-        
+
         assert pma.journal == 'J Invest Dermatol'
         assert pma.doi == '10.1046/j.1523-1747.1999.00551.x'  # Not a Nature DOI
         assert pma.volume == '112'
         assert pma.issue == '4'
-        
+
         # Test without verification - should construct legacy URL using journal/year/page pattern
         url = the_nature_ballet(pma, verify=False)
         assert url is not None
@@ -58,7 +58,7 @@ class TestNatureDance(BaseDanceTest):
 
     def test_nature_ballet_different_article(self):
         """Test 3: Different Nature article with modern DOI.
-        
+
         Let's try a different approach - test with a different modern Nature DOI
         """
         # Create a mock PMA with a different Nature DOI pattern
@@ -68,35 +68,35 @@ class TestNatureDance(BaseDanceTest):
         pma.volume = None
         pma.issue = None
         pma.pii = None
-        
+
         # Test URL construction (verify=False to avoid network calls)
         url = the_nature_ballet(pma, verify=False)
         assert url is not None
         assert url == 'https://www.nature.com/articles/s41467-022-28794-6.pdf'
-        print(f"Test 3 - Different Nature DOI URL: {url}")    # Test removed: test_nature_ballet_successful_pdf_access - functionality now handled by verify_pdf_url    # Test removed: test_nature_ballet_paywall_detection - functionality now handled by verify_pdf_url
+        print(f"Test 3 - Different Nature DOI URL: {url}")
 
     @patch('metapub.findit.dances.nature.verify_pdf_url')
     def test_nature_ballet_access_denied(self, mock_verify):
         """Test 6: Access denied - PDF verification fails.
-        
+
         Expected: Should handle access denied gracefully
         """
         # Mock failed PDF verification (access denied)
         mock_verify.return_value = False
 
         pma = self.fetch.article_by_pmid('35459787')
-        
+
         # Test with verification - should handle access denied
         with pytest.raises(AccessDenied) as exc_info:
             the_nature_ballet(pma, verify=True)
-        
+
         assert 'PAYWALL' in str(exc_info.value)
         assert 'subscription' in str(exc_info.value)
         print(f"Test 6 - Correctly handled access denied: {exc_info.value}")
 
     def test_nature_ballet_missing_data(self):
         """Test 7: Article without sufficient data.
-        
+
         Expected: Should raise NoPDFLink for missing data
         """
         # Create a mock PMA without proper Nature data
@@ -106,10 +106,10 @@ class TestNatureDance(BaseDanceTest):
         pma.issue = None
         pma.pii = None
         pma.journal = 'Some Journal'
-        
+
         with pytest.raises(NoPDFLink) as exc_info:
             the_nature_ballet(pma, verify=False)
-        
+
         assert 'MISSING' in str(exc_info.value)
         print(f"Test 7 - Correctly handled missing data: {exc_info.value}")    # Test removed: test_nature_ballet_network_error - functionality now handled by verify_pdf_url    # Test removed: test_nature_journal_recognition - functionality now handled by verify_pdf_url
 

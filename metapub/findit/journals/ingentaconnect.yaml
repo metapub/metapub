@@ -24,7 +24,7 @@ publisher:
     Access models vary by publisher - some open access, some subscription-based.'
 url_patterns:
   primary_template: https://doi.org/{doi}
-dance_function: the_doi_slide
+dance_function: the_ingenta_flux
 journals:
   simple_list:
   - N Engl Reg Allergy Proc

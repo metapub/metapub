@@ -137,61 +137,7 @@ journals:
       host: pmj.bmj.com
     Thorax:
       host: thorax.bmj.com
-  simple_list:
-  - Acupunct Med
-  - Arch Dis Child
-  - Arch Dis Child Fetal Neonatal Ed
-  - Arch Dis Child Educ Pract Ed
-  - Ann Rheum Dis
-  - BMJ Innov
-  - BMJ Open
-  - BMJ Open Diabetes Res Care
-  - BMJ Open Gastroenterol
-  - BMJ Open Resp Res
-  - BMJ Open Sport Exerc Med
-  - BMJ Qual Saf
-  - BMJ Qual Improv Report
-  - BMJ STEL
-  - BMJ Support Palliat Care
-  - BMC Ophthalmol
-  - Br J Sports Med
-  - Drug Ther Bull
-  - Emerg Med J
-  - End Life J
-  - ESMO Open
-  - Eur J Hosp Pharm
-  - Evid Based Mental Health
-  - Evid Based Med
-  - Evid Based Nurs
-  - Frontline Gastroenterol
-  - Gut
-  - Heart
-  - Heart Asia
-  - Inj Prev
-  - In Pract
-  - J Clin Pathol
-  - J Epidemiol Community Health
-  - J Fam Plann Reprod Health Care
-  - J Investig Med
-  - J ISAKOS
-  - J Med Ethics
-  - J Med Genet
-  - J Neurol Neurosurg Psychiatry
-  - J Neurointerv Surg
-  - J R Army Med Corps
-  - Lupus Sci Med
-  - Med Humanities
-  - Occup Environ Med
-  - Open Heart
-  - Pract Neurol
-  - RMD Open
-  - Sex Transm Infect
-  - Vet Rec
-  - Vet Rec Case Rep
-  - Vet Rec Open
-  - Tob Control
-  - Postgrad Med J
-  - Thorax
+  simple_list: []
 metadata:
   evidence_date: '2025-08-11'
   verification_notes: ''

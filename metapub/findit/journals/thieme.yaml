@@ -20,7 +20,7 @@ publisher:
 
     DOI pattern: Thieme uses 10.1055 as their DOI prefix.'
 url_patterns:
-  doi_template: http://www.thieme-connect.de/products/ejournals/pdf/{doi}.pdf
+  primary_template: http://www.thieme-connect.de/products/ejournals/pdf/{doi}.pdf
 dance_function: the_doi_slide
 journals:
   simple_list:

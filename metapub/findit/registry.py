@@ -178,38 +178,17 @@ class JournalRegistry:
         This is a simplified version of the migration script that runs
         automatically when the database is empty.
         """
-        # Import the migration logic
+        # Import the registry builder logic
         try:
-            from .migrate_journals import PUBLISHER_CONFIGS
-            from .migrate_journals import extract_journal_info
+            from .registry_builder import populate_registry
             
-            total_publishers = 0
-            total_journals = 0
-            
-            # Migrate main publishers
-            for config in PUBLISHER_CONFIGS:
-                publisher_id = self.add_publisher(
-                    name=config['name'],
-                    dance_function=config['dance_function'],
-                    format_template=config.get('format_template'),
-                )
-                total_publishers += 1
-                
-                # Extract and add journals
-                journals = extract_journal_info(config['journals'])
-                for journal_name, format_params in journals:
-                    self.add_journal(
-                        name=journal_name,
-                        publisher_id=publisher_id,
-                        format_params=format_params
-                    )
-                    total_journals += 1
+            publishers_added, journals_added = populate_registry(self)
             
             log.debug('Auto-populated %d publishers and %d journals', 
-                     total_publishers, total_journals)
+                     publishers_added, journals_added)
                      
         except ImportError as error:
-            log.warning('Could not import migration data for auto-population: %s', error)
+            log.warning('Could not import registry builder for auto-population: %s', error)
             raise
         except Exception as error:
             log.error('Error during auto-population: %s', error)

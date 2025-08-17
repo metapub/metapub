@@ -4,7 +4,7 @@ publisher:
   id: wiley
   description: ''
 url_patterns:
-  doi_template: https://onlinelibrary.wiley.com/doi/epdf/{doi}
+  primary_template: https://onlinelibrary.wiley.com/doi/epdf/{doi}
 dance_function: the_doi_slide
 journals:
   simple_list:

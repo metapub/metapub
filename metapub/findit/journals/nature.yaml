@@ -4,7 +4,12 @@ publisher:
   id: nature
   description: Nature Publishing Group journals with custom URL parameters
 url_patterns:
-  primary_template: 'http://www.nature.com/{ja}/journal/v{volume}/n{issue}/pdf/{pii}.pdf'
+  primary_template: 'https://www.nature.com/articles/{doi_suffix}.pdf'
+  legacy_templates:
+    - template: 'http://www.nature.com/{ja}/journal/v{volume}/n{issue}/pdf/{pii}.pdf'
+      description: "Legacy format for older Nature articles with volume/issue"
+      requires_params: ["ja", "volume", "issue", "pii"]
+      fallback: true
 dance_function: the_nature_ballet
 journals:
   parameterized:

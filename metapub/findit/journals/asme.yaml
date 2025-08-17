@@ -21,9 +21,43 @@ publisher:
 
     DOI patterns: Typically 10.1115/* for ASME journals'
 url_patterns:
-  primary_template: https://asmedigitalcollection.asme.org/{journal_code}/article-pdf/{doi}
+  primary_template: https://asmedigitalcollection.asme.org/{ja}/article-pdf/{doi}
+  secondary_templates:
+    - template: https://asmedigitalcollection.asme.org/{ja}/article/{doi}
+      description: "Article page instead of direct PDF"
+      priority: 1
+      requires_params: ["ja"]
+    - template: https://asmedigitalcollection.asme.org/article-pdf/{doi}
+      description: "Generic pattern without journal code"
+      priority: 2
+    - template: https://asmedigitalcollection.asme.org/article/{doi}
+      description: "Generic article page without journal code"
+      priority: 3
+    - template: https://asmedigitalcollection.asme.org/doi/pdf/{doi}
+      description: "DOI-based PDF pattern"
+      priority: 4
+    - template: https://asmedigitalcollection.asme.org/doi/{doi}
+      description: "DOI-based article pattern"
+      priority: 5
 dance_function: the_asme_animal
 journals:
+  # Journal abbreviations for URL construction
+  parameterized:
+    'J Appl Mech': {ja: appliedmechanics}
+    'J Biomech Eng': {ja: biomechanical}
+    'J Heat Transfer': {ja: heattransfer}
+    'J Fluids Eng': {ja: fluidsengineering}
+    'J Eng Gas Turbine Power': {ja: gasturbinespower}
+    'J Press Vessel Technol': {ja: pressurevesseltech}
+    'J Manuf Sci Eng': {ja: manufacturingscience}
+    'J Mech Des': {ja: mechanicaldesign}
+    'J Vib Acoust': {ja: vibrationacoustics}
+    'J Tribol': {ja: tribology}
+    'J Dyn Syst Meas Control': {ja: dynamicsystems}
+    'J Energy Resour Technol': {ja: energyresources}
+    'J Med Device': {ja: medicaldevices}
+    'J Turbomach': {ja: turbomachinery}
+    'J Sol Energy Eng': {ja: solarenergyengineering}
   simple_list:
   - Appl Mech Rev
   - J Appl Mech

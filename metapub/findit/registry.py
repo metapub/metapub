@@ -9,6 +9,7 @@ import logging
 import os
 import json
 import re
+import yaml
 from typing import Optional, Dict, Tuple, List
 from ..config import DEFAULT_CACHE_DIR
 from ..cache_utils import get_cache_path
@@ -496,6 +497,89 @@ class JournalRegistry:
             self._conn.close()
             self._conn = None
     
+    def get_yaml_config(self, publisher_id: str) -> Optional[Dict]:
+        """Load YAML configuration for a publisher.
+        
+        Args:
+            publisher_id: Publisher ID (matches YAML filename)
+            
+        Returns:
+            Dictionary with YAML configuration or None if not found
+        """
+        yaml_path = os.path.join(os.path.dirname(__file__), 'journals', f'{publisher_id}.yaml')
+        
+        if not os.path.exists(yaml_path):
+            log.debug(f"YAML config not found: {yaml_path}")
+            return None
+            
+        try:
+            with open(yaml_path, 'r', encoding='utf-8') as f:
+                config = yaml.safe_load(f)
+                return config
+        except (yaml.YAMLError, IOError) as error:
+            log.error(f"Error loading YAML config {yaml_path}: {error}")
+            return None
+    
+    def get_url_templates(self, publisher_id: str) -> Dict[str, List[Dict]]:
+        """Get URL templates for a publisher from YAML configuration.
+        
+        Args:
+            publisher_id: Publisher ID
+            
+        Returns:
+            Dictionary with 'primary', 'secondary', and 'legacy' template lists
+        """
+        config = self.get_yaml_config(publisher_id)
+        if not config or 'url_patterns' not in config:
+            return {'primary': [], 'secondary': [], 'legacy': []}
+        
+        url_patterns = config['url_patterns']
+        templates = {'primary': [], 'secondary': [], 'legacy': []}
+        
+        # Primary template
+        if 'primary_template' in url_patterns:
+            templates['primary'].append({
+                'template': url_patterns['primary_template'],
+                'description': 'Primary URL template',
+                'priority': 0
+            })
+        
+        # Secondary templates
+        if 'secondary_templates' in url_patterns:
+            templates['secondary'] = url_patterns['secondary_templates']
+        
+        # Legacy templates
+        if 'legacy_templates' in url_patterns:
+            templates['legacy'] = url_patterns['legacy_templates']
+            
+        return templates
+    
+    def get_journal_parameters(self, publisher_id: str, journal_name: str) -> Optional[Dict]:
+        """Get journal-specific parameters from YAML configuration.
+        
+        Args:
+            publisher_id: Publisher ID
+            journal_name: Journal name to look up
+            
+        Returns:
+            Dictionary with journal parameters or None
+        """
+        config = self.get_yaml_config(publisher_id)
+        if not config or 'journals' not in config:
+            return None
+        
+        journals = config['journals']
+        
+        # Check parameterized journals
+        if 'parameterized' in journals and journal_name in journals['parameterized']:
+            return journals['parameterized'][journal_name]
+        
+        # For simple_list journals, return empty dict (no special parameters)
+        if 'simple_list' in journals and journal_name in journals['simple_list']:
+            return {}
+            
+        return None
+
     def __del__(self):
         """Cleanup database connection."""
         if hasattr(self, '_conn'):

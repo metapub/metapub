@@ -3,9 +3,7 @@
 #
 # TODO (maybe): early release format
 #
-# Import Oxford journals from the oxford.py module and merge them into vip_journals
-
-from .oxford import oxford_journal_params
+# Oxford journals are now managed through the registry system (oxford.yaml)
 
 vip_format = 'http://{host}/content/{a.volume}/{a.issue}/{a.first_page}.full.pdf'
 

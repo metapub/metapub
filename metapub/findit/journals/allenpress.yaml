@@ -21,9 +21,39 @@ publisher:
 
     DOI patterns: Various (depends on the society/journal)'
 url_patterns:
-  primary_template: https://meridian.allenpress.com/{journal_code}/article-pdf/{doi}
+  primary_template: https://meridian.allenpress.com/{ja}/article-pdf/{doi}
+  secondary_templates:
+    - template: https://meridian.allenpress.com/{ja}/article/{doi}
+      description: "Article page instead of direct PDF"
+      priority: 1
+      requires_params: ["ja"]
+    - template: https://meridian.allenpress.com/article-pdf/{doi}
+      description: "Generic pattern without journal code"
+      priority: 2
+    - template: https://meridian.allenpress.com/article/{doi}
+      description: "Generic article page without journal code"
+      priority: 3
+    - template: https://meridian.allenpress.com/doi/pdf/{doi}
+      description: "DOI-based PDF pattern"
+      priority: 4
+    - template: https://meridian.allenpress.com/doi/{doi}
+      description: "DOI-based article pattern"
+      priority: 5
 dance_function: the_allenpress_advance
 journals:
+  # Journal abbreviations for URL construction  
+  parameterized:
+    'Oper Dent': {ja: od}
+    'J Am Anim Hosp Assoc': {ja: jaaha}
+    'Arch Pathol Lab Med': {ja: aplm}
+    'J Athl Train': {ja: jat}
+    'Angle Orthod': {ja: angl}
+    'Tex Heart Inst J': {ja: thij}
+    'Ethn Dis': {ja: ethn}
+    'J Oral Implantol': {ja: joi}
+    'J Am Mosq Control Assoc': {ja: jamca}
+    'J Grad Med Educ': {ja: jgme}
+    'J Pediatr Pharmacol Ther': {ja: jppt}
   simple_list:
   - Ment Retard
   - Oper Dent

@@ -15,13 +15,23 @@ url_patterns:
   # Primary template (most common pattern)
   primary_template: "https://example.com/pdf/{doi}"
   
-  # Alternative templates (for journals with different patterns)
-  alternate_templates:
-    - pattern: "https://alt.example.com/{journal}/{volume}/{issue}/{page}.pdf" 
-      description: "VIP template for specific journals"
+  # Secondary templates (alternate domains or patterns)
+  secondary_templates:
+    - template: "https://alt.example.com/pdf/{doi}"
+      description: "Alternate domain for redundancy" 
+      priority: 1  # Order to try templates (lower = higher priority)
       
-  # DOI-based template (if different from primary)
-  doi_template: "https://example.com/doi/pdf/{doi}"
+    - template: "https://backup.example.com/{ja}/article-pdf/{doi}"
+      description: "Backup URL with journal abbreviation parameter"
+      priority: 2
+      requires_params: ["ja"]  # Parameters this template needs
+      
+  # Legacy templates (for older articles)
+  legacy_templates:
+    - template: "https://example.com/{ja}/journal/v{volume}/n{issue}/pdf/{pii}.pdf"
+      description: "Legacy format for pre-DOI articles"
+      requires_params: ["ja", "volume", "issue", "pii"]
+      fallback: true  # Only try if primary/secondary fail
 
 # Dance function configuration
 dance_function: "the_doi_slide"   # Function name used in FindIt

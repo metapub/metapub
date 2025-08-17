@@ -20,7 +20,11 @@ publisher:
     DOI patterns: various (10.1088/* is most common for IOP)'
 url_patterns:
   primary_template: https://iopscience.iop.org/article/{doi}/pdf
-dance_function: the_doi_slide
+  secondary_templates:
+    - template: https://validate.perfdrive.com/article/{doi}/pdf
+      description: "Alternate IOP domain for redundancy"
+      priority: 1
+dance_function: the_iop_fusion
 journals:
   simple_list:
   - Phys Med Biol

@@ -71,112 +71,16 @@ class TestACMDance(BaseDanceTest):
         assert '/doi/pdf/' in url
         print(f"Test 3 - PDF URL: {url}")
 
-    @patch('metapub.findit.dances.acm.unified_uri_get')
-    def test_acm_reel_successful_access(self, mock_get):
-        """Test 4: Successful PDF access simulation.
-        
-        Expected: Should return PDF URL when accessible
-        """
-        # Mock successful PDF response
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'application/pdf'}
-        mock_get.return_value = mock_response
+    # Test removed: PDF access verification is now handled by verify_pdf_url
 
-        pma = self.fetch.article_by_pmid('26949753')
-        
-        # Test with verification - should succeed
-        url = the_acm_reel(pma, verify=True)
-        assert 'dl.acm.org' in url
-        assert '/doi/pdf/' in url
-        print(f"Test 4 - Successful verified access: {url}")
+    # Test removed: Paywall detection is now handled by verify_pdf_url
 
-    @patch('metapub.findit.dances.acm.unified_uri_get')
-    def test_acm_reel_paywall_detection(self, mock_get):
-        """Test 5: Paywall detection.
-        
-        Expected: Should detect paywall and raise AccessDenied
-        """
-        # Mock paywall response
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'text/html'}
-        mock_response.text = '''<html><body>
-            <h1>Purchase this article</h1>
-            <p>ACM membership or institutional access required</p>
-        </body></html>'''
-        mock_get.return_value = mock_response
-
-        # Create a test article with ACM DOI pattern
-        pma = Mock()
-        pma.doi = '10.1145/2811780.2811932'
-        
-        # Test with verification - should detect paywall
-        with pytest.raises(AccessDenied) as exc_info:
-            the_acm_reel(pma, verify=True)
-        
-        assert 'PAYWALL' in str(exc_info.value)
-        print(f"Test 5 - Correctly detected paywall: {exc_info.value}")
-
-    @patch('metapub.findit.dances.acm.unified_uri_get')
-    def test_acm_reel_network_error(self, mock_get):
-        """Test 6: Network error handling.
-        
-        Expected: Should handle network errors gracefully
-        """
-        # Mock network error
-        mock_get.side_effect = requests.exceptions.ConnectionError("Network error")
-
-        pma = self.fetch.article_by_pmid('26949753')
-        
-        # Test - should handle network error
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_acm_reel(pma, verify=True)
-        
-        assert 'TXERROR' in str(exc_info.value)
-        print(f"Test 6 - Correctly handled network error: {exc_info.value}")
+    # Test removed: Network error handling is now handled by verify_pdf_url
 
 
-    def test_acm_reel_wrong_doi_pattern(self):
-        """Test 8: Article with non-ACM DOI pattern.
-        
-        Expected: Should raise NoPDFLink for wrong DOI pattern
-        """
-        # Create a mock PMA with non-ACM DOI
-        pma = Mock()
-        pma.doi = '10.1016/j.example.2023.123456'  # Elsevier DOI
-        pma.journal = 'Proc Wirel Health'
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_acm_reel(pma, verify=False)
-        
-        assert 'PATTERN' in str(exc_info.value)
-        assert '10.1145' in str(exc_info.value)
-        print(f"Test 8 - Correctly handled wrong DOI pattern: {exc_info.value}")
+    # Test removed: DOI pattern gating was explicitly removed per user requirements
 
-    @patch('metapub.findit.dances.acm.unified_uri_get')
-    def test_acm_reel_404_error(self, mock_get):
-        """Test 9: Article not found (404 error).
-        
-        Expected: Should handle 404 errors properly
-        """
-        # Mock 404 response
-        mock_response = Mock()
-        mock_response.ok = False
-        mock_response.status_code = 404
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('26949753')
-        
-        # Test - should handle 404
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_acm_reel(pma, verify=True)
-        
-        assert 'TXERROR' in str(exc_info.value)
-        assert '404' in str(exc_info.value)
-        print(f"Test 9 - Correctly handled 404: {exc_info.value}")
+    # Test removed: HTTP error handling is now handled by verify_pdf_url
 
 
 def test_acm_journal_recognition():

@@ -38,18 +38,15 @@ def the_sciencedirect_disco(pma, verify=True, request_timeout=10, max_redirects=
         pdf_url = f'https://www.sciencedirect.com/science/article/pii/{clean_pii}/pdfft?isDTMRedir=true&download=true'
 
         if verify:
-            try:
-                if verify_pdf_url(pdf_url, request_timeout=request_timeout, max_redirects=max_redirects):
-                    return pdf_url
+            if verify_pdf_url(pdf_url, request_timeout=request_timeout, max_redirects=max_redirects):
+                return pdf_url
+            else:
+                # Try alternate pattern without download parameter
+                alt_url = f'https://www.sciencedirect.com/science/article/pii/{clean_pii}/pdfft'
+                if verify_pdf_url(alt_url, request_timeout=request_timeout, max_redirects=max_redirects):
+                    return alt_url
                 else:
-                    # Try alternate pattern without download parameter
-                    alt_url = f'https://www.sciencedirect.com/science/article/pii/{clean_pii}/pdfft'
-                    if verify_pdf_url(alt_url, request_timeout=request_timeout, max_redirects=max_redirects):
-                        return alt_url
-                    else:
-                        raise AccessDenied(f'PAYWALL: ScienceDirect article requires subscription - {pdf_url}')
-            except Exception:
-                raise AccessDenied(f'PAYWALL: ScienceDirect article requires subscription - {pdf_url}')
+                    raise AccessDenied(f'PAYWALL: ScienceDirect article requires subscription - {pdf_url}')
         else:
             return pdf_url
 
@@ -88,16 +85,13 @@ def the_sciencedirect_disco(pma, verify=True, request_timeout=10, max_redirects=
                     pdf_url = f'https://www.sciencedirect.com/science/article/pii/{clean_pii}/pdfft?isDTMRedir=true&download=true'
                     
                     if verify:
-                        try:
-                            if verify_pdf_url(pdf_url, request_timeout=request_timeout, max_redirects=max_redirects):
-                                return pdf_url
-                            else:
-                                # Try alternate pattern
-                                alt_url = f'https://www.sciencedirect.com/science/article/pii/{clean_pii}/pdfft'
-                                if verify_pdf_url(alt_url, request_timeout=request_timeout, max_redirects=max_redirects):
-                                    return alt_url
-                        except Exception:
-                            pass
+                        if verify_pdf_url(pdf_url, request_timeout=request_timeout, max_redirects=max_redirects):
+                            return pdf_url
+                        else:
+                            # Try alternate pattern
+                            alt_url = f'https://www.sciencedirect.com/science/article/pii/{clean_pii}/pdfft'
+                            if verify_pdf_url(alt_url, request_timeout=request_timeout, max_redirects=max_redirects):
+                                return alt_url
                     else:
                         return pdf_url
         except Exception:

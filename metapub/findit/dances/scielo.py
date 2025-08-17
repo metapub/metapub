@@ -57,7 +57,7 @@ def the_scielo_chula(pma, verify=True, request_timeout=10, max_redirects=3):
                                 pdf_url = href
                             break
         
-        except Exception as parse_error:
+        except (etree.XMLSyntaxError, etree.ParserError, AttributeError) as parse_error:
             raise NoPDFLink('TXERROR: Failed to parse SciELO article page: %s' % str(parse_error))
         
         if pdf_url:

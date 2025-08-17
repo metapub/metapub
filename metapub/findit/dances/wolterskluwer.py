@@ -1,8 +1,8 @@
 """Wolters Kluwer dance function using CrossRef + URL construction hybrid approach."""
 
-from ...exceptions import NoPDFLink
+from ...exceptions import NoPDFLink, AccessDenied
 from ...crossref import CrossRefFetcher
-from .generic import unified_uri_get
+from .generic import unified_uri_get, verify_pdf_url
 
 
 def the_wolterskluwer_volta(pma, verify=True, request_timeout=10, max_redirects=3):
@@ -21,15 +21,11 @@ def the_wolterskluwer_volta(pma, verify=True, request_timeout=10, max_redirects=
         raise NoPDFLink('MISSING: DOI required for Wolters Kluwer CrossRef + URL construction')
     
     # Use CrossRef API to verify DOI exists and get canonical metadata
-    try:
-        cr_fetcher = CrossRefFetcher()
-        work = cr_fetcher.article_by_doi(pma.doi)
-        
-        if not work:
-            raise NoPDFLink('MISSING: CrossRef returned no metadata for this Wolters Kluwer DOI')
-            
-    except Exception as e:
-        raise NoPDFLink(f'CROSSREF_ERROR: Failed to verify DOI via CrossRef API: {e}')
+    cr_fetcher = CrossRefFetcher()
+    work = cr_fetcher.article_by_doi(pma.doi)
+    
+    if not work:
+        raise NoPDFLink('MISSING: CrossRef returned no metadata for this Wolters Kluwer DOI')
     
     # Construct PDF URLs based on DOI patterns discovered through evidence
     pdf_urls = []
@@ -59,19 +55,10 @@ def the_wolterskluwer_volta(pma, verify=True, request_timeout=10, max_redirects=
     for pdf_url in pdf_urls:
         if verify:
             try:
-                response = unified_uri_get(pdf_url, timeout=request_timeout, max_redirects=max_redirects)
-                if response.ok:
-                    # Check if response looks like a PDF or valid article page
-                    content_type = response.headers.get('content-type', '').lower()
-                    if ('pdf' in content_type or 
-                        'application/pdf' in content_type or
-                        response.status_code == 200):  # Accept 200 OK for article pages
-                        return pdf_url
-                else:
-                    last_error = f'HTTP {response.status_code} from {pdf_url}'
-                    
-            except Exception as e:
-                last_error = f'Network error accessing {pdf_url}: {e}'
+                verify_pdf_url(pdf_url, 'Wolters Kluwer', request_timeout=request_timeout, max_redirects=max_redirects)
+                return pdf_url
+            except (NoPDFLink, AccessDenied) as e:
+                last_error = str(e)
                 continue
         else:
             # Return first constructed URL without verification

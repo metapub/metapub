@@ -9,6 +9,7 @@ Based on HTML sample analysis from real Science articles showing:
 """
 
 import pytest
+import requests
 from unittest.mock import patch, Mock, MagicMock
 from .common import BaseDanceTest
 from metapub.findit.dances.aaas import the_aaas_twist
@@ -94,8 +95,8 @@ class TestAAASTest(BaseDanceTest):
     @patch('metapub.findit.dances.aaas.unified_uri_get')
     def test_aaas_twist_lookup_failure(self, mock_get):
         """Test 4: Network error during PDF access."""
-        # Mock network failure during PDF access (not lookup since DOI is available)
-        mock_get.side_effect = Exception("Network timeout")
+        # Mock specific network failure during PDF access (not generic Exception)
+        mock_get.side_effect = requests.exceptions.ConnectionError("Network timeout")
         
         pma = load_pmid_xml('35108047')  # Load from fixture - has DOI so won't do PMID lookup
         
@@ -103,7 +104,7 @@ class TestAAASTest(BaseDanceTest):
             the_aaas_twist(pma)
         
         error_msg = str(exc_info.value)
-        assert 'ERROR: AAAS PDF access failed' in error_msg
+        assert 'TXERROR: AAAS PDF access failed' in error_msg
         assert 'Network timeout' in error_msg
         print(f"Test 4 - Network failure: {error_msg}")
 

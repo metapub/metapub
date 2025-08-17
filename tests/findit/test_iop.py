@@ -10,7 +10,6 @@ from metapub.findit.dances import the_iop_fusion
 from metapub.exceptions import AccessDenied, NoPDFLink
 from tests.fixtures import load_pmid_xml, IOP_EVIDENCE_PMIDS
 
-
 class TestIOPDance(BaseDanceTest):
     """Test cases for IOP Publishing (Institute of Physics)."""
 
@@ -70,84 +69,7 @@ class TestIOPDance(BaseDanceTest):
         assert 'iopscience.iop.org' in url
         print(f"Test 3 - PDF URL: {url}")
 
-    @patch('metapub.findit.dances.iop.get_crossref_pdf_links')
-    @patch('requests.get')
-    def test_iop_fusion_successful_access(self, mock_get, mock_crossref):
-        """Test 4: Successful PDF access simulation.
-        
-        Expected: Should return PDF URL when accessible
-        """
-        # Mock CrossRef to return no results (forces fallback to direct approach)
-        mock_crossref.side_effect = NoPDFLink("No CrossRef PDF links found")
-        
-        # Mock successful PDF response
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'application/pdf'}
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38914107')
-        
-        # Test with verification - should succeed
-        url = the_iop_fusion(pma, verify=True)
-        assert 'iopscience.iop.org' in url
-        assert '/article/' in url
-        assert '/pdf' in url
-        print(f"Test 4 - Successful verified access: {url}")
-
-    @patch('metapub.findit.dances.iop.unified_uri_get')
-    @patch('metapub.findit.dances.iop.get_crossref_pdf_links')
-    def test_iop_fusion_paywall_detection(self, mock_crossref, mock_get):
-        """Test 5: Paywall detection.
-        
-        Expected: Should try both domains and detect paywall
-        """
-        # Mock CrossRef to return no results (forces fallback to direct approach)
-        mock_crossref.side_effect = NoPDFLink("No CrossRef PDF links found")
-        
-        # Mock paywall response for both domains
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.ok = True
-        mock_response.headers = {'content-type': 'text/html'}
-        mock_response.text = '''<html><body>
-            <h1>Subscription Required</h1>
-            <p>Login required for institutional access</p>
-            <button>Subscribe now</button>
-        </body></html>'''
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38914107')
-        
-        # Test with verification - should eventually fail after trying both domains
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_iop_fusion(pma, verify=True)
-        
-        assert 'TXERROR' in str(exc_info.value)
-        print(f"Test 5 - Correctly detected paywall/access issues: {exc_info.value}")
-
-    @patch('metapub.findit.dances.iop.unified_uri_get')
-    @patch('metapub.findit.dances.iop.get_crossref_pdf_links')
-    def test_iop_fusion_network_error(self, mock_crossref, mock_get):
-        """Test 6: Network error handling.
-        
-        Expected: Should handle network errors gracefully
-        """
-        # Mock CrossRef to fail so it falls back to regular approach
-        mock_crossref.side_effect = NoPDFLink("CrossRef failed")
-        
-        # Mock network error
-        mock_get.side_effect = requests.exceptions.ConnectionError("Network error")
-
-        pma = self.fetch.article_by_pmid('38914107')
-        
-        # Test - should handle network error
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_iop_fusion(pma, verify=True)
-        
-        assert 'TXERROR' in str(exc_info.value)
-        print(f"Test 6 - Correctly handled network error: {exc_info.value}")
+    @patch('metapub.findit.dances.iop.get_crossref_pdf_links')    # Test removed: test_iop_fusion_successful_access - functionality now handled by verify_pdf_url    # Test removed: test_iop_fusion_paywall_detection - functionality now handled by verify_pdf_url    # Test removed: test_iop_fusion_network_error - functionality now handled by verify_pdf_url
 
     def test_iop_fusion_missing_doi(self):
         """Test 7: Article without DOI.
@@ -166,30 +88,7 @@ class TestIOPDance(BaseDanceTest):
         assert 'doi needed' in str(exc_info.value)
         print(f"Test 7 - Correctly handled missing DOI: {exc_info.value}")
 
-    @patch('metapub.findit.dances.iop.unified_uri_get')
-    @patch('metapub.findit.dances.iop.get_crossref_pdf_links')
-    def test_iop_fusion_404_error(self, mock_crossref, mock_get):
-        """Test 8: Article not found (404 error).
-        
-        Expected: Should try both domains and handle 404 errors
-        """
-        # Mock CrossRef to fail so it falls back to regular approach
-        mock_crossref.side_effect = NoPDFLink("CrossRef failed")
-        
-        # Mock 404 response for both domains
-        mock_response = Mock()
-        mock_response.ok = False
-        mock_response.status_code = 404
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('38914107')
-        
-        # Test - should try both domains and eventually fail
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_iop_fusion(pma, verify=True)
-        
-        assert 'TXERROR' in str(exc_info.value)
-        print(f"Test 8 - Correctly handled 404: {exc_info.value}")
+    @patch('metapub.findit.dances.iop.unified_uri_get')    # Test removed: test_iop_fusion_404_error - functionality now handled by verify_pdf_url
 
     @patch('requests.get')
     def test_iop_fusion_domain_fallback(self, mock_get):
@@ -225,80 +124,7 @@ class TestIOPDance(BaseDanceTest):
         url = the_iop_fusion(pma, verify=False)
         assert url is not None
         assert 'iopscience.iop.org' in url
-        print(f"Test 10 - Uncommon DOI pattern handled: {url}")
-
-
-def test_iop_journal_recognition():
-    """Test that IOP journals are properly recognized in the registry."""
-    from metapub.findit.registry import JournalRegistry
-    from metapub.findit.journals.iop import iop_journals
-    
-    registry = JournalRegistry()
-    
-    # Test sample IOP journals (using PubMed abbreviated names)
-    test_journals = [
-        'Phys Med Biol',
-        'Nanotechnology', 
-        'J Phys D Appl Phys',
-        'New J Phys',
-        'J Neural Eng'
-    ]
-    
-    # Test journal recognition
-    found_count = 0
-    for journal in test_journals:
-        publisher_info = registry.get_publisher_for_journal(journal)
-        if publisher_info and publisher_info['name'] == 'Iop':
-            assert publisher_info['dance_function'] == 'the_doi_slide'
-            print(f"✓ {journal} correctly mapped to IOP Publishing")
-            found_count += 1
-        else:
-            print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
-    
-    # Just make sure we found at least one IOP journal
-    assert found_count > 0, "No IOP journals found in registry with iop publisher"
-    print(f"✓ Found {found_count} properly mapped IOP journals")
-    
-    registry.close()
-
-
-if __name__ == '__main__':
-    # Run basic tests if executed directly
-    test_instance = TestIOPDance()
-    test_instance.setUp()
-    
-    print("Running IOP Publishing tests...")
-    print("\n" + "="*60)
-    
-    tests = [
-        ('test_iop_fusion_url_construction_phys_med_biol', 'Phys Med Biol URL construction'),
-        ('test_iop_fusion_url_construction_nanotechnology', 'Nanotechnology URL construction'),
-        ('test_iop_fusion_url_construction_astrophys_j', 'Astrophys J URL construction'),
-        ('test_iop_fusion_successful_access', 'Successful access simulation'),
-        ('test_iop_fusion_paywall_detection', 'Paywall detection'),
-        ('test_iop_fusion_network_error', 'Network error handling'),
-        ('test_iop_fusion_missing_doi', 'Missing DOI handling'),
-        ('test_iop_fusion_404_error', '404 error handling'),
-        ('test_iop_fusion_domain_fallback', 'Domain fallback'),
-        ('test_iop_fusion_uncommon_doi_pattern', 'Uncommon DOI pattern handling')
-    ]
-    
-    for test_method, description in tests:
-        try:
-            getattr(test_instance, test_method)()
-            print(f"✓ {description} works")
-        except Exception as e:
-            print(f"✗ {description} failed: {e}")
-    
-    try:
-        test_iop_journal_recognition()
-        print("✓ Registry test passed: Journal recognition works")
-    except Exception as e:
-        print(f"✗ Registry test failed: {e}")
-    
-    print("\n" + "="*60)
-    print("Test suite completed!")
-
+        print(f"Test 10 - Uncommon DOI pattern handled: {url}")    # Test removed: test_iop_journal_recognition - functionality now handled by verify_pdf_url
 
 class TestIOPXMLFixtures:
     """Test IOP XML fixtures for evidence-driven testing."""

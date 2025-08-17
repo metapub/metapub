@@ -167,7 +167,7 @@ class TestRegistryBackedLookupSystem(unittest.TestCase):
         # Registry should be called twice since we removed caching
         self.assertEqual(self.mock_registry.get_publisher_for_journal.call_count, 2)
 
-    @patch('metapub.findit.registry.standardize_journal_name')
+    @patch('metapub.findit.handlers.standardize_journal_name')
     def test_find_pdf_url_standardizes_journal_name(self, mock_standardize):
         """Test that find_pdf_url standardizes journal names."""
         mock_standardize.return_value = "Standardized Journal"
@@ -196,7 +196,7 @@ class TestRegistryBackedLookupSystem(unittest.TestCase):
         mock_pma = Mock()
         mock_pma.journal = "Unknown Journal"
 
-        with patch('metapub.findit.registry.standardize_journal_name', return_value="Unknown Journal"):
+        with patch('metapub.findit.handlers.standardize_journal_name', return_value="Unknown Journal"):
             self.mock_registry.get_publisher_for_journal.return_value = None
 
             url, reason = self.lookup_system.find_pdf_url(mock_pma, verify=True)

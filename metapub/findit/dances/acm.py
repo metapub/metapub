@@ -21,58 +21,16 @@ def the_acm_reel(pma, verify=True, request_timeout=10, max_redirects=3):
     :return: url (string)
     :raises: AccessDenied, NoPDFLink
     '''
-    try:
-        # Check if DOI is available
-        if not pma.doi:
-            raise NoPDFLink('MISSING: DOI required for ACM articles - attempted: none')
+    # Check if DOI is available
+    if not pma.doi:
+        raise NoPDFLink('MISSING: DOI required for ACM articles - attempted: none')
 
-        # ACM DOIs typically follow pattern 10.1145/...
-        if not pma.doi.startswith('10.1145/'):
-            raise NoPDFLink(f'PATTERN: DOI does not match ACM pattern (10.1145/) - attempted: {pma.doi}')
+    # Try direct PDF URL construction
+    pdf_url = f'https://dl.acm.org/doi/pdf/{pma.doi}'
 
-        # Try direct PDF URL construction
-        pdf_url = f'https://dl.acm.org/doi/pdf/{pma.doi}'
+    if verify:
+        verify_pdf_url(pdf_url, 'ACM', request_timeout=request_timeout, max_redirects=max_redirects)
+    
+    return pdf_url
 
-        if verify:
-            try:
-                response = unified_uri_get(pdf_url, timeout=request_timeout, max_redirects=max_redirects)
-
-                if response.status_code in OK_STATUS_CODES:
-                    # Check if this is actually a PDF
-                    content_type = response.headers.get('content-type', '').lower()
-                    if 'pdf' in content_type:
-                        return pdf_url
-                    else:
-                        # Might be HTML page, check for subscription/paywall indicators
-                        page_text = response.text.lower()
-                        paywall_terms = ['purchase', 'access denied', 'subscription required',
-                                       'sign in', 'log in', 'member access', 'institutional access',
-                                       'acm membership', 'subscribe']
-                        if any(term in page_text for term in paywall_terms):
-                            raise AccessDenied(f'PAYWALL: ACM article requires subscription or membership - attempted: {pdf_url}')
-
-                        # If PDF access fails, this is an error in verify mode
-                        raise NoPDFLink(f'TXERROR: No PDF access available for ACM article - attempted: {pdf_url}')
-
-                elif response.status_code == 403:
-                    raise AccessDenied(f'DENIED: Access forbidden by ACM - attempted: {pdf_url}')
-                elif response.status_code == 404:
-                    raise NoPDFLink(f'TXERROR: ACM article not found (404) - attempted: {pdf_url}')
-                else:
-                    raise NoPDFLink(f'TXERROR: ACM returned status {response.status_code} - attempted: {pdf_url}')
-
-            except (AccessDenied, NoPDFLink):
-                # Re-raise our own exceptions without wrapping
-                raise
-            except Exception as e:
-                raise NoPDFLink(f'TXERROR: Network error accessing ACM: {e} - attempted: {pdf_url}')
-        else:
-            # Return PDF URL without verification
-            return pdf_url
-
-    except Exception as e:
-        if isinstance(e, (NoPDFLink, AccessDenied)):
-            raise
-        else:
-            raise NoPDFLink(f'TXERROR: ACM reel failed for {pma.journal}: {e} - attempted: DOI resolution')
 

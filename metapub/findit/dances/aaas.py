@@ -54,16 +54,18 @@ def the_aaas_twist(pma, verify=True, request_timeout=10, max_redirects=3):
         
         try:
             res = unified_uri_get(baseurl, timeout=request_timeout, max_redirects=max_redirects)
-            # Convert article URL to reader URL (evidence-based pattern)
-            if '/doi/' in res.url:
-                # Extract DOI from redirected URL and construct reader URL
-                doi_part = res.url.split('/doi/')[-1]
-                pdfurl = 'https://www.science.org/doi/reader/%s' % doi_part
-            else:
-                # Fallback: assume it's the full URL and use reader pattern
-                pdfurl = res.url.replace('/doi/', '/doi/reader/')
-        except Exception as e:
-            raise NoPDFLink('ERROR: AAAS PMID lookup failed for %s: %s' % (pma.pmid, str(e)))
+        except (requests.exceptions.ConnectionError, requests.exceptions.Timeout,
+                requests.exceptions.RequestException) as e:
+            raise NoPDFLink('TXERROR: AAAS PMID lookup failed for %s: %s' % (pma.pmid, str(e)))
+        
+        # Convert article URL to reader URL (evidence-based pattern)
+        if '/doi/' in res.url:
+            # Extract DOI from redirected URL and construct reader URL
+            doi_part = res.url.split('/doi/')[-1]
+            pdfurl = 'https://www.science.org/doi/reader/%s' % doi_part
+        else:
+            # Fallback: assume it's the full URL and use reader pattern
+            pdfurl = res.url.replace('/doi/', '/doi/reader/')
     
     else:
         raise NoPDFLink('MISSING: Either DOI or PMID required for AAAS article lookup (journal: %s)' % getattr(pma, 'journal', 'Unknown'))
@@ -74,8 +76,9 @@ def the_aaas_twist(pma, verify=True, request_timeout=10, max_redirects=3):
     # Attempt PDF access with subscription handling
     try:
         response = unified_uri_get(pdfurl, timeout=request_timeout, max_redirects=max_redirects)
-    except Exception as e:
-        raise NoPDFLink('ERROR: AAAS PDF access failed for %s: %s' % (pdfurl, str(e)))
+    except (requests.exceptions.ConnectionError, requests.exceptions.Timeout,
+            requests.exceptions.RequestException) as e:
+        raise NoPDFLink('TXERROR: AAAS PDF access failed for %s: %s' % (pdfurl, str(e)))
 
     # Success: Direct PDF access
     if response.status_code == 200 and 'pdf' in response.headers.get('content-type', '').lower():

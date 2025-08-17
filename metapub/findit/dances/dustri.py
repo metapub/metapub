@@ -1,3 +1,4 @@
+import requests
 from ...exceptions import *
 from .generic import *
 
@@ -71,10 +72,11 @@ def the_dustri_polka(pma, verify=True, request_timeout=10, max_redirects=3):
                 # Unknown access pattern
                 raise NoPDFLink(f'TXERROR: Could not determine PDF access method for Dustri article - {article_url}')
                 
+        except (requests.exceptions.RequestException, requests.exceptions.ConnectionError,
+                requests.exceptions.Timeout) as e:
+            raise NoPDFLink(f'TXERROR: Network error accessing Dustri article page: {e}')
         except (AccessDenied, NoPDFLink):
             raise
-        except Exception as e:
-            raise NoPDFLink(f'TXERROR: Error accessing Dustri article page: {e}')
     
     else:
         # Without verification, return article page URL with explanatory note

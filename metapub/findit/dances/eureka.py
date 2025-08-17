@@ -1,6 +1,6 @@
 """Dance function for EurekaSelect (Bentham Science Publishers)."""
 
-from ...exceptions import NoPDFLink, AccessDenied
+from ...exceptions import NoPDFLink, AccessDenied, BadDOI, DxDOIError
 from .generic import the_doi_2step, verify_pdf_url, unified_uri_get, COMMON_REQUEST_HEADERS
 from lxml import html
 import requests
@@ -32,9 +32,14 @@ def the_eureka_frug(pma, verify=True, request_timeout=10, max_redirects=3):
     # Step 1: Resolve DOI to article page
     try:
         article_url = the_doi_2step(pma.doi)
-        response = unified_uri_get(article_url, timeout=request_timeout, max_redirects=max_redirects)
-    except Exception as e:
+    except (BadDOI, DxDOIError) as e:
         raise NoPDFLink(f'TXERROR: Could not resolve EurekaSelect DOI: {e}')
+    
+    try:
+        response = unified_uri_get(article_url, timeout=request_timeout, max_redirects=max_redirects)
+    except (requests.exceptions.ConnectionError, requests.exceptions.Timeout,
+            requests.exceptions.RequestException) as e:
+        raise NoPDFLink(f'TXERROR: Could not access EurekaSelect article page: {e}')
 
     if response.status_code != 200:
         raise NoPDFLink(f'TXERROR: Could not access EurekaSelect article page (HTTP {response.status_code})')

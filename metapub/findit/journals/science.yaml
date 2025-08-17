@@ -5,7 +5,7 @@ publisher:
   description: Science Magazine (AAAS) single journal publisher
 url_patterns:
   primary_template: https://science.org/doi/reader/{doi}
-dance_function: the_vip_shake
+dance_function: the_aaas_twist
 journals:
   simple_list:
   - Science

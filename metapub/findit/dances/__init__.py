@@ -19,6 +19,7 @@ from .generic import (
 the_vip_shake_nonstandard = the_vip_nonstandard_shake
 
 # Publisher-specific dance functions (alphabetical order)
+from .aaas import the_aaas_twist
 from .aacr import the_aacr_jitterbug
 from .acm import the_acm_reel
 from .aha import the_aha_waltz

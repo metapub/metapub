@@ -206,6 +206,60 @@ class TestAnnualReviewsDance(BaseDanceTest):
         assert '/deliver/fulltext/phyto/62/1/' in url
         print(f"Test 10 - Used provided volume/issue: {url}")
 
+    def test_annualreviews_round_legacy_doi_format_genetics(self):
+        """Test 11: Legacy DOI format with dots (Annu Rev Genet).
+        
+        PMID: 2088165 (Annu Rev Genet)
+        DOI: 10.1146/annurev.ge.24.120190.001025
+        Expected: Should handle legacy format and extract journal='ge', volume='24'
+        """
+        pma = Mock()
+        pma.doi = '10.1146/annurev.ge.24.120190.001025'
+        pma.journal = 'Annu Rev Genet'
+        pma.pmid = '2088165'
+        pma.volume = None  # Should extract from DOI
+        pma.issue = None
+        
+        url = the_annualreviews_round(pma, verify=False)
+        assert '/deliver/fulltext/ge/24/1/' in url
+        assert 'annurev.ge.24.120190.001025.pdf' in url
+        print(f"Test 11 - Legacy format (genetics): {url}")
+
+    def test_annualreviews_round_legacy_doi_format_immunology(self):
+        """Test 12: Legacy DOI format with dots (Annu Rev Immunol).
+        
+        PMID: 2523713 (Annu Rev Immunol)  
+        DOI: 10.1146/annurev.iy.07.040189.001425
+        Expected: Should handle legacy format and extract journal='iy', volume='07'
+        """
+        pma = Mock()
+        pma.doi = '10.1146/annurev.iy.07.040189.001425'
+        pma.journal = 'Annu Rev Immunol'
+        pma.pmid = '2523713'
+        pma.volume = None  # Should extract from DOI
+        pma.issue = None
+        
+        url = the_annualreviews_round(pma, verify=False)
+        assert '/deliver/fulltext/iy/07/1/' in url
+        assert 'annurev.iy.07.040189.001425.pdf' in url
+        print(f"Test 12 - Legacy format (immunology): {url}")
+
+    def test_annualreviews_round_legacy_doi_format_malformed(self):
+        """Test 13: Malformed legacy DOI format.
+        
+        Expected: Should raise NoPDFLink for malformed legacy DOI
+        """
+        pma = Mock()
+        pma.doi = '10.1146/annurev.incomplete'  # Missing required parts
+        pma.journal = 'Annu Rev Test'
+        
+        with pytest.raises(NoPDFLink) as exc_info:
+            the_annualreviews_round(pma, verify=False)
+        
+        assert 'INVALID' in str(exc_info.value)
+        assert 'legacy DOI format' in str(exc_info.value)
+        print(f"Test 13 - Correctly handled malformed legacy DOI: {exc_info.value}")
+
 
 def test_annualreviews_journal_recognition():
     """Test that Annual Reviews journals are properly recognized in the registry."""
@@ -256,7 +310,10 @@ if __name__ == '__main__':
         ('test_annualreviews_round_invalid_doi', 'Invalid DOI pattern handling'),
         ('test_annualreviews_round_malformed_doi_suffix', 'Malformed DOI suffix handling'),
         ('test_annualreviews_round_volume_issue_defaults', 'Volume/issue defaults'),
-        ('test_annualreviews_round_with_volume_issue', 'Provided volume/issue usage')
+        ('test_annualreviews_round_with_volume_issue', 'Provided volume/issue usage'),
+        ('test_annualreviews_round_legacy_doi_format_genetics', 'Legacy DOI format (genetics)'),
+        ('test_annualreviews_round_legacy_doi_format_immunology', 'Legacy DOI format (immunology)'),
+        ('test_annualreviews_round_legacy_doi_format_malformed', 'Malformed legacy DOI handling')
     ]
     
     for test_method, description in tests:

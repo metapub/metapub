@@ -2,7 +2,6 @@ import unittest
 import os
 
 from metapub import FindIt
-from metapub.findit import SUPPORTED_JOURNALS
 from metapub.findit.findit import CACHE_FILENAME
 from .test_compat import skip_network_tests
 
@@ -71,11 +70,16 @@ class TestFindIt(unittest.TestCase):
         assert cached_src.pma.journal == fresh_src.pma.journal
 
 
-    def test_supported_journals_list(self):
-        "Test that SUPPORTED_JOURNALS list exists and has entries."
-        assert len(SUPPORTED_JOURNALS) > 10000
-        assert "Cell" in SUPPORTED_JOURNALS
-        assert "Nature" in SUPPORTED_JOURNALS
+    def test_registry_has_journals(self):
+        "Test that registry database has journal entries."
+        from metapub.findit.registry import JournalRegistry
+        registry = JournalRegistry()
+        journals = registry.get_all_journals()
+        registry.close()
+        
+        assert len(journals) > 10000
+        assert "Cell" in journals
+        assert "Nature" in journals
 
     def test_embargoed_pmid(self):
         "Test that FindIt redirects currently embargoed PMC article to publisher."

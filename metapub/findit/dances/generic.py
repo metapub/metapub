@@ -19,10 +19,7 @@ from ...exceptions import AccessDenied, NoPDFLink, BadDOI, DxDOIError
 from ...text_mining import find_doi_in_string
 from ...utils import remove_chars
 
-from ..journals import (
-    simple_formats_pmid, vip_format, vip_journals, vip_journals_nonstandard,
-    simple_formats_pii
-)
+from ..journals import simple_formats_pmid
 from ..registry import JournalRegistry
 
 OK_STATUS_CODES = (200, 301, 302, 307)
@@ -386,8 +383,7 @@ def the_pmid_pogo(pma, verify=True, request_timeout=10, max_redirects=3):
 
 
 def the_vip_shake(pma, verify=True, request_timeout=10, max_redirects=3):
-    '''Dance of the miscellaneous journals that use volume-issue-page in their
-        URL construction
+    '''Dance of journals that use volume-issue-page in their URL construction.
 
          :param: pma (PubMedArticle object)
          :param: verify (bool) [default: True]
@@ -397,8 +393,18 @@ def the_vip_shake(pma, verify=True, request_timeout=10, max_redirects=3):
          :raises: AccessDenied, NoPDFLink
     '''
     jrnl = standardize_journal_name(pma.journal)
-    pma = rectify_pma_for_vip_links(pma)  #raises NoPDFLink if missing data.
-    url = vip_format.format(host=vip_journals[jrnl]['host'], a=pma)
+    pma = rectify_pma_for_vip_links(pma)
+    
+    registry = JournalRegistry()
+    publisher_info = registry.get_publisher_for_journal(jrnl)
+    url_template = publisher_info['format_template']
+    
+    import json
+    config = json.loads(publisher_info['config_data'])
+    host = config['journals']['parameterized'][jrnl]['host']
+    
+    url = url_template.format(host=host, volume=pma.volume, issue=pma.issue, first_page=pma.first_page)
+    registry.close()
 
     if verify:
         verify_pdf_url(url, request_timeout=request_timeout, max_redirects=max_redirects)
@@ -425,9 +431,8 @@ def the_vip_nonstandard_shake(pma, verify=True, request_timeout=10, max_redirect
     return url
 
 
-def the_pii_polka(pma, verify=True, request_timeout=10, max_redirects=3):
-    '''Dance of the miscellaneous journals that use a PII in their URL construction
-        in their URL construction.
+def the_pii_prance(pma, verify=True, request_timeout=10, max_redirects=3):
+    '''Dance of journals that use Publisher Item Identifier (PII) in URL construction.
 
          :param: pma (PubMedArticle object)
          :param: verify (bool) [default: True]
@@ -437,19 +442,54 @@ def the_pii_polka(pma, verify=True, request_timeout=10, max_redirects=3):
          :raises: AccessDenied, NoPDFLink
     '''
     jrnl = standardize_journal_name(pma.journal)
-    if pma.pii:
-        url = simple_formats_pii[jrnl].format(a=pma)
-    else:
-        raise NoPDFLink('MISSING: pii missing from PubMedArticle XML (pii format)')
-
-    if url:
-        res = unified_uri_get(url, timeout=request_timeout, allow_redirects=True, max_redirects=max_redirects)
-        if res.text.find('Access Denial') > -1:
-            raise AccessDenied('DENIED: Access Denied by ScienceDirect (%s)' % url)
+    
+    registry = JournalRegistry()
+    journal_params = registry.get_journal_params(jrnl)
+    template = journal_params['template']
+    url = template.format(a=pma)
+    registry.close()
 
     if verify:
         verify_pdf_url(url, request_timeout=request_timeout, max_redirects=max_redirects)
     return url
+
+
+def the_pii_shuffle(pma, verify=True, request_timeout=10, max_redirects=3):
+    '''Dance of Elsevier journals that use Publisher Item Identifier (PII) in URL construction.
+
+         :param: pma (PubMedArticle object)
+         :param: verify (bool) [default: True]
+         :param: request_timeout (int) [default: 10]
+         :param: max_redirects (int) [default: 3]
+         :return: url (string)
+         :raises: AccessDenied, NoPDFLink
+    '''
+    jrnl = standardize_journal_name(pma.journal)
+    
+    registry = JournalRegistry()
+    journal_params = registry.get_journal_params(jrnl)
+    template = journal_params['template']
+    url = template.format(a=pma)
+    registry.close()
+
+    if verify:
+        verify_pdf_url(url, request_timeout=request_timeout, max_redirects=max_redirects)
+    return url
+
+
+def the_pii_polka(pma, verify=True, request_timeout=10, max_redirects=3):
+    '''Legacy PII dance function - redirects to the_pii_prance.
+    
+    This function is kept for backward compatibility but now uses the registry system.
+
+         :param: pma (PubMedArticle object)
+         :param: verify (bool) [default: True]
+         :param: request_timeout (int) [default: 10]
+         :param: max_redirects (int) [default: 3]
+         :return: url (string)
+         :raises: AccessDenied, NoPDFLink
+    '''
+    return the_pii_prance(pma, verify=verify, request_timeout=request_timeout, max_redirects=max_redirects)
 
 
 def the_pmc_twist(pma, verify=True, use_nih=False, request_timeout=10, max_redirects=3):

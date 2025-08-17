@@ -18,7 +18,6 @@ from ..cache_utils import get_cache_path, SQLiteCache, datetime_to_timestamp
 
 from .logic import find_article_from_pma
 from .dances import the_sciencedirect_disco, the_doi_2step, the_wolterskluwer_volta
-from .journals import SUPPORTED_JOURNALS
 
 log = logging.getLogger('metapub.findit')
 

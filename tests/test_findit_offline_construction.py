@@ -42,21 +42,28 @@ class TestOfflineURLConstruction(unittest.TestCase):
     def test_vip_url_construction_offline(self):
         """Test that VIP URLs (volume-issue-page) can be constructed offline."""
         from metapub.findit.dances import the_vip_shake
-        from metapub.findit.journals.misc_vip import vip_journals
+        from metapub.findit.registry import JournalRegistry
         
-        # Should work without network if journal is in VIP registry
-        if "Nature" in vip_journals:
-            # Test with verify=False (offline mode)
-            with patch('metapub.findit.dances.verify_pdf_url') as mock_verify:
-                url = the_vip_shake(self.mock_pma_vip, verify=False)
-                
-                # Should construct URL without calling verify
-                mock_verify.assert_not_called()
-                self.assertIsNotNone(url)
-                self.assertTrue(url.startswith('http'))
-                self.assertIn(self.mock_pma_vip.volume, url)
-                self.assertIn(self.mock_pma_vip.issue, url)
-                self.assertIn(self.mock_pma_vip.first_page, url)
+        # Check if journal is in registry
+        registry = JournalRegistry()
+        try:
+            publisher_info = registry.get_publisher_for_journal("J Biol Chem")
+            if publisher_info:
+                # Test with verify=False (offline mode)  
+                # Update the test PMA to use a journal we know is in the registry
+                self.mock_pma_vip.journal = "J Biol Chem"
+                with patch('metapub.findit.dances.verify_pdf_url') as mock_verify:
+                    url = the_vip_shake(self.mock_pma_vip, verify=False)
+                    
+                    # Should construct URL without calling verify
+                    mock_verify.assert_not_called()
+                    self.assertIsNotNone(url)
+                    self.assertTrue(url.startswith('http'))
+                    self.assertIn(self.mock_pma_vip.volume, url)
+                    self.assertIn(self.mock_pma_vip.issue, url)
+                    self.assertIn(self.mock_pma_vip.first_page, url)
+        finally:
+            registry.close()
 
     def test_bmc_url_construction_offline(self):
         """Test that BMC URLs (DOI-based) can be constructed offline."""

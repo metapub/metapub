@@ -9,8 +9,7 @@ from ..config import DEFAULT_CACHE_DIR
 from .dances import *
 from .registry import JournalRegistry, standardize_journal_name
 from .handlers import RegistryBackedLookupSystem
-from .journals import (simple_formats_pii, simple_formats_pmid,
-                      vip_journals, vip_journals_nonstandard)
+from .journals import simple_formats_pmid
 
 log = logging.getLogger('metapub.findit.logic')
 
@@ -135,30 +134,12 @@ def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None,
         except MetaPubError as error:
             reason = str(error)
 
-    # === IDENTIFIER-BASED LISTS === #
-    # These are still handled by the old system for now
+    # === PMID-BASED LOOKUPS === #
+    # Still use simple_formats_pmid for journals that can be accessed directly via PMID
 
-    if jrnl in simple_formats_pii.keys():
-        try:
-            url = the_pii_polka(pma, verify, request_timeout, max_redirects)
-        except MetaPubError as error:
-            reason = str(error)
-
-    elif jrnl in simple_formats_pmid.keys():
+    if jrnl in simple_formats_pmid.keys():
         try:
             url = the_pmid_pogo(pma, verify, request_timeout, max_redirects)
-        except MetaPubError as error:
-            reason = str(error)
-
-    elif jrnl in vip_journals.keys():
-        try:
-            url = the_vip_shake(pma, verify, request_timeout, max_redirects)
-        except MetaPubError as error:
-            reason = str(error)
-
-    elif jrnl in vip_journals_nonstandard.keys():
-        try:
-            url = the_vip_nonstandard_shake(pma, verify, request_timeout, max_redirects)
         except MetaPubError as error:
             reason = str(error)
 
@@ -178,23 +159,16 @@ def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None,
     if url:
         return (url, reason)
 
-    # === NEW REGISTRY-BASED LOOKUP === #
-    # This replaces the old PUBMED_SWITCHBOARD lookup
+    # === REGISTRY-BASED LOOKUP === #
+    lookup_system = _get_lookup_system(cachedir=cachedir)
+    registry_url, registry_reason = lookup_system.find_pdf_url(pma, verify=verify, 
+                                                              request_timeout=request_timeout, 
+                                                              max_redirects=max_redirects)
 
-    try:
-        lookup_system = _get_lookup_system(cachedir=cachedir)
-        registry_url, registry_reason = lookup_system.find_pdf_url(pma, verify=verify, 
-                                                                  request_timeout=request_timeout, 
-                                                                  max_redirects=max_redirects)
-
-        if registry_url:
-            return (registry_url, registry_reason)
-        elif registry_reason:
-            reason = registry_reason
-
-    except Exception as error:
-        log.error("Registry lookup failed for journal '%s': %s", jrnl, error)
-        reason = f'REGISTRY_ERROR: {error}'
+    if registry_url:
+        return (registry_url, registry_reason)
+    elif registry_reason:
+        reason = registry_reason
 
     # === FALLBACK CHECKS === #
 

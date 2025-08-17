@@ -79,6 +79,7 @@ class TestAPADanceFunction:
             def __init__(self):
                 self.journal = 'Nature'  # Not an APA journal
                 self.doi = '10.1038/nature12345'
+                self.pmid = 'mock_pmid'
 
         fake_article = MockArticle()
 
@@ -94,6 +95,7 @@ class TestAPADanceFunction:
             def __init__(self):
                 self.journal = 'Am Psychol'
                 self.doi = '10.1016/j.example.2024.01.001'  # Not an APA DOI (10.1037)
+                self.pmid = 'mock_pmid'
 
         fake_article = MockArticle()
 

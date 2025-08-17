@@ -1,0 +1,5 @@
+# Small test set for MeSH collection verification
+# These PMIDs should have rich MeSH data
+32989720
+33346729
+32870612

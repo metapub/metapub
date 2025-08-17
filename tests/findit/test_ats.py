@@ -155,6 +155,7 @@ class TestATSConfiguration:
         mock_pma = Mock(spec=PubMedArticle)
         mock_pma.doi = "10.1165/rcmb.2022-0208TR"
         mock_pma.journal = "Am J Respir Cell Mol Biol"  # Required by the_doi_slide
+        mock_pma.pmid = "mock_pmid"  # Required by the_doi_slide
         
         # Should raise exception due to verification failure
         with pytest.raises(Exception, match="403 Forbidden"):

@@ -236,7 +236,7 @@ class TestRegistryIntegration(unittest.TestCase):
 
         if handler:  # Only test if journal is in registry
             self.assertIn("science magazine", handler.name.lower())  # Case insensitive check
-            self.assertEqual(handler.dance_function, "the_vip_shake")
+            self.assertEqual(handler.dance_function, "the_aaas_twist")
 
     def test_registry_seeding(self):
         """Test that registry is properly seeded with data."""

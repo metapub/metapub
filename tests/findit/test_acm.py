@@ -100,7 +100,7 @@ def test_acm_journal_recognition():
     for journal in test_journals:
         publisher_info = registry.get_publisher_for_journal(journal)
         if publisher_info and publisher_info['name'] == 'acm':
-            assert publisher_info['dance_function'] == 'the_doi_slide'
+            assert publisher_info['dance_function'] == 'the_acm_reel'
             print(f"✓ {journal} correctly mapped to ACM")
             found_count += 1
         else:

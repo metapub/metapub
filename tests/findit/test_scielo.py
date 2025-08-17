@@ -219,8 +219,9 @@ class TestScieloDance(BaseDanceTest):
         mock_response.content = b'<html><head></head><body></body></html>'
         mock_get.return_value = mock_response
         
-        # Mock etree.fromstring to raise an exception
-        mock_etree.side_effect = Exception("XML parsing failed")
+        # Mock etree.fromstring to raise an XML parsing exception
+        from lxml import etree
+        mock_etree.side_effect = etree.XMLSyntaxError("XML parsing failed", None, 0, 0)
 
         pma = self.fetch.article_by_pmid('23657305')
         

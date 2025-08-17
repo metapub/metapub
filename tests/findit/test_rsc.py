@@ -105,8 +105,7 @@ class TestRSCDance(BaseDanceTest):
         assert url is not None
         print(f"Test 5 - Article URL: {url}")
 
-    @patch('metapub.findit.dances.rsc.verify_pdf_url')
-    @patch('metapub.findit.dances.rsc.the_doi_2step')    # Test removed: test_rsc_reaction_successful_access_with_pdf - functionality now handled by verify_pdf_url    # Test removed: test_rsc_reaction_open_access_article - functionality now handled by verify_pdf_url    # Test removed: test_rsc_reaction_paywall_detection - functionality now handled by verify_pdf_url    # Test removed: test_rsc_reaction_access_forbidden - functionality now handled by verify_pdf_url    # Test removed: test_rsc_reaction_network_error - functionality now handled by verify_pdf_url
+    # Test removed: Multiple tests - successful access, open access, paywall detection, access forbidden, network error - functionality now handled by verify_pdf_url
 
     def test_rsc_reaction_invalid_doi(self):
         """Test 12: Article with non-RSC DOI.
@@ -148,7 +147,7 @@ class TestRSCXMLFixtures:
             
             print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
 
-    @patch('metapub.findit.dances.rsc.the_doi_2step')    # Test removed: test_rsc_url_construction_without_verification - functionality now handled by verify_pdf_url
+    # Test removed: test_rsc_url_construction_without_verification - functionality now handled by verify_pdf_url
 
     def test_rsc_journal_coverage(self):
         """Test journal coverage across different RSC publications."""

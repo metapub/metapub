@@ -89,8 +89,7 @@ class TestBrillDance(BaseDanceTest):
         assert url is not None
         print(f"Test 4 - Article URL: {url}")
 
-    @patch('metapub.findit.dances.brill.the_doi_2step')
-    @patch('metapub.findit.dances.brill.unified_uri_get')    # Test removed: test_brill_bridge_successful_access_with_pdf - functionality now handled by verify_pdf_url    # Test removed: test_brill_bridge_paywall_detection - functionality now handled by verify_pdf_url    # Test removed: test_brill_bridge_access_forbidden - functionality now handled by verify_pdf_url    # Test removed: test_brill_bridge_network_error - functionality now handled by verify_pdf_url
+    # Test removed: Multiple tests - successful access, paywall detection, access forbidden, network error - functionality now handled by verify_pdf_url
 
     def test_brill_bridge_invalid_doi(self):
         """Test 11: Article with non-Brill DOI.
@@ -165,7 +164,7 @@ class TestBrillXMLFixtures:
 
             print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
 
-    @patch('metapub.findit.dances.brill.unified_uri_get')    # Test removed: test_brill_url_construction_without_verification - functionality now handled by verify_pdf_url    # Test removed: test_brill_url_construction_with_mocked_verification - functionality now handled by verify_pdf_url    # Test removed: test_brill_paywall_handling - functionality now handled by verify_pdf_url
+    # Test removed: Multiple tests - URL construction and paywall handling - functionality now handled by verify_pdf_url
 
     def test_brill_journal_coverage(self):
         """Test journal coverage across different Brill publications."""

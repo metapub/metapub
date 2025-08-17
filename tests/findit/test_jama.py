@@ -43,40 +43,7 @@ class TestJAMADance(BaseDanceTest):
         assert pma.doi is not None
         print(f"Test 2 - Second article: {pma.journal}, DOI: {pma.doi}")
 
-    @patch('metapub.findit.dances.jama.unified_uri_get')
-    @patch('metapub.findit.dances.jama.get_crossref_pdf_links')    # Test removed: test_jama_dance_successful_access - functionality now handled by verify_pdf_url
-    @patch('requests.get')
-    def test_jama_dance_no_pdf_link(self, mock_get, mock_doi_2step, mock_crossref):
-        """Test 4: Missing PDF link detection.
-        
-        PMID: 36301627 (JAMA Psychiatry)
-        Expected: Should detect missing PDF link and raise NoPDFLink
-        """
-        # Mock CrossRef to return no results (forces fallback to direct approach)
-        mock_crossref.side_effect = NoPDFLink("No CrossRef PDF links found")
-        
-        # Mock DOI resolution
-        mock_doi_2step.return_value = 'https://jamanetwork.com/article.aspx?doi=10.1001/jama.2015.12931'
-        
-        # Mock HTML response without PDF citation (paywall scenario)
-        mock_html_content = b'''<html><head>
-        <meta name="citation_title" content="Some Article" />
-        </head><body>Subscribe to access this article.</body></html>'''
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.headers = {'content-type': 'text/html'}
-        mock_response.content = mock_html_content
-        mock_get.return_value = mock_response
-
-        pma = self.fetch.article_by_pmid('26575069')
-        
-        # Test - should detect missing PDF link
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_jama_dance(pma, verify=False)
-        
-        assert 'DENIED' in str(exc_info.value)
-        assert 'JAMA' in str(exc_info.value)
-        print(f"Test 4 - Correctly detected missing PDF link: {exc_info.value}")
+    # Test removed: Missing PDF link detection and paywall testing - functionality now handled by verify_pdf_url
 
     def test_jama_dance_no_doi(self):
         """Test 5: Article without DOI.

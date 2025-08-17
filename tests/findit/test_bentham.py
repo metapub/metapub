@@ -11,7 +11,7 @@ from .common import BaseDanceTest
 from tests.fixtures import load_pmid_xml, BENTHAM_EVIDENCE_PMIDS
 from metapub import PubMedFetcher
 from metapub.findit.dances import the_eureka_frug
-from metapub.exceptions import AccessDenied, NoPDFLink
+from metapub.exceptions import AccessDenied, NoPDFLink, BadDOI
 
 
 class TestBenthamEurekaSelect(BaseDanceTest):
@@ -94,7 +94,7 @@ class TestBenthamEurekaSelect(BaseDanceTest):
         Expected: Should raise TXERROR when DOI resolution fails
         """
         # Mock DOI resolution failure
-        mock_doi_step.side_effect = NoPDFLink('DOI resolution failed')
+        mock_doi_step.side_effect = BadDOI('DOI resolution failed')
         
         pma = self.fetch.article_by_pmid('38318823')
         

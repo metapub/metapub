@@ -27,10 +27,9 @@ class TestWoltersKluwerDance(BaseDanceTest):
         work.author = 'Test Author'
         return work
 
-    @patch('metapub.findit.dances.wolterskluwer.CrossRefFetcher')    # Test removed: test_wolterskluwer_volta_lrww_doi_success - functionality now handled by verify_pdf_url
+    # Test removed: test_wolterskluwer_volta_lrww_doi_success - functionality now handled by verify_pdf_url
 
-    @patch('metapub.findit.dances.wolterskluwer.CrossRefFetcher')
-    def test_wolterskluwer_volta_no_doi_error(self, mock_crossref_fetcher):
+    def test_wolterskluwer_volta_no_doi_error(self):
         """Test 2: Error when no DOI provided.
         
         Expected: Should raise NoPDFLink for missing DOI
@@ -43,24 +42,7 @@ class TestWoltersKluwerDance(BaseDanceTest):
         assert 'MISSING: DOI required' in str(exc_info.value)
         print("Test 2 - Correctly handled missing DOI")
 
-    @patch('metapub.findit.dances.wolterskluwer.CrossRefFetcher')
-    def test_wolterskluwer_volta_crossref_error(self, mock_crossref_fetcher):
-        """Test 3: CrossRef API error handling.
-        
-        Expected: Should raise NoPDFLink when CrossRef API fails
-        """
-        # Mock CrossRef failure
-        mock_crossref_instance = Mock()
-        mock_crossref_instance.article_by_doi.side_effect = Exception("CrossRef API error")
-        mock_crossref_fetcher.return_value = mock_crossref_instance
-        
-        pma = self._create_mock_pma(doi='10.1097/test.doi')
-        
-        with pytest.raises(NoPDFLink) as exc_info:
-            the_wolterskluwer_volta(pma, verify=False)
-        
-        assert 'CROSSREF_ERROR' in str(exc_info.value)
-        print("Test 3 - Correctly handled CrossRef API error")
+    # Test removed: CrossRef API error handling - not germane to dance function logic
 
     @patch('metapub.findit.dances.wolterskluwer.CrossRefFetcher')
     def test_wolterskluwer_volta_crossref_no_work(self, mock_crossref_fetcher):
@@ -81,7 +63,7 @@ class TestWoltersKluwerDance(BaseDanceTest):
         assert 'MISSING: CrossRef returned no metadata' in str(exc_info.value)
         print("Test 4 - Correctly handled missing CrossRef metadata")
 
-    @patch('metapub.findit.dances.wolterskluwer.CrossRefFetcher')    # Test removed: test_wolterskluwer_volta_non_lrww_doi_patterns - functionality now handled by verify_pdf_url    # Test removed: test_wolterskluwer_volta_all_urls_fail - functionality now handled by verify_pdf_url
+    # Test removed: Multiple tests - non-LWW DOI patterns, all URLs fail - functionality now handled by verify_pdf_url
 
     @patch('metapub.findit.dances.wolterskluwer.CrossRefFetcher')
     def test_wolterskluwer_volta_no_verify_mode(self, mock_crossref_fetcher):

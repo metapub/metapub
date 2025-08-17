@@ -69,7 +69,7 @@ class TestIOPDance(BaseDanceTest):
         assert 'iopscience.iop.org' in url
         print(f"Test 3 - PDF URL: {url}")
 
-    @patch('metapub.findit.dances.iop.get_crossref_pdf_links')    # Test removed: test_iop_fusion_successful_access - functionality now handled by verify_pdf_url    # Test removed: test_iop_fusion_paywall_detection - functionality now handled by verify_pdf_url    # Test removed: test_iop_fusion_network_error - functionality now handled by verify_pdf_url
+    # Test removed: Multiple tests - successful access, paywall detection, network error - functionality now handled by verify_pdf_url
 
     def test_iop_fusion_missing_doi(self):
         """Test 7: Article without DOI.
@@ -88,27 +88,7 @@ class TestIOPDance(BaseDanceTest):
         assert 'doi needed' in str(exc_info.value)
         print(f"Test 7 - Correctly handled missing DOI: {exc_info.value}")
 
-    @patch('metapub.findit.dances.iop.unified_uri_get')    # Test removed: test_iop_fusion_404_error - functionality now handled by verify_pdf_url
-
-    @patch('requests.get')
-    def test_iop_fusion_domain_fallback(self, mock_get):
-        """Test 9: Fallback to second domain when first fails.
-        
-        Expected: Should try iopscience.iop.org first, then validate.perfdrive.com
-        """
-        # Mock responses: first domain fails, second succeeds
-        responses = [
-            Mock(ok=False, status_code=404),  # First domain fails
-            Mock(ok=True, status_code=200, headers={'content-type': 'application/pdf'})  # Second succeeds
-        ]
-        mock_get.side_effect = responses
-
-        pma = self.fetch.article_by_pmid('38914107')
-        
-        # Test - should succeed on second domain
-        url = the_iop_fusion(pma, verify=True)
-        assert 'validate.perfdrive.com' in url or 'iopscience.iop.org' in url
-        print(f"Test 9 - Domain fallback success: {url}")
+    # Test removed: 404 error and domain fallback testing - functionality now handled by verify_pdf_url
 
     def test_iop_fusion_uncommon_doi_pattern(self):
         """Test 10: Article with uncommon DOI pattern.

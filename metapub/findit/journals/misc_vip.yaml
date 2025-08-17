@@ -61,10 +61,6 @@ journals:
       host: pediatrics.aappublications.org
     Plant Cell:
       host: www.plantcell.org
-    Proc Natl Acad Sci USA:
-      host: pnas.org
-    Science:
-      host: sciencemag.org
   simple_list:
     - Am J Clin Pathol
     - Anticancer Res
@@ -92,8 +88,6 @@ journals:
     - Neurology
     - Pediatrics
     - Plant Cell
-    - Proc Natl Acad Sci USA
-    - Science
 metadata:
   evidence_date: '2025-08-16'
   verification_notes: Migrated from misc_vip.py - remaining ungrouped journals

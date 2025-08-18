@@ -1,4 +1,0 @@
-# ClinVar Citations Test
-# Sample PMIDs for testing filename-based list creation
-32989720
-33346729

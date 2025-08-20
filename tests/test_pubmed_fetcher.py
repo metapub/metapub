@@ -5,6 +5,8 @@ from metapub import PubMedFetcher
 from metapub.cache_utils import cleanup_dir
 from metapub.pubmedfetcher import parse_related_pmids_result
 from metapub.pubmedcentral import *
+from metapub.exceptions import InvalidPMID
+from metapub.pubmedarticle import PubMedArticle
 from tests.common import TEST_CACHEDIR
 
 
@@ -57,4 +59,40 @@ class TestPubmedFetcher(unittest.TestCase):
         for key in resd.keys():
             assert key in expected_keys
         assert len(resd['citedin']) == 6
+
+    def test_invalid_pmid_raises_invalid_pmid_exception(self):
+        """Test that InvalidPMID exceptions bubble up correctly instead of being wrapped."""
+        # Create XML response that will cause PubMedArticle to have pmid=None
+        # This simulates what happens when NCBI returns empty or malformed results for invalid PMIDs
+        invalid_xml = '''<?xml version="1.0"?>
+<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2015//EN" 
+    "http://www.ncbi.nlm.nih.gov/corehtml/query/DTD/pubmed_150101.dtd">
+<PubmedArticleSet>
+    <!-- Empty article set - no PMID found -->
+</PubmedArticleSet>'''
+        
+        # Test that PubMedArticle creation with empty XML results in pmid=None
+        pma = PubMedArticle(invalid_xml)
+        self.assertIsNone(pma.pmid)
+        
+        # Mock the efetch method to return our invalid XML
+        original_efetch = self.fetch.qs.efetch
+        
+        def mock_efetch(args):
+            return invalid_xml.encode('utf-8')  # efetch returns bytes
+            
+        self.fetch.qs.efetch = mock_efetch
+        
+        try:
+            # This should raise InvalidPMID, not NCBIServiceError or any other exception
+            with self.assertRaises(InvalidPMID) as cm:
+                self.fetch.article_by_pmid('26350465')  # Using the PMID from the original error
+                
+            # Verify the exception message contains the PMID and expected text
+            self.assertIn('26350465', str(cm.exception))
+            self.assertIn('not found', str(cm.exception))
+            
+        finally:
+            # Restore the original method
+            self.fetch.qs.efetch = original_efetch
 

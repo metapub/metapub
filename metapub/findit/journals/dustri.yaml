@@ -1,0 +1,16 @@
+schema_version: '1.0'
+publisher:
+  name: Dustri
+  id: dustri
+  description: ''
+url_patterns: {}
+dance_function: the_dustri_polka
+journals:
+  simple_list:
+  - Clin Nephrol
+  - Int J Clin Pharmacol Ther
+  - Clin Neuropathol
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

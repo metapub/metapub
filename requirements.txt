@@ -11,3 +11,4 @@ docopt
 six
 coloredlogs
 python-Levenshtein
+brotli

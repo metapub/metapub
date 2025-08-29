@@ -1,0 +1,328 @@
+"""Test fixtures and utilities."""
+
+from metapub.pubmedarticle import PubMedArticle
+import os
+
+def load_pmid_xml(pmid):
+    """Load PubMedArticle from saved XML fixture.
+    
+    :param pmid: PMID string
+    :return: PubMedArticle object
+    """
+    xml_file = os.path.join(os.path.dirname(__file__), 'pmid_xml', f'{pmid}.xml')
+    if not os.path.exists(xml_file):
+        raise FileNotFoundError(f'XML fixture not found for PMID {pmid}: {xml_file}')
+    
+    with open(xml_file, 'r', encoding='utf-8') as f:
+        xml_data = f.read()
+    
+    return PubMedArticle(xml_data)
+
+
+# Evidence PMIDs with metadata for reference
+EVIDENCE_PMIDS = {
+    # AAAS (Science journals)
+    '35108047': {'doi': '10.1126/sciadv.abl6449', 'journal': 'Sci Adv'},
+    '37552767': {'doi': '10.1126/scisignal.ade0385', 'journal': 'Sci Signal'}, 
+    '37729413': {'doi': '10.1126/sciadv.adi3902', 'journal': 'Sci Adv'},
+    '37883555': {'doi': '10.1126/science.adh8285', 'journal': 'Science'},
+    '39236155': {'doi': '10.1126/science.adn0327', 'journal': 'Science'},
+}
+
+# WorldScientific PMIDs with metadata
+WORLDSCIENTIFIC_EVIDENCE_PMIDS = {
+    '32292800': {'doi': '10.1142/S2339547819500067', 'journal': 'Technology (Singap World Sci)'},
+    '24808625': {'doi': '10.1142/S0218213013600063', 'journal': 'Int J Artif Intell Tools'},
+    '37868702': {'doi': '10.1142/s1088424623500700', 'journal': 'J Porphyr Phthalocyanines'},
+}
+
+# Taylor & Francis PMIDs with metadata
+TAYLOR_FRANCIS_EVIDENCE_PMIDS = {
+    '35067114': {'doi': '10.1080/09540121.2022.2029813', 'journal': 'AIDS Care'},
+    '38962805': {'doi': '10.1080/09540121.2024.2374185', 'journal': 'AIDS Care'},
+    '37065682': {'doi': '10.1080/09687637.2022.2055446', 'journal': 'Drugs (Abingdon Engl)'},
+    '35095222': {'doi': '10.1080/09687637.2020.1856786', 'journal': 'Drugs (Abingdon Engl)'},
+    '37008990': {'doi': '10.1080/15140326.2022.2041158', 'journal': 'J Appl Econ'},
+    '32306807': {'doi': '10.1080/00498254.2020.1755909', 'journal': 'Xenobiotica'},
+    '38738473': {'doi': '10.1080/00498254.2024.2351044', 'journal': 'Xenobiotica'},
+}
+
+# PNAS PMIDs with metadata
+PNAS_EVIDENCE_PMIDS = {
+    '38011560': {'doi': '10.1073/pnas.2305772120', 'journal': 'Proc Natl Acad Sci U S A'},
+    '38147649': {'doi': '10.1073/pnas.2308706120', 'journal': 'Proc Natl Acad Sci U S A'},
+    '37903272': {'doi': '10.1073/pnas.2308214120', 'journal': 'Proc Natl Acad Sci U S A'},
+}
+
+# APA PMIDs with metadata
+APA_EVIDENCE_PMIDS = {
+    '34843274': {'doi': '10.1037/amp0000904', 'journal': 'Am Psychol'},
+    '32437181': {'doi': '10.1037/amp0000660', 'journal': 'Am Psychol'},
+    '38546579': {'doi': '10.1037/com0000370', 'journal': 'J Comp Psychol'},
+    '32496081': {'doi': '10.1037/com0000239', 'journal': 'J Comp Psychol'},
+    '38573673': {'doi': '10.1037/prj0000611', 'journal': 'Psychiatr Rehabil J'},
+    '33856845': {'doi': '10.1037/prj0000481', 'journal': 'Psychiatr Rehabil J'},
+    '38271020': {'doi': '10.1037/rep0000539', 'journal': 'Rehabil Psychol'},
+    '33119379': {'doi': '10.1037/rep0000367', 'journal': 'Rehabil Psychol'},
+    '24349601': {'doi': '10.1037/a0030292', 'journal': 'J Neurosci Psychol Econ', 'pmc': 'PMC3858957'},
+}
+
+# AJPH PMIDs with metadata
+AJPH_EVIDENCE_PMIDS = {
+    '34709863': {'doi': '10.2105/AJPH.2021.306505', 'journal': 'Am J Public Health'},
+    '35679569': {'doi': '10.2105/AJPH.2022.306873', 'journal': 'Am J Public Health'},
+    '34529508': {'doi': '10.2105/AJPH.2021.306453', 'journal': 'Am J Public Health'},
+}
+
+# APS (American Physiological Society) PMIDs with metadata
+APS_EVIDENCE_PMIDS = {
+    '34995163': {'doi': '10.1152/ajpheart.00590.2021', 'journal': 'Am J Physiol Heart Circ Physiol'},
+    '36367692': {'doi': '10.1152/ajpheart.00477.2022', 'journal': 'Am J Physiol Heart Circ Physiol'},
+    '36717101': {'doi': '10.1152/ajpcell.00544.2022', 'journal': 'Am J Physiol Cell Physiol'},
+}
+
+# De Gruyter PMIDs with metadata (true De Gruyter with 10.1515 DOI prefix)
+DEGRUYTER_EVIDENCE_PMIDS = {
+    '38534005': {'doi': '10.1515/cclm-2024-0070', 'journal': 'Clin Chem Lab Med'},
+    '36318760': {'doi': '10.1515/jpem-2022-0309', 'journal': 'J Pediatr Endocrinol Metab'},
+    '38716869': {'doi': '10.1515/hmbci-2022-0093', 'journal': 'Horm Mol Biol Clin Investig'},
+}
+
+# RSC (Royal Society of Chemistry) PMIDs with metadata
+RSC_EVIDENCE_PMIDS = {
+    '32935693': {'doi': '10.1039/d0np00027b', 'journal': 'Nat Prod Rep', 'pmc': 'PMC7864896'},
+    '38170905': {'doi': '10.1039/d3np00037k', 'journal': 'Nat Prod Rep', 'pmc': 'PMC11043010'},
+    '31712796': {'doi': '10.1039/c9em00386j', 'journal': 'Environ Sci Process Impacts'},
+    '34817495': {'doi': '10.1039/d1em00296a', 'journal': 'Environ Sci Process Impacts'},
+    '35699396': {'doi': '10.1039/d1em00553g', 'journal': 'Environ Sci Process Impacts'},
+    '37787043': {'doi': '10.1039/d3em00224a', 'journal': 'Environ Sci Process Impacts'},
+    '37655634': {'doi': '10.1039/d3em00235g', 'journal': 'Environ Sci Process Impacts'},
+    '35485580': {'doi': '10.1039/d2em00039c', 'journal': 'Environ Sci Process Impacts'},
+}
+
+# J-STAGE (Japan Science and Technology Information Aggregator, Electronic) PMIDs with metadata
+JSTAGE_EVIDENCE_PMIDS = {
+    '31588070': {'doi': '10.5761/atcs.ra.19-00158', 'journal': 'Ann Thorac Cardiovasc Surg', 'pmc': 'PMC7184035'},
+    '34334504': {'doi': '10.5761/atcs.ra.21-00040', 'journal': 'Ann Thorac Cardiovasc Surg', 'pmc': 'PMC8915931'},
+    '38028269': {'doi': '10.33160/yam.2023.11.001', 'journal': 'Yonago Acta Med', 'pmc': 'PMC10674056'},
+}
+
+# ASM (American Society for Microbiology) PMIDs with metadata
+ASM_EVIDENCE_PMIDS = {
+    '35856662': {'doi': '10.1128/aac.00216-22', 'journal': 'Antimicrob Agents Chemother', 'pmc': 'PMC9380527'},
+    '39382274': {'doi': '10.1128/aac.00924-24', 'journal': 'Antimicrob Agents Chemother', 'pmc': 'PMC11539232'},
+    '36598232': {'doi': '10.1128/jb.00337-22', 'journal': 'J Bacteriol'},
+    '38591913': {'doi': '10.1128/jb.00024-24', 'journal': 'J Bacteriol', 'pmc': 'PMC11112993'},
+    '38329942': {'doi': '10.1128/msystems.01299-23', 'journal': 'mSystems', 'pmc': 'PMC10949424'},
+}
+
+# Wiley PMIDs with metadata
+WILEY_EVIDENCE_PMIDS = {
+    '39077977': {'doi': '10.1002/acr2.11726', 'journal': 'ACR Open Rheumatol'},
+    '35726897': {'doi': '10.1002/acr2.11476', 'journal': 'ACR Open Rheumatol'},
+    '33474827': {'doi': '10.1111/1759-7714.13823', 'journal': 'Thorac Cancer'},
+    '36247735': {'doi': '10.1111/jofi.13173', 'journal': 'J Finance'},
+    '35573891': {'doi': '10.1155/2021/5792975', 'journal': 'Wirel Commun Mob Comput'},
+}
+
+# Thieme Medical Publishers PMIDs with metadata
+THIEME_EVIDENCE_PMIDS = {
+    '38048813': {'doi': '10.1055/a-2189-0166', 'journal': 'Psychother Psychosom Med Psychol'},
+    '25364329': {'doi': '10.1055/s-0034-1387804', 'journal': 'Evid Based Spine Care J', 'pmc': 'PMC4212699'},
+    '219391': {'doi': '10.1055/s-0028-1085314', 'journal': 'Neuropadiatrie'},
+    '36644330': {'doi': '10.1055/s-0040-1721489', 'journal': 'ACI open', 'pmc': 'PMC9838214'},
+    '32894878': {'doi': '10.1055/s-0040-1715580', 'journal': 'Methods Inf Med'},
+}
+
+# IOP Publishing (Institute of Physics) PMIDs with metadata
+# IOP PMIDs with metadata (from verified_pmids)
+IOP_EVIDENCE_PMIDS = {
+    '36096127': {'doi': '10.1088/1361-6560/ac9174', 'journal': 'Phys Med Biol', 'pmc': 'PMC10151073'},
+    '39159658': {'doi': '10.1088/1361-6560/ad70f0', 'journal': 'Phys Med Biol'},
+    '37167981': {'doi': '10.1088/1361-6560/acd48e', 'journal': 'Phys Med Biol'},
+}
+
+# ASME (American Society of Mechanical Engineers) PMIDs with metadata
+ASME_EVIDENCE_PMIDS = {
+    '38449742': {'doi': '10.1115/1.4063271', 'journal': 'J Appl Mech', 'pmc': 'PMC10913807'},
+    '38913074': {'doi': '10.1115/1.4065813', 'journal': 'J Biomech Eng', 'pmc': 'PMC11500806'},
+    '35833154': {'doi': '10.1115/1.4053197', 'journal': 'J Heat Transfer', 'pmc': 'PMC8823200'},
+}
+
+# OAText PMIDs with metadata (minimal set due to limited PubMed indexing)
+# OAText PMIDs with metadata (from verified_pmids)
+OATEXT_EVIDENCE_PMIDS = {
+    '32934823': {'doi': '10.15761/JSIN.1000229', 'journal': 'J Syst Integr Neurosci', 'pmc': 'PMC7489288'},
+    '32934824': {'doi': '10.15761/JSIN.1000228', 'journal': 'J Syst Integr Neurosci', 'pmc': 'PMC7489293'},
+}
+
+# Hilaris Publisher PMIDs with metadata
+HILARIS_EVIDENCE_PMIDS = {
+    '34094707': {'doi': '10.4172/2161-0525.1000551', 'journal': 'J Environ Anal Toxicol', 'pmc': 'PMC8176869'},
+    '26568896': {'doi': '10.4172/2161-0525.1000239', 'journal': 'J Environ Anal Toxicol', 'pmc': 'PMC4643289'},
+}
+
+# Walsh Medical Media PMIDs with metadata
+WALSHMEDIA_EVIDENCE_PMIDS = {
+    '29226023': {'doi': '10.4172/2161-1122.1000448', 'journal': 'Dentistry (Sunnyvale)', 'pmc': 'PMC5722253'},
+}
+
+
+# IngentaConnect PMIDs with metadata
+INGENTACONNECT_EVIDENCE_PMIDS = {
+    '38884108': {'doi': '10.5129/001041522x16222193902161', 'journal': 'Comp Polit'},
+    '34707797': {'doi': '10.21300/21.4.2021.7', 'journal': 'Technol Innov'},
+}
+
+# Scielo PMIDs with metadata  
+# Scielo PMIDs with metadata (from verified_pmids)
+SCIELO_EVIDENCE_PMIDS = {
+    '33889184': {'doi': '10.1590/1678-9199-JVATITD-2020-0147', 'journal': 'J Venom Anim Toxins Incl Trop Dis', 'pmc': 'PMC8040910'},
+    '35830032': {'doi': '10.1590/S0004-2803.202202000-40', 'journal': 'Arq Gastroenterol'},
+    '32490903': {'doi': '10.1590/s0004-2803.202000000-27', 'journal': 'Arq Gastroenterol'},
+}
+
+# Inderscience PMIDs with metadata
+INDERSCIENCE_EVIDENCE_PMIDS = {
+    '24084238': {'doi': '10.1504/IJBRA.2013.056620', 'journal': 'Int J Bioinform Res Appl'},
+    '24794070': {'doi': '10.1504/IJBRA.2014.060762', 'journal': 'Int J Bioinform Res Appl'},
+    '24449692': {'doi': '10.1504/IJBRA.2014.058777', 'journal': 'Int J Bioinform Res Appl'},
+}
+
+# Dovepress PMIDs with metadata (from verified_pmids)
+DOVEPRESS_EVIDENCE_PMIDS = {
+    '37822558': {'doi': '10.2147/AHMT.S429238', 'journal': 'Adolesc Health Med Ther', 'pmc': 'PMC10562508'},
+    '35592492': {'doi': '10.2147/AHMT.S358140', 'journal': 'Adolesc Health Med Ther', 'pmc': 'PMC9113550'},
+}
+
+# ProjectMuse PMIDs with metadata (from verified_pmids)
+PROJECTMUSE_EVIDENCE_PMIDS = {
+    '39479534': {'doi': '10.1353/bsr.2021.0008', 'journal': 'J Black Sex Relatsh'},
+    '34337106': {'doi': '10.1353/bsr.2020.0005', 'journal': 'J Black Sex Relatsh'},
+    '39364306': {'doi': '10.1353/bsr.2024.a931228', 'journal': 'J Black Sex Relatsh'},
+}
+
+# WJGNet PMIDs with metadata (from verified_pmids)
+WJGNET_EVIDENCE_PMIDS = {
+    '36187464': {'doi': '10.5527/wjn.v11.i5.139', 'journal': 'World J Nephrol', 'pmc': 'PMC9521512'},
+    '38596266': {'doi': '10.5527/wjn.v13.i1.89637', 'journal': 'World J Nephrol', 'pmc': 'PMC11000037'},
+}
+
+# JCI PMIDs with metadata (from verified_pmids)
+JCI_EVIDENCE_PMIDS = {
+    '37966116': {'doi': '10.1172/JCI170500', 'journal': 'J Clin Invest', 'pmc': 'PMC10645385'},
+    '35358095': {'doi': '10.1172/JCI154225', 'journal': 'J Clin Invest', 'pmc': 'PMC9106355'},
+}
+
+# AnnualReviews PMIDs with metadata (from verified_pmids)
+ANNUALREVIEWS_EVIDENCE_PMIDS = {
+    '35320699': {'doi': '10.1146/annurev-chembioeng-092220-030853', 'journal': 'Annu Rev Chem Biomol Eng', 'pmc': 'PMC9236656'},
+    '36917814': {'doi': '10.1146/annurev-chembioeng-101121-084508', 'journal': 'Annu Rev Chem Biomol Eng', 'pmc': 'PMC10330301'},
+    '32976730': {'doi': '10.1146/annurev-marine-032720-095144', 'journal': 'Ann Rev Mar Sci'},
+}
+
+# Bentham/EurekaSelect PMIDs with metadata (from verified_pmids)
+BENTHAM_EVIDENCE_PMIDS = {
+    '32525788': {'doi': '10.2174/1874467213666200611142438', 'journal': 'Curr Mol Pharmacol', 'pmc': 'PMC7728656'},
+    '36635930': {'doi': '10.2174/1872208317666230111105223', 'journal': 'Recent Pat Biotechnol', 'pmc': 'PMC10242760'},
+    '33568043': {'doi': '10.2174/1874467214666210210122628', 'journal': 'Curr Mol Pharmacol'},
+}
+
+# WoltersKluwer PMIDs with metadata (from verified_pmids)
+WOLTERSKLUWER_EVIDENCE_PMIDS = {
+    '33967209': {'doi': '10.1097/MCC.0000000000000838', 'journal': 'Curr Opin Crit Care', 'pmc': 'PMC8243821'},
+    '36727757': {'doi': '10.1097/MCC.0000000000001017', 'journal': 'Curr Opin Crit Care', 'pmc': 'PMC9994841'},
+    '31789841': {'doi': '10.1097/ACM.0000000000003093', 'journal': 'Acad Med'},
+}
+
+# BiochemSoc PMIDs with metadata (from verified_pmids)
+BIOCHEMSOC_EVIDENCE_PMIDS = {
+    '39302109': {'doi': '10.1042/BCJ20240037', 'journal': 'Biochem J', 'pmc': 'PMC11555715'},
+    '38270460': {'doi': '10.1042/BCJ20220325', 'journal': 'Biochem J', 'pmc': 'PMC10903481'},
+    '34751700': {'doi': '10.1042/BCJ20210185', 'journal': 'Biochem J'},
+}
+
+# MDPI PMIDs with metadata (from verified_pmids)
+MDPI_EVIDENCE_PMIDS = {
+    '39337530': {'doi': '10.3390/ijms251810046', 'journal': 'Int J Mol Sci', 'pmc': 'PMC11432526'},
+    '39337454': {'doi': '10.3390/ijms25189966', 'journal': 'Int J Mol Sci', 'pmc': 'PMC11432652'},
+    '39769357': {'doi': '10.3390/ijms252413596', 'journal': 'Int J Mol Sci', 'pmc': 'PMC11678738'},
+}
+
+# Inderscience PMIDs with metadata
+INDERSCIENCE_EVIDENCE_PMIDS = {
+    '24084238': {'doi': '10.1504/IJBRA.2013.056620', 'journal': 'Int J Bioinform Res Appl'},
+    '24794070': {'doi': '10.1504/IJBRA.2014.060762', 'journal': 'Int J Bioinform Res Appl'},
+    '24449692': {'doi': '10.1504/IJBRA.2014.058777', 'journal': 'Int J Bioinform Res Appl'},
+}
+
+# Dovepress PMIDs with metadata (from verified_pmids)
+DOVEPRESS_EVIDENCE_PMIDS = {
+    '37822558': {'doi': '10.2147/AHMT.S429238', 'journal': 'Adolesc Health Med Ther', 'pmc': 'PMC10562508'},
+    '35592492': {'doi': '10.2147/AHMT.S358140', 'journal': 'Adolesc Health Med Ther', 'pmc': 'PMC9113550'},
+}
+
+# Oxford University Press PMIDs with metadata (from verified_pmids)
+OXFORD_EVIDENCE_PMIDS = {
+    '38118002': {'doi': '10.1093/nar/gkad1193', 'journal': 'Nucleic Acids Res', 'pmc': 'PMC10954454'},
+    '35767459': {'doi': '10.1093/ajh/hpac079', 'journal': 'Am J Hypertens'},
+    '39345789': {'doi': '10.1093/jamiaopen/ooae099', 'journal': 'JAMIA Open'},
+}
+
+# Brill PMIDs with metadata (combined historical and verified_pmids)
+BRILL_EVIDENCE_PMIDS = {
+    # Historical journals (original evidence)
+    '26415349': {'doi': '10.1163/15733823-00202p03', 'journal': 'Early Sci Med'},
+    '11873782': {'doi': '10.1163/157338201x00154', 'journal': 'Early Sci Med'},
+    '11618220': {'doi': '10.1163/156853287x00032', 'journal': 'Toung Pao'},
+    '11636720': {'doi': '10.1163/156852873x00014', 'journal': 'Phronesis (Barc)'},
+    # Recent journals (from verified_pmids)
+    '38988993': {'doi': '10.1163/1568539X-bja10251', 'journal': 'Behaviour', 'pmc': 'PMC7616155'},
+    '36176722': {'doi': '10.1163/1568539x-bja10109', 'journal': 'Behaviour', 'pmc': 'PMC9518721'},
+}
+
+# IngentaConnect PMIDs with metadata (from verified_pmids)
+INGENTACONNECT_EVIDENCE_PMIDS = {
+    '38884108': {'doi': '10.5129/001041522x16222193902161', 'journal': 'Comp Polit', 'pmc': 'PMC11177781'},
+    '34707797': {'doi': '10.21300/21.4.2021.7', 'journal': 'Technol Innov', 'pmc': 'PMC8547312'},
+}
+
+# SciRP PMIDs with metadata (from verified_pmids)
+SCIRP_EVIDENCE_PMIDS = {
+    '39035045': {'doi': '10.4236/aad.2024.131002', 'journal': 'Adv Alzheimer Dis'},
+    '38873169': {'doi': '10.4236/aad.2023.123004', 'journal': 'Adv Alzheimer Dis'},
+}
+
+# Nature PMIDs with metadata (from verified_pmids)
+NATURE_EVIDENCE_PMIDS = {
+    '35354777': {'doi': '10.14309/ajg.0000000000001680', 'journal': 'Am J Gastroenterol', 'pmc': 'PMC10259184'},
+    '39626064': {'doi': '10.14309/ajg.0000000000002968', 'journal': 'Am J Gastroenterol'},
+    '38958301': {'doi': '10.14309/ajg.0000000000002857', 'journal': 'Am J Gastroenterol'},
+}
+
+# ScienceDirect PMIDs with metadata (from verified_pmids)
+SCIENCEDIRECT_EVIDENCE_PMIDS = {
+    '37652022': {'doi': '10.1016/j.ajhg.2023.08.003', 'journal': 'Am J Hum Genet', 'pmc': 'PMC10502871'},
+    '39142283': {'doi': '10.1016/j.ajhg.2024.07.013', 'journal': 'Am J Hum Genet', 'pmc': 'PMC11393667'},
+}
+
+# Mary Ann Liebert PMIDs with metadata (from verified_pmids)
+LIEBERT_EVIDENCE_PMIDS = {
+    '37424520': {'doi': '10.1089/AID.2023.0011', 'journal': 'AIDS Res Hum Retroviruses', 'pmc': 'PMC10621655'},
+    '32160763': {'doi': '10.1089/AID.2020.0058', 'journal': 'AIDS Res Hum Retroviruses'},
+    '36825522': {'doi': '10.1089/AID.2022.0062', 'journal': 'AIDS Res Hum Retroviruses'},
+}
+
+# Cambridge University Press PMIDs with metadata (from verified_pmids)
+CAMBRIDGE_EVIDENCE_PMIDS = {
+    '32051057': {'doi': '10.1017/S0954422419000301', 'journal': 'Nutr Res Rev', 'pmc': 'PMC7653990'},
+    '37905428': {'doi': '10.1017/S0954422423000240', 'journal': 'Nutr Res Rev', 'pmc': 'PMC7617046'},
+    '38356364': {'doi': '10.1017/S0954422424000088', 'journal': 'Nutr Res Rev'},
+}
+
+# Lippincott Williams & Wilkins PMIDs with metadata (from verified_pmids)
+LWW_EVIDENCE_PMIDS = {
+    '33786689': {'doi': '10.1007/s10554-021-02227-x', 'journal': 'Int J Cardiovasc Imaging', 'pmc': 'PMC8009459'},
+    '38878148': {'doi': '10.1007/s10554-024-03145-4', 'journal': 'Int J Cardiovasc Imaging', 'pmc': 'PMC11258094'},
+    '35195805': {'doi': '10.1007/s10554-022-02558-3', 'journal': 'Int J Cardiovasc Imaging'},
+}

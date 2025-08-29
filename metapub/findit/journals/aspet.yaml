@@ -1,0 +1,26 @@
+schema_version: '1.0'
+publisher:
+  name: American Society for Pharmacology
+  id: aspet
+  description: VIP format journals from American Society for Pharmacology
+  dance_function: the_vip_shake
+  pattern_type: vip
+url_patterns:
+  primary_template: http://{host}/content/{volume}/{issue}/{first_page}.full.pdf
+journals:
+  parameterized:
+    Drug Metab Dispos:
+      host: dmd.aspetjournals.org
+    J Pharmacol Exp Ther:
+      host: jpet.aspetjournals.org
+    Mol Pharmacol:
+      host: molpharm.aspetjournals.org
+  simple_list:
+  - Drug Metab Dispos
+  - J Pharmacol Exp Ther
+  - Mol Pharmacol
+metadata:
+  evidence_date: '2025-08-16'
+  verification_notes: Migrated from misc_vip.py
+  special_handling: []
+  domain: aspetjournals.org

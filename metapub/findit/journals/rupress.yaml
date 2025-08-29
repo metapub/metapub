@@ -1,0 +1,23 @@
+schema_version: '1.0'
+publisher:
+  name: Rockefeller University Press
+  id: rupress
+  description: VIP format journals from Rockefeller University Press
+  dance_function: the_vip_shake
+  pattern_type: vip
+url_patterns:
+  primary_template: http://{host}/content/{volume}/{issue}/{first_page}.full.pdf
+journals:
+  parameterized:
+    J Cell Biol:
+      host: jcb.rupress.org
+    J Exp Med:
+      host: jem.rupress.org
+  simple_list:
+  - J Cell Biol
+  - J Exp Med
+metadata:
+  evidence_date: '2025-08-16'
+  verification_notes: Migrated from misc_vip.py
+  special_handling: []
+  domain: rupress.org

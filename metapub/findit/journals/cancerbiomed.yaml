@@ -1,0 +1,20 @@
+schema_version: '1.0'
+publisher:
+  name: Cancerbiomed
+  id: cancerbiomed
+  description: 'Cancer Biology & Medicine journal data.
+
+
+    This module contains journal data for Cancer Biology & Medicine,
+
+    which is published at cancerbiomed.org.'
+url_patterns:
+  primary_template: https://www.cancerbiomed.org/content/cbm/{volume}/{issue}/{first_page}.full.pdf
+dance_function: the_vip_shake
+journals:
+  simple_list:
+  - Cancer Biol Med
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

@@ -465,6 +465,20 @@ Extra special help is requested with the following items:
 Email inquiries to the maintainer address in this package. Or just submit a pull request.
 
 
+Development
+-----------
+
+For developers working on metapub itself, the journal registry database needs to be rebuilt when making changes to the YAML configuration files. The registry is automatically rebuilt during installation, but you can also rebuild it manually using::
+
+    metapub_build_registry
+
+This command builds the SQLite registry database from the YAML publisher configuration files located in ``metapub/findit/journals_yaml/publishers/``. The command accepts optional arguments::
+
+    metapub_build_registry --output-db path/to/registry.db --yaml-dir path/to/yaml/files
+
+When working in development mode (``pip install -e .``), the registry will be automatically rebuilt to ensure the latest configuration is always available.
+
+
 About Python 2 and Python 3 Support
 -----------------------------------
 *Alert*: Metapub supports Python 3.x only from version 0.5.x onwards.

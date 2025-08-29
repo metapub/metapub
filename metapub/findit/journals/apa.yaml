@@ -1,0 +1,103 @@
+schema_version: '1.0'
+publisher:
+  name: apa
+  id: apa
+  description: ''
+url_patterns:
+  primary_template: 'https://psycnet.apa.org/fulltext/{doi}.pdf'
+dance_function: the_doi_slide
+journals:
+  simple_list:
+  - Am Psychol
+  - Behav Neurosci
+  - Can J Exp Psychol
+  - Can J Psychol
+  - Can Psychol
+  - Clin Pract Pediatr Psychol
+  - Clin Psychol
+  - Consult Psychol J
+  - Couple Family Psychol
+  - Cult Divers Ment Health
+  - Cultur Divers Ethnic Minor Psychol
+  - Decision (Wash D C)
+  - Dev Psychol
+  - Emotion
+  - Evol Behav Sci
+  - Exp Clin Psychopharmacol
+  - Fam Syst Health
+  - Health Psychol
+  - Hist Psychol
+  - J Abnorm Psychol
+  - J Appl Psychol
+  - J Appl Res Mem Cogn
+  - J Comp Psychol
+  - J Consult Clin Psychol
+  - J Couns Psychol
+  - J Divers High Educ
+  - J Educ Psychol
+  - J Exp Psychol Anim Learn Cogn
+  - J Exp Psychol Appl
+  - J Exp Psychol Gen
+  - J Exp Psychol Hum Percept Perform
+  - J Exp Psychol Learn Mem Cogn
+  - J Fam Psychol
+  - J Lat Psychol
+  - J Neurosci Psychol Econ
+  - J Occup Health Psychol
+  - J Pers Soc Psychol
+  - J Psychother Integr
+  - Law Hum Behav
+  - Motiv Sci
+  - Peace Confl
+  - Personal Disord
+  - Pract Innov (Wash D C)
+  - Prof Psychol Res Pr
+  - Psychiatr Rehabil J
+  - Psychoanal Psychol
+  - Psychol Addict Behav
+  - Psychol Aesthet Creat Arts
+  - Psychol Aging
+  - Psychol Assess
+  - Psychol Bull
+  - Psychol Conscious (Wash D C)
+  - Psychol Men Masc
+  - Psychol Methods
+  - Psychol Neurosci
+  - Psychol Pop Media Cult
+  - Psychol Rev
+  - Psychol Serv
+  - Psychol Sex Orientat Gend Divers
+  - Psychol Trauma
+  - Psychol Violence
+  - Psycholog Relig Spiritual
+  - Psychomusicology
+  - Psychosoc Rehabil J
+  - Psychotherapy
+  - Qual Psychol
+  - Rehabil Psychol
+  - Rural Ment Health
+  - Sch Psychol
+  - Sch Psychol Q
+  - Scholarsh Teach Learn Psychol
+  - Spiritual Clin Pract
+  - Sport Exerc Perform Psychol
+  - Stigma Health
+  - Train Educ Prof Psychol
+  - Transl Issues Psychol Sci
+  - Traumatology
+  - Behav Anal (Wash D C)
+  - Behav Anal Today
+  - Behav Dev Bull
+  - J Behav Anal Health Sports Fit Med
+  - J Early Intensive Behav Interv
+  - Am J Orthopsychiatry
+  - Fam Syst Med
+  - J Abnorm Soc Psychol
+  - J Consult Psychol
+  - J Exp Psychol
+  - J Exp Psychol Anim Behav Process
+  - Psychol Monogr
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

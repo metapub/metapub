@@ -17,8 +17,7 @@ from ..convert import doi2pmid
 from ..cache_utils import get_cache_path, SQLiteCache, datetime_to_timestamp
 
 from .logic import find_article_from_pma
-from .dances import the_sciencedirect_disco, the_doi_2step, the_wiley_shuffle, the_wolterskluwer_volta
-from .journals import SUPPORTED_JOURNALS
+from .dances import the_sciencedirect_disco, the_doi_2step, the_wolterskluwer_volta
 
 log = logging.getLogger('metapub.findit')
 
@@ -106,32 +105,45 @@ class FindIt(object):
 
         If CrossRef came into play during the process to find a DOI that was missing
         for the PubMedArticle object, the doi_score will come from CrossRef (0 to 100).
+
+        Network Timeout Configuration (v0.11+):
+        =======================================
+        
+        FindIt now includes timeout controls to prevent infinite stalling:
+        - request_timeout: HTTP request timeout in seconds (default: 10)
+        - max_redirects: Maximum redirects to follow (default: 3)
+        
+        These parameters are applied consistently across all publisher-specific
+        strategies to ensure reliable operation.
     """
 
     def __init__(self, pmid=None, cachedir=DEFAULT_CACHE_DIR, **kwargs):
         """Initialize FindIt to locate full-text PDFs for academic papers.
-        
+
         Args:
             pmid (str or int, optional): PubMed ID of the article to find.
-            cachedir (str, optional): Directory for caching results. Defaults to 
+            cachedir (str, optional): Directory for caching results. Defaults to
                 system cache directory. Set to None to disable caching.
             **kwargs: Additional keyword arguments:
                 doi (str): DOI of the article (alternative to pmid).
                 url (str): Pre-existing URL (for testing/validation).
                 use_nih (bool): Use NIH access when available. Defaults to False.
-                use_crossref (bool): Enable CrossRef fallback for missing DOIs. 
+                use_crossref (bool): Enable CrossRef fallback for missing DOIs.
                     Defaults to False.
-                doi_min_score (int): Minimum CrossRef confidence score for DOI 
+                doi_min_score (int): Minimum CrossRef confidence score for DOI
                     matches. Defaults to 60.
                 verify (bool): Verify URLs by testing HTTP response. Defaults to True.
-                retry_errors (bool): Retry if cached result has error reasons. 
-                    Defaults to False.
+                retry_errors (bool): Retry if cached result has error reasons like
+                    "PAYWALL", "TODO", "CANTDO", or "TXERROR". Note: "NOFORMAT"
+                    results are always retried. Defaults to False.
                 debug (bool): Enable debug logging. Defaults to False.
                 tmpdir (str): Temporary directory for downloads. Defaults to '/tmp'.
-        
+                request_timeout (int): Timeout in seconds for HTTP requests. Defaults to 10.
+                max_redirects (int): Maximum number of redirects to follow. Defaults to 3.
+
         Raises:
             MetaPubError: If neither pmid nor doi is provided.
-            
+
         Note:
             After initialization, access results via the `url` and `reason` attributes.
             If url is None, check `reason` for explanation of why PDF wasn't found.
@@ -150,15 +162,21 @@ class FindIt(object):
             self.crfetch = CrossRefFetcher()
             log.debug('CrossRefFetcher initialized for FindIt.')
 
-        #TODO: revisit this whole score thing... it has changed.
+        #TODO: revisit this whole score thing (check our CrossRef work, it's been a minute.)
         self.doi_min_score = kwargs.get('doi_min_score', 60)   #60, maybe?
         self.tmpdir = kwargs.get('tmpdir', '/tmp')
         self.doi_score = None
         self.pma = None
-        self._backup_url = None
 
         self.verify = kwargs.get('verify', True)
         retry_errors = kwargs.get('retry_errors', False)
+        
+        # Network timeout and redirect settings
+        self.request_timeout = kwargs.get('request_timeout', 10)
+        self.max_redirects = kwargs.get('max_redirects', 3)
+
+        # Store cachedir for registry system
+        self._cachedir = cachedir
 
         if cachedir is None:
             self._cache = None
@@ -190,62 +208,77 @@ class FindIt(object):
 
     def load(self, verify=True):
         """Find full-text PDF URL for the loaded article.
-        
-        This method performs the core FindIt logic using publisher-specific 
+
+        This method performs the core FindIt logic using publisher-specific
         strategies to locate downloadable PDFs.
-        
+
         Args:
             verify (bool, optional): Test URLs by making HTTP requests to ensure
                 files are downloadable. Setting to False speeds up processing
                 significantly. Defaults to True.
-        
+
         Returns:
             Tuple[Optional[str], Optional[str]]: A tuple of (url, reason).
                 - url: Direct link to PDF if found, None otherwise.
                 - reason: Explanation if PDF not found (e.g., "PAYWALL", "NOFORMAT").
                   May be None if URL was successfully found.
-        
+
         Note:
             If a ConnectionError occurs during lookup, returns (None, "TXERROR: <details>").
         """
-        return find_article_from_pma(self.pma, use_nih=self.use_nih, verify=verify)
+        return find_article_from_pma(self.pma, use_nih=self.use_nih, verify=verify, 
+                                   cachedir=self._cachedir, request_timeout=self.request_timeout,
+                                   max_redirects=self.max_redirects)
 
     def load_from_cache(self, verify=True, retry_errors=False):
         """Load article URL from cache, with fallback to fresh lookup.
-        
+
         Checks cache for previously computed results using article identifiers.
         If not cached or retry_errors is True for error reasons, performs fresh
         lookup and caches the result.
-        
+
         Args:
-            verify (bool, optional): Verify URLs by testing HTTP response. 
+            verify (bool, optional): Verify URLs by testing HTTP response.
                 Defaults to True.
             retry_errors (bool, optional): Force fresh lookup if cached result
-                has error reasons like "NOFORMAT", "TODO", "PAYWALL", or "CANTDO".
-                Useful as new publisher support is frequently added. Defaults to False.
-        
+                has error reasons like "TODO", "PAYWALL", "CANTDO", or "TXERROR".
+                Note: "NOFORMAT" results are always retried since new publisher
+                support is frequently added. Defaults to False.
+
         Returns:
             Tuple[Optional[str], Optional[str]]: A tuple of (url, reason).
-                - url: Direct link to PDF if found, None otherwise. 
+                - url: Direct link to PDF if found, None otherwise.
                 - reason: Explanation if PDF not found, None if successful.
-        
+
         Note:
             Connection errors are not cached to avoid persisting temporary network issues.
         """
-        retry_reasons = ['PAYWALL', 'TODO', 'NOFORMAT', 'CANTDO']
+        # Always retry NOFORMAT results since new journal support gets added frequently
+        retry_reasons = ['NOFORMAT']
+        # Optionally retry other error types when requested
         if retry_errors:
-            retry_reasons.append('TXERROR')
+            retry_reasons.extend(['PAYWALL', 'TODO', 'CANTDO', 'TXERROR'])
 
         cache_result = self._query_cache(self.pmid)
+
         if cache_result:
             url = cache_result['url']
-            reason = '' if cache_result['reason'] is None else cache_result['reason']
+            reason = cache_result.get('reason', '') or ''  # Handle None
+            verified = cache_result.get('verify', False)
 
-            # Prefer cached results that were verified.
-            # Don't return cached results in retry_reasons list above. (i.e. retry)
-            if cache_result.get('verify', False) or verify == False:
-                if not reason.split(':')[0] in retry_reasons:
-                    return (url, reason)
+            # Extract the error code (part before ':' if present)
+            reason_code = reason.split(':')[0] if reason else ''
+
+            # Decision logic in ranked order
+            # 1. Always retry certain errors.
+            # 2. Cache result is unverified && we're still not verifying.
+            # 3. Cache result is verified && no error retries called for.
+
+            must_retry = reason_code in retry_reasons
+
+            if not must_retry and (verified or not verify):
+                return (url, reason)
+
 
         # === RETRY === #
         # we're here for one of the following reasons:
@@ -255,74 +288,6 @@ class FindIt(object):
         url, reason = self.load(verify=verify)
         self._store_cache(self.pmid, url=url, reason=reason, verify=verify)
         return (url, reason)
-
-    @property
-    def backup_url(self):
-        """ Returns a backup url to try if the first url doesn't pan out.
-
-        (Highly experimental. Results not cached.)
-        """
-        if not self.doi:
-            return None
-
-        if self._backup_url is not None:
-            return self._backup_url
-
-        try:
-            baseurl = the_doi_2step(self.doi)
-        except MetaPubError as error:
-            self._log.debug('%r', error)
-            return None
-
-        urlp = urlparse(baseurl)
-
-        # maybe it's sciencedirect / elsevier:
-        if urlp.hostname.find('sciencedirect') > -1 or urlp.hostname.find('elsevier') > -1:
-            if self.pma.pii:
-                try:
-                    self._backup_url = the_sciencedirect_disco(self.pma)
-                except Exception as error:
-                    self._log.debug('%r', error)
-
-        # maybe it's wiley:
-        elif urlp.hostname.find('wiley') > -1:
-            try:
-                self._backup_url = the_wiley_shuffle(self.pma)
-            except Exception as error:
-                self._log.debug('%r', error)
-                self._backup_url = None
-                return None
-
-        # maybe it's wolterskluwer:
-        elif urlp.hostname.find('pt.wkhealth.com') > -1:
-            try:
-                self._backup_url = the_wolterskluwer_volta(self.pma)
-            except Exception as error:
-                self._log.debug('%r', error)
-                self._backup_url = None
-                return None
-
-        # TODO maybe it's an "early" print? if so it might look like this:
-        #
-        # if urlp.path.find('early'):
-        #    return None
-
-        if self._backup_url is None and urlp.path.find('.') > -1:
-            extension = urlp.path.split('.')[-1]
-            if extension == 'long':
-                self._backup_url = baseurl.replace('long', 'full.pdf')
-            elif extension == 'html':
-                self._backup_url = baseurl.replace(
-                    'full', 'pdf').replace('html', 'pdf')
-
-        if self._backup_url is None:
-            # a shot in the dark...
-            if urlp.path.endswith('/'):
-                self._backup_url = baseurl + 'pdf'
-            else:
-                self._backup_url = baseurl + '.full.pdf'
-
-        return self._backup_url
 
     def _load_pma_from_pmid(self):
         """ Loads self.pma if self.pmid is present.
@@ -387,7 +352,7 @@ class FindIt(object):
 
         A time.time() timestamp will be added to the value dictionary when stored.
 
-        There is no return from this function. Exceptions from the SQLiteCache 
+        There is no return from this function. Exceptions from the SQLiteCache
         object may be raised.
         """
         cache_value = kwargs.copy()
@@ -403,7 +368,7 @@ class FindIt(object):
         When expiry_date is supplied, results from the cache past their
         sell-by date will be expunged from the cache and return will be None.
 
-        expiry_date can be either a python datetime or a timestamp. 
+        expiry_date can be either a python datetime or a timestamp.
 
         :param: cache_key: (required)
         :param: expiry_date (optional, default None)

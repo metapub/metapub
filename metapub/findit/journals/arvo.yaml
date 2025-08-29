@@ -1,0 +1,23 @@
+schema_version: '1.0'
+publisher:
+  name: Association for Research in Vision and Ophthalmology
+  id: arvo
+  description: VIP format journals from Association for Research in Vision and Ophthalmology
+  dance_function: the_vip_shake
+  pattern_type: vip
+url_patterns:
+  primary_template: http://{host}/content/{volume}/{issue}/{first_page}.full.pdf
+journals:
+  parameterized:
+    Invest Ophthalmol Vis Sci:
+      host: www.iovs.org
+    IOVS:
+      host: iovs.org
+  simple_list:
+  - Invest Ophthalmol Vis Sci
+  - IOVS
+metadata:
+  evidence_date: '2025-08-16'
+  verification_notes: Migrated from misc_vip.py
+  special_handling: []
+  domain: iovs.org

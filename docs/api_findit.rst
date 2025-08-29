@@ -14,11 +14,19 @@ FindIt Class
 
 The FindIt class is the primary interface for PDF discovery. It employs publisher-specific "dances" (custom algorithms) to locate downloadable PDFs while respecting publisher policies and embargo restrictions.
 
+**Network Timeout Configuration** (v0.11+)
+   The FindIt class now includes configurable timeout parameters to prevent infinite stalling during PDF discovery:
+   
+   - **request_timeout**: Maximum time (seconds) to wait for HTTP responses (default: 10)
+   - **max_redirects**: Maximum number of HTTP redirects to follow (default: 3)
+   
+   These parameters are passed to all network requests throughout the FindIt system to ensure reliable operation.
+
 Key Features
 ~~~~~~~~~~~
 
 **Publisher Coverage**
-   - 15+ major academic publishers supported
+   - 68+ major academic publishers supported (97.1% coverage)
    - Publisher-specific URL patterns and access methods
    - Dynamic strategy selection based on journal/publisher
    
@@ -26,16 +34,18 @@ Key Features
    - HTTP verification of PDF availability
    - Embargo detection and date checking
    - Legal access validation
+   - CrossRef API integration for blocked access workarounds
 
 **Caching System**
    - SQLite-based result caching
    - Configurable cache directories
    - Smart cache invalidation for error cases
 
-**Error Handling**
-   - Comprehensive reason codes for failures
-   - Network error detection and retry logic
-   - Service outage diagnosis
+**Intelligent Error Reporting**
+   - Structured error categories with actionable information
+   - Always includes attempted URLs for debugging
+   - Distinguishes between paywall, technical, and data issues
+   - Developer-friendly reason codes for automated handling
 
 Core Methods
 ~~~~~~~~~~~
@@ -55,13 +65,16 @@ After initialization, FindIt objects provide these key attributes:
    Direct link to downloadable PDF if found
 
 **reason** (str or None)  
-   Explanation when PDF is not available:
+   Detailed explanation when PDF is not available, always includes attempted URL:
    
-   - ``"PAYWALL"`` - Requires subscription/payment
-   - ``"EMBARGO"`` - Under publisher embargo period
-   - ``"NOFORMAT"`` - Unsupported publisher format
-   - ``"CANTDO"`` - No strategy available for this publisher
-   - ``"TXERROR"`` - Network/connection error
+   - ``"MISSING: ..."`` - Required data not available (DOI, volume/issue, etc.)
+   - ``"PAYWALL: ..."`` - Requires subscription/payment  
+   - ``"DENIED: ..."`` - Access forbidden or login required
+   - ``"TXERROR: ..."`` - Technical/network/server error
+   - ``"NOFORMAT: ..."`` - Publisher doesn't provide expected format
+   - ``"NOTFOUND: ..."`` - Content not found at expected location
+   
+   All reason messages include ``- attempted: {URL}`` for debugging.
 
 **backup_url** (str or None)
    Alternative URL when primary fails
@@ -71,6 +84,296 @@ After initialization, FindIt objects provide these key attributes:
 
 **doi_score** (int)
    Confidence score for DOI match (0-100)
+
+FindIt Error Handling Philosophy
+--------------------------------
+
+FindIt employs a sophisticated error reporting system that provides meaningful, actionable information to developers about why a PDF link could not be obtained. This system distinguishes between different types of failures and always includes the attempted URL for debugging purposes.
+
+Error Categories and Usage
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+FindIt uses three main error classification approaches:
+
+**NoPDFLink Exception - Expected Operational Failures**
+
+Used when the system cannot produce a PDF link due to expected operational conditions:
+
+.. code-block:: python
+
+   from metapub import FindIt
+   from metapub.exceptions import NoPDFLink
+   
+   try:
+       src = FindIt('12345678')  # Article without DOI
+   except NoPDFLink as e:
+       print(str(e))
+       # "MISSING: DOI required for SAGE journals - attempted: none"
+
+**AccessDenied Exception - Publisher Restrictions**  
+
+Used when publishers explicitly deny access due to paywall or subscription requirements:
+
+.. code-block:: python
+
+   from metapub.exceptions import AccessDenied
+   
+   try:
+       src = FindIt('16419642')  # Nature paywall article
+   except AccessDenied as e:
+       print(str(e))
+       # "PAYWALL: Nature requires subscription - attempted: https://nature.com/articles/..."
+
+**TXERROR Prefix - Technical Failures**
+
+Used within NoPDFLink messages when technical issues prevent accessing content:
+
+.. code-block:: python
+
+   try:
+       src = FindIt('12345678')  # Server timeout
+   except NoPDFLink as e:
+       print(str(e))
+       # "TXERROR: Connection timeout after 30s - attempted: https://publisher.com/..."
+
+Error Message Format
+~~~~~~~~~~~~~~~~~~~
+
+All error messages follow a consistent structure:
+
+.. code-block:: text
+
+   {ERROR_TYPE}: {Description} - attempted: {URL}
+
+**Error Type Prefixes:**
+
+- ``MISSING:`` - Required data not available (DOI, volume/issue, etc.)
+- ``NOFORMAT:`` - Publisher doesn't provide expected format
+- ``PAYWALL:`` - Subscription or payment required  
+- ``DENIED:`` - Access forbidden or login required
+- ``TXERROR:`` - Technical, network, or server error
+- ``NOTFOUND:`` - Content not found at expected location
+
+**Always Includes Attempted URL:**
+
+Every error message includes the URL(s) that were attempted, allowing developers to:
+
+- Debug access issues manually
+- Understand what URLs the system tried  
+- Implement alternative access methods
+- Report publisher-specific problems
+
+Developer Usage Patterns
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The structured error information enables sophisticated error handling:
+
+**Basic Error Categorization**
+
+.. code-block:: python
+
+   from metapub import FindIt
+   from metapub.exceptions import NoPDFLink, AccessDenied
+   
+   def handle_findit_result(pmid):
+       try:
+           src = FindIt(pmid)
+           if src.url:
+               return {'status': 'success', 'url': src.url}
+           else:
+               return {'status': 'no_pdf', 'reason': src.reason}
+               
+       except AccessDenied as e:
+           # Publisher paywall/subscription required
+           return {
+               'status': 'paywall', 
+               'reason': str(e),
+               'action': 'purchase_required'
+           }
+           
+       except NoPDFLink as e:
+           error_msg = str(e)
+           if 'TXERROR' in error_msg:
+               # Technical issue - retry later
+               return {
+                   'status': 'technical_error',
+                   'reason': error_msg,
+                   'action': 'retry_later'
+               }
+           elif 'MISSING' in error_msg:
+               # Data issue - try alternative approach
+               return {
+                   'status': 'data_missing',
+                   'reason': error_msg,
+                   'action': 'try_alternative'
+               }
+           else:
+               return {'status': 'unknown_error', 'reason': error_msg}
+
+**Automated Response to Error Types**
+
+.. code-block:: python
+
+   import time
+   from collections import defaultdict
+   
+   def batch_findit_with_smart_retry(pmids, max_retries=3):
+       """Process PMIDs with intelligent error handling and retry logic."""
+       results = []
+       retry_queue = defaultdict(list)  # Group by error type for batch retry
+       
+       for pmid in pmids:
+           try:
+               src = FindIt(pmid)
+               if src.url:
+                   results.append({'pmid': pmid, 'url': src.url, 'status': 'success'})
+               elif src.reason:
+                   # Store reason for analysis
+                   results.append({'pmid': pmid, 'reason': src.reason, 'status': 'failed'})
+               
+           except AccessDenied as e:
+               # Paywall - annotate for purchase consideration
+               results.append({
+                   'pmid': pmid, 
+                   'status': 'paywall',
+                   'reason': str(e),
+                   'needs_purchase': True
+               })
+               
+           except NoPDFLink as e:
+               error_msg = str(e)
+               if 'TXERROR' in error_msg:
+                   # Technical errors - queue for retry
+                   retry_queue['technical'].append(pmid)
+                   results.append({
+                       'pmid': pmid,
+                       'status': 'technical_error', 
+                       'reason': error_msg,
+                       'will_retry': True
+                   })
+               else:
+                   # Data/format errors - unlikely to succeed on retry
+                   results.append({
+                       'pmid': pmid,
+                       'status': 'permanent_failure',
+                       'reason': error_msg
+                   })
+       
+       # Retry technical errors after delay
+       if retry_queue['technical'] and max_retries > 0:
+           print(f"Retrying {len(retry_queue['technical'])} technical failures...")
+           time.sleep(5)  # Wait for transient issues to resolve
+           
+           retry_results = batch_findit_with_smart_retry(
+               retry_queue['technical'], 
+               max_retries - 1
+           )
+           
+           # Update original results with retry outcomes
+           for retry_result in retry_results:
+               # Find and update the original failed result
+               for i, result in enumerate(results):
+                   if result['pmid'] == retry_result['pmid']:
+                       results[i] = retry_result
+                       break
+       
+       return results
+
+**Error Analysis and Reporting**
+
+.. code-block:: python
+
+   def analyze_findit_errors(results):
+       """Analyze FindIt results to identify patterns and actionable insights."""
+       error_stats = defaultdict(int)
+       paywall_publishers = defaultdict(int)
+       technical_issues = []
+       
+       for result in results:
+           if result['status'] == 'paywall':
+               # Extract publisher from error message for purchase planning
+               reason = result['reason']
+               if 'Nature' in reason:
+                   paywall_publishers['Nature Publishing'] += 1
+               elif 'Elsevier' in reason:
+                   paywall_publishers['Elsevier/ScienceDirect'] += 1
+               # Add more publisher patterns as needed
+               
+           elif result['status'] == 'technical_error':
+               technical_issues.append(result['reason'])
+               
+           error_stats[result['status']] += 1
+       
+       print("=== FindIt Error Analysis ===")  
+       print(f"Success rate: {error_stats['success']}/{len(results)} ({error_stats['success']/len(results)*100:.1f}%)")
+       print(f"Paywall articles: {error_stats['paywall']}")
+       print(f"Technical errors: {error_stats['technical_error']}")
+       
+       if paywall_publishers:
+           print("\n=== Publishers Requiring Subscription ===")
+           for publisher, count in paywall_publishers.items():
+               print(f"  {publisher}: {count} articles")
+               
+       if technical_issues:
+           print(f"\n=== Technical Issues (consider retrying) ===")
+           for issue in set(technical_issues):  # Unique issues only
+               count = technical_issues.count(issue)
+               print(f"  {issue} (×{count})")
+       
+       return {
+           'error_stats': dict(error_stats),
+           'paywall_publishers': dict(paywall_publishers),
+           'technical_issues': technical_issues
+       }
+
+Error Message Examples
+~~~~~~~~~~~~~~~~~~~~~
+
+**Missing Data Errors:**
+
+.. code-block:: text
+
+   MISSING: DOI required for SAGE journals - attempted: none
+   MISSING: pii needed for ScienceDirect lookup - attempted: https://sciencedirect.com/...
+   MISSING: volume/issue/pii data - cannot construct Nature URL - attempted: none
+
+**Access Denied Errors:**
+
+.. code-block:: text
+
+   PAYWALL: Nature requires subscription - attempted: https://nature.com/articles/s41586-020-2936-y.pdf
+   DENIED: JAMA requires login - attempted: https://jamanetwork.com/journals/jama/fullarticle/...
+   PAYWALL: Elsevier paywall detected - attempted: https://sciencedirect.com/science/article/pii/...
+
+**Technical Errors:**
+
+.. code-block:: text
+
+   TXERROR: Server returned 503 Service Unavailable - attempted: https://publisher.com/...
+   TXERROR: Connection timeout after 10s - attempted: https://journals.sagepub.com/...
+   TXERROR: dx.doi.org lookup failed (Network error) - attempted: http://dx.doi.org/10.1038/...
+   TXERROR: Too many redirects (>3) - attempted: https://publisher.com/...
+
+**Publisher Format Issues:**
+
+.. code-block:: text
+
+   NOFORMAT: BMC article has no PDF version - attempted: https://bmcgenomics.biomedcentral.com/...
+   NOTFOUND: Article not found on Nature platform - attempted: https://nature.com/..., traditional URL
+
+Benefits for Developers
+~~~~~~~~~~~~~~~~~~~~~~
+
+This comprehensive error handling system provides:
+
+1. **Clear Action Path** - Developers know exactly what went wrong and why
+2. **Debugging Information** - Attempted URLs allow manual verification  
+3. **Automated Categorization** - Error types enable programmatic responses
+4. **Publisher Intelligence** - Identify which publishers require subscriptions
+5. **Technical Issue Detection** - Distinguish between transient and permanent failures
+6. **Batch Processing Optimization** - Group similar errors for efficient handling
+
+The goal is to make FindIt failures informative and actionable rather than opaque, enabling developers to build robust applications that handle PDF access gracefully.
 
 Usage Patterns
 -------------
@@ -105,8 +408,32 @@ Advanced Configuration
        verify=False,           # Skip URL verification for speed
        retry_errors=True,      # Retry cached error results
        debug=True,             # Enable debug logging
-       cachedir='/custom/cache' # Custom cache location
+       cachedir='/custom/cache',  # Custom cache location
+       request_timeout=15,     # Custom request timeout (seconds)
+       max_redirects=5         # Custom redirect limit
    )
+
+Network Timeout Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+   # Configure network behavior
+   src = FindIt(
+       pmid='12345678',
+       request_timeout=20,     # Wait up to 20 seconds for responses
+       max_redirects=2         # Follow max 2 redirects
+   )
+   
+   # For faster processing with tighter limits
+   src = FindIt(
+       pmid='12345678', 
+       request_timeout=5,      # Quick timeout for batch processing
+       max_redirects=1         # Minimal redirects
+   )
+   
+   # Default values (recommended for most use cases)
+   src = FindIt('12345678')   # Uses timeout=10s, redirects=3
 
 DOI-Based Discovery
 ~~~~~~~~~~~~~~~~~
@@ -269,6 +596,55 @@ Result Analysis
 Advanced Features
 ----------------
 
+Network Timeout and Reliability Improvements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Version 0.11+ Timeout System**
+
+The FindIt system now includes comprehensive network timeout controls to prevent infinite stalling during PDF discovery. This addresses cases where publisher servers might become unresponsive or network connections hang indefinitely.
+
+**Key Improvements:**
+
+- **Request Timeouts**: All HTTP requests have configurable timeouts (default: 10 seconds)
+- **Redirect Limits**: Maximum redirects are enforced to prevent infinite redirect loops (default: 3)
+- **Consistent Application**: Timeout controls apply to all publisher-specific dance functions
+- **Backward Compatibility**: All timeout parameters are optional with sensible defaults
+
+**Configuration Examples:**
+
+.. code-block:: python
+
+   # Default behavior (recommended)
+   src = FindIt('12345678')  # 10s timeout, 3 redirects max
+   
+   # Conservative settings for unreliable networks
+   src = FindIt('12345678', request_timeout=20, max_redirects=5)
+   
+   # Aggressive settings for fast batch processing
+   src = FindIt('12345678', request_timeout=5, max_redirects=1)
+   
+   # Disable redirects entirely
+   src = FindIt('12345678', max_redirects=0)
+
+**Error Handling:**
+
+Network timeout issues are now reported clearly in error messages:
+
+.. code-block:: text
+
+   TXERROR: Connection timeout after 10s - attempted: https://publisher.com/article
+   TXERROR: Too many redirects (>3) - attempted: https://journals.example.com/...
+
+**Publisher-Specific Behavior:**
+
+Some publishers (e.g., IOP, JAMA) use CrossRef API fallbacks when direct access is blocked. The timeout parameters apply to both primary and fallback access methods, ensuring reliable operation across all publishers.
+
+**Performance Impact:**
+
+- **Faster Failure Detection**: Network issues are detected within 10 seconds instead of hanging indefinitely
+- **Batch Processing**: Timeout controls make batch operations more predictable and reliable
+- **Resource Management**: Prevents accumulation of hanging network connections
+
 Cache Management
 ~~~~~~~~~~~~~~
 
@@ -302,7 +678,9 @@ Error Recovery
        """FindIt with automatic retry on network errors."""
        for attempt in range(max_retries):
            try:
-               src = FindIt(pmid)
+               # Use longer timeout on retries
+               timeout = 10 + (5 * attempt)  # 10s, 15s, 20s
+               src = FindIt(pmid, request_timeout=timeout)
                return src
            except (ConnectionError, Timeout) as e:
                if attempt < max_retries - 1:

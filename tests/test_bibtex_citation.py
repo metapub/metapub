@@ -6,29 +6,28 @@ for both articles and books, handles edge cases, and produces valid BibTeX outpu
 """
 
 import unittest
-import tempfile
 import os
 import re
 from datetime import datetime
 from unittest.mock import Mock
 
 from metapub import cite
-from metapub import PubMedFetcher
-from metapub.cache_utils import cleanup_dir
+from metapub.pubmedarticle import PubMedArticle
+from .test_compat import skip_network_tests
 
 
 class TestBibTexCitation(unittest.TestCase):
     """Comprehensive tests for BibTeX citation formatting"""
 
-    def setUp(self):
-        # Create a unique temporary cache directory for each test run
-        self.temp_cache = tempfile.mkdtemp(prefix='bibtex_test_cache_')
-        self.fetch = PubMedFetcher(cachedir=self.temp_cache)
-
-    def tearDown(self):
-        # Clean up the temporary cache directory
-        if hasattr(self, 'temp_cache') and os.path.exists(self.temp_cache):
-            cleanup_dir(self.temp_cache)
+    def _load_test_article(self, pmid):
+        """Load a PubMedArticle from static XML test data"""
+        test_data_dir = os.path.join(os.path.dirname(__file__), 'test_data')
+        xml_file = os.path.join(test_data_dir, f'sample_article_{pmid}.xml')
+        
+        with open(xml_file, 'r') as f:
+            xml_content = f.read()
+        
+        return PubMedArticle(xml_content)
 
     def test_bibtex_format_string_exists(self):
         """Test that BibTeX format string is properly defined"""
@@ -224,43 +223,45 @@ class TestBibTexCitation(unittest.TestCase):
         self.assertRegex(bibtex, r'title = \{[^}]+\}')
 
     def test_pubmed_article_integration(self):
-        """Integration test with real PubMedArticle objects"""
-        try:
-            # Use a known stable PMID
-            article = self.fetch.article_by_pmid('23435529')
-            
-            # Test that citation_bibtex property works
-            bibtex = article.citation_bibtex
-            
-            # Verify basic BibTeX structure
-            self.assertIn('@article{', bibtex)
-            self.assertIn('author = {', bibtex)
-            self.assertIn('title = {', bibtex)
-            self.assertIn('journal = {', bibtex)
-            self.assertIn('year = {', bibtex)
-            
-            # Verify citation ID format
-            self.assertRegex(bibtex, r'@article\{[A-Za-z]+\d{4},')
-            
-        except Exception as e:
-            self.skipTest(f"Network test skipped due to: {e}")
+        """Test with PubMedArticle objects using static data"""
+        # Load test article from static XML data
+        article = self._load_test_article('23435529')
+        
+        # Test that citation_bibtex property works
+        bibtex = article.citation_bibtex
+        
+        # Verify basic BibTeX structure
+        self.assertIn('@article{', bibtex)
+        self.assertIn('author = {', bibtex)
+        self.assertIn('title = {', bibtex)
+        self.assertIn('journal = {', bibtex)
+        self.assertIn('year = {', bibtex)
+        
+        # Verify citation ID format
+        self.assertRegex(bibtex, r'@article\{[A-Za-z]+\d{4},')
+        
+        # Verify specific content from our test article
+        self.assertIn('Fossella, F', bibtex)
+        self.assertIn('J. Clin. Oncol', bibtex)
+        self.assertIn('2013', bibtex)
 
     def test_book_article_integration(self):
-        """Test BibTeX generation for book articles (GeneReviews)"""
-        try:
-            # Use a known GeneReviews PMID
-            article = self.fetch.article_by_pmid('20301546')
-            
-            if article.book_accession_id:
-                bibtex = article.citation_bibtex
-                
-                # Should use book entry type
-                self.assertIn('@book{', bibtex)
-                self.assertIn('author = {', bibtex)
-                self.assertIn('title = {', bibtex)
-            
-        except Exception as e:
-            self.skipTest(f"Network test skipped due to: {e}")
+        """Test BibTeX generation for book articles using real GeneReviews data"""
+        # Load real GeneReviews book article from static XML data
+        article = self._load_test_article('20301577')
+        
+        # Test that citation_bibtex property works for book articles
+        bibtex = article.citation_bibtex
+        
+        # Should use book entry type
+        self.assertIn('@book{', bibtex)
+        self.assertIn('author = {', bibtex)
+        self.assertIn('title = {', bibtex)
+        
+        # Verify specific content from our test GeneReviews article
+        self.assertIn('Napolitano, C and Priori, SG', bibtex)
+        self.assertIn('CACNA1C-Related Disorders', bibtex)
+        self.assertIn('GeneReviews', bibtex)
 
     def test_field_stripping_periods(self):
         """Test that periods are stripped from title, journal, and abstract"""
@@ -337,36 +338,51 @@ class TestBibTexCitation(unittest.TestCase):
         bibtex = cite.bibtex(**test_data)
         self.assertIn('volume = {123A}', bibtex)
 
-    def test_real_world_pmid_34889398(self):
-        """Test with real-world PMID 34889398 (Hammill2021) to ensure realistic output"""
-        try:
-            # Test the actual article
-            article = self.fetch.article_by_pmid('34889398')
-            bibtex = article.citation_bibtex
-            
-            # Should have proper structure and content based on PubMed data
-            self.assertIn('@article{Hammill2021,', bibtex)
-            self.assertIn('author = {Hammill, AM and Wusik, K and Kasthuri, RS}', bibtex)
-            self.assertIn('title = {Hereditary hemorrhagic telangiectasia', bibtex)
-            self.assertIn('journal = {Hematology Am Soc Hematol Educ Program}', bibtex)
-            self.assertIn('year = {2021}', bibtex)
-            self.assertIn('volume = {2021}', bibtex)
-            self.assertIn('pages = {469-477}', bibtex)
-            self.assertIn('doi = {10.1182/hematology.2021000281}', bibtex)
-            
-            # Should have proper BibTeX formatting
-            self.assertTrue(bibtex.startswith('@article{Hammill2021,\n'))
-            self.assertTrue(bibtex.endswith('}'))
-            
-            # Should have abstract truncation
-            if 'abstract' in bibtex:
-                abstract_match = re.search(r'abstract = \{([^}]+)\}', bibtex)
-                if abstract_match:
-                    abstract_content = abstract_match.group(1)
-                    self.assertLess(len(abstract_content), 510)  # 500 + "..." = 503 chars max
-            
-        except Exception as e:
-            self.skipTest(f"Network test skipped due to: {e}")
+    def test_real_world_pmid_data_mocked(self):
+        """Test with real-world article data (Hammill2021) using mocked approach"""
+        # Mock the article with real-world data structure
+        mock_article = Mock()
+        mock_article.authors = ['Hammill AM', 'Wusik K', 'Kasthuri RS']
+        mock_article.title = 'Hereditary hemorrhagic telangiectasia and related disorders'
+        mock_article.journal = 'Hematology Am Soc Hematol Educ Program'
+        mock_article.year = 2021
+        mock_article.volume = '2021'
+        mock_article.pages = '469-477'
+        mock_article.doi = '10.1182/hematology.2021000281'
+        mock_article.abstract = 'Long abstract content ' * 50  # > 500 chars for truncation test
+        
+        # Generate bibtex using the citation function
+        bibtex = cite.bibtex(
+            authors=mock_article.authors,
+            title=mock_article.title,
+            journal=mock_article.journal,
+            year=mock_article.year,
+            volume=mock_article.volume,
+            pages=mock_article.pages,
+            doi=mock_article.doi,
+            abstract=mock_article.abstract
+        )
+        
+        # Should have proper structure and content based on realistic data
+        self.assertIn('@article{Hammill2021,', bibtex)
+        self.assertIn('author = {Hammill, AM and Wusik, K and Kasthuri, RS}', bibtex)
+        self.assertIn('title = {Hereditary hemorrhagic telangiectasia and related disorders}', bibtex)
+        self.assertIn('journal = {Hematology Am Soc Hematol Educ Program}', bibtex)
+        self.assertIn('year = {2021}', bibtex)
+        self.assertIn('volume = {2021}', bibtex)
+        self.assertIn('pages = {469-477}', bibtex)
+        self.assertIn('doi = {10.1182/hematology.2021000281}', bibtex)
+        
+        # Should have proper BibTeX formatting
+        self.assertTrue(bibtex.startswith('@article{Hammill2021,\n'))
+        self.assertTrue(bibtex.endswith('}'))
+        
+        # Should have abstract truncation
+        if 'abstract' in bibtex:
+            abstract_match = re.search(r'abstract = \{([^}]+)\}', bibtex)
+            if abstract_match:
+                abstract_content = abstract_match.group(1)
+                self.assertLess(len(abstract_content), 510)  # 500 + "..." = 503 chars max
 
 if __name__ == '__main__':
     unittest.main()

@@ -13,7 +13,6 @@ Usage:
     python demo_citation_html.py --no-color          # disable colors
 """
 
-from __future__ import print_function
 import sys
 import argparse
 import re

@@ -1,0 +1,16 @@
+schema_version: '1.0'
+publisher:
+  name: Science Magazine
+  id: science
+  description: Science Magazine (AAAS) single journal publisher
+url_patterns:
+  primary_template: https://science.org/doi/reader/{doi}
+dance_function: the_aaas_twist
+journals:
+  simple_list:
+  - Science
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: 'Dedicated Science Magazine publisher extracted from single_journal_publishers'
+  special_handling:
+    - 'Single journal publisher using DOI-based URL pattern'

@@ -1,6 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
-
 # CrossRef publisher -> DOI prefixes:  http://www.crossref.org/06members/50go-live.html
 # independent CSV map of same (3 years ago): https://gist.github.com/hubgit/5974843
 # a short list of major publishers: https://webhome.weizmann.ac.il/home/comartin/doi.html

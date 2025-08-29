@@ -1,23 +1,23 @@
 import unittest
-import tempfile
 import os
+from xml.etree import ElementTree as ET
 
 from metapub import cite
-from metapub import PubMedFetcher
-from metapub.cache_utils import cleanup_dir
+from metapub.pubmedarticle import PubMedArticle
+from .test_compat import skip_network_tests
 
 
 class TestCitationFormatting(unittest.TestCase):
 
-    def setUp(self):
-        # Create a unique temporary cache directory for each test run
-        self.temp_cache = tempfile.mkdtemp(prefix='citation_test_cache_')
-        self.fetch = PubMedFetcher(cachedir=self.temp_cache)
-
-    def tearDown(self):
-        # Clean up the temporary cache directory
-        if hasattr(self, 'temp_cache') and os.path.exists(self.temp_cache):
-            cleanup_dir(self.temp_cache)
+    def _load_test_article(self, pmid):
+        """Load a PubMedArticle from static XML test data"""
+        test_data_dir = os.path.join(os.path.dirname(__file__), 'test_data')
+        xml_file = os.path.join(test_data_dir, f'sample_article_{pmid}.xml')
+        
+        with open(xml_file, 'r') as f:
+            xml_content = f.read()
+        
+        return PubMedArticle(xml_content)
 
     def test_author_formatting_html(self):
         """Test author formatting with HTML tags"""
@@ -93,27 +93,27 @@ class TestCitationFormatting(unittest.TestCase):
         self.assertIn('Journal of Clinical Investigation', plain_citation)
 
     def test_pubmed_article_citation_html_method(self):
-        """Test PubMedArticle.citation_html method"""
-        try:
-            # Use a test PMID - this might fail if network is down
-            article = self.fetch.article_by_pmid('23435529')
-            
-            # Test that citation_html method exists and returns HTML
-            html_citation = article.citation_html
-            self.assertIsInstance(html_citation, str)
-            
-            # Should contain HTML tags
-            has_html = '<i>' in html_citation or '<b>' in html_citation
-            self.assertTrue(has_html, "citation_html should contain HTML formatting")
-            
-            # Compare with plain citation
-            plain_citation = article.citation
-            self.assertNotEqual(html_citation, plain_citation, 
-                              "HTML and plain citations should be different")
-            
-        except Exception as e:
-            # Skip this test if network issues prevent fetching
-            self.skipTest(f"Network test skipped due to: {e}")
+        """Test PubMedArticle.citation_html method using static data"""
+        # Load test article from static XML data
+        article = self._load_test_article('23435529')
+        
+        # Test that citation_html method exists and returns HTML
+        html_citation = article.citation_html
+        self.assertIsInstance(html_citation, str)
+        
+        # Should contain HTML tags
+        has_html = '<i>' in html_citation or '<b>' in html_citation
+        self.assertTrue(has_html, "citation_html should contain HTML formatting")
+        
+        # Compare with plain citation
+        plain_citation = article.citation
+        self.assertNotEqual(html_citation, plain_citation, 
+                          "HTML and plain citations should be different")
+        
+        # Verify expected content from our test article
+        self.assertIn('<i>J. Clin. Oncol</i>', html_citation)
+        self.assertIn('<b>31</b>', html_citation)
+        self.assertIn('Fossella F, <i>et al</i>', html_citation)
 
     def test_book_citation_html(self):
         """Test book citation with HTML formatting (if we have book data)"""

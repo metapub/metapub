@@ -1,5 +1,3 @@
-from __future__ import absolute_import, print_function, unicode_literals
-
 from metapub import PubMedFetcher
 fetch = PubMedFetcher()
 params = { 'jtitle': 'American Journal of Medical Genetics', 

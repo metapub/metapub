@@ -1,0 +1,70 @@
+schema_version: '1.0'
+publisher:
+  name: Elsevier
+  id: misc_pii_elsevier
+  description: PII format journals from Elsevier
+  dance_function: the_pii_shuffle
+  pattern_type: pii
+journals:
+  parameterized:
+    Am Heart J:
+      url_template: http://www.ahjonline.com/article/{a.pii}/pdf
+    Am J Cardiol:
+      url_template: http://www.ajconline.org/article/{a.pii}/pdf
+    Am J Ophthalmol:
+      url_template: http://www.ajo.com/article/{a.pii}/pdf
+    Am J Med:
+      url_template: http://www.amjmed.com/article/{a.pii}/pdf
+    Atherosclerosis:
+      url_template: http://www.atherosclerosis-journal.com/article/{a.pii}/pdf
+    Biol Psychiatry:
+      url_template: http://www.biologicalpsychiatryjournal.com/article/{a.pii}/pdf
+    Bone:
+      url_template: http://www.thebonejournal.com/article/{a.pii}/pdf
+    Brain Dev:
+      url_template: http://www.brainanddevelopment.com/article/{a.pii}/pdf
+    Fertil Steril:
+      url_template: http://www.fertstert.org/article/{a.pii}/pdf
+    Gastroenterology:
+      url_template: http://www.gastrojournal.org/article/{a.pii}/pdf
+    Heart Rhythm:
+      url_template: http://www.heartrhythmjournal.com/article/{a.pii}/pdf
+    J Pediatr:
+      url_template: http://www.jpeds.com/article/{a.pii}/pdf
+    Ophthalmology:
+      url_template: http://www.aaojournal.org/article/{a.pii}/pdf
+    Metabolism:
+      url_template: http://www.metabolismjournal.com/article/{a.pii}/pdf
+    Metab Clin Exp:
+      url_template: http://www.metabolismjournal.com/article/{a.pii}/pdf
+    Neurobiol Aging:
+      url_template: http://www.neurobiologyofaging.org/article/{a.pii}/pdf
+    Placenta:
+      url_template: http://www.placentajournal.org/article/{a.pii}/pdf
+    Thromb Res:
+      url_template: http://www.thrombosisresearch.com/article/{a.pii}/pdf
+  simple_list:
+  - Am Heart J
+  - Am J Cardiol
+  - Am J Ophthalmol
+  - Am J Med
+  - Atherosclerosis
+  - Biol Psychiatry
+  - Bone
+  - Brain Dev
+  - Fertil Steril
+  - Gastroenterology
+  - Heart Rhythm
+  - J Pediatr
+  - Ophthalmology
+  - Metabolism
+  - Metab Clin Exp
+  - Neurobiol Aging
+  - Placenta
+  - Thromb Res
+metadata:
+  evidence_date: '2025-08-16'
+  verification_notes: Migrated from misc_pii.py - Elsevier journals
+  special_handling:
+  - pii_format
+  - url_template_per_journal

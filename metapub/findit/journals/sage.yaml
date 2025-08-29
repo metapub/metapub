@@ -1,0 +1,65 @@
+schema_version: '1.0'
+publisher:
+  name: Sage
+  id: sage
+  description: 'SAGE Publications journal patterns and mappings.
+
+
+    SAGE Publications is a major academic publisher with journals using DOI-based
+    URLs
+
+    and Volume-Issue-Page (VIP) format URLs depending on the journal.
+
+
+    URL Pattern: https://journals.sagepub.com/doi/pdf/{DOI}
+
+    Alternative: http://{host}/content/{volume}/{issue}/{first_page}.full.pdf
+
+    Dance Function: the_sage_hula'
+url_patterns:
+  primary_template: http://{host}/content/{volume}/{issue}/{first_page}.full.pdf
+dance_function: the_vip_shake
+journals:
+  simple_list:
+  - Acupunct Electrother Res
+  - Ann Clin Biochem
+  - Angiology
+  - Assessment
+  - Clin Appl Thromb Hemost
+  - Clin Pediatr
+  - Clin Pediatr (Phila)
+  - J Aging Health
+  - J Child Neurol
+  - J Dent Res
+  - J Hum Lact
+  - J Renin Angiotensin Aldosterone Syst
+  - Lupus
+  parameterized:
+    Ann Clin Biochem:
+      host: acb.sagepub.com
+    Angiology:
+      host: ang.sagepub.com
+    Assessment:
+      host: asm.sagepub.com
+    Clin Appl Thromb Hemost:
+      host: cat.sagepub.com
+    Clin Pediatr:
+      host: cpj.sagepub.com
+    Clin Pediatr (Phila):
+      host: cpj.sagepub.com
+    J Aging Health:
+      host: jah.sagepub.com
+    J Child Neurol:
+      host: jcn.sagepub.com
+    J Dent Res:
+      host: jdr.sagepub.com
+    J Hum Lact:
+      host: jhl.sagepub.com
+    J Renin Angiotensin Aldosterone Syst:
+      host: jra.sagepub.com
+    Lupus:
+      host: lup.sagepub.com
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

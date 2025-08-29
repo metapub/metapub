@@ -184,7 +184,10 @@ class PubMedFetcher(Borg):
             if pma.pmid is None:
                 raise InvalidPMID('Pubmed ID "%s" not found' % pmid)
             return pma
-        except Exception as e:
+        except InvalidPMID:
+            # Let InvalidPMID bubble up naturally - don't convert to service error
+            raise
+        except (etree.XMLSyntaxError, etree.XMLParserError) as e:
             # Handle XML parsing errors that might indicate service issues
             diagnosis = diagnose_ncbi_error(e)
             if diagnosis['is_service_issue']:

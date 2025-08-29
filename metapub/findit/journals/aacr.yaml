@@ -1,0 +1,53 @@
+schema_version: '1.0'
+publisher:
+  name: Aacr
+  id: aacr
+  description: 'American Association for Cancer Research (AACR) journal patterns and
+    mappings.
+
+    AACR publishes cancer research journals using Volume-Issue-Page (VIP)
+    format URLs with journal-specific subdomains.
+
+    URL Pattern: http://{host}.aacrjournals.org/content/{volume}/{issue}/{first_page}.full.pdf
+
+    Dance Function: the_aacr_jitterbug'
+url_patterns:
+  primary_template: http://{host}.aacrjournals.org/content/{volume}/{issue}/{first_page}.full.pdf
+dance_function: the_aacr_jitterbug
+journals:
+  parameterized:
+    Blood Cancer Discov:
+      host: bloodcancerdiscov
+    Cancer Discov:
+      host: cancerdiscovery
+    Cancer Epidemiol Biomarkers Prev:
+      host: cebp
+    Cancer Immunol Res:
+      host: cancerimmunolres
+    Cancer Prev Res (Phila):
+      host: cancerpreventionresearch
+    Cancer Res:
+      host: cancerres
+    Clin Cancer Res:
+      host: clincancerres
+    Mol Canc Therapeut:
+      host: mct
+    Mol Cancer Ther:
+      host: mct
+    Mol Cancer Res:
+      host: mcr
+  simple_list:
+  - Cancer Discov
+  - Cancer Epidemiol Biomarkers Prev
+  - Cancer Res
+  - Clin Cancer Res
+  - Mol Canc Therapeut
+  - Mol Cancer Ther
+  - Cancer Prev Res (Phila)
+  - Cancer Immunol Res
+  - Blood Cancer Discov
+  - Mol Cancer Res
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

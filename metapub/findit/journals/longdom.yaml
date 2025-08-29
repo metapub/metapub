@@ -1,0 +1,61 @@
+schema_version: '1.0'
+publisher:
+  name: Longdom
+  id: longdom
+  description: ''
+url_patterns:
+  primary_template: https://www.longdom.org/articles-pdfs/{article_slug}.pdf
+dance_function: the_longdom_hustle
+journals:
+  simple_list:
+  - Adv Tech Biol Med
+  - Anat Physiol
+  - Angiol Open Access
+  - Autism Open Access
+  - Biochem Pharmacol (Los Angel)
+  - Cell Dev Biol
+  - Endocrinol Metab Syndr
+  - Gynecol Obstet (Sunnyvale)
+  - Immunotherapy (Los Angel)
+  - Intern Med Open Access
+  - J Alcohol Drug Depend
+  - J Anesth Clin Res
+  - J Antivir Antiretrovir
+  - J Bone Marrow Res
+  - J Bone Res
+  - J Chromatogr Sep Tech
+  - J Clin Cell Immunol
+  - J Clin Exp Cardiolog
+  - J Clin Exp Dermatol Res
+  - J Clin Exp Ophthalmol
+  - J Clin Toxicol
+  - J Depress Anxiety
+  - J Dev Drugs
+  - J Down Syndr Chromosom Abnorm
+  - J Drug Metab Toxicol
+  - J Genet Syndr Gene Ther
+  - J Glycobiol
+  - J Glycomics Lipidomics
+  - J Leuk (Los Angel)
+  - J Mol Imaging Dyn
+  - J Nanomedine Biotherapeutic Discov
+  - J Nutr Food Sci
+  - J Osteoporos Phys Act
+  - J Perioper Crit Intensiv Care Nurs
+  - J Probiotics Health
+  - J Psychol Psychother
+  - J Womens Health Care
+  - J Yoga Phys Ther
+  - Mass Spectrom Purif Tech
+  - Matern Pediatr Nutr
+  - Mycobact Dis
+  - Pediatr Ther
+  - Reprod Syst Sex Disord
+  - Rheumatology (Sunnyvale)
+  - Transcr Open Access
+  - Transl Med (Sunnyvale)
+  - Virol Mycol
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

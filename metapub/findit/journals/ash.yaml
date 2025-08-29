@@ -1,0 +1,17 @@
+schema_version: '1.0'
+publisher:
+  name: American Society of Hematology
+  id: ash
+  description: Nonstandard VIP format for American Society of Hematology
+  dance_function: the_vip_shake_nonstandard
+  pattern_type: vip_nonstandard
+url_patterns:
+  primary_template: http://www.bloodjournal.org/content/bloodjournal/{a.volume}/{a.issue}/{a.first_page}.full.pdf
+journals:
+  simple_list:
+  - Blood
+metadata:
+  evidence_date: '2025-08-16'
+  verification_notes: Migrated from misc_vip.py nonstandard format
+  special_handling:
+  - nonstandard_url_format

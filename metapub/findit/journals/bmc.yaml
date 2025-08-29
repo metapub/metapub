@@ -1,0 +1,381 @@
+schema_version: '1.0'
+publisher:
+  name: Bmc
+  id: bmc
+  description: ''
+url_patterns:
+  primary_template: http://www.biomedcentral.com/content/pdf/{aid}.pdf
+dance_function: the_bmc_boogie
+journals:
+  simple_list:
+  - 3D Print Med
+  - AIDS Res Ther
+  - Acta Neuropathol Commun
+  - Acta Vet Scand
+  - Addict Sci Clin Pract
+  - Adv Rheumatol
+  - Adv Simul (Lond)
+  - Agric Food Secur
+  - Algorithms Mol Biol
+  - Allergy Asthma Clin Immunol
+  - Alzheimers Res Ther
+  - Anim Microbiome
+  - Ann Clin Microbiol Antimicrob
+  - Ann For Sci
+  - Ann Gen Hosp Psychiatry
+  - Ann Gen Psychiatry
+  - Ann Genet Sel Anim
+  - Ann Microbiol
+  - Ann Surg Innov Res
+  - Antimicrob Resist Infect Control
+  - Aquat Biosyst
+  - Arch Public Health
+  - Arthritis Res
+  - Arthritis Res Ther
+  - Asia Pac Fam Med
+  - Asthma Res Pract
+  - Aust New Zealand Health Policy
+  - Auto Immun Highlights
+  - Autom Exp
+  - Avian Res
+  - BMC Anesthesiol
+  - BMC Biochem
+  - BMC Bioinformatics
+  - BMC Biol
+  - BMC Biomed Eng
+  - BMC Biophys
+  - BMC Biotechnol
+  - BMC Blood Disord
+  - BMC Cancer
+  - BMC Cardiovasc Disord
+  - BMC Cell Biol
+  - BMC Chem
+  - BMC Chem Biol
+  - BMC Clin Pathol
+  - BMC Complement Altern Med
+  - BMC Complement Med Ther
+  - BMC Dermatol
+  - BMC Dev Biol
+  - BMC Ear Nose Throat Disord
+  - BMC Ecol
+  - BMC Emerg Med
+  - BMC Endocr Disord
+  - BMC Evol Biol
+  - BMC Fam Pract
+  - BMC Gastroenterol
+  - BMC Genet
+  - BMC Genomics
+  - BMC Health Serv Res
+  - BMC Hematol
+  - BMC Immunol
+  - BMC Infect Dis
+  - BMC Int Health Hum Rights
+  - BMC Mater
+  - BMC Med
+  - BMC Med Educ
+  - BMC Med Ethics
+  - BMC Med Genet
+  - BMC Med Genomics
+  - BMC Med Imaging
+  - BMC Med Inform Decis Mak
+  - BMC Med Phys
+  - BMC Med Res Methodol
+  - BMC Microbiol
+  - BMC Mol Biol
+  - BMC Mol Cell Biol
+  - BMC Musculoskelet Disord
+  - BMC Nephrol
+  - BMC Neurol
+  - BMC Neurosci
+  - BMC Nucl Med
+  - BMC Nurs
+  - BMC Nutr
+  - BMC Obes
+  - BMC Oral Health
+  - BMC Palliat Care
+  - BMC Pediatr
+  - BMC Pharmacol Toxicol
+  - BMC Physiol
+  - BMC Plant Biol
+  - BMC Pregnancy Childbirth
+  - BMC Proc
+  - BMC Psychiatry
+  - BMC Psychol
+  - BMC Public Health
+  - BMC Pulm Med
+  - BMC Res Notes
+  - BMC Rheumatol
+  - BMC Sports Sci Med Rehabil
+  - BMC Struct Biol
+  - BMC Surg
+  - BMC Syst Biol
+  - BMC Urol
+  - BMC Vet Res
+  - BMC Womens Health
+  - Basic Clin Androl
+  - Behav Brain Funct
+  - Big Data Anal
+  - BioData Min
+  - Bioelectron Med
+  - Bioinformatics
+  - Biol Direct
+  - Biol Mood Anxiety Disord
+  - Biol Proced Online
+  - Biol Res
+  - Biol Sex Differ
+  - Biomagn Res Technol
+  - Biomark Res
+  - Biomed Digit Libr
+  - Biomed Eng Online
+  - Biopsychosoc Med
+  - Biotechnol Biofuels
+  - Biotechnology
+  - Borderline Personal Disord Emot Dysregul
+  - Cancer Cell Int
+  - Cancer Converg
+  - Cancer Imaging
+  - Cancer Metab
+  - Cancer Nanotechnol
+  - Cancers Head Neck
+  - Canine Genet Epidemiol
+  - Canine Med Genet
+  - Carbon Balance Manag
+  - Cardiooncology
+  - Cardiovasc Diabetol
+  - Cardiovasc Ultrasound
+  - Cases J
+  - Cell Biosci
+  - Cell Chromosome
+  - Cell Commun Signal
+  - Cell Div
+  - Cell Mol Biol Lett
+  - Cerebellum Ataxias
+  - Cerebrospinal Fluid Res
+  - Chem Cent J
+  - Child Adolesc Psychiatry Ment Health
+  - Chin J Cancer
+  - Chin Med
+  - Chin Neurosurg J
+  - Chiropr Man Therap
+  - Chiropr Osteopat
+  - Cilia
+  - Clin Diabetes Endocrinol
+  - Clin Epigenetics
+  - Clin Hypertens
+  - Clin Mol Allergy
+  - Clin Proteomics
+  - Clin Sarcoma Res
+  - Comp Hepatol
+  - Confl Health
+  - Contracept Reprod Med
+  - Cost Eff Resour Alloc
+  - Cough
+  - Crime Sci
+  - Crit Care
+  - Curr Control Trials Cardiovasc Med
+  - Diabetol Metab Syndr
+  - Diagn Pathol
+  - Diagn Progn Res
+  - Disaster Mil Med
+  - Dyn Med
+  - Echo Res Pract
+  - Energy Sustain Soc
+  - Environ Evid
+  - Environ Health
+  - Environ Microbiome
+  - Epidemiol Perspect Innov
+  - Epigenetics Chromatin
+  - Eur J Med Res
+  - Eur Rev Aging Phys Act
+  - Evodevo
+  - Evolution (N Y)
+  - Exp Hematol Oncol
+  - Exp Transl Stroke Med
+  - Extrem Physiol Med
+  - Eye Vis (Lond)
+  - Fertil Res Pract
+  - Fibrogenesis Tissue Repair
+  - Filaria J
+  - Fluids Barriers CNS
+  - Front Zool
+  - Fungal Biol Biotechnol
+  - Gastroenterology
+  - Genes Environ
+  - Genes Nutr
+  - Genet Sel Evol
+  - Genet Sel Evol (1983)
+  - Genet Vaccines Ther
+  - Genom Soc Policy
+  - Genome Biol
+  - Genome Med
+  - Genomics Inform
+  - Geochem Trans
+  - Geriatrics
+  - Glob Health Res Policy
+  - Gut Pathog
+  - Gynecol Oncol Res Pract
+  - Harm Reduct J
+  - Head Face Med
+  - Head Neck Oncol
+  - Health Econ Rev
+  - Health Justice
+  - Health Qual Life Outcomes
+  - Health Res Policy Syst
+  - Hepatol Med Policy
+  - Hered Cancer Clin Pract
+  - Herpesviridae
+  - Hum Genomics
+  - Hum Resour Health
+  - IMA Fungus
+  - Immun Ageing
+  - Implement Sci
+  - Implement Sci Commun
+  - Infect Agent Cancer
+  - Infect Dis Poverty
+  - Inflamm Regen
+  - Inj Epidemiol
+  - Int Breastfeed J
+  - Int J Behav Nutr Phys Act
+  - Int J Emerg Med
+  - Int J Equity Health
+  - Int J Food Contam
+  - Int J Health Geogr
+  - Int J Ment Health Syst
+  - Int J Pediatr Endocrinol
+  - Int J Retina Vitreous
+  - Int Semin Surg Oncol
+  - Investig Genet
+  - Ir Vet J
+  - Isr J Health Policy Res
+  - Ital J Pediatr
+  - J Anim Sci Biotechnol
+  - J Autoimmune Dis
+  - J Biol
+  - J Biol Eng
+  - J Biol Res (Thessalon)
+  - J Biomed Discov Collab
+  - J Biomed Semantics
+  - J Cannabis Res
+  - J Cardiothorac Surg
+  - J Cardiovasc Imaging
+  - J Cheminform
+  - J Clin Bioinforma
+  - J Clin Mov Disord
+  - J Compassionate Health Care
+  - J Eat Disord
+  - J Ethnobiol Ethnomed
+  - J Exp Clin Assist Reprod
+  - J Exp Clin Cancer Res
+  - J Headache Pain
+  - J Health Popul Nutr
+  - J Hematol Oncol
+  - J Immune Based Ther Vaccines
+  - J Inflamm (Lond)
+  - J Intensive Care
+  - J Med Case Rep
+  - J Mol Psychiatry
+  - J Nanobiotechnology
+  - J Negat Results Biomed
+  - J Neurodev Disord
+  - J Neuroeng Rehabil
+  - J Neuroinflammation
+  - J Occup Med Toxicol
+  - J Orthop Surg Res
+  - J Pharm Health Care Sci
+  - J Physiol Anthropol
+  - J Ther Ultrasound
+  - J Transl Med
+  - J Trauma Manag Outcomes
+  - Kinetoplastid Biol Dis
+  - Knee Surg Relat Res
+  - Lab Anim Res
+  - Life Sci Soc Policy
+  - Lipids Health Dis
+  - Longev Healthspan
+  - Malar J
+  - Matern Health Neonatol Perinatol
+  - Med Immunol
+  - Microb Cell Fact
+  - Microb Inform Exp
+  - Microbiome
+  - Mil Med Res
+  - Mob DNA
+  - Mol Autism
+  - Mol Brain
+  - Mol Cancer
+  - Mol Cytogenet
+  - Mol Med
+  - Mol Neurodegener
+  - Mov Ecol
+  - Mult Scler Demyelinating Disord
+  - Neural Dev
+  - Neural Syst Circuits
+  - Neurol Res Pract
+  - Neuropsychiatr Electrophysiol
+  - Neurovasc Imaging
+  - Nonlinear Biomed Phys
+  - Nucl Recept
+  - Nursing
+  - Nutr J
+  - Nutr Metab (Lond)
+  - One Health Outlook
+  - Ophthalmology
+  - Oral Health
+  - Orphanet J Rare Dis
+  - Osteopath Med Prim Care
+  - Parasit Vectors
+  - Part Fibre Toxicol
+  - Pathogenetics
+  - Patient Saf Surg
+  - Pediatr Rheumatol Online J
+  - Perioper Med (Lond)
+  - Philos Ethics Humanit Med
+  - Pilot Feasibility Stud
+  - Plant Methods
+  - Pneumonia (Nathan)
+  - Popul Health Metr
+  - Porcine Health Manag
+  - Proteome Sci
+  - Psychiatry
+  - Public Health
+  - Radiat Oncol
+  - Reprod Biol Endocrinol
+  - Reprod Health
+  - Res Integr Peer Rev
+  - Res Involv Engagem
+  - Respir Res
+  - Retrovirology
+  - Saline Syst
+  - Scand J Trauma Resusc Emerg Med
+  - Scoliosis
+  - Scoliosis Spinal Disord
+  - Silence
+  - Skelet Muscle
+  - Sleep Sci Pract
+  - Source Code Biol Med
+  - Sports Med Arthrosc Rehabil Ther Technol
+  - Stand Genomic Sci
+  - Stem Cell Res Ther
+  - Subst Abuse Treat Prev Policy
+  - Syst Rev
+  - Theor Biol Med Model
+  - Thromb J
+  - Thyroid Res
+  - Todays OR Nurse
+  - Transl Med Commun
+  - Transl Neurodegener
+  - Transplant Res
+  - Trials
+  - Trop Dis Travel Med Vaccines
+  - Trop Med Health
+  - Vet Res
+  - Virol J
+  - Womens Midlife Health
+  - World J Emerg Surg
+  - World J Surg Oncol
+  - Zoological Lett
+  - eHealth Int
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

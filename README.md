@@ -6,12 +6,14 @@ Metapub is a Python library that provides python objects fetched via
 eutils that represent Pubmed papers and concepts found within the NCBI
 databases.
 
+**Full documentation can be found at https://metapub.readthedocs.org**
+
 Metapub currently provides abstraction layers over Medgen, Pubmed,
 ClinVar, and CrossRef, and intends to encompass as many types of
 database lookups and summaries as can be provided via Eutils / Entrez.
 
 Metapub can also help build scholarly paper libraries through the use of
-the FindIt class.
+the FindIt class. See the [FindIt documentation](https://metapub.readthedocs.org/en/latest/advanced.html#findit-publisher-specific-pdf-access) for comprehensive coverage of 68+ publishers.
 
 MetaPub features include:
 
@@ -23,7 +25,7 @@ MetaPub features include:
 -   NCBI\_API\_KEY supported as environment variable (see below).
 -   PubMedArticle object is a privileged class across Metapub \-- use it
     to instantiate CrossRef lookups, for example.
--   Widespread use of Logging so you can see what\'s going on under the
+-   Articulate use of Logging so you can see what\'s going on under the
     hood.
 -   Command line utilities \-- see Getting Started below.
 
@@ -35,16 +37,19 @@ arcane magic of classic Python setuptools:
 
     pip install metapub
 
+For step-by-step examples and tutorials, see the [Quick Start Guide](https://metapub.readthedocs.org/en/latest/quickstart.html).
+
 When the package is installed, you\'ll have a few command line utilities
 available to you:
 
+    ncbi_health_check
     convert pmid2doi <pmid>
     convert doi2pmid <doi>
     convert bookid2pmid <ncbi_bookID>
     pubmed_article <pmid>
 
 All of these utilities contain their own help screens, by which you will
-be able to see options and usage.
+be able to see options and usage. For complete API documentation, see the [API Overview](https://metapub.readthedocs.org/en/latest/api.html).
 
 Here\'s an example:
 
@@ -217,7 +222,7 @@ None:
     get_pmcid_for_otherid(string)
 
 As implied by the function names, you can supply any valid ID type
-(\"otherid\") to acquire the desired ID type.
+(\"otherid\") to acquire the desired ID type. For advanced ID conversion patterns, see the [conversion utilities documentation](https://metapub.readthedocs.org/en/latest/api.html#conversion-and-citation).
 
 MedGenConcept / MedGenFetcher
 =============================
@@ -239,6 +244,8 @@ Basic usage:
     print(concept.modes_of_inheritance)
     print(concept.OMIM)
     print(concept.synonyms)
+
+For advanced MedGen usage including disease-gene mapping and clinical queries, see the [Advanced Usage guide](https://metapub.readthedocs.org/en/latest/advanced.html#medgen-and-clinvar-integration).
 
 ClinVarVariation / ClinVarFetcher
 =================================
@@ -268,6 +275,8 @@ Basic usage:
     pubmed_citations = clinvar.pmids_for_hgvs('NM_000249.3:c.1958T>G')
     print(pubmed_citations)
 
+For comprehensive ClinVar variant analysis examples, see the [ClinVar Integration documentation](https://metapub.readthedocs.org/en/latest/advanced.html#clinvar-variant-analysis).
+
 CrossRefFetcher
 ===============
 
@@ -284,7 +293,7 @@ library by \@sckott.
 In metapub, the CrossRefFetcher object contains convenience methods into
 the crossref.works() query that allows us to abstract away a lot of the
 string-handshaking between PubMedArticles and CrossRef and just get what
-we need as quickly and accurately as possible.
+we need as quickly and accurately as possible. For advanced CrossRef usage patterns including batch processing, see the [CrossRef Integration documentation](https://metapub.readthedocs.org/en/latest/advanced.html#crossref-integration).
 
 Basic usage:
 
@@ -309,17 +318,22 @@ Example starting from a known pubmed ID:
 
 IMPORTANT NOTE
 
-In this minor version (0.5) of Metapub there is no CrossRefFetcher
-cache. This feature is coming back very ASAP.
+In versions 0.5-0.6 of Metapub there is no CrossRefFetcher
+cache. This feature is coming back in v 0.7 (in development).
 
 FindIt
 ------
 
 Looking for an article PDF? Trying to gather a large corpus of research?
+Tired of that 3-web-clicks-to-every-PDF nonsense?
 
 The FindIt object was designed to be able to locate the direct urls of
 as many different articles from as many different publishers of PubMed
 content as possible.
+
+Currently, over 15,000 journals in PubMed have FindIt "dances" leading
+directly to PDF articles, letting researchers build large corpuses (or
+just save everyday wear and tear on carpal tunnels) easily.
 
 Any article that is Open Access, whether it is in PubmedCentral or not,
 can potentially be \"FindIt-able\". Usage is simple:
@@ -335,16 +349,26 @@ If FindIt couldn\'t get a URL, you can take a look at the \"reason\"
 attribute to find out why. For example:
 
     src = FindIt('1234567')
-    if src.url is None: print(src.reason) 
+    if src.url is None: print(src.reason)
+
+For a complete list of possible error responses and troubleshooting, see the [FindIt Error Handling documentation](https://metapub.readthedocs.org/en/latest/advanced.html#error-handling-patterns).
 
 The FindIt object is cached (keyed to PMID), so while initialization the
 first time around for a given PMID or DOI may take a few seconds, the
 second time this information is requested it will take far less time.
 
 If you see a FindIt \"reason\" that starts with NOFORMAT, this is a
-great place to contribute some help to metapub! Feel free to dive in and
-submit a pull request, or contact the author (<naomi@nthmost.com>) for
-advice on how to fill in these gaps.
+great place to contribute some help to metapub! 
+
+The best thing to do would be to submit this as an issue on GitHub:
+https://github.com/metapub/metapub/issues
+
+The second-best thing would be to contact the author <naomi@nthmost.com>, 
+who makes no guarantees about her ability to keep up with her email.
+
+When you submit a NOFORMAT issue or email, please include the PMID of the
+paper you're looking for and the entire text of the error message. Thanks!
+
 
 UrlReverse
 ----------
@@ -364,6 +388,8 @@ Usage is very similar to FindIt:
     print(urlrev.pmid)
     print(urlrev.doi)
     print(urlrev.steps)
+
+For advanced URL reverse engineering patterns, see the [URL Reverse Engineering documentation](https://metapub.readthedocs.org/en/latest/advanced.html#url-reverse-engineering).
 
 UrlReverse is cached (keyed to URL); by default its cache db can be
 found in \~/.cache/urlreverse-cache.db
@@ -473,15 +499,8 @@ type of data or API that you wish Metapub would support. Examples are
 often crucial for reproducing bugs and for creating tests in the wake of
 a bug fix.
 
-Extra special help is requested with the following items:
-
--   Logging more consistently \-- if you have a logging \"philosophy\"
-    I\'d love to hear from you.
--   Test coverage \-- especially clever testing strategies to handle
-    data that change all the time.
-
-Email inquiries to the maintainer address in this package. Or just
-submit a pull request.
+For easy places to get involved, see https://github.com/metapub/metapub/issues
+and looked at the "good first issue" and "help wanted" tags.
 
 About Python 2 and Python 3 Support
 -----------------------------------

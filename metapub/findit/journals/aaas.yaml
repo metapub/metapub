@@ -1,0 +1,24 @@
+publisher:
+  name: aaas
+  dance_function: the_aaas_twostep
+  pattern_type: aaas
+  description: Configuration for aaas journals
+url_patterns:
+  primary_template: http://{ja}.sciencemag.org/content/{volume}/{issue}/{first_page}.full.pdf
+journals:
+  Science:
+    parameters:
+      ja: www
+  Sci Adv:
+    parameters:
+      ja: advances
+  Sci Signal:
+    parameters:
+      ja: stke
+  Sci Transl Med:
+    parameters:
+      ja: stm
+metadata:
+  migrated_from: aaas.py
+  migration_date: '2025-08-16'
+  pattern_type: aaas

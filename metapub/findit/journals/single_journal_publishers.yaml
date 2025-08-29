@@ -1,0 +1,26 @@
+schema_version: '1.0'
+publisher:
+  name: Single Journal Publishers
+  id: single_journal_publishers
+  description: 'Single journal publishers - publishers that have exactly ONE journal.
+
+
+    This module contains configurations for publishers that publish exactly
+
+    one journal and use generic functions (the_doi_slide, the_vip_shake)
+
+    rather than custom dance functions.
+
+
+    These are true single-journal publishers, not multi-journal publishers
+
+    that happen to use simple patterns.'
+url_patterns:
+  primary_template: https://science.org/doi/reader/{doi}
+dance_function: the_doi_slide
+journals:
+  simple_list: []
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

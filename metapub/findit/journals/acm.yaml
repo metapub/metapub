@@ -1,0 +1,147 @@
+schema_version: '1.0'
+publisher:
+  name: acm
+  id: acm
+  description: ''
+url_patterns:
+  primary_template: https://dl.acm.org/doi/pdf/{doi}
+dance_function: the_acm_reel
+journals:
+  simple_list:
+  - 24th Int Conf 3D Web Technol (2019)
+  - ACI 2017 Improv Relat (2017)
+  - ACM BCB
+  - ACM Comput Surv
+  - ACM Conf Bioinform Comput Biol Biomed Inform (2013)
+  - ACM Int Conf Bioinform Comput Biol (2010)
+  - ACM J Data Inf Qual
+  - ACM J Emerg Technol Comput Syst
+  - ACM Queue
+  - ACM SIGAPP Appl Comput Rev
+  - ACM Trans Access Comput
+  - ACM Trans Appl Percept
+  - ACM Trans Comput Healthc
+  - ACM Trans Comput Hum Interact
+  - ACM Trans Embed Comput Syst
+  - ACM Trans Hum Robot Interact
+  - ACM Trans Inf Syst
+  - ACM Trans Intell Syst Technol
+  - ACM Trans Interact Intell Syst
+  - ACM Trans Internet Technol
+  - ACM Trans Knowl Discov Data
+  - ACM Trans Manag Inf Syst
+  - ACM Trans Math Softw
+  - ACM Trans Model Comput Simul
+  - ACM Trans Reconfigurable Technol Syst
+  - ACM Trans Sens Netw
+  - ACM Transact Des Autom Electron Syst
+  - AI Matters
+  - ASPLOS Proc
+  - ASSETS
+  - AVI
+  - BuildSys15 (2015)
+  - CEA13 (2013)
+  - CODASPY
+  - CSCW Conf Comput Support Coop Work
+  - Comput Archit News
+  - Comput Graph (ACM)
+  - Conf Comput Commun Secur
+  - Creat Cognit
+  - DH15 (2015)
+  - DIS (Des Interact Syst Conf)
+  - Database Theory ICDT
+  - DigitalBiomarkers 17 (2017)
+  - Ext Abstr Hum Factors Computing Syst
+  - FDG
+  - FPGA
+  - GROUP ACM SIGCHI Int Conf Support Group Work
+  - Genet Evol Comput Conf
+  - GetMobile
+  - HT ACM Conf Hypertext Soc Media
+  - ICMR 17 (2017)
+  - IHI
+  - IPSN
+  - IUI
+  - Int Conf Pervasive Comput Technol Healthc
+  - Int Conf Pervasive Technol Relat Assist Environ
+  - Interactions (N Y)
+  - IoTDI 2017 (2017)
+  - J Hum Robot Interact
+  - KDD
+  - MADiMa16 (2016)
+  - MIXHS 12 (2012)
+  - MMHealth16 (2016)
+  - MMHealth17 (2017)
+  - MUM Int Conf Mob Ubiquitous Multimed
+  - MobiSys
+  - MobileHCI
+  - Model Driven Eng Lang Syst
+  - Pervasive Disp 2017 (2017)
+  - Pract Exp Adv Res Comput 2018 (2018)
+  - Proc 17th Int Web All Conf (2020)
+  - Proc 18th ACM Int Conf Interact Des Child (2019)
+  - Proc 1st Workshop Sch Web Min (2017)
+  - Proc 2012 BELIV Workshop (2012)
+  - Proc 2014 ACM Southeast Reg Conf
+  - Proc 2015 Workshop Vis Anal Healthc (2015)
+  - Proc 2nd Workshop Hum Loop Data Anal (2017)
+  - Proc ACM Conf Health Inference Learn (2020)
+  - Proc ACM Hum Comput Interact
+  - Proc ACM Int Conf Inf Knowl Manag
+  - Proc ACM Int Conf Multimed
+  - Proc ACM Int Conf Multimodal Interact
+  - Proc ACM Int Conf Ubiquitous Comput
+  - Proc ACM Int Workshop Data Text Min Biomed Inform
+  - Proc ACM Interact Mob Wearable Ubiquitous Technol
+  - Proc ACM SIGACT SIGMOD SIGART Symp Princ Database Syst
+  - Proc ACM SIGCHI
+  - Proc ACM SIGCOMM Conf
+  - Proc ACM SIGGRAPH Symp Interact 3D Graph Games
+  - Proc ACM SIGMOD Int Conf Manag Data
+  - Proc ACM SIGPLAN Conf Program Lang Des Implement
+  - Proc ACM SIGSPATIAL Int Conf Adv Inf
+  - Proc ACM Symp Access Control Model Technol
+  - Proc ACM Symp Cloud Comput
+  - Proc ACM Symp Doc Eng
+  - Proc ACM Symp Virtual Real Softw Technol
+  - Proc ACM Web Sci Conf
+  - Proc ACM/IEEE Joint Conf Digit Libr
+  - Proc APGV
+  - Proc Annu Int Conf Mob Comput Netw
+  - Proc Annu Symp Comput Hum Interact Play
+  - Proc CGO
+  - Proc Eighth Wirel Stud Stud Stud Workshop (2016)
+  - Proc ExploreDB17 (2017)
+  - Proc Eye Track Res Appl Symp
+  - Proc Fourth Workshop Data Anal Scale Danac 2015 (2015)
+  - Proc Gov Technol Inf Policies (2010)
+  - Proc IEEE ACM Int Conf Adv Soc Netw Anal Min
+  - Proc IEEE WIC ACM Int Conf Web Intell Intell Agent Technol
+  - Proc IEEE Workshop Mob Comput Syst Appl
+  - Proc Int Conf Automot User Interfaces Interact Veh Appl (2014)
+  - Proc Int Conf Embed Netw Sens Syst
+  - Proc Int Conf Softw Eng
+  - Proc Int Conf Web Search Data Min
+  - Proc Int Symp Comput Archit
+  - Proc Int Symp High Perform Distrib Comput
+  - Proc Int Symp Wearable Comput
+  - Proc Int Workshop Autom Softw Test
+  - Proc Int Workshop Distrib Event Based Syst
+  - Proc Int World Wide Web Conf
+  - Proc SIGCHI Conf Hum Factor Comput Syst
+  - Proc Second Workshop Data Manag End End Mach Learn (2018)
+  - Proc Symp Appl Comput
+  - Proc Wirel Health
+  - Proceedings VLDB Endowment
+  - SC Conf Proc
+  - SHB12 (2012)
+  - SIGGRAPH Asia 2017 Symp Vis (2017)
+  - SIGKDD Explor
+  - Sci Stat Database Manag
+  - SenseCam 2013
+  - Softw Eng Healthc Syst SEHS IEEE ACM Int Workshop
+  - WOSP 2017 (2017)
+metadata:
+  evidence_date: '2025-08-11'
+  verification_notes: ''
+  special_handling: []

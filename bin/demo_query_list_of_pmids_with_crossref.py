@@ -1,5 +1,3 @@
-from __future__ import absolute_import, print_function, unicode_literals
-
 import os, sys, shutil
 import logging
 
@@ -27,10 +25,10 @@ if __name__=='__main__':
     except IndexError:
         print('Supply filename of pmid list as the argument to this script.')
         sys.exit()
-    
+
     pmids = open(filename, 'r').readlines()
 
-    results_table = { 'pmid': [], 'pma_title': [], 'cr_title': [], 'doi': [], 'score': [], 'pma_aulast': [], 'cr_aulast': [], 'pma_journal': [], 'cr_journal': [] } 
+    results_table = { 'pmid': [], 'pma_title': [], 'cr_title': [], 'doi': [], 'score': [], 'pma_aulast': [], 'cr_aulast': [], 'pma_journal': [], 'cr_journal': [] }
 
     CR = CrossRefFetcher()
 
@@ -43,6 +41,8 @@ if __name__=='__main__':
             except:
                 pma = None
                 #print("%s: Could not fetch" % pmid)
+
+        work = None
         if pma:
             work = CR.article_by_pma(pma)
 

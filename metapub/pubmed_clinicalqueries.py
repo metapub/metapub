@@ -1,4 +1,3 @@
-from __future__ import absolute_import, unicode_literals
 ###
 #
 # This file contains definitions for special methods of 

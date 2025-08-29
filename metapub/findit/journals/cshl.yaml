@@ -1,0 +1,23 @@
+schema_version: '1.0'
+publisher:
+  name: Cold Spring Harbor Laboratory Press
+  id: cshl
+  description: VIP format journals from Cold Spring Harbor Laboratory Press
+  dance_function: the_vip_shake
+  pattern_type: vip
+url_patterns:
+  primary_template: http://{host}/content/{volume}/{issue}/{first_page}.full.pdf
+journals:
+  parameterized:
+    Genome Res:
+      host: genome.cshlp.org
+    Genes Dev:
+      host: genesdev.cshlp.org
+  simple_list:
+  - Genome Res
+  - Genes Dev
+metadata:
+  evidence_date: '2025-08-16'
+  verification_notes: Migrated from misc_vip.py
+  special_handling: []
+  domain: cshlp.org

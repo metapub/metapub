@@ -1,0 +1,59 @@
+# YAML Schema for Publisher Journal Configurations
+# This defines the structure that all publisher YAML files should follow
+
+# Schema Version (for future migrations)
+schema_version: "1.0"
+
+# Publisher metadata
+publisher:
+  name: "Publisher Name"           # Human-readable name
+  id: "publisher_id"              # Unique identifier (matches Python module name)
+  description: "Optional description of publisher and URL patterns"
+  
+# URL patterns for PDF access
+url_patterns:
+  # Primary template (most common pattern)
+  primary_template: "https://example.com/pdf/{doi}"
+  
+  # Secondary templates (alternate domains or patterns)
+  secondary_templates:
+    - template: "https://alt.example.com/pdf/{doi}"
+      description: "Alternate domain for redundancy" 
+      priority: 1  # Order to try templates (lower = higher priority)
+      
+    - template: "https://backup.example.com/{ja}/article-pdf/{doi}"
+      description: "Backup URL with journal abbreviation parameter"
+      priority: 2
+      requires_params: ["ja"]  # Parameters this template needs
+      
+  # Legacy templates (for older articles)
+  legacy_templates:
+    - template: "https://example.com/{ja}/journal/v{volume}/n{issue}/pdf/{pii}.pdf"
+      description: "Legacy format for pre-DOI articles"
+      requires_params: ["ja", "volume", "issue", "pii"]
+      fallback: true  # Only try if primary/secondary fail
+
+# Dance function configuration
+dance_function: "the_doi_slide"   # Function name used in FindIt
+
+# Journal configurations
+journals:
+  # Simple journal list (most common case)
+  simple_list:
+    - "Journal Name 1"
+    - "Journal Name 2"
+    - "Journal Name 3"
+    
+  # Complex journal configurations (when needed)
+  parameterized:
+    "Complex Journal Name":
+      host: "special.example.com"
+      template_override: "https://special.example.com/path/{doi}"
+      notes: "Special handling required"
+
+# Additional metadata
+metadata:
+  evidence_date: "2025-08-07"      # When pattern was last verified
+  verification_notes: "URL patterns verified through HTML analysis"
+  doi_prefix: "10.1234"           # Common DOI prefix for this publisher
+  special_handling: []            # List of special cases or notes

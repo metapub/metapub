@@ -1,5 +1,3 @@
-from __future__ import absolute_import, print_function, unicode_literals
-
 import os, sys, re, logging
 
 import coloredlogs
@@ -18,7 +16,7 @@ except:
     print("supply filename of PMID list as argument to this script")
     sys.exit()
 
-re_pmid = re.compile('^\d+$')
+re_pmid = re.compile(r'^\d+$')
 def validate_pmid(pmid):
     pmid = pmid.strip()
     if re_pmid.findall(pmid):
@@ -31,7 +29,7 @@ pmids = list(set(open(filename, 'r').readlines()))
 for pmid in [item.strip() for item in pmids if validate_pmid(item)]:
     print(pmid)
     try:
-        src = FindIt(pmid=pmid, debug=True)
+        src = FindIt(pmid=pmid, verify=False)
         print('{src.pmid}\t{src.doi}\tScore: {src.doi_score}\t{src.pma.title}'.format(src=src))
         if src.url:
             print(src.url)

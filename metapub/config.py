@@ -1,6 +1,7 @@
 import os
 import coloredlogs
 import logging
+import tempfile
 
 coloredlogs.install()
 
@@ -20,7 +21,6 @@ DEFAULT_CACHE_DIR = os.path.join(os.path.expanduser('~'), '.cache')
 if not os.access(DEFAULT_CACHE_DIR, os.W_OK):
     # default cache dir is not writeable
     # therefore ask the os for a temp directory
-    import tempfile
     DEFAULT_CACHE_DIR = tempfile.gettempdir()
 
 API_KEY = os.getenv('NCBI_API_KEY', None)

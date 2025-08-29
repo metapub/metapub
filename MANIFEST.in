@@ -1,1 +1,5 @@
 include README.rst
+include metapub/findit/data/registry.db
+recursive-include metapub/findit/journals *.yaml
+recursive-include metapub/findit *.md
+recursive-include tests/fixtures *.xml

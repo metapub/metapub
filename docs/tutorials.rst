@@ -413,95 +413,72 @@ Step 2: Analyze Publication Trends
        for author, count in author_counts.most_common(10):
            print(f"  {author}: {count} papers")
 
-Tutorial 5: Cross-Database Literature Mining
--------------------------------------------
+Tutorial 5: Enriching PubMed Results with CrossRef Data
+------------------------------------------------------
 
-This tutorial demonstrates mining literature across PubMed, CrossRef, and other databases.
+This tutorial demonstrates how to use CrossRef to enrich PubMed articles with
+additional metadata like citation counts and licensing information.
 
-Step 1: Multi-Database Search
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: python
-
-   from metapub import CrossRefFetcher
-   
-   def comprehensive_literature_search(topic, max_results=100):
-       CR = CrossRefFetcher()
-       
-       # Search PubMed
-       pubmed_pmids = fetch.pmids_for_query(topic, retmax=max_results)
-       print(f"PubMed results: {len(pubmed_pmids)}")
-       
-       # Search CrossRef
-       crossref_works = CR.works_by_query(topic, max_results=max_results)
-       print(f"CrossRef results: {len(crossref_works)}")
-       
-       # Combine and deduplicate
-       all_works = []
-       
-       # Process PubMed results
-       for pmid in pubmed_pmids:
-           try:
-               article = fetch.article_by_pmid(pmid)
-               all_works.append({
-                   'source': 'PubMed',
-                   'pmid': pmid,
-                   'doi': article.doi,
-                   'title': article.title,
-                   'journal': article.journal,
-                   'year': article.year
-               })
-           except Exception:
-               continue
-       
-       # Process CrossRef results
-       for work in crossref_works:
-           all_works.append({
-               'source': 'CrossRef',
-               'pmid': None,
-               'doi': work.doi,
-               'title': work.title[0] if work.title else '',
-               'journal': work.container_title[0] if work.container_title else '',
-               'year': work.published_print_date_parts[0][0] if work.published_print_date_parts else None
-           })
-       
-       return all_works
-
-Step 2: Deduplicate and Merge
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Step 1: Search PubMed and Collect Articles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
-   def deduplicate_works(works):
-       # Simple deduplication by DOI and title similarity
-       from difflib import SequenceMatcher
-       
-       unique_works = []
-       seen_dois = set()
-       
-       for work in works:
-           if work['doi'] and work['doi'] in seen_dois:
-               continue
-           
-           # Check for title similarity
-           is_duplicate = False
-           for existing in unique_works:
-               if work['title'] and existing['title']:
-                   similarity = SequenceMatcher(None, 
-                       work['title'].lower(), 
-                       existing['title'].lower()
-                   ).ratio()
-                   
-                   if similarity > 0.9:  # 90% similarity threshold
-                       is_duplicate = True
-                       break
-           
-           if not is_duplicate:
-               unique_works.append(work)
-               if work['doi']:
-                   seen_dois.add(work['doi'])
-       
-       print(f"After deduplication: {len(unique_works)} unique works")
-       return unique_works
+   from metapub import PubMedFetcher, CrossRefFetcher
 
-This comprehensive documentation update includes real-world workflows, advanced patterns, and practical tutorials that researchers would actually use. The examples are based on the sophisticated functionality demonstrated in the demo scripts.
+   fetch = PubMedFetcher()
+   cr = CrossRefFetcher()
+
+   # Search PubMed for your topic
+   pmids = fetch.pmids_for_query('CRISPR gene therapy', retmax=20)
+   print(f"Found {len(pmids)} PubMed results")
+
+Step 2: Enrich with CrossRef Metadata
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``CrossRefFetcher`` can look up articles by DOI, by title, or directly from a
+``PubMedArticle`` object. The ``article_by_pma`` method uses title similarity
+matching to find the best CrossRef match.
+
+.. code-block:: python
+
+   enriched = []
+
+   for pmid in pmids:
+       article = fetch.article_by_pmid(pmid)
+
+       # Look up on CrossRef using the PubMedArticle directly
+       cr_work = cr.article_by_pma(article)
+
+       result = {
+           'pmid': pmid,
+           'title': article.title,
+           'journal': article.journal,
+           'year': article.year,
+           'doi': article.doi,
+       }
+
+       if cr_work:
+           result['citation_count'] = cr_work.cited_by_count
+           result['cr_publisher'] = cr_work.publisher
+
+       enriched.append(result)
+       print(f"PMID {pmid}: {article.title[:60]}...")
+
+Step 3: Look Up a Single Article by DOI or Title
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can also query CrossRef directly when you have a DOI or title:
+
+.. code-block:: python
+
+   # By DOI
+   work = cr.article_by_doi('10.1038/s41586-020-2649-2')
+   print(f"{work.title} — cited {work.cited_by_count} times")
+
+   # By title (returns best match)
+   work = cr.article_by_title('CRISPR-Cas9 gene editing for sickle cell disease')
+   if work:
+       print(f"Found: {work.title}")
+       print(f"DOI: {work.doi}")
+       print(f"Publisher: {work.publisher}")

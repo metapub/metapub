@@ -3,10 +3,10 @@ __doc__ = '''metapub.PubMedFetcher -- tools to deal with NCBI's E-utilities inte
 
 from lxml import etree
 import requests
-import eutils
 import logging
 
 from .eutils_common import get_eutils_client
+from .eutils_compat import EutilsRequestError
 from .cache_utils import get_cache_path
 from .pubmedarticle import PubMedArticle
 from .pubmedcentral import get_pmid_for_otherid
@@ -33,7 +33,11 @@ def get_uids_from_esearch_result(xmlstr):
         NCBIServiceError: If XML parsing fails due to NCBI service issues.
     """
     try:
-        dom = etree.fromstring(xmlstr)
+        # Handle XML with encoding declarations properly
+        if xmlstr.strip().startswith('<?xml'):
+            dom = etree.fromstring(xmlstr.encode('utf-8'))
+        else:
+            dom = etree.fromstring(xmlstr)
         uids = []
         idlist = dom.find('IdList')
         if idlist is not None:
@@ -67,7 +71,11 @@ def parse_related_pmids_result(xmlstr):
     """
     try:
         outd = {}
-        dom = etree.fromstring(xmlstr)
+        # Handle XML with encoding declarations properly
+        if xmlstr.strip().startswith('<?xml'):
+            dom = etree.fromstring(xmlstr.encode('utf-8'))
+        else:
+            dom = etree.fromstring(xmlstr)
         for linkset in dom.findall('LinkSet/LinkSetDb'):
             heading = linkset.find('LinkName').text.split('_')[-1]
             outd[heading] = []
@@ -153,7 +161,7 @@ class PubMedFetcher(Borg):
         pmid = str(pmid)
         try:
             result = self.qs.efetch({'db': 'pubmed', 'id': pmid})
-        except eutils.EutilsRequestError as e:
+        except EutilsRequestError as e:
             # Try to provide better error diagnosis
             diagnosis = diagnose_ncbi_error(e, 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi')
             if diagnosis['is_service_issue']:

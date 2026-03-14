@@ -60,7 +60,7 @@ class PostDevelopCommand(develop):
 
 setup(
     name="metapub",
-    version="0.6.4",
+    version="0.7.0",
     description="Pubmed / NCBI / eutils interaction library, handling the metadata of pubmed papers.",
     long_description=open("README.rst").read(),
     long_description_content_type="text/x-rst",
@@ -97,7 +97,6 @@ setup(
         "lxml",
         "lxml_html_clean",
         "requests",
-        "eutils",
         "habanero",
         "tabulate",
         "cssselect",

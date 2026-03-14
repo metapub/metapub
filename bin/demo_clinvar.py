@@ -28,5 +28,5 @@ with tempfile.TemporaryDirectory() as tmpdir:
 
         print()
 
-    print("Demo completed. Note: ClinVar uses non-sequential variant IDs,")
-    print("so most random ID lookups will return 'Invalid ClinVar Variation ID'.")
+    print("ClinVar demo completed.")
+

@@ -113,8 +113,9 @@ Core Features
    Built with genomics research in mind, providing native support for gene-disease relationships, variant annotations, and clinical significance data.
 
 **⚡ Performance Features**
-   - SQLite-based caching with TTL management
-   - Singleton patterns to prevent duplicate API calls
+   - Thread-safe SQLite caching with persistent storage
+   - Automatic rate limiting respecting NCBI guidelines
+   - Response validation preventing error caching  
    - Batch processing optimizations for large datasets
    - Memory-efficient XML parsing
 

@@ -1,7 +1,6 @@
 # Unit testing
 tests/cachedir/*.db
 
-# ignore cache and generated data 
 default/
 output/
 

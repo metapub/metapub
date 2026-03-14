@@ -22,7 +22,10 @@ def fetch_pmids(year_from, year_to, count):
 pmids = fetch_pmids(2022, 2024, count=150)
 
 
-with open('embargo_check_results.csv', 'w', newline='') as csvfile:
+import os
+output_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'output')
+os.makedirs(output_dir, exist_ok=True)
+with open(os.path.join(output_dir, 'embargo_check_results.csv'), 'w', newline='') as csvfile:
     fieldnames = ['PMID', 'is_embargoed', 'Findit_reason']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()

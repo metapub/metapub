@@ -7,6 +7,7 @@ import argparse
 import csv
 import json
 from math import inf
+import os
 import random
 import sys
 from urllib.error import HTTPError
@@ -149,7 +150,9 @@ def main():
                 if answer == "n":
                     line.update(EMPTY_RESULT)
                 
-        with open("out.csv", "w") as out:
+        output_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'output')
+        os.makedirs(output_dir, exist_ok=True)
+        with open(os.path.join(output_dir, "import_dois_out.csv"), "w") as out:
             dialect = csv.excel
             dialect.quoting = csv.QUOTE_ALL
             writer = csv.DictWriter(out, header, extrasaction='ignore', dialect=dialect)

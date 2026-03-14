@@ -13,7 +13,7 @@ from metapub.ncbi_health_check import NCBIHealthChecker, ServiceResult, main, pr
 class TestNCBIHealthChecker(unittest.TestCase):
 
     def setUp(self):
-        """Set up test fixtures with mocked eutils client."""
+        """Set up test fixtures with mocked NCBI client."""
         with patch('metapub.ncbi_health_check.get_eutils_client') as mock_get_client:
             self.mock_eutils_client = Mock()
             mock_get_client.return_value = self.mock_eutils_client

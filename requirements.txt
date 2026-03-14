@@ -2,7 +2,6 @@ setuptools
 lxml
 lxml_html_clean
 requests
-eutils
 habanero
 tabulate
 cssselect

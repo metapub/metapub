@@ -178,6 +178,14 @@ class TestClinVarFetcher(unittest.TestCase):
             if 'submitter_name' in assertion:
                 self.assertIsInstance(assertion['submitter_name'], str)
 
+    def test_pmids_for_hgvs(self):
+        """Test that pmids_for_hgvs returns a list of PMID strings"""
+        pmids = self.fetch.pmids_for_hgvs('NM_000059.4:c.9382C>T')
+        self.assertIsInstance(pmids, list)
+        for pmid in pmids:
+            self.assertIsInstance(pmid, str)
+            self.assertTrue(pmid.isdigit())
+
     def test_offline_cached_xml(self):
         """Test using cached XML file for offline testing"""
         # Read the cached XML file

@@ -179,5 +179,5 @@ class ClinVarFetcher(Borg):
             print('Warning: more than one ClinVar id returned for term %s' % hgvs_text)
         pmids = set()
         for clinvar_id in ids:
-            pmids.add(self._eutils_pmids_for_id(clinvar_id))
+            pmids.update(self._eutils_pmids_for_id(clinvar_id))
         return list(pmids)

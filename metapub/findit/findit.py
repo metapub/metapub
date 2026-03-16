@@ -2,7 +2,6 @@ __author__ = 'nthmost'
 
 import time
 import logging
-import coloredlogs
 
 import requests
 
@@ -20,8 +19,6 @@ from .logic import find_article_from_pma
 from .dances import the_sciencedirect_disco, the_doi_2step, the_wolterskluwer_volta
 
 log = logging.getLogger('metapub.findit')
-
-coloredlogs.install()
 
 """ findit/findit.py
 

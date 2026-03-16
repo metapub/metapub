@@ -58,9 +58,12 @@ def demo_hgvs_lookups(hgvs_text):
     ids = cvfetch.ids_for_variant(hgvs_text)
     print(f'  ClinVar IDs: {ids if ids else "none found"}')
 
-    # Find associated PubMed articles
-    pmids = cvfetch.pmids_for_hgvs(hgvs_text)
-    print(f'  PubMed IDs: {pmids if pmids else "none found"}')
+    # Find associated PubMed articles via each variant ID
+    # (pmids_for_hgvs has a known bug -- see issue #105 -- so we do it manually)
+    all_pmids = []
+    for vid in ids:
+        all_pmids.extend(cvfetch.pmids_for_id(vid))
+    print(f'  PubMed IDs: {all_pmids if all_pmids else "none found"}')
     print()
 
 

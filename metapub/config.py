@@ -3,9 +3,8 @@ import coloredlogs
 import logging
 import tempfile
 
-coloredlogs.install()
-
 log = logging.getLogger('metapub.config')
+coloredlogs.install(logger=logging.getLogger('metapub'))
 
 PKGNAME = 'metapub'
 

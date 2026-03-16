@@ -4,7 +4,6 @@ Defines command-line tools `convert pmid2doi` and `convert doi2pmid`.
 """
 
 import logging
-import coloredlogs
 from urllib.error import HTTPError
 
 from .pubmedfetcher import PubMedFetcher
@@ -18,8 +17,6 @@ except ImportError:
     docopt = None
 
 log = logging.getLogger('metapub.convert')
-
-coloredlogs.install()
 
 cr_fetch = None   #CrossRefFetcher()
 pm_fetch = None   #PubMedFetcher()

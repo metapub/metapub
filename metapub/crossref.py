@@ -105,58 +105,87 @@ class CrossRefWork(object):
         if self.issued:
             return datetime.date(self.issued['date-parts'][0])
 
+    @staticmethod
+    def _format_author_first_last(auth):
+        """Format an author dict as 'Firstname Lastname', handling missing fields."""
+        given = auth.get('given', '')
+        family = auth.get('family', '')
+        name = auth.get('name', '')
+        if given and family:
+            return given + ' ' + family
+        if family:
+            return family
+        return name
+
+    @staticmethod
+    def _format_author_last_fm(auth):
+        """Format an author dict as 'Lastname F', handling missing fields."""
+        given = auth.get('given', '')
+        family = auth.get('family', '')
+        name = auth.get('name', '')
+        if family and given:
+            return family + ' ' + given[0].upper()
+        if family:
+            return family
+        return name
+
     @property
     def author1(self):
+        if not self.author:
+            return ''
         for auth in self.author:
-            if auth['sequence'] == 'first':
-                return auth['given'] + ' ' + auth['family']
+            if auth.get('sequence') == 'first':
+                return self._format_author_first_last(auth)
         return ''
 
     @property
     def author1_last_fm(self):
+        if not self.author:
+            return ''
         for auth in self.author:
-            if auth['sequence'] == 'first':
-                return auth['family'] + ' ' + auth['given'][0].upper()
+            if auth.get('sequence') == 'first':
+                return self._format_author_last_fm(auth)
         return ''
 
     @property
     def authors_str_lastfirst(self):
         """Returns this work's authors as a semicolon-separated string -- LASTNAME FIRSTInitial."""
+        if not self.author:
+            return ''
         out = self.author1_last_fm
-        # assume already sorted by crossref with first author first in the list.
         if len(self.author) > 1:
             for auth in self.author[1:]:
-                out += ';' + auth['family'] + ' ' + auth['given'][0].upper()
+                out += ';' + self._format_author_last_fm(auth)
         return out
 
     @property
     def author_list(self):
         """Returns this work's authors as a flat list (Firstname Lastname), retaining order given by Crossref."""
-        out = []
-        for auth in self.author:
-            out.append(auth['given'] + ' ' + auth['family'])
-        return out
+        if not self.author:
+            return []
+        return [self._format_author_first_last(auth) for auth in self.author]
 
     @property
     def author_list_last_fm(self):
         """Returns this work's authors as a flat list (Lastname FirstInitial), retaining order given by Crossref."""
-        out = []
-        for auth in self.author:
-            out.append(auth['family'] + ' ' + auth['given'][0].upper())
-        return out
+        if not self.author:
+            return []
+        return [self._format_author_last_fm(auth) for auth in self.author]
 
     def to_citation(self):
         """Describes this work as a dictionary suitable for citation lookups in PubMed."""
-        return {'journal': self.container_title[0],
+        author1 = self.author1
+        aulast = author1.split()[-1] if author1 else ''
+        return {'journal': self.container_title[0] if self.container_title else '',
                 'year': self.pubyear,
-                'title': self.title[0],
+                'title': self.title[0] if self.title else '',
                 'authors': self.author_list_last_fm,
                 'doi': self.doi,
                 'volume': self.volume,
                 'issue': self.issue,
                 'pages': self.page,
                 'first_page': self.first_page,
-                'aulast': self.author1.split()[-1:][0],    #just the last name of first author.
+                'aulast': aulast,
                 }
 
     def to_dict(self):

@@ -61,7 +61,7 @@ if article.chemicals:
 
 if article.grants:
     print('\nGrant Information')
-    for gr in grants:
+    for gr in article.grants:
         print('\t', gr)
 
 if article.history:
@@ -75,7 +75,6 @@ print('FindIt results:')
 source = FindIt(pmid=pmid)
 print('\tdoi:', source.doi)
 print('\turl:', source.url)
-print('\tbackup:', source.backup_url)
 print('\treason:', source.reason)
 
 print(article.citation_html)

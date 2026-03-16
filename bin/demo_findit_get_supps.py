@@ -1,7 +1,7 @@
 from metapub import FindIt
 
-pmids = ['25906962' #Acad Pediatr / sciencedirect
-         '25504734' #Hum Mutat / wiley
+pmids = ['25906962', #Acad Pediatr / sciencedirect
+         '25504734', #Hum Mutat / wiley
          '26040889', #Nature
          '25479605', #PMC 
          '24083569',  #BMC / PMC

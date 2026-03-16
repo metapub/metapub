@@ -17,7 +17,6 @@ def print_url_and_reasons_from_pmid_list(pmids, listname='LIST'):
             print('\t', pmid, source.pma.journal, source.url)
         else:
             print('\t', pmid, source.pma.journal, source.reason)
-            print('\t', pmid, source.pma.journal, 'Backup URL: ', source.backup_url)
     print()
 
 for listname in sorted(SAMPLE_PMIDS.keys()):

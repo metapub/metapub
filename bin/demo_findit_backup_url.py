@@ -20,7 +20,7 @@ def try_request(url):
             return True
     return False
 
-def try_backup_url(pmid):
+def try_findit_url(pmid):
     source = FindIt(pmid=pmid)
     if not source.pma:
         return
@@ -28,13 +28,6 @@ def try_backup_url(pmid):
         print(pmid, source.pma.journal, source.url, try_request(source.url))
     else:
         print(pmid, source.pma.journal, source.reason)
-        try:
-            if source.backup_url is not None:
-                print(pmid, source.pma.journal, source.backup_url, try_request(source.backup_url))
-            else:
-                print(pmid, source.pma.journal, "no backup url")
-        except Exception as err:
-            print(pmid, '%r' % err)
 
 if __name__=='__main__':
     import sys
@@ -45,6 +38,6 @@ if __name__=='__main__':
         sys.exit()
 
     for pmid in range(start_pmid, start_pmid+1000):
-        try_backup_url(pmid)
+        try_findit_url(pmid)
 
 

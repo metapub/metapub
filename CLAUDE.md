@@ -20,6 +20,10 @@ This file provides coding guidelines for Claude when working on the metapub proj
 ## Control Flow
 7. **Avoid long if-else trees** - Use early returns, guard clauses, or dictionaries/switch patterns instead of deeply nested if-else chains. Prefer clear, linear code flow.
 
+## Releasing
+- Build with `python -m build` (from the .venv)
+- Upload to PyPI with `twine upload --repository metapub dist/*` (uses `~/.pypirc` with repository name `metapub`)
+
 ## Additional Guidelines
 - Follow the existing code patterns and conventions in the metapub codebase
 - Maintain the current architecture and design patterns

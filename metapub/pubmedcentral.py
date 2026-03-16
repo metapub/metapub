@@ -28,7 +28,7 @@ __doc__="""An assortment of functions providing access to various web APIs.
 
 def _pmc_id_conversion_api(input_id):
     try:
-        xml = requests.get(PMC_ID_CONVERSION_URI % input_id).content
+        xml = requests.get(PMC_ID_CONVERSION_URI % input_id, timeout=30).content
         root = etree.fromstring(xml)
     except Exception as e:
         # Handle PMC ID conversion API errors

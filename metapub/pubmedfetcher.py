@@ -488,7 +488,7 @@ class PubMedFetcher(Borg):
         req = base_uri.format(**inp_dict)
         log.debug('pmids_for_citation: querying with %s', req)
 
-        content = requests.get(req).text
+        content = requests.get(req, timeout=30).text
         pmids = []
         for item in content.split('\n'):
             if item.strip():

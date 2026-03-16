@@ -16,9 +16,9 @@ from metapub import CrossRefFetcher
 CR = CrossRefFetcher()
 
 SAMPLE_TITLES = [
-    'The hallmarks of cancer',
-    'Tumor longest diameter is not reliable for staging of rectal cancer',
+    'Hallmarks of cancer: the next generation',
     'A global reference for human genetic variation',
+    'CRISPR-Cas9 gene editing for sickle cell disease and beta-thalassemia',
 ]
 
 
@@ -37,12 +37,24 @@ def show_crossref_result(title):
     print(f'  Score:   {work.score}')
     print(f'  Journal: {work.container_title[0] if work.container_title else "N/A"}')
     print(f'  Year:    {work.pubyear}')
-    print(f'  Authors: {", ".join(work.author_list[:5])}')
-    if len(work.author_list) > 5:
-        print(f'           ... and {len(work.author_list) - 5} more')
+    if work.author:
+        try:
+            authors = work.author_list[:5]
+            print(f'  Authors: {", ".join(authors)}')
+            if len(work.author_list) > 5:
+                print(f'           ... and {len(work.author_list) - 5} more')
+        except (KeyError, TypeError):
+            # Some CrossRef records have incomplete author data
+            raw = [a.get('family', a.get('name', '?')) for a in work.author[:5]]
+            print(f'  Authors: {", ".join(raw)}')
+    else:
+        print(f'  Authors: N/A')
     print(f'  Type:    {work.type}')
     print(f'  Pages:   {work.page}')
-    print(f'  Citation: {work.citation}')
+    if work.author:
+        print(f'  Citation: {work.citation}')
+    else:
+        print(f'  Citation: (unavailable - no author data)')
     print()
 
 

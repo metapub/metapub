@@ -44,27 +44,15 @@ class TestPNASConfiguration(BaseDanceTest):
     def test_pnas_journal_configuration(self):
         """Test that PNAS journals are properly configured."""
         from metapub.findit.registry import JournalRegistry
-        
+
         registry = JournalRegistry()
-        
-        expected_journals = ['Proc Natl Acad Sci USA']
-        found_count = 0
-        for journal in expected_journals:
-            publisher_info = registry.get_publisher_for_journal(journal)
-            if publisher_info and 'VIP' in publisher_info['name']:
-                print(f"✓ {journal} correctly mapped to VIP Publishers (PNAS)")
-                found_count += 1
-                # Verify expected template format from registry
-                if 'format_template' in publisher_info and publisher_info['format_template']:
-                    template = publisher_info['format_template']
-                    # VIP template uses host/content format, not DOI format
-                    assert '{host}' in template
-                    assert 'content' in template
-                    print(f"✓ Template uses VIP format: {template}")
-            else:
-                print(f"⚠ {journal} mapped to different publisher: {publisher_info['name'] if publisher_info else 'None'}")
-        
-        assert found_count > 0, "No PNAS journals found in VIP registry"
+
+        publisher_info = registry.get_publisher_for_journal('Proc Natl Acad Sci USA')
+        assert publisher_info is not None, "PNAS not found in registry"
+        assert publisher_info['name'] == 'Pnas'
+        assert publisher_info['dance_function'] == 'the_doi_slide'
+        assert publisher_info['format_template'] == 'https://www.pnas.org/doi/pdf/{doi}'
+
         registry.close()
 
     @patch('metapub.findit.dances.generic.verify_pdf_url')
@@ -163,60 +151,31 @@ class TestPNASConfiguration(BaseDanceTest):
     def test_pnas_url_template_format(self):
         """Test 6: Verify URL template format is correct."""
         from metapub.findit.registry import JournalRegistry
-        
+
         registry = JournalRegistry()
-        
-        # Get template from registry
+
         publisher_info = registry.get_publisher_for_journal('Proc Natl Acad Sci USA')
-        if publisher_info and 'format_template' in publisher_info:
-            template = publisher_info['format_template']
-            
-            # PNAS uses host/volume/issue/page format, not DOI format
-            # Test with actual PNAS template parameters
-            import json
-            format_params = json.loads(publisher_info.get('format_params', '{}'))
-            
-            test_params = {
-                'host': format_params.get('host', 'pnas.org'),
-                'volume': '120',
-                'issue': '1', 
-                'first_page': '123'
-            }
-            
-            result = template.format(**test_params)
-            expected = 'http://pnas.org/content/120/1/123.full.pdf'
-            assert result == expected, f"Template format error: {result} != {expected}"
-            
-            # Verify template components for VIP format
-            assert '{host}' in template
-            assert 'content' in template
-            assert 'full.pdf' in template
-            
-            print(f"✓ URL template format correct: {template}")
-        else:
-            pytest.skip("PNAS publisher info not found in registry")
-        
+        assert publisher_info is not None
+        template = publisher_info['format_template']
+        assert template == 'https://www.pnas.org/doi/pdf/{doi}'
+
+        # Verify DOI template produces correct URL
+        result = template.format(doi='10.1073/pnas.2305772120')
+        assert result == 'https://www.pnas.org/doi/pdf/10.1073/pnas.2305772120'
+
         registry.close()
 
     def test_pnas_simplicity_through_generics(self):
-        """Test 7: Verify PNAS achieves simplicity through generic function."""
+        """Test 7: Verify PNAS uses the generic doi_slide function."""
         from metapub.findit.registry import JournalRegistry
-        
+
         registry = JournalRegistry()
-        
-        # PNAS should use the_vip_shake generic function (configured in registry)
+
         publisher_info = registry.get_publisher_for_journal('Proc Natl Acad Sci USA')
-        if publisher_info:
-            assert publisher_info['dance_function'] == 'the_vip_shake'
-            print("✓ No custom dance function - using generic the_vip_shake")
-            
-            # Configuration should be minimal
-            if 'format_template' in publisher_info and publisher_info['format_template']:
-                template = publisher_info['format_template']
-                assert 'http://' in template  # VIP template uses HTTP
-                print("✓ PNAS achieves maximum simplicity through generic DOI function")
-        else:
-            print("⚠ PNAS not found in registry, cannot verify simplicity")
+        assert publisher_info is not None
+        assert publisher_info['dance_function'] == 'the_doi_slide'
+
+        registry.close()
         
         registry.close()
 

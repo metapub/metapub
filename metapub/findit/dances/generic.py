@@ -410,16 +410,20 @@ def the_vip_shake(pma, verify=True, request_timeout=10, max_redirects=3):
               publisher_info['name'], jrnl, pma.pmid)
     
     url_template = publisher_info['format_template']
-    
+
+    # Get journal-specific format params (e.g. host) from the journal's format_params
     import json
-    config = json.loads(publisher_info['config_data'])
-    log.debug("the_vip_shake: Loaded config for publisher '%s' - PMID %s", 
-              publisher_info['name'], pma.pmid)
-    
-    host = config['journals']['parameterized'][jrnl]['host']
-    log.debug("the_vip_shake: Using host '%s' for journal '%s', publisher '%s' - PMID %s", 
+    format_params = {}
+    if publisher_info.get('format_params'):
+        try:
+            format_params = json.loads(publisher_info['format_params'])
+        except (json.JSONDecodeError, TypeError):
+            pass
+
+    host = format_params.get('host', '')
+    log.debug("the_vip_shake: Using host '%s' for journal '%s', publisher '%s' - PMID %s",
               host, jrnl, publisher_info['name'], pma.pmid)
-    
+
     url = url_template.format(host=host, volume=pma.volume, issue=pma.issue, first_page=pma.first_page)
     registry.close()
 

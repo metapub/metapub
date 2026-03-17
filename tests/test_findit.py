@@ -55,6 +55,9 @@ class TestFindIt(unittest.TestCase):
 
     def test_using_cache(self):
         "Test that cached entries provide the same information as freshly pulled ones."
+        # Reset global cache so a new one is created at TEST_CACHEDIR
+        import metapub.findit.findit as findit_module
+        findit_module.FINDIT_CACHE = None
         src = FindIt(pmid=SAMPLE_PMIDS['nonembargoed'][0], cachedir=TEST_CACHEDIR)
         assert os.path.exists(os.path.join(TEST_CACHEDIR, CACHE_FILENAME))
 

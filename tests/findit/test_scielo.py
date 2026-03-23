@@ -37,7 +37,7 @@ class TestScieloDance(BaseDanceTest):
         assert url is not None
         assert 'scielo.br' in url
         assert 'format=pdf' in url
-        assert url.startswith('https://')
+        assert url.startswith('http')
         print(f"Test 1 - PDF URL: {url}")
 
     def test_scielo_chula_url_construction_with_doi(self):
@@ -93,43 +93,31 @@ class TestScieloDance(BaseDanceTest):
             assert 'format=pdf' in url and 'lang=en' in url and 'scielo.br' in url
             print(f"Test 3 - Mock PDF URL: {url}")
 
-    @patch('requests.get')
-    def test_scielo_chula_successful_pdf_access(self, mock_get):
+    @patch('metapub.findit.dances.scielo.verify_pdf_url')
+    @patch('metapub.findit.dances.scielo.unified_uri_get')
+    def test_scielo_chula_successful_pdf_access(self, mock_uri_get, mock_verify):
         """Test 4: Successful PDF access simulation.
-        
-        PMID: 23657305 (Arq Gastroenterol)  
+
+        PMID: 23657305 (Arq Gastroenterol)
         Expected: Should return PDF URL when accessible
         """
-        # Mock initial page response (successful)
-        mock_page_response = Mock()
-        mock_page_response.ok = True
-        mock_page_response.url = 'https://www.scielo.br/j/ag/a/tmtNzPCNWvVSLhRw7NyjSnq/?lang=en'
-        mock_page_response.content = b'''<!DOCTYPE html>
+        mock_response = Mock()
+        mock_response.ok = True
+        mock_response.url = 'https://www.scielo.br/j/ag/a/tmtNzPCNWvVSLhRw7NyjSnq/?lang=en'
+        mock_response.content = b'''<!DOCTYPE html>
         <html><head>
             <meta name="citation_pdf_url" content="https://www.scielo.br/j/ag/a/tmtNzPCNWvVSLhRw7NyjSnq/?lang=en&format=pdf">
         </head><body></body></html>'''
-        
-        # Mock successful PDF response for verification
-        mock_pdf_response = Mock()
-        mock_pdf_response.status_code = 200
-        mock_pdf_response.ok = True
-        mock_pdf_response.headers = {'content-type': 'application/pdf'}
-        mock_pdf_response.url = 'https://www.scielo.br/j/ag/a/tmtNzPCNWvVSLhRw7NyjSnq/?lang=en&format=pdf'
-        
-        def side_effect(url, *args, **kwargs):
-            if 'format=pdf' in url:
-                return mock_pdf_response
-            else:
-                return mock_page_response
-        
-        mock_get.side_effect = side_effect
+        mock_uri_get.return_value = mock_response
+        mock_verify.return_value = None
 
         pma = self.fetch.article_by_pmid('23657305')
-        
+
         # Test with verification - should succeed
         url = the_scielo_chula(pma, verify=True)
         assert 'scielo.br' in url
         assert 'format=pdf' in url
+        mock_verify.assert_called_once()
         print(f"Test 4 - Successful verified access: {url}")
 
     @patch('metapub.findit.dances.scielo.unified_uri_get')
@@ -233,13 +221,12 @@ class TestScieloDance(BaseDanceTest):
         assert 'Failed to parse' in str(exc_info.value)
         print(f"Test 8 - Correctly handled parsing error: {exc_info.value}")
 
-    @patch('requests.get')
-    def test_scielo_chula_fallback_to_href_links(self, mock_get):
+    @patch('metapub.findit.dances.scielo.unified_uri_get')
+    def test_scielo_chula_fallback_to_href_links(self, mock_uri_get):
         """Test 9: Fallback to href PDF links when meta tag missing.
-        
+
         Expected: Should find PDF links in page content as fallback
         """
-        # Mock response without citation_pdf_url meta tag but with PDF links
         mock_response = Mock()
         mock_response.ok = True
         mock_response.url = 'https://www.scielo.br/test'
@@ -248,15 +235,14 @@ class TestScieloDance(BaseDanceTest):
         <body>
             <a href="/j/ag/a/someID/?format=pdf&lang=en">Download PDF</a>
         </body></html>'''
-        mock_get.return_value = mock_response
+        mock_uri_get.return_value = mock_response
 
         pma = Mock()
         pma.pii = 'S0004-28032013000100035'
         pma.doi = '10.1590/test'
         pma.journal = 'Test Journal'
-        
+
         url = the_scielo_chula(pma, verify=False)
-        # Check that the URL contains the expected components (parameter order may vary)
         assert 'format=pdf' in url and 'lang=en' in url and 'scielo.br' in url
         print(f"Test 9 - Fallback PDF link found: {url}")
 

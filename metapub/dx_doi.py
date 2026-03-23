@@ -88,7 +88,7 @@ class DxDOI(Borg):
         try:
             response = session.get(DX_DOI_URL % doi, allow_redirects=True, verify=certifi.where(), timeout=5)
             response.raise_for_status()
-            if response.status_code in [200, 301, 302, 307, 308, 402, 403]:
+            if response.status_code in [200, 202, 301, 302, 307, 308, 402, 403]:
                 self._log.info(f'URL is accessible: {response.url} (Status code: {response.status_code})')
                 self._cache[doi] = response.url
                 return response.url

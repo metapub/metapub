@@ -40,7 +40,7 @@ def the_brill_bridge(pma, verify=True, request_timeout=10, max_redirects=3):
     except requests.exceptions.ConnectionError as e:
         raise NoPDFLink(f'TXERROR: Network error accessing Brill article: {e}')
     
-    if response.status_code not in (200, 301, 302, 307):
+    if response.status_code not in (200, 202, 301, 302, 307):
         raise NoPDFLink(f'TXERROR: Could not access Brill article page (HTTP {response.status_code})')
     
     # Extract citation_pdf_url meta tag (evidence-based approach)

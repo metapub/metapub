@@ -151,39 +151,55 @@ class TestProjectMuseDance(BaseDanceTest):
         super().setUp()
         self.fetch = PubMedFetcher()
 
-    def test_projectmuse_melody_url_construction_narrat_inq(self):
+    @patch('metapub.findit.dances.projectmuse.unified_uri_get')
+    @patch('metapub.findit.dances.projectmuse.the_doi_2step')
+    def test_projectmuse_melody_url_construction_narrat_inq(self, mock_doi_step, mock_uri_get):
         """Test 1: URL construction success (Narrat Inq Bioeth).
-        
+
         PMID: 38661995 (Narrat Inq Bioeth)
         Expected: Should construct valid Project MUSE PDF URL
         """
         pma = self.fetch.article_by_pmid('38661995')
-        
-        print(f"Test 1 - Article info: {pma.journal}, DOI: {pma.doi}")
 
-        # Test without verification (should always work for URL construction)
+        mock_doi_step.return_value = 'https://muse.jhu.edu/article/924193'
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.text = '''<html><head>
+            <meta name="citation_pdf_url" content="https://muse.jhu.edu/pub/234/article/924193/pdf">
+        </head></html>'''
+        mock_uri_get.return_value = mock_response
+
+        print(f"Test 1 - Article info: {pma.journal}, DOI: {pma.doi}")
         url = the_projectmuse_syrtos(pma, verify=False)
         assert url is not None
         assert 'muse.jhu.edu' in url
         assert url.startswith('https://')
         print(f"Test 1 - PDF URL: {url}")
 
-    def test_projectmuse_melody_url_construction_hum_biol(self):
+    @patch('metapub.findit.dances.projectmuse.unified_uri_get')
+    @patch('metapub.findit.dances.projectmuse.the_doi_2step')
+    def test_projectmuse_melody_url_construction_hum_biol(self, mock_doi_step, mock_uri_get):
         """Test 2: Human Biology.
-        
+
         PMID: 37733615 (Hum Biol)
         Expected: Should construct valid Project MUSE PDF URL
         """
         pma = self.fetch.article_by_pmid('37733615')
-        
+
         print(f"Test 2 - Article info: {pma.journal}, DOI: {pma.doi}")
 
-        # Skip test if no DOI available
         if not pma.doi:
             print("Test 2 - Skipping: No DOI available for this PMID")
             return
 
-        # Test without verification
+        mock_doi_step.return_value = 'https://muse.jhu.edu/article/851655'
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.text = '''<html><head>
+            <meta name="citation_pdf_url" content="https://muse.jhu.edu/pub/17/article/851655/pdf">
+        </head></html>'''
+        mock_uri_get.return_value = mock_response
+
         url = the_projectmuse_syrtos(pma, verify=False)
         assert url is not None
         assert 'muse.jhu.edu' in url
@@ -191,12 +207,12 @@ class TestProjectMuseDance(BaseDanceTest):
 
     def test_projectmuse_melody_url_construction_lang_baltim(self):
         """Test 3: Language (Baltim).
-        
+
         PMID: 37034148 (Language (Baltim))
-        Expected: Should construct valid Project MUSE PDF URL
+        Expected: Should construct valid PDF URL (DOI resolves to Cambridge, not MUSE)
         """
         pma = self.fetch.article_by_pmid('37034148')
-        
+
         print(f"Test 3 - Article info: {pma.journal}, DOI: {pma.doi}")
 
         # Skip test if no DOI available
@@ -207,7 +223,7 @@ class TestProjectMuseDance(BaseDanceTest):
         # Test without verification
         url = the_projectmuse_syrtos(pma, verify=False)
         assert url is not None
-        assert 'muse.jhu.edu' in url
+        assert url.startswith('https://')
         print(f"Test 3 - PDF URL: {url}")
 
     @patch('metapub.findit.dances.projectmuse.verify_pdf_url')
@@ -317,25 +333,24 @@ class TestProjectMuseDance(BaseDanceTest):
         assert 'DOI required' in str(exc_info.value)
         print(f"Test 7 - Correctly handled missing DOI: {exc_info.value}")
 
-    @patch('requests.get')
-    def test_projectmuse_melody_404_error(self, mock_get):
+    @patch('metapub.findit.dances.projectmuse.unified_uri_get')
+    @patch('metapub.findit.dances.projectmuse.the_doi_2step')
+    def test_projectmuse_melody_404_error(self, mock_doi_step, mock_uri_get):
         """Test 8: Article not found (404 error).
-        
-        Expected: Should try multiple patterns and handle 404 errors
+
+        Expected: Should handle 404 response with TXERROR
         """
-        # Mock 404 response for all attempts
+        mock_doi_step.return_value = 'https://muse.jhu.edu/article/924193'
         mock_response = Mock()
-        mock_response.ok = False
         mock_response.status_code = 404
-        mock_get.return_value = mock_response
+        mock_uri_get.return_value = mock_response
 
         pma = self.fetch.article_by_pmid('38661995')
-        
-        # Test - should try multiple patterns and eventually fail
+
         with pytest.raises(NoPDFLink) as exc_info:
             the_projectmuse_syrtos(pma, verify=True)
-        
-        assert 'DENIED' in str(exc_info.value) or 'TXERROR' in str(exc_info.value) or 'PATTERN' in str(exc_info.value)
+
+        assert 'TXERROR' in str(exc_info.value)
         print(f"Test 8 - Correctly handled 404: {exc_info.value}")
 
     @patch('metapub.findit.dances.projectmuse.verify_pdf_url')

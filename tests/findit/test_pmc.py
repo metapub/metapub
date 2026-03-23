@@ -21,12 +21,12 @@ class TestPMCTwist(BaseDanceTest):
         #  We can retain these "nonembargoed" PMIDS for testing: 25554792, 26106273
 
         # test that even if we find an embargo date, if date is passed, we get a PMC url.
-        source = FindIt(pmid=embargoed)
+        source = FindIt(pmid=embargoed, verify=False, cachedir=None)
         assert source.pma.pmc == '4380271'
         assert source.pma.history['pmc-release'] is not None
         assert "pmc" in source.url
 
-        source = FindIt(pmid=nonembargoed)
+        source = FindIt(pmid=nonembargoed, verify=False, cachedir=None)
         assert source.pma.pmc == '4475813'
         assert source.pma.history.get('pmc-release', None) is not None
         assert "pmc" in source.url

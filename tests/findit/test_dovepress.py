@@ -18,19 +18,26 @@ class TestDovePressTest(BaseDanceTest):
         super().setUp()
         self.fetch = PubMedFetcher()
 
-    def test_dovepress_waltz_ijin_article(self):
+    @patch('metapub.findit.dances.dovepress.unified_uri_get')
+    @patch('metapub.findit.dances.dovepress.the_doi_2step')
+    def test_dovepress_waltz_ijin_article(self, mock_doi_step, mock_uri_get):
         """Test 1: URL construction success (International Journal of Nanomedicine).
-        
+
         PMID: 37693885 (Int J Nanomedicine)
         Expected: Should construct valid DovePress PDF URL
         """
         pma = self.fetch.article_by_pmid('37693885')
-        
+
         assert pma.journal == 'Int J Nanomedicine'
         assert pma.doi == '10.2147/IJN.S420748'
         print(f"Test 1 - Article info: {pma.journal}, DOI: {pma.doi}")
 
-        # Test without verification (should always work for URL construction)
+        mock_doi_step.return_value = 'https://www.dovepress.com/plant-derived-article-IJN'
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.content = b'<html><body><a href="/article/download/12345">Download PDF</a></body></html>'
+        mock_uri_get.return_value = mock_response
+
         url = the_dovepress_peacock(pma, verify=False)
         assert url is not None
         assert 'dovepress.com' in url
@@ -38,38 +45,52 @@ class TestDovePressTest(BaseDanceTest):
         assert url.startswith('https://')
         print(f"Test 1 - PDF URL: {url}")
 
-    def test_dovepress_waltz_opth_article(self):
+    @patch('metapub.findit.dances.dovepress.unified_uri_get')
+    @patch('metapub.findit.dances.dovepress.the_doi_2step')
+    def test_dovepress_waltz_opth_article(self, mock_doi_step, mock_uri_get):
         """Test 2: Clinical Ophthalmology article.
-        
+
         PMID: 37736107 (Clin Ophthalmol)
         Expected: Should construct valid DovePress PDF URL
         """
         pma = self.fetch.article_by_pmid('37736107')
-        
+
         assert pma.journal == 'Clin Ophthalmol'
         assert pma.doi == '10.2147/OPTH.S392665'
         print(f"Test 2 - Article info: {pma.journal}, DOI: {pma.doi}")
 
-        # Test without verification
+        mock_doi_step.return_value = 'https://www.dovepress.com/keratoconus-article-OPTH'
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.content = b'<html><body><a href="/article/download/23456">Download PDF</a></body></html>'
+        mock_uri_get.return_value = mock_response
+
         url = the_dovepress_peacock(pma, verify=False)
         assert url is not None
         assert 'dovepress.com' in url
         assert '/article/download/' in url
         print(f"Test 2 - PDF URL: {url}")
 
-    def test_dovepress_waltz_cmar_article(self):
+    @patch('metapub.findit.dances.dovepress.unified_uri_get')
+    @patch('metapub.findit.dances.dovepress.the_doi_2step')
+    def test_dovepress_waltz_cmar_article(self, mock_doi_step, mock_uri_get):
         """Test 3: Cancer Management and Research article.
-        
+
         PMID: 36873252 (Cancer Manag Res)
         Expected: Should construct valid DovePress PDF URL
         """
         pma = self.fetch.article_by_pmid('36873252')
-        
+
         assert pma.journal == 'Cancer Manag Res'
         assert pma.doi == '10.2147/CMAR.S400013'
         print(f"Test 3 - Article info: {pma.journal}, DOI: {pma.doi}")
 
-        # Test without verification
+        mock_doi_step.return_value = 'https://www.dovepress.com/drug-resistance-article-CMAR'
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.content = b'<html><body><a href="/article/download/34567">Download PDF</a></body></html>'
+        mock_uri_get.return_value = mock_response
+
         url = the_dovepress_peacock(pma, verify=False)
         assert url is not None
         assert 'dovepress.com' in url
@@ -83,30 +104,46 @@ class TestDovepressXMLFixtures:
     """Test Dovepress XML fixtures for evidence-driven testing."""
 
     @patch('metapub.findit.dances.dovepress.verify_pdf_url')
-    def test_dovepress_xml_37822558_adolesc_health_med_ther(self, mock_verify):
+    @patch('metapub.findit.dances.dovepress.unified_uri_get')
+    @patch('metapub.findit.dances.dovepress.the_doi_2step')
+    def test_dovepress_xml_37822558_adolesc_health_med_ther(self, mock_doi_step, mock_uri_get, mock_verify):
         """Test PMID 37822558 - Adolesc Health Med Ther with DOI 10.2147/AHMT.S429238."""
+        mock_doi_step.return_value = 'https://www.dovepress.com/perception-article-AHMT'
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.content = b'<html><body><a href="/article/download/87183">Download PDF</a></body></html>'
+        mock_uri_get.return_value = mock_response
         mock_verify.return_value = None
+
         pma = load_pmid_xml('37822558')
-        
+
         assert pma.pmid == '37822558'
         assert pma.doi == '10.2147/AHMT.S429238'
         assert 'Adolesc Health Med Ther' in pma.journal
-        
+
         result = the_dovepress_peacock(pma, verify=True)
         expected_url = 'https://www.dovepress.com/article/download/87183'
         assert result == expected_url
         mock_verify.assert_called_once_with(expected_url, 'DovePress', request_timeout=10, max_redirects=3)
 
     @patch('metapub.findit.dances.dovepress.verify_pdf_url')
-    def test_dovepress_xml_35592492_adolesc_health_med_ther(self, mock_verify):
+    @patch('metapub.findit.dances.dovepress.unified_uri_get')
+    @patch('metapub.findit.dances.dovepress.the_doi_2step')
+    def test_dovepress_xml_35592492_adolesc_health_med_ther(self, mock_doi_step, mock_uri_get, mock_verify):
         """Test PMID 35592492 - Adolesc Health Med Ther with DOI 10.2147/AHMT.S358140."""
+        mock_doi_step.return_value = 'https://www.dovepress.com/sexual-article-AHMT'
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.content = b'<html><body><a href="/article/download/75287">Download PDF</a></body></html>'
+        mock_uri_get.return_value = mock_response
         mock_verify.return_value = None
+
         pma = load_pmid_xml('35592492')
-        
+
         assert pma.pmid == '35592492'
         assert pma.doi == '10.2147/AHMT.S358140'
         assert 'Adolesc Health Med Ther' in pma.journal
-        
+
         result = the_dovepress_peacock(pma, verify=True)
         expected_url = 'https://www.dovepress.com/article/download/75287'
         assert result == expected_url

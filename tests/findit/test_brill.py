@@ -19,13 +19,11 @@ class TestBrillDance(BaseDanceTest):
         super().setUp()
         self.fetch = PubMedFetcher()
 
-    @patch('metapub.findit.dances.brill.unified_uri_get')
-    @patch('metapub.findit.dances.brill.the_doi_2step')
-    def test_brill_bridge_url_construction_early_sci_med(self, mock_doi_step, mock_uri_get):
+    def test_brill_bridge_url_construction_early_sci_med(self):
         """Test 1: URL construction success (Early Sci Med).
 
         PMID: 26415349 (Early Sci Med)
-        Expected: Should construct valid Brill PDF URL via DOI resolution
+        Expected: Should construct valid Brill article URL via DOI resolution
         """
         pma = load_pmid_xml('26415349')
 
@@ -33,24 +31,17 @@ class TestBrillDance(BaseDanceTest):
         assert pma.doi == '10.1163/15733823-00202p03'
         print(f"Test 1 - Article info: {pma.journal}, DOI: {pma.doi}")
 
-        mock_doi_step.return_value = 'https://brill.com/view/journals/esm/20/2/article-p150_3.htm'
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.text = '<html><head><meta name="citation_pdf_url" content="https://brill.com/downloadpdf/journals/esm/20/2/article-p150_3.pdf" /></head></html>'
-        mock_uri_get.return_value = mock_response
-
+        # Test without verification (should always work for URL construction)
         url = the_brill_bridge(pma, verify=False)
         assert url is not None
         assert 'brill.com' in url
-        print(f"Test 1 - PDF URL: {url}")
+        print(f"Test 1 - Article URL: {url}")
 
-    @patch('metapub.findit.dances.brill.unified_uri_get')
-    @patch('metapub.findit.dances.brill.the_doi_2step')
-    def test_brill_bridge_url_construction_early_sci_med_alt(self, mock_doi_step, mock_uri_get):
+    def test_brill_bridge_url_construction_early_sci_med_alt(self):
         """Test 2: Alternative Early Science Medicine article.
 
         PMID: 11873782 (Early Sci Med)
-        Expected: Should construct valid Brill PDF URL
+        Expected: Should construct valid Brill article URL
         """
         pma = load_pmid_xml('11873782')
 
@@ -58,24 +49,17 @@ class TestBrillDance(BaseDanceTest):
         assert pma.doi == '10.1163/157338201x00154'
         print(f"Test 2 - Article info: {pma.journal}, DOI: {pma.doi}")
 
-        mock_doi_step.return_value = 'https://brill.com/view/journals/esm/6/1/article-p32_3.htm'
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.text = '<html><head><meta name="citation_pdf_url" content="https://brill.com/downloadpdf/journals/esm/6/1/article-p32_3.pdf" /></head></html>'
-        mock_uri_get.return_value = mock_response
-
+        # Test without verification
         url = the_brill_bridge(pma, verify=False)
         assert url is not None
         assert 'brill.com' in url
-        print(f"Test 2 - PDF URL: {url}")
+        print(f"Test 2 - Article URL: {url}")
 
-    @patch('metapub.findit.dances.brill.unified_uri_get')
-    @patch('metapub.findit.dances.brill.the_doi_2step')
-    def test_brill_bridge_url_construction_toung_pao(self, mock_doi_step, mock_uri_get):
+    def test_brill_bridge_url_construction_toung_pao(self):
         """Test 3: Toung Pao journal article.
 
         PMID: 11618220 (Toung Pao)
-        Expected: Should construct valid Brill PDF URL
+        Expected: Should construct valid Brill article URL
         """
         pma = load_pmid_xml('11618220')
 
@@ -83,23 +67,16 @@ class TestBrillDance(BaseDanceTest):
         assert pma.doi == '10.1163/156853287x00032'
         print(f"Test 3 - Article info: {pma.journal}, DOI: {pma.doi}")
 
-        mock_doi_step.return_value = 'https://brill.com/view/journals/tpao/67/1/article-p32_3.htm'
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.text = '<html><head><meta name="citation_pdf_url" content="https://brill.com/downloadpdf/journals/tpao/67/1/article-p32_3.pdf" /></head></html>'
-        mock_uri_get.return_value = mock_response
-
+        # Test without verification
         url = the_brill_bridge(pma, verify=False)
         assert url is not None
-        print(f"Test 3 - PDF URL: {url}")
+        print(f"Test 3 - Article URL: {url}")
 
-    @patch('metapub.findit.dances.brill.unified_uri_get')
-    @patch('metapub.findit.dances.brill.the_doi_2step')
-    def test_brill_bridge_url_construction_phronesis(self, mock_doi_step, mock_uri_get):
+    def test_brill_bridge_url_construction_phronesis(self):
         """Test 4: Phronesis journal article.
 
         PMID: 11636720 (Phronesis)
-        Expected: Should construct valid Brill PDF URL
+        Expected: Should construct valid Brill article URL
         """
         pma = load_pmid_xml('11636720')
 
@@ -107,15 +84,10 @@ class TestBrillDance(BaseDanceTest):
         assert pma.doi == '10.1163/156852873x00014'
         print(f"Test 4 - Article info: {pma.journal}, DOI: {pma.doi}")
 
-        mock_doi_step.return_value = 'https://brill.com/view/journals/phro/18/1/article-p1_1.htm'
-        mock_response = Mock()
-        mock_response.status_code = 200
-        mock_response.text = '<html><head><meta name="citation_pdf_url" content="https://brill.com/downloadpdf/journals/phro/18/1/article-p1_1.pdf" /></head></html>'
-        mock_uri_get.return_value = mock_response
-
+        # Test without verification
         url = the_brill_bridge(pma, verify=False)
         assert url is not None
-        print(f"Test 4 - PDF URL: {url}")
+        print(f"Test 4 - Article URL: {url}")
 
     # Test removed: Multiple tests - successful access, paywall detection, access forbidden, network error - functionality now handled by verify_pdf_url
 

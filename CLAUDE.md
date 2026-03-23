@@ -25,6 +25,23 @@ This file provides coding guidelines for Claude when working on the metapub proj
 - Quick reference: `rm -rf dist/ && .venv/bin/python -m build && twine upload --repository metapub dist/*`
 - Version must be bumped in both `metapub/__init__.py` and `setup.py`
 
+## FindIt / Publisher Dance Tests
+
+**Failing findit tests are a signal, not a nuisance.** When a dance function test fails, the first question is always: *is the publisher's site/format still the same?*
+
+- **Do not mock away a failing test without first confirming the underlying code still works.** If a test like `test_dovepress_waltz_*` fails because `the_dovepress_peacock` can't find a PDF link, that means the publisher changed their HTML — the function is broken for real users, and making the test pass with a mock just hides that.
+
+- **A passing test that uses a synthetic mock is not evidence the code works.** It's evidence the mock works.
+
+- **When a live findit test fails, the correct responses are (in order of preference):**
+  1. Investigate the current publisher HTML/behavior and fix the dance function to handle the new format
+  2. If the publisher is temporarily down or behind bot-protection, mark the test `@pytest.mark.skip` with an explanation
+  3. If the functionality is permanently gone, delete the test and document why in the dance function
+
+- **The correct use of mocks in dance tests** is to test parsing logic against *real saved HTML* (like the PubMed XML fixture approach in `tests/fixtures/pmid_xml/`). If you need to mock an HTTP call, the mock response content should be actual HTML sourced from the publisher site, not synthetic HTML you invented.
+
+- **Wrong mock target is a legitimate bug.** If a test patches `requests.get` but the code uses `requests.Session.get`, fixing the mock target is correct — that's a test bug. This is different from mocking to hide broken functionality.
+
 ## Additional Guidelines
 - Follow the existing code patterns and conventions in the metapub codebase
 - Maintain the current architecture and design patterns

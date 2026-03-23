@@ -20,6 +20,10 @@ This file provides coding guidelines for Claude when working on the metapub proj
 ## Control Flow
 7. **Avoid long if-else trees** - Use early returns, guard clauses, or dictionaries/switch patterns instead of deeply nested if-else chains. Prefer clear, linear code flow.
 
+## Branching
+
+**Always start a new branch before making any code changes.** Never commit directly to master. Create a descriptive branch name, do the work, then open a PR.
+
 ## Releasing
 - Use `/release <version>` for the full release procedure with caveats and checks
 - Quick reference: `rm -rf dist/ && .venv/bin/python -m build && twine upload --repository metapub dist/*`

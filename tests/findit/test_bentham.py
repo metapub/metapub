@@ -249,41 +249,62 @@ if __name__ == '__main__':
 class TestBenthamXMLFixtures:
     """Test Bentham/EurekaSelect XML fixtures for evidence-driven testing."""
 
-    def test_bentham_xml_32525788_curr_mol_pharmacol(self):
+    @patch('metapub.findit.dances.eureka.unified_uri_get')
+    @patch('metapub.findit.dances.eureka.the_doi_2step')
+    def test_bentham_xml_32525788_curr_mol_pharmacol(self, mock_doi_2step, mock_get):
         """Test PMID 32525788 - Curr Mol Pharmacol with DOI 10.2174/1874467213666200611142438."""
         pma = load_pmid_xml('32525788')
-        
+
         assert pma.pmid == '32525788'
         assert pma.doi == '10.2174/1874467213666200611142438'
         assert 'Curr Mol Pharmacol' in pma.journal
-        
-        # Test that the function raises POSTONLY error as expected for current architecture
+
+        mock_doi_2step.return_value = 'https://www.eurekaselect.com/182723/article'
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.url = 'https://www.eurekaselect.com/article/182723'
+        mock_get.return_value = mock_response
+
         from metapub.exceptions import NoPDFLink
         with pytest.raises(NoPDFLink, match="POSTONLY"):
             the_eureka_frug(pma, verify=False)
 
-    def test_bentham_xml_36635930_recent_pat_biotechnol(self):
+    @patch('metapub.findit.dances.eureka.unified_uri_get')
+    @patch('metapub.findit.dances.eureka.the_doi_2step')
+    def test_bentham_xml_36635930_recent_pat_biotechnol(self, mock_doi_2step, mock_get):
         """Test PMID 36635930 - Recent Pat Biotechnol with DOI 10.2174/1872208317666230111105223."""
         pma = load_pmid_xml('36635930')
-        
+
         assert pma.pmid == '36635930'
         assert pma.doi == '10.2174/1872208317666230111105223'
         assert 'Recent Pat Biotechnol' in pma.journal
-        
-        # Test that the function raises POSTONLY error as expected for current architecture
+
+        mock_doi_2step.return_value = 'https://www.eurekaselect.com/212567/article'
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.url = 'https://www.eurekaselect.com/article/212567'
+        mock_get.return_value = mock_response
+
         from metapub.exceptions import NoPDFLink
         with pytest.raises(NoPDFLink, match="POSTONLY"):
             the_eureka_frug(pma, verify=False)
 
-    def test_bentham_xml_33568043_curr_mol_pharmacol(self):
+    @patch('metapub.findit.dances.eureka.unified_uri_get')
+    @patch('metapub.findit.dances.eureka.the_doi_2step')
+    def test_bentham_xml_33568043_curr_mol_pharmacol(self, mock_doi_2step, mock_get):
         """Test PMID 33568043 - Curr Mol Pharmacol with DOI 10.2174/1874467214666210210122628."""
         pma = load_pmid_xml('33568043')
-        
+
         assert pma.pmid == '33568043'
         assert pma.doi == '10.2174/1874467214666210210122628'
         assert 'Curr Mol Pharmacol' in pma.journal
-        
-        # Test that the function raises POSTONLY error as expected for current architecture
+
+        mock_doi_2step.return_value = 'https://www.eurekaselect.com/191269/article'
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.url = 'https://www.eurekaselect.com/article/191269'
+        mock_get.return_value = mock_response
+
         from metapub.exceptions import NoPDFLink
         with pytest.raises(NoPDFLink, match="POSTONLY"):
             the_eureka_frug(pma, verify=False)

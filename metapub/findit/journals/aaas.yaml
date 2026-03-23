@@ -1,6 +1,6 @@
 publisher:
   name: aaas
-  dance_function: the_aaas_twostep
+  dance_function: the_aaas_twist
   pattern_type: aaas
   description: Configuration for aaas journals
 url_patterns:

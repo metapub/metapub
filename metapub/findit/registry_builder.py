@@ -71,8 +71,8 @@ def extract_publisher_info(publisher_id: str, config: Dict) -> Dict[str, Any]:
         # Fallback based on publisher ID
         dance_function = f"the_{publisher_id}_dance"
     
-    # Get primary template
-    format_template = url_patterns.get('primary_template')
+    # Get primary template (try primary_template first, then doi_template)
+    format_template = url_patterns.get('primary_template') or url_patterns.get('doi_template')
     
     # Store complex configuration as JSON
     config_data = {
@@ -99,18 +99,22 @@ def extract_journal_info(config: Dict) -> List[Tuple[str, Dict]]:
         List of (journal_name, format_params) tuples
     """
     journals = []
+    seen = set()
     journal_section = config.get('journals', {})
-    
-    # Handle parameterized journals
+
+    # Handle parameterized journals first (they have richer data)
     if 'parameterized' in journal_section:
         for journal_name, params in journal_section['parameterized'].items():
             journals.append((journal_name, params))
-    
-    # Handle simple list journals
+            seen.add(journal_name)
+
+    # Handle simple list journals, skipping any already added from parameterized
     if 'simple_list' in journal_section:
         for journal_name in journal_section['simple_list']:
-            journals.append((journal_name, {}))
-    
+            if journal_name not in seen:
+                journals.append((journal_name, {}))
+                seen.add(journal_name)
+
     return journals
 
 

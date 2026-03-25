@@ -34,15 +34,26 @@ You do not strictly need an API key, but without one NCBI rate limits are lower.
 
 ## Development
 
-Create a feature branch before making changes. Do not work directly on `master`.
+1. Activate the venv:
+```bash
+source .venv/bin/activate
+```
 
-If you want to check NCBI availability first:
+2. Setup API keys in environment if needed:
+```bash
+export NCBI_API_KEY="your_key_here"
+```
 
+3. If you want to check NCBI availability first:
 ```bash
 ncbi_health_check --quick && pytest tests/
 ```
 
-The journal registry database needs to be rebuilt when making changes to the YAML configuration files. The registry is automatically rebuilt during installation, but you can also rebuild it manually using:
+### YAML Configuration updates
+
+1. Update YAML files
+
+2. Rebuild registry using:
 
 ```bash
 metapub_build_registry

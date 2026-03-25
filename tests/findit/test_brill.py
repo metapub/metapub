@@ -19,75 +19,70 @@ class TestBrillDance(BaseDanceTest):
         super().setUp()
         self.fetch = PubMedFetcher()
 
-    def test_brill_bridge_url_construction_early_sci_med(self):
-        """Test 1: URL construction success (Early Sci Med).
+    def test_brill_bridge_waf_early_sci_med(self):
+        """Test 1: Brill AWS WAF detection (Early Sci Med).
 
         PMID: 26415349 (Early Sci Med)
-        Expected: Should construct valid Brill article URL via DOI resolution
+        Brill serves AWS WAF JavaScript challenge pages (202) for these articles.
+        Expected: AccessDenied with clear WAF message, not confusing MISSING error.
         """
         pma = load_pmid_xml('26415349')
 
         assert pma.journal == 'Early Sci Med'
         assert pma.doi == '10.1163/15733823-00202p03'
-        print(f"Test 1 - Article info: {pma.journal}, DOI: {pma.doi}")
 
-        # Test without verification (should always work for URL construction)
-        url = the_brill_bridge(pma, verify=False)
-        assert url is not None
-        assert 'brill.com' in url
-        print(f"Test 1 - Article URL: {url}")
+        with pytest.raises(AccessDenied) as exc_info:
+            the_brill_bridge(pma, verify=False)
+        assert 'WAF' in str(exc_info.value) or 'bot' in str(exc_info.value).lower()
+        print(f"Test 1 - Correctly identified WAF block: {exc_info.value}")
 
-    def test_brill_bridge_url_construction_early_sci_med_alt(self):
-        """Test 2: Alternative Early Science Medicine article.
+    def test_brill_bridge_waf_early_sci_med_alt(self):
+        """Test 2: Brill AWS WAF detection (Early Sci Med alt).
 
         PMID: 11873782 (Early Sci Med)
-        Expected: Should construct valid Brill article URL
+        Expected: AccessDenied with clear WAF message.
         """
         pma = load_pmid_xml('11873782')
 
         assert pma.journal == 'Early Sci Med'
         assert pma.doi == '10.1163/157338201x00154'
-        print(f"Test 2 - Article info: {pma.journal}, DOI: {pma.doi}")
 
-        # Test without verification
-        url = the_brill_bridge(pma, verify=False)
-        assert url is not None
-        assert 'brill.com' in url
-        print(f"Test 2 - Article URL: {url}")
+        with pytest.raises(AccessDenied) as exc_info:
+            the_brill_bridge(pma, verify=False)
+        assert 'WAF' in str(exc_info.value) or 'bot' in str(exc_info.value).lower()
+        print(f"Test 2 - Correctly identified WAF block: {exc_info.value}")
 
-    def test_brill_bridge_url_construction_toung_pao(self):
-        """Test 3: Toung Pao journal article.
+    def test_brill_bridge_waf_toung_pao(self):
+        """Test 3: Brill AWS WAF detection (Toung Pao).
 
         PMID: 11618220 (Toung Pao)
-        Expected: Should construct valid Brill article URL
+        Expected: AccessDenied with clear WAF message.
         """
         pma = load_pmid_xml('11618220')
 
         assert pma.journal == 'Toung Pao'
         assert pma.doi == '10.1163/156853287x00032'
-        print(f"Test 3 - Article info: {pma.journal}, DOI: {pma.doi}")
 
-        # Test without verification
-        url = the_brill_bridge(pma, verify=False)
-        assert url is not None
-        print(f"Test 3 - Article URL: {url}")
+        with pytest.raises(AccessDenied) as exc_info:
+            the_brill_bridge(pma, verify=False)
+        assert 'WAF' in str(exc_info.value) or 'bot' in str(exc_info.value).lower()
+        print(f"Test 3 - Correctly identified WAF block: {exc_info.value}")
 
-    def test_brill_bridge_url_construction_phronesis(self):
-        """Test 4: Phronesis journal article.
+    def test_brill_bridge_waf_phronesis(self):
+        """Test 4: Brill AWS WAF detection (Phronesis).
 
         PMID: 11636720 (Phronesis)
-        Expected: Should construct valid Brill article URL
+        Expected: AccessDenied with clear WAF message.
         """
         pma = load_pmid_xml('11636720')
 
         assert pma.journal == 'Phronesis (Barc)'
         assert pma.doi == '10.1163/156852873x00014'
-        print(f"Test 4 - Article info: {pma.journal}, DOI: {pma.doi}")
 
-        # Test without verification
-        url = the_brill_bridge(pma, verify=False)
-        assert url is not None
-        print(f"Test 4 - Article URL: {url}")
+        with pytest.raises(AccessDenied) as exc_info:
+            the_brill_bridge(pma, verify=False)
+        assert 'WAF' in str(exc_info.value) or 'bot' in str(exc_info.value).lower()
+        print(f"Test 4 - Correctly identified WAF block: {exc_info.value}")
 
     # Test removed: Multiple tests - successful access, paywall detection, access forbidden, network error - functionality now handled by verify_pdf_url
 

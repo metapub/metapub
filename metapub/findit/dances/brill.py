@@ -14,7 +14,7 @@ Pattern discovered from HTML samples:
 import re
 import requests
 from .generic import the_doi_2step, verify_pdf_url, unified_uri_get
-from ...exceptions import NoPDFLink
+from ...exceptions import NoPDFLink, AccessDenied
 
 
 def the_brill_bridge(pma, verify=True, request_timeout=10, max_redirects=3):
@@ -42,11 +42,15 @@ def the_brill_bridge(pma, verify=True, request_timeout=10, max_redirects=3):
     
     if response.status_code not in (200, 202, 301, 302, 307):
         raise NoPDFLink(f'TXERROR: Could not access Brill article page (HTTP {response.status_code})')
-    
+
+    # Detect AWS WAF JavaScript challenge (returned as 202 with challenge page)
+    if 'awswaf' in response.text or 'challenge.js' in response.text:
+        raise AccessDenied('DENIED: Brill is protected by AWS WAF bot detection (requires browser)')
+
     # Extract citation_pdf_url meta tag (evidence-based approach)
-    pdf_match = re.search(r'<meta[^>]*name=["\']citation_pdf_url["\'][^>]*content=["\']([^"\']+)["\']', 
+    pdf_match = re.search(r'<meta[^>]*name=["\']citation_pdf_url["\'][^>]*content=["\']([^"\']+)["\']',
                          response.text, re.IGNORECASE)
-    
+
     if not pdf_match:
         raise NoPDFLink('MISSING: No PDF URL found via citation_pdf_url meta tag extraction')
     

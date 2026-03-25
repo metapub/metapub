@@ -49,6 +49,20 @@ export NCBI_API_KEY="your_key_here"
 ncbi_health_check --quick && pytest tests/
 ```
 
+Example output:
+```bash
+🔍 Checking NCBI service health...
+   (Quick mode: essential services only)
+
+================================================================================
+🏥 NCBI SERVICE HEALTH CHECK REPORT
+================================================================================
+
+📊 SUMMARY: 5 services checked
+   ⚠️ ERROR: 1
+   ✅ UP: 4
+```
+
 ### YAML Configuration updates
 
 1. Update YAML files

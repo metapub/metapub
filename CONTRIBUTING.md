@@ -1,7 +1,8 @@
 # Contributing to Metapub
 
-This document is for contributors and maintainers working on `metapub` itself. Created
-by Codex.
+This document is for CMU API Design contributors and maintainers working on `metapub`. Created
+by Codex as an aggregated resource. Official metapub documetation should be referenced
+as the ground truth.
 
 ## Setup
 

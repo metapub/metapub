@@ -7,7 +7,7 @@ by Codex.
 
 ### Repo setup
 
-1. Clone the repository, create a virtual environment, and install the project in editable mode:
+1. Create a virtual environment, and install the project in editable mode:
 
 ```bash
 python3 -m venv .venv

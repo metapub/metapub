@@ -19,70 +19,69 @@ class TestBrillDance(BaseDanceTest):
         super().setUp()
         self.fetch = PubMedFetcher()
 
-    def test_brill_bridge_waf_early_sci_med(self):
-        """Test 1: Brill AWS WAF detection (Early Sci Med).
+    def test_brill_bridge_url_construction_early_sci_med(self):
+        """Test 1: PDF URL construction without verification (Early Sci Med).
 
-        PMID: 26415349 (Early Sci Med)
-        Brill serves AWS WAF JavaScript challenge pages (202) for these articles.
-        Expected: AccessDenied with clear WAF message, not confusing MISSING error.
+        PMID: 26415349 - DOI resolves to brill.com/view/journals/esm/...
+        Expected: returns downloadpdf URL without hitting the WAF-blocked article page.
         """
         pma = load_pmid_xml('26415349')
 
         assert pma.journal == 'Early Sci Med'
         assert pma.doi == '10.1163/15733823-00202p03'
 
-        with pytest.raises(AccessDenied) as exc_info:
-            the_brill_bridge(pma, verify=False)
-        assert 'WAF' in str(exc_info.value) or 'bot' in str(exc_info.value).lower()
-        print(f"Test 1 - Correctly identified WAF block: {exc_info.value}")
+        url = the_brill_bridge(pma, verify=False)
+        assert url is not None
+        assert 'brill.com/downloadpdf/journals/' in url
+        print(f"Test 1 - PDF URL: {url}")
 
-    def test_brill_bridge_waf_early_sci_med_alt(self):
-        """Test 2: Brill AWS WAF detection (Early Sci Med alt).
+    def test_brill_bridge_url_construction_early_sci_med_alt(self):
+        """Test 2: PDF URL construction without verification (Early Sci Med alt).
 
-        PMID: 11873782 (Early Sci Med)
-        Expected: AccessDenied with clear WAF message.
+        PMID: 11873782
+        Expected: returns downloadpdf URL.
         """
         pma = load_pmid_xml('11873782')
 
         assert pma.journal == 'Early Sci Med'
         assert pma.doi == '10.1163/157338201x00154'
 
-        with pytest.raises(AccessDenied) as exc_info:
-            the_brill_bridge(pma, verify=False)
-        assert 'WAF' in str(exc_info.value) or 'bot' in str(exc_info.value).lower()
-        print(f"Test 2 - Correctly identified WAF block: {exc_info.value}")
+        url = the_brill_bridge(pma, verify=False)
+        assert url is not None
+        assert 'brill.com/downloadpdf/journals/' in url
+        print(f"Test 2 - PDF URL: {url}")
 
-    def test_brill_bridge_waf_toung_pao(self):
-        """Test 3: Brill AWS WAF detection (Toung Pao).
+    def test_brill_bridge_url_construction_toung_pao(self):
+        """Test 3: PDF URL construction without verification (Toung Pao).
 
-        PMID: 11618220 (Toung Pao)
-        Expected: AccessDenied with clear WAF message.
+        PMID: 11618220
+        Expected: returns downloadpdf URL.
         """
         pma = load_pmid_xml('11618220')
 
         assert pma.journal == 'Toung Pao'
         assert pma.doi == '10.1163/156853287x00032'
 
-        with pytest.raises(AccessDenied) as exc_info:
-            the_brill_bridge(pma, verify=False)
-        assert 'WAF' in str(exc_info.value) or 'bot' in str(exc_info.value).lower()
-        print(f"Test 3 - Correctly identified WAF block: {exc_info.value}")
+        url = the_brill_bridge(pma, verify=False)
+        assert url is not None
+        assert 'brill.com/downloadpdf/journals/' in url
+        print(f"Test 3 - PDF URL: {url}")
 
-    def test_brill_bridge_waf_phronesis(self):
-        """Test 4: Brill AWS WAF detection (Phronesis).
+    def test_brill_bridge_url_construction_phronesis(self):
+        """Test 4: PDF URL construction without verification (Phronesis).
 
-        PMID: 11636720 (Phronesis)
-        Expected: AccessDenied with clear WAF message.
+        PMID: 11636720
+        Expected: returns downloadpdf URL.
         """
         pma = load_pmid_xml('11636720')
 
         assert pma.journal == 'Phronesis (Barc)'
         assert pma.doi == '10.1163/156852873x00014'
 
-        with pytest.raises(AccessDenied) as exc_info:
-            the_brill_bridge(pma, verify=False)
-        assert 'WAF' in str(exc_info.value) or 'bot' in str(exc_info.value).lower()
-        print(f"Test 4 - Correctly identified WAF block: {exc_info.value}")
+        url = the_brill_bridge(pma, verify=False)
+        assert url is not None
+        assert 'brill.com/downloadpdf/journals/' in url
+        print(f"Test 4 - PDF URL: {url}")
 
     # Test removed: Multiple tests - successful access, paywall detection, access forbidden, network error - functionality now handled by verify_pdf_url
 
@@ -186,27 +185,21 @@ class TestBrillXMLFixtures:
             pma = load_pmid_xml(pmid)
             assert pma.doi.startswith(doi_prefix), f"PMID {pmid} XML fixture has unexpected DOI: {pma.doi}"
 
-    @patch('metapub.findit.dances.brill.unified_uri_get')
     @patch('metapub.findit.dances.brill.the_doi_2step')
-    def test_brill_template_flexibility(self, mock_doi_2step, mock_uri_get):
-        """Test template flexibility for Brill URL patterns."""
+    def test_brill_template_flexibility(self, mock_doi_2step):
+        """Test PDF URL derivation from article URL pattern.
+
+        The function derives the PDF URL directly from the DOI-resolved article
+        URL without fetching the article page (which is behind AWS WAF).
+        Pattern: /view/journals/ -> /downloadpdf/journals/
+        """
         pma = load_pmid_xml('26415349')  # Early Sci Med
 
-        # Mock successful response with citation_pdf_url meta tag
-        mock_response = Mock()
-        mock_response.status_code = 200
-        expected_pdf_url = 'https://brill.com/downloadpdf/view/journals/early-sci-med-test.pdf'
-        mock_response.text = f'<html><head><meta name="citation_pdf_url" content="{expected_pdf_url}" /></head></html>'
-        mock_uri_get.return_value = mock_response
+        article_url = 'https://brill.com/view/journals/esm/20/2/article-p150_3.xml'
+        mock_doi_2step.return_value = article_url
 
-        # Mock DOI resolution
-        expected_article_url = 'https://brill.com/view/journals/early-sci-med-test'
-        mock_doi_2step.return_value = expected_article_url
-
-        # Test URL construction
         result = the_brill_bridge(pma, verify=False)
 
-        # Should follow Brill URL pattern
-        assert result == expected_pdf_url
-        assert 'brill.com' in result
+        assert result == 'https://brill.com/downloadpdf/journals/esm/20/2/article-p150_3.xml'
+        assert 'downloadpdf/journals' in result
         mock_doi_2step.assert_called_with(pma.doi)    # Test removed: test_brill_historical_journals_coverage - functionality now handled by verify_pdf_url

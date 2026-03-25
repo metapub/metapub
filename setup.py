@@ -97,6 +97,7 @@ setup(
         "lxml",
         "lxml_html_clean",
         "requests",
+        "brotli",
         "habanero",
         "tabulate",
         "cssselect",

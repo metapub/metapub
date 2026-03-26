@@ -76,10 +76,106 @@ class ClinVarFetcher(Borg):
             self.get_accession = self._eutils_get_accession
             self.pmids_for_id = self._eutils_pmids_for_id
             self.ids_for_variant = self._eutils_ids_for_variant
+            self.ids_by_gene_and_cdot = self._eutils_ids_by_gene_and_cdot
+            self.ids_by_gene_and_pdot = self._eutils_ids_by_gene_and_pdot
             self.pmids_for_hgvs = self._eutils_pmids_for_hgvs
             self.variant = self._eutils_get_variant_summary
         else:
             raise NotImplementedError('coming soon: fetch from local clinvar via medgen-mysql.')
+
+    @staticmethod
+    def _normalize_dot_change(dot_value, prefix):
+        """Normalize c./p. change text into a consistent comparison form."""
+        text = (dot_value or '').strip()
+        if not text:
+            return ''
+
+        lower = text.lower()
+        if not lower.startswith(prefix):
+            lower = '%s%s' % (prefix, lower)
+        return lower
+
+    def _resolve_hgvs_for_gene_and_cdot(self, gene, c_dot):
+        """Resolve all matching coding HGVS strings from gene plus c. shorthand input."""
+        gene = (gene or '').strip()
+        if not gene:
+            raise MetaPubError('Gene symbol is required.')
+
+        prefix = 'c.'
+        normalized_dot = self._normalize_dot_change(c_dot, prefix)
+        if not normalized_dot:
+            raise MetaPubError('%s change text is required.' % prefix)
+
+        candidate_ids = self._eutils_ids_by_gene(gene, single_gene=True)
+        if not candidate_ids:
+            candidate_ids = self._eutils_ids_by_gene(gene, single_gene=False)
+
+        matches = []
+        for clinvar_id in candidate_ids:
+            try:
+                variant = self._eutils_get_variant_summary(clinvar_id)
+            except Exception:
+                continue
+
+            symbols = [entry.get('Symbol', '').upper() for entry in variant.genes if isinstance(entry, dict)]
+            if gene.upper() not in symbols:
+                continue
+
+            hgvs_values = variant.hgvs_c
+            for hgvs in hgvs_values:
+                if ':' not in hgvs:
+                    continue
+                accession, change = hgvs.split(':', 1)
+                if self._normalize_dot_change(change, prefix) == normalized_dot:
+                    matches.append(hgvs)
+
+        if not matches:
+            raise MetaPubError(
+                'No ClinVar HGVS match found for gene %s and %s change %s.'
+                % (gene, prefix, c_dot)
+            )
+        return list(dict.fromkeys(matches))
+
+    def _resolve_hgvs_for_gene_and_pdot(self, gene, p_dot):
+        """Resolve all matching protein HGVS strings from gene plus p. shorthand input."""
+        gene = (gene or '').strip()
+        if not gene:
+            raise MetaPubError('Gene symbol is required.')
+
+        prefix = 'p.'
+        normalized_dot = self._normalize_dot_change(p_dot, prefix)
+        if not normalized_dot:
+            raise MetaPubError('%s change text is required.' % prefix)
+
+        candidate_ids = self._eutils_ids_by_gene(gene, single_gene=True)
+        if not candidate_ids:
+            candidate_ids = self._eutils_ids_by_gene(gene, single_gene=False)
+
+        matches = []
+        for clinvar_id in candidate_ids:
+            try:
+                variant = self._eutils_get_variant_summary(clinvar_id)
+            except Exception:
+                continue
+
+            symbols = [entry.get('Symbol', '').upper() for entry in variant.genes if isinstance(entry, dict)]
+            if gene.upper() not in symbols:
+                continue
+
+            hgvs_values = variant.hgvs_p
+            for hgvs in hgvs_values:
+                if ':' not in hgvs:
+                    continue
+                accession, change = hgvs.split(':', 1)
+                if self._normalize_dot_change(change, prefix) == normalized_dot:
+                    matches.append(hgvs)
+
+        if not matches:
+            raise MetaPubError(
+                'No ClinVar HGVS match found for gene %s and %s change %s.'
+                % (gene, prefix, p_dot)
+            )
+        return list(dict.fromkeys(matches))
 
     def _eutils_get_accession(self, accession_id):
         """ returns python dict of info for given ClinVar accession ID.
@@ -167,6 +263,24 @@ class ClinVarFetcher(Borg):
         for item in idlist.findall('Id'):
             ids.append(item.text.strip())
         return ids
+
+    def _eutils_ids_by_gene_and_cdot(self, gene, c_dot):
+        """Return ClinVar IDs from gene + c. notation using HGVS resolution."""
+        normalized_cdot = self._normalize_dot_change(c_dot, 'c.')
+        hgvs_c_list = self._resolve_hgvs_for_gene_and_cdot(gene, normalized_cdot)
+        ids = []
+        for hgvs_c in hgvs_c_list:
+            ids.extend(self._eutils_ids_for_variant(hgvs_c))
+        return list(dict.fromkeys(ids))
+
+    def _eutils_ids_by_gene_and_pdot(self, gene, p_dot):
+        """Return ClinVar IDs from gene + p. notation using HGVS resolution."""
+        normalized_pdot = self._normalize_dot_change(p_dot, 'p.')
+        hgvs_p_list = self._resolve_hgvs_for_gene_and_pdot(gene, normalized_pdot)
+        ids = []
+        for hgvs_p in hgvs_p_list:
+            ids.extend(self._eutils_ids_for_variant(hgvs_p))
+        return list(dict.fromkeys(ids))
 
     def _eutils_pmids_for_hgvs(self, hgvs_text):
         """ returns pubmed IDs for given HGVS c. string

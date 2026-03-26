@@ -186,6 +186,67 @@ class TestClinVarFetcher(unittest.TestCase):
             self.assertIsInstance(pmid, str)
             self.assertTrue(pmid.isdigit())
 
+    def test_ids_by_gene_and_pdot_returns_ids_from_all_matching_hgvs(self):
+        """Gene + p. should aggregate IDs across all matching HGVS strings."""
+        class StubVariant:
+            def __init__(self, genes, hgvs_p):
+                self.genes = genes
+                self.hgvs_p = hgvs_p
+                self.hgvs_c = []
+
+        original_ids_by_gene = self.fetch._eutils_ids_by_gene
+        original_get_variant_summary = self.fetch._eutils_get_variant_summary
+
+        variant_map = {
+            '111': StubVariant([{'Symbol': 'TSC2'}], ['XP_111111.1:p.Arg611Gln', 'NP_000539.2:p.Arg611Gln']),
+            '222': StubVariant([{'Symbol': 'OTHER'}], ['NP_000000.1:p.Arg611Gln']),
+        }
+
+        captured_terms = []
+
+        def fake_esearch(params):
+            term = params.get('term', '')
+            captured_terms.append(term)
+            if term == '"XP_111111.1:p.Arg611Gln"':
+                return '<eSearchResult><IdList><Id>12000</Id></IdList></eSearchResult>'
+            if term == '"NP_000539.2:p.Arg611Gln"':
+                return '<eSearchResult><IdList><Id>12003</Id><Id>12000</Id></IdList></eSearchResult>'
+            return '<eSearchResult><IdList></IdList></eSearchResult>'
+
+        original_esearch = self.fetch.qs.esearch
+        self.fetch.qs.esearch = fake_esearch
+        self.fetch._eutils_ids_by_gene = lambda gene, single_gene=False: ['111', '222']
+        self.fetch._eutils_get_variant_summary = lambda cid: variant_map[cid]
+        try:
+            ids = self.fetch._eutils_ids_by_gene_and_pdot('TSC2', 'Arg611Gln')
+            self.assertEqual(ids, ['12000', '12003'])
+            self.assertIn('"XP_111111.1:p.Arg611Gln"', captured_terms)
+            self.assertIn('"NP_000539.2:p.Arg611Gln"', captured_terms)
+        finally:
+            self.fetch.qs.esearch = original_esearch
+            self.fetch._eutils_ids_by_gene = original_ids_by_gene
+            self.fetch._eutils_get_variant_summary = original_get_variant_summary
+
+    def test_ids_by_gene_and_cdot_raises_when_no_match(self):
+        """Raise clear error when no matching c. HGVS can be resolved."""
+        class StubVariant:
+            def __init__(self):
+                self.genes = [{'Symbol': 'TSC2'}]
+                self.hgvs_c = ['NM_000548.4:c.1096G>T']
+                self.hgvs_p = []
+
+        original_ids_by_gene = self.fetch._eutils_ids_by_gene
+        original_get_variant_summary = self.fetch._eutils_get_variant_summary
+
+        self.fetch._eutils_ids_by_gene = lambda gene, single_gene=False: ['333']
+        self.fetch._eutils_get_variant_summary = lambda cid: StubVariant()
+        try:
+            with self.assertRaises(MetaPubError):
+                self.fetch._eutils_ids_by_gene_and_cdot('TSC2', 'c.1832G>A')
+        finally:
+            self.fetch._eutils_ids_by_gene = original_ids_by_gene
+            self.fetch._eutils_get_variant_summary = original_get_variant_summary
+
     def test_offline_cached_xml(self):
         """Test using cached XML file for offline testing"""
         # Read the cached XML file

@@ -15,6 +15,7 @@ Registry configuration:
 - format_template: 'https://sciendo.com/pdf/{doi}'
 """
 
+import pytest
 import unittest
 from metapub.findit.dances.generic import the_doi_slide
 from metapub.findit.registry import JournalRegistry

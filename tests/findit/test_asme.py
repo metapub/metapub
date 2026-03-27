@@ -18,6 +18,7 @@ class TestASMEDance(BaseDanceTest):
         super().setUp()
         self.fetch = PubMedFetcher()
 
+    @pytest.mark.live_network
     def test_asme_assembly_url_construction_appl_mech(self):
         """Test 1: URL construction success (J Appl Mech).
         
@@ -35,6 +36,7 @@ class TestASMEDance(BaseDanceTest):
         assert url.startswith('https://')
         print(f"Test 1 - PDF URL: {url}")
 
+    @pytest.mark.live_network
     def test_asme_assembly_url_construction_biomech_eng(self):
         """Test 2: Biomechanical Engineering.
         
@@ -58,6 +60,7 @@ class TestASMEDance(BaseDanceTest):
         
     # Test removed: URL construction and journal code mapping tests - functionality now handled by verify_pdf_url
 
+    @pytest.mark.live_network
     def test_asme_assembly_doi_pattern_warning(self):
         """Test 10: Non-standard DOI pattern handling.
         
@@ -96,6 +99,7 @@ class TestASMEXMLFixtures:
             
             print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
 
+    @pytest.mark.live_network
     def test_asme_url_construction_without_verification(self):
         """Test URL construction without verification using XML fixtures."""
         for pmid in ASME_EVIDENCE_PMIDS.keys():
@@ -136,6 +140,7 @@ class TestASMEXMLFixtures:
             pma = load_pmid_xml(pmid)
             assert pma.doi.startswith(doi_prefix), f"PMID {pmid} XML fixture has unexpected DOI: {pma.doi}"
 
+    @pytest.mark.live_network
     def test_asme_template_flexibility(self):
         """Test template flexibility for ASME URL patterns."""
         pma = load_pmid_xml('38449742')  # J Appl Mech
@@ -149,6 +154,7 @@ class TestASMEXMLFixtures:
         assert result.startswith('https://')
         # Note: DOI may not be directly in URL if CrossRef returns alternative URL
 
+    @pytest.mark.live_network
     def test_asme_pmc_availability(self):
         """Test coverage of PMC-available ASME articles."""
         # All our test articles have PMC IDs

@@ -90,6 +90,7 @@ class TestWoltersKluwerDance(BaseDanceTest):
 class TestWoltersKluwerXMLFixtures:
     """Test WoltersKluwer XML fixtures for evidence-driven testing."""
 
+    @pytest.mark.live_network
     def test_wolterskluwer_xml_33967209_curr_opin_crit_care(self):
         """Test PMID 33967209 - Curr Opin Crit Care with DOI 10.1097/MCC.0000000000000838."""
         pma = load_pmid_xml('33967209')
@@ -103,6 +104,7 @@ class TestWoltersKluwerXMLFixtures:
         assert result.startswith('http')
         assert '10.1097' in result or 'lww.com' in result or 'journals.lww.com' in result
 
+    @pytest.mark.live_network
     def test_wolterskluwer_xml_36727757_curr_opin_crit_care(self):
         """Test PMID 36727757 - Curr Opin Crit Care with DOI 10.1097/MCC.0000000000001017."""
         pma = load_pmid_xml('36727757')
@@ -116,6 +118,7 @@ class TestWoltersKluwerXMLFixtures:
         assert result.startswith('http')
         assert '10.1097' in result or 'lww.com' in result or 'journals.lww.com' in result
 
+    @pytest.mark.live_network
     def test_wolterskluwer_xml_31789841_acad_med(self):
         """Test PMID 31789841 - Acad Med with DOI 10.1097/ACM.0000000000003093."""
         pma = load_pmid_xml('31789841')

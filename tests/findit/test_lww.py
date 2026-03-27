@@ -1,5 +1,6 @@
 """Tests for LWW (Lippincott Williams & Wilkins) platform dance function."""
 
+import pytest
 from .common import BaseDanceTest
 from metapub import FindIt
 from tests.fixtures import load_pmid_xml, LWW_EVIDENCE_PMIDS
@@ -8,6 +9,7 @@ from tests.fixtures import load_pmid_xml, LWW_EVIDENCE_PMIDS
 class TestLWWDance(BaseDanceTest):
     """Test cases for LWW (Lippincott Williams & Wilkins) platform."""
 
+    @pytest.mark.live_network
     def test_lww_template(self):
         """Test LWW platform template for DOI-based journals.lww.com URLs."""
         # Test LWW platform journals that use the new lww_template

@@ -28,9 +28,4 @@ jobs:
     - name: Run tests
       env:
         NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
-      run: |
-        # Longdom and WalshMedia DOIs resolve through www.omicsonline.org,
-        # which blocks requests from cloud/datacenter IPs. These tests pass
-        # fine from non-cloud environments.
-        pytest --ignore=tests/findit/test_longdom.py \
-               --ignore=tests/findit/test_walshmedia.py
+      run: pytest -m "not live_network"

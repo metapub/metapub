@@ -113,6 +113,7 @@ class TestWalshMedia(unittest.TestCase):
         registry.close()
         print("✅ Registry integration verified")
     
+    @pytest.mark.live_network
     def test_doi_prefix_flexibility(self):
         """Test function handles Walsh Media DOI patterns correctly.""" 
         # Test with evidence DOI that we know works

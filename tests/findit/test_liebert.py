@@ -1,10 +1,11 @@
 """Tests for Mary Ann Liebert Publishers dance function.
 
 Evidence-driven update 2025-08-09: Updated tests to reflect new URL pattern
-https://www.liebertpub.com/doi/pdf/{doi}?download=true based on analysis 
+https://www.liebertpub.com/doi/pdf/{doi}?download=true based on analysis
 of 5/8 accessible HTML samples.
 """
 
+import pytest
 from .common import BaseDanceTest
 from metapub import FindIt
 from tests.fixtures import load_pmid_xml, LIEBERT_EVIDENCE_PMIDS
@@ -13,6 +14,7 @@ from tests.fixtures import load_pmid_xml, LIEBERT_EVIDENCE_PMIDS
 class TestLiebertDance(BaseDanceTest):
     """Test cases for Mary Ann Liebert Publishers."""
 
+    @pytest.mark.live_network
     def test_liebert_paywall_detection(self):
         """Test Liebert journal recognition and paywall detection."""
         # Test Liebert journals from our expansion with paywall detection

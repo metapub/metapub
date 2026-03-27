@@ -1,0 +1,81 @@
+Test run: 2026-03-16
+Platform: Linux 6.8.0-106-generic, Python 3.12.3, pytest-9.0.2
+Branch: master (post 0.7.2 release)
+Duration: 438.08s (7:18)
+Result: 30 failed, 647 passed
+
+=== FAILURES BY CATEGORY ===
+
+--- Website blocking / 403 errors (tests hit live sites that block us) ---
+FAILED tests/findit/test_bentham.py::TestBenthamXMLFixtures::test_bentham_xml_32525788_curr_mol_pharmacol
+  - EurekaSelect returns HTTP 403 (blocked), test expected POSTONLY error message
+FAILED tests/findit/test_bentham.py::TestBenthamXMLFixtures::test_bentham_xml_36635930_recent_pat_biotechnol
+  - Same: EurekaSelect 403
+FAILED tests/findit/test_bentham.py::TestBenthamXMLFixtures::test_bentham_xml_33568043_curr_mol_pharmacol
+  - Same: EurekaSelect 403
+FAILED tests/findit/test_pmc.py::TestPMCTwist::test_pmc_twist
+  - EuropePMC not returning PDF, AAAS (science.org) returns 403, source.url is None
+
+--- Dance logic bugs (code returns None URL or wrong behavior) ---
+FAILED tests/findit/test_brill.py::TestBrillDance::test_brill_bridge_url_construction_early_sci_med
+  - brill.com returns HTTP 202 (not 200), dance returns None URL, MissingSchema crash
+FAILED tests/findit/test_brill.py::TestBrillDance::test_brill_bridge_url_construction_early_sci_med_alt
+  - Same: Brill 202 -> None URL
+FAILED tests/findit/test_brill.py::TestBrillDance::test_brill_bridge_url_construction_phronesis
+  - Same: Brill 202 -> None URL
+FAILED tests/findit/test_brill.py::TestBrillDance::test_brill_bridge_url_construction_toung_pao
+  - Same: Brill 202 -> None URL
+
+--- Website HTML structure changed (dance can't find PDF link) ---
+FAILED tests/findit/test_dovepress.py::TestDovePressTest::test_dovepress_waltz_cmar_article
+  - DovePress HTML no longer has recognizable PDF download link
+FAILED tests/findit/test_dovepress.py::TestDovePressTest::test_dovepress_waltz_ijin_article
+  - Same: DovePress HTML changed
+FAILED tests/findit/test_dovepress.py::TestDovePressTest::test_dovepress_waltz_opth_article
+  - Same: DovePress HTML changed
+FAILED tests/findit/test_dovepress.py::TestDovepressXMLFixtures::test_dovepress_xml_37822558_adolesc_health_med_ther
+  - Same: DovePress HTML changed (even with mocked verify)
+FAILED tests/findit/test_dovepress.py::TestDovepressXMLFixtures::test_dovepress_xml_35592492_adolesc_health_med_ther
+  - Same: DovePress HTML changed
+
+--- Project MUSE: anti-bot protection / HTML structure ---
+FAILED tests/findit/test_projectmuse.py::TestProjectMuseDance::test_projectmuse_melody_url_construction_narrat_inq
+  - MUSE redirects to /verify page, no citation_pdf_url meta tag
+FAILED tests/findit/test_projectmuse.py::TestProjectMuseDance::test_projectmuse_melody_url_construction_hum_biol
+  - Same: MUSE /verify redirect
+FAILED tests/findit/test_projectmuse.py::TestProjectMuseDance::test_projectmuse_melody_url_construction_lang_baltim
+  - DOI redirects to Cambridge instead of MUSE (journal moved publishers?)
+FAILED tests/findit/test_projectmuse.py::TestProjectMuseDance::test_projectmuse_melody_404_error
+  - Mock test: error message doesn't match expected patterns (DENIED/TXERROR/PATTERN)
+
+--- SciELO: HTML structure changed ---
+FAILED tests/findit/test_scielo.py::TestScieloDance::test_scielo_chula_url_construction_with_pii
+  - SciELO pages no longer have citation_pdf_url meta tag or format=pdf links
+FAILED tests/findit/test_scielo.py::TestScieloDance::test_scielo_chula_url_construction_with_doi
+  - Same: SciELO HTML changed
+FAILED tests/findit/test_scielo.py::TestScieloDance::test_scielo_chula_successful_pdf_access
+  - Mock test but still hits live SciELO first (mock doesn't cover unified_uri_get)
+FAILED tests/findit/test_scielo.py::TestScieloDance::test_scielo_chula_fallback_to_href_links
+  - Same: mock doesn't cover unified_uri_get, hits live SciELO first
+
+--- Registry / configuration mismatches ---
+FAILED tests/findit/test_pnas.py::TestPNASConfiguration::test_pnas_journal_configuration
+  - PNAS mapped to publisher 'Pnas' not 'VIP' as test expects
+FAILED tests/findit/test_pnas.py::TestPNASConfiguration::test_pnas_simplicity_through_generics
+  - PNAS uses 'the_doi_slide' not 'the_vip_shake' as test expects
+FAILED tests/findit/test_pnas.py::TestPNASConfiguration::test_pnas_url_template_format
+  - format_params is None, json.loads(None) crashes
+FAILED tests/test_consolidated_publishers.py::TestConsolidatedPublishers::test_spandidos_registry_assignment
+  - format_template is None, test expects specific template string
+FAILED tests/test_consolidated_publishers.py::TestConsolidatedPublishers::test_springer_registry_assignment
+  - format_template is None, test expects specific template string
+FAILED tests/test_registry_dance_consistency.py::TestRegistryDanceConsistency::test_all_dance_functions_exist
+  - Registry references 'the_aaas_twostep' but function is named 'the_aaas_twist'
+FAILED tests/test_registry_dance_consistency.py::TestRegistryDanceConsistency::test_dedicated_functions_are_used
+  - Same: aaas dance function name mismatch
+
+--- FindIt infrastructure ---
+FAILED tests/test_findit.py::TestFindIt::test_using_cache
+  - Expects findit.db cache file but FindIt no longer creates one at that path
+FAILED tests/test_findit_offline_construction.py::TestOfflineURLConstruction::test_vip_url_construction_offline
+  - the_vip_shake expects config_data with 'journals' key but config_data doesn't have it

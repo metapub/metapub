@@ -19,6 +19,7 @@ class TestScieloDance(BaseDanceTest):
         super().setUp()
         self.fetch = PubMedFetcher()
 
+    @pytest.mark.live_network
     def test_scielo_chula_url_construction_with_pii(self):
         """Test 1: URL construction success using PII (Arq Gastroenterol article).
         
@@ -40,6 +41,7 @@ class TestScieloDance(BaseDanceTest):
         assert url.startswith('http')
         print(f"Test 1 - PDF URL: {url}")
 
+    @pytest.mark.live_network
     def test_scielo_chula_url_construction_with_doi(self):
         """Test 2: URL construction using DOI fallback (different Arq Gastroenterol article).
         

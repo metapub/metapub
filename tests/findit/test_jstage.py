@@ -12,6 +12,7 @@ from unittest.mock import patch
 class TestJStageDance(BaseDanceTest):
     """Test cases for J-STAGE journals."""
 
+    @pytest.mark.live_network
     def test_jstage_dive(self):
         """Test Jstage dive function with expanded journal coverage."""
         # Test with a known working Jstage journal from our expansion
@@ -24,6 +25,7 @@ class TestJStageDance(BaseDanceTest):
         assert 'jstage.jst.go.jp' in source.url
         assert source.url.endswith('_pdf')
 
+    @pytest.mark.live_network
     def test_jstage_expansion_coverage(self):
         """Test Jstage expansion with multiple Japanese journals."""
         # Test different types of Japanese journals from our expansion
@@ -56,6 +58,7 @@ class TestJSTAGEXMLFixtures:
             
             print(f"✓ PMID {pmid}: {pma.journal} - {pma.doi}")
 
+    @pytest.mark.live_network
     def test_jstage_url_construction_without_verification(self):
         """Test URL construction using XML fixtures."""
         for pmid in JSTAGE_EVIDENCE_PMIDS.keys():

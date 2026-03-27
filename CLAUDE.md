@@ -28,6 +28,12 @@ This file provides coding guidelines for Claude when working on the metapub proj
 - Use `/release <version>` for the full release procedure with caveats and checks
 - Quick reference: `rm -rf dist/ && .venv/bin/python -m build && twine upload --repository metapub dist/*`
 - Version must be bumped in both `metapub/__init__.py` and `setup.py`
+- **Always create a GitHub tag and release** after uploading to PyPI:
+  ```
+  git tag v{version} {version-bump-commit-sha}
+  git push origin v{version}
+  gh release create v{version} --title "v{version}" --notes "..."
+  ```
 
 ## FindIt / Publisher Dance Tests
 

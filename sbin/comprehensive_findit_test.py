@@ -11,8 +11,7 @@ Usage:
 """
 
 import sys
-sys.path.append('/home/nthmost/projects/git/metapub')
-
+import os
 import csv
 import tempfile
 import argparse
@@ -124,7 +123,8 @@ def load_verified_pmids():
     print("Loading verified PMIDs dataset...")
     
     verified_pmids = []
-    with open('/home/nthmost/projects/git/metapub/output/findit_verified_pmids_results.csv', 'r') as f:
+    csv_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'output', 'findit_verified_pmids_results.csv')
+    with open(csv_path, 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             domain = urlparse(row['article_url']).netloc

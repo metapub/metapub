@@ -103,7 +103,6 @@ setup(
         "cssselect",
         "unidecode",
         "docopt",
-        "six",
         "coloredlogs",
         "python-Levenshtein",
         "pyyaml",

@@ -13,5 +13,5 @@ from .findit import FindIt
 from .dx_doi import DxDOI
 from .urlreverse import UrlReverse
 
-__version__ = '0.7.3'
+__version__ = '0.7.4'
 

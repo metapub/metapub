@@ -52,6 +52,27 @@ This file provides coding guidelines for Claude when working on the metapub proj
 
 - **Wrong mock target is a legitimate bug.** If a test patches `requests.get` but the code uses `requests.Session.get`, fixing the mock target is correct — that's a test bug. This is different from mocking to hide broken functionality.
 
+## CI vs Live Network Tests
+
+The test suite is split into two categories:
+
+**Offline tests (run in CI on every push/PR):**
+- Mocked HTTP calls, saved XML/HTML fixtures, logic-only tests
+- Run with: `pytest -m "not live_network"` (~625 tests, ~5 min)
+- These should always pass. A failure here is a real bug in our code.
+
+**Live network tests (run manually, for drift detection):**
+- Make real HTTP requests to publisher websites
+- Marked with `@pytest.mark.live_network`
+- Run with: `pytest -m live_network` (~52 tests)
+- These are **intentionally kept** — they are the early-warning system for publisher format changes. When one fails, it means a publisher changed something and the dance function needs updating.
+
+**The philosophy:**
+- Live network tests exist to detect *drift* (publishers changing their HTML, adding bot protection, etc.), not to test our code logic. Our code logic is tested by the offline suite.
+- Use `@pytest.mark.live_network` **sparingly** — only on tests that actually hit publisher websites, not NCBI/eutils calls.
+- Never convert a failing live test into a passing mocked test without first fixing the underlying code. That turns a drift detector into a dead sensor.
+- Live tests should be run by a human who can interpret the results: "did we break something, or did the publisher change something?"
+
 ## Additional Guidelines
 - Follow the existing code patterns and conventions in the metapub codebase
 - Maintain the current architecture and design patterns

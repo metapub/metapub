@@ -22,7 +22,7 @@ This file provides coding guidelines for Claude when working on the metapub proj
 
 ## Branching
 
-**Always start a new branch before making any code changes.** Never commit directly to master. Create a descriptive branch name, do the work, then open a PR.
+**Always start a new branch before making any changes — code, documentation, configuration, or CLAUDE.md itself.** Never commit directly to master. Create a descriptive branch name, do the work, then open a PR.
 
 ## Releasing
 - Use `/release <version>` for the full release procedure with caveats and checks

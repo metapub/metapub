@@ -72,6 +72,7 @@ class TestSciendo(unittest.TestCase):
 
         registry.close()
 
+    @pytest.mark.live_network
     @skip_network_tests
     def test_evidence_based_url_construction(self):
         """Test URL construction with evidence PMIDs."""
@@ -93,6 +94,7 @@ class TestSciendo(unittest.TestCase):
                 self.assertTrue(url.startswith('https://sciendo.com/pdf/'))
                 self.assertIn(pma.doi, url)
 
+    @pytest.mark.live_network
     @skip_network_tests
     def test_doi_pattern_coverage(self):
         """Test coverage of different DOI patterns from evidence."""
@@ -113,6 +115,7 @@ class TestSciendo(unittest.TestCase):
                 self.assertIn(pma.doi, url)
                 self.assertTrue(url.startswith('https://sciendo.com/pdf/'))
 
+    @pytest.mark.live_network
     @skip_network_tests
     def test_open_access_verification(self):
         """Test verification with open access articles (should succeed)."""

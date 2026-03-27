@@ -151,6 +151,7 @@ class TestProjectMuseDance(BaseDanceTest):
         super().setUp()
         self.fetch = PubMedFetcher()
 
+    @pytest.mark.live_network
     def test_projectmuse_melody_url_construction_narrat_inq(self):
         """Test 1: URL construction success (Narrat Inq Bioeth).
 
@@ -168,6 +169,7 @@ class TestProjectMuseDance(BaseDanceTest):
         assert url.startswith('https://')
         print(f"Test 1 - PDF URL: {url}")
 
+    @pytest.mark.live_network
     def test_projectmuse_melody_url_construction_hum_biol(self):
         """Test 2: Human Biology.
 
@@ -189,6 +191,7 @@ class TestProjectMuseDance(BaseDanceTest):
         assert 'muse.jhu.edu' in url
         print(f"Test 2 - PDF URL: {url}")
 
+    @pytest.mark.live_network
     def test_projectmuse_melody_url_construction_lang_baltim(self):
         """Test 3: Language (Baltim).
 

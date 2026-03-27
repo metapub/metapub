@@ -19,6 +19,7 @@ class TestBrillDance(BaseDanceTest):
         super().setUp()
         self.fetch = PubMedFetcher()
 
+    @pytest.mark.live_network
     def test_brill_bridge_url_construction_early_sci_med(self):
         """Test 1: PDF URL construction without verification (Early Sci Med).
 
@@ -35,6 +36,7 @@ class TestBrillDance(BaseDanceTest):
         assert 'brill.com/downloadpdf/journals/' in url
         print(f"Test 1 - PDF URL: {url}")
 
+    @pytest.mark.live_network
     def test_brill_bridge_url_construction_early_sci_med_alt(self):
         """Test 2: PDF URL construction without verification (Early Sci Med alt).
 
@@ -51,6 +53,7 @@ class TestBrillDance(BaseDanceTest):
         assert 'brill.com/downloadpdf/journals/' in url
         print(f"Test 2 - PDF URL: {url}")
 
+    @pytest.mark.live_network
     def test_brill_bridge_url_construction_toung_pao(self):
         """Test 3: PDF URL construction without verification (Toung Pao).
 
@@ -67,6 +70,7 @@ class TestBrillDance(BaseDanceTest):
         assert 'brill.com/downloadpdf/journals/' in url
         print(f"Test 3 - PDF URL: {url}")
 
+    @pytest.mark.live_network
     def test_brill_bridge_url_construction_phronesis(self):
         """Test 4: PDF URL construction without verification (Phronesis).
 
@@ -85,6 +89,7 @@ class TestBrillDance(BaseDanceTest):
 
     # Test removed: Multiple tests - successful access, paywall detection, access forbidden, network error - functionality now handled by verify_pdf_url
 
+    @pytest.mark.live_network
     def test_brill_bridge_invalid_doi(self):
         """Test 11: Article with non-Brill DOI.
 

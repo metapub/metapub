@@ -87,6 +87,7 @@ class TestMDPI(BaseDanceTest):
         assert 'MISSING: DOI required for MDPI PDF access' in str(exc_info.value)
         print("Test 3 - Correctly handled missing DOI")
 
+    @pytest.mark.live_network
     def test_mdpi_moonwalk_wrong_doi_prefix(self):
         """Test 4: Error for non-MDPI DOI.
         

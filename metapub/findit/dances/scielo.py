@@ -27,14 +27,16 @@ def the_scielo_chula(pma, verify=True, request_timeout=10, max_redirects=3):
             page_text = response.content
             article_url = response.url
 
-    if page_text is None:
-        if pma.doi:
-            response = unified_uri_get(the_doi_2step(pma.doi), timeout=request_timeout, max_redirects=max_redirects)
-            if response.ok:
-                page_text = response.content
-                article_url = response.url
-        else:
-            raise NoPDFLink('MISSING: pii or doi needed for SciELO lookup.')
+    # If the PII URL didn't redirect to the new SciELO format (e.g. different CDN
+    # behavior by geographic location), also try the DOI path which routes through
+    # CrossRef and consistently resolves to the new /j/.../a/.../ URL format.
+    if (page_text is None or (article_url and 'scielo.php' in article_url)) and pma.doi:
+        doi_response = unified_uri_get(the_doi_2step(pma.doi), timeout=request_timeout, max_redirects=max_redirects)
+        if doi_response.ok:
+            page_text = doi_response.content
+            article_url = doi_response.url
+    elif page_text is None:
+        raise NoPDFLink('MISSING: pii or doi needed for SciELO lookup.')
 
     if page_text:
         pdf_url = None

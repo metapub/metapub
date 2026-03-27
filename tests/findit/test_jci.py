@@ -40,6 +40,7 @@ class TestJCIDance(BaseDanceTest):
         assert '/files/pdf' in url
         print(f"Test 1 - PDF URL: {url}")
 
+    @pytest.mark.live_network
     def test_jci_jig_url_construction_with_doi_fallback(self):
         """Test 2: URL construction using DOI fallback (older article without PII).
         

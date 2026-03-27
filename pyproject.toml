@@ -4,3 +4,6 @@ build-backend = "setuptools.build_meta"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+markers = [
+    "live_network: makes real HTTP requests to publisher websites (skip in CI, use for drift detection)",
+]

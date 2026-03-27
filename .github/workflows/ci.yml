@@ -28,4 +28,4 @@ jobs:
     - name: Run tests
       env:
         NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
-      run: pytest
+      run: pytest -m "not live_network"

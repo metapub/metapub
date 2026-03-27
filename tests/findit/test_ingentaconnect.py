@@ -8,6 +8,8 @@ Test approach:
 - Uses real PMIDs: 38884108, 34707797
 """
 
+import pytest
+
 import unittest
 from unittest.mock import patch, Mock
 
@@ -95,6 +97,7 @@ class TestIngentaConnectDance(unittest.TestCase):
         self.assertIn('INVALID:', str(context.exception))
         self.assertIn('expected /content/', str(context.exception))
 
+    @pytest.mark.live_network
     def test_real_pmid_metadata_validation(self):
         """Test with real PMID metadata to validate approach"""
         try:

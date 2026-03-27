@@ -8,6 +8,7 @@ Test approach:
 - Uses real PMIDs: 24084238, 24794070, 24449692
 """
 
+import pytest
 import unittest
 from unittest.mock import patch, Mock
 
@@ -128,6 +129,7 @@ class TestInderscienceDance(unittest.TestCase):
             self.assertEqual(result, expected_url)
 
 
+    @pytest.mark.live_network
     def test_cloudflare_blocking_documentation(self):
         """Test that function correctly documents Cloudflare blocking status"""
         # Function should work without verification but expect blocking with verification

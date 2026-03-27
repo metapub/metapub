@@ -206,6 +206,7 @@ class TestAJPHRegistryIntegration(BaseDanceTest):
         self.assertEqual(publisher_info['dance_function'], 'the_doi_slide')
         self.assertIsNotNone(publisher_info['format_template'])  # Uses template with the_doi_slide
 
+    @pytest.mark.live_network
     def test_ajph_findit_integration_with_real_pmid(self):
         """Test full FindIt integration with real PMID."""
         # Use FindIt to process a real AJPH PMID

@@ -18,6 +18,7 @@ class TestDovePressTest(BaseDanceTest):
         super().setUp()
         self.fetch = PubMedFetcher()
 
+    @pytest.mark.live_network
     def test_dovepress_waltz_ijin_article(self):
         """Test 1: URL construction success (International Journal of Nanomedicine).
         
@@ -38,6 +39,7 @@ class TestDovePressTest(BaseDanceTest):
         assert url.startswith('https://')
         print(f"Test 1 - PDF URL: {url}")
 
+    @pytest.mark.live_network
     def test_dovepress_waltz_opth_article(self):
         """Test 2: Clinical Ophthalmology article.
         
@@ -57,6 +59,7 @@ class TestDovePressTest(BaseDanceTest):
         assert '/article/download/' in url
         print(f"Test 2 - PDF URL: {url}")
 
+    @pytest.mark.live_network
     def test_dovepress_waltz_cmar_article(self):
         """Test 3: Cancer Management and Research article.
         

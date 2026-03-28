@@ -142,6 +142,8 @@ class PubMedFetcher(Borg):
                 Also read from the ``METAPUB_DB_URL`` environment variable.
             **kwargs: Additional keyword arguments.
                 cachedir (str, optional): Custom cache directory for eutils responses.
+                write_through (bool, optional): When using local DB, store NCBI-fetched
+                    articles back into the local DB for future fast access. Default True.
 
         Note:
             This is a Borg singleton - all instances share the same state.
@@ -159,11 +161,13 @@ class PubMedFetcher(Borg):
 
         # Wire up local PostgreSQL backend if a db_url is available
         resolved_db_url = db_url or os.environ.get("METAPUB_DB_URL")
+        write_through = kwargs.get("write_through", True)
         if resolved_db_url:
             self.method = 'local'
             backend = LocalPubMedBackend(resolved_db_url)
             self.article_by_pmid, self.articles_by_pmids = \
-                make_local_fetcher_methods(backend, self._eutils_article_by_pmid)
+                make_local_fetcher_methods(backend, self._eutils_article_by_pmid,
+                                           write_through=write_through)
         elif method == 'eutils':
             self.article_by_pmid = self._eutils_article_by_pmid
         else:

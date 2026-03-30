@@ -490,6 +490,13 @@ We welcome all contributions big and small, from ambitious new features
 all the way down to a thumbs-up on a bug or improvement. Metapub is a
 highly detailed-oriented project that thrives with critical feedback.
 
+To set up a local development environment::
+
+    git clone https://github.com/metapub/metapub.git
+    cd metapub
+    pip install -e .
+    pytest tests/
+
 If you\'d like to contribute a new feature or bug fix, we ask that you
 open an issue at <https://github.com/metapub/metapub/issues> and give it
 as much detail as you can.

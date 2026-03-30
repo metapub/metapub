@@ -182,6 +182,7 @@ class TestBenthamEurekaSelect(BaseDanceTest):
         print(f"Test 6 - HTTP error: {error_msg}")
 
 
+@pytest.mark.live_network
 def test_bentham_journal_recognition():
     """Test basic function availability and POSTONLY behavior."""
     from metapub import PubMedFetcher

@@ -126,3 +126,5 @@ Pipfile
 
 # OS X effluvia
 .DS_Store
+test_failures.txt
+tests/data/test_run_*.txt

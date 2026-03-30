@@ -7,7 +7,6 @@ tabulate
 cssselect
 unidecode
 docopt
-six
 coloredlogs
 python-Levenshtein
 brotli

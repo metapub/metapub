@@ -1,5 +1,6 @@
 """Tests for Cambridge University Press dance function."""
 
+import pytest
 from .common import BaseDanceTest
 from metapub import FindIt
 from tests.fixtures import load_pmid_xml, CAMBRIDGE_EVIDENCE_PMIDS
@@ -8,6 +9,7 @@ from tests.fixtures import load_pmid_xml, CAMBRIDGE_EVIDENCE_PMIDS
 class TestCambridgeDance(BaseDanceTest):
     """Test cases for Cambridge University Press."""
 
+    @pytest.mark.live_network
     def test_cambridge_foxtrot(self):
         """Test Cambridge University Press dance function across different eras."""
         # Test PMIDs from different decades to ensure Cambridge dance works across time periods

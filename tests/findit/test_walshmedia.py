@@ -39,6 +39,7 @@ class TestWalshMedia(unittest.TestCase):
         self.evidence_url = 'https://www.walshmedicalmedia.com/open-access/evaluating-the-whitening-and-microstructural-effects-of-a-novel-whitening-strip-on-porcelain-and-composite-dental-materials-2161-1122-1000449.pdf'
     
     
+    @pytest.mark.live_network
     @skip_network_tests
     def test_evidence_based_doi_resolution(self):
         """Test DOI resolution with evidence PMID."""
@@ -59,7 +60,8 @@ class TestWalshMedia(unittest.TestCase):
         
         print(f"✅ DOI resolution works: {url}")
     
-    @skip_network_tests 
+    @pytest.mark.live_network
+    @skip_network_tests
     def test_verification_success(self):
         """Test verification with evidence PMID (should succeed)."""
         pmf = PubMedFetcher()
@@ -113,6 +115,7 @@ class TestWalshMedia(unittest.TestCase):
         registry.close()
         print("✅ Registry integration verified")
     
+    @pytest.mark.live_network
     def test_doi_prefix_flexibility(self):
         """Test function handles Walsh Media DOI patterns correctly.""" 
         # Test with evidence DOI that we know works

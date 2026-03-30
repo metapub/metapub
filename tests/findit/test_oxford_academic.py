@@ -279,6 +279,7 @@ class TestOxfordAcademic(BaseDanceTest):
         print(f"Test 9 - Non-Oxford PDF filtered: {error_msg}")
 
 
+@pytest.mark.live_network
 def test_oxford_academic_journal_recognition():
     """Test basic function availability with real Endocrine Society articles."""
     from metapub import PubMedFetcher

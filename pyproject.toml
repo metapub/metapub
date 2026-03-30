@@ -1,3 +1,9 @@
 [build-system]
 requires = ["setuptools>=40.8.0,<75", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "live_network: makes real HTTP requests to publisher websites (skip in CI, use for drift detection)",
+]

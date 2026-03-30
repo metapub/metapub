@@ -18,6 +18,7 @@ class TestRSCDance(BaseDanceTest):
         super().setUp()
         self.fetch = PubMedFetcher()
 
+    @pytest.mark.live_network
     def test_rsc_reaction_url_construction_chem_commun(self):
         """Test 1: URL construction success (Chem Commun).
         
@@ -36,6 +37,7 @@ class TestRSCDance(BaseDanceTest):
         assert 'pubs.rsc.org' in url
         print(f"Test 1 - Article URL: {url}")
 
+    @pytest.mark.live_network
     def test_rsc_reaction_url_construction_chem_soc_rev(self):
         """Test 2: Chemical Society Reviews article.
         
@@ -54,6 +56,7 @@ class TestRSCDance(BaseDanceTest):
         assert 'pubs.rsc.org' in url
         print(f"Test 2 - Article URL: {url}")
 
+    @pytest.mark.live_network
     def test_rsc_reaction_url_construction_chem_sci(self):
         """Test 3: Chemical Science journal article.
         
@@ -71,6 +74,7 @@ class TestRSCDance(BaseDanceTest):
         assert url is not None
         print(f"Test 3 - Article URL: {url}")
 
+    @pytest.mark.live_network
     def test_rsc_reaction_url_construction_lab_chip(self):
         """Test 4: Lab Chip journal article.
         
@@ -88,6 +92,7 @@ class TestRSCDance(BaseDanceTest):
         assert url is not None
         print(f"Test 4 - Article URL: {url}")
 
+    @pytest.mark.live_network
     def test_rsc_reaction_url_construction_nat_prod_rep(self):
         """Test 5: Natural Product Reports.
         

@@ -43,6 +43,7 @@ class TestLongdomDance(BaseDanceTest):
         self.mock_pma.journal = 'Immunotherapy (Los Angel)'
         self.mock_pma.pmid = '28299372'
 
+    @pytest.mark.live_network
     def test_evidence_based_doi_resolution(self):
         """Test 1: Evidence-based DOI resolution approach.
         
@@ -62,6 +63,7 @@ class TestLongdomDance(BaseDanceTest):
         assert url.startswith('https://')
         print(f"Test 1 - Evidence-based PDF URL: {url}")
 
+    @pytest.mark.live_network
     def test_second_evidence_pmid(self):
         """Test 2: Second evidence PMID validation.
         

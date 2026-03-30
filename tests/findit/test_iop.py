@@ -18,6 +18,7 @@ class TestIOPDance(BaseDanceTest):
         super().setUp()
         self.fetch = PubMedFetcher()
 
+    @pytest.mark.live_network
     def test_iop_fusion_url_construction_phys_med_biol(self):
         """Test 1: URL construction success (Physics in Medicine & Biology).
         
@@ -37,6 +38,7 @@ class TestIOPDance(BaseDanceTest):
         assert url.startswith('https://')
         print(f"Test 1 - PDF URL: {url}")
 
+    @pytest.mark.live_network
     def test_iop_fusion_url_construction_nanotechnology(self):
         """Test 2: Nanotechnology journal.
         
@@ -53,6 +55,7 @@ class TestIOPDance(BaseDanceTest):
         assert 'iopscience.iop.org' in url
         print(f"Test 2 - PDF URL: {url}")
 
+    @pytest.mark.live_network
     def test_iop_fusion_url_construction_astrophys_j(self):
         """Test 3: Astrophysical Journal.
         
@@ -90,6 +93,7 @@ class TestIOPDance(BaseDanceTest):
 
     # Test removed: 404 error and domain fallback testing - functionality now handled by verify_pdf_url
 
+    @pytest.mark.live_network
     def test_iop_fusion_uncommon_doi_pattern(self):
         """Test 10: Article with uncommon DOI pattern.
         
@@ -109,6 +113,7 @@ class TestIOPDance(BaseDanceTest):
 class TestIOPXMLFixtures:
     """Test IOP XML fixtures for evidence-driven testing."""
 
+    @pytest.mark.live_network
     def test_iop_xml_36096127_phys_med_biol(self):
         """Test PMID 36096127 - Phys Med Biol with DOI 10.1088/1361-6560/ac9174."""
         pma = load_pmid_xml('36096127')
@@ -123,6 +128,7 @@ class TestIOPXMLFixtures:
         assert result.endswith('/pdf')
         assert '10.1088/1361-6560/ac9174' in result
 
+    @pytest.mark.live_network
     def test_iop_xml_39159658_phys_med_biol(self):
         """Test PMID 39159658 - Phys Med Biol with DOI 10.1088/1361-6560/ad70f0."""
         pma = load_pmid_xml('39159658')
@@ -137,6 +143,7 @@ class TestIOPXMLFixtures:
         assert result.endswith('/pdf')
         assert '10.1088/1361-6560/ad70f0' in result
 
+    @pytest.mark.live_network
     def test_iop_xml_37167981_phys_med_biol(self):
         """Test PMID 37167981 - Phys Med Biol with DOI 10.1088/1361-6560/acd48e."""
         pma = load_pmid_xml('37167981')

@@ -114,6 +114,7 @@ class TestAPADanceFunction:
 
         assert url == expected_url
 
+    @pytest.mark.live_network
     def test_apa_verify_true_paywall_detection(self):
         """Test that verify=True properly detects paywalled content."""
         article = load_pmid_xml('32437181')  # Am Psychol article

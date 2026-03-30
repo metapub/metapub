@@ -56,6 +56,7 @@ class TestScienceDirectDance(BaseDanceTest):
         assert ')' not in url.split('pii/')[1].split('/')[0]
         print(f"Test 2 - Cleaned PII in URL: {url}")
 
+    @pytest.mark.live_network
     def test_sciencedirect_disco_missing_pii_fallback(self):
         """Test 3: Article without PII.
         

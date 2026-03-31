@@ -4,6 +4,7 @@ __doc__ = '''metapub.PubMedFetcher -- tools to deal with NCBI's E-utilities inte
 from lxml import etree
 import requests
 import logging
+import os
 
 from .eutils_common import get_eutils_client
 from .eutils_compat import EutilsRequestError
@@ -148,7 +149,6 @@ class PubMedFetcher(Borg):
         Note:
             This is a Borg singleton - all instances share the same state.
         """
-        import os
         self.method = method
         cachedir = kwargs.get("cachedir")
 

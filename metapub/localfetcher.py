@@ -33,6 +33,8 @@ Requires psycopg2::
 import logging
 import os
 
+from .pubmedarticle import PubMedArticle
+
 log = logging.getLogger(__name__)
 
 try:
@@ -134,8 +136,6 @@ def make_local_fetcher_methods(backend: LocalPubMedBackend, eutils_fetcher,
     When `write_through=True` (default), articles fetched from NCBI are stored
     in the local DB so future lookups are served locally.
     """
-    from .pubmedarticle import PubMedArticle
-
     def article_by_pmid(pmid):
         xml = backend.fetch_xml(pmid)
         if xml:

@@ -30,7 +30,7 @@ with tempfile.TemporaryDirectory() as tmpdir:
                 print(f"\tCounts: {var.pathogenic_summary.counts}")
                 print(f"\tConflicting: {var.pathogenic_summary.conflicting}")
         except Exception as error:
-            print(error)
+            print(f"  ERROR: {error}")
 
         print()
 

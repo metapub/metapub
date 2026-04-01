@@ -598,13 +598,13 @@ class ClinVarVariant(MetaPubObject):
         Returns a dataclass in the following format:
         {
           counts: {
-            'Pathogenic': 3,
-            'Likely pathogenic': 1,
-            'Uncertain significance': 0,
+            'pathogenic': 3,
+            'likely pathogenic': 1,
+            'uncertain significance': 0,
           }
           ...
           total_submitters: 4,
-          consensus: 'Pathogenic',
+          consensus: 'pathogenic',
           conflicting': False,
           review_status: 'criteria provided, multiple submitters, no conflicts'
         }

@@ -66,6 +66,7 @@ class QueryService:
             id_param = params.get('id')
             rettype = params.get('rettype', 'xml')
             retmode = params.get('retmode', 'text')
+            is_variationid = params.get('is_variationid', None)
 
             if not db or not id_param:
                 raise EutilsRequestError("Missing required parameters: db and id")
@@ -75,7 +76,8 @@ class QueryService:
                 db=db,
                 id=id_param,
                 rettype=rettype,
-                retmode=retmode
+                retmode=retmode,
+                is_variationid=is_variationid
             )
         except Exception as e:
             if isinstance(e, (MetaPubError, EutilsRequestError)):

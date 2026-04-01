@@ -3,7 +3,7 @@ import tempfile
 import os
 
 from metapub import ClinVarFetcher
-from metapub.clinvarvariant import ClinVarVariant
+from metapub.clinvarvariant import ClinVarVariant, PathogenicSummary, ClinSig
 from metapub.exceptions import MetaPubError
 from metapub.cache_utils import cleanup_dir
 
@@ -185,6 +185,50 @@ class TestClinVarFetcher(unittest.TestCase):
         for pmid in pmids:
             self.assertIsInstance(pmid, str)
             self.assertTrue(pmid.isdigit())
+
+    def test_pathogenic_summary_basic(self):
+        """Test the pathogenic_summary correctly aggregates submitter classes"""
+        var = self.fetch.variant(12000)
+
+        summary = var.pathogenic_summary
+        self.assertIsInstance(summary, PathogenicSummary, 'pathogenic_summary doesn\'t return a dict')
+        # To fix typechecker
+        if summary is None:
+            return
+
+        # Check counts exists
+        counts = summary.counts
+        self.assertIsInstance(counts, dict, 'counts property doesn\'t exist')
+        for key, value in counts.items():
+            self.assertIsInstance(value, int, F'prop {key} in counts doesn\'t have an int')
+        
+        # Total submitters matches sum of counts
+        total = summary.total_submitters
+        self.assertEqual(total, sum(counts.values()))
+
+        # Consensus matches the classification with highest count
+        consensus = summary.consensus
+        if not summary.conflicting:
+            self.assertEqual(consensus, max(counts.items(), key=lambda x: x[1])[0], "Consensus doesn't match aggregation")
+    
+    def test_pathogenic_summary_conflicted(self):
+        """Test multiple known variants and their classification"""
+        variants: list[tuple[int, tuple[int, ClinSig, int, bool]]] = [
+            # (variant ID, (submitter #, classification, classification count, conflicted))
+            (12000, (21, 'pathogenic', 21, False)),
+            (4691, (18, 'uncertain significance', 6, True)),
+            (4691, (18, 'likely benign', 1, True)),
+            (1028857, (2, 'likely pathogenic', 1, False))
+        ]
+        for (id, (submitters, count_name, count, conflicting)) in variants:
+            var = self.fetch.variant(id, id_from='clinvar')
+            
+            self.assertIsNotNone(var.pathogenic_summary)
+            if var.pathogenic_summary is None:
+                return
+            self.assertGreaterEqual(var.pathogenic_summary.total_submitters, submitters, F"{id} variant has >= {submitters} submitters")
+            self.assertGreaterEqual(var.pathogenic_summary.counts[count_name], count, F"{id} variant has >= {count} pathogenic classifications")
+            self.assertEqual(var.pathogenic_summary.conflicting, conflicting, F"{id} variant is has {"" if conflicting else "not"} conflicting submittions")
 
     def test_offline_cached_xml(self):
         """Test using cached XML file for offline testing"""

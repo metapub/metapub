@@ -23,8 +23,14 @@ with tempfile.TemporaryDirectory() as tmpdir:
             print(f"  HGVS_p: {var.hgvs_p}")
             print(f"  Location: {var.cytogenic_location}")
             print(f"  Species: {var.species}")
+            print(f"  Classification:")
+            print(f"\tClinical significance: {var.clinical_significance}")
+            if var.pathogenic_summary:
+                print(f"\tTotal submitters: {var.pathogenic_summary.total_submitters}")
+                print(f"\tCounts: {var.pathogenic_summary.counts}")
+                print(f"\tConflicting: {var.pathogenic_summary.conflicting}")
         except Exception as error:
-            print(f"  ERROR: {error}")
+            print(error)
 
         print()
 

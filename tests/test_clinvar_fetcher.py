@@ -266,6 +266,29 @@ class TestClinVarFetcher(unittest.TestCase):
         self.assertIsInstance(var.hgvs_g, list)
         self.assertIsInstance(var.hgvs_p, list)
 
+    def test_ids_by_disease_basic(self):
+        """Basic free-text disease search. Should return many results"""
+        ids = self.fetch.ids_by_disease('hiv')
+        self.assertIsInstance(ids, list)
+        self.assertGreater(len(ids), 400)
+        
+    def test_ids_by_disease_medgen(self):
+        """Precise lookup via MedGen UID (C0027627 which is Marfan syndrome)"""
+        ids = self.fetch.ids_by_disease('CUI C0027627', use_medgen=True)
+        self.assertIsInstance(ids, list)
+        self.assertGreater(len(ids), 50)
+    
+    def test_ids_by_disease_breast_cancer(self):
+        """Common multi-word disease (testing space handling)"""
+        ids = self.fetch.ids_by_disease('breast cancer')
+        self.assertIsInstance(ids, list)
+        self.assertGreater(len(ids), 200)
+        
+    def test_ids_by_disease_empty_result(self):
+        """Edge case: wrong disease name should return empty list but not crash"""
+        ids = self.fetch.ids_by_disease('wrong_disease_name')
+        self.assertIsInstance(ids, list)
+        self.assertEqual(len(ids), 0)
 
 if __name__ == '__main__':
     unittest.main()

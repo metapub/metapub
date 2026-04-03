@@ -41,6 +41,8 @@ class TestClinVarFetcher(unittest.TestCase):
         # Verify other properties
         self.assertEqual(var.species, 'Homo sapiens')
         self.assertEqual(var.cytogenic_location, '16p13.3')
+        self.assertEqual(var.mode_of_inheritance, 'Autosomal dominant inheritance')
+        self.assertEqual(var.modes_of_inheritance, ['Autosomal dominant inheritance'])
 
     def test_variant_12003_vcv_format(self):
         """Test that variant 12003 returns proper data using new VCV format"""
@@ -204,6 +206,8 @@ class TestClinVarFetcher(unittest.TestCase):
         self.assertEqual(var.variation_type, 'single nucleotide variant')
         self.assertEqual(var.species, 'Homo sapiens')
         self.assertEqual(var.cytogenic_location, '16p13.3')
+        self.assertEqual(var.mode_of_inheritance, 'Autosomal dominant inheritance')
+        self.assertEqual(var.modes_of_inheritance, ['Autosomal dominant inheritance'])
         
         # Test all new VCV features work with cached XML
         self.assertIsNotNone(var.clinical_significance)

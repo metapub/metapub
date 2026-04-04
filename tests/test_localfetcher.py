@@ -11,8 +11,13 @@ Tests cover:
 """
 
 import os
+import threading
 import unittest
 from unittest.mock import MagicMock, patch, call
+
+
+class _Psycopg2Error(Exception):
+    """Stub for psycopg2.Error used when psycopg2 is fully mocked."""
 
 # Minimal NLM XML fixture — enough for PubMedArticle to parse
 _NLM_XML = """\
@@ -61,8 +66,7 @@ def _make_backend(fetch_xml_return=None, fetch_xml_many_return=None):
     from metapub.localfetcher import LocalPubMedBackend
     backend = LocalPubMedBackend.__new__(LocalPubMedBackend)
     backend._db_url = "postgresql://mock/mock"
-    backend._ro_conn = None
-    backend._rw_conn = None
+    backend._local = threading.local()
     backend.fetch_xml = MagicMock(return_value=fetch_xml_return)
     backend.fetch_xml_many = MagicMock(return_value=fetch_xml_many_return or {})
     backend.store_xml = MagicMock()
@@ -108,9 +112,10 @@ class TestLocalPubMedBackend(unittest.TestCase):
     @patch("metapub.localfetcher.psycopg2")
     def test_fetch_xml_db_error_returns_none(self, mock_psycopg2):
         from metapub.localfetcher import LocalPubMedBackend
+        mock_psycopg2.Error = _Psycopg2Error
         conn = MagicMock()
         conn.closed = False
-        conn.cursor.side_effect = Exception("DB connection failed")
+        conn.cursor.side_effect = _Psycopg2Error("DB connection failed")
         mock_psycopg2.connect.return_value = conn
         b = LocalPubMedBackend("postgresql://mock/mock")
         result = b.fetch_xml(27022295)
@@ -154,9 +159,10 @@ class TestLocalPubMedBackend(unittest.TestCase):
     @patch("metapub.localfetcher.psycopg2")
     def test_store_xml_error_is_silent(self, mock_psycopg2):
         from metapub.localfetcher import LocalPubMedBackend
+        mock_psycopg2.Error = _Psycopg2Error
         conn = MagicMock()
         conn.closed = False
-        conn.cursor.side_effect = Exception("write error")
+        conn.cursor.side_effect = _Psycopg2Error("write error")
         mock_psycopg2.connect.return_value = conn
         b = LocalPubMedBackend("postgresql://mock/mock")
         # Must not raise
@@ -244,7 +250,91 @@ class TestMakeLocalFetcherMethods(unittest.TestCase):
         results = articles_by_pmids(["27022295", "99999999"])
         self.assertIn("27022295", results)
         self.assertIn("99999999", results)
-        eutils.assert_called_once_with("99999999")
+        eutils.assert_called_once_with(99999999)
+
+    def test_articles_by_pmids_invalid_pmid_raises(self):
+        from metapub.localfetcher import make_local_fetcher_methods
+        backend = _make_backend()
+        eutils = MagicMock()
+        _, articles_by_pmids = make_local_fetcher_methods(backend, eutils)
+        with self.assertRaises(ValueError):
+            articles_by_pmids(["not-a-number"])
+
+    def test_articles_by_pmids_cached_xml_parse_error_falls_back_to_ncbi(self):
+        """Corrupt XML in local cache triggers NCBI fallback for that PMID."""
+        from metapub.localfetcher import make_local_fetcher_methods
+        ncbi_art = self._make_article("27022295")
+        backend = _make_backend(fetch_xml_many_return={27022295: "<<corrupt xml>>"})
+        eutils = MagicMock(return_value=ncbi_art)
+        _, articles_by_pmids = make_local_fetcher_methods(backend, eutils)
+        results = articles_by_pmids(["27022295"])
+        self.assertIn("27022295", results)
+        eutils.assert_called_once_with(27022295)
+
+    def test_articles_by_pmids_ncbi_error_returns_partial_results(self):
+        """An NCBI service error for one PMID does not abort the whole batch."""
+        from metapub.exceptions import MetaPubError
+        from metapub.localfetcher import make_local_fetcher_methods
+        ncbi_art = self._make_article("27022295")
+        backend = _make_backend(fetch_xml_many_return={})
+        eutils = MagicMock(side_effect=[ncbi_art, MetaPubError("NCBI unavailable")])
+        _, articles_by_pmids = make_local_fetcher_methods(backend, eutils)
+        results = articles_by_pmids(["27022295", "99999999"])
+        self.assertIn("27022295", results)
+        self.assertNotIn("99999999", results)
+
+    def test_articles_by_pmids_ncbi_service_error_returns_partial_results(self):
+        """An NCBIServiceError for one PMID does not abort the whole batch."""
+        from metapub.localfetcher import make_local_fetcher_methods
+        from metapub.ncbi_errors import NCBIServiceError
+        ncbi_art = self._make_article("27022295")
+        backend = _make_backend(fetch_xml_many_return={})
+        eutils = MagicMock(side_effect=[ncbi_art, NCBIServiceError("timeout")])
+        _, articles_by_pmids = make_local_fetcher_methods(backend, eutils)
+        results = articles_by_pmids(["27022295", "99999999"])
+        self.assertIn("27022295", results)
+        self.assertNotIn("99999999", results)
+
+    def test_article_by_pmid_cached_xml_parse_error_falls_back_to_ncbi(self):
+        """Corrupt XML in local cache for single-article path triggers NCBI fallback."""
+        from metapub.localfetcher import make_local_fetcher_methods
+        ncbi_art = self._make_article()
+        backend = _make_backend(fetch_xml_return="<<corrupt xml>>")
+        eutils = MagicMock(return_value=ncbi_art)
+        article_by_pmid, _ = make_local_fetcher_methods(backend, eutils)
+        art = article_by_pmid("27022295")
+        self.assertIs(art, ncbi_art)
+        eutils.assert_called_once_with("27022295")
+
+    def test_articles_by_pmids_thread_safety(self):
+        """Each thread gets its own result set; no cross-thread contamination."""
+        from metapub.localfetcher import make_local_fetcher_methods
+        backend = _make_backend(fetch_xml_many_return={27022295: _NLM_XML})
+        eutils = MagicMock(return_value=None)
+        _, articles_by_pmids = make_local_fetcher_methods(backend, eutils)
+
+        results = {}
+        errors = []
+
+        def fetch(pmids, key):
+            try:
+                results[key] = articles_by_pmids(pmids)
+            except Exception as e:
+                errors.append(e)
+
+        threads = [
+            threading.Thread(target=fetch, args=(["27022295"], "t1")),
+            threading.Thread(target=fetch, args=(["27022295"], "t2")),
+            threading.Thread(target=fetch, args=(["27022295"], "t3")),
+        ]
+        for t in threads:
+            t.start()
+        for t in threads:
+            t.join()
+
+        self.assertFalse(errors, f"Threads raised: {errors}")
+        for key in ("t1", "t2", "t3"):
+            self.assertIn("27022295", results[key])
 
 
 class TestPubMedFetcherLocalWiring(unittest.TestCase):
@@ -253,6 +343,7 @@ class TestPubMedFetcherLocalWiring(unittest.TestCase):
     @patch("metapub.localfetcher.HAS_PSYCOPG2", True)
     @patch("metapub.localfetcher.psycopg2")
     def test_env_var_activates_local_backend(self, mock_psycopg2):
+        mock_psycopg2.Error = _Psycopg2Error
         mock_psycopg2.connect.return_value = MagicMock(closed=False)
         with patch.dict(os.environ, {"METAPUB_DB_URL": "postgresql://mock/mock"}):
             # Reset Borg state so a fresh instance is created

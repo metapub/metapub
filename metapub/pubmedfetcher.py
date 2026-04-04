@@ -12,7 +12,7 @@ from .cache_utils import get_cache_path
 from .localfetcher import LocalPubMedBackend, make_local_fetcher_methods
 from .pubmedarticle import PubMedArticle
 from .pubmedcentral import get_pmid_for_otherid
-from .pubmed_clinicalqueries import *
+from .pubmed_clinicalqueries import clinical_query_map, medical_genetics_query_map
 from .utils import kpick, parameterize, lowercase_keys, remove_chars
 from .text_mining import re_pmid, is_ncbi_bookID, re_matching_quotes
 from .exceptions import MetaPubError, InvalidPMID, InvalidBookID
@@ -507,7 +507,13 @@ class PubMedFetcher(Borg):
         req = base_uri.format(**inp_dict)
         log.debug('pmids_for_citation: querying with %s', req)
 
-        content = requests.get(req, timeout=30).text
+        try:
+            response = requests.get(req, timeout=30)
+            response.raise_for_status()
+            content = response.text
+        except requests.RequestException as e:
+            log.warning("pmids_for_citation: request failed: %s", e)
+            return []
         pmids = []
         for item in content.split('\n'):
             if item.strip():

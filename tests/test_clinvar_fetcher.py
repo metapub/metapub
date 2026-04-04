@@ -255,6 +255,7 @@ class TestClinVarFetcher(unittest.TestCase):
         self.assertIsNotNone(var.protein_change)
         self.assertIsInstance(var.associated_conditions, list)
         self.assertIsInstance(var.gene_dosage_info, list)
+        self.assertIsInstance(var.pathogenic_summary, PathogenicSummary)
         
         # Verify TSC2 gene dosage info is present
         self.assertTrue(len(var.gene_dosage_info) > 0)

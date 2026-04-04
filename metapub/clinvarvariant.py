@@ -100,6 +100,7 @@ class ClinVarVariant(MetaPubObject):
         self.date_last_evaluated = self._get_date_last_evaluated()
         self.number_of_submissions = self._get_number_of_submissions()
         self.number_of_submitters = self._get_number_of_submitters()
+        self.pathogenic_summary = self._get_pathogenic_summary()
 
         # VCV record metadata (new in VCV format)
         self.vcv_accession = self._get_vcv_accession()
@@ -192,10 +193,6 @@ class ClinVarVariant(MetaPubObject):
                 except KeyError:
                     pass
         return strlist
-
-    @property
-    def pathogenic_summary(self) -> Optional[PathogenicSummary]:
-        return self._get_pathogenic_summary()
 
     ### VariationReport basic info
 

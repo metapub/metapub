@@ -18,20 +18,28 @@ PubMed and the ClinVar VCV/SCV formats respectively.
   we wish were there.
 - If the source data has multiple values for a field, the metapub representation
   should preserve that multiplicity — not flatten it into a single value.
-- If the source data is inconsistent (mixed casing, optional fields, format
-  variations across records), metapub should expose that inconsistency rather
-  than silently normalizing it away. Normalization hides real-world data quality
-  issues that callers need to know about.
-- Don't second-guess what the data means. A field that returns `"Likely
-  pathogenic"` in mixed case should return it that way because that's what
-  ClinVar says. It's not metapub's job to decide what the canonical casing is.
+- **Look at the actual data before deciding whether to normalize.** Variation in
+  the source is not always meaningful. Some inconsistency is real signal (e.g.
+  different submitters genuinely disagreeing on clinical significance). Some is
+  artifactual noise in the upstream data (e.g. the same rsID appearing as both
+  `"1799945"` and `"rs1799945"` within a single ClinVar record). The right
+  approach depends on which kind you're dealing with — and you can't tell without
+  looking at real records.
+- When variation is **artifactual** (clearly the same value in two formats),
+  normalize — and document that you are doing so and why.
+- When variation is **meaningful** (reflects genuine differences in the source
+  data), preserve it and let the caller decide what to do with it.
+- Don't second-guess what the data means when you don't have evidence. A field
+  that returns `"Likely pathogenic"` in mixed case should return it that way
+  unless you've confirmed that casing is noise across the dataset.
 
 **Why this matters:**
 
 Downstream researchers and tools depend on metapub to give them an accurate
 picture of what's in PubMed and ClinVar. A metapub object that quietly
 transforms the data is a source of subtle, hard-to-detect errors — especially
-when the upstream data changes format.
+when the upstream data changes format. But one that surfaces artifactual noise
+as if it were meaningful data is equally misleading.
 
 ---
 
@@ -64,8 +72,17 @@ When adding convenience properties, ask:
 
 ## Practical Guidelines
 
-- **Don't normalize casing on source fields.** If ClinVar returns
-  `"Pathogenic"` with a capital P, return that. Don't lowercase it.
+- **Look at real data before deciding on normalization.** Sample actual records
+  from the API. If you see variation, ask: is this meaningful signal or upstream
+  noise? The answer should drive the design, not assumptions.
+- **Normalize artifactual variation, and say so.** If the same rsID appears as
+  both `"1799945"` and `"rs1799945"` in the same record, normalizing to a
+  canonical format is correct — the alternative is surfacing false duplicates.
+  Document the normalization in the docstring.
+- **Don't normalize meaningful variation.** If ClinVar returns `"Pathogenic"`
+  in mixed case and you haven't verified that casing is consistent noise across
+  the dataset, return it as-is. Don't lowercase fields just because lowercase
+  is tidier.
 - **Don't collapse list fields into scalars.** If a variant can have multiple
   modes of inheritance, the faithful representation is a list. A scalar
   convenience property (`mode_of_inheritance`) should have a defined, consistent

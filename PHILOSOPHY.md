@@ -70,23 +70,38 @@ When adding convenience properties, ask:
 
 ---
 
+## Convenience Properties Are Views, Not Replacements
+
+Faithfulness to the data model does not prevent adding convenience. A property
+that composes, aggregates, or reformats data for common use cases is a **view**
+on the faithful representation — it adds something useful without replacing or
+destroying the underlying data.
+
+The key rule: the faithful representation must exist and be accessible. A
+convenience property sits alongside it, not instead of it.
+
+Example: ClinVar's XML stores dbSNP IDs as bare numbers (`"1799945"`). That is
+the faithful representation. A convenience property that prefixes `rs` to
+produce the conventional `rs1799945` format is a perfectly valid view — the
+`rs` prefix is presentation, not data. Both can coexist.
+
 ## Practical Guidelines
 
 - **Look at real data before deciding on normalization.** Sample actual records
   from the API. If you see variation, ask: is this meaningful signal or upstream
   noise? The answer should drive the design, not assumptions.
 - **Normalize artifactual variation, and say so.** If the same rsID appears as
-  both `"1799945"` and `"rs1799945"` in the same record, normalizing to a
-  canonical format is correct — the alternative is surfacing false duplicates.
-  Document the normalization in the docstring.
+  both `"1799945"` and `"rs1799945"` in the same record, deduplicate — but the
+  base representation is still the bare number as it appears in the XML.
+  Document any transformation in the docstring.
 - **Don't normalize meaningful variation.** If ClinVar returns `"Pathogenic"`
   in mixed case and you haven't verified that casing is consistent noise across
   the dataset, return it as-is. Don't lowercase fields just because lowercase
   is tidier.
-- **Don't collapse list fields into scalars.** If a variant can have multiple
-  modes of inheritance, the faithful representation is a list. A scalar
-  convenience property (`mode_of_inheritance`) should have a defined, consistent
-  type — `str | None`, not `str | list` depending on the count.
+- **Lists are the default for multi-value fields.** If the source data can have
+  multiple values, return a list ordered as received — don't require callers to
+  opt in with `all=True` or similar. A scalar convenience property is fine
+  alongside it, with a consistent type (`str | None`, never `str | list`).
 - **Prefer `None` over empty string or zero for missing data.** Missing is
   meaningfully different from empty.
 - **New summary/aggregation properties are welcome** — alongside the faithful

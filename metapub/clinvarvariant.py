@@ -19,8 +19,8 @@ ClinSig = Literal[
     "pathogenic", "likely pathogenic", "uncertain significance",
     "likely benign", "benign", "conflicting interpretations",
     "drug response", "risk factor", "association",
-    "affects", "protective", "other",
-    "likely pathogenic, low penetrance", "pathogenic, low penetrance",
+    "protective", "other", "likely pathogenic, low penetrance",
+    "pathogenic, low penetrance",
     "uncertain risk allele", "likely risk allele",
     "established risk allele", "affects", "conflicting data from submitters",
     "not provided", "vus-high", "vus-mid", "vus-low"
@@ -612,29 +612,26 @@ class ClinVarVariant(MetaPubObject):
         counts: dict[ClinSig, int] = {}
         total = 0
         
-        try:
-            assertion_list = self.variation_archive.find(".//ClinicalAssertionList")
-            if assertion_list is not None:
-                for assertion in assertion_list.findall('ClinicalAssertion'):
-                    # TODO: ContributesToAggregateClassification doesn't seem to be inside ClinicalAssertion.
-                    classification_info = assertion.find("Classification")
-                    if classification_info is None:
+        assertion_list = self.variation_archive.find(".//ClinicalAssertionList")
+        if assertion_list is not None:
+            for assertion in assertion_list.findall('ClinicalAssertion'):
+                # TODO: ContributesToAggregateClassification doesn't seem to be inside ClinicalAssertion.
+                classification_info = assertion.find("Classification")
+                if classification_info is None:
+                    continue
+                # TODO: support OncogenicityClassification or SomaticClinicalImpact
+                germline = classification_info.find("GermlineClassification")
+                if germline is not None:
+                    cs = germline.text
+                    if not cs:
                         continue
-                    # TODO: support OncogenicityClassification or SomaticClinicalImpact
-                    germline = classification_info.find("GermlineClassification")
-                    if germline is not None:
-                        cs = germline.text
-                        if not cs:
-                            continue
 
-                        key = cs.strip().lower()
-                        # if a classification was not provided, skip
-                        if key == "not provided":
-                            continue
-                        counts[key] = counts.get(key, 0) + 1
-                        total += 1
-        except Exception:
-            pass
+                    key = cs.strip().lower()
+                    # if a classification was not provided, skip
+                    if key == "not provided":
+                        continue
+                    counts[key] = counts.get(key, 0) + 1
+                    total += 1
 
         # Determine consensus
         consensus = None

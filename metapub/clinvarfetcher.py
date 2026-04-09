@@ -3,7 +3,7 @@
 # TODO: Add logging
 
 from lxml import etree
-
+import logging
 from .clinvarvariant import ClinVarVariant, IdLocations
 from .exceptions import MetaPubError, BaseXMLError
 from .eutils_common import get_eutils_client
@@ -121,9 +121,8 @@ class ClinVarFetcher(Borg):
         result = self.qs.efetch(qs_args)
         try:
             return ClinVarVariant(result)
-        except BaseXMLError as error:
+        except BaseXMLError as _:
             # empty XML document == invalid variant ID
-            print(error)
             raise MetaPubError('Invalid ClinVar Variation ID')
 
     def _eutils_ids_by_gene(self, gene, single_gene=False):

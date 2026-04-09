@@ -636,7 +636,10 @@ class ClinVarVariant(MetaPubObject):
         # Determine consensus
         consensus = None
         if counts:
-            consensus = max(counts.items(), key=lambda x: x[1])[0]
+            max_count = max(counts.values())
+            top_counts = [k for k, v in counts.items() if v == max_count]
+            if len(top_counts) == 1:
+                consensus = max(counts.items(), key=lambda x: x[1])[0]
 
         conflicting = "conflicting" in (self.clinical_significance or "").lower()
 

@@ -76,6 +76,11 @@ class QueryService:
                 db=db,
                 id=id_param,
                 rettype=rettype,
+                retmode=retmode
+            ) if is_variationid is None else self.client.efetch(
+                db=db,
+                id=id_param,
+                rettype=rettype,
                 retmode=retmode,
                 is_variationid=is_variationid
             )

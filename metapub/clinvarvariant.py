@@ -15,6 +15,8 @@ from .exceptions import MetaPubError, BaseXMLError
 # See: https://www.ncbi.nlm.nih.gov/clinvar/docs/clinsig/
 # All possible clinical significance classes a variant may be classified as
 # by a submitter.
+# 
+# NOTE: here we represent clinical significance classes in lowercase.
 ClinSig = Literal[
     "pathogenic", "likely pathogenic", "uncertain significance",
     "likely benign", "benign", "conflicting interpretations",
@@ -25,6 +27,7 @@ ClinSig = Literal[
     "established risk allele", "affects", "conflicting data from submitters",
     "not provided", "vus-high", "vus-mid", "vus-low"
 ]
+# Possible types of IDs a user may supply to initialize a variant.
 IdLocations = Literal['clinvar', 'entrez']
 
 @dataclass
@@ -431,7 +434,12 @@ class ClinVarVariant(MetaPubObject):
     ### NEW VCV FORMAT ENHANCEMENTS ###
 
     def _get_clinical_significance(self) -> Optional[ClinSig]:
-        """Get the clinical significance classification (e.g., 'Pathogenic', 'Benign')"""
+        """Get the clinical significance classification (e.g., 'pathogenic', 'benign')
+        
+        A list of all significance classes is available here: https://www.ncbi.nlm.nih.gov/clinvar/docs/clinsig/
+        
+        **Note**: past version 1.7.4, clinical significance is represented in lowercase.
+        """
         if not self._is_vcv_format:
             return None
 

@@ -14,7 +14,7 @@ Usage::
     from metapub import PubMedFetcher
 
     # Local-first with NCBI fallback
-    fetch = PubMedFetcher(db_url="postgresql://medgen:medgen@loki.local/medgen")
+    fetch = PubMedFetcher(db_url="postgresql://user:pass@host/dbname")
     article = fetch.article_by_pmid("27022295")
 
     # Bulk lookup (new — not available in eutils-only mode)
@@ -32,13 +32,6 @@ Requires psycopg2::
 
 import logging
 import os
-import threading
-
-from lxml import etree
-
-from .exceptions import MetaPubError
-from .ncbi_errors import NCBIServiceError
-from .pubmedarticle import PubMedArticle
 
 log = logging.getLogger(__name__)
 
@@ -68,25 +61,32 @@ class LocalPubMedBackend:
                 "Install it with: pip install psycopg2-binary"
             )
         self._db_url = db_url
-        self._local = threading.local()  # per-thread connection storage
+        self._ro_conn = None   # read-only connection (reads)
+        self._rw_conn = None   # read-write connection (write-through stores)
 
     def _connection(self):
-        """Return a per-thread read-only connection, reconnecting if needed."""
-        conn = getattr(self._local, 'ro_conn', None)
-        if conn is None or conn.closed:
-            conn = psycopg2.connect(self._db_url)
-            conn.set_session(readonly=True, autocommit=True)
-            self._local.ro_conn = conn
-        return conn
+        """Return a read-only connection, reconnecting if needed."""
+        if self._ro_conn is not None and not self._ro_conn.closed:
+            try:
+                self._ro_conn.cursor().execute("SELECT 1")
+            except psycopg2.OperationalError:
+                self._ro_conn = None
+        if self._ro_conn is None:
+            self._ro_conn = psycopg2.connect(self._db_url)
+            self._ro_conn.set_session(readonly=True, autocommit=True)
+        return self._ro_conn
 
     def _rw_connection(self):
-        """Return a per-thread read-write connection for write-through stores."""
-        conn = getattr(self._local, 'rw_conn', None)
-        if conn is None or conn.closed:
-            conn = psycopg2.connect(self._db_url)
-            conn.autocommit = True
-            self._local.rw_conn = conn
-        return conn
+        """Return a read-write connection for write-through stores."""
+        if self._rw_conn is not None and not self._rw_conn.closed:
+            try:
+                self._rw_conn.cursor().execute("SELECT 1")
+            except psycopg2.OperationalError:
+                self._rw_conn = None
+        if self._rw_conn is None:
+            self._rw_conn = psycopg2.connect(self._db_url)
+            self._rw_conn.autocommit = True
+        return self._rw_conn
 
     def fetch_xml(self, pmid: int | str) -> str | None:
         """Return raw NLM XML for a single PMID, or None if not in the local DB."""
@@ -95,9 +95,9 @@ class LocalPubMedBackend:
                 cur.execute(_SELECT_ONE, (int(pmid),))
                 row = cur.fetchone()
                 return row[0] if row else None
-        except psycopg2.Error as e:
-            log.warning("localfetcher: DB error for PMID %s: %s", pmid, e)
-            self._local.ro_conn = None   # force reconnect next time
+        except psycopg2.OperationalError as e:
+            log.error("localfetcher: DB connection error for PMID %s: %s", pmid, e)
+            self._ro_conn = None
             return None
 
     def fetch_xml_many(self, pmids: list[int | str]) -> dict[int, str]:
@@ -112,9 +112,9 @@ class LocalPubMedBackend:
             with self._connection().cursor() as cur:
                 cur.execute(_SELECT_MANY, (int_pmids,))
                 return {row[0]: row[1] for row in cur.fetchall()}
-        except psycopg2.Error as e:
-            log.warning("localfetcher: DB error for batch of %d PMIDs: %s", len(pmids), e)
-            self._local.ro_conn = None
+        except psycopg2.OperationalError as e:
+            log.error("localfetcher: DB connection error for batch of %d PMIDs: %s", len(pmids), e)
+            self._ro_conn = None
             return {}
 
     def store_xml(self, pmid: int | str, xml: str) -> None:
@@ -127,9 +127,9 @@ class LocalPubMedBackend:
             with self._rw_connection().cursor() as cur:
                 cur.execute(_UPSERT_XML, (int(pmid), xml))
             log.debug("localfetcher: stored PMID %s in local DB", pmid)
-        except psycopg2.Error as e:
+        except Exception as e:
             log.warning("localfetcher: write-through store failed for PMID %s: %s", pmid, e)
-            self._local.rw_conn = None
+            self._rw_conn = None
 
 
 def make_local_fetcher_methods(backend: LocalPubMedBackend, eutils_fetcher,
@@ -144,13 +144,15 @@ def make_local_fetcher_methods(backend: LocalPubMedBackend, eutils_fetcher,
     When `write_through=True` (default), articles fetched from NCBI are stored
     in the local DB so future lookups are served locally.
     """
+    from .pubmedarticle import PubMedArticle
+
     def article_by_pmid(pmid):
         xml = backend.fetch_xml(pmid)
         if xml:
             log.debug("localfetcher: hit for PMID %s", pmid)
             try:
                 return PubMedArticle(xml)
-            except (etree.XMLSyntaxError, etree.ParserError) as e:
+            except Exception as e:
                 log.warning("localfetcher: XML parse error for PMID %s: %s — falling back", pmid, e)
         log.debug("localfetcher: miss for PMID %s — falling back to eutils", pmid)
         art = eutils_fetcher(pmid)
@@ -163,26 +165,20 @@ def make_local_fetcher_methods(backend: LocalPubMedBackend, eutils_fetcher,
         Bulk fetch articles for a list of PMIDs.
         Returns {str(pmid): PubMedArticle} for all PMIDs that resolve.
         PMIDs not found in the local DB are fetched from NCBI individually.
-
-        Raises ValueError if any pmid cannot be converted to int.
         """
-        try:
-            int_pmids = [int(p) for p in pmids]
-        except (TypeError, ValueError) as exc:
-            raise ValueError(f"All pmids must be integer-like: {exc}") from exc
-
-        local_xml = backend.fetch_xml_many(int_pmids)
+        pmids = [str(p) for p in pmids]
+        local_xml = backend.fetch_xml_many(pmids)
 
         results: dict[str, PubMedArticle] = {}
-        ncbi_needed: list[int] = []
+        ncbi_needed = []
 
-        for pmid in int_pmids:
-            xml = local_xml.get(pmid)
+        for pmid in pmids:
+            xml = local_xml.get(int(pmid))
             if xml:
                 try:
-                    results[str(pmid)] = PubMedArticle(xml)
+                    results[pmid] = PubMedArticle(xml)
                     continue
-                except (etree.XMLSyntaxError, etree.ParserError) as e:
+                except Exception as e:
                     log.warning("localfetcher: XML parse error for PMID %s: %s", pmid, e)
             ncbi_needed.append(pmid)
 
@@ -192,10 +188,10 @@ def make_local_fetcher_methods(backend: LocalPubMedBackend, eutils_fetcher,
                 try:
                     art = eutils_fetcher(pmid)
                     if art:
-                        results[str(pmid)] = art
+                        results[pmid] = art
                         if write_through:
                             backend.store_xml(pmid, art.xml)
-                except (MetaPubError, NCBIServiceError) as e:
+                except Exception as e:
                     log.warning("localfetcher: NCBI error for PMID %s: %s", pmid, e)
 
         return results

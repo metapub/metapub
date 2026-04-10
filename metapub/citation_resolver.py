@@ -206,23 +206,42 @@ class CitationResolver:
 
         return None
 
-    def _resolve_one(self, cite: dict, gene: str = None) -> dict | None:
-        """Try to resolve a single parsed citation."""
+    def _resolve_one(self, cite: dict, gene: str = None,
+                     use_crossref: bool = False) -> dict | None:
+        """Try to resolve a single parsed citation.
+
+        If use_crossref is True, queries CrossRef in addition to local DB.
+        When both find a result, agreement boosts confidence; disagreement
+        flags ambiguity.
+        """
         author = cite.get("author")
         year = cite.get("year")
 
         if not author:
             return None
 
-        # Try local DB first
-        result = self._search_local(author, year, gene)
-        if result:
-            return result
+        local = self._search_local(author, year, gene)
 
-        # Try CrossRef
-        result = self._search_crossref(author, year, gene)
-        if result:
-            return result
+        if not use_crossref:
+            return local
+
+        cr = self._search_crossref(author, year, gene)
+
+        if local and cr:
+            if local["pmid"] == cr["pmid"]:
+                # Both agree — high confidence
+                local["confidence"] = min(local["confidence"] + 0.1, 1.0)
+                local["method"] = "local_db+crossref"
+                local["crossref_doi"] = cr.get("doi")
+                return local
+            else:
+                # Disagreement — trust local but note it
+                local["note"] = f"CrossRef disagrees (PMID {cr['pmid']})"
+                return local
+        elif local:
+            return local
+        elif cr:
+            return cr
 
         return None
 
@@ -233,9 +252,9 @@ class CitationResolver:
         if conn is None:
             return None
 
-        # Build query — use first_author column for speed, fall back to authors
-        conditions = ["first_author ILIKE %s"]
-        params = [f"{author}%"]
+        # Build query — use lower(first_author) with text_pattern_ops index
+        conditions = ["lower(first_author) LIKE %s"]
+        params = [f"{author.lower()}%"]
 
         if year:
             conditions.append("year = %s")

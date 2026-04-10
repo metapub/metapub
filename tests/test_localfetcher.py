@@ -271,6 +271,28 @@ class TestMakeLocalFetcherMethods(unittest.TestCase):
         self.assertIn("27022295", results)
         eutils.assert_called_once_with(27022295)
 
+    def test_article_by_pmid_empty_xml_falls_back_to_ncbi(self):
+        """Empty string XML from DB (raises MetaPubError) triggers eutils fallback."""
+        from metapub.localfetcher import make_local_fetcher_methods
+        ncbi_art = self._make_article()
+        backend = _make_backend(fetch_xml_return="")
+        eutils = MagicMock(return_value=ncbi_art)
+        article_by_pmid, _ = make_local_fetcher_methods(backend, eutils)
+        art = article_by_pmid("27022295")
+        self.assertIs(art, ncbi_art)
+        eutils.assert_called_once_with("27022295")
+
+    def test_articles_by_pmids_empty_xml_falls_back_to_ncbi(self):
+        """Empty string XML in bulk DB result (raises MetaPubError) triggers eutils fallback."""
+        from metapub.localfetcher import make_local_fetcher_methods
+        ncbi_art = self._make_article("27022295")
+        backend = _make_backend(fetch_xml_many_return={27022295: ""})
+        eutils = MagicMock(return_value=ncbi_art)
+        _, articles_by_pmids = make_local_fetcher_methods(backend, eutils)
+        results = articles_by_pmids(["27022295"])
+        self.assertIn("27022295", results)
+        eutils.assert_called_once_with(27022295)
+
     def test_articles_by_pmids_ncbi_error_returns_partial_results(self):
         """An NCBI service error for one PMID does not abort the whole batch."""
         from metapub.exceptions import MetaPubError

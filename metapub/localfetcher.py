@@ -33,6 +33,10 @@ Requires psycopg2::
 import logging
 import os
 
+from lxml import etree
+
+from .exceptions import MetaPubError
+
 log = logging.getLogger(__name__)
 
 try:
@@ -152,7 +156,7 @@ def make_local_fetcher_methods(backend: LocalPubMedBackend, eutils_fetcher,
             log.debug("localfetcher: hit for PMID %s", pmid)
             try:
                 return PubMedArticle(xml)
-            except Exception as e:
+            except (etree.XMLSyntaxError, etree.ParserError, MetaPubError) as e:
                 log.warning("localfetcher: XML parse error for PMID %s: %s — falling back", pmid, e)
         log.debug("localfetcher: miss for PMID %s — falling back to eutils", pmid)
         art = eutils_fetcher(pmid)
@@ -178,7 +182,7 @@ def make_local_fetcher_methods(backend: LocalPubMedBackend, eutils_fetcher,
                 try:
                     results[pmid] = PubMedArticle(xml)
                     continue
-                except Exception as e:
+                except (etree.XMLSyntaxError, etree.ParserError, MetaPubError) as e:
                     log.warning("localfetcher: XML parse error for PMID %s: %s", pmid, e)
             ncbi_needed.append(pmid)
 

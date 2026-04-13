@@ -46,6 +46,22 @@ try:
 except ImportError:
     HAS_PSYCOPG2 = False
 
+def _ensure_article_set_wrapper(xml: str) -> str:
+    """Wrap bare <PubmedArticle> XML in <PubmedArticleSet> if the wrapper is missing.
+
+    PubMedArticle.parse_xml searches for a 'PubmedArticle' child of the root
+    element.  If the DB stores bare <PubmedArticle> XML (no <PubmedArticleSet>
+    parent), that search returns None and every attribute ends up None.
+    eutils always returns the full set wrapper, so this only matters for
+    pre-existing DB rows written by other tools (e.g. medgen-stacks).
+    """
+    if isinstance(xml, bytes):
+        xml = xml.decode('utf-8')
+    if '<PubmedArticleSet>' not in xml and '<PubmedArticle>' in xml:
+        return f'<PubmedArticleSet>{xml}</PubmedArticleSet>'
+    return xml
+
+
 _SELECT_ONE  = "SELECT xml FROM pubmed.article WHERE pmid = %s"
 _SELECT_MANY = "SELECT pmid, xml FROM pubmed.article WHERE pmid = ANY(%s)"
 _UPSERT_XML  = """
@@ -155,7 +171,7 @@ def make_local_fetcher_methods(backend: LocalPubMedBackend, eutils_fetcher,
         if xml:
             log.debug("localfetcher: hit for PMID %s", pmid)
             try:
-                return PubMedArticle(xml)
+                return PubMedArticle(_ensure_article_set_wrapper(xml))
             except (etree.XMLSyntaxError, etree.ParserError, MetaPubError) as e:
                 log.warning("localfetcher: XML parse error for PMID %s: %s — falling back", pmid, e)
         log.debug("localfetcher: miss for PMID %s — falling back to eutils", pmid)
@@ -180,7 +196,7 @@ def make_local_fetcher_methods(backend: LocalPubMedBackend, eutils_fetcher,
             xml = local_xml.get(int(pmid))
             if xml:
                 try:
-                    results[pmid] = PubMedArticle(xml)
+                    results[pmid] = PubMedArticle(_ensure_article_set_wrapper(xml))
                     continue
                 except (etree.XMLSyntaxError, etree.ParserError, MetaPubError) as e:
                     log.warning("localfetcher: XML parse error for PMID %s: %s", pmid, e)

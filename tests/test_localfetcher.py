@@ -19,7 +19,7 @@ from unittest.mock import MagicMock, patch, call
 class _Psycopg2Error(Exception):
     """Stub for psycopg2.Error used when psycopg2 is fully mocked."""
 
-# Minimal NLM XML fixture — enough for PubMedArticle to parse
+# Minimal NLM XML fixture — full PubmedArticleSet wrapper (identical to efetch output)
 _NLM_XML = """\
 <?xml version="1.0" ?>
 <!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2025//EN"
@@ -59,6 +59,9 @@ _NLM_XML = """\
 </PubmedArticle>
 </PubmedArticleSet>
 """
+
+# Same article without the PubmedArticleSet wrapper — as some DB tools store it
+_NLM_XML_BARE = _NLM_XML.split('<PubmedArticleSet>')[1].rsplit('</PubmedArticleSet>', 1)[0].strip()
 
 
 def _make_backend(fetch_xml_return=None, fetch_xml_many_return=None):
@@ -112,7 +115,7 @@ class TestLocalPubMedBackend(unittest.TestCase):
     @patch("metapub.localfetcher.psycopg2")
     def test_fetch_xml_db_error_returns_none(self, mock_psycopg2):
         from metapub.localfetcher import LocalPubMedBackend
-        mock_psycopg2.Error = _Psycopg2Error
+        mock_psycopg2.OperationalError = _Psycopg2Error
         conn = MagicMock()
         conn.closed = False
         conn.cursor.side_effect = _Psycopg2Error("DB connection failed")
@@ -250,7 +253,7 @@ class TestMakeLocalFetcherMethods(unittest.TestCase):
         results = articles_by_pmids(["27022295", "99999999"])
         self.assertIn("27022295", results)
         self.assertIn("99999999", results)
-        eutils.assert_called_once_with(99999999)
+        eutils.assert_called_once_with('99999999')
 
     def test_articles_by_pmids_invalid_pmid_raises(self):
         from metapub.localfetcher import make_local_fetcher_methods
@@ -269,7 +272,29 @@ class TestMakeLocalFetcherMethods(unittest.TestCase):
         _, articles_by_pmids = make_local_fetcher_methods(backend, eutils)
         results = articles_by_pmids(["27022295"])
         self.assertIn("27022295", results)
-        eutils.assert_called_once_with(27022295)
+        eutils.assert_called_once_with('27022295')
+
+    def test_article_by_pmid_bare_xml_parses_correctly(self):
+        """Bare <PubmedArticle> XML (no PubmedArticleSet wrapper) parses correctly."""
+        from metapub.localfetcher import make_local_fetcher_methods
+        backend = _make_backend(fetch_xml_return=_NLM_XML_BARE)
+        eutils = MagicMock()
+        article_by_pmid, _ = make_local_fetcher_methods(backend, eutils)
+        art = article_by_pmid("27022295")
+        self.assertIsNotNone(art)
+        self.assertEqual(str(art.pmid), "27022295")
+        eutils.assert_not_called()
+
+    def test_articles_by_pmids_bare_xml_parses_correctly(self):
+        """Bare <PubmedArticle> XML in bulk result (no wrapper) parses correctly."""
+        from metapub.localfetcher import make_local_fetcher_methods
+        backend = _make_backend(fetch_xml_many_return={27022295: _NLM_XML_BARE})
+        eutils = MagicMock()
+        _, articles_by_pmids = make_local_fetcher_methods(backend, eutils)
+        results = articles_by_pmids(["27022295"])
+        self.assertIn("27022295", results)
+        self.assertEqual(str(results["27022295"].pmid), "27022295")
+        eutils.assert_not_called()
 
     def test_article_by_pmid_empty_xml_falls_back_to_ncbi(self):
         """Empty string XML from DB (raises MetaPubError) triggers eutils fallback."""
@@ -291,7 +316,7 @@ class TestMakeLocalFetcherMethods(unittest.TestCase):
         _, articles_by_pmids = make_local_fetcher_methods(backend, eutils)
         results = articles_by_pmids(["27022295"])
         self.assertIn("27022295", results)
-        eutils.assert_called_once_with(27022295)
+        eutils.assert_called_once_with('27022295')
 
     def test_articles_by_pmids_ncbi_error_returns_partial_results(self):
         """An NCBI service error for one PMID does not abort the whole batch."""

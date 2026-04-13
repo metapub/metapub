@@ -171,9 +171,14 @@ def make_local_fetcher_methods(backend: LocalPubMedBackend, eutils_fetcher,
         if xml:
             log.debug("localfetcher: hit for PMID %s", pmid)
             try:
-                return PubMedArticle(_ensure_article_set_wrapper(xml))
+                art = PubMedArticle(_ensure_article_set_wrapper(xml))
             except (etree.XMLSyntaxError, etree.ParserError, MetaPubError) as e:
                 log.warning("localfetcher: XML parse error for PMID %s: %s — falling back", pmid, e)
+            else:
+                if art.pmid is None:
+                    log.warning("localfetcher: DB XML for PMID %s parsed but yielded no PMID — falling back", pmid)
+                else:
+                    return art
         log.debug("localfetcher: miss for PMID %s — falling back to eutils", pmid)
         art = eutils_fetcher(pmid)
         if write_through and art is not None:
@@ -196,10 +201,15 @@ def make_local_fetcher_methods(backend: LocalPubMedBackend, eutils_fetcher,
             xml = local_xml.get(int(pmid))
             if xml:
                 try:
-                    results[pmid] = PubMedArticle(_ensure_article_set_wrapper(xml))
-                    continue
+                    art = PubMedArticle(_ensure_article_set_wrapper(xml))
                 except (etree.XMLSyntaxError, etree.ParserError, MetaPubError) as e:
                     log.warning("localfetcher: XML parse error for PMID %s: %s", pmid, e)
+                else:
+                    if art.pmid is None:
+                        log.warning("localfetcher: DB XML for PMID %s parsed but yielded no PMID — falling back", pmid)
+                    else:
+                        results[pmid] = art
+                        continue
             ncbi_needed.append(pmid)
 
         if ncbi_needed:

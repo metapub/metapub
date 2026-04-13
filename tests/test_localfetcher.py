@@ -63,6 +63,22 @@ _NLM_XML = """\
 # Same article without the PubmedArticleSet wrapper — as some DB tools store it
 _NLM_XML_BARE = _NLM_XML.split('<PubmedArticleSet>')[1].rsplit('</PubmedArticleSet>', 1)[0].strip()
 
+# Valid XML that parses successfully but contains no PMID element
+_NLM_XML_NO_PMID = """\
+<PubmedArticleSet>
+<PubmedArticle>
+  <MedlineCitation Status="MEDLINE" Owner="NLM">
+    <Article PubModel="Print">
+      <Journal><JournalIssue CitedMedium="Print"><PubDate><Year>2016</Year></PubDate></JournalIssue>
+        <Title>Test Journal</Title><ISOAbbreviation>Test J</ISOAbbreviation>
+      </Journal>
+      <ArticleTitle>No PMID article</ArticleTitle>
+    </Article>
+  </MedlineCitation>
+</PubmedArticle>
+</PubmedArticleSet>
+"""
+
 
 def _make_backend(fetch_xml_return=None, fetch_xml_many_return=None):
     """Return a LocalPubMedBackend with mocked DB methods."""
@@ -295,6 +311,28 @@ class TestMakeLocalFetcherMethods(unittest.TestCase):
         self.assertIn("27022295", results)
         self.assertEqual(str(results["27022295"].pmid), "27022295")
         eutils.assert_not_called()
+
+    def test_article_by_pmid_no_pmid_in_xml_falls_back_to_ncbi(self):
+        """DB XML that parses but yields pmid=None triggers eutils fallback."""
+        from metapub.localfetcher import make_local_fetcher_methods
+        ncbi_art = self._make_article()
+        backend = _make_backend(fetch_xml_return=_NLM_XML_NO_PMID)
+        eutils = MagicMock(return_value=ncbi_art)
+        article_by_pmid, _ = make_local_fetcher_methods(backend, eutils)
+        art = article_by_pmid("27022295")
+        self.assertIs(art, ncbi_art)
+        eutils.assert_called_once_with("27022295")
+
+    def test_articles_by_pmids_no_pmid_in_xml_falls_back_to_ncbi(self):
+        """Bulk DB XML that parses but yields pmid=None triggers eutils fallback."""
+        from metapub.localfetcher import make_local_fetcher_methods
+        ncbi_art = self._make_article("27022295")
+        backend = _make_backend(fetch_xml_many_return={27022295: _NLM_XML_NO_PMID})
+        eutils = MagicMock(return_value=ncbi_art)
+        _, articles_by_pmids = make_local_fetcher_methods(backend, eutils)
+        results = articles_by_pmids(["27022295"])
+        self.assertIn("27022295", results)
+        eutils.assert_called_once_with('27022295')
 
     def test_article_by_pmid_empty_xml_falls_back_to_ncbi(self):
         """Empty string XML from DB (raises MetaPubError) triggers eutils fallback."""

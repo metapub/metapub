@@ -438,7 +438,8 @@ class ClinVarVariant(MetaPubObject):
         
         A list of all significance classes is available here: https://www.ncbi.nlm.nih.gov/clinvar/docs/clinsig/
         
-        **Note**: past version 1.7.4, clinical significance is represented in lowercase.
+        **Note**: in this version of Metapub, clinical significance is represented in lowercase.
+        Older versions did NOT do this, so make sure to update your code if necessary!
         """
         if not self._is_vcv_format:
             return None
@@ -645,9 +646,9 @@ class ClinVarVariant(MetaPubObject):
         consensus = None
         if counts:
             max_count = max(counts.values())
-            top_counts = [k for k, v in counts.items() if v == max_count]
+            top_counts: list[ClinSig] = [k for k, v in counts.items() if v == max_count]
             if len(top_counts) == 1:
-                consensus = max(counts.items(), key=lambda x: x[1])[0]
+                consensus = top_counts[0]
 
         conflicting = "conflicting" in (self.clinical_significance or "").lower()
 

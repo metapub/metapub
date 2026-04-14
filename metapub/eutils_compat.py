@@ -72,18 +72,15 @@ class QueryService:
                 raise EutilsRequestError("Missing required parameters: db and id")
 
             # NCBIClient handles caching and XML validation
-            return self.client.efetch(
+            efetch_kwargs = dict(
                 db=db,
                 id=id_param,
                 rettype=rettype,
                 retmode=retmode
-            ) if is_variationid is None else self.client.efetch(
-                db=db,
-                id=id_param,
-                rettype=rettype,
-                retmode=retmode,
-                is_variationid=is_variationid
             )
+            if is_variationid is not None:
+                efetch_kwargs['is_variationid'] = is_variationid
+            return self.client.efetch(**efetch_kwargs)
         except Exception as e:
             if isinstance(e, (MetaPubError, EutilsRequestError)):
                 raise EutilsRequestError(str(e)) from e

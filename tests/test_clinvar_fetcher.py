@@ -192,10 +192,9 @@ class TestClinVarFetcher(unittest.TestCase):
         var = self.fetch.variant(12000)
 
         summary = var.pathogenic_summary
-        self.assertIsInstance(summary, PathogenicSummary, 'pathogenic_summary doesn\'t return a dict')
-        # To fix typechecker
         if summary is None:
-            return
+            self.fail("Pathogenic summary is None")
+        self.assertIsInstance(summary, PathogenicSummary, 'pathogenic_summary doesn\'t return a dict')
 
         # Check counts exists
         counts = summary.counts
@@ -225,12 +224,12 @@ class TestClinVarFetcher(unittest.TestCase):
         for (id, (submitters, count_name, count, conflicting)) in variants:
             var = self.fetch.variant(id, id_from='clinvar')
             
-            self.assertIsNotNone(var.pathogenic_summary)
-            if var.pathogenic_summary is None:
-                return
-            self.assertGreaterEqual(var.pathogenic_summary.total_submitters, submitters, F"{id} variant has >= {submitters} submitters")
-            self.assertGreaterEqual(var.pathogenic_summary.counts[count_name], count, F"{id} variant has >= {count} pathogenic classifications")
-            self.assertEqual(var.pathogenic_summary.conflicting, conflicting, F"{id} variant is has {"" if conflicting else "not"} conflicting submittions")
+            summary = var.pathogenic_summary
+            if summary is None:
+                self.fail("Summary should not be none")
+            self.assertGreaterEqual(summary.total_submitters, submitters, F"{id} variant has >= {submitters} submitters")
+            self.assertGreaterEqual(summary.counts[count_name], count, F"{id} variant has >= {count} pathogenic classifications")
+            self.assertEqual(summary.conflicting, conflicting, F"{id} variant is has {"" if conflicting else "not"} conflicting submittions")
 
     def test_pathogenic_summary_offline(self):
         # Read the cached XML file
@@ -245,10 +244,9 @@ class TestClinVarFetcher(unittest.TestCase):
 
         # Make sure this works the same way live data does
         summary = var.pathogenic_summary
-        self.assertIsInstance(summary, PathogenicSummary, 'pathogenic_summary doesn\'t return a dict')
-        # To fix typechecker
         if summary is None:
-            return
+            self.fail("Pathogenic summary is None")
+        self.assertIsInstance(summary, PathogenicSummary, 'pathogenic_summary doesn\'t return a dict')
 
         # Check counts exists
         counts = summary.counts

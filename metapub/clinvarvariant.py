@@ -731,11 +731,11 @@ class ClinVarVariant(MetaPubObject):
         return values
 
     def _get_mode_of_inheritance(self):
-        """Return a single inheritance mode string if unique, otherwise return None"""
+        """Return the first inheritance mode string if any exist, otherwise return None"""
         
         modes = self._get_modes_of_inheritance()
 
-        if len(modes) == 1:
+        if modes:
             return modes[0]
         else:
             return None

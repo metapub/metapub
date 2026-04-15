@@ -57,6 +57,8 @@ class TestClinVarFetcher(unittest.TestCase):
         self.assertIn('NM_000548.4:c.1096G>T', var.hgvs_c)
         self.assertIn('NC_000016.10:g.2060790G>T', var.hgvs_g)
         self.assertTrue(len(var.hgvs_p) > 0)  # Should have protein HGVS
+        self.assertEqual(var.mode_of_inheritance, None)
+        self.assertEqual(var.modes_of_inheritance, [])
 
     def test_invalid_variant_id(self):
         """Test that invalid variant IDs still raise appropriate errors"""

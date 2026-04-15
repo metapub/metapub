@@ -223,6 +223,27 @@ class TestClinVarFetcher(unittest.TestCase):
         self.assertEqual(var.gene_dosage_info[0]['symbol'], 'TSC2')
         self.assertIn('haploinsufficiency', var.gene_dosage_info[0])
 
+
+    def test_offline_multiple_mode_of_inheritance_inline_xml(self):
+        """Test multiple mode-of-inheritance parsing from an inline offline XML snippet modeled off of VCV4071947."""
+        multiple_case_xml = (
+            b'<?xml version="1.0" encoding="UTF-8"?>'
+            b'<ClinVarResult-Set>'
+            b'<VariationArchive VariationID="4071947" VariationName="offline multiple mode test" '
+            b'VariationType="single nucleotide variant">'
+            b'<ClassifiedRecord><SimpleAllele>'
+            b'<Attribute Type="ModeOfInheritance">Autosomal dominant inheritance</Attribute>'
+            b'<Attribute Type="ModeOfInheritance">Autosomal recessive inheritance</Attribute>'
+            b'</SimpleAllele></ClassifiedRecord>'
+            b'</VariationArchive></ClinVarResult-Set>'
+        )
+        multiple_case_var = ClinVarVariant(multiple_case_xml)
+        self.assertEqual(multiple_case_var.mode_of_inheritance, 'Autosomal dominant inheritance')
+        self.assertEqual(
+            multiple_case_var.modes_of_inheritance,
+            ['Autosomal dominant inheritance', 'Autosomal recessive inheritance']
+        )
+
     def test_backward_compatibility(self):
         """Test that all existing properties still work with new format"""
         var = self.fetch.variant(12000)

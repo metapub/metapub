@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ClinVarResult-Set>
+  <VariationArchive VariationID="999002" VariationName="NM_000001.1(GENE1):c.1A>G (p.Met1Val)" VariationType="single nucleotide variant" Accession="VCV000999002" Version="1" RecordType="classified" NumberOfSubmissions="1" NumberOfSubmitters="1" DateLastUpdated="2024-01-01" DateCreated="2024-01-01" MostRecentSubmission="2024-01-01">
+    <RecordStatus>current</RecordStatus>
+    <Species>Homo sapiens</Species>
+    <ClassifiedRecord>
+      <SimpleAllele AlleleID="222001" VariationID="999002">
+        <GeneList>
+          <Gene Symbol="GENE1" FullName="Gene 1" GeneID="11111" Source="submitted" RelationshipType="within single gene"/>
+        </GeneList>
+        <Name>NM_000001.1(GENE1):c.1A&gt;G (p.Met1Val)</Name>
+        <VariantType>single nucleotide variant</VariantType>
+        <XRefList>
+          <XRef Type="rs" ID="1799945" DB="dbSNP"/>
+          <XRef Type="rsNumber" ID="1799945" DB="dbSNP"/>
+          <XRef ID="rs1799945" DB="dbSNP"/>
+          <XRef ID="1799945" DB="dbSNP"/>
+        </XRefList>
+      </SimpleAllele>
+    </ClassifiedRecord>
+  </VariationArchive>
+</ClinVarResult-Set>

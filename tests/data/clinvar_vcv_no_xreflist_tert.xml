@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+                        
+<ClinVarResult-Set><VariationArchive VariationID="4819006" VariationName="NM_198253.3(TERT):c.68C&gt;T (p.Pro23Leu)" VariationType="single nucleotide variant" Accession="VCV004819006" Version="1" RecordType="classified" NumberOfSubmissions="1" NumberOfSubmitters="1" DateLastUpdated="2026-04-04" DateCreated="2026-04-04" MostRecentSubmission="2026-04-04">
+  <RecordStatus>current</RecordStatus>
+  <Species>Homo sapiens</Species>
+  <ClassifiedRecord>
+    <SimpleAllele AlleleID="4930130" VariationID="4819006">
+      <GeneList>
+        <Gene Symbol="LOC110806263" FullName="TERT 5' regulatory region" GeneID="110806263" Source="calculated" RelationshipType="within multiple genes by overlap">
+          <Location>
+            <CytogeneticLocation>5p15.33</CytogeneticLocation>
+            <SequenceLocation Assembly="GRCh38" AssemblyAccessionVersion="GCF_000001405.38" AssemblyStatus="current" Chr="5" Accession="NC_000005.10" start="1294628" stop="1298988" display_start="1294628" display_stop="1298988" Strand="+"/>
+          </Location>
+        </Gene>
+        <Gene Symbol="TERT" FullName="telomerase reverse transcriptase" GeneID="7015" HGNC_ID="HGNC:11730" Source="submitted" RelationshipType="within multiple genes by overlap">
+          <Location>
+            <CytogeneticLocation>5p15.33</CytogeneticLocation>
+            <SequenceLocation Assembly="GRCh38" AssemblyAccessionVersion="GCF_000001405.38" AssemblyStatus="current" Chr="5" Accession="NC_000005.10" start="1253167" stop="1295068" display_start="1253167" display_stop="1295068" Strand="-"/>
+            <SequenceLocation Assembly="GRCh37" AssemblyAccessionVersion="GCF_000001405.25" AssemblyStatus="previous" Chr="5" Accession="NC_000005.9" start="1253281" stop="1295161" display_start="1253281" display_stop="1295161" Strand="-"/>
+          </Location>
+          <OMIM>187270</OMIM>
+          <Haploinsufficiency last_evaluated="2025-06-24" ClinGen="https://www.ncbi.nlm.nih.gov/projects/dbvar/ISCA/isca_gene.cgi?sym=TERT">Little evidence for dosage pathogenicity</Haploinsufficiency>
+          <Triplosensitivity last_evaluated="2025-06-24" ClinGen="https://www.ncbi.nlm.nih.gov/projects/dbvar/ISCA/isca_gene.cgi?sym=TERT">No evidence available</Triplosensitivity>
+        </Gene>
+      </GeneList>
+      <Name>NM_198253.3(TERT):c.68C&gt;T (p.Pro23Leu)</Name>
+      <CanonicalSPDI>NC_000005.10:1294921:G:A</CanonicalSPDI>
+      <VariantType>single nucleotide variant</VariantType>
+      <Location>
+        <CytogeneticLocation>5p15.33</CytogeneticLocation>
+        <SequenceLocation Assembly="GRCh38" AssemblyAccessionVersion="GCF_000001405.38" forDisplay="true" AssemblyStatus="current" Chr="5" Accession="NC_000005.10" start="1294922" stop="1294922" display_start="1294922" display_stop="1294922" variantLength="1" positionVCF="1294922" referenceAlleleVCF="G" alternateAlleleVCF="A"/>
+        <SequenceLocation Assembly="GRCh37" AssemblyAccessionVersion="GCF_000001405.25" AssemblyStatus="previous" Chr="5" Accession="NC_000005.9" start="1295037" stop="1295037" display_start="1295037" display_stop="1295037" variantLength="1" positionVCF="1295037" referenceAlleleVCF="G" alternateAlleleVCF="A"/>
+      </Location>
+      <ProteinChange>P23L</ProteinChange>
+      <HGVSlist>
+        <HGVS Assembly="GRCh38" Type="genomic, top-level">
+          <NucleotideExpression sequenceAccessionVersion="NC_000005.10" sequenceAccession="NC_000005" sequenceVersion="10" change="g.1294922G&gt;A" Assembly="GRCh38">
+            <Expression>NC_000005.10:g.1294922G&gt;A</Expression>
+          </NucleotideExpression>
+        </HGVS>
+        <HGVS Assembly="GRCh37" Type="genomic, top-level">
+          <NucleotideExpression sequenceAccessionVersion="NC_000005.9" sequenceAccession="NC_000005" sequenceVersion="9" change="g.1295037G&gt;A" Assembly="GRCh37">
+            <Expression>NC_000005.9:g.1295037G&gt;A</Expression>
+          </NucleotideExpression>
+        </HGVS>
+        <HGVS Type="genomic">
+          <NucleotideExpression sequenceAccessionVersion="NG_009265.1" sequenceAccession="NG_009265" sequenceVersion="1" change="g.5126C&gt;T">
+            <Expression>NG_009265.1:g.5126C&gt;T</Expression>
+          </NucleotideExpression>
+        </HGVS>
+        <HGVS Type="genomic">
+          <NucleotideExpression sequenceAccessionVersion="NG_055467.1" sequenceAccession="NG_055467" sequenceVersion="1" change="g.395G&gt;A">
+            <Expression>NG_055467.1:g.395G&gt;A</Expression>
+          </NucleotideExpression>
+        </HGVS>
+        <HGVS Type="coding">
+          <NucleotideExpression sequenceAccessionVersion="NM_001193376.3" sequenceAccession="NM_001193376" sequenceVersion="3" change="c.68C&gt;T">
+            <Expression>NM_001193376.3:c.68C&gt;T</Expression>
+          </NucleotideExpression>
+          <ProteinExpression sequenceAccessionVersion="NP_001180305.1" sequenceAccession="NP_001180305" sequenceVersion="1" change="p.Pro23Leu" singleLetterProteinChange="P23L">
+            <Expression>NP_001180305.1:p.Pro23Leu</Expression>
+          </ProteinExpression>
+          <MolecularConsequence ID="SO:0001583" Type="missense variant" DB="SO"/>
+        </HGVS>
+        <HGVS Type="coding">
+          <NucleotideExpression sequenceAccessionVersion="NM_198253.3" sequenceAccession="NM_198253" sequenceVersion="3" change="c.68C&gt;T" MANESelect="true">
+            <Expression>NM_198253.3:c.68C&gt;T</Expression>
+          </NucleotideExpression>
+          <ProteinExpression sequenceAccessionVersion="NP_937983.2" sequenceAccession="NP_937983" sequenceVersion="2" change="p.Pro23Leu" singleLetterProteinChange="P23L">
+            <Expression>NP_937983.2:p.Pro23Leu</Expression>
+          </ProteinExpression>
+          <MolecularConsequence ID="SO:0001583" Type="missense variant" DB="SO"/>
+        </HGVS>
+        <HGVS Type="non-coding">
+          <NucleotideExpression sequenceAccessionVersion="NR_149162.3" sequenceAccession="NR_149162" sequenceVersion="3" change="n.147C&gt;T">
+            <Expression>NR_149162.3:n.147C&gt;T</Expression>
+          </NucleotideExpression>
+          <MolecularConsequence ID="SO:0001619" Type="non-coding transcript variant" DB="SO"/>
+        </HGVS>
+        <HGVS Type="non-coding">
+          <NucleotideExpression sequenceAccessionVersion="NR_149163.3" sequenceAccession="NR_149163" sequenceVersion="3" change="n.147C&gt;T">
+            <Expression>NR_149163.3:n.147C&gt;T</Expression>
+          </NucleotideExpression>
+          <MolecularConsequence ID="SO:0001619" Type="non-coding transcript variant" DB="SO"/>
+        </HGVS>
+        <HGVS Type="genomic">
+          <NucleotideExpression sequenceAccessionVersion="LRG_343" sequenceAccession="LRG_343">
+            <Expression>LRG_343:g.5126C&gt;T</Expression>
+          </NucleotideExpression>
+        </HGVS>
+        <HGVS Type="coding">
+          <NucleotideExpression sequenceAccessionVersion="LRG_343t1" sequenceAccession="LRG_343t1">
+            <Expression>LRG_343t1:c.68C&gt;T</Expression>
+          </NucleotideExpression>
+          <ProteinExpression sequenceAccessionVersion="LRG_343p1" sequenceAccession="LRG_343p1" change="p.Pro23Leu">
+            <Expression>LRG_343p1:p.Pro23Leu</Expression>
+          </ProteinExpression>
+        </HGVS>
+      </HGVSlist>
+    </SimpleAllele>
+    <RCVList>
+      <RCVAccession Title="NM_198253.3(TERT):c.68C&gt;T (p.Pro23Leu) AND Pulmonary fibrosis and/or bone marrow failure, Telomere-related, 1" Accession="RCV006645710" Version="1">
+        <ClassifiedConditionList TraitSetID="8796">
+          <ClassifiedCondition DB="MedGen" ID="C3553617">Pulmonary fibrosis and/or bone marrow failure, Telomere-related, 1</ClassifiedCondition>
+        </ClassifiedConditionList>
+        <RCVClassifications>
+          <GermlineClassification>
+            <ReviewStatus>criteria provided, single submitter</ReviewStatus>
+            <Description DateLastEvaluated="2025-12-29" SubmissionCount="1">Uncertain significance</Description>
+          </GermlineClassification>
+        </RCVClassifications>
+      </RCVAccession>
+    </RCVList>
+    <Classifications>
+      <GermlineClassification DateLastEvaluated="2025-12-29" NumberOfSubmissions="1" NumberOfSubmitters="1" DateCreated="2026-04-04" MostRecentSubmission="2026-04-04">
+        <ReviewStatus>criteria provided, single submitter</ReviewStatus>
+        <Description>Uncertain significance</Description>
+        <Citation Type="review" Abbrev="GeneReviews">
+          <ID Source="PubMed">20301779</ID>
+          <ID Source="BookShelf">NBK22301</ID>
+        </Citation>
+        <ConditionList>
+          <TraitSet ID="8796" Type="Disease" ContributesToAggregateClassification="true">
+            <Trait ID="17340" Type="Disease">
+              <Name>
+                <ElementValue Type="Preferred">Pulmonary fibrosis and/or bone marrow failure, Telomere-related, 1</ElementValue>
+                <XRef ID="MONDO:0013878" DB="MONDO"/>
+              </Name>
+              <Name>
+                <ElementValue Type="Alternate">PULMONARY FIBROSIS AND/OR BONE MARROW FAILURE SYNDROME, TELOMERE-RELATED, 1</ElementValue>
+                <XRef Type="MIM" ID="614742" DB="OMIM"/>
+                <XRef Type="Allelic variant" ID="187270.0001" DB="OMIM"/>
+                <XRef Type="Allelic variant" ID="187270.0016" DB="OMIM"/>
+                <XRef Type="Allelic variant" ID="187270.0019" DB="OMIM"/>
+                <XRef Type="Allelic variant" ID="187270.0020" DB="OMIM"/>
+                <XRef Type="Allelic variant" ID="187270.0002" DB="OMIM"/>
+                <XRef Type="Allelic variant" ID="187270.0009" DB="OMIM"/>
+                <XRef Type="Allelic variant" ID="187270.0010" DB="OMIM"/>
+                <XRef Type="Allelic variant" ID="187270.0015" DB="OMIM"/>
+                <XRef Type="Allelic variant" ID="187270.0017" DB="OMIM"/>
+                <XRef Type="Allelic variant" ID="187270.0005" DB="OMIM"/>
+                <XRef Type="Allelic variant" ID="187270.0008" DB="OMIM"/>
+                <XRef Type="Allelic variant" ID="187270.0018" DB="OMIM"/>
+                <XRef Type="Allelic variant" ID="187270.0021" DB="OMIM"/>
+                <XRef Type="Allelic variant" ID="187270.0003" DB="OMIM"/>
+                <XRef Type="Allelic variant" ID="187270.0004" DB="OMIM"/>
+              </Name>
+              <Symbol>
+                <ElementValue Type="Alternate">PFBMFT1</ElementValue>
+                <XRef Type="MIM" ID="614742" DB="OMIM"/>
+              </Symbol>
+              <AttributeSet>
+                <Attribute Type="public definition">Dyskeratosis congenita and related telomere biology disorders (DC/TBD) are caused by impaired telomere maintenance resulting in short or very short telomeres. The phenotypic spectrum of telomere biology disorders is broad and includes individuals with classic dyskeratosis congenita (DC) as well as those with very short telomeres and an isolated physical finding. Classic DC is characterized by a triad of dysplastic nails, lacy reticular pigmentation of the upper chest and/or neck, and oral leukoplakia, although this may not be present in all individuals. People with DC/TBD are at increased risk for progressive bone marrow failure (BMF), myelodysplastic syndrome or acute myelogenous leukemia, solid tumors (usually squamous cell carcinoma of the head/neck or anogenital cancer), and pulmonary fibrosis. Other findings can include eye abnormalities (epiphora, blepharitis, sparse eyelashes, ectropion, entropion, trichiasis), taurodontism, liver disease, gastrointestinal telangiectasias, and avascular necrosis of the hips or shoulders. Although most persons with DC/TBD have normal psychomotor development and normal neurologic function, significant developmental delay is present in both forms; additional findings include cerebellar hypoplasia (Hoyeraal Hreidarsson syndrome) and bilateral exudative retinopathy and intracranial calcifications (Revesz syndrome and Coats plus syndrome). Onset and progression of manifestations of DC/TBD vary: at the mild end of the spectrum are those who have only minimal physical findings with normal bone marrow function, and at the severe end are those who have the diagnostic triad and early-onset BMF.</Attribute>
+                <XRef ID="NBK22301" DB="GeneReviews"/>
+              </AttributeSet>
+              <AttributeSet>
+                <Attribute Type="GARD id" integerValue="24959"/>
+                <XRef ID="24959" DB="Office of Rare Diseases"/>
+              </AttributeSet>
+              <Citation Type="review" Abbrev="GeneReviews">
+                <ID Source="PubMed">20301408</ID>
+                <ID Source="BookShelf">NBK1230</ID>
+              </Citation>
+              <Citation Type="review" Abbrev="GeneReviews">
+                <ID Source="PubMed">20301779</ID>
+                <ID Source="BookShelf">NBK22301</ID>
+              </Citation>
+              <XRef ID="88" DB="Orphanet"/>
+              <XRef ID="C3553617" DB="MedGen"/>
+              <XRef ID="MONDO:0013878" DB="MONDO"/>
+              <XRef Type="MIM" ID="614742" DB="OMIM"/>
+            </Trait>
+          </TraitSet>
+        </ConditionList>
+      </GermlineClassification>
+    </Classifications>
+    <ClinicalAssertionList>
+      <ClinicalAssertion ID="14393192" SubmissionDate="2026-03-05" ContributesToAggregateClassification="true" DateLastUpdated="2026-04-04" DateCreated="2026-04-04">
+        <ClinVarSubmissionID localKey="NM_198253.3:c.68C&gt;T|OMIM:614742" submittedAssembly="GRCh38"/>
+        <ClinVarAccession Accession="SCV007538001" DateUpdated="2026-04-04" DateCreated="2026-04-04" Type="SCV" Version="1" SubmitterName="Victorian Clinical Genetics Services, Murdoch Childrens Research Institute" OrgID="500104" OrganizationCategory="laboratory" OrgAbbreviation="VCGS"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification DateLastEvaluated="2025-12-29">
+          <ReviewStatus>criteria provided, single submitter</ReviewStatus>
+          <GermlineClassification>Uncertain significance</GermlineClassification>
+          <Citation>
+            <ID Source="PubMed">20301779</ID>
+          </Citation>
+          <Comment Type="public">This variant is classified as VUS-3B. Evidence in support of pathogenic classification: Variant is absent from gnomAD (v2, v3 and v4); Missense variant in a region that is highly intolerant to missense variation (high constraint region in DECIPHER). Additional information: Variant is predicted to result in a missense amino acid change from Pro to Leu; This variant is heterozygous; This gene is associated with both recessive and dominant disease. No specific genotype-phenotype correlations have been established (PMID: 20301779); This variant has no previous evidence of pathogenicity; No published evidence of segregation with disease has been identified for this variant; No published functional evidence has been identified for this variant; Other missense variant(s) comparable to the one identified in this case have inconclusive previous evidence for pathogenicity. p.(Pro23Gln) and p.(Pro23Ser) have been classified as VUS by clinical laboratories in ClinVar; Missense variant with inconclusive in silico prediction and/or uninformative conservation; Loss of function is a known mechanism of disease in this gene and is associated with autosomal dominant dyskeratosis congenita 2 and autosomal recessive dyskeratosis congenita 4 (MIM#613989) and telomere-related pulmonary fibrosis and/or bone marrow failure 1 (MIM#614742); Variants in this gene are known to have variable expressivity. Phenotypic variability is well reported for dyskeratosis congenita (OMIM, PMID: 20301779); Inheritance information for this variant is not currently available in this individual.</Comment>
+        </Classification>
+        <Assertion>variation to disease</Assertion>
+        <AttributeSet>
+          <Attribute Type="AssertionMethod">ACMG Guidelines, 2015</Attribute>
+          <Citation>
+            <ID Source="PubMed">25741868</ID>
+          </Citation>
+        </AttributeSet>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>germline</Origin>
+              <Species TaxonomyId="9606">human</Species>
+              <AffectedStatus>yes</AffectedStatus>
+            </Sample>
+            <Method>
+              <MethodType>clinical testing</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="Description">not provided</Attribute>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <GeneList>
+            <Gene Symbol="TERT"/>
+          </GeneList>
+          <VariantType>Variation</VariantType>
+          <AttributeSet>
+            <Attribute Type="HGVS">NM_198253.3:c.68C&gt;T</Attribute>
+          </AttributeSet>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <XRef DB="OMIM" ID="614742" Type="MIM"/>
+          </Trait>
+        </TraitSet>
+        <SubmissionNameList>
+          <SubmissionName>SUB16044525</SubmissionName>
+        </SubmissionNameList>
+      </ClinicalAssertion>
+    </ClinicalAssertionList>
+    <TraitMappingList>
+      <TraitMapping ClinicalAssertionID="14393192" TraitType="Disease" MappingType="XRef" MappingValue="614742" MappingRef="OMIM">
+        <MedGen CUI="C3553617" Name="Pulmonary fibrosis and/or bone marrow failure, Telomere-related, 1"/>
+      </TraitMapping>
+    </TraitMappingList>
+  </ClassifiedRecord>
+</VariationArchive>
+</ClinVarResult-Set>

@@ -211,11 +211,108 @@ class TestClinVarFetcher(unittest.TestCase):
         self.assertIsNotNone(var.protein_change)
         self.assertIsInstance(var.associated_conditions, list)
         self.assertIsInstance(var.gene_dosage_info, list)
+        self.assertEqual(var.rsid, '28934872')
+        self.assertEqual(var.rsids, ['28934872'])
+        self.assertEqual(var.omim_id, '191092.0006')
+        self.assertEqual(var.omim_ids, ['191092.0006'])
+
+        # Orphanet/MedGen xrefs never appear in SimpleAllele/XRefList in real records
+        # (they live in condition/RCV sections); see clinvar_vcv_orphanet_medgen.manifest.txt
+        self.assertIsNone(var.orphanet_id)
+        self.assertEqual(var.orphanet_ids, [])
+        self.assertIsNone(var.medgen_id)
+        self.assertEqual(var.medgen_ids, [])
         
         # Verify TSC2 gene dosage info is present
         self.assertTrue(len(var.gene_dosage_info) > 0)
         self.assertEqual(var.gene_dosage_info[0]['symbol'], 'TSC2')
         self.assertIn('haploinsufficiency', var.gene_dosage_info[0])
+
+    def _load_fixture(self, filename):
+        xml_file_path = os.path.join(os.path.dirname(__file__), 'data', filename)
+        with open(xml_file_path, 'rb') as f:
+            return ClinVarVariant(f.read())
+
+    def test_xref_list_simple_vcv(self):
+        """Simple VCV variant (TSC2, VCV000012397) has 4 xrefs from its single SimpleAllele."""
+        var = self._load_fixture('clinvar_vcv_12000.xml')
+        xrefs = var.xrefs
+        dbs = [x['DB'] for x in xrefs]
+        self.assertIn('dbSNP', dbs)
+        self.assertIn('OMIM', dbs)
+        self.assertEqual(var.rsid, '28934872')
+        self.assertEqual(var.omim_id, '191092.0006')
+
+    def test_xref_list_haplotype_collects_all_alleles(self):
+        """Haplotype VCV (KCNQ2, VCV004818726) has two SimpleAlleles; xrefs from both must be collected."""
+        var = self._load_fixture('clinvar_vcv_haplotype_kcnq2.xml')
+        xrefs = var.xrefs
+        # Both alleles contribute xrefs — expect 6 total (3 per allele)
+        self.assertEqual(len(xrefs), 6)
+        # Both dbSNP rsIDs must be present
+        dbsnp_ids = [x['ID'] for x in xrefs if x.get('DB') == 'dbSNP']
+        self.assertIn('1060500602', dbsnp_ids)
+        self.assertIn('2081099943', dbsnp_ids)
+        # rsids property returns both
+        self.assertIn('1060500602', var.rsids)
+        self.assertIn('2081099943', var.rsids)
+
+    def test_xref_list_no_xreflist_returns_empty(self):
+        """Variant with no XRefList element (TERT, VCV004819006) must return empty list without crashing."""
+        var = self._load_fixture('clinvar_vcv_no_xreflist_tert.xml')
+        self.assertEqual(var.xrefs, [])
+        self.assertIsNone(var.rsid)
+        self.assertEqual(var.rsids, [])
+
+    def test_xref_list_genotype_collects_all_alleles(self):
+        """Genotype VCV (synthetic) nests SimpleAlleles under Genotype; xrefs from both must be collected."""
+        var = self._load_fixture('clinvar_vcv_genotype_minimal.xml')
+        xrefs = var.xrefs
+        # Two SimpleAlleles: first has 2 xrefs (dbSNP + OMIM), second has 1 (dbSNP)
+        self.assertEqual(len(xrefs), 3)
+        dbsnp_ids = [x['ID'] for x in xrefs if x.get('DB') == 'dbSNP']
+        self.assertIn('111111111', dbsnp_ids)
+        self.assertIn('222222222', dbsnp_ids)
+        omim_ids = [x['ID'] for x in xrefs if x.get('DB') == 'OMIM']
+        self.assertIn('100001.0001', omim_ids)
+
+    def test_rsid_normalization_and_dedup(self):
+        """All four observed dbSNP XRef formats for the same rsID collapse to one bare number.
+
+        The four formats documented in _get_rsids comments:
+          Type="rs"       ID="1799945"   -- idiomatic
+          Type="rsNumber" ID="1799945"   -- non-standard Type (Type-agnostic collection)
+          (no Type)       ID="rs1799945" -- rs prefix joined into ID field
+          (no Type)       ID="1799945"   -- bare number, missing Type entirely
+        All represent the same variant and must deduplicate to ['1799945'].
+        """
+        var = self._load_fixture('clinvar_vcv_rsid_formats.xml')
+        self.assertEqual(var.rsids, ['1799945'])
+        self.assertEqual(var.rsid, '1799945')
+
+    def test_orphanet_and_medgen_ids(self):
+        """Orphanet and MedGen IDs in SimpleAllele/XRefList are returned by orphanet_id/medgen_id.
+
+        Note: no real VCV record has these DBs in SimpleAllele/XRefList (they appear only
+        in condition/RCV sections). This synthetic fixture tests the filtering code path.
+        """
+        var = self._load_fixture('clinvar_vcv_orphanet_medgen.xml')
+        self.assertEqual(var.orphanet_id, 'ORPHA:123456')
+        self.assertEqual(var.orphanet_ids, ['ORPHA:123456', 'ORPHA:789012'])
+        self.assertEqual(var.medgen_id, 'C0123456')
+        self.assertEqual(var.medgen_ids, ['C0123456'])
+        self.assertEqual(var.rsid, '987654321')
+
+    def test_xref_list_old_format(self):
+        """Old VariationReport format (TSC2 c.1832G>A, pre-VCV) uses Allele/XRefList path."""
+        var = self._load_fixture('clinvar_old_format_minimal.xml')
+        xrefs = var.xrefs
+        self.assertEqual(len(xrefs), 2)
+        dbs = [x['DB'] for x in xrefs]
+        self.assertIn('dbSNP', dbs)
+        self.assertIn('OMIM', dbs)
+        self.assertEqual(var.rsid, '28934872')
+        self.assertEqual(var.omim_id, '191092.0006')
 
     def test_backward_compatibility(self):
         """Test that all existing properties still work with new format"""

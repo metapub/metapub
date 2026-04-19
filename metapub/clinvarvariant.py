@@ -2,11 +2,12 @@
 
 import logging
 from datetime import datetime
-
+from typing import Optional
 from lxml import etree
 
 from .base import MetaPubObject
 from .exceptions import MetaPubError, BaseXMLError
+from .types import XRef, XRefDb
 
 #TODO: Logging
 
@@ -32,9 +33,9 @@ class ClinVarVariant(MetaPubObject):
                     else:
                         raise BaseXMLError('No VariationArchive found in VCV format')
             else:
-                # Old format
+                # Old format: VariationReport is the root element itself, not a child to find
                 self._is_vcv_format = False
-                super(ClinVarVariant, self).__init__(xmlstr, 'VariationReport', args, kwargs)
+                super(ClinVarVariant, self).__init__(xmlstr, None, args, kwargs)
                 self.variation_archive = None
         except (etree.XMLSyntaxError, BaseXMLError) as e:
             # If XML parsing fails completely, let it bubble up
@@ -68,7 +69,6 @@ class ClinVarVariant(MetaPubObject):
         self.xrefs = self._get_xref_list()
         self.molecular_consequences = self._get_molecular_consequence_list()
         self.allele_frequencies = self._get_allele_frequency_list()
-
         # Clinical significance and classifications (new in VCV format)
         self.clinical_significance = self._get_clinical_significance()
         self.review_status = self._get_review_status()
@@ -342,21 +342,45 @@ class ClinVarVariant(MetaPubObject):
 
         return hgvs
 
-    def _get_xref_list(self):
-        xrefs = []
+    def _get_xref_list(self) -> list[XRef]:
+        """Return all allele-level ``<XRef>`` elements from this variant's XML.
 
-        if self._is_vcv_format:
-            simple_allele = self.variation_archive.find('ClassifiedRecord/SimpleAllele')
-            if simple_allele is not None:
-                xref_list = simple_allele.find('XRefList')
-                if xref_list is not None:
-                    for elem in xref_list.getchildren():
-                        xrefs.append(dict(elem.items()))
-        else:
-            xref_list = self.content.find('Allele/XRefList')
-            if xref_list is not None:
-                for elem in xref_list.getchildren():
-                    xrefs.append(dict(elem.items()))
+        For VCV-format records, collects ``<XRef>`` nodes from every
+        ``SimpleAllele/XRefList`` regardless of nesting depth — a ``SimpleAllele``
+        may be a direct child of ``ClassifiedRecord`` (simple variants) or nested
+        inside a ``Haplotype`` or ``Genotype`` element (complex variants). Using
+        ``findall('.//SimpleAllele/XRefList')`` ensures xrefs from all constituent
+        alleles are collected rather than only the first one.
+
+        For legacy ``VariationReport`` records (retired April 2019), collects from
+        ``Allele/XRefList`` instead.
+
+        :return: List of :class:`XRef` dicts, one per ``<XRef>`` element found.
+            Returns an empty list when no ``XRefList`` is present.
+        :rtype: list[XRef]
+        """
+        xrefs: list[XRef] = []
+
+        # BG: #126: SimpleAllele may be nested under Haplotype or Genotype for complex variants;
+        # BG: #126: .// ensures we collect rsIDs from all constituent alleles.
+        # BG: #126: Ex)
+        # ClassifiedRecord
+        # └── Haplotype
+        #     ├── SimpleAllele (AlleleID="404202", c.875T>C)
+        #     │   └── XRefList
+        #     │       ├── XRef DB="ClinGen"
+        #     │       ├── XRef Type="rs" ID="1060500602" DB="dbSNP"
+        #     │       └── XRef Type="Interpreted" DB="ClinVar"
+        #     └── SimpleAllele (AlleleID="929246", c.877C>T)
+        #         └── XRefList
+        #             ├── XRef DB="ClinGen"
+        #             ├── XRef Type="rs" ID="2081099943" DB="dbSNP"
+        #             └── XRef Type="Interpreted" DB="ClinVar"
+        path = './/SimpleAllele/XRefList' if self._is_vcv_format else './/Allele/XRefList'
+        for xref_list in self.content.findall(path):
+            for elem in xref_list:
+                xref: XRef = dict(elem.items())
+                xrefs.append(xref)
 
         return xrefs
 
@@ -401,6 +425,178 @@ class ClinVarVariant(MetaPubObject):
                 return []
 
         return freqs
+    
+    @property
+    def rsid(self) -> Optional[str]:
+        """Return the first dbSNP rsID for this variant as a bare numeric string.
+
+        :return: rsID digits (e.g. ``'28934872'``), or ``None`` if no dbSNP xref is present.
+        :rtype: str or None
+        """
+        rsids = self._get_rsids()
+        return rsids[0] if rsids else None
+
+    @property
+    def rsids(self) -> list[str]:
+        """Return all dbSNP rsIDs for this variant as bare numeric strings.
+
+        :return: List of rsID digit strings (e.g. ``['28934872']``), empty list if none.
+        :rtype: list[str]
+        """
+        return self._get_rsids()
+
+    def _get_rsids(self) -> list[str]:
+        """Return all dbSNP xref IDs normalized to bare numeric strings.
+
+        Handles the four ``<XRef DB="dbSNP">`` formats observed in real ClinVar XML:
+        ``Type="rs"``, ``Type="rsNumber"``, ``ID="rs1799945"`` (prefix in ID field),
+        and bare number with no ``Type`` attribute. All are normalized to plain digits
+        (e.g. ``'1799945'``). Deduplication occurs *after* normalization so that
+        ``"1799945"`` and ``"rs1799945"`` collapse to a single entry.
+
+        :return: Deduplicated list of rsID digit strings in first-seen order.
+        :rtype: list[str]
+        """
+
+        # BG: #128: Ensure all rsids are formatted as "<number>"
+        # BG: #128: The following formatted strings have been seen from ClinVar XML data:
+        # <XRef Type="rs" ID="1555371642" DB="dbSNP"/>      Y (Idiomatic)
+        # <XRef Type="rsNumber" ID="1799945" DB="dbSNP"/>  	N (Type mismatch)
+        # <XRef ID="rs1799945" DB="dbSNP"/> 			    N (rs joined to ID)
+        # <XRef ID="1799945" DB="dbSNP"/> 					N (Missing type)
+        # BG: #128: The return type is number as string to maintain consistency in the API surface
+        ids = self._get_xref_ids(XRefDb.DBSNP)
+        rs_prefix = "rs"
+
+        for i, rsid in enumerate(ids):
+            if rsid.startswith(rs_prefix):
+                ids[i] = rsid.removeprefix(rs_prefix)
+
+        # BG: Deduplicate with first-seen order preserved
+        ids_deduped = list(dict.fromkeys(ids))
+
+        return ids_deduped
+    
+    @property
+    def dbsnp_id(self) -> Optional[str]:
+        """Return the first dbSNP ID for this variant. Alias for :attr:`rsid`.
+
+        :return: dbSNP identifier string (e.g. ``'28934872'``), or ``None`` if not present.
+        :rtype: str or None
+        """
+        ids = self._get_rsids()
+        return ids[0] if ids else None
+    
+    @property
+    def dbsnp_ids(self) -> list[str]:
+        """Return all dbSNP IDs for this variant. Alias for :attr:`rsids`.
+
+        :return: List of dbSNP identifier strings, empty list if none.
+        :rtype: list[str]
+        """
+        return self._get_rsids()
+
+    @property
+    def omim_id(self) -> Optional[str]:
+        """Return the first OMIM ID for this variant.
+
+        :return: OMIM identifier string (e.g. ``'191092.0006'``), or ``None`` if not present.
+        :rtype: str or None
+        """
+        omim_ids = self._get_xref_ids(XRefDb.OMIM)
+        return omim_ids[0] if omim_ids else None
+
+    @property
+    def omim_ids(self) -> list[str]:
+        """Return all OMIM IDs for this variant.
+
+        :return: List of OMIM identifier strings, empty list if none.
+        :rtype: list[str]
+        """
+        return self._get_xref_ids(XRefDb.OMIM)
+
+    @property
+    def orphanet_id(self) -> Optional[str]:
+        """Return the first Orphanet ID for this variant.
+
+        .. note::
+            As of ``ClinVarVCVRelease_00-latest.xml.gz`` (scanned 2026-04-19),
+            Orphanet identifiers appear at the condition level (``RCVList``/``TraitSet``),
+            not in ``SimpleAllele/XRefList``, so this property may return ``None``
+            on all current VCV records. Use :attr:`associated_conditions` instead.
+
+        :return: Orphanet identifier string, or ``None`` if not present.
+        :rtype: str or None
+        """
+        orphanet_ids = self._get_xref_ids(XRefDb.ORPHANET)
+        return orphanet_ids[0] if orphanet_ids else None
+
+    @property
+    def orphanet_ids(self) -> list[str]:
+        """Return all Orphanet IDs for this variant.
+
+        .. note::
+            As of ``ClinVarVCVRelease_00-latest.xml.gz`` (scanned 2026-04-19),
+            this may return ``[]`` on all current VCV records. See :attr:`orphanet_id`.
+
+        :return: List of Orphanet identifier strings, empty list if none.
+        :rtype: list[str]
+        """
+        return self._get_xref_ids(XRefDb.ORPHANET)
+
+    @property
+    def medgen_id(self) -> Optional[str]:
+        """Return the first MedGen ID for this variant.
+
+        .. note::
+            As of ``ClinVarVCVRelease_00-latest.xml.gz`` (scanned 2026-04-19),
+            MedGen identifiers appear at the condition level (``RCVList``/``TraitSet``),
+            not in ``SimpleAllele/XRefList``, so this property may return ``None``
+            on all current VCV records. Use :attr:`associated_conditions` instead.
+
+        :return: MedGen identifier string, or ``None`` if not present.
+        :rtype: str or None
+        """
+        medgen_ids = self._get_xref_ids(XRefDb.MEDGEN)
+        return medgen_ids[0] if medgen_ids else None
+
+    @property
+    def medgen_ids(self) -> list[str]:
+        """Return all MedGen IDs for this variant.
+
+        .. note::
+            As of ``ClinVarVCVRelease_00-latest.xml.gz`` (scanned 2026-04-19),
+            this may return ``[]`` on all current VCV records. See :attr:`medgen_id`.
+
+        :return: List of MedGen identifier strings, empty list if none.
+        :rtype: list[str]
+        """
+        return self._get_xref_ids(XRefDb.MEDGEN)
+
+    def _get_xref_ids(self, db_name: str) -> list[str]:
+        """Return allele-level xref IDs for the specified database name.
+
+        Filters :attr:`xrefs` by the ``DB`` attribute, ignoring ``Type`` entirely.
+        Deduplicates with first-seen order preserved via ``dict.fromkeys``.
+
+        :param db_name: Database name to filter on (e.g. ``'dbSNP'``, ``'OMIM'``).
+            Use :class:`XRefDB` constants for safety.
+        :type db_name: str
+        :return: Deduplicated list of ``ID`` strings whose ``DB`` matches *db_name*.
+        :rtype: list[str]
+        """
+        ids: list[str] = []
+
+        # BG: Do not pay attention to "Type", just "DB" attribute.
+        # BG: Ex) <XRef Type="rs" ID="1555371642" DB="dbSNP"/> 
+        for xref in self.xrefs:
+            if xref['DB'] == db_name:
+                ids.append(xref['ID'])
+
+        # BG: Deduplicate with first-seen order preserved
+        ids = list(dict.fromkeys(ids))
+
+        return ids
 
     ### NEW VCV FORMAT ENHANCEMENTS ###
 
@@ -714,5 +910,3 @@ class ClinVarVariant(MetaPubObject):
         return assertions
 
     ### OBSERVATIONS
-
-

@@ -1,0 +1,42 @@
+Source:   Synthetic — hand-authored (no real NCBI record has Orphanet/MedGen in SimpleAllele/XRefList)
+Date:     2026-04-19
+Variant:  VCV000999003 (fictional) — NM_000001.1(GENE1):c.200A>G (p.Tyr67Cys)
+Type:     single nucleotide variant
+Purpose:  Tests orphanet_id, orphanet_ids, medgen_id, medgen_ids properties, which
+          filter self.xrefs (sourced from SimpleAllele/XRefList) by DB name.
+
+Investigation to confirm no real record can be fetched
+-------------------------------------------------------
+
+Step 1 — searched for ClinVar records with Orphanet text:
+  curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=Orphanet[All+Fields]&retmax=10"
+  Returned IDs: 4819894, 4819876, 4819856, 4819823, 4819757, 4819684, 4819682,
+                4819460, 4819454, 4819370
+
+Step 2 — batch-fetched those 10 records and inspected SimpleAllele/XRefList:
+  curl "...efetch.fcgi?db=clinvar&id=<IDS>&rettype=vcv&is_variationid=true"
+  Parsed with lxml: root.findall('.//SimpleAllele/XRefList/XRef')
+  Result: 0 records had Orphanet or MedGen in SimpleAllele/XRefList.
+  Orphanet/MedGen xrefs in those records appear only in condition/RCV sections.
+
+Step 3 — scanned first 200MB of ClinVarVCVRelease_00-latest.xml.gz via iterparse:
+  curl --range 0-200000000 "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/xml/ClinVarVCVRelease_00-latest.xml.gz"
+  | gunzip | python3 iterparse for VariationArchive, checked .//SimpleAllele/XRefList/XRef
+  Result: 0 records found with DB="Orphanet" or DB="MedGen" in SimpleAllele/XRefList.
+
+Conclusion: Orphanet and MedGen cross-references are stored at the condition/RCV level
+in ClinVar, not at the SimpleAllele level. The orphanet_id and medgen_id properties
+use _get_xref_ids which filters self.xrefs (sourced from SimpleAllele/XRefList), so
+they will return None/[] on all real VCV records. This synthetic fixture exercises
+the code path to confirm the filtering and return-type behavior is correct.
+
+Structure:
+  ClinVarResult-Set
+  └── VariationArchive (VariationType="single nucleotide variant")
+      └── ClassifiedRecord
+          └── SimpleAllele
+              └── XRefList
+                  ├── XRef Type="rs" ID="987654321" DB="dbSNP"
+                  ├── XRef ID="ORPHA:123456" DB="Orphanet"
+                  ├── XRef ID="ORPHA:789012" DB="Orphanet"   (tests plural form)
+                  └── XRef ID="C0123456" DB="MedGen"

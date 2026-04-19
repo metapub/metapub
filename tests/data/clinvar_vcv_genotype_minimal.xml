@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ClinVarResult-Set>
+  <VariationArchive VariationID="999001" VariationName="NM_000001.1(GENE1):c.[100A>G];[200C>T]" VariationType="Genotype" Accession="VCV000999001" Version="1" RecordType="classified" NumberOfSubmissions="1" NumberOfSubmitters="1" DateLastUpdated="2024-01-01" DateCreated="2024-01-01" MostRecentSubmission="2024-01-01">
+    <RecordStatus>current</RecordStatus>
+    <Species>Homo sapiens</Species>
+    <ClassifiedRecord>
+      <Genotype VariationID="999001">
+        <SimpleAllele AlleleID="111001" VariationID="999002">
+          <GeneList>
+            <Gene Symbol="GENE1" FullName="Gene 1" GeneID="11111" HGNC_ID="HGNC:11111" Source="submitted" RelationshipType="within single gene"/>
+          </GeneList>
+          <Name>NM_000001.1(GENE1):c.100A&gt;G (p.Thr34Ala)</Name>
+          <VariantType>single nucleotide variant</VariantType>
+          <XRefList>
+            <XRef Type="rs" ID="111111111" DB="dbSNP"/>
+            <XRef Type="Allelic variant" ID="100001.0001" DB="OMIM"/>
+          </XRefList>
+        </SimpleAllele>
+        <SimpleAllele AlleleID="111002" VariationID="999003">
+          <GeneList>
+            <Gene Symbol="GENE1" FullName="Gene 1" GeneID="11111" HGNC_ID="HGNC:11111" Source="submitted" RelationshipType="within single gene"/>
+          </GeneList>
+          <Name>NM_000001.1(GENE1):c.200C&gt;T (p.Ala67Val)</Name>
+          <VariantType>single nucleotide variant</VariantType>
+          <XRefList>
+            <XRef Type="rs" ID="222222222" DB="dbSNP"/>
+          </XRefList>
+        </SimpleAllele>
+      </Genotype>
+    </ClassifiedRecord>
+  </VariationArchive>
+</ClinVarResult-Set>

@@ -1,11 +1,8 @@
 """metapub.clinvarvariant -- ClinVarVariant class instantiated by supplying ESummary XML string."""
 
-import logging
 from datetime import datetime
 from typing import Optional, Literal
 from dataclasses import dataclass
-
-from lxml import etree
 
 from .base import MetaPubObject
 from .exceptions import MetaPubError, BaseXMLError
@@ -30,6 +27,18 @@ ClinSig = Literal[
 # Possible types of IDs a user may supply to initialize a variant.
 IdLocations = Literal['clinvar', 'entrez']
 
+# Possible types of molecular consequences
+# See here for list: https://genome.ucsc.edu/cgi-bin/hgTrackUi?db=hg19&g=clinvar
+MolecularConsequences = Literal[
+    "genic downstream transcript variant", "no sequence alteration",
+    "inframe indel", "stop lost", "genic upstream transcript variant",
+    "initiator codon variant", "inframe insertion", "inframe deletion",
+    "splice acceptor variant", "splice donor variant", "5 prime UTR variant",
+    "nonsense", "non-coding transcript variant", "3 prime UTR variant",
+    "frameshift variant", "intron variant", "synonymous variant", "missense variant",
+    "unknown", "initiator codon variant"
+]
+
 @dataclass
 class PathogenicSummary:
     counts: dict[ClinSig, int]
@@ -37,6 +46,48 @@ class PathogenicSummary:
     consensus: Optional[ClinSig]
     conflicting: bool
     review_status: Optional[str]
+
+@dataclass
+class MolecularConsequenceInfo:
+    type: Optional[MolecularConsequences]
+    so_id: Optional[str]
+    database: Optional[str]
+
+@dataclass
+class SPDIInfo:
+    chromosome: int
+    start_position: int
+    deleted: str
+    replaced: str
+
+class CanonicalSPDI:
+    """Standardized variant notation, relative to the latest genomic assembly."""
+    raw: str # raw spdi string, ex: NC_000001.11:230710047:A:G
+
+    def __init__(self, raw):
+        self.raw = raw
+    
+    def __str__(self):
+        return F"SPDI({self.raw}"
+    def __dir__(self):
+        return F"SPDI({self.raw}"
+
+    def parse(self) -> SPDIInfo:
+        # Perform basic parsing on the variant
+        nc, rest = self.raw.lower().split(".")
+        if nc.startswith("nc_"):
+            try:
+                # Parse out the chromosome number
+                chr = int(nc.split("_")[1])
+                # Get position, deleted, and replaced
+                pos, deleted, replaced = rest.split(":")
+                pos = int(pos)
+                return SPDIInfo(chr, pos, deleted, replaced)
+            except Exception as e:
+                # Throw error (likely a parsing error)
+                raise MetaPubError(F"Unable to parse canonical SPDI: {e}")
+        else:
+            raise MetaPubError("Unable to parse canonical SPDI")
 
 class ClinVarVariant(MetaPubObject):
 
@@ -81,6 +132,8 @@ class ClinVarVariant(MetaPubObject):
         self.date_created = self._get_date_created()
         self.date_last_updated = self._get_date_last_updated()
         self.submitter_count = self._get_submitter_count()
+        self.record_status = self._get_record_status()
+        self.version = self._get_version()
 
         # Species Info
         self.species = self._get_species()
@@ -130,6 +183,9 @@ class ClinVarVariant(MetaPubObject):
 
         # Enhanced citations (new in VCV format)
         self.citations = self._get_citations()
+
+        # Canonical SPDI
+        self.spdi = self._get_spdi()
 
         # Observations
 
@@ -264,6 +320,34 @@ class ClinVarVariant(MetaPubObject):
         else:
             species_elem = self.content.find('Species')
             return species_elem.get('TaxonomyId') if species_elem is not None else None
+
+    def _get_record_status(self):
+        if self._is_vcv_format:
+            record_status = self.variation_archive.find('RecordStatus')
+        else:
+            record_status = self._get('RecordStatus')
+
+        return record_status.text if record_status is not None else None
+
+    def _get_version(self):
+        if self._is_vcv_format:
+            record_status = self.variation_archive.get('Version')
+        else:
+            record_status = self.content.get('Version')
+
+        return record_status.text if record_status is not None else None
+
+    def _get_spdi(self):
+        """ Get the SPDI information for this particular variant.
+
+        Returns CanonicalSPDI format; to parse the chromosome/position/etc, use .parse()
+        """
+        if self._is_vcv_format:
+            record_status = self.variation_archive.find('CanonicalSPDI')
+        else:
+            record_status = self._get('CanonicalSPDI')
+
+        return CanonicalSPDI(record_status.text) if record_status is not None else None
 
     #### GENE LIST
 
@@ -566,11 +650,12 @@ class ClinVarVariant(MetaPubObject):
             if hgvs_list is not None:
                 for hgvs_elem in hgvs_list.findall('HGVS'):
                     for mol_cons in hgvs_elem.findall('MolecularConsequence'):
-                        consequence = {
-                            'type': mol_cons.get('Type'),
-                            'so_id': mol_cons.get('ID'),
-                            'database': mol_cons.get('DB')
-                        }
+                        consequence = MolecularConsequenceInfo(
+                            type=mol_cons.get('Type'),
+                            so_id=mol_cons.get('ID'),
+                            database=mol_cons.get('DB')
+                        )
+
                         if consequence not in consequences:
                             consequences.append(consequence)
         return consequences

@@ -142,7 +142,7 @@ class ClinVarFetcher(Borg):
             ids.append(item.text.strip())
         return ids
     
-    def _eutils_ids_by_disease(self, disease, use_medgen=False):
+    def _eutils_ids_by_disease(self, disease, source="disease"):
         """
         searches ClinVar for specified disease/condition; returns up to 500 matching results.
 
@@ -150,19 +150,28 @@ class ClinVarFetcher(Borg):
         
         :param disease (string): disease name (e.g. 'breast cancer')
                                     OR MedGen UID (e.g 'C0027627') when use_medgen=True
-        :param use_medgen (bool) [default: False]: treat 'disease' as a MedGen UID
-        :return: list of clinvar variation IDs (strings)
+        :param source (str) [default: "disease"]: the source/type of the disease term.
+            - "disease"  → standard disease name search (uses the [disease] field)
+            - "medgen"   → MedGen CUI search (uses the "CUI " prefix)
         
         """
         
         # equivalent esearch URLs (exactly as shown in the Github issue):
         #   https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=breast+cancer[disease]&retmax=500
         #   https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=CUI+C0027627&retmax=500
-        if use_medgen:
-            term = f"CUI {disease}"
-        else:
-            term = disease.replace(" ", "+") + "[disease]"
-            
+        SOURCE_MAP = {
+            "disease": lambda d: d.replace(" ", "+") + "[disease]",
+            "medgen": lambda d: f"CUI {d}",
+        }
+
+        if source not in SOURCE_MAP:
+            raise ValueError(
+                f"Unsupported disease source: '{source}'."
+                f"Supported sources: {list(SOURCE_MAP.keys())}"
+            )
+
+        term = SOURCE_MAP[source](disease)
+
         result = self.qs.esearch({
             "db": "clinvar",
             "term": term,

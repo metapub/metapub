@@ -274,7 +274,7 @@ class TestClinVarFetcher(unittest.TestCase):
         
     def test_ids_by_disease_medgen(self):
         """Precise lookup via MedGen UID (C0027627 which is Marfan syndrome)"""
-        ids = self.fetch.ids_by_disease('CUI C0027627', use_medgen=True)
+        ids = self.fetch.ids_by_disease('CUI C0027627', source="medgen")
         self.assertIsInstance(ids, list)
         self.assertGreater(len(ids), 50)
     

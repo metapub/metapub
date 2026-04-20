@@ -2,6 +2,8 @@
 
 from typing import NotRequired, TypedDict
 from enum import StrEnum
+from typing import Optional, Literal
+from dataclasses import dataclass
 
 
 class XRefDb(StrEnum):
@@ -54,3 +56,62 @@ class XRef(TypedDict):
     ID: str
     DB: str
     Type: NotRequired[str]
+
+# See: https://www.ncbi.nlm.nih.gov/clinvar/docs/clinsig/
+# All possible clinical significance classes a variant may be classified as
+# by a submitter.
+# 
+# NOTE: here we represent clinical significance classes in lowercase.
+ClinSig = Literal[
+    "pathogenic", "likely pathogenic", "uncertain significance",
+    "likely benign", "benign", "conflicting interpretations",
+    "drug response", "risk factor", "association",
+    "protective", "other", "likely pathogenic, low penetrance",
+    "pathogenic, low penetrance",
+    "uncertain risk allele", "likely risk allele",
+    "established risk allele", "affects", "conflicting data from submitters",
+    "not provided", "vus-high", "vus-mid", "vus-low"
+]
+# Possible types of IDs a user may supply to initialize a variant.
+IdLocations = Literal['clinvar', 'entrez']
+
+# Possible types of molecular consequences
+# See here for list: https://genome.ucsc.edu/cgi-bin/hgTrackUi?db=hg19&g=clinvar
+MolecularConsequences = Literal[
+    "genic downstream transcript variant", "no sequence alteration",
+    "inframe indel", "stop lost", "genic upstream transcript variant",
+    "initiator codon variant", "inframe insertion", "inframe deletion",
+    "splice acceptor variant", "splice donor variant", "5 prime UTR variant",
+    "nonsense", "non-coding transcript variant", "3 prime UTR variant",
+    "frameshift variant", "intron variant", "synonymous variant", "missense variant",
+    "unknown", "initiator codon variant"
+]
+
+@dataclass
+class PathogenicSummary:
+    counts: dict[ClinSig, int]
+    total_submitters: int
+    consensus: Optional[ClinSig]
+    conflicting: bool
+    review_status: Optional[str]
+
+@dataclass
+class MolecularConsequenceInfo:
+    type: Optional[MolecularConsequences]
+    so_id: Optional[str]
+    database: Optional[str]
+
+@dataclass
+class SPDIInfo:
+    chromosome: int
+    start_position: int
+    deleted: str
+    replaced: str
+    version: Optional[int]
+
+    def __str__(self):
+        return F"""
+\tChromosome: {self.chromosome}
+\tStart: {self.start_position}
+\tDeleted: {self.deleted}
+\tReplaced: {self.replaced}"""

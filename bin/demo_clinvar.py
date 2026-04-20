@@ -3,7 +3,7 @@ from metapub import ClinVarFetcher
 
 # Demo with known valid ClinVar variant IDs
 # Note: Most low-numbered IDs are invalid, so we use a curated list
-VALID_IDS = [4, 8, 1013, 10000, 12000, 12003, 12004, 12005, 12006, 12007]
+VALID_IDS = [4, 8, 1013, 10000, 12000, 12003, 12004, 12005, 12006, 12007, 561260]
 
 # Use a temporary cache directory to avoid conflicts
 with tempfile.TemporaryDirectory() as tmpdir:
@@ -22,9 +22,12 @@ with tempfile.TemporaryDirectory() as tmpdir:
             print(f"  HGVS_c: {var.hgvs_c}")
             print(f"  HGVS_g: {var.hgvs_g[:2]}...")  # Show first 2 genomic HGVS
             print(f"  HGVS_p: {var.hgvs_p}")
-            print(f"  SPDI: {var.spdi.parse()}")
+            # Available on only certain variants
+            if var.spdi:
+                print(f"  SPDI: {var.spdi.parse()}")
             print(f"  Location: {var.cytogenic_location}")
             print(f"  Species: {var.species}")
+            print(f"  Conditions: {[x['name'] for x in var.associated_conditions]}")
             print(f"  Classification:")
             print(f"\tClinical significance: {var.clinical_significance}")
             if var.pathogenic_summary:

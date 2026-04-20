@@ -3,7 +3,8 @@
 # TODO: Add logging
 
 from lxml import etree
-from .clinvarvariant import ClinVarVariant, IdLocations
+from .clinvarvariant import ClinVarVariant
+from .types import IdLocations
 from .exceptions import MetaPubError, BaseXMLError
 from .eutils_common import get_eutils_client
 from .cache_utils import get_cache_path 

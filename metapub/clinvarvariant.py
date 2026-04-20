@@ -6,6 +6,7 @@ from dataclasses import dataclass
 
 from .base import MetaPubObject
 from .exceptions import MetaPubError, BaseXMLError
+from lxml import etree
 
 #TODO: Logging
 
@@ -59,30 +60,46 @@ class SPDIInfo:
     start_position: int
     deleted: str
     replaced: str
+    version: Optional[int]
+
+    def __str__(self):
+        return F"""
+\tChromosome: {self.chromosome}
+\tStart: {self.start_position}
+\tDeleted: {self.deleted}
+\tReplaced: {self.replaced}"""
 
 class CanonicalSPDI:
     """Standardized variant notation, relative to the latest genomic assembly."""
     raw: str # raw spdi string, ex: NC_000001.11:230710047:A:G
+    # sequence:position:deletion:insertion
 
     def __init__(self, raw):
         self.raw = raw
     
     def __str__(self):
-        return F"SPDI({self.raw}"
+        return F"SPDI({self.raw})"
     def __dir__(self):
-        return F"SPDI({self.raw}"
+        return F"SPDI({self.raw})"
 
     def parse(self) -> SPDIInfo:
         # Perform basic parsing on the variant
-        nc, rest = self.raw.lower().split(".")
+        nc, *rest = self.raw.lower().split(":")
         if nc.startswith("nc_"):
             try:
                 # Parse out the chromosome number
-                chr = int(nc.split("_")[1])
+                nc_info = nc.split("_")[1]
+                ver = None
+                if "." in nc_info:
+                    # There is additionally a version specified
+                    [chr, ver] = [int(x) for x in nc_info.split(".")]
+                else:
+                    chr = int(nc.split("_")[1])
                 # Get position, deleted, and replaced
-                pos, deleted, replaced = rest.split(":")
+                pos, deleted, replaced = rest
+                # NC_000012.12:32625058:AGAG:AG
                 pos = int(pos)
-                return SPDIInfo(chr, pos, deleted, replaced)
+                return SPDIInfo(chr, pos, deleted, replaced, ver)
             except Exception as e:
                 # Throw error (likely a parsing error)
                 raise MetaPubError(F"Unable to parse canonical SPDI: {e}")
@@ -335,7 +352,7 @@ class ClinVarVariant(MetaPubObject):
         else:
             record_status = self.content.get('Version')
 
-        return record_status.text if record_status is not None else None
+        return record_status
 
     def _get_spdi(self):
         """ Get the SPDI information for this particular variant.
@@ -343,9 +360,13 @@ class ClinVarVariant(MetaPubObject):
         Returns CanonicalSPDI format; to parse the chromosome/position/etc, use .parse()
         """
         if self._is_vcv_format:
-            record_status = self.variation_archive.find('CanonicalSPDI')
+            allele = self.variation_archive.find('ClassifiedRecord/SimpleAllele')
+            if allele is not None:
+                record_status = allele.find("CanonicalSPDI")
+            else:
+                record_status = None
         else:
-            record_status = self._get('CanonicalSPDI')
+            record_status = None
 
         return CanonicalSPDI(record_status.text) if record_status is not None else None
 

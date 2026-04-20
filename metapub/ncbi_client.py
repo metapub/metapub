@@ -286,7 +286,7 @@ class NCBIClient:
         cache (Optional[SimpleCache]): Response cache if enabled
         session (requests.Session): HTTP session for requests
     """
-    
+
     BASE_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
     
     def __init__(self, api_key: Optional[str] = None, cache_path: Optional[str] = None, 

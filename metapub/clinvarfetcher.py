@@ -116,7 +116,7 @@ class ClinVarFetcher(Borg):
         """
         qs_args = {'db': 'clinvar', 'id': accession_id, 'rettype': 'vcv'}
         if id_from == 'clinvar':
-            qs_args['is_variationid'] = 'true'
+            qs_args['is_variationid'] = ''
         result = self.qs.efetch(qs_args)
         try:
             return ClinVarVariant(result)

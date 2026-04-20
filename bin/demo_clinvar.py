@@ -12,15 +12,17 @@ with tempfile.TemporaryDirectory() as tmpdir:
     print("=" * 50)
 
     for varid in VALID_IDS:
-        print(f"Variant ID: {varid}")
         try:
-            var = cvfetch.variant(varid)
+            var = cvfetch.variant(varid, id_from="clinvar")
+            print(f"Variant ID: {var.variation_id}")
             print(f"  Name: {var.variation_name}")
+            print(f"  Version: {var.version}")
             print(f"  Type: {var.variation_type}")
             print(f"  Gene(s): {[gene['Symbol'] for gene in var.genes]}")
             print(f"  HGVS_c: {var.hgvs_c}")
             print(f"  HGVS_g: {var.hgvs_g[:2]}...")  # Show first 2 genomic HGVS
             print(f"  HGVS_p: {var.hgvs_p}")
+            print(f"  SPDI: {var.spdi.parse()}")
             print(f"  Location: {var.cytogenic_location}")
             print(f"  Species: {var.species}")
             print(f"  Classification:")

@@ -31,6 +31,11 @@ with tempfile.TemporaryDirectory() as tmpdir:
                 print(f"\tTotal submitters: {var.pathogenic_summary.total_submitters}")
                 print(f"\tCounts: {var.pathogenic_summary.counts}")
                 print(f"\tConflicting: {var.pathogenic_summary.conflicting}")
+            print(f"  rs id: {var.rsid}  (all: {var.rsids})")
+            print(f"  dbSNP id: {var.dbsnp_id}  (all: {var.dbsnp_ids})")
+            print(f"  OMIM id: {var.omim_id}  (all: {var.omim_ids})")
+            print(f"  Orphanet id: {var.orphanet_id}  (all: {var.orphanet_ids})")
+            print(f"  MedGen id: {var.medgen_id}  (all: {var.medgen_ids})")
         except Exception as error:
             print(f"  ERROR: {error}")
 

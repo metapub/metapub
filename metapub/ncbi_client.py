@@ -362,13 +362,17 @@ class NCBIClient:
         if self.cache:
             cached_response = self.cache.get(url, request_params)
             if cached_response:
+                request_url = f"{url}?{urlencode(request_params)}"
+                log.debug(f"Returning cached response for request: {request_url}")
+
                 return cached_response
         
         # Rate limit
         self.rate_limiter.wait_if_needed()
         
         try:
-            log.debug(f"Making request to {endpoint} with params: {request_params}")
+            request_url = f"{url}?{urlencode(request_params)}"
+            log.debug(f"Making request to: {request_url}")
             response = self.session.get(url, params=request_params, timeout=30)
             response.raise_for_status()
             

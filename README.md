@@ -275,16 +275,6 @@ Basic usage:
     pubmed_citations = clinvar.pmids_for_hgvs('NM_000249.3:c.1958T>G')
     print(pubmed_citations)
 
-    # dbSNP frequency summary (study-level MAFs)
-    # You can fetch by rs number or by passing a parsed ClinVarVariant:
-    snp_summary = clinvar.dbsnp_freq_summary_for_variant('rs3000')  # or '3000'
-    print(snp_summary.get_studies())
-
-    # Or using an already-parsed ClinVarVariant instance:
-    variant = clinvar.variant(65533)
-    snp_summary2 = clinvar.dbsnp_freq_summary_for_variant(variant)
-    print(snp_summary2.get_global('1000Genomes'))
-
 For comprehensive ClinVar variant analysis examples, see the [ClinVar Integration documentation](https://metapub.readthedocs.org/en/latest/advanced.html#clinvar-variant-analysis).
 
 CrossRefFetcher

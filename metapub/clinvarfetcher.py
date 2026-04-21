@@ -78,6 +78,7 @@ class ClinVarFetcher(Borg):
             self.ids_for_variant = self._eutils_ids_for_variant
             self.pmids_for_hgvs = self._eutils_pmids_for_hgvs
             self.variant = self._eutils_get_variant_summary
+            self.dbsnp_freq_summary_for_variant = self._eutils_dbsnp_freq_summary_for_variant
         else:
             raise NotImplementedError('coming soon: fetch from local clinvar via medgen-mysql.')
 
@@ -181,3 +182,30 @@ class ClinVarFetcher(Borg):
         for clinvar_id in ids:
             pmids.update(self._eutils_pmids_for_id(clinvar_id))
         return list(pmids)
+
+    def _eutils_dbsnp_freq_summary_for_variant(self, rs_number_or_id: str):
+        """Fetch dbSNP esummary for a variant given an rs number or SNP ID.
+
+        Accepts either 'rs12345' or '12345' and returns a DbSnpFreqSummary helper
+        instance for parsing.
+        """
+        # normalize rs prefix
+        rs = str(rs_number_or_id)
+        if rs.startswith('rs'):
+            rs = rs[2:]
+
+        try:
+            result = self.qs.esummary({'db': 'snp', 'id': rs, 'retmode': 'xml'})
+        except Exception as e:
+            diagnosis = diagnose_ncbi_error(e, 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi')
+            if diagnosis.get('is_service_issue'):
+                raise NCBIServiceError(
+                    f"Unable to fetch dbSNP freq summary for '{rs_number_or_id}': {diagnosis['user_message']}",
+                    diagnosis.get('error_type'),
+                    diagnosis.get('suggested_actions')
+                ) from e
+            else:
+                raise
+
+        from .dbsnp_freq_summary import DbSnpFreqSummary
+        return DbSnpFreqSummary(result)

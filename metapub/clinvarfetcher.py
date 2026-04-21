@@ -183,14 +183,25 @@ class ClinVarFetcher(Borg):
             pmids.update(self._eutils_pmids_for_id(clinvar_id))
         return list(pmids)
 
-    def _eutils_dbsnp_freq_summary_for_variant(self, rs_number_or_id: str):
-        """Fetch dbSNP esummary for a variant given an rs number or SNP ID.
+    def _eutils_dbsnp_freq_summary_for_variant(self, variant_or_rsid):
+        """Fetch dbSNP esummary for a variant given an rs number, SNP ID, or ClinVarVariant.
 
-        Accepts either 'rs12345' or '12345' and returns a DbSnpFreqSummary helper
-        instance for parsing.
+        Accepts either 'rs12345', '12345', or a `ClinVarVariant` (or object exposing
+        `dbsnp_id`/`rsid`) and returns a `DbSnpFreqSummary` helper instance.
         """
-        # normalize rs prefix
-        rs = str(rs_number_or_id)
+        # normalize input to rs string (strip optional 'rs' prefix)
+        rs = None
+        # If passed a ClinVarVariant or similar object, prefer its dbsnp id
+        if isinstance(variant_or_rsid, ClinVarVariant) or hasattr(variant_or_rsid, 'dbsnp_id') or hasattr(variant_or_rsid, 'rsid'):
+            rs_candidate = getattr(variant_or_rsid, 'dbsnp_id', None) or getattr(variant_or_rsid, 'rsid', None)
+            if rs_candidate:
+                rs = str(rs_candidate)
+        else:
+            rs = str(variant_or_rsid)
+
+        if not rs:
+            raise MetaPubError(f"No dbSNP rsid found for variant input: {variant_or_rsid}")
+
         if rs.startswith('rs'):
             rs = rs[2:]
 

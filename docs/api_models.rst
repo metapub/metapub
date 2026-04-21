@@ -215,7 +215,7 @@ Key Attributes
    - ``molecular_consequences`` - Predicted effects
 
 **Clinical Data**
-   - ``clinical_significance`` - Clinical interpretation
+   - ``clinical_significance`` - Clinical interpretation (in lowercase)
    - ``review_status`` - Review/evidence level
    - ``last_evaluated`` - Date of last evaluation
 

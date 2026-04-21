@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE eSummaryResult PUBLIC "-//NLM//DTD esummary snp 20200630//EN" "https://eutils.ncbi.nlm.nih.gov/eutils/dtd/20200630/esummary_snp.dtd">
+<eSummaryResult>
+<DocumentSummarySet status="OK">
+<DbBuild>Build250306-1408.1</DbBuild>
+<DocumentSummary uid="18299465">
+<error>cannot get document summary</error>
+</DocumentSummary>
+
+</DocumentSummarySet>
+</eSummaryResult>

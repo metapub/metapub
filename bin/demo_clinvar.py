@@ -3,7 +3,7 @@ from metapub import ClinVarFetcher
 
 # Demo with known valid ClinVar variant IDs
 # Note: Most low-numbered IDs are invalid, so we use a curated list
-VALID_IDS = [4, 8, 1013, 10000, 12000, 12003, 12004, 12005, 12006, 12007, 561260]
+VALID_IDS = [12006] # [4, 8, 1013, 10000, 12000, 12003, 12004, 12005, 12006, 12007, 561260]
 
 # Use a temporary cache directory to avoid conflicts
 with tempfile.TemporaryDirectory() as tmpdir:
@@ -13,7 +13,7 @@ with tempfile.TemporaryDirectory() as tmpdir:
 
     for varid in VALID_IDS:
         try:
-            var = cvfetch.variant(varid, id_from="clinvar")
+            var = cvfetch.variant(varid) # , id_from="clinvar")
             print(f"Variant ID: {var.variation_id}")
             print(f"  Name: {var.variation_name}")
             print(f"  Version: {var.version}")

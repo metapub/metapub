@@ -108,6 +108,8 @@ class SPDIInfo:
     deleted: str
     replaced: str
     version: Optional[int]
+    # Ex. GrCh38
+    build: str
 
     def __str__(self):
         return F"""

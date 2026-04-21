@@ -41,7 +41,7 @@ class CanonicalSPDI:
                 pos, deleted, replaced = rest
                 # NC_000012.12:32625058:AGAG:AG
                 pos = int(pos)
-                return SPDIInfo(chr, pos, deleted, replaced, ver)
+                return SPDIInfo(chr, pos, deleted, replaced, ver, "GRCh38")
             except Exception as e:
                 # Throw error (likely a parsing error)
                 raise MetaPubError(F"Unable to parse canonical SPDI: {e}")

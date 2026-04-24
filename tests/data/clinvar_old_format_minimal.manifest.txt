@@ -1,0 +1,39 @@
+Source:   Synthetic — hand-authored (old format no longer served by NCBI API)
+Date:     2026-04-18
+Variant:  VariationID=12397 — NM_000548.4(TSC2):c.1832G>A (p.Arg611Gln)
+          (same variant as clinvar_vcv_12000.xml, different format)
+Type:     Old pre-VCV VariationReport format (root tag: VariationReport, allele tag: Allele)
+Purpose:  Tests the _is_vcv_format=False branch of _get_xref_list, which uses
+          the .//Allele/XRefList XPath instead of .//SimpleAllele/XRefList.
+
+Investigation to confirm no real record can be fetched
+-------------------------------------------------------
+
+Step 1 — tried rettype=xml:
+  curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=clinvar&id=12397&rettype=xml"
+  Result: HTML error page ("Error occurred: cannot get document summary")
+
+Step 2 — tried rettype=variation:
+  curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=clinvar&id=12397&rettype=variation"
+  Result: explicit deprecation notice —
+    "Variation objects (blobs) are no longer supported. They were replaced by the
+     VCV XML, which you can retrieve using rettype=vcv. See our web release notes
+     from April 2019 (https://ftp.ncbi.nlm.nih.gov/pub/clinvar/release_notes/
+     web_2.0_alpha/20190404WebRelease.pdf) and our documentation on E-utilities
+     for ClinVar (https://www.ncbi.nlm.nih.gov/clinvar/docs/maintenance_use/#api)"
+
+Step 3 — tried no rettype:
+  curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=clinvar&id=12397"
+  Result: bare <IdList><Id>12397</Id></IdList> — no XML record body
+
+Conclusion: The old VariationReport format was retired by NCBI in April 2019. No
+combination of rettype values produces it today. The fixture is synthetic but
+structurally correct, cross-referenced against the known XRef values from the live
+VCV record VCV000012397: rs28934872 (dbSNP) and 191092.0006 (OMIM).
+
+Structure:
+  VariationReport (root — _is_vcv_format=False path)
+  └── Allele (AlleleID=27436)
+      └── XRefList
+          ├── XRef Type="rs" ID="28934872" DB="dbSNP"
+          └── XRef Type="Allelic variant" ID="191092.0006" DB="OMIM"

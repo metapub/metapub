@@ -3,7 +3,8 @@
 # TODO: Add logging
 
 from lxml import etree
-from .clinvarvariant import ClinVarVariant, IdLocations
+from .clinvarvariant import ClinVarVariant
+from .types import IdLocations
 from .exceptions import MetaPubError, BaseXMLError
 from .eutils_common import get_eutils_client
 from .cache_utils import get_cache_path 
@@ -116,7 +117,7 @@ class ClinVarFetcher(Borg):
         """
         qs_args = {'db': 'clinvar', 'id': accession_id, 'rettype': 'vcv'}
         if id_from == 'clinvar':
-            qs_args['is_variationid'] = 'true'
+            qs_args['is_variationid'] = ''
         result = self.qs.efetch(qs_args)
         try:
             return ClinVarVariant(result)

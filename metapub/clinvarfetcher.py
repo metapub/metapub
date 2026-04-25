@@ -3,7 +3,8 @@
 # TODO: Add logging
 
 from lxml import etree
-from .clinvarvariant import ClinVarVariant, IdLocations
+from .clinvarvariant import ClinVarVariant
+from .types import IdLocations
 from .exceptions import MetaPubError, BaseXMLError
 from .eutils_common import get_eutils_client
 from .cache_utils import get_cache_path 
@@ -77,6 +78,8 @@ class ClinVarFetcher(Borg):
             self.ids_for_variant = self._eutils_ids_for_variant
             self.pmids_for_hgvs = self._eutils_pmids_for_hgvs
             self.variant = self._eutils_get_variant_summary
+            self.ids_by_disease = self._eutils_ids_by_disease
+            self.dbsnp_freq_summary_for_variant = self._eutils_dbsnp_freq_summary_for_variant
         else:
             raise NotImplementedError('coming soon: fetch from local clinvar via medgen-mysql.')
 
@@ -116,7 +119,7 @@ class ClinVarFetcher(Borg):
         """
         qs_args = {'db': 'clinvar', 'id': accession_id, 'rettype': 'vcv'}
         if id_from == 'clinvar':
-            qs_args['is_variationid'] = 'true'
+            qs_args['is_variationid'] = ''
         result = self.qs.efetch(qs_args)
         try:
             return ClinVarVariant(result)
@@ -148,6 +151,51 @@ class ClinVarFetcher(Borg):
         idlist = dom.find('IdList')
         for item in idlist.findall('Id'):
             ids.append(item.text.strip())
+        return ids
+    
+    def _eutils_ids_by_disease(self, disease, source="disease"):
+        """
+        searches ClinVar for specified disease/condition; returns up to 500 matching results.
+
+        Mirrors the exact pattern of _eutils_ids_by_gene().
+        
+        :param disease (string): disease name (e.g. 'breast cancer')
+                                    OR MedGen UID (e.g 'C0027627') when use_medgen=True
+        :param source (str) [default: "disease"]: the source/type of the disease term.
+            - "disease"  → standard disease name search (uses the [disease] field)
+            - "medgen"   → MedGen CUI search (uses the "CUI " prefix)
+        
+        """
+        
+        # equivalent esearch URLs (exactly as shown in the Github issue):
+        #   https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=breast+cancer[disease]&retmax=500
+        #   https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=CUI+C0027627&retmax=500
+        SOURCE_MAP = {
+            "disease": lambda d: d.replace(" ", "+") + "[disease]",
+            "medgen": lambda d: f"CUI {d}",
+        }
+
+        if source not in SOURCE_MAP:
+            raise ValueError(
+                f"Unsupported disease source: '{source}'."
+                f"Supported sources: {list(SOURCE_MAP.keys())}"
+            )
+
+        term = SOURCE_MAP[source](disease)
+
+        result = self.qs.esearch({
+            "db": "clinvar",
+            "term": term,
+            "sort": "relevance",  
+            "retmax": 500  
+        })
+        dom = etree.fromstring(result)
+        ids = []
+        idlist = dom.find('IdList')
+        if idlist is not None:
+            for item in idlist.findall('Id'):
+                ids.append(item.text.strip())
+        
         return ids
 
     def _eutils_pmids_for_id(self, clinvar_id):
@@ -190,3 +238,41 @@ class ClinVarFetcher(Borg):
         for clinvar_id in ids:
             pmids.update(self._eutils_pmids_for_id(clinvar_id))
         return list(pmids)
+
+    def _eutils_dbsnp_freq_summary_for_variant(self, variant_or_rsid):
+        """Fetch dbSNP esummary for a variant given an rs number, SNP ID, or ClinVarVariant.
+
+        Accepts either 'rs12345', '12345', or a `ClinVarVariant` (or object exposing
+        `dbsnp_id`/`rsid`) and returns a `DbSnpFreqSummary` helper instance.
+        """
+        # normalize input to rs string (strip optional 'rs' prefix)
+        rs = None
+        # If passed a ClinVarVariant or similar object, prefer its dbsnp id
+        if isinstance(variant_or_rsid, ClinVarVariant) or hasattr(variant_or_rsid, 'dbsnp_id') or hasattr(variant_or_rsid, 'rsid'):
+            rs_candidate = getattr(variant_or_rsid, 'dbsnp_id', None) or getattr(variant_or_rsid, 'rsid', None)
+            if rs_candidate:
+                rs = str(rs_candidate)
+        else:
+            rs = str(variant_or_rsid)
+
+        if not rs:
+            raise MetaPubError(f"No dbSNP rsid found for variant input: {variant_or_rsid}")
+
+        if rs.startswith('rs'):
+            rs = rs[2:]
+
+        try:
+            result = self.qs.esummary({'db': 'snp', 'id': rs, 'retmode': 'xml'})
+        except Exception as e:
+            diagnosis = diagnose_ncbi_error(e, 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi')
+            if diagnosis.get('is_service_issue'):
+                raise NCBIServiceError(
+                    f"Unable to fetch dbSNP freq summary for '{rs_number_or_id}': {diagnosis['user_message']}",
+                    diagnosis.get('error_type'),
+                    diagnosis.get('suggested_actions')
+                ) from e
+            else:
+                raise
+
+        from .dbsnp_freq_summary import DbSnpFreqSummary
+        return DbSnpFreqSummary(result)

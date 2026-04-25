@@ -1,0 +1,13 @@
+Source:   NCBI ClinVar E-utilities (efetch)
+Date:     2026-04-18
+Variant:  VCV004818726 — NM_172107.4(KCNQ2):c.[875T>C;877C>T]
+Type:     Haplotype (two SimpleAllele elements under ClassifiedRecord/Haplotype)
+Purpose:  Tests that _get_xref_list collects XRefs from all constituent SimpleAlleles,
+          not just the first one (guards against find() vs findall() regression).
+
+Fetch command:
+  curl -s "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=clinvar&id=4818726&rettype=vcv&is_variationid=true" \
+    > clinvar_vcv_haplotype_kcnq2.xml
+
+Discovery command (used to find a haplotype Variation ID):
+  curl -s "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=haplotype[variant+type]&retmax=5"

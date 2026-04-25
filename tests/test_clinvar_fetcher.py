@@ -41,6 +41,8 @@ class TestClinVarFetcher(unittest.TestCase):
         # Verify other properties
         self.assertEqual(var.species, 'Homo sapiens')
         self.assertEqual(var.cytogenic_location, '16p13.3')
+        self.assertEqual(var.mode_of_inheritance, 'Autosomal dominant inheritance')
+        self.assertEqual(var.modes_of_inheritance, ['Autosomal dominant inheritance'])
 
     def test_variant_12003_vcv_format(self):
         """Test that variant 12003 returns proper data using new VCV format"""
@@ -55,6 +57,8 @@ class TestClinVarFetcher(unittest.TestCase):
         self.assertIn('NM_000548.4:c.1096G>T', var.hgvs_c)
         self.assertIn('NC_000016.10:g.2060790G>T', var.hgvs_g)
         self.assertTrue(len(var.hgvs_p) > 0)  # Should have protein HGVS
+        self.assertEqual(var.mode_of_inheritance, None)
+        self.assertEqual(var.modes_of_inheritance, [])
 
     def test_invalid_variant_id(self):
         """Test that invalid variant IDs still raise appropriate errors"""
@@ -281,6 +285,8 @@ class TestClinVarFetcher(unittest.TestCase):
         self.assertEqual(var.variation_type, 'single nucleotide variant')
         self.assertEqual(var.species, 'Homo sapiens')
         self.assertEqual(var.cytogenic_location, '16p13.3')
+        self.assertEqual(var.mode_of_inheritance, 'Autosomal dominant inheritance')
+        self.assertEqual(var.modes_of_inheritance, ['Autosomal dominant inheritance'])
         
         # Test all new VCV features work with cached XML
         self.assertIsNotNone(var.clinical_significance)
@@ -391,6 +397,27 @@ class TestClinVarFetcher(unittest.TestCase):
         self.assertIn('OMIM', dbs)
         self.assertEqual(var.rsid, '28934872')
         self.assertEqual(var.omim_id, '191092.0006')
+
+
+    def test_offline_multiple_mode_of_inheritance_inline_xml(self):
+        """Test multiple mode-of-inheritance parsing from an inline offline XML snippet modeled off of VCV4071947."""
+        multiple_case_xml = (
+            b'<?xml version="1.0" encoding="UTF-8"?>'
+            b'<ClinVarResult-Set>'
+            b'<VariationArchive VariationID="4071947" VariationName="offline multiple mode test" '
+            b'VariationType="single nucleotide variant">'
+            b'<ClassifiedRecord><SimpleAllele>'
+            b'<Attribute Type="ModeOfInheritance">Autosomal dominant inheritance</Attribute>'
+            b'<Attribute Type="ModeOfInheritance">Autosomal recessive inheritance</Attribute>'
+            b'</SimpleAllele></ClassifiedRecord>'
+            b'</VariationArchive></ClinVarResult-Set>'
+        )
+        multiple_case_var = ClinVarVariant(multiple_case_xml)
+        self.assertEqual(multiple_case_var.mode_of_inheritance, 'Autosomal dominant inheritance')
+        self.assertEqual(
+            multiple_case_var.modes_of_inheritance,
+            ['Autosomal dominant inheritance', 'Autosomal recessive inheritance']
+        )
 
     def test_backward_compatibility(self):
         """Test that all existing properties still work with new format"""

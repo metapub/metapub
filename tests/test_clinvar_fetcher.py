@@ -3,10 +3,10 @@ import tempfile
 import os
 
 from metapub import ClinVarFetcher
-from metapub.clinvarvariant import ClinVarVariant
+from metapub.clinvarvariant import ClinVarVariant, PathogenicSummary, ClinSig
 from metapub.exceptions import MetaPubError
 from metapub.cache_utils import cleanup_dir
-
+import pytest
 
 class TestClinVarFetcher(unittest.TestCase):
 
@@ -190,6 +190,83 @@ class TestClinVarFetcher(unittest.TestCase):
             self.assertIsInstance(pmid, str)
             self.assertTrue(pmid.isdigit())
 
+    @pytest.mark.live_network
+    def test_pathogenic_summary_basic(self):
+        """Test the pathogenic_summary correctly aggregates submitter classes"""
+        var = self.fetch.variant(12000)
+
+        summary = var.pathogenic_summary
+        if summary is None:
+            self.fail("Pathogenic summary is None")
+        self.assertIsInstance(summary, PathogenicSummary, 'pathogenic_summary doesn\'t return a dict')
+
+        # Check counts exists
+        counts = summary.counts
+        self.assertIsInstance(counts, dict, 'counts property doesn\'t exist')
+        for key, value in counts.items():
+            self.assertIsInstance(value, int, F'prop {key} in counts doesn\'t have an int')
+        
+        # Total submitters matches sum of counts
+        total = summary.total_submitters
+        self.assertEqual(total, sum(counts.values()))
+
+        # Consensus matches the classification with highest count
+        consensus = summary.consensus
+        if not summary.conflicting:
+            self.assertEqual(consensus, max(counts.items(), key=lambda x: x[1])[0], "Consensus doesn't match aggregation")
+    
+    @pytest.mark.live_network
+    def test_pathogenic_summary_conflicted(self):
+        """Test multiple known variants and their classification"""
+        variants: list[tuple[int, tuple[int, ClinSig, int, bool]]] = [
+            # (variant ID, (submitter #, classification, classification count, conflicted))
+            (12000, (21, 'pathogenic', 21, False)),
+            (4691, (18, 'uncertain significance', 6, True)),
+            (4691, (18, 'likely benign', 1, True)),
+            (1028857, (2, 'likely pathogenic', 1, False))
+        ]
+        for (id, (submitters, count_name, count, conflicting)) in variants:
+            var = self.fetch.variant(id, id_from='clinvar')
+            
+            summary = var.pathogenic_summary
+            if summary is None:
+                self.fail("Summary should not be none")
+            self.assertGreaterEqual(summary.total_submitters, submitters, F"{id} variant has >= {submitters} submitters")
+            self.assertGreaterEqual(summary.counts[count_name], count, F"{id} variant has >= {count} pathogenic classifications")
+            self.assertEqual(summary.conflicting, conflicting, F"{id} variant is has {"" if conflicting else "not"} conflicting submittions")
+
+    def test_pathogenic_summary_offline(self):
+        # Read the cached XML file
+        xml_file_path = os.path.join(os.path.dirname(__file__), 'data', 'clinvar_vcv_12000.xml')
+        self.assertTrue(os.path.exists(xml_file_path), "Cached XML file should exist")
+        
+        with open(xml_file_path, 'rb') as f:  # Read as bytes to handle XML declaration
+            xml_content = f.read()
+        
+        # Create variant from cached XML
+        var = ClinVarVariant(xml_content)
+
+        # Make sure this works the same way live data does
+        summary = var.pathogenic_summary
+        if summary is None:
+            self.fail("Pathogenic summary is None")
+        self.assertIsInstance(summary, PathogenicSummary, 'pathogenic_summary doesn\'t return a dict')
+
+        # Check counts exists
+        counts = summary.counts
+        self.assertIsInstance(counts, dict, 'counts property doesn\'t exist')
+        for key, value in counts.items():
+            self.assertIsInstance(value, int, F'prop {key} in counts doesn\'t have an int')
+        
+        # Total submitters matches sum of counts
+        total = summary.total_submitters
+        self.assertEqual(total, sum(counts.values()))
+
+        # Consensus matches the classification with highest count
+        consensus = summary.consensus
+        if not summary.conflicting:
+            self.assertEqual(consensus, max(counts.items(), key=lambda x: x[1])[0], "Consensus doesn't match aggregation")
+
     def test_offline_cached_xml(self):
         """Test using cached XML file for offline testing"""
         # Read the cached XML file
@@ -217,11 +294,109 @@ class TestClinVarFetcher(unittest.TestCase):
         self.assertIsNotNone(var.protein_change)
         self.assertIsInstance(var.associated_conditions, list)
         self.assertIsInstance(var.gene_dosage_info, list)
+        self.assertIsInstance(var.pathogenic_summary, PathogenicSummary)
+        self.assertEqual(var.rsid, '28934872')
+        self.assertEqual(var.rsids, ['28934872'])
+        self.assertEqual(var.omim_id, '191092.0006')
+        self.assertEqual(var.omim_ids, ['191092.0006'])
+
+        # Orphanet/MedGen xrefs never appear in SimpleAllele/XRefList in real records
+        # (they live in condition/RCV sections); see clinvar_vcv_orphanet_medgen.manifest.txt
+        self.assertIsNone(var.orphanet_id)
+        self.assertEqual(var.orphanet_ids, [])
+        self.assertIsNone(var.medgen_id)
+        self.assertEqual(var.medgen_ids, [])
         
         # Verify TSC2 gene dosage info is present
         self.assertTrue(len(var.gene_dosage_info) > 0)
         self.assertEqual(var.gene_dosage_info[0]['symbol'], 'TSC2')
         self.assertIn('haploinsufficiency', var.gene_dosage_info[0])
+
+    def _load_fixture(self, filename):
+        xml_file_path = os.path.join(os.path.dirname(__file__), 'data', filename)
+        with open(xml_file_path, 'rb') as f:
+            return ClinVarVariant(f.read())
+
+    def test_xref_list_simple_vcv(self):
+        """Simple VCV variant (TSC2, VCV000012397) has 4 xrefs from its single SimpleAllele."""
+        var = self._load_fixture('clinvar_vcv_12000.xml')
+        xrefs = var.xrefs
+        dbs = [x['DB'] for x in xrefs]
+        self.assertIn('dbSNP', dbs)
+        self.assertIn('OMIM', dbs)
+        self.assertEqual(var.rsid, '28934872')
+        self.assertEqual(var.omim_id, '191092.0006')
+
+    def test_xref_list_haplotype_collects_all_alleles(self):
+        """Haplotype VCV (KCNQ2, VCV004818726) has two SimpleAlleles; xrefs from both must be collected."""
+        var = self._load_fixture('clinvar_vcv_haplotype_kcnq2.xml')
+        xrefs = var.xrefs
+        # Both alleles contribute xrefs — expect 6 total (3 per allele)
+        self.assertEqual(len(xrefs), 6)
+        # Both dbSNP rsIDs must be present
+        dbsnp_ids = [x['ID'] for x in xrefs if x.get('DB') == 'dbSNP']
+        self.assertIn('1060500602', dbsnp_ids)
+        self.assertIn('2081099943', dbsnp_ids)
+        # rsids property returns both
+        self.assertIn('1060500602', var.rsids)
+        self.assertIn('2081099943', var.rsids)
+
+    def test_xref_list_no_xreflist_returns_empty(self):
+        """Variant with no XRefList element (TERT, VCV004819006) must return empty list without crashing."""
+        var = self._load_fixture('clinvar_vcv_no_xreflist_tert.xml')
+        self.assertEqual(var.xrefs, [])
+        self.assertIsNone(var.rsid)
+        self.assertEqual(var.rsids, [])
+
+    def test_xref_list_genotype_collects_all_alleles(self):
+        """Genotype VCV (synthetic) nests SimpleAlleles under Genotype; xrefs from both must be collected."""
+        var = self._load_fixture('clinvar_vcv_genotype_minimal.xml')
+        xrefs = var.xrefs
+        # Two SimpleAlleles: first has 2 xrefs (dbSNP + OMIM), second has 1 (dbSNP)
+        self.assertEqual(len(xrefs), 3)
+        dbsnp_ids = [x['ID'] for x in xrefs if x.get('DB') == 'dbSNP']
+        self.assertIn('111111111', dbsnp_ids)
+        self.assertIn('222222222', dbsnp_ids)
+        omim_ids = [x['ID'] for x in xrefs if x.get('DB') == 'OMIM']
+        self.assertIn('100001.0001', omim_ids)
+
+    def test_rsid_normalization_and_dedup(self):
+        """All four observed dbSNP XRef formats for the same rsID collapse to one bare number.
+
+        The four formats documented in _get_rsids comments:
+          Type="rs"       ID="1799945"   -- idiomatic
+          Type="rsNumber" ID="1799945"   -- non-standard Type (Type-agnostic collection)
+          (no Type)       ID="rs1799945" -- rs prefix joined into ID field
+          (no Type)       ID="1799945"   -- bare number, missing Type entirely
+        All represent the same variant and must deduplicate to ['1799945'].
+        """
+        var = self._load_fixture('clinvar_vcv_rsid_formats.xml')
+        self.assertEqual(var.rsids, ['1799945'])
+        self.assertEqual(var.rsid, '1799945')
+
+    def test_orphanet_and_medgen_ids(self):
+        """Orphanet and MedGen IDs in SimpleAllele/XRefList are returned by orphanet_id/medgen_id.
+
+        Note: no real VCV record has these DBs in SimpleAllele/XRefList (they appear only
+        in condition/RCV sections). This synthetic fixture tests the filtering code path.
+        """
+        var = self._load_fixture('clinvar_vcv_orphanet_medgen.xml')
+        self.assertEqual(var.orphanet_id, 'ORPHA:123456')
+        self.assertEqual(var.orphanet_ids, ['ORPHA:123456', 'ORPHA:789012'])
+        self.assertEqual(var.medgen_id, 'C0123456')
+        self.assertEqual(var.medgen_ids, ['C0123456'])
+        self.assertEqual(var.rsid, '987654321')
+
+    def test_xref_list_old_format(self):
+        """Old VariationReport format (TSC2 c.1832G>A, pre-VCV) uses Allele/XRefList path."""
+        var = self._load_fixture('clinvar_old_format_minimal.xml')
+        xrefs = var.xrefs
+        self.assertEqual(len(xrefs), 2)
+        dbs = [x['DB'] for x in xrefs]
+        self.assertIn('dbSNP', dbs)
+        self.assertIn('OMIM', dbs)
+        self.assertEqual(var.rsid, '28934872')
+        self.assertEqual(var.omim_id, '191092.0006')
 
 
     def test_offline_multiple_mode_of_inheritance_inline_xml(self):

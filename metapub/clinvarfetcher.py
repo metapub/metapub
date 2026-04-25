@@ -3,8 +3,8 @@
 # TODO: Add logging
 
 from lxml import etree
-
 from .clinvarvariant import ClinVarVariant
+from .types import IdLocations
 from .exceptions import MetaPubError, BaseXMLError
 from .eutils_common import get_eutils_client
 from .cache_utils import get_cache_path 
@@ -79,6 +79,7 @@ class ClinVarFetcher(Borg):
             self.pmids_for_hgvs = self._eutils_pmids_for_hgvs
             self.variant = self._eutils_get_variant_summary
             self.ids_by_disease = self._eutils_ids_by_disease
+            self.dbsnp_freq_summary_for_variant = self._eutils_dbsnp_freq_summary_for_variant
         else:
             raise NotImplementedError('coming soon: fetch from local clinvar via medgen-mysql.')
 
@@ -104,16 +105,26 @@ class ClinVarFetcher(Borg):
             else:
                 raise
 
-    def _eutils_get_variant_summary(self, accession_id):
-        """ returns variant summary XML (<ClinVarResult-Set>) for given ClinVar accession ID.
-        (This corresponds to the entry in the clinvar.variant_summary table.)
+    def _eutils_get_variant_summary(self, accession_id, id_from: IdLocations = 'entrez'):
+        """ returns structured, flattened summary for a ClinVar variant given an accession ID.
+        NOTE: By default, this is the Entrez UID that a variant has in E-utilities, NOT its ClinVar ID.
+
+        To specify that you would like this accession_id to be parsed as a clinvar ID, specify 
+        `id_from = 'clinvar'`
+
+        :param: accession_id (integer or string)
+        :param: id_from (string, either 'clinvar' or 'entrez')
+        :return: ClinVarVariant
+        :raises: MetaPubError if variation ID is invalid (empty XML document response)
         """
-        result = self.qs.efetch({'db': 'clinvar', 'id': accession_id, 'rettype': 'vcv'})
+        qs_args = {'db': 'clinvar', 'id': accession_id, 'rettype': 'vcv'}
+        if id_from == 'clinvar':
+            qs_args['is_variationid'] = ''
+        result = self.qs.efetch(qs_args)
         try:
             return ClinVarVariant(result)
-        except BaseXMLError as error:
+        except BaseXMLError as _:
             # empty XML document == invalid variant ID
-            print(error)
             raise MetaPubError('Invalid ClinVar Variation ID')
 
     def _eutils_ids_by_gene(self, gene, single_gene=False):
@@ -227,3 +238,41 @@ class ClinVarFetcher(Borg):
         for clinvar_id in ids:
             pmids.update(self._eutils_pmids_for_id(clinvar_id))
         return list(pmids)
+
+    def _eutils_dbsnp_freq_summary_for_variant(self, variant_or_rsid):
+        """Fetch dbSNP esummary for a variant given an rs number, SNP ID, or ClinVarVariant.
+
+        Accepts either 'rs12345', '12345', or a `ClinVarVariant` (or object exposing
+        `dbsnp_id`/`rsid`) and returns a `DbSnpFreqSummary` helper instance.
+        """
+        # normalize input to rs string (strip optional 'rs' prefix)
+        rs = None
+        # If passed a ClinVarVariant or similar object, prefer its dbsnp id
+        if isinstance(variant_or_rsid, ClinVarVariant) or hasattr(variant_or_rsid, 'dbsnp_id') or hasattr(variant_or_rsid, 'rsid'):
+            rs_candidate = getattr(variant_or_rsid, 'dbsnp_id', None) or getattr(variant_or_rsid, 'rsid', None)
+            if rs_candidate:
+                rs = str(rs_candidate)
+        else:
+            rs = str(variant_or_rsid)
+
+        if not rs:
+            raise MetaPubError(f"No dbSNP rsid found for variant input: {variant_or_rsid}")
+
+        if rs.startswith('rs'):
+            rs = rs[2:]
+
+        try:
+            result = self.qs.esummary({'db': 'snp', 'id': rs, 'retmode': 'xml'})
+        except Exception as e:
+            diagnosis = diagnose_ncbi_error(e, 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi')
+            if diagnosis.get('is_service_issue'):
+                raise NCBIServiceError(
+                    f"Unable to fetch dbSNP freq summary for '{rs_number_or_id}': {diagnosis['user_message']}",
+                    diagnosis.get('error_type'),
+                    diagnosis.get('suggested_actions')
+                ) from e
+            else:
+                raise
+
+        from .dbsnp_freq_summary import DbSnpFreqSummary
+        return DbSnpFreqSummary(result)

@@ -1,4 +1,5 @@
 import unittest
+import pytest
 from datetime import datetime
 from metapub.cache_utils import cleanup_dir
 from metapub.exceptions import *
@@ -7,6 +8,7 @@ from metapub import PubMedArticle, PubMedFetcher
 import random
 
 from tests.common import TEST_CACHEDIR
+from tests.fixtures import load_pmid_xml
 
 xml_str1 = '''<?xml version="1.0"?>
 <!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2015//EN" "http://www.ncbi.nlm.nih.gov/corehtml/query/DTD/pubmed_150101.dtd">
@@ -304,7 +306,10 @@ class TestPubMedArticle(unittest.TestCase):
     def tearDown(self):
         pass
 
+    @pytest.mark.live_network
     def test_random_efetch(self):
+        # Inherently a live smoke test: fetches a RANDOM PMID, so it cannot use a
+        # saved fixture. Excluded from the offline CI run via the live_network marker.
         pmid = str(random.randint(22222222, 23333333))
         try:
             article = self.fetch.article_by_pmid(pmid)
@@ -360,7 +365,7 @@ class TestPubMedArticle(unittest.TestCase):
         with a list of qualifiers and their major topic statuses, using PMID 34558640.
         """
         pmid = "34558640"
-        article = self.fetch.article_by_pmid(pmid)
+        article = load_pmid_xml(pmid)
         self.assertIsNotNone(article, f"Failed to fetch article for PMID {pmid}")
 
         mesh_data = article.mesh
@@ -482,7 +487,7 @@ class TestPubMedArticle(unittest.TestCase):
         for case in test_cases:
             with self.subTest(pmid=case["pmid"], description=case["description"]):
                 try:
-                    article = self.fetch.article_by_pmid(case["pmid"])
+                    article = load_pmid_xml(case["pmid"])
                     
                     # Test that pubdate property exists and returns datetime
                     self.assertIsNotNone(article.pubdate, 
@@ -573,7 +578,7 @@ class TestPubMedArticle(unittest.TestCase):
         for pmid in test_pmids:
             with self.subTest(pmid=pmid):
                 try:
-                    article = self.fetch.article_by_pmid(pmid)
+                    article = load_pmid_xml(pmid)
                     
                     # Test essential attributes
                     for attr_name, expected_type in essential_attrs.items():
@@ -630,7 +635,7 @@ class TestPubMedArticle(unittest.TestCase):
         from xml.etree.ElementTree import Element, SubElement
         
         # Create a test article to access _parse_medlinedate method
-        test_article = self.fetch.article_by_pmid('1000')
+        test_article = load_pmid_xml('1000')
         
         # Test cases for MedlineDate parsing
         medlinedate_cases = [
@@ -687,7 +692,7 @@ class TestPubMedArticle(unittest.TestCase):
         for case in test_cases:
             with self.subTest(pmid=case["pmid"], description=case["description"]):
                 try:
-                    article = self.fetch.article_by_pmid(case["pmid"])
+                    article = load_pmid_xml(case["pmid"])
                     
                     # Test citation property
                     citation = article.citation
@@ -745,7 +750,7 @@ class TestPubMedArticle(unittest.TestCase):
         for case in test_cases:
             with self.subTest(pmid=case["pmid"], description=case["description"]):
                 try:
-                    article = self.fetch.article_by_pmid(case["pmid"])
+                    article = load_pmid_xml(case["pmid"])
                     
                     # Test authors attribute
                     self.assertIsInstance(article.authors, list)
@@ -795,7 +800,7 @@ class TestPubMedArticle(unittest.TestCase):
         for case in era_test_cases:
             with self.subTest(pmid=case["pmid"], era=case["era"]):
                 try:
-                    article = self.fetch.article_by_pmid(case["pmid"])
+                    article = load_pmid_xml(case["pmid"])
                     
                     # Test year string extraction
                     self.assertEqual(article.year, case["expected_year"],
@@ -814,7 +819,7 @@ class TestPubMedArticle(unittest.TestCase):
         Test that book and article attributes are properly isolated based on pubmed_type.
         """
         # Test article
-        article = self.fetch.article_by_pmid("34889398")  # Known article
+        article = load_pmid_xml("34889398")  # Known article
         self.assertEqual(article.pubmed_type, 'article')
         
         # Article should have article attributes
@@ -827,7 +832,7 @@ class TestPubMedArticle(unittest.TestCase):
         self.assertIsNone(article.book_publisher)
         
         # Test book
-        book = self.fetch.article_by_pmid("20301546")  # Known GeneReviews book
+        book = load_pmid_xml("20301546")  # Known GeneReviews book
         self.assertEqual(book.pubmed_type, 'book')
         
         # Book should have book attributes
@@ -857,7 +862,7 @@ class TestPubMedArticle(unittest.TestCase):
         for case in test_cases:
             with self.subTest(pmid=case["pmid"], description=case["description"]):
                 try:
-                    article = self.fetch.article_by_pmid(case["pmid"])
+                    article = load_pmid_xml(case["pmid"])
                     
                     # Should have pubdate
                     self.assertIsNotNone(article.pubdate, f"PMID {case['pmid']} should have pubdate")
@@ -895,7 +900,7 @@ class TestPubMedArticle(unittest.TestCase):
             for pmid in pmids[:2]:  # Test 2 PMIDs per language to balance thoroughness and speed
                 with self.subTest(language=language, pmid=pmid):
                     try:
-                        article = self.fetch.article_by_pmid(pmid)
+                        article = load_pmid_xml(pmid)
                         
                         # Test essential attributes work for non-English content
                         self.assertIsNotNone(article.pmid, f"{language} PMID {pmid}: pmid should not be None")
@@ -960,7 +965,7 @@ class TestPubMedArticle(unittest.TestCase):
         for case in test_cases:
             with self.subTest(pmid=case["pmid"], language=case["language"]):
                 try:
-                    article = self.fetch.article_by_pmid(case["pmid"])
+                    article = load_pmid_xml(case["pmid"])
                     
                     # Test pubdate property specifically
                     self.assertIsNotNone(article.pubdate,
@@ -996,7 +1001,7 @@ class TestPubMedArticle(unittest.TestCase):
         for case in test_cases:
             with self.subTest(pmid=case["pmid"], language=case["language"]):
                 try:
-                    article = self.fetch.article_by_pmid(case["pmid"])
+                    article = load_pmid_xml(case["pmid"])
                     
                     # Test standard citation
                     citation = article.citation
@@ -1042,7 +1047,7 @@ class TestPubMedArticle(unittest.TestCase):
         for case in test_cases:
             with self.subTest(pmid=case["pmid"], language=case["language"]):
                 try:
-                    article = self.fetch.article_by_pmid(case["pmid"])
+                    article = load_pmid_xml(case["pmid"])
                     
                     # Test that title can contain non-ASCII characters
                     if article.title:
@@ -1095,7 +1100,7 @@ class TestPubMedArticle(unittest.TestCase):
         for pmid in multilingual_test_pmids:
             with self.subTest(pmid=pmid):
                 try:
-                    article = self.fetch.article_by_pmid(pmid)
+                    article = load_pmid_xml(pmid)
                     
                     for attr_name in essential_attrs:
                         self.assertTrue(hasattr(article, attr_name),
@@ -1123,7 +1128,7 @@ class TestPubMedArticle(unittest.TestCase):
         These should be mapped to appropriate months: Spring=March, Summer=June, Fall/Autumn=September, Winter=December.
         """
         # PMID 28139132 is known to have <Season>Winter</Season> in 2016
-        article = self.fetch.article_by_pmid('28139132')
+        article = load_pmid_xml('28139132')
         
         # Verify the article loads correctly
         self.assertIsNotNone(article, "Article should load successfully")
@@ -1156,7 +1161,7 @@ class TestPubMedArticle(unittest.TestCase):
         Test the seasonal to month mapping used in _construct_datetime.
         """
         # Create a test article to access the method
-        test_article = self.fetch.article_by_pmid('1000')  # Any valid PMID
+        test_article = load_pmid_xml('1000')  # Any valid PMID
         
         # Test data - simulate XML elements with different seasons
         from xml.etree.ElementTree import Element, SubElement

@@ -1,0 +1,211 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Automated">
+      <PMID Version="1">38468501</PMID>
+      <DateCompleted>
+        <Year>2024</Year>
+        <Month>03</Month>
+        <Day>22</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2024</Year>
+        <Month>03</Month>
+        <Day>22</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0253-3766</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>46</Volume>
+            <Issue>3</Issue>
+            <PubDate>
+              <Year>2024</Year>
+              <Month>Mar</Month>
+              <Day>23</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>Zhonghua zhong liu za zhi [Chinese journal of oncology]</Title>
+          <ISOAbbreviation>Zhonghua Zhong Liu Za Zhi</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Cancer incidence and mortality in China, 2022].</ArticleTitle>
+        <Pagination>
+          <StartPage>221</StartPage>
+          <EndPage>231</EndPage>
+          <MedlinePgn>221-231</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.3760/cma.j.cn112152-20240119-00035</ELocationID>
+        <Abstract>
+          <AbstractText><b>Objective:</b> The National Central Cancer Registry estimates the number of new cancer cases and deaths in China in 2022, using incidence and mortality data collected by the National Cancer Center. <b>Methods:</b> According to the data of 700 cancer registries in 2018 and the data of 106 cancer registries from 2010 to 2018, the age-period-cohort model was used to estimate the incidence rate and mortality rate of all cancers and 23 types of cancer in 2022, stratified by gender and urban and rural areas. We estimated the number of new cancer cases and deaths in China in 2022 based on the estimated rate and population data in 2022. <b>Results:</b> The estimated results showed that in 2022, there were approximately 4 824 700 new cancer cases in China (2 533 900 in males and 2 290 800 in females), with an age-standardized incidence rate of Chinese population (ASIR) of 208.58 per 100 000 (212.67 per 100 000 for males and 208.08 per 100 000 for females). Approximately 2 903 900 new cancer cases occurred in urban areas, with an ASIR of 212.95 per 100 000. It was estimated about 1 920 800 new cancer cases in rural areas, and the ASIR was 199.65 per 100 000. The top five cancers (lung cancer 1 060 600, colorectal cancer 517 100, thyroid cancer 466 100, liver cancer 367 700 and female breast cancer 357 200) accounted for 57.4% of all new cases. The estimated number of deaths from cancer in China in 2022 was 2 574 200 (1 629 300 in males and 944 900 in females), with an age-standardized mortality rate of Chinese population (ASMR) of 97.08 per 100 000 (127.70 per 100 000 in males and 68.67 per 100 000 in females). The number of deaths from cancer in urban and rural areas was about 1 400 600 and 1 173 400, with the ASMR of 92.37 and 103.97 per 100 000 in urban and rural areas, respectively. The top five leading cause of cancers death (lung cancer 733 300, liver cancer 316 500, gastric cancer 260 400, colorectal cancer 240 000 and esophageal cancer 187 500) accounted for 67.5% of all cancer deaths. Lung cancer ranked first in the incidence and mortality in men and women. The incidence rate in urban areas was higher than that in rural areas, while the mortality rate was lower than that in rural areas. <b>Conclusions:</b> The burden of cancer in China is still relatively heavy, with significant differences in cancer patterns in gender, urban-rural, and regional. The burden of cancer presents a coexistence of developed and developing countries, and the situation of cancer prevention and control is still serious in China.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Zheng</LastName>
+            <ForeName>R S</ForeName>
+            <Initials>RS</Initials>
+            <AffiliationInfo>
+              <Affiliation>Office for Cancer Registry, National Cancer Center/National Clinical Research Center for Cancer/Cancer Hospital, Chinese Academy of Medical Sciences and Peking Union Medical College, Beijing 100021, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Chen</LastName>
+            <ForeName>R</ForeName>
+            <Initials>R</Initials>
+            <AffiliationInfo>
+              <Affiliation>Office for Cancer Registry, National Cancer Center/National Clinical Research Center for Cancer/Cancer Hospital, Chinese Academy of Medical Sciences and Peking Union Medical College, Beijing 100021, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Han</LastName>
+            <ForeName>B F</ForeName>
+            <Initials>BF</Initials>
+            <AffiliationInfo>
+              <Affiliation>Office for Cancer Registry, National Cancer Center/National Clinical Research Center for Cancer/Cancer Hospital, Chinese Academy of Medical Sciences and Peking Union Medical College, Beijing 100021, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Wang</LastName>
+            <ForeName>S M</ForeName>
+            <Initials>SM</Initials>
+            <AffiliationInfo>
+              <Affiliation>Office for Cancer Registry, National Cancer Center/National Clinical Research Center for Cancer/Cancer Hospital, Chinese Academy of Medical Sciences and Peking Union Medical College, Beijing 100021, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Li</LastName>
+            <ForeName>L</ForeName>
+            <Initials>L</Initials>
+            <AffiliationInfo>
+              <Affiliation>Office for Cancer Registry, National Cancer Center/National Clinical Research Center for Cancer/Cancer Hospital, Chinese Academy of Medical Sciences and Peking Union Medical College, Beijing 100021, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Sun</LastName>
+            <ForeName>K X</ForeName>
+            <Initials>KX</Initials>
+            <AffiliationInfo>
+              <Affiliation>Office for Cancer Registry, National Cancer Center/National Clinical Research Center for Cancer/Cancer Hospital, Chinese Academy of Medical Sciences and Peking Union Medical College, Beijing 100021, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Zeng</LastName>
+            <ForeName>H M</ForeName>
+            <Initials>HM</Initials>
+            <AffiliationInfo>
+              <Affiliation>Office for Cancer Registry, National Cancer Center/National Clinical Research Center for Cancer/Cancer Hospital, Chinese Academy of Medical Sciences and Peking Union Medical College, Beijing 100021, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Wei</LastName>
+            <ForeName>W W</ForeName>
+            <Initials>WW</Initials>
+            <AffiliationInfo>
+              <Affiliation>Office for Cancer Registry, National Cancer Center/National Clinical Research Center for Cancer/Cancer Hospital, Chinese Academy of Medical Sciences and Peking Union Medical College, Beijing 100021, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>He</LastName>
+            <ForeName>J</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Thoracic Surgery, National Cancer Center/National Clinical Research Center for Cancer/Cancer Hospital, Chinese Academy of Medical Sciences and Peking Union Medical College, Beijing 100021, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>chi</Language>
+        <GrantList CompleteYN="Y">
+          <Grant>
+            <GrantID>2024-2G-40214</GrantID>
+            <Agency>Capital's Funds for Health Improvement and Research</Agency>
+            <Country/>
+          </Grant>
+          <Grant>
+            <GrantID>2021-I2M-1-010, 2021-I2M-1-011</GrantID>
+            <Agency>Major State Basic Innovation Program of the Chinese Academy of Medical Sciences</Agency>
+            <Country/>
+          </Grant>
+        </GrantList>
+        <PublicationTypeList>
+          <PublicationType UI="D004740">English Abstract</PublicationType>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>China</Country>
+        <MedlineTA>Zhonghua Zhong Liu Za Zhi</MedlineTA>
+        <NlmUniqueID>7910681</NlmUniqueID>
+        <ISSNLinking>0253-3766</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015994" MajorTopicYN="N">Incidence</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D014505" MajorTopicYN="N">Urban Population</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008113" MajorTopicYN="Y">Liver Neoplasms</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008175" MajorTopicYN="Y">Lung Neoplasms</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D012424" MajorTopicYN="N">Rural Population</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002681" MajorTopicYN="N" Type="Geographic">China</DescriptorName>
+          <QualifierName UI="Q000453" MajorTopicYN="N">epidemiology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D012042" MajorTopicYN="N">Registries</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015179" MajorTopicYN="Y">Colorectal Neoplasms</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <OtherAbstract Type="Publisher" Language="chi">
+        <AbstractText><b>&#30446;&#30340;&#65306;</b> &#26681;&#25454;&#20840;&#22269;&#32959;&#30244;&#30331;&#35760;&#20013;&#24515;&#25910;&#38598;&#30340;&#32959;&#30244;&#30331;&#35760;&#25968;&#25454;&#65292;&#20272;&#35745;2022&#24180;&#20013;&#22269;&#24694;&#24615;&#32959;&#30244;&#27969;&#34892;&#24773;&#20917;&#12290; <b>&#26041;&#27861;&#65306;</b> &#32435;&#20837;700&#20010;&#32959;&#30244;&#30331;&#35760;&#22788;&#30340;2018&#24180;&#25968;&#25454;&#21644;106&#20010;&#30331;&#35760;&#22788;&#30340;2010&#8212;2018&#24180;&#25968;&#25454;&#65292;&#37319;&#29992;&#24180;&#40836;-&#26102;&#26399;-&#38431;&#21015;&#27169;&#22411;&#65292;&#25353;&#24615;&#21035;&#12289;&#22478;&#20065;&#20998;&#23618;&#65292;&#20272;&#35745;2022&#24180;&#24635;&#20307;&#21450;23&#31867;&#20027;&#35201;&#24694;&#24615;&#32959;&#30244;&#30340;&#20013;&#22269;&#20154;&#21475;&#24180;&#40836;&#26631;&#20934;&#21270;&#21457;&#30149;&#29575;&#65288;&#20013;&#26631;&#21457;&#30149;&#29575;&#65289;&#21644;&#27515;&#20129;&#29575;&#65288;&#20013;&#26631;&#27515;&#20129;&#29575;&#65289;&#12290;&#32467;&#21512;2022&#24180;&#20154;&#21475;&#25968;&#25454;&#65292;&#20272;&#35745;2022&#24180;&#20013;&#22269;&#24694;&#24615;&#32959;&#30244;&#21457;&#30149;&#21644;&#27515;&#20129;&#20363;&#25968;&#12290; <b>&#32467;&#26524;&#65306;</b> 2022&#24180;&#20013;&#22269;&#24694;&#24615;&#32959;&#30244;&#26032;&#21457;&#30149;&#20363;&#20272;&#35745;&#20026;482.47&#19975;&#65288;&#30007;&#24615;253.39&#19975;&#65292;&#22899;&#24615;229.08&#19975;&#65289;&#65292;&#20013;&#26631;&#21457;&#30149;&#29575;&#20026;208.58/10&#19975;&#65288;&#30007;&#24615;212.67/10&#19975;&#65292;&#22899;&#24615;208.08/10&#19975;&#65289;&#12290;&#22478;&#24066;&#22320;&#21306;&#24694;&#24615;&#32959;&#30244;&#26032;&#21457;&#30149;&#20363;&#32422;290.39&#19975;&#65292;&#20013;&#26631;&#21457;&#30149;&#29575;&#20026;212.95/10&#19975;&#65307;&#20892;&#26449;&#22320;&#21306;192.08&#19975;&#65292;&#20013;&#26631;&#21457;&#30149;&#29575;&#20026;199.65/10&#19975;&#12290;&#21457;&#30149;&#20363;&#25968;&#21069;5&#20301;&#30340;&#24694;&#24615;&#32959;&#30244;&#65288;&#32954;&#30284;106.06&#19975;&#65292;&#32467;&#30452;&#32928;&#30284;51.71&#19975;&#65292;&#30002;&#29366;&#33146;&#30284;46.61&#19975;&#65292;&#32925;&#30284;36.77&#19975;&#65292;&#22899;&#24615;&#20083;&#33146;&#30284;35.72&#19975;&#65289;&#21344;&#20840;&#37096;&#26032;&#21457;&#30149;&#20363;&#30340;57.4%&#12290;2022&#24180;&#20013;&#22269;&#24694;&#24615;&#32959;&#30244;&#27515;&#20129;&#30149;&#20363;&#20272;&#35745;&#20026;257.42&#19975;&#65288;&#30007;&#24615;162.93&#19975;&#65292;&#22899;&#24615;94.49&#19975;&#65289;&#65292;&#20013;&#26631;&#27515;&#20129;&#29575;&#20026;97.08/10&#19975;&#65288;&#30007;&#24615;127.70/10&#19975;&#65292;&#22899;&#24615;68.67/10&#19975;&#65289;&#12290;&#22478;&#24066;&#22320;&#21306;&#24694;&#24615;&#32959;&#30244;&#27515;&#20129;&#30149;&#20363;&#32422;140.06&#19975;&#65292;&#20013;&#26631;&#27515;&#20129;&#29575;&#20026;92.37/10&#19975;&#65307;&#20892;&#26449;&#22320;&#21306;117.34&#19975;&#65292;&#20013;&#26631;&#27515;&#20129;&#29575;&#20026;103.97/10&#19975;&#12290;&#27515;&#20129;&#20363;&#25968;&#21069;5&#20301;&#30340;&#24694;&#24615;&#32959;&#30244;&#65288;&#32954;&#30284;73.33&#19975;&#65292;&#32925;&#30284;31.65&#19975;&#65292;&#32963;&#30284;26.04&#19975;&#65292;&#32467;&#30452;&#32928;&#30284;24.00&#19975;&#65292;&#39135;&#31649;&#30284;18.75&#19975;&#65289;&#21344;&#20840;&#37096;&#27515;&#20129;&#30149;&#20363;&#30340;67.5%&#12290;&#32954;&#30284;&#23621;&#30007;&#12289;&#22899;&#24694;&#24615;&#32959;&#30244;&#21457;&#30149;&#21644;&#27515;&#20129;&#39318;&#20301;&#65292;&#22478;&#24066;&#22320;&#21306;&#24694;&#24615;&#32959;&#30244;&#21457;&#30149;&#29575;&#39640;&#20110;&#20892;&#26449;&#22320;&#21306;&#65292;&#27515;&#20129;&#29575;&#20302;&#20110;&#20892;&#26449;&#22320;&#21306;&#12290; <b>&#32467;&#35770;&#65306;</b> &#20013;&#22269;&#24694;&#24615;&#32959;&#30244;&#30142;&#30149;&#36127;&#25285;&#23384;&#22312;&#24615;&#21035;&#12289;&#22478;&#20065;&#21644;&#22320;&#21306;&#24046;&#24322;&#65292;&#24635;&#20307;&#21576;&#29616;&#21457;&#36798;&#22269;&#23478;&#19982;&#21457;&#23637;&#20013;&#22269;&#23478;&#30284;&#35889;&#20849;&#23384;&#30340;&#23616;&#38754;&#65292;&#38450;&#25511;&#24418;&#21183;&#20005;&#23803;&#12290;.</AbstractText>
+      </OtherAbstract>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2024</Year>
+          <Month>3</Month>
+          <Day>22</Day>
+          <Hour>6</Hour>
+          <Minute>44</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2024</Year>
+          <Month>3</Month>
+          <Day>12</Day>
+          <Hour>6</Hour>
+          <Minute>43</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2024</Year>
+          <Month>3</Month>
+          <Day>12</Day>
+          <Hour>3</Hour>
+          <Minute>7</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">38468501</ArticleId>
+        <ArticleId IdType="doi">10.3760/cma.j.cn112152-20240119-00035</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

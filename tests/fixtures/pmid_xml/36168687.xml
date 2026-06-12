@@ -1,0 +1,151 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Automated">
+      <PMID Version="1">36168687</PMID>
+      <DateCompleted>
+        <Year>2022</Year>
+        <Month>09</Month>
+        <Day>29</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2022</Year>
+        <Month>09</Month>
+        <Day>29</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">1997-7298</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>122</Volume>
+            <Issue>9</Issue>
+            <PubDate>
+              <Year>2022</Year>
+            </PubDate>
+          </JournalIssue>
+          <Title>Zhurnal nevrologii i psikhiatrii imeni S.S. Korsakova</Title>
+          <ISOAbbreviation>Zh Nevrol Psikhiatr Im S S Korsakova</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Mitochondrial dysfunction].</ArticleTitle>
+        <Pagination>
+          <StartPage>48</StartPage>
+          <EndPage>53</EndPage>
+          <MedlinePgn>48-53</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.17116/jnevro202212209148</ELocationID>
+        <Abstract>
+          <AbstractText>Hypoergos-energy deficiency, i.e., a mismatch between the body's (tissue, organ, cell) need for energy and the limited amount of macroergs (ATP) that can currently be used to maintain the structural integrity and functional activity of a tissue or organ. The main role in the development of hypoergoses is played by damage to mitochondria, therefore, in recent years, this term has been replaced by mitochondrial dysfunction. Over the past 50 years, drugs have been actively studied and developed that have the ability to influence mitochondrial disorders, both primary and secondary mitochondrial diseases. In this context, Cytochrome C, an original antioxidant/antihypoxant with a dual mechanism of action, deserves attention.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Putilina</LastName>
+            <ForeName>M V</ForeName>
+            <Initials>MV</Initials>
+            <Identifier Source="ORCID">0000-0002-8655-8501</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Pirogov Russian National Research Medical University, Moscow, Russia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>rus</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>Mitokhondrial'naya disfunktsiya.</VernacularTitle>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Russia (Federation)</Country>
+        <MedlineTA>Zh Nevrol Psikhiatr Im S S Korsakova</MedlineTA>
+        <NlmUniqueID>9712194</NlmUniqueID>
+        <ISSNLinking>1997-7298</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D000975">Antioxidants</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>8L70Q75FXE</RegistryNumber>
+          <NameOfSubstance UI="D000255">Adenosine Triphosphate</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>9007-43-6</RegistryNumber>
+          <NameOfSubstance UI="D045304">Cytochromes c</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000255" MajorTopicYN="N">Adenosine Triphosphate</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000975" MajorTopicYN="Y">Antioxidants</DescriptorName>
+          <QualifierName UI="Q000494" MajorTopicYN="N">pharmacology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D045304" MajorTopicYN="N">Cytochromes c</DescriptorName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004734" MajorTopicYN="N">Energy Metabolism</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008928" MajorTopicYN="N">Mitochondria</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D028361" MajorTopicYN="Y">Mitochondrial Diseases</DescriptorName>
+          <QualifierName UI="Q000188" MajorTopicYN="N">drug therapy</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D018384" MajorTopicYN="N">Oxidative Stress</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <OtherAbstract Type="Publisher" Language="rus">
+        <AbstractText>&#1069;&#1085;&#1077;&#1088;&#1075;&#1077;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1072;&#1103; &#1085;&#1077;&#1076;&#1086;&#1089;&#1090;&#1072;&#1090;&#1086;&#1095;&#1085;&#1086;&#1089;&#1090;&#1100; &#8212; &#1085;&#1077;&#1089;&#1086;&#1086;&#1090;&#1074;&#1077;&#1090;&#1089;&#1090;&#1074;&#1080;&#1077; &#1084;&#1077;&#1078;&#1076;&#1091; &#1087;&#1086;&#1090;&#1088;&#1077;&#1073;&#1085;&#1086;&#1089;&#1090;&#1100;&#1102; &#1086;&#1088;&#1075;&#1072;&#1085;&#1080;&#1079;&#1084;&#1072; &#1074; &#1101;&#1085;&#1077;&#1088;&#1075;&#1080;&#1080; &#1080; &#1090;&#1077;&#1084; &#1086;&#1075;&#1088;&#1072;&#1085;&#1080;&#1095;&#1077;&#1085;&#1085;&#1099;&#1084; &#1082;&#1086;&#1083;&#1080;&#1095;&#1077;&#1089;&#1090;&#1074;&#1086;&#1084; &#1084;&#1072;&#1082;&#1088;&#1086;&#1101;&#1088;&#1075;&#1086;&#1074; (&#1040;&#1058;&#1060;), &#1082;&#1086;&#1090;&#1086;&#1088;&#1086;&#1077; &#1084;&#1086;&#1078;&#1077;&#1090; &#1074; &#1076;&#1072;&#1085;&#1085;&#1099;&#1081; &#1084;&#1086;&#1084;&#1077;&#1085;&#1090; &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1100;&#1089;&#1103; &#1076;&#1083;&#1103; &#1087;&#1086;&#1076;&#1076;&#1077;&#1088;&#1078;&#1072;&#1085;&#1080;&#1103; &#1077;&#1075;&#1086; &#1089;&#1090;&#1088;&#1091;&#1082;&#1090;&#1091;&#1088;&#1085;&#1086;&#1081; &#1094;&#1077;&#1083;&#1086;&#1089;&#1090;&#1085;&#1086;&#1089;&#1090;&#1080; &#1080; &#1092;&#1091;&#1085;&#1082;&#1094;&#1080;&#1086;&#1085;&#1072;&#1083;&#1100;&#1085;&#1086;&#1081; &#1072;&#1082;&#1090;&#1080;&#1074;&#1085;&#1086;&#1089;&#1090;&#1080; &#1090;&#1082;&#1072;&#1085;&#1080;. &#1043;&#1083;&#1072;&#1074;&#1085;&#1091;&#1102; &#1088;&#1086;&#1083;&#1100; &#1074; &#1088;&#1072;&#1079;&#1074;&#1080;&#1090;&#1080;&#1080; &#1101;&#1085;&#1077;&#1088;&#1075;&#1077;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1081; &#1085;&#1077;&#1076;&#1086;&#1089;&#1090;&#1072;&#1090;&#1086;&#1095;&#1085;&#1086;&#1089;&#1090;&#1080; &#1080;&#1075;&#1088;&#1072;&#1077;&#1090; &#1087;&#1086;&#1074;&#1088;&#1077;&#1078;&#1076;&#1077;&#1085;&#1080;&#1077; &#1084;&#1080;&#1090;&#1086;&#1093;&#1086;&#1085;&#1076;&#1088;&#1080;&#1081;, &#1087;&#1086;&#1101;&#1090;&#1086;&#1084;&#1091; &#1074; &#1087;&#1086;&#1089;&#1083;&#1077;&#1076;&#1085;&#1080;&#1077; &#1075;&#1086;&#1076;&#1099; &#1101;&#1090;&#1086;&#1090; &#1090;&#1077;&#1088;&#1084;&#1080;&#1085; &#1079;&#1072;&#1084;&#1077;&#1085;&#1077;&#1085; &#1085;&#1072; &#1084;&#1080;&#1090;&#1086;&#1093;&#1086;&#1085;&#1076;&#1088;&#1080;&#1072;&#1083;&#1100;&#1085;&#1091;&#1102; &#1076;&#1080;&#1089;&#1092;&#1091;&#1085;&#1082;&#1094;&#1080;&#1102;. &#1055;&#1086;&#1089;&#1083;&#1077;&#1076;&#1085;&#1080;&#1077; 50 &#1083;&#1077;&#1090; &#1072;&#1082;&#1090;&#1080;&#1074;&#1085;&#1086; &#1080;&#1079;&#1091;&#1095;&#1072;&#1102;&#1090;&#1089;&#1103; &#1080; &#1088;&#1072;&#1079;&#1088;&#1072;&#1073;&#1072;&#1090;&#1099;&#1074;&#1072;&#1102;&#1090;&#1089;&#1103; &#1083;&#1077;&#1082;&#1072;&#1088;&#1089;&#1090;&#1074;&#1077;&#1085;&#1085;&#1099;&#1077; &#1089;&#1088;&#1077;&#1076;&#1089;&#1090;&#1074;&#1072;, &#1089;&#1087;&#1086;&#1089;&#1086;&#1073;&#1085;&#1099;&#1077; &#1086;&#1082;&#1072;&#1079;&#1099;&#1074;&#1072;&#1090;&#1100; &#1074;&#1086;&#1079;&#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1077; &#1082;&#1072;&#1082; &#1085;&#1072; &#1087;&#1077;&#1088;&#1074;&#1080;&#1095;&#1085;&#1099;&#1077;, &#1090;&#1072;&#1082; &#1080; &#1085;&#1072; &#1074;&#1090;&#1086;&#1088;&#1080;&#1095;&#1085;&#1099;&#1077; &#1084;&#1080;&#1090;&#1086;&#1093;&#1086;&#1085;&#1076;&#1088;&#1080;&#1072;&#1083;&#1100;&#1085;&#1099;&#1077; &#1079;&#1072;&#1073;&#1086;&#1083;&#1077;&#1074;&#1072;&#1085;&#1080;&#1103;. &#1042; &#1101;&#1090;&#1086;&#1084; &#1082;&#1086;&#1085;&#1090;&#1077;&#1082;&#1089;&#1090;&#1077; &#1079;&#1072;&#1089;&#1083;&#1091;&#1078;&#1080;&#1074;&#1072;&#1077;&#1090; &#1074;&#1085;&#1080;&#1084;&#1072;&#1085;&#1080;&#1103; &#1087;&#1088;&#1077;&#1087;&#1072;&#1088;&#1072;&#1090; &#1062;&#1080;&#1090;&#1086;&#1093;&#1088;&#1086;&#1084; &#1057; &#8212; &#1086;&#1088;&#1080;&#1075;&#1080;&#1085;&#1072;&#1083;&#1100;&#1085;&#1099;&#1081; &#1072;&#1085;&#1090;&#1080;&#1086;&#1082;&#1089;&#1080;&#1076;&#1072;&#1085;&#1090;/&#1072;&#1085;&#1090;&#1080;&#1075;&#1080;&#1087;&#1086;&#1082;&#1089;&#1072;&#1085;&#1090;.</AbstractText>
+      </OtherAbstract>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">ATP</Keyword>
+        <Keyword MajorTopicYN="N">Cytochrome C</Keyword>
+        <Keyword MajorTopicYN="N">antihypoxants</Keyword>
+        <Keyword MajorTopicYN="N">antioxidants</Keyword>
+        <Keyword MajorTopicYN="N">energy deficiency</Keyword>
+        <Keyword MajorTopicYN="N">mitochondrial diseases</Keyword>
+        <Keyword MajorTopicYN="N">mitochondrial dysfunction</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2022</Year>
+          <Month>9</Month>
+          <Day>28</Day>
+          <Hour>2</Hour>
+          <Minute>28</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2022</Year>
+          <Month>9</Month>
+          <Day>29</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2022</Year>
+          <Month>9</Month>
+          <Day>30</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">36168687</ArticleId>
+        <ArticleId IdType="doi">10.17116/jnevro202212209148</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

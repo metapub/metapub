@@ -1,0 +1,655 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">23435529</PMID>
+      <DateCompleted>
+        <Year>2014</Year>
+        <Month>04</Month>
+        <Day>11</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2021</Year>
+        <Month>10</Month>
+        <Day>21</Day>
+      </DateRevised>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISSN IssnType="Electronic">1573-7330</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>30</Volume>
+            <Issue>4</Issue>
+            <PubDate>
+              <Year>2013</Year>
+              <Month>Apr</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Journal of assisted reproduction and genetics</Title>
+          <ISOAbbreviation>J Assist Reprod Genet</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Lower sperm DNA fragmentation after r-FSH administration in functional hypogonadotropic hypogonadism.</ArticleTitle>
+        <Pagination>
+          <StartPage>497</StartPage>
+          <EndPage>503</EndPage>
+          <MedlinePgn>497-503</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1007/s10815-013-9951-y</ELocationID>
+        <Abstract>
+          <AbstractText Label="PURPOSE" NlmCategory="OBJECTIVE">An observational clinical and molecular study was designed to evaluate the effects of the administration of recombinant human FSH on sperm DNA fragmentation in men with a non-classical form of hypogonadotropic hypogonadism and idiopathic oligoasthenoteratozoospermia.</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">In the study were included 53 men with a non-classical form of hypogonadotropic hypogonadism and idiopathic oligoasthenoteratozoospermia. In all patients, sperm DNA fragmentation index (DFI), assessed by terminal deoxynucleotidyl transferase-mediated deoxyuridine triphosphate (dUTP) in situ DNA nick end-labelling (TUNEL) assay, was evaluated before starting the treatment with 150 IU of recombinant human FSH, given three times a week for at least 3 months. Patients' semen analysis and DNA fragmentation index were re-evaluated after the 3-month treatment period.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">After recombinant human FSH therapy, we did not find any differences in terms of sperm count, motility and morphology. The average DNA fragmentation index was significantly reduced (21.15 vs 15.2, p&lt;0.05), but we found a significant reduction in patients with high basal DFI values (&gt;15 %), while no significant variation occurred in the patients with DFI values &#8804; 15 %.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">Recombinant human FSH administration improves sperm DNA integrity in hypogonadotropic hypogonadism and idiopathic oligoasthenoteratozoospermia men with DNA fragmentation index value &gt;15 % .</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Ruvolo</LastName>
+            <ForeName>Giovanni</ForeName>
+            <Initials>G</Initials>
+            <AffiliationInfo>
+              <Affiliation>Centro di Biologia della Riproduzione, via V. Villareale 54, 90141, Palermo, Italy. ruvologi@hotmail.com</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Roccheri</LastName>
+            <ForeName>Maria Carmela</ForeName>
+            <Initials>MC</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Brucculeri</LastName>
+            <ForeName>Anna Maria</ForeName>
+            <Initials>AM</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Longobardi</LastName>
+            <ForeName>Salvatore</ForeName>
+            <Initials>S</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Cittadini</LastName>
+            <ForeName>Ettore</ForeName>
+            <Initials>E</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Bosco</LastName>
+            <ForeName>Liana</ForeName>
+            <Initials>L</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2013</Year>
+          <Month>02</Month>
+          <Day>24</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Netherlands</Country>
+        <MedlineTA>J Assist Reprod Genet</MedlineTA>
+        <NlmUniqueID>9206495</NlmUniqueID>
+        <ISSNLinking>1058-0468</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D043373">Follicle Stimulating Hormone, Human</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D011994">Recombinant Proteins</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000328" MajorTopicYN="N">Adult</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D053627" MajorTopicYN="N">Asthenozoospermia</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D053938" MajorTopicYN="Y">DNA Fragmentation</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D043373" MajorTopicYN="N">Follicle Stimulating Hormone, Human</DescriptorName>
+          <QualifierName UI="Q000008" MajorTopicYN="Y">administration &amp; dosage</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D007006" MajorTopicYN="N">Hypogonadism</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="Y">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009845" MajorTopicYN="N">Oligospermia</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011994" MajorTopicYN="N">Recombinant Proteins</DescriptorName>
+          <QualifierName UI="Q000008" MajorTopicYN="N">administration &amp; dosage</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D013076" MajorTopicYN="N">Sperm Count</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D013094" MajorTopicYN="N">Spermatozoa</DescriptorName>
+          <QualifierName UI="Q000166" MajorTopicYN="N">cytology</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="Y">metabolism</QualifierName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="received">
+          <Year>2012</Year>
+          <Month>11</Month>
+          <Day>6</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="accepted">
+          <Year>2013</Year>
+          <Month>1</Month>
+          <Day>28</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2013</Year>
+          <Month>2</Month>
+          <Day>26</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2013</Year>
+          <Month>2</Month>
+          <Day>26</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2014</Year>
+          <Month>4</Month>
+          <Day>12</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pmc-release">
+          <Year>2014</Year>
+          <Month>4</Month>
+          <Day>1</Day>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">23435529</ArticleId>
+        <ArticleId IdType="pmc">PMC3644128</ArticleId>
+        <ArticleId IdType="doi">10.1007/s10815-013-9951-y</ArticleId>
+      </ArticleIdList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Adler ID. Spermatogenesis and mutagenicity of environmental hazards: extrapolation of genetic risk from mouse to man. Andrologia. 2000;32:233&#8211;237. doi: 10.1046/j.1439-0272.2000.00390.x.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1046/j.1439-0272.2000.00390.x</ArticleId>
+            <ArticleId IdType="pubmed">11021514</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Aitken RJ, De Iuliis GN. On the possible origins of DNA damage in human spermatozoa. Mol Hum Reprod. 2010;16:3&#8211;13. doi: 10.1093/molehr/gap059.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/molehr/gap059</ArticleId>
+            <ArticleId IdType="pubmed">19648152</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Arnaldi G, Balercia G, Barbatelli G, Mantero F. Effects of long-term treatment with human pure follicle-stimulating hormone on semen parameters and sperm-cell ultrastructure in idiopathic oligoteratoasthenozoospermia. Andrologia. 2000;32:155&#8211;161. doi: 10.1046/j.1439-0272.2000.00358.x.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1046/j.1439-0272.2000.00358.x</ArticleId>
+            <ArticleId IdType="pubmed">10863970</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Attia AM, Al-Inany HG, Farquhar C, Proctor M: Gonadotrophins for idiopathic male factor subfertility. Cochrane Database Syst Rev 2007, CD005071.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">17943837</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ben-Rafael Z, Farhi J, Feldberg D, Bartoov B, Kovo M, Eltes F, et al. Follicle-stimulating hormone treatment for men with idiopathic oligoteratoasthenozoospermia before in vitro fertilization: the impact on sperm microstructure and fertilization potential. Fertil Steril. 2000;73:24&#8211;30. doi: 10.1016/S0015-0282(99)00461-6.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S0015-0282(99)00461-6</ArticleId>
+            <ArticleId IdType="pubmed">10632407</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Berkovitz A, Eltes F, Ellenbogen A, Peer S, Feldberg D, Bartoov B. Does the presence of nuclear vacuoles in human sperm selected for ICSI affect pregnancy outcome? Hum Reprod. 2006;21:1787&#8211;1790. doi: 10.1093/humrep/del049.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/humrep/del049</ArticleId>
+            <ArticleId IdType="pubmed">16497697</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Bungum M, Humaidan P, Axmon A, Spano M, Bungum L, Erenpreiss J, et al. Sperm DNA integrity assessment in prediction of assisted reproduction technology outcome. Hum Reprod. 2007;22:174&#8211;179. doi: 10.1093/humrep/del326.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/humrep/del326</ArticleId>
+            <ArticleId IdType="pubmed">16921163</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Calogero A, Polosa R, Perdichizzi A, Guarino F, La Vignera S, Scarfia A, et al. Cigarette smoke extract immobilizes human spermatozoa and induces sperm apoptosis. Reprod Biomed Online. 2009;19:564&#8211;571. doi: 10.1016/j.rbmo.2009.05.004.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.rbmo.2009.05.004</ArticleId>
+            <ArticleId IdType="pubmed">19909599</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Caroppo E, Niederberger C, Vizziello GM, D&#8217;Amato G. Recombinant human follicle-stimulating hormone as a pretreatment for idiopathic oligoasthenoteratozoospermic patients undergoing intracytoplasmic sperm injection. Fertil Steril. 2003;80:1398&#8211;1403. doi: 10.1016/S0015-0282(03)02202-7.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S0015-0282(03)02202-7</ArticleId>
+            <ArticleId IdType="pubmed">14667875</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Chemes EH, Rawe YV. Sperm pathology: a step beyond descriptive morphology. Origin, characterization and fertility potential of abnormal sperm phenotypes in infertile men. Hum Reprod Updat. 2003;9:405&#8211;428. doi: 10.1093/humupd/dmg034.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/humupd/dmg034</ArticleId>
+            <ArticleId IdType="pubmed">14640375</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Colacurci N, Monti MG, Fornaro F, Izzo G, Izzo P, Trotta C, et al. Recombinant Human FSH Reduces Sperm DNA Fragmentation in Men with Idiopathic Oligoasthenoteratozoospermia. J Androl. 2012;33:588&#8211;593. doi: 10.2164/jandrol.111.013326.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.2164/jandrol.111.013326</ArticleId>
+            <ArticleId IdType="pubmed">21868752</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Comhaire FH, Christophe AB, Zalata AA, Dhooge WS, Mahmoud AM, Depuydt CE. The effects of combined conventional treatment, oral antioxidants and essential fatty acids on sperm biology in subfertile men. Prostaglandins Leukot Essent Fatty Acids. 2000;63:159&#8211;165. doi: 10.1054/plef.2000.0174.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1054/plef.2000.0174</ArticleId>
+            <ArticleId IdType="pubmed">10991774</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Efesoy O, &#199;ayan S, Akbay E. The efficacy of recombinant human follicle-stimulating hormone in the treatment of various types of male-factor infertility at a single University Hospital. J Androl. 2009;30(6):679&#8211;684. doi: 10.2164/jandrol.108.007278.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.2164/jandrol.108.007278</ArticleId>
+            <ArticleId IdType="pubmed">19478332</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Evenson DP, Jost LK, Marshall D, Zinaman MJ, Clegg E, Purvis K, et al. Utility of the sperm chromatin structure assay as a diagnostic and prognostic tool in the human fertility clinic. Hum Reprod. 1999;14:1039&#8211;1049. doi: 10.1093/humrep/14.4.1039.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/humrep/14.4.1039</ArticleId>
+            <ArticleId IdType="pubmed">10221239</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Foresta C, Bettella A, Garolla A, Ambrosini G, Ferlin A. Treatment of male idiopathic infertility with recombinant human follicle-stimulating hormone: a prospective, controlled, randomized clinical study. Fertil Steril. 2005;84:654&#8211;661. doi: 10.1016/j.fertnstert.2005.03.055.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.fertnstert.2005.03.055</ArticleId>
+            <ArticleId IdType="pubmed">16169399</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Foresta C, Selice R, Garolla A, Ferlin A. Follicle-stimulating hormone treatment of male infertility. Curr Opin Urol. 2008;18:602&#8211;607. doi: 10.1097/MOU.0b013e328313647d.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1097/MOU.0b013e328313647d</ArticleId>
+            <ArticleId IdType="pubmed">18832946</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Frydman N, Prisant N, Hesters L, Frydman R, Tachdjian G, Cohen-Bacrie P, et al. Adequate ovarian follicular status does not prevent the decrease in pregnancy rates associated with high sperm DNA fragmentation. Fertil Steril. 2008;89:92&#8211;97. doi: 10.1016/j.fertnstert.2007.02.022.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.fertnstert.2007.02.022</ArticleId>
+            <ArticleId IdType="pubmed">17482180</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Gandini L, Lombardo F, Paoli D, Caponecchia L, Familiari G, Verlengia C, et al. Study of apoptotic DNA fragmentation in human spermatozoa. Hum Reprod. 2000;15:830&#8211;839. doi: 10.1093/humrep/15.4.830.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/humrep/15.4.830</ArticleId>
+            <ArticleId IdType="pubmed">10739828</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Greco E, Romano S, Iacobelli M, Ferrero S, Baroni E, Minasi MG, et al. ICSI in cases of sperm DNA damage: beneficial effect of oral antioxidant treatment. Hum Reprod. 2005;20:2590&#8211;2594. doi: 10.1093/humrep/dei091.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/humrep/dei091</ArticleId>
+            <ArticleId IdType="pubmed">15932912</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Grunewald S, Paasch U, Glander HJ. Enrichment of non-apoptotic human spermatozoa after cryopreservation by immunomagnetic cell sorting. Cell Tissue Bank. 2001;2:127&#8211;133. doi: 10.1023/A:1020188913551.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1023/A:1020188913551</ArticleId>
+            <ArticleId IdType="pubmed">15256910</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Guzick DS, Overstreet JW, Factor-Litvak P, Brazil CK, Nakajima ST, Coutifaris C, et al. Sperm morphology, motility, and concentration in fertile and infertile men. N Engl J Med. 2001;345:1388&#8211;1393. doi: 10.1056/NEJMoa003005.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1056/NEJMoa003005</ArticleId>
+            <ArticleId IdType="pubmed">11794171</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Hikim AP, Wang C, Leung A, Swerdloff RS. Involvement of apoptosis in the induction of germ cell degeneration in adult rats after gonadotropin-releasing hormone antagonist treatment. Endocrinology. 1995;136:2770&#8211;2775. doi: 10.1210/en.136.6.2770.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1210/en.136.6.2770</ArticleId>
+            <ArticleId IdType="pubmed">7750502</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Jakab A, Sakkas D, Delpiano E, Cayli S, Kovanci E, Ward D, et al. Intracytoplasmic sperm injection: a novel selection method for sperm with normal frequency of chromosomal aneuploidies. Fertil Steril. 2005;84:1665&#8211;1673. doi: 10.1016/j.fertnstert.2005.05.068.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.fertnstert.2005.05.068</ArticleId>
+            <ArticleId IdType="pubmed">16359962</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Jones R, Mann T, Sherins R. Peroxidative breakdown of phospholipids in human spermatozoa, spermicidal properties of fatty acid peroxides, and protective action of seminal plasma. Fertil Steril. 1979;31:531&#8211;537.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">446777</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Jones R, Mann T, Sherins RJ. Adverse effects of peroxidized lipid on human spermatozoa. Proc R Soc Lond B Biol Sci. 1978;201:413&#8211;417. doi: 10.1098/rspb.1978.0053.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1098/rspb.1978.0053</ArticleId>
+            <ArticleId IdType="pubmed">27810</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ku WW, Wine RN, Chae BY, Ghanayem BI, Chapin RE. Spermatocyte toxicity of 2-methoxyethanol (ME) in rats and guinea pigs: evidence for the induction of apoptosis. Toxicol Appl Pharmacol. 1995;134:100&#8211;110. doi: 10.1006/taap.1995.1173.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1006/taap.1995.1173</ArticleId>
+            <ArticleId IdType="pubmed">7676444</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Leduc F, Nkoma GB, Boissonneault G. Spermiogenesis and DNA repair: a possible etiology of human infertility and genetic disorders. Syst Biol Reprod Med. 2008;54:3&#8211;10. doi: 10.1080/19396360701876823.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1080/19396360701876823</ArticleId>
+            <ArticleId IdType="pubmed">18543861</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Lenzi A, Balercia G, Bellastella A, Colao A, Fabbri A, Foresta C, et al. Epidemiology, diagnosis, and treatment of male hypogonadotropic hypogonadism. J Endocrinol Invest. 2009;32:934&#8211;938.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">19955846</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Lewis SE. Is sperm evaluation useful in predicting human fertility? Reproduction. 2007;134:31&#8211;40. doi: 10.1530/REP-07-0152.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1530/REP-07-0152</ArticleId>
+            <ArticleId IdType="pubmed">17641086</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Lewis SE, Aitken RJ. DNA damage to spermatozoa has impacts on fertilization and pregnancy. Cell Tissue Res. 2005;322:33&#8211;41. doi: 10.1007/s00441-005-1097-5.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/s00441-005-1097-5</ArticleId>
+            <ArticleId IdType="pubmed">15912407</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Li LH, Wine RN, Chapin RE. 2-Methoxyacetic acid (MAA)-induced spermatocyte apoptosis in human and rat testes: an in vitro comparison. J Androl. 1996;17:538&#8211;549.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">8957698</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Lin MH, Kuo-Kuang Lee R, Li SH, Lu CH, Sun FJ, Hwu YM. Sperm chromatin structure assay parameters are not related to fertilization rates, embryo quality, and pregnancy rates in in vitro fertilization and intracytoplasmic sperm injection, but might be related to spontaneous abortion rates. Fertil Steril. 2008;90:352&#8211;359. doi: 10.1016/j.fertnstert.2007.06.018.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.fertnstert.2007.06.018</ArticleId>
+            <ArticleId IdType="pubmed">17904130</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Lopes S, Sun JG, Jurisicova A, Meriano J, Casper RF. Sperm deoxyribonucleic acid fragmentation is increased in poor-quality semen samples and correlates with failed fertilization in intracytoplasmic sperm injection. Fertil Steril. 1998;69:528&#8211;532. doi: 10.1016/S0015-0282(97)00536-0.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S0015-0282(97)00536-0</ArticleId>
+            <ArticleId IdType="pubmed">9531891</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Lue TF. Topical and oral agents for erectile dysfunction. J Formos Med Assoc. 1999;98:233&#8211;241.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">10389366</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Marcon L, Boissonneault G. Transient DNA strand breaks during mouse and human spermiogenesis new insights in stage specificity and link to chromatin remodeling. Biol Reprod. 2004;70:910&#8211;918. doi: 10.1095/biolreprod.103.022541.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1095/biolreprod.103.022541</ArticleId>
+            <ArticleId IdType="pubmed">14645105</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Matsumoto AM, Snyder PJ, Bhasin S, Martin K, Weber T, Winters S, et al. Stimulation of spermatogenesis with recombinant human follicle-stimulating hormone (follitropin alfa; GONAL-f&#174;): long-term treatment in azoospermic men with hypogonadotropic hypogonadism. Fertil Steril. 2009;92:979&#8211;990. doi: 10.1016/j.fertnstert.2008.07.1742.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.fertnstert.2008.07.1742</ArticleId>
+            <ArticleId IdType="pubmed">18930190</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Meistrich ML. Effects of chemotherapy and radiotherapy on spermatogenesis. Eur Urol. 1993;23:136&#8211;141.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">8477773</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Menezo YJ, Hazout A, Panteix G, Robert F, Rollet J, Cohen-Bacrie P, et al. Antioxidants to reduce sperm DNA fragmentation: an unexpected adverse effect. Reprod Biomed Online. 2007;14:418&#8211;421. doi: 10.1016/S1472-6483(10)60887-5.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S1472-6483(10)60887-5</ArticleId>
+            <ArticleId IdType="pubmed">17425820</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Morris ID, Ilott S, Dixon L, Brison DR. The spectrum of DNA damage in human sperm assessed by single cell gel electrophoresis (Comet assay) and its relationship to fertilization and embryo development. Hum Reprod. 2002;17:990&#8211;998. doi: 10.1093/humrep/17.4.990.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/humrep/17.4.990</ArticleId>
+            <ArticleId IdType="pubmed">11925396</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Moustafa MH, Sharma RK, Thornton J, Mascha E, Abdel-Hafez MA, Thomas AJ, Jr, et al. Relationship between ROS production, apoptosis and DNA denaturation in spermatozoa from patients examined for infertility. Hum Reprod. 2004;19:129&#8211;138. doi: 10.1093/humrep/deh024.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/humrep/deh024</ArticleId>
+            <ArticleId IdType="pubmed">14688171</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Obasaju M, Kadam A, Sultan K, Fateh M, Munne S. Sperm quality may adversely affect the chromosome constitution of embryos that result from intracytoplasmic sperm injection. Fertil Steril. 1999;72:1113&#8211;1115. doi: 10.1016/S0015-0282(99)00391-X.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S0015-0282(99)00391-X</ArticleId>
+            <ArticleId IdType="pubmed">10593391</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ozmen B, Caglar GS, Koster F, Schopper B, Diedrich K, Al-Hasani S. Relationship between sperm DNA damage, induced acrosome reaction and viability in ICSI patients. Reprod Biomed Online. 2007;15:208&#8211;214. doi: 10.1016/S1472-6483(10)60710-9.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S1472-6483(10)60710-9</ArticleId>
+            <ArticleId IdType="pubmed">17697499</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Phillip M, Arbelle JE, Segev Y, Parvari R. Male hypogonadism due to a mutation in the gene for the beta-subunit of follicle-stimulating hormone. N Engl J Med. 1998;338:1729&#8211;1732. doi: 10.1056/NEJM199806113382404.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1056/NEJM199806113382404</ArticleId>
+            <ArticleId IdType="pubmed">9624193</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Practice Committee of American Society for Reproductive Medicine The clinical utility of sperm DNA integrity testing. Fertil Steril. 2008;90(5 Suppl):S178&#8211;S180.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">19007622</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ruwanpura SM, McLachlan RI, Stanton PG, Loveland KL, Meachem SJ. Pathways involved in testicular germ cell apoptosis in immature rats after FSH suppression. J Endocrinol. 2008;197:35&#8211;43. doi: 10.1677/JOE-07-0637.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1677/JOE-07-0637</ArticleId>
+            <ArticleId IdType="pubmed">18372230</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Safarinejad MR, Shafiei N, Safarinejad S. Association of polymorphisms in the estrogen receptors alpha, and beta (ESR1, ESR2) with the occurrence of male infertility and semen parameters. J Steroid Biochem Mol Biol. 2010;122:193&#8211;203. doi: 10.1016/j.jsbmb.2010.06.011.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jsbmb.2010.06.011</ArticleId>
+            <ArticleId IdType="pubmed">20599614</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Safarinejad MR, Shafiei N, Safarinejad S. Evaluating the role of the FSH receptor gene Thr307-Ala and Asn680-Ser polymorphisms in male infertility and their association with semen quality and reproductive hormones. BJU Int. 2011;108:E117&#8211;E125. doi: 10.1111/j.1464-410X.2010.09890.x.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1111/j.1464-410X.2010.09890.x</ArticleId>
+            <ArticleId IdType="pubmed">21105990</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sakkas D, Urner F, Bianchi PG, Bizzaro D, Wagner I, Jaquenoud N, et al. Sperm chromatin anomalies can influence decondensation after intracytoplasmic sperm injection. Hum Reprod. 1996;11:837&#8211;843. doi: 10.1093/oxfordjournals.humrep.a019263.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/oxfordjournals.humrep.a019263</ArticleId>
+            <ArticleId IdType="pubmed">8671337</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sakkas D, Alvarez JG. Sperm DNA fragmentation: mechanisms of origin, impact on reproductive outcome, and analysis. Fertil Steril. 2010;93:1027&#8211;1036. doi: 10.1016/j.fertnstert.2009.10.046.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.fertnstert.2009.10.046</ArticleId>
+            <ArticleId IdType="pubmed">20080235</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sakkas D, Mariethoz E, Manicardi G, Bizzaro D, Bianchi PG, Bianchi U. Origin of DNA damage in ejaculated human spermatozoa. Rev Reprod. 1999;4:31&#8211;37. doi: 10.1530/ror.0.0040031.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1530/ror.0.0040031</ArticleId>
+            <ArticleId IdType="pubmed">10051100</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sakkas D, Seli E, Bizzaro D, Tarozzi N, Manicardi GC. Abnormal spermatozoa in the ejaculate: abortive apoptosis and faulty nuclear remodelling during spermatogenesis. Reprod Biomed Online. 2003;7:428&#8211;432. doi: 10.1016/S1472-6483(10)61886-X.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S1472-6483(10)61886-X</ArticleId>
+            <ArticleId IdType="pubmed">14656403</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sawyer DE, Roman SD, Aitken RJ. Relative susceptibilities of mitochondrial and nuclear DNA to damage induced by hydrogen peroxide in two mouse germ cell lines. Redox Rep. 2001;6:182&#8211;184. doi: 10.1179/135100001101536157.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1179/135100001101536157</ArticleId>
+            <ArticleId IdType="pubmed">11523594</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Selice R, Garolla A, Pengo M, Caretta N, Ferlin A, Foresta C. The response to FSH treatment in oligozoospermic men depends on FSH receptor gene polymorphisms. Int J Androl. 2011;34:306&#8211;312. doi: 10.1111/j.1365-2605.2010.01086.x.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1111/j.1365-2605.2010.01086.x</ArticleId>
+            <ArticleId IdType="pubmed">20569270</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Seminara SB, Crowley WF., Jr Perspective: the importance of genetic defects in humans in elucidating the complexities of the hypothalamic-pituitary-gonadal axis. Endocrinology. 2001;142:2173&#8211;2177. doi: 10.1210/en.142.6.2173.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1210/en.142.6.2173</ArticleId>
+            <ArticleId IdType="pubmed">11356659</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sinha Hikim AP, Rajavashisth TB, Sinha Hikim I, Lue Y, Bonavera JJ, Leung A, et al. Significance of apoptosis in the temporal and stage-specific loss of germ cells in the adult rat after gonadotropin deprivation. Biol Reprod. 1997;57:1193&#8211;1201. doi: 10.1095/biolreprod57.5.1193.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1095/biolreprod57.5.1193</ArticleId>
+            <ArticleId IdType="pubmed">9369187</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sinisi AA, Esposito D, Bellastella G, Maione L, Palumbo V, Gandini L, et al. Efficacy of recombinant human follicle stimulating hormone at low doses in inducing spermatogenesis and fertility in hypogonadotropic hypogonadism. J Endocrinol Invest. 2010;33:618&#8211;623.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">20436264</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Spano M, Bonde JP, Hjollund HI, Kolstad HA, Cordelli E, Leter G. Sperm chromatin damage impairs human fertility. The Danish First Pregnancy Planner Study Team. Fertil Steril. 2000;73:43&#8211;50. doi: 10.1016/S0015-0282(99)00462-8.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S0015-0282(99)00462-8</ArticleId>
+            <ArticleId IdType="pubmed">10632410</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Strehler E, Sterzik K, De Santo M, Abt M, Wiedemann R, Bellati U, et al. The effect of follicle-stimulating hormone therapy on sperm quality: an ultrastructural mathematical evaluation. J Androl. 1997;18:439&#8211;447.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">9283958</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Tapanainen JS, Aittomaki K, Min J, Vaskivuo T, Huhtaniemi IT. Men homozygous for an inactivating mutation of the follicle-stimulating hormone (FSH) receptor gene present variable suppression of spermatogenesis and fertility. Nat Genet. 1997;15:205&#8211;206. doi: 10.1038/ng0297-205.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/ng0297-205</ArticleId>
+            <ArticleId IdType="pubmed">9020851</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Tarozzi N, Bizzaro D, Flamigni C, Borini A. Clinical relevance of sperm DNA damage in assisted reproduction. Reprod Biomed Online. 2007;14:746&#8211;757. doi: 10.1016/S1472-6483(10)60678-5.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S1472-6483(10)60678-5</ArticleId>
+            <ArticleId IdType="pubmed">17579991</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Tesarik J, Guido M, Mendoza C, Greco E. Human spermatogenesis in vitro: respective effects of follicle-stimulating hormone and testosterone on meiosis, spermiogenesis, and Sertoli cell apoptosis. J Clin Endocrinol Metab. 1998;83:4467&#8211;4473. doi: 10.1210/jc.83.12.4467.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1210/jc.83.12.4467</ArticleId>
+            <ArticleId IdType="pubmed">9851795</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Tesarik J, Martinez F, Rienzi L, Iacobelli M, Ubaldi F, Mendoza C, et al. In-vitro effects of FSH and testosterone withdrawal on caspase activation and DNA fragmentation in different cell types of human seminiferous epithelium. Hum Reprod. 2002;17:1811&#8211;1819. doi: 10.1093/humrep/17.7.1811.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/humrep/17.7.1811</ArticleId>
+            <ArticleId IdType="pubmed">12093844</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Walczak-Jedrzejowska R, Slowikowska-Hilczer J, Marchlewsk K, Oszukowska E, Kula K. During seminiferous tubule maturation testosterone and synergistic action of FSH with estradiol support germ cell survival while estradiol alone has pro-apoptotic effect. Folia Histochem Cytobiol. 2007;45(Suppl 1):S59&#8211;S64.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">18292837</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Warne DW, Decosterd G, Okada H, Yano Y, Koide N, Howles CM. A combined analysis of data to identify predictive factors for spermatogenesis in men with hypogonadotropic hypogonadism treated with recombinant human follicle-stimulating hormone and human chorionic gonadotropin. Fertil Steril. 2009;92:594&#8211;604. doi: 10.1016/j.fertnstert.2008.07.1720.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.fertnstert.2008.07.1720</ArticleId>
+            <ArticleId IdType="pubmed">18930225</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>WHO laboratory manual for the examination of human semen and sperm-cervical mucus interaction. Cambridge: Cambridge Academic Press; 2010.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Zhang Y, Wang H, Wang L, Zhou Z, Sha J, Mao Y, et al. The clinical significance of sperm DNA damage detection combined with routine semen testing in assisted reproduction. Mol Med Rep. 2008;1:617&#8211;624.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">21479459</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zini A, Boman JM, Belzile E, Ciampi A. Sperm DNA damage is associated with an increased risk of pregnancy loss after IVF and ICSI: systematic review and meta-analysis. Hum Reprod. 2008;23:2663&#8211;2668. doi: 10.1093/humrep/den321.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/humrep/den321</ArticleId>
+            <ArticleId IdType="pubmed">18757447</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

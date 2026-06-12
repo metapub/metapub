@@ -1,4 +1,5 @@
 import unittest
+import pytest
 
 from metapub.convert import pmid2doi, PubMedArticle2doi, bookid2pmid
 from metapub.crossref import TITLE_SIMILARITY_IDEAL_SCORE, TITLE_SIMILARITY_MIN_SCORE
@@ -56,7 +57,10 @@ class TestConversions(unittest.TestCase):
         #doi = pmid2doi(pmid_with_unknown_doi)
         #assert doi is None
 
+    @pytest.mark.live_network
     def test_bookid2pmid(self):
+        # Live NCBI ID conversion (bookID -> PMID via eutils): excluded from the
+        # offline CI run. A synthetic mock would only prove the mock works.
         for item in NCBI_BOOKS:
             assert item['pmid'] == bookid2pmid(item['book_id'])
 

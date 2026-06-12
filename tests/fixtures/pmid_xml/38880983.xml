@@ -1,0 +1,1431 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Curated">
+      <PMID Version="1">38880983</PMID>
+      <DateCompleted>
+        <Year>2024</Year>
+        <Month>06</Month>
+        <Day>17</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2025</Year>
+        <Month>07</Month>
+        <Day>21</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Electronic">2001-1326</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>14</Volume>
+            <Issue>6</Issue>
+            <PubDate>
+              <Year>2024</Year>
+              <Month>Jun</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Clinical and translational medicine</Title>
+          <ISOAbbreviation>Clin Transl Med</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Not Available].</ArticleTitle>
+        <Pagination>
+          <StartPage>e1666</StartPage>
+          <MedlinePgn>e1666</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="pii" ValidYN="Y">e1666</ELocationID>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1002/ctm2.1666</ELocationID>
+        <Abstract>
+          <AbstractText>Dysregulated RNA modifications, stemming from the aberrant expression and/or malfunction of RNA modification regulators operating through various pathways, play pivotal roles in driving the progression of haematological malignancies. Among RNA modifications, N<sup>6</sup>-methyladenosine (m<sup>6</sup>A) RNA modification, the most abundant internal mRNA modification, stands out as the most extensively studied modification. This prominence underscores the crucial role of the layer of epitranscriptomic regulation in controlling haematopoietic cell fate and therefore the development of haematological malignancies. Additionally, other RNA modifications (non-m<sup>6</sup>A RNA modifications) have gained increasing attention for their essential roles in haematological malignancies. Although the roles of the m<sup>6</sup>A modification machinery in haematopoietic malignancies have been well reviewed thus far, such reviews are lacking for non-m<sup>6</sup>A RNA modifications. In this review, we mainly focus on the roles and implications of non-m<sup>6</sup>A RNA modifications, including N<sup>4</sup>-acetylcytidine, pseudouridylation, 5-methylcytosine, adenosine to inosine editing, 2'-O-methylation, N<sup>1</sup>-methyladenosine and N<sup>7</sup>-methylguanosine in haematopoietic malignancies. We summarise the regulatory enzymes and cellular functions of non-m<sup>6</sup>A RNA modifications, followed by the discussions of the recent studies on the biological roles and underlying mechanisms of non-m<sup>6</sup>A RNA modifications in haematological malignancies. We also highlight the potential of therapeutically targeting dysregulated non-m<sup>6</sup>A modifiers in blood cancer.</AbstractText>
+          <CopyrightInformation>&#169; 2024 The Authors. Clinical and Translational Medicine published by John Wiley &amp; Sons Australia, Ltd on behalf of Shanghai Institute of Clinical Bioinformatics.</CopyrightInformation>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Chen</LastName>
+            <ForeName>Meiling</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Hematology, Fujian Institute of Hematology, Fujian Provincial Key Laboratory on Hematology, Fujian Medical University Union Hospital, Fuzhou, China.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Department of Systems Biology, Beckman Research Institute of City of Hope, Monrovia, California, USA.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Chen</LastName>
+            <ForeName>Yuanzhong</ForeName>
+            <Initials>Y</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Hematology, Fujian Institute of Hematology, Fujian Provincial Key Laboratory on Hematology, Fujian Medical University Union Hospital, Fuzhou, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Wang</LastName>
+            <ForeName>Kitty</ForeName>
+            <Initials>K</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Systems Biology, Beckman Research Institute of City of Hope, Monrovia, California, USA.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Deng</LastName>
+            <ForeName>Xiaolan</ForeName>
+            <Initials>X</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Systems Biology, Beckman Research Institute of City of Hope, Monrovia, California, USA.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Chen</LastName>
+            <ForeName>Jianjun</ForeName>
+            <Initials>J</Initials>
+            <Identifier Source="ORCID">0000-0003-3749-2902</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Department of Systems Biology, Beckman Research Institute of City of Hope, Monrovia, California, USA.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Gehr Family Center for Leukemia Research, City of Hope Medical Center and Comprehensive Cancer Center, Duarte, California, USA.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>ita</Language>
+        <GrantList CompleteYN="Y">
+          <Grant>
+            <GrantID>R01 CA236399</GrantID>
+            <Acronym>CA</Acronym>
+            <Agency>NCI NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+          <Grant>
+            <GrantID>R01 CA280389</GrantID>
+            <Acronym>NH</Acronym>
+            <Agency>NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+          <Grant>
+            <Agency>Simms/Mann Family Foundation</Agency>
+            <Country/>
+          </Grant>
+          <Grant>
+            <GrantID>R01 CA236399</GrantID>
+            <Acronym>NH</Acronym>
+            <Agency>NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+          <Grant>
+            <GrantID>R01 CA271497</GrantID>
+            <Acronym>NH</Acronym>
+            <Agency>NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+          <Grant>
+            <GrantID>R01 CA271497</GrantID>
+            <Acronym>CA</Acronym>
+            <Agency>NCI NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+          <Grant>
+            <GrantID>R01 CA280389</GrantID>
+            <Acronym>CA</Acronym>
+            <Agency>NCI NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+          <Grant>
+            <GrantID>R01 CA243386</GrantID>
+            <Acronym>NH</Acronym>
+            <Agency>NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+          <Grant>
+            <GrantID>R01 CA243386</GrantID>
+            <Acronym>CA</Acronym>
+            <Agency>NCI NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+        </GrantList>
+        <PublicationTypeList>
+          <PublicationType UI="D004740">English Abstract</PublicationType>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D016454">Review</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>Non&#8208;m<sup>6</sup>A RNA modifications in haematological malignancies.</VernacularTitle>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>Clin Transl Med</MedlineTA>
+        <NlmUniqueID>101597971</NlmUniqueID>
+        <ISSNLinking>2001-1326</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>63231-63-0</RegistryNumber>
+          <NameOfSubstance UI="D012313">RNA</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>K72T3FS567</RegistryNumber>
+          <NameOfSubstance UI="D000241">Adenosine</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>CLE6G00625</RegistryNumber>
+          <NameOfSubstance UI="C010223">N-methyladenosine</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D019337" MajorTopicYN="Y">Hematologic Neoplasms</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+          <QualifierName UI="Q000473" MajorTopicYN="N">pathology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D012323" MajorTopicYN="N">RNA Processing, Post-Transcriptional</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D012313" MajorTopicYN="N">RNA</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000241" MajorTopicYN="N">Adenosine</DescriptorName>
+          <QualifierName UI="Q000031" MajorTopicYN="N">analogs &amp; derivatives</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">epitranscriptomics</Keyword>
+        <Keyword MajorTopicYN="N">haematological malignancies</Keyword>
+        <Keyword MajorTopicYN="N">non&#8208;m6A RNA modification</Keyword>
+      </KeywordList>
+      <CoiStatement>The authors declare they have no conflicts of interest.</CoiStatement>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="revised">
+          <Year>2024</Year>
+          <Month>3</Month>
+          <Day>25</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="received">
+          <Year>2023</Year>
+          <Month>11</Month>
+          <Day>5</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="accepted">
+          <Year>2024</Year>
+          <Month>4</Month>
+          <Day>4</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2024</Year>
+          <Month>6</Month>
+          <Day>17</Day>
+          <Hour>6</Hour>
+          <Minute>45</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2024</Year>
+          <Month>6</Month>
+          <Day>17</Day>
+          <Hour>6</Hour>
+          <Minute>44</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2024</Year>
+          <Month>6</Month>
+          <Day>17</Day>
+          <Hour>0</Hour>
+          <Minute>42</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pmc-release">
+          <Year>2024</Year>
+          <Month>6</Month>
+          <Day>16</Day>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">38880983</ArticleId>
+        <ArticleId IdType="pmc">PMC11180698</ArticleId>
+        <ArticleId IdType="doi">10.1002/ctm2.1666</ArticleId>
+      </ArticleIdList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Huang H, Weng H, Chen J. m6A modification in coding and non&#8208;coding RNAs: roles and therapeutic implications in cancer. Cancer Cell. 2020;37(3):270&#8208;288.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7141420</ArticleId>
+            <ArticleId IdType="pubmed">32183948</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Yoon K&#8208;J, Vissers C, Ming G&#8208;L, Song H. Epigenetics and epitranscriptomics in temporal patterning of cortical neural progenitor competence. J Cell Biol. 2018;217(6):1901&#8208;1914.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5987727</ArticleId>
+            <ArticleId IdType="pubmed">29666150</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Deng X, Qing Y, Horne D, Huang H, Chen J. The roles and implications of RNA m(6)A modification in cancer. Nat Rev Clin Oncol. 2023;20(8):507&#8208;526.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC12466201</ArticleId>
+            <ArticleId IdType="pubmed">37221357</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Huang H, Weng H, Deng X, Chen J. RNA modifications in cancer: functions, mechanisms, and therapeutic implications. Annu Rev Cancer Biol. 2020;4:221&#8208;240.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Cayir A. RNA modifications as emerging therapeutic targets. Wiley Interdiscip Rev RNA. 2022;13(4):e1702.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">34816607</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Han L, Chen J, Su R. Epitranscriptomics in myeloid malignancies. Blood Sci. 2022;4(03):133&#8208;135.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC9742087</ArticleId>
+            <ArticleId IdType="pubmed">36518589</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhang Y, Yang Y. Effects of m6A RNA methylation regulators on endometrial cancer. J Clin Lab Anal. 2021;35(9):e23942.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8418492</ArticleId>
+            <ArticleId IdType="pubmed">34347888</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Farooqi AA, Fayyaz S, Poltronieri P, Calin G, Mallardo M. Epigenetic deregulation in cancer: enzyme players and non&#8208;coding RNAs. Semin Cancer Biol. 2022;83:197&#8208;207.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">32738290</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Esteve&#8208;Puig R, Bueno&#8208;Costa A, Esteller M. Writers, readers and erasers of RNA modifications in cancer. Cancer Lett. 2020;474:127&#8208;137.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">31991154</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Cusenza VY, Tameni A, Neri A, Frazzi R. The lncRNA epigenetics: the significance of m6A and m5C lncRNA modifications in cancer. Front Oncol. 2023;13:1063636.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC10033960</ArticleId>
+            <ArticleId IdType="pubmed">36969033</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Li Z, Weng H, Su R, et&#160;al. FTO plays an oncogenic role in acute myeloid leukemia as a N6&#8208;methyladenosine RNA demethylase. Cancer Cell. 2017;31(1):127&#8208;141.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5234852</ArticleId>
+            <ArticleId IdType="pubmed">28017614</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Su R, Dong L, Li C, et&#160;al. R&#8208;2HG exhibits anti&#8208;tumor activity by targeting FTO/m(6)A/MYC/CEBPA signaling. Cell. 2018;172(1&#8208;2):90&#8208;105. e123.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5766423</ArticleId>
+            <ArticleId IdType="pubmed">29249359</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Weng H, Huang H, Wu H, et&#160;al. METTL14 inhibits hematopoietic stem/progenitor differentiation and promotes leukemogenesis via mRNA m(6)A modification. Cell Stem Cell. 2018;22(2):191&#8208;205. e199.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5860916</ArticleId>
+            <ArticleId IdType="pubmed">29290617</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Vu LP, Pickering BF, Cheng Y, et&#160;al. The N(6)&#8208;methyladenosine (m(6)A)&#8208;forming enzyme METTL3 controls myeloid differentiation of normal hematopoietic and leukemia cells. Nat Med. 2017;23(11):1369&#8208;1376.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5677536</ArticleId>
+            <ArticleId IdType="pubmed">28920958</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Shen C, Sheng Y, Zhu AC, et&#160;al. RNA demethylase ALKBH5 selectively promotes tumorigenesis and cancer stem cell self&#8208;renewal in acute myeloid leukemia. Cell Stem Cell. 2020;27(1):64&#8208;80. e69.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7335338</ArticleId>
+            <ArticleId IdType="pubmed">32402250</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Paris J, Morgan M, Campos J, et&#160;al. Targeting the RNA m(6)A reader YTHDF2 selectively compromises cancer stem cells in acute myeloid leukemia. Cell Stem Cell. 2019;25(1):137&#8208;148. e136.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6617387</ArticleId>
+            <ArticleId IdType="pubmed">31031138</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Huang Y, Su R, Sheng Y, et&#160;al. Small&#8208;molecule targeting of oncogenic FTO demethylase in acute myeloid leukemia. Cancer Cell. 2019;35:677&#8208;691.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6812656</ArticleId>
+            <ArticleId IdType="pubmed">30991027</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Barbieri I, Tzelepis K, Pandolfini L, et&#160;al. Promoter&#8208;bound METTL3 maintains myeloid leukaemia by m(6)A&#8208;dependent translation control. Nature. 2017;552(7683):126&#8208;131.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6217924</ArticleId>
+            <ArticleId IdType="pubmed">29186125</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wang J, Li Y, Wang P, et&#160;al. Leukemogenic chromatin alterations promote AML leukemia stem cells via a KDM4C&#8210;ALKBH5&#8210;AXL signaling axis. Cell Stem Cell. 2020;27(1):81&#8208;97. e88.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">32402251</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Su R, Dong L, Li Y, et&#160;al. Targeting FTO suppresses cancer stem cell maintenance and immune evasion. Cancer Cell. 2020;38(1):79&#8208;96. e11.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7363590</ArticleId>
+            <ArticleId IdType="pubmed">32531268</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Qing Y, Dong L, Gao L, et&#160;al. R&#8208;2&#8208;hydroxyglutarate attenuates aerobic glycolysis in leukemia by targeting the FTO/m(6)A/PFKP/LDHB axis. Mol Cell. 2021;81(5):922&#8208;939. e929.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7935770</ArticleId>
+            <ArticleId IdType="pubmed">33434505</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Cheng Y, Xie W, Pickering BF, et&#160;al. N(6)&#8208;Methyladenosine on mRNA facilitates a phase&#8208;separated nuclear body that suppresses myeloid leukemic differentiation. Cancer Cell. 2021;39(7):958&#8208;972. e958.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8282764</ArticleId>
+            <ArticleId IdType="pubmed">34048709</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sheng Y, Wei J, Yu F, et&#160;al. A critical role of nuclear m6A reader YTHDC1 in leukemogenesis by regulating MCM complex&#8208;mediated DNA replication. Blood. 2021;138(26):2838&#8208;2852.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8718631</ArticleId>
+            <ArticleId IdType="pubmed">34255814</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Weng H, Huang F, Yu Z, et&#160;al. The m(6)A reader IGF2BP2 regulates glutamine metabolism and represents a therapeutic target in acute myeloid leukemia. Cancer Cell. 2022;40:1&#8208;17.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC9772162</ArticleId>
+            <ArticleId IdType="pubmed">36306790</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhang Z, Zhou K, Han L, et&#160;al. RNA m(6)A reader YTHDF2 facilitates precursor miR&#8208;126 maturation to promote acute myeloid leukemia progression. Genes Dis. 2024;11(1):382&#8208;396.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC10425806</ArticleId>
+            <ArticleId IdType="pubmed">37588203</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Li Y, Xue M, Deng X, et&#160;al. TET2&#8208;mediated mRNA demethylation regulates leukemia stem cell homing and self&#8208;renewal. Cell Stem Cell. 2023;30(8):1072&#8208;1090. e1010.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC11166201</ArticleId>
+            <ArticleId IdType="pubmed">37541212</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Han L, Dong L, Leung K, et&#160;al. METTL16 drives leukemogenesis and leukemia stem cell self&#8208;renewal by reprogramming BCAA metabolism. Cell Stem Cell. 2023;30(1):52&#8208;68. e13.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC9838187</ArticleId>
+            <ArticleId IdType="pubmed">36608679</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Weng H, Huang H, Chen J. RNA N (6)&#8208;methyladenosine modification in normal and malignant hematopoiesis. Adv Exp Med Biol. 2019;1143:75&#8208;93.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">31338816</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Deng X, Su R, Weng H, Huang H, Li Z, Chen J. RNA N(6)&#8208;methyladenosine modification in cancers: current status and perspectives. Cell Res. 2018;28(5):507&#8208;517.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5951805</ArticleId>
+            <ArticleId IdType="pubmed">29686311</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Qing Y, Su R, Chen J. RNA modifications in hematopoietic malignancies: a new research frontier. Blood. 2021;138(8):637&#8208;648.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8394902</ArticleId>
+            <ArticleId IdType="pubmed">34157073</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sun H, Li K, Liu C, Yi C. Regulation and functions of non&#8208;m(6)A mRNA modifications. Nat Rev Mol Cell Biol. 2023;24(10):714&#8208;731.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">37369853</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Jin G, Xu M, Zou M, Duan S. The processing, gene regulation, biological functions, and clinical relevance of N4&#8208;acetylcytidine on RNA: a systematic review. Mol Ther Nucleic Acids. 2020;20:13&#8208;24.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7068197</ArticleId>
+            <ArticleId IdType="pubmed">32171170</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zachau HG, D&#252;tting B, Feldmann H. The structures of two serine transfer ribonucleic acids. Hoppe Seylers Z Physiol Chem. 1966;347(4):212&#8208;235.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">5991670</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>
+Bruenger E, Kowalak JA, Kuchino Y, et&#160;al. 5S rRNA modification in the hyperthermophilic archaea <i>Sulfolobus solfataricus</i> and <i>Pyrodictium occultum</i>
+. FASEB J. 1993;7(1):196&#8208;200.
+</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">8422966</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Arango D, Sturgill D, Alhusaini N, et&#160;al. Acetylation of cytidine in mRNA promotes translation efficiency. Cell. 2018;175(7):1872&#8208;1886. e1824.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6295233</ArticleId>
+            <ArticleId IdType="pubmed">30449621</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Liu R, Wubulikasimu Z, Cai R, et&#160;al. NAT10&#8208;mediated N4&#8208;acetylcytidine mRNA modification regulates self&#8208;renewal in human embryonic stem cells. Nucleic Acids Res. 2023;51(16):8514&#8208;8531.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC10484679</ArticleId>
+            <ArticleId IdType="pubmed">37497776</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Arango D, Sturgill D, Yang R, et&#160;al. Direct epitranscriptomic regulation of mammalian translation initiation through N4&#8208;acetylcytidine. Mol Cell. 2022;82(15):2797&#8208;2814. e2711.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC9361928</ArticleId>
+            <ArticleId IdType="pubmed">35679869</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sas&#8208;Chen A, Thomas JM, Matzov D, et&#160;al. Dynamic RNA acetylation revealed by quantitative cross&#8208;evolutionary mapping. Nature. 2020;583(7817):638&#8208;643.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8130014</ArticleId>
+            <ArticleId IdType="pubmed">32555463</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ikeuchi Y, Kitahara K, Suzuki T. The RNA acetyltransferase driven by ATP hydrolysis synthesizes N4&#8208;acetylcytidine of tRNA anticodon. EMBO J. 2008;27(16):2194&#8208;2203.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC2500205</ArticleId>
+            <ArticleId IdType="pubmed">18668122</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sharma S, Langhendries J&#8208;L, Watzinger P, K&#246;tter P, Entian K&#8208;D, Lafontaine DL. Yeast Kre33 and human NAT10 are conserved 18S rRNA cytosine acetyltransferases that modify tRNAs assisted by the adaptor Tan1/THUMPD1. Nucleic Acids Res. 2015;43(4):2242&#8208;2258.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC4344512</ArticleId>
+            <ArticleId IdType="pubmed">25653167</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Liao L, He Y, Li SJ, et&#160;al. Lysine 2&#8208;hydroxyisobutyrylation of NAT10 promotes cancer metastasis in an ac4C&#8208;dependent manner. Cell Res. 2023;33(5):355&#8208;371.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC10156899</ArticleId>
+            <ArticleId IdType="pubmed">36882514</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Cerneckis J, Cui Q, He C, Yi C, Shi Y. Decoding pseudouridine: an emerging target for therapeutic development. Trends Pharmacol Sci. 2022;43(6):522&#8208;535.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">35461717</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Dai Q, Zhang LS, Sun HL, et&#160;al. Quantitative sequencing using BID&#8208;seq uncovers abundant pseudouridines in mammalian mRNA at base resolution. Nat Biotechnol. 2023;41(3):344&#8208;354.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC10017504</ArticleId>
+            <ArticleId IdType="pubmed">36302989</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhang M, Jiang Z, Ma Y, et&#160;al. Quantitative profiling of pseudouridylation landscape in the human transcriptome. Nat Chem Biol. 2023;19(10):1185&#8208;1195.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">36997645</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Molinie B, Wang J, Lim KS, et&#160;al. m(6)A&#8208;LAIC&#8208;seq reveals the census and complexity of the m(6)A epitranscriptome. Nat Methods. 2016;13(8):692&#8208;698.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5704921</ArticleId>
+            <ArticleId IdType="pubmed">27376769</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Roundtree IA, Evans ME, Pan T, He C. Dynamic RNA modifications in gene expression regulation. Cell. 2017;169(7):1187&#8208;1200.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5657247</ArticleId>
+            <ArticleId IdType="pubmed">28622506</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>
+Stockert JA, Weil R, Yadav KK, Kyprianou N, Tewari AK. Pseudouridine as a novel biomarker in prostate cancer. <i>Paper presented at: Urologic Oncology: Seminars and Original Investigations</i>. 2021;39(1):63&#8208;71.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7880613</ArticleId>
+            <ArticleId IdType="pubmed">32712138</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wu G, Yu AT, Kantartzis A, Yu YT. Functions and mechanisms of spliceosomal small nuclear RNA pseudouridylation. Wiley Interdiscip Rev RNA. 2011;2(4):571&#8208;581.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC4161978</ArticleId>
+            <ArticleId IdType="pubmed">21957045</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wu H, Feigon J. H/ACA small nucleolar RNA pseudouridylation pockets bind substrate RNA to form three&#8208;way junctions that position the target U for modification. Proc Natl Acad Sci U S A. 2007;104(16):6655&#8208;6660.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC1871841</ArticleId>
+            <ArticleId IdType="pubmed">17412831</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>De Zoysa MD, Yu Y&#8208;T. Posttranscriptional RNA pseudouridylation. Enzymes. 2017;41:151&#8208;167.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5694665</ArticleId>
+            <ArticleId IdType="pubmed">28601221</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Li S, Duan J, Li D, Ma S, Ye K. Structure of the Shq1&#8210;Cbf5&#8210;Nop10&#8210;Gar1 complex and implications for H/ACA RNP biogenesis and dyskeratosis congenita. EMBO J. 2011;30(24):5010&#8208;5020.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC3242979</ArticleId>
+            <ArticleId IdType="pubmed">22117216</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Borchardt EK, Martinez NM, Gilbert WV. Regulation and function of RNA pseudouridylation in human cells. Annu Rev Genet. 2020;54:309&#8208;336.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8007080</ArticleId>
+            <ArticleId IdType="pubmed">32870730</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Schwartz S, Bernstein DA, Mumbach MR, et&#160;al. Transcriptome&#8208;wide mapping reveals widespread dynamic&#8208;regulated pseudouridylation of ncRNA and mRNA. Cell. 2014;159(1):148&#8208;162.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC4180118</ArticleId>
+            <ArticleId IdType="pubmed">25219674</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Hudson GA, Bloomingdale RJ, Znosko BM. Thermodynamic contribution and nearest&#8208;neighbor parameters of pseudouridine&#8208;adenosine base pairs in oligoribonucleotides. RNA. 2013;19(11):1474&#8208;1482.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC3851715</ArticleId>
+            <ArticleId IdType="pubmed">24062573</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Kierzek E, Malgowska M, Lisowiec J, Turner DH, Gdaniec Z, Kierzek R. The contribution of pseudouridine to stabilities and structure of RNAs. Nucleic Acids Res. 2014;42(5):3492&#8208;3501.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC3950712</ArticleId>
+            <ArticleId IdType="pubmed">24369424</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Anderson BR, Muramatsu H, Nallagatla SR, et&#160;al. Incorporation of pseudouridine into mRNA enhances translation by diminishing PKR activation. Nucleic Acids Res. 2010;38(17):5884&#8208;5892.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC2943593</ArticleId>
+            <ArticleId IdType="pubmed">20457754</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Nallagatla SR, Bevilacqua PC. Nucleoside modifications modulate activation of the protein kinase PKR in an RNA structure&#8208;specific manner. RNA. 2008;14(6):1201&#8208;1213.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC2390794</ArticleId>
+            <ArticleId IdType="pubmed">18426922</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Karijolich J, Yu YT. Converting nonsense codons into sense codons by targeted pseudouridylation. Nature. 2011;474(7351):395&#8208;398.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC3381908</ArticleId>
+            <ArticleId IdType="pubmed">21677757</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Fernandez IS, Ng CL, Kelley AC, Wu G, Yu YT, Ramakrishnan V. Unusual base pairing during the decoding of a stop codon by the ribosome. Nature. 2013;500(7460):107&#8208;110.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC3732562</ArticleId>
+            <ArticleId IdType="pubmed">23812587</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Trixl L, Lusser A. The dynamic RNA modification 5&#8208;methylcytosine and its emerging role as an epitranscriptomic mark. Wiley Interdiscip Rev RNA. 2019;10(1):e1510.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6492194</ArticleId>
+            <ArticleId IdType="pubmed">30311405</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Desrosiers R, Friderici K, Rottman F. Identification of methylated nucleosides in messenger RNA from Novikoff hepatoma cells. Proc Natl Acad Sci U S A. 1974;71(10):3971&#8208;3975.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC434308</ArticleId>
+            <ArticleId IdType="pubmed">4372599</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Gao Y, Fang J. RNA 5&#8208;methylcytosine modification and its emerging role as an epitranscriptomic mark. RNA Biol. 2021;18(suppl 1):117&#8208;127.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8677007</ArticleId>
+            <ArticleId IdType="pubmed">34288807</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Huber SM, van Delft P, Mendil L, et&#160;al. Formation and abundance of 5&#8208;hydroxymethylcytosine in RNA. Chembiochem. 2015;16(5):752&#8208;755.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC4471624</ArticleId>
+            <ArticleId IdType="pubmed">25676849</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Li M, Tao Z, Zhao Y, et&#160;al. 5&#8208;Methylcytosine RNA methyltransferases and their potential roles in cancer. J Transl Med. 2022;20(1):214.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC9102922</ArticleId>
+            <ArticleId IdType="pubmed">35562754</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Liao H, Gaur A, McConie H, et&#160;al. Human NOP2/NSUN1 regulates ribosome biogenesis through non&#8208;catalytic complex formation with box C/D snoRNPs. Nucleic Acids Res. 2022;50(18):10695&#8208;10716.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC9561284</ArticleId>
+            <ArticleId IdType="pubmed">36161484</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>
+Wei H, Jiang S, Chen L, He C, Wu S, Peng H. Characterization of cytosine methylation and the DNA methyltransferases of <i>Toxoplasma gondii</i>
+. Int J Biol Sci. 2017;13(4):458&#8208;470.
+</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5436566</ArticleId>
+            <ArticleId IdType="pubmed">28529454</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhang Q, Liu F, Chen W, et&#160;al. The role of RNA m5C modification in cancer metastasis. Int J Biol Sci. 2021;17(13):3369.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8416729</ArticleId>
+            <ArticleId IdType="pubmed">34512153</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Chen YS, Yang WL, Zhao YL, Yang YG. Dynamic transcriptomic m(5) C and its regulatory role in RNA processing. Wiley Interdiscip Rev RNA. 2021;12(4):e1639.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">33438329</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Yang Y, Wang L, Han X, et&#160;al. RNA 5&#8208;methylcytosine facilitates the maternal&#8208;to&#8208;zygotic transition by preventing maternal mRNA decay. Mol Cell. 2019;75(6):1188&#8208;1202. e1111.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">31399345</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Tuorto F, Herbst F, Alerasool N, et&#160;al. The tRNA methyltransferase Dnmt2 is required for accurate polypeptide synthesis during haematopoiesis. EMBO J. 2015;34(18):2350&#8208;2362.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC4570521</ArticleId>
+            <ArticleId IdType="pubmed">26271101</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Slotkin W, Nishikura K. Adenosine&#8208;to&#8208;inosine RNA editing and human disease. Genome Med. 2013;5(11):1&#8208;13.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC3979043</ArticleId>
+            <ArticleId IdType="pubmed">24289319</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wang C, Zou J, Ma X, Wang E, Peng G. Mechanisms and implications of ADAR&#8208;mediated RNA editing in cancer. Cancer Lett. 2017;411:27&#8208;34.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">28974449</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>
+Fritzell K, Xu L&#8208;D, Lagergren J, &#214;hman M. ADARs and editing: the role of A&#8208;to&#8208;I RNA modification in cancer progression. <i>Paper presented at: Seminars in Cell &amp; Developmental Biology</i>. 2018;79:123&#8208;130.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">29146145</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Rajendren S, Ye X, Dunker W, Richardson A, Karijolich J. The cellular and KSHV A&#8208;to&#8208;I RNA editome in primary effusion lymphoma and its role in the viral lifecycle. Nat Commun. 2023;14(1):1367.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC10011561</ArticleId>
+            <ArticleId IdType="pubmed">36914661</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Rueter SM, Dawson TR, Emeson RB. Regulation of alternative splicing by RNA editing. Nature. 1999;399(6731):75&#8208;80.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">10331393</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Nishikura K. A&#8208;to&#8208;I editing of coding and non&#8208;coding RNAs by ADARs. Nat Rev Mol Cell Biol. 2016;17(2):83&#8208;96.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC4824625</ArticleId>
+            <ArticleId IdType="pubmed">26648264</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Eisenberg E, Levanon EY. A&#8208;to&#8208;I RNA editing&#8212;immune protector and transcriptome diversifier. Nat Rev Genet. 2018;19(8):473&#8208;490.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">29692414</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ivanov A, Memczak S, Wyler E, et&#160;al. Analysis of intron sequences reveals hallmarks of circular RNA biogenesis in animals. Cell Rep. 2015;10(2):170&#8208;177.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">25558066</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Stellos K, Gatsiou A, Stamatelopoulos K, et&#160;al. Adenosine&#8208;to&#8208;inosine RNA editing controls cathepsin S expression in atherosclerosis by enabling HuR&#8208;mediated post&#8208;transcriptional regulation. Nat Med. 2016;22(10):1140&#8208;1150.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">27595325</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Chan TH, Lin CH, Qi L, et&#160;al. A disrupted RNA editing balance mediated by ADARs (adenosine DeAminases that act on RNA) in human hepatocellular carcinoma. Gut. 2014;63(5):832&#8208;843.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC3995272</ArticleId>
+            <ArticleId IdType="pubmed">23766440</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Shoshan E, Mobley AK, Braeuer RR, et&#160;al. Reduced adenosine&#8208;to&#8208;inosine miR&#8208;455&#8208;5p editing promotes melanoma growth and metastasis. Nat Cell Biol. 2015;17(3):311&#8208;321.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC4344852</ArticleId>
+            <ArticleId IdType="pubmed">25686251</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Nakano M, Nakajima M. Significance of A&#8208;to&#8208;I RNA editing of transcripts modulating pharmacokinetics and pharmacodynamics. Pharmacol Ther. 2018;181:13&#8208;21.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">28716651</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Jain M, Mann TD, Stulic M, et&#160;al. RNA editing of Filamin A pre&#8208;mRNA regulates vascular contraction and diastolic blood pressure. EMBO J. 2018;37(19):e94813.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6166124</ArticleId>
+            <ArticleId IdType="pubmed">30087110</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Nakano M, Fukami T, Gotoh S, Nakajima M. A&#8208;to&#8208;I RNA editing up&#8208;regulates human dihydrofolate reductase in breast cancer. J Biol Chem. 2017;292(12):4873&#8208;4884.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5377802</ArticleId>
+            <ArticleId IdType="pubmed">28188287</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Park E, Jiang Y, Hao L, Hui J, Xing Y. Genetic variation and microRNA targeting of A&#8208;to&#8208;I RNA editing fine tune human tissue transcriptomes. Genome Biol. 2021;22(1):77.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7942016</ArticleId>
+            <ArticleId IdType="pubmed">33685485</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Dimitrova DG, Teysset L, Carr&#233; C. RNA 2&#8242;&#8208;O&#8208;methylation (Nm) modification in human diseases. Genes. 2019;10(2):117.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6409641</ArticleId>
+            <ArticleId IdType="pubmed">30764532</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Angelova MT, Dimitrova DG, Da Silva B, et&#160;al. tRNA 2&#8242;&#8208;O&#8208;methylation by a duo of TRM7/FTSJ1 proteins modulates small RNA silencing in Drosophila. Nucleic Acids Res. 2020;48(4):2050&#8208;2072.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7038984</ArticleId>
+            <ArticleId IdType="pubmed">31943105</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Drazkowska K, Tomecki R, Warminski M, et&#160;al. 2'&#8208;O&#8208;Methylation of the second transcribed nucleotide within the mRNA 5' cap impacts the protein production level in a cell&#8208;specific manner and contributes to RNA immune evasion. Nucleic Acids Res. 2022;50(16):9051&#8208;9071.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC9458431</ArticleId>
+            <ArticleId IdType="pubmed">36018811</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Dai Q, Moshitch&#8208;Moshkovitz S, Han D, et&#160;al. Nm&#8208;seq maps 2'&#8208;O&#8208;methylation sites in human mRNA with base precision. Nat Methods. 2017;14(7):695&#8208;698.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5712428</ArticleId>
+            <ArticleId IdType="pubmed">28504680</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ayadi L, Galvanin A, Pichot F, Marchand V, Motorin Y. RNA ribose methylation (2&#697;&#8208;O&#8208;methylation): occurrence, biosynthesis and biological functions. Biochim Biophys Acta Gene Regul Mech. 2019;1862(3):253&#8208;269.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">30572123</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Pauli C, Liu Y, Rohde C, et&#160;al. Site&#8208;specific methylation of 18S ribosomal RNA by SNORD42A is required for acute myeloid leukemia cell proliferation. Blood. 2020;135(23):2059&#8208;2070.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">32097467</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Li J, Wang YN, Xu BS, et&#160;al. Intellectual disability&#8208;associated gene ftsj1 is responsible for 2&#8242;&#8208;O&#8208;methylation of specific tRNAs. EMBO Rep. 2020;21(8):e50095.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7403668</ArticleId>
+            <ArticleId IdType="pubmed">32558197</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ringeard M, Marchand V, Decroly E, Motorin Y, Bennasser Y. FTSJ3 is an RNA 2&#8242;&#8208;O&#8208;methyltransferase recruited by HIV to avoid innate immune sensing. Nature. 2019;565(7740):500&#8208;504.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">30626973</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>He Q, Yang L, Gao K, et&#160;al. FTSJ1 regulates tRNA 2&#697;&#8208;O&#8208;methyladenosine modification and suppresses the malignancy of NSCLC via inhibiting DRAM1 expression. Cell Death Dis. 2020;11(5):348.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7214438</ArticleId>
+            <ArticleId IdType="pubmed">32393790</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Li H, Dong H, Xu B, et&#160;al. A dual role of human tRNA methyltransferase hTrmt13 in regulating translation and transcription. EMBO J. 2022;41(6):e108544.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8922252</ArticleId>
+            <ArticleId IdType="pubmed">34850409</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Inesta&#8208;Vaquera F, Cowling VH. Regulation and function of CMTR1&#8208;dependent mRNA cap methylation. Wiley Interdiscip Rev RNA. 2017;8(6):e1450.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7169794</ArticleId>
+            <ArticleId IdType="pubmed">28971629</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Peng L, Zhang F, Shang R, et&#160;al. Identification of substrates of the small RNA methyltransferase Hen1 in mouse spermatogonial stem cells and analysis of its methyl&#8208;transfer domain. J Biol Chem. 2018;293(26):9981&#8208;9994.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6028966</ArticleId>
+            <ArticleId IdType="pubmed">29703750</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Liang H, Jiao Z, Rong W, et&#160;al. 3&#697;&#8208;Terminal 2&#697;&#8208;O&#8208;methylation of lung cancer miR&#8208;21&#8208;5p enhances its stability and association with Argonaute 2. Nucleic Acids Res. 2020;48(13):7027&#8208;7040.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7367198</ArticleId>
+            <ArticleId IdType="pubmed">32542340</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Lim SL, Qu ZP, Kortschak RD, et&#160;al. HENMT1 and piRNA stability are required for adult male germ cell transposon repression and to define the spermatogenic program in the mouse. PLoS Genet. 2015;11(10):e1005620.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC4619860</ArticleId>
+            <ArticleId IdType="pubmed">26496356</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Elliott BA, Ho HT, Ranganathan SV, et&#160;al. Modification of messenger RNA by 2&#697;&#8208;O&#8208;methylation regulates gene expression in vivo. Nat Commun. 2019;10(1):3401.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6667457</ArticleId>
+            <ArticleId IdType="pubmed">31363086</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Choi J, Indrisiunaite G, DeMirci H, et&#160;al. 2&#697;&#8208;O&#8208;methylation in mRNA disrupts tRNA decoding during translation elongation. Nat Struct Mol Biol. 2018;25(3):208&#8208;216.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5840002</ArticleId>
+            <ArticleId IdType="pubmed">29459784</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Liu J, Chen C, Wang Y, et&#160;al. Comprehensive of N1&#8208;methyladenosine modifications patterns and immunological characteristics in ovarian cancer. Front Immunol. 2021:12:746647.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8588846</ArticleId>
+            <ArticleId IdType="pubmed">34777359</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhang C, Jia G. Reversible RNA modification N(1)&#8208;methyladenosine (m(1)A) in mRNA and tRNA. Genomics Proteomics Bioinform. 2018;16(3):155&#8208;161.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6076376</ArticleId>
+            <ArticleId IdType="pubmed">29908293</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Dominissini D, Nachtergaele S, Moshitch&#8208;Moshkovitz S, et&#160;al. The dynamic N(1)&#8208;methyladenosine methylome in eukaryotic messenger RNA. Nature. 2016;530(7591):441&#8208;446.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC4842015</ArticleId>
+            <ArticleId IdType="pubmed">26863196</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Li X, Xiong X, Wang K, et&#160;al. Transcriptome&#8208;wide mapping reveals reversible and dynamic N(1)&#8208;methyladenosine methylome. Nat Chem Biol. 2016;12(5):311&#8208;316.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">26863410</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Xiong W, Zhao Y, Wei Z, et&#160;al. N1&#8208;methyladenosine formation, gene regulation, biological functions, and clinical relevance. Mol Ther. 2023;31(2):308&#8208;330.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Safra M, Sas&#8208;Chen A, Nir R, et&#160;al. The m1A landscape on cytosolic and mitochondrial mRNA at single&#8208;base resolution. Nature. 2017;551(7679):251&#8208;255.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">29072297</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Bar&#8208;Yaacov D, Frumkin I, Yashiro Y, et&#160;al. Mitochondrial 16S rRNA is methylated by tRNA methyltransferase TRMT61B in all vertebrates. PLoS Biol. 2016;14(9):e1002557.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5025228</ArticleId>
+            <ArticleId IdType="pubmed">27631568</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Liu F, Clark W, Luo G, et&#160;al. ALKBH1&#8208;mediated tRNA demethylation regulates translation. Cell. 2016;167(3):816&#8208;828. e816.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5119773</ArticleId>
+            <ArticleId IdType="pubmed">27745969</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wei J, Liu F, Lu Z, et&#160;al. Differential m(6)A, m(6)A(m), and m(1)A demethylation mediated by FTO in the cell nucleus and cytoplasm. Mol Cell. 2018;71(6):973&#8208;985. e975.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6151148</ArticleId>
+            <ArticleId IdType="pubmed">30197295</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Dai X, Wang T, Gonzalez G, Wang Y. Identification of YTH domain&#8208;containing proteins as the readers for N1&#8208;methyladenosine in RNA. Anal Chem. 2018;90(11):6380&#8208;6384.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6157021</ArticleId>
+            <ArticleId IdType="pubmed">29791134</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Seo KW, Kleiner RE. YTHDF2 recognition of N(1)&#8208;methyladenosine (m(1)A)&#8208;modified RNA is associated with transcript destabilization. ACS Chem Biol. 2020;15(1):132&#8208;139.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7025767</ArticleId>
+            <ArticleId IdType="pubmed">31815430</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Woo HH, Chambers SK. Human ALKBH3&#8208;induced m(1)A demethylation increases the CSF&#8208;1 mRNA stability in breast and ovarian cancer cells. Biochim Biophys Acta Gene Regul Mech. 2019;1862(1):35&#8208;46.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">30342176</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wu Y, Chen Z, Xie G, et&#160;al. RNA m(1)A methylation regulates glycolysis of cancer cells through modulating ATP5D. Proc Natl Acad Sci U S A. 2022;119(28):e2119038119.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC9282374</ArticleId>
+            <ArticleId IdType="pubmed">35867754</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Li X, Xiong X, Zhang M, et&#160;al. Base&#8208;resolution mapping reveals distinct m(1)A methylome in nuclear&#8208; and mitochondrial&#8208;encoded transcripts. Mol Cell. 2017;68(5):993&#8208;1005. e1009.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5722686</ArticleId>
+            <ArticleId IdType="pubmed">29107537</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Cowling VH. Regulation of mRNA cap methylation. Biochem J. 2010;425(2):295&#8208;302.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC2825737</ArticleId>
+            <ArticleId IdType="pubmed">20025612</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Jackson RJ, Hellen CU, Pestova TV. The mechanism of eukaryotic translation initiation and principles of its regulation. Nat Rev Mol Cell Biol. 2010;11(2):113&#8208;127.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC4461372</ArticleId>
+            <ArticleId IdType="pubmed">20094052</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhang LS, Liu C, Ma H, et&#160;al. Transcriptome&#8208;wide mapping of internal N(7)&#8208;methylguanosine methylome in mammalian mRNA. Mol Cell. 2019;74(6):1304&#8208;1316. e1308.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6588483</ArticleId>
+            <ArticleId IdType="pubmed">31031084</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhang LS, Ju CW, Liu C, et&#160;al. m(7)G&#8208;quant&#8208;seq: quantitative detection of RNA internal N(7)&#8208;methylguanosine. ACS Chem Biol. 2022;17(12):3306&#8208;3312.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC9764283</ArticleId>
+            <ArticleId IdType="pubmed">36398936</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Chu JM, Ye TT, Ma CJ, et&#160;al. Existence of internal N7&#8208;methylguanosine modification in mRNA determined by differential enzyme treatment coupled with mass spectrometry analysis. ACS Chem Biol. 2018;13(12):3243&#8208;3250.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">29313662</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhang L&#8208;S, Liu C, Ma H, et&#160;al. Transcriptome&#8208;wide mapping of internal N7&#8208;methylguanosine methylome in mammalian mRNA. Mol Cell. 2019;74(6):1304&#8208;1316. e1308.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6588483</ArticleId>
+            <ArticleId IdType="pubmed">31031084</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Malbec L, Zhang T, Chen Y&#8208;S, et&#160;al. Dynamic methylome of internal mRNA N 7&#8208;methylguanosine and its regulatory role in translation. Cell Res. 2019;29(11):927&#8208;941.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6889513</ArticleId>
+            <ArticleId IdType="pubmed">31520064</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhao Z, Qing Y, Dong L, et&#160;al. QKI shuttles internal m(7)G&#8208;modified transcripts into stress granules and modulates mRNA metabolism. Cell. 2023;186(15):3208&#8208;3226. e3227.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC10527483</ArticleId>
+            <ArticleId IdType="pubmed">37379838</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Xia P, Zhang H, Xu K, et&#160;al. MYC&#8208;targeted WDR4 promotes proliferation, metastasis, and sorafenib resistance by inducing CCNB1 translation in hepatocellular carcinoma. Cell Death Dis. 2021;12(7):691.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8270967</ArticleId>
+            <ArticleId IdType="pubmed">34244479</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Jin C, Wang T, Zhang D, et&#160;al. Acetyltransferase NAT10 regulates the Wnt/&#946;&#8208;catenin signaling pathway to promote colorectal cancer progression via ac4C acetylation of KIF23 mRNA. J Exp Clin Cancer Res. 2022;41(1):345.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC9753290</ArticleId>
+            <ArticleId IdType="pubmed">36522719</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Li Q, Liu X, Jin K, et&#160;al. NAT10 is upregulated in hepatocellular carcinoma and enhances mutant p53 activity. BMC Cancer. 2017;17(1):1&#8208;10.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5579925</ArticleId>
+            <ArticleId IdType="pubmed">28859621</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Liu Z, Liu X, Li Y, et&#160;al. miR&#8208;6716&#8208;5p promotes metastasis of colorectal cancer through downregulating NAT10 expression. Cancer Manag Res. 2019;11:5317.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6559146</ArticleId>
+            <ArticleId IdType="pubmed">31239781</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Oh T&#8208;I, Lee Y&#8208;M, Lim B&#8208;O, Lim J&#8208;H. Inhibition of NAT10 suppresses melanogenesis and melanoma growth by attenuating microphthalmia&#8208;associated transcription factor (MITF) expression. Int J Mol Sci. 2017;18(9):1924.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5618573</ArticleId>
+            <ArticleId IdType="pubmed">28880216</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wei W, Zhang S, Han H, et&#160;al. NAT10&#8208;mediated ac4C tRNA modification promotes EGFR mRNA translation and gefitinib resistance in cancer. Cell Rep. 2023;42(7):112810.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">37463108</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Liang P, Hu R, Liu Z, Miao M, Jiang H, Li C. NAT10 upregulation indicates a poor prognosis in acute myeloid leukemia. Curr Probl Cancer. 2020;44(2):100491.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">31279531</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zi J, Han Q, Gu S, et&#160;al. Targeting NAT10 induces apoptosis associated with enhancing endoplasmic reticulum stress in acute myeloid leukemia cells. Front Oncol. 2020;10:598107.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7793641</ArticleId>
+            <ArticleId IdType="pubmed">33425753</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wei R, Cui X, Min J, et&#160;al. NAT10 promotes cell proliferation by acetylating CEP170 mRNA to enhance translation efficiency in multiple myeloma. Acta Pharm Sin B. 2022;12(8):3313&#8208;3325.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC9366180</ArticleId>
+            <ArticleId IdType="pubmed">35967285</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhang Y, Deng Z, Sun S, et&#160;al. NAT10 acetylates BCL&#8208;XL mRNA to promote the proliferation of multiple myeloma cells through PI3K&#8208;AKT pathway. Front Oncol. 2022;12:967811.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC9376478</ArticleId>
+            <ArticleId IdType="pubmed">35978804</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Li K, Liu J, Yang X, Tu Z, Huang K, Zhu X. Pan&#8208;cancer analysis of N4&#8208;acetylcytidine adaptor THUMPD1 as a predictor for prognosis and immunotherapy. Biosci Rep. 2021;41(12):BSR20212300.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8655504</ArticleId>
+            <ArticleId IdType="pubmed">34762107</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Poncet D, Belleville A, t'Kint de Roodenbeke C, et&#160;al. Changes in the expression of telomere maintenance genes suggest global telomere dysfunction in B&#8208;chronic lymphocytic leukemia. Blood. 2008;111(4):2388&#8208;2391.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">18077792</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Rocchi L, Barbosa AJ, Onofrillo C, Del Rio A, Montanaro L. Inhibition of human dyskerin as a new approach to target ribosome biogenesis. PLoS One. 2014;9(7):e101971.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC4092089</ArticleId>
+            <ArticleId IdType="pubmed">25010840</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Montanaro L. Dyskerin and cancer: more than telomerase. The defect in mRNA translation helps in explaining how a proliferative defect leads to cancer. J Pathol. 2010;222(4):345&#8208;349.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">20925138</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Su H, Hu J, Huang L, et&#160;al. SHQ1 regulation of RNA splicing is required for T&#8208;lymphoblastic leukemia cell survival. Nat Commun. 2018;9(1):4281.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6189109</ArticleId>
+            <ArticleId IdType="pubmed">30323192</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Guzzi N, Cie&#347;la M, Ngoc PCT, et&#160;al. Pseudouridylation of tRNA&#8208;derived fragments steers translational control in stem cells. Cell. 2018;173(5):1204&#8208;1216. e1226.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">29628141</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Guzzi N, Muthukumar S, Cie&#347;la M, et&#160;al. Pseudouridine&#8208;modified tRNA fragments repress aberrant protein synthesis and predict leukaemic progression in myelodysplastic syndrome. Nat Cell Biol. 2022;24(3):299&#8208;306.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8924001</ArticleId>
+            <ArticleId IdType="pubmed">35292784</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>He Y, Yu X, Zhang M, Guo W. Pan&#8208;cancer analysis of m5C regulator genes reveals consistent epigenetic landscape changes in multiple cancers. World J Surg Oncol. 2021;19(1):1&#8208;12.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8323224</ArticleId>
+            <ArticleId IdType="pubmed">34325709</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Nombela P, Miguel&#8208;L&#243;pez B, Blanco S. The role of m6A, m5C and &#936; RNA modifications in cancer: novel therapeutic opportunities. Mol Cancer. 2021;20(1):1&#8208;30.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7812662</ArticleId>
+            <ArticleId IdType="pubmed">33461542</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Chellamuthu A, Gray SG. The RNA methyltransferase NSUN2 and its potential roles in cancer. Cells. 2020;9(8):1758.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7463552</ArticleId>
+            <ArticleId IdType="pubmed">32708015</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ma B, Wang P. NSUN6, a gene related with m5c methylation, may serve as a biomarker for pan&#8208;cancer. Research Square. 2022.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Cheng JX, Chen L, Li Y, et&#160;al. RNA cytosine methylation and methyltransferases mediate chromatin organization and 5&#8208;azacytidine response and resistance in leukaemia. Nat Commun. 2018;9(1):1163.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5862959</ArticleId>
+            <ArticleId IdType="pubmed">29563491</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Schaefer M, Hagemann S, Hanna K, Lyko F. Azacytidine inhibits RNA methylation at DNMT2 target sites in human cancer cell lines. Cancer Res. 2009;69(20):8127&#8208;8132.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">19808971</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Anad&#243;n C, Guil S, Sim&#243;&#8208;Riudalbas L, et&#160;al. Gene amplification&#8208;associated overexpression of the RNA editing enzyme ADAR1 enhances human lung tumorigenesis. Oncogene. 2016;35(33):4407&#8208;4413.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC4842009</ArticleId>
+            <ArticleId IdType="pubmed">26640150</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Shi L, Yan P, Liang Y, et&#160;al. Circular RNA expression is suppressed by androgen receptor (AR)&#8208;regulated adenosine deaminase that acts on RNA (ADAR1) in human hepatocellular carcinoma. Cell Death Dis. 2017;8(11):e3171.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5775411</ArticleId>
+            <ArticleId IdType="pubmed">29144509</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Qiao J&#8208;J, Chan THM, Qin Y&#8208;R, Chen L. ADAR1: a promising new biomarker for esophageal squamous cell carcinoma? Expert Rev Anticancer Ther. 2014;14(8):865&#8208;868.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">24928581</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Jiang Q, Crews LA, Barrett CL, et&#160;al. ADAR1 promotes malignant progenitor reprogramming in chronic myeloid leukemia. Proc Natl Acad Sci U S A. 2013;110(3):1041&#8208;1046.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC3549099</ArticleId>
+            <ArticleId IdType="pubmed">23275297</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zipeto MA, Court AC, Sadarangani A, et&#160;al. ADAR1 activation drives leukemia stem cell self&#8208;renewal by impairing Let&#8208;7 biogenesis. Cell Stem Cell. 2016;19(2):177&#8208;191.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC4975616</ArticleId>
+            <ArticleId IdType="pubmed">27292188</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Tomaselli S, Galeano F, Alon S, et&#160;al. Modulation of microRNA editing, expression and processing by ADAR2 deaminase in glioblastoma. Genome Biol. 2015;16(1):1&#8208;19.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC4326501</ArticleId>
+            <ArticleId IdType="pubmed">25582055</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Guo M, Chan TMH, Zhou Q, et&#160;al. Core&#8208;binding factor fusion downregulation of ADAR2 RNA editing contributes to AML leukemogenesis. Blood. 2023;141(25):3078&#8208;3090.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">36796022</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>You X&#8208;J, Li L, Ji T&#8208;T, Xie N&#8208;B, Yuan B&#8208;F, Feng Y&#8208;Q. 6&#8208;Thioguanine incorporates into RNA and induces adenosine&#8208;to&#8208;inosine editing in acute lymphoblastic leukemia cells. Chin Chem Lett. 2023;34(1):107181.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Lazzari E, Mondala PK, Santos ND, et&#160;al. Alu&#8208;dependent RNA editing of GLI1 promotes malignant regeneration in multiple myeloma. Nat Commun. 2017;8(1):1922.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5715072</ArticleId>
+            <ArticleId IdType="pubmed">29203771</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Hanamura I. Gain/amplification of chromosome arm 1q21 in multiple myeloma. Cancers. 2021;13(2):256.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7827173</ArticleId>
+            <ArticleId IdType="pubmed">33445467</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Crews L, Lazzari E, Mondala P, et&#160;al. ADAR1&#8208;mediated GLI1 editing promotes malignant self&#8208;renewal in multiple myeloma. Blood. 2017;130:1204.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Zhang J, He P, Wang X, Wei S, Ma L, Zhao J. A novel model of tumor&#8208;infiltrating B lymphocyte specific RNA&#8208;binding protein&#8208;related genes with potential prognostic value and therapeutic targets in multiple myeloma. Front Genet. 2021;12:778715.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8719635</ArticleId>
+            <ArticleId IdType="pubmed">34976013</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Shi J, Zhu T, Lin H, et&#160;al. Proteotranscriptomics of ocular adnexal B&#8208;cell lymphoma reveals an oncogenic role of alternative splicing and identifies a diagnostic marker. J Exp Clin Cancer Res. 2022;41(1):234.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC9338531</ArticleId>
+            <ArticleId IdType="pubmed">35906682</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ohki K, Kiyokawa N, Watanabe S, et&#160;al. Characteristics of genetic alterations of peripheral T&#8208;cell lymphoma in childhood including identification of novel fusion genes: the Japan Children's Cancer Group (JCCG). Br J Haematol. 2021;194(4):718&#8208;729.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">34258755</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Pecori R, Ren W, Pirmoradian M, et&#160;al. ADAR1&#8208;mediated RNA editing promotes B cell lymphomagenesis. iScience. 2023;26(6):106864.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC10225930</ArticleId>
+            <ArticleId IdType="pubmed">37255666</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zipeto M, Jiang Q, Robertson LC, Jamieson CH. ADAR1&#8208;mediated microRNA regulation and blast crisis leukemia stem cell generation in chronic myeloid leukemia. Cancer Res. 2014;74(19_suppl):1912&#8208;1912.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Huang W, Sun Y&#8208;M, Pan Q, et&#160;al. The snoRNA&#8208;like lncRNA LNC&#8208;SNO49AB drives leukemia by activating the RNA&#8208;editing enzyme ADAR1. Cell Discov. 2022;8(1):117.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC9622897</ArticleId>
+            <ArticleId IdType="pubmed">36316318</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Gassner FJ, Zaborsky N, Buchumenski I, et&#160;al. RNA editing contributes to epitranscriptome diversity in chronic lymphocytic leukemia. Leukemia. 2021;35(4):1053&#8208;1063.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8024191</ArticleId>
+            <ArticleId IdType="pubmed">32728184</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhou F, Aroua N, Liu Y, et&#160;al. A dynamic rRNA ribomethylome drives stemness in acute myeloid leukemia. Cancer Discov. 2023;13(2):332&#8208;347.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC9900322</ArticleId>
+            <ArticleId IdType="pubmed">36259929</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Jiang W, Wang H, Zhou S, et&#160;al. Establishment of a typing model for diffuse large B&#8208;cell lymphoma based on B&#8208;cell receptor repertoire sequencing. BMC Cancer. 2021;21(1):1&#8208;10.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7986026</ArticleId>
+            <ArticleId IdType="pubmed">33752626</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Begik O, Lucas MC, Liu H, Ramirez JM, Mattick JS, Novoa EM. Integrative analyses of the RNA modification machinery reveal tissue&#8208;and cancer&#8208;specific signatures. Genome Biol. 2020;21:1&#8208;24.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7204298</ArticleId>
+            <ArticleId IdType="pubmed">32375858</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhou F, Liu Y, Rohde C, et&#160;al. AML1&#8208;ETO requires enhanced C/D box snoRNA/RNP formation to induce self&#8208;renewal and leukaemia. Nat Cell Biol. 2017;19(7):844&#8208;855.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">28650479</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Esteve&#8208;Puig R, Climent F, Pi&#241;eyro D, et&#160;al. Epigenetic loss of m1A RNA demethylase ALKBH3 in Hodgkin lymphoma targets collagen, conferring poor clinical outcome. Blood. 2021;137(7):994&#8208;999.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7918181</ArticleId>
+            <ArticleId IdType="pubmed">32915956</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Assouline S, Culjkovic B, Cocolakis E, et&#160;al. Molecular targeting of the oncogene eIF4E in acute myeloid leukemia (AML): a proof&#8208;of&#8208;principle clinical trial with ribavirin. Blood. 2009;114(2):257&#8208;260.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">19433856</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Orellana EA, Liu Q, Yankova E, et&#160;al. METTL1&#8208;mediated m7G modification of Arg&#8208;TCT tRNA drives oncogenic transformation. Mol Cell. 2021;81(16):3323&#8208;3338. e3314.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8380730</ArticleId>
+            <ArticleId IdType="pubmed">34352207</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Crews LA, Ma W, Ladel L, et&#160;al. Reversal of malignant ADAR1 splice isoform switching with Rebecsinib. Cell Stem Cell. 2023;30(3):250&#8208;263. e256.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC10134781</ArticleId>
+            <ArticleId IdType="pubmed">36803553</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Dalhat MH, Altayb HN, Khan MI, Choudhry H. Structural insights of human N&#8208;acetyltransferase 10 and identification of its potential novel inhibitors. Sci Rep. 2021;11(1):6051.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7960695</ArticleId>
+            <ArticleId IdType="pubmed">33723305</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Shrimp JH, Jing Y, Gamage ST, et&#160;al. Remodelin is a cryptic assay interference chemotype that does not inhibit NAT10&#8208;dependent cytidine acetylation. ACS Med Chem Lett. 2020;12(6):887&#8208;892.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC8201477</ArticleId>
+            <ArticleId IdType="pubmed">34141066</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Vogler W, Trulock P. Phase I study of pyrazofurin in refractory acute myelogenous leukemia. Cancer Treat Rep. 1978;62(10):1569&#8208;1571.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">152146</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

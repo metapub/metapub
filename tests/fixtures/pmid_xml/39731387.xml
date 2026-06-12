@@ -1,0 +1,178 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Curated">
+      <PMID Version="1">39731387</PMID>
+      <DateCompleted>
+        <Year>2024</Year>
+        <Month>12</Month>
+        <Day>28</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2025</Year>
+        <Month>01</Month>
+        <Day>06</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">1997-7298</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>124</Volume>
+            <Issue>12</Issue>
+            <PubDate>
+              <Year>2024</Year>
+            </PubDate>
+          </JournalIssue>
+          <Title>Zhurnal nevrologii i psikhiatrii imeni S.S. Korsakova</Title>
+          <ISOAbbreviation>Zh Nevrol Psikhiatr Im S S Korsakova</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Paraneoplastic opsoclonus-myoclonus syndrome].</ArticleTitle>
+        <Pagination>
+          <StartPage>165</StartPage>
+          <EndPage>170</EndPage>
+          <MedlinePgn>165-170</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.17116/jnevro2024124121165</ELocationID>
+        <Abstract>
+          <AbstractText>Opsoclonus-myoclonus syndrome (OMS) is a rare neurological disorder characterized by a combination of main symptoms: opsoclonus, myoclonus, ataxia, psychoemotional and behavioral disturbances. OMS can develop in children as a result of immunopathological processes against the background of infectious or oncological pathology and lead to persistent neurological deficit. A case of ten-year observation of paraneoplastic OMS associated with neuroblastoma in a child is presented. Within 6 months, the clinical picture of OMS was not full and manifested by recurrent cerebellar ataxia and psychoemotional disorders. The appearance of opsoclonus against the background of increased disturbances in statics and coordination made it possible to diagnose OMS and suggest its paraneoplastic genesis. The peculiarity of the case is the combination of opsoclonus with the development of a symptomatic epileptiform ictus. Surgical treatment of neuroblastoma, immunosuppressive therapy in combination with nootropic and symptomatic anticonvulsant therapy have shown effectiveness and led to stabilization of the condition, regression of cerebellar symptoms and restoration of the rate of mental development. The long course of OMS with the gradual formation of a complete symptom complex complicates timely diagnosis of the underlying disease. Cases of cerebellar ataxia, myoclonus and abnormal eye movements, regardless of the severity and sequence of development of the clinical picture, require an interdisciplinary diagnostic approach and consideration of oncological pathology in a differential diagnostic aspect.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Fedoseeva</LastName>
+            <ForeName>I F</ForeName>
+            <Initials>IF</Initials>
+            <Identifier Source="ORCID">0000-0003-3692-5673</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Kemerovo State Medical University, Kemerovo, Russia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Goncharenko</LastName>
+            <ForeName>A V</ForeName>
+            <Initials>AV</Initials>
+            <Identifier Source="ORCID">0009-0008-8805-6784</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Kemerovo State Medical University, Kemerovo, Russia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Poponnikova</LastName>
+            <ForeName>T V</ForeName>
+            <Initials>TV</Initials>
+            <Identifier Source="ORCID">0000-0003-2894-3062</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Kemerovo State Medical University, Kemerovo, Russia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Glebova</LastName>
+            <ForeName>I V</ForeName>
+            <Initials>IV</Initials>
+            <Identifier Source="ORCID">0009-0009-0525-3043</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Belyaev Kuzbass Regional Clinical Hospital, Kemerovo, Russia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Pinevich</LastName>
+            <ForeName>O S</ForeName>
+            <Initials>OS</Initials>
+            <Identifier Source="ORCID">0009-0006-7778-2540</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Belyaev Kuzbass Regional Clinical Hospital, Kemerovo, Russia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Goncharenko</LastName>
+            <ForeName>V A</ForeName>
+            <Initials>VA</Initials>
+            <Identifier Source="ORCID">0000-0003-0641-0468</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Kemerovo State Medical University, Kemerovo, Russia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>rus</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D002363">Case Reports</PublicationType>
+          <PublicationType UI="D004740">English Abstract</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>Paraneoplasticheskii opsoklonus-mioklonus-sindrom.</VernacularTitle>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Russia (Federation)</Country>
+        <MedlineTA>Zh Nevrol Psikhiatr Im S S Korsakova</MedlineTA>
+        <NlmUniqueID>9712194</NlmUniqueID>
+        <ISSNLinking>1997-7298</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D000927">Anticonvulsants</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000927" MajorTopicYN="N">Anticonvulsants</DescriptorName>
+          <QualifierName UI="Q000627" MajorTopicYN="N">therapeutic use</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009447" MajorTopicYN="Y">Neuroblastoma</DescriptorName>
+          <QualifierName UI="Q000150" MajorTopicYN="N">complications</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D053578" MajorTopicYN="Y">Opsoclonus-Myoclonus Syndrome</DescriptorName>
+          <QualifierName UI="Q000175" MajorTopicYN="N">diagnosis</QualifierName>
+          <QualifierName UI="Q000209" MajorTopicYN="N">etiology</QualifierName>
+          <QualifierName UI="Q000188" MajorTopicYN="N">drug therapy</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002648" MajorTopicYN="N">Child</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <OtherAbstract Type="Publisher" Language="rus">
+        <AbstractText>&#1054;&#1087;&#1089;&#1086;&#1082;&#1083;&#1086;&#1085;&#1091;&#1089;-&#1084;&#1080;&#1086;&#1082;&#1083;&#1086;&#1085;&#1091;&#1089;-&#1089;&#1080;&#1085;&#1076;&#1088;&#1086;&#1084; (&#1054;&#1052;&#1057;) &#8212; &#1088;&#1077;&#1076;&#1082;&#1086;&#1077; &#1085;&#1077;&#1074;&#1088;&#1086;&#1083;&#1086;&#1075;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1072;&#1089;&#1089;&#1090;&#1088;&#1086;&#1081;&#1089;&#1090;&#1074;&#1086;, &#1093;&#1072;&#1088;&#1072;&#1082;&#1090;&#1077;&#1088;&#1080;&#1079;&#1091;&#1102;&#1097;&#1077;&#1077;&#1089;&#1103; &#1089;&#1086;&#1095;&#1077;&#1090;&#1072;&#1085;&#1080;&#1077;&#1084; &#1086;&#1089;&#1085;&#1086;&#1074;&#1085;&#1099;&#1093; &#1089;&#1080;&#1084;&#1087;&#1090;&#1086;&#1084;&#1086;&#1074;: &#1086;&#1087;&#1089;&#1086;&#1082;&#1083;&#1086;&#1085;&#1091;&#1089;, &#1084;&#1080;&#1086;&#1082;&#1083;&#1086;&#1085;&#1091;&#1089;, &#1072;&#1090;&#1072;&#1082;&#1089;&#1080;&#1103;, &#1087;&#1089;&#1080;&#1093;&#1086;&#1101;&#1084;&#1086;&#1094;&#1080;&#1086;&#1085;&#1072;&#1083;&#1100;&#1085;&#1099;&#1077; &#1080; &#1087;&#1086;&#1074;&#1077;&#1076;&#1077;&#1085;&#1095;&#1077;&#1089;&#1082;&#1080;&#1077; &#1085;&#1072;&#1088;&#1091;&#1096;&#1077;&#1085;&#1080;&#1103;. &#1054;&#1052;&#1057; &#1084;&#1086;&#1078;&#1077;&#1090; &#1088;&#1072;&#1079;&#1074;&#1080;&#1074;&#1072;&#1090;&#1100;&#1089;&#1103; &#1091; &#1076;&#1077;&#1090;&#1077;&#1081; &#1074;&#1089;&#1083;&#1077;&#1076;&#1089;&#1090;&#1074;&#1080;&#1077; &#1080;&#1084;&#1084;&#1091;&#1085;&#1086;&#1087;&#1072;&#1090;&#1086;&#1083;&#1086;&#1075;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1093; &#1087;&#1088;&#1086;&#1094;&#1077;&#1089;&#1089;&#1086;&#1074; &#1085;&#1072; &#1092;&#1086;&#1085;&#1077; &#1080;&#1085;&#1092;&#1077;&#1082;&#1094;&#1080;&#1086;&#1085;&#1085;&#1086;&#1081; &#1080;&#1083;&#1080; &#1086;&#1085;&#1082;&#1086;&#1083;&#1086;&#1075;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1081; &#1087;&#1072;&#1090;&#1086;&#1083;&#1086;&#1075;&#1080;&#1080; &#1080; &#1087;&#1088;&#1080;&#1074;&#1086;&#1076;&#1080;&#1090;&#1100; &#1082; &#1089;&#1090;&#1086;&#1081;&#1082;&#1086;&#1084;&#1091; &#1085;&#1077;&#1074;&#1088;&#1086;&#1083;&#1086;&#1075;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1084;&#1091; &#1076;&#1077;&#1092;&#1080;&#1094;&#1080;&#1090;&#1091;. &#1055;&#1088;&#1077;&#1076;&#1089;&#1090;&#1072;&#1074;&#1083;&#1077;&#1085; &#1089;&#1083;&#1091;&#1095;&#1072;&#1081; &#1076;&#1077;&#1089;&#1103;&#1090;&#1080;&#1083;&#1077;&#1090;&#1085;&#1077;&#1075;&#1086; &#1085;&#1072;&#1073;&#1083;&#1102;&#1076;&#1077;&#1085;&#1080;&#1103; &#1087;&#1072;&#1088;&#1072;&#1085;&#1077;&#1086;&#1087;&#1083;&#1072;&#1089;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1075;&#1086; &#1054;&#1052;&#1057;, &#1072;&#1089;&#1089;&#1086;&#1094;&#1080;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1085;&#1086;&#1075;&#1086; &#1089; &#1085;&#1077;&#1081;&#1088;&#1086;&#1073;&#1083;&#1072;&#1089;&#1090;&#1086;&#1084;&#1086;&#1081;, &#1091; &#1088;&#1077;&#1073;&#1077;&#1085;&#1082;&#1072;. &#1042; &#1090;&#1077;&#1095;&#1077;&#1085;&#1080;&#1077; 6 &#1084;&#1077;&#1089;. &#1082;&#1083;&#1080;&#1085;&#1080;&#1095;&#1077;&#1089;&#1082;&#1072;&#1103; &#1082;&#1072;&#1088;&#1090;&#1080;&#1085;&#1072; &#1054;&#1052;&#1057; &#1073;&#1099;&#1083;&#1072; &#1088;&#1077;&#1076;&#1091;&#1094;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1085;&#1086;&#1081; &#1080; &#1086;&#1075;&#1088;&#1072;&#1085;&#1080;&#1095;&#1080;&#1074;&#1072;&#1083;&#1072;&#1089;&#1100; &#1088;&#1077;&#1094;&#1080;&#1076;&#1080;&#1074;&#1080;&#1088;&#1091;&#1102;&#1097;&#1077;&#1081; &#1084;&#1086;&#1079;&#1078;&#1077;&#1095;&#1082;&#1086;&#1074;&#1086;&#1081; &#1072;&#1090;&#1072;&#1082;&#1089;&#1080;&#1077;&#1081; &#1080; &#1087;&#1089;&#1080;&#1093;&#1086;&#1101;&#1084;&#1086;&#1094;&#1080;&#1086;&#1085;&#1072;&#1083;&#1100;&#1085;&#1099;&#1084;&#1080; &#1085;&#1072;&#1088;&#1091;&#1096;&#1077;&#1085;&#1080;&#1103;&#1084;&#1080;. &#1055;&#1086;&#1103;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077; &#1086;&#1087;&#1089;&#1086;&#1082;&#1083;&#1086;&#1085;&#1091;&#1089;&#1072; &#1085;&#1072; &#1092;&#1086;&#1085;&#1077; &#1091;&#1089;&#1080;&#1083;&#1077;&#1085;&#1080;&#1103; &#1085;&#1072;&#1088;&#1091;&#1096;&#1077;&#1085;&#1080;&#1081; &#1089;&#1090;&#1072;&#1090;&#1080;&#1082;&#1080; &#1080; &#1082;&#1086;&#1086;&#1088;&#1076;&#1080;&#1085;&#1072;&#1094;&#1080;&#1080; &#1087;&#1086;&#1079;&#1074;&#1086;&#1083;&#1080;&#1083;&#1086; &#1076;&#1080;&#1072;&#1075;&#1085;&#1086;&#1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1090;&#1100; &#1054;&#1052;&#1057; &#1080; &#1087;&#1088;&#1077;&#1076;&#1087;&#1086;&#1083;&#1086;&#1078;&#1080;&#1090;&#1100; &#1077;&#1075;&#1086; &#1087;&#1072;&#1088;&#1072;&#1085;&#1077;&#1086;&#1087;&#1083;&#1072;&#1089;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1081; &#1075;&#1077;&#1085;&#1077;&#1079;. &#1054;&#1089;&#1086;&#1073;&#1077;&#1085;&#1085;&#1086;&#1089;&#1090;&#1100; &#1089;&#1083;&#1091;&#1095;&#1072;&#1103; &#1079;&#1072;&#1082;&#1083;&#1102;&#1095;&#1072;&#1077;&#1090;&#1089;&#1103; &#1074; &#1089;&#1086;&#1095;&#1077;&#1090;&#1072;&#1085;&#1080;&#1080; &#1086;&#1087;&#1089;&#1086;&#1082;&#1083;&#1086;&#1085;&#1091;&#1089;&#1072; &#1089; &#1088;&#1072;&#1079;&#1074;&#1080;&#1090;&#1080;&#1077;&#1084; &#1089;&#1080;&#1084;&#1087;&#1090;&#1086;&#1084;&#1072;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1075;&#1086; &#1101;&#1087;&#1080;&#1083;&#1077;&#1087;&#1090;&#1080;&#1092;&#1086;&#1088;&#1084;&#1085;&#1086;&#1075;&#1086; &#1087;&#1072;&#1088;&#1086;&#1082;&#1089;&#1080;&#1079;&#1084;&#1072;. &#1061;&#1080;&#1088;&#1091;&#1088;&#1075;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1083;&#1077;&#1095;&#1077;&#1085;&#1080;&#1077; &#1085;&#1077;&#1081;&#1088;&#1086;&#1073;&#1083;&#1072;&#1089;&#1090;&#1086;&#1084;&#1099;, &#1080;&#1084;&#1084;&#1091;&#1085;&#1086;&#1089;&#1091;&#1087;&#1088;&#1077;&#1089;&#1089;&#1080;&#1074;&#1085;&#1072;&#1103; &#1090;&#1077;&#1088;&#1072;&#1087;&#1080;&#1103; &#1074; &#1089;&#1086;&#1095;&#1077;&#1090;&#1072;&#1085;&#1080;&#1080; &#1089; &#1085;&#1086;&#1086;&#1090;&#1088;&#1086;&#1087;&#1085;&#1086;&#1081; &#1080; &#1089;&#1080;&#1084;&#1087;&#1090;&#1086;&#1084;&#1072;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1081; &#1087;&#1088;&#1086;&#1090;&#1080;&#1074;&#1086;&#1089;&#1091;&#1076;&#1086;&#1088;&#1086;&#1078;&#1085;&#1086;&#1081; &#1090;&#1077;&#1088;&#1072;&#1087;&#1080;&#1077;&#1081; &#1087;&#1086;&#1082;&#1072;&#1079;&#1072;&#1083;&#1080; &#1101;&#1092;&#1092;&#1077;&#1082;&#1090;&#1080;&#1074;&#1085;&#1086;&#1089;&#1090;&#1100; &#1080; &#1087;&#1088;&#1080;&#1074;&#1077;&#1083;&#1080; &#1082; &#1089;&#1090;&#1072;&#1073;&#1080;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1080; &#1089;&#1086;&#1089;&#1090;&#1086;&#1103;&#1085;&#1080;&#1103;, &#1088;&#1077;&#1075;&#1088;&#1077;&#1089;&#1089;&#1091; &#1084;&#1086;&#1079;&#1078;&#1077;&#1095;&#1082;&#1086;&#1074;&#1086;&#1081; &#1089;&#1080;&#1084;&#1087;&#1090;&#1086;&#1084;&#1072;&#1090;&#1080;&#1082;&#1080; &#1080; &#1074;&#1086;&#1089;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1083;&#1077;&#1085;&#1080;&#1102; &#1090;&#1077;&#1084;&#1087;&#1086;&#1074; &#1087;&#1089;&#1080;&#1093;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1075;&#1086; &#1088;&#1072;&#1079;&#1074;&#1080;&#1090;&#1080;&#1103;. &#1044;&#1083;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077; &#1090;&#1077;&#1095;&#1077;&#1085;&#1080;&#1077; &#1054;&#1052;&#1057; &#1089; &#1087;&#1086;&#1089;&#1090;&#1077;&#1087;&#1077;&#1085;&#1085;&#1099;&#1084; &#1092;&#1086;&#1088;&#1084;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;&#1084; &#1087;&#1086;&#1083;&#1085;&#1086;&#1075;&#1086; &#1089;&#1080;&#1084;&#1087;&#1090;&#1086;&#1084;&#1086;&#1082;&#1086;&#1084;&#1087;&#1083;&#1077;&#1082;&#1089;&#1072; &#1079;&#1072;&#1090;&#1088;&#1091;&#1076;&#1085;&#1103;&#1077;&#1090; &#1089;&#1074;&#1086;&#1077;&#1074;&#1088;&#1077;&#1084;&#1077;&#1085;&#1085;&#1091;&#1102; &#1076;&#1080;&#1072;&#1075;&#1085;&#1086;&#1089;&#1090;&#1080;&#1082;&#1091; &#1086;&#1089;&#1085;&#1086;&#1074;&#1085;&#1086;&#1075;&#1086; &#1079;&#1072;&#1073;&#1086;&#1083;&#1077;&#1074;&#1072;&#1085;&#1080;&#1103;. &#1057;&#1083;&#1091;&#1095;&#1072;&#1080; &#1084;&#1086;&#1079;&#1078;&#1077;&#1095;&#1082;&#1086;&#1074;&#1086;&#1081; &#1072;&#1090;&#1072;&#1082;&#1089;&#1080;&#1080;, &#1084;&#1080;&#1086;&#1082;&#1083;&#1086;&#1085;&#1091;&#1089;&#1072; &#1080; &#1072;&#1085;&#1086;&#1084;&#1072;&#1083;&#1100;&#1085;&#1099;&#1093; &#1076;&#1074;&#1080;&#1078;&#1077;&#1085;&#1080;&#1081; &#1075;&#1083;&#1072;&#1079; &#1085;&#1077;&#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086; &#1086;&#1090; &#1074;&#1099;&#1088;&#1072;&#1078;&#1077;&#1085;&#1085;&#1086;&#1089;&#1090;&#1080; &#1080; &#1087;&#1086;&#1089;&#1083;&#1077;&#1076;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080; &#1088;&#1072;&#1079;&#1074;&#1080;&#1090;&#1080;&#1103; &#1082;&#1083;&#1080;&#1085;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1081; &#1082;&#1072;&#1088;&#1090;&#1080;&#1085;&#1099; &#1090;&#1088;&#1077;&#1073;&#1091;&#1102;&#1090; &#1084;&#1077;&#1078;&#1076;&#1080;&#1089;&#1094;&#1080;&#1087;&#1083;&#1080;&#1085;&#1072;&#1088;&#1085;&#1086;&#1075;&#1086; &#1076;&#1080;&#1072;&#1075;&#1085;&#1086;&#1089;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1075;&#1086; &#1087;&#1086;&#1076;&#1093;&#1086;&#1076;&#1072; &#1080; &#1088;&#1072;&#1089;&#1089;&#1084;&#1086;&#1090;&#1088;&#1077;&#1085;&#1080;&#1103; &#1086;&#1085;&#1082;&#1086;&#1083;&#1086;&#1075;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1081; &#1087;&#1072;&#1090;&#1086;&#1083;&#1086;&#1075;&#1080;&#1080; &#1074; &#1076;&#1080;&#1092;&#1092;&#1077;&#1088;&#1077;&#1085;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1086;-&#1076;&#1080;&#1072;&#1075;&#1085;&#1086;&#1089;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1084; &#1072;&#1089;&#1087;&#1077;&#1082;&#1090;&#1077;.</AbstractText>
+      </OtherAbstract>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">Kinsbourne encephalopathy</Keyword>
+        <Keyword MajorTopicYN="N">cerebellar ataxia</Keyword>
+        <Keyword MajorTopicYN="N">opsoclonus-myoclonus syndrome</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>28</Day>
+          <Hour>11</Hour>
+          <Minute>45</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>28</Day>
+          <Hour>11</Hour>
+          <Minute>44</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>28</Day>
+          <Hour>3</Hour>
+          <Minute>45</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">39731387</ArticleId>
+        <ArticleId IdType="doi">10.17116/jnevro2024124121165</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

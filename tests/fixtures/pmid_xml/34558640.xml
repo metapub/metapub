@@ -1,0 +1,1211 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">34558640</PMID>
+      <DateCompleted>
+        <Year>2022</Year>
+        <Month>01</Month>
+        <Day>28</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2022</Year>
+        <Month>01</Month>
+        <Day>28</Day>
+      </DateRevised>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISSN IssnType="Electronic">1791-2423</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>59</Volume>
+            <Issue>5</Issue>
+            <PubDate>
+              <Year>2021</Year>
+              <Month>Nov</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>International journal of oncology</Title>
+          <ISOAbbreviation>Int J Oncol</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Mechanisms and management of 3rd&#8209;generation EGFR&#8209;TKI resistance in advanced non&#8209;small cell lung cancer (Review).</ArticleTitle>
+        <ELocationID EIdType="pii" ValidYN="Y">90</ELocationID>
+        <ELocationID EIdType="doi" ValidYN="Y">10.3892/ijo.2021.5270</ELocationID>
+        <Abstract>
+          <AbstractText>Targeted therapy with epidermal growth factor receptor (EGFR)&#8209;tyrosine kinase inhibitors (TKIs) is a standard modality of the 1st&#8209;line treatments for patients with advanced <i>EGFR</i>&#8209;mutated non&#8209;small cell lung cancer (NSCLC), and substantially improves their prognosis. However, <i>EGFR</i> T790M mutation is the primary mechanism of 1st&#8209; and 2nd&#8209;generation EGFR&#8209;TKI resistance. Osimertinib is a representative of the 3rd&#8209;generation EGFR&#8209;TKIs that target T790M mutation, and has satisfactory efficacy in the treatment of T790M&#8209;positive NSCLC with disease progression following use of 1st&#8209; or 2nd&#8209;generation EGFR&#8209;TKIs. Other 3rd&#8209;generation EGFR&#8209;TKIs, such as abivertinib, rociletinib, nazartinib, olmutinib and alflutinib, are also at various stages of development. However, the occurrence of acquired resistance is inevitable, and the mechanisms of 3rd&#8209;generation EGFR&#8209;TKI resistance are complex and incompletely understood. Genomic studies in tissue and liquid biopsies of resistant patients reveal multiple candidate pathways. The present review summarizes the recent findings in mechanisms of resistance to 3rd&#8209;generation EGFR&#8209;TKIs in advanced NSCLC, and provides possible strategies to overcome this resistance. The mechanisms of acquired resistance mainly include an altered EGFR signaling pathway (<i>EGFR</i> tertiary mutations and amplification), activation of aberrant bypassing pathways (hepatocyte growth factor receptor amplification, human epidermal growth factor receptor&#160;2 amplification and aberrant insulin&#8209;like growth factor&#160;1 receptor activation), downstream pathway activation (RAS/RAF/MEK/ERK and PI3K/AKT/mTOR) and histological/phenotypic transformations (SCLC transformation and epithelial&#8209;mesenchymal transition). The combination of targeted therapies is a promising strategy to treat osimertinib&#8209;resistant patients, and multiple clinical studies on novel combined therapies are ongoing.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>He</LastName>
+            <ForeName>Jingyi</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Radiation and Medical Oncology, Zhongnan Hospital of Wuhan University, Wuhan, Hubei 430071, P.R.&#160;China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Huang</LastName>
+            <ForeName>Zhengrong</ForeName>
+            <Initials>Z</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Radiation and Medical Oncology, Zhongnan Hospital of Wuhan University, Wuhan, Hubei 430071, P.R.&#160;China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Han</LastName>
+            <ForeName>Linzhi</ForeName>
+            <Initials>L</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Radiation and Medical Oncology, Zhongnan Hospital of Wuhan University, Wuhan, Hubei 430071, P.R.&#160;China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Gong</LastName>
+            <ForeName>Yan</ForeName>
+            <Initials>Y</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Biological Repositories, Zhongnan Hospital of Wuhan University, Wuhan, Hubei 430071, P.R.&#160;China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Xie</LastName>
+            <ForeName>Conghua</ForeName>
+            <Initials>C</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Radiation and Medical Oncology, Zhongnan Hospital of Wuhan University, Wuhan, Hubei 430071, P.R.&#160;China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D016454">Review</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2021</Year>
+          <Month>09</Month>
+          <Day>24</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Greece</Country>
+        <MedlineTA>Int J Oncol</MedlineTA>
+        <NlmUniqueID>9306042</NlmUniqueID>
+        <ISSNLinking>1019-6439</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D000072224">Bcl-2-Like Protein 11</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D000082082">Immune Checkpoint Inhibitors</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D047428">Protein Kinase Inhibitors</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>EC 2.7.10.1</RegistryNumber>
+          <NameOfSubstance UI="D066246">ErbB Receptors</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000072224" MajorTopicYN="N">Bcl-2-Like Protein 11</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002289" MajorTopicYN="N">Carcinoma, Non-Small-Cell Lung</DescriptorName>
+          <QualifierName UI="Q000188" MajorTopicYN="Y">drug therapy</QualifierName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000473" MajorTopicYN="N">pathology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D019008" MajorTopicYN="N">Drug Resistance, Neoplasm</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D066246" MajorTopicYN="N">ErbB Receptors</DescriptorName>
+          <QualifierName UI="Q000037" MajorTopicYN="Y">antagonists &amp; inhibitors</QualifierName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000502" MajorTopicYN="N">physiology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000082082" MajorTopicYN="N">Immune Checkpoint Inhibitors</DescriptorName>
+          <QualifierName UI="Q000494" MajorTopicYN="N">pharmacology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008175" MajorTopicYN="N">Lung Neoplasms</DescriptorName>
+          <QualifierName UI="Q000188" MajorTopicYN="Y">drug therapy</QualifierName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000473" MajorTopicYN="N">pathology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009154" MajorTopicYN="N">Mutation</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D047428" MajorTopicYN="N">Protein Kinase Inhibitors</DescriptorName>
+          <QualifierName UI="Q000494" MajorTopicYN="Y">pharmacology</QualifierName>
+          <QualifierName UI="Q000627" MajorTopicYN="N">therapeutic use</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015398" MajorTopicYN="N">Signal Transduction</DescriptorName>
+          <QualifierName UI="Q000187" MajorTopicYN="N">drug effects</QualifierName>
+          <QualifierName UI="Q000502" MajorTopicYN="N">physiology</QualifierName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">epidermal growth factor receptor&#8209;tyrosine kinase inhibitor</Keyword>
+        <Keyword MajorTopicYN="N">non&#8209;small cell lung cancer</Keyword>
+        <Keyword MajorTopicYN="N">osimertinib</Keyword>
+        <Keyword MajorTopicYN="N">resistance mechanism</Keyword>
+        <Keyword MajorTopicYN="N">targeted therapy</Keyword>
+      </KeywordList>
+      <CoiStatement>The authors declare that they have no competing interests.</CoiStatement>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="received">
+          <Year>2021</Year>
+          <Month>6</Month>
+          <Day>25</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="accepted">
+          <Year>2021</Year>
+          <Month>9</Month>
+          <Day>9</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2021</Year>
+          <Month>9</Month>
+          <Day>24</Day>
+          <Hour>8</Hour>
+          <Minute>49</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2021</Year>
+          <Month>9</Month>
+          <Day>25</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2022</Year>
+          <Month>1</Month>
+          <Day>29</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pmc-release">
+          <Year>2021</Year>
+          <Month>9</Month>
+          <Day>24</Day>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">34558640</ArticleId>
+        <ArticleId IdType="pmc">PMC8562388</ArticleId>
+        <ArticleId IdType="doi">10.3892/ijo.2021.5270</ArticleId>
+        <ArticleId IdType="pii">90</ArticleId>
+      </ArticleIdList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Siegel RL, Miller KD, Jemal A. Cancer statistics, 2020. CA Cancer J Clin. 2020;70:7&#8211;30. doi: 10.3322/caac.21590.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3322/caac.21590</ArticleId>
+            <ArticleId IdType="pubmed">31912902</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Testa U, Castelli G, Pelosi E. Lung cancers: Molecular characterization, clonal heterogeneity and evolution, and cancer stem cells. Cancers (Basel) 2018;10:248. doi: 10.3390/cancers10080248.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3390/cancers10080248</ArticleId>
+            <ArticleId IdType="pmc">PMC6116004</ArticleId>
+            <ArticleId IdType="pubmed">30060526</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Rosell R, Moran T, Queralt C, Porta R, Cardenal F, Camps C, Majem M, Lopez-Vivanco G, Isla D, Provencio M, et al. Screening for epidermal growth factor receptor mutations in lung cancer. New Engl J Med. 2009;361:958&#8211;967. doi: 10.1056/NEJMoa0904554.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1056/NEJMoa0904554</ArticleId>
+            <ArticleId IdType="pubmed">19692684</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>da Cunha Santos G, Shepherd FA, Tsao MS. EGFR mutations and lung cancer. Annu Rev Pathol. 2011;6:49&#8211;69. doi: 10.1146/annurev-pathol-011110-130206.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1146/annurev-pathol-011110-130206</ArticleId>
+            <ArticleId IdType="pubmed">20887192</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Roskoski R., Jr Small molecule inhibitors targeting the EGFR/ErbB family of protein-tyrosine kinases in human cancers. Pharmacol Res. 2019;139:395&#8211;411. doi: 10.1016/j.phrs.2018.11.014.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.phrs.2018.11.014</ArticleId>
+            <ArticleId IdType="pubmed">30500458</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Huang L, Fu L. Mechanisms of resistance to EGFR tyrosine kinase inhibitors. Acta Pharm Sin B. 2015;5:390&#8211;401. doi: 10.1016/j.apsb.2015.07.001.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.apsb.2015.07.001</ArticleId>
+            <ArticleId IdType="pmc">PMC4629442</ArticleId>
+            <ArticleId IdType="pubmed">26579470</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Mok TS, Wu YL, Thongprasert S, Yang CH, Chu DT, Saijo N, Sunpaweravong P, Han B, Margono B, Ichinose Y, et al. Gefitinib or carboplatin-paclitaxel in pulmonary adenocarcinoma. N Engl J Med. 2009;361:947&#8211;957. doi: 10.1056/NEJMoa0810699.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1056/NEJMoa0810699</ArticleId>
+            <ArticleId IdType="pubmed">19692680</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Kazandjian D, Blumenthal GM, Yuan W, He K, Keegan P, Pazdur R. FDA approval of gefitinib for the treatment of patients with metastatic EGFR mutation-positive non-small cell lung cancer. Clin Cancer Res. 2016;22:1307&#8211;1312. doi: 10.1158/1078-0432.CCR-15-2266.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/1078-0432.CCR-15-2266</ArticleId>
+            <ArticleId IdType="pubmed">26980062</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Rosell R, Carcereny E, Gervais R, Vergnenegre A, Massuti B, Felip E, Palmero R, Garcia-Gomez R, Pallares C, Sanchez JM, et al. Erlotinib versus standard chemotherapy as first-line treatment for European patients with advanced EGFR mutation-positive non-small-cell lung cancer (EURTAC): A multicentre, open-label, randomised phase 3 trial. Lancet Oncol. 2012;13:239&#8211;246. doi: 10.1016/S1470-2045(11)70393-X.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S1470-2045(11)70393-X</ArticleId>
+            <ArticleId IdType="pubmed">22285168</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Shi YK, Wang L, Han BH, Li W, Yu P, Liu YP, Ding CM, Song X, Ma ZY, Ren XL, et al. First-line icotinib versus cisplatin/pemetrexed plus pemetrexed maintenance therapy for patients with advanced EGFR mutation-positive lung adenocarcinoma (CONVINCE): A phase 3, open-label, randomized study. Ann Oncol. 2017;28:2443&#8211;2450. doi: 10.1093/annonc/mdx359.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/annonc/mdx359</ArticleId>
+            <ArticleId IdType="pubmed">28945850</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Park K, Tan EH, O'Byrne K, Zhang L, Boyer M, Mok T, Hirsh V, Yang JC, Lee KH, Lu S, et al. Afatinib versus gefitinib as first-line treatment of patients with EGFR mutation-positive non-small-cell lung cancer (LUX-Lung 7): A phase 2B, open-label, randomised controlled trial. Lancet Oncol. 2016;17:577&#8211;589. doi: 10.1016/S1470-2045(16)30033-X.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S1470-2045(16)30033-X</ArticleId>
+            <ArticleId IdType="pubmed">27083334</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wu YL, Cheng Y, Zhou X, Lee KH, Nakagawa K, Niho S, Tsuji F, Linke R, Rosell R, Corral J, et al. Dacomitinib versus gefitinib as first-line treatment for patients with EGFR-mutation-positive non-small-cell lung cancer (ARCHER 1050): A randomised, open-label, phase 3 trial. Lancet Oncol. 2017;18:1454&#8211;1466. doi: 10.1016/S1470-2045(17)30608-3.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S1470-2045(17)30608-3</ArticleId>
+            <ArticleId IdType="pubmed">28958502</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Miller VA, Hirsh V, Cadranel J, Chen YM, Park K, Kim SW, Zhou C, Su WC, Wang M, Sun Y, et al. Afatinib versus placebo for patients with advanced, metastatic non-small-cell lung cancer after failure of erlotinib, gefitinib, or both, and one or two lines of chemotherapy (LUX-Lung 1): A phase 2b/3 randomised trial. Lancet Oncol. 2012;13:528&#8211;538. doi: 10.1016/S1470-2045(12)70087-6.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S1470-2045(12)70087-6</ArticleId>
+            <ArticleId IdType="pubmed">22452896</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ellis PM, Shepherd FA, Millward M, Perrone F, Seymour L, Liu G, Sun S, Cho BC, Morabito A, Leighl NB, et al. Dacomitinib compared with placebo in pretreated patients with advanced or metastatic non-small-cell lung cancer (NCIC CTG BR.26): A double-blind, randomised, phase 3 trial. Lancet Oncol. 2014;15:1379&#8211;1388. doi: 10.1016/S1470-2045(14)70472-3.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S1470-2045(14)70472-3</ArticleId>
+            <ArticleId IdType="pubmed">25439692</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Westover D, Zugazagoitia J, Cho BC, Lovly CM, Paz-Ares L. Mechanisms of acquired resistance to first- and second-generation EGFR tyrosine kinase inhibitors. Ann Oncol. 2018;29(Suppl-1):i10&#8211;i19. doi: 10.1093/annonc/mdx703.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/annonc/mdx703</ArticleId>
+            <ArticleId IdType="pmc">PMC6454547</ArticleId>
+            <ArticleId IdType="pubmed">29462254</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Passaro A, Guerini-Rocco E, Pochesci A, Vacirca D, Spitaleri G, Catania CM, Rappa A, Barberis M, de Marinis F. Targeting EGFR T790M mutation in NSCLC: From biology to evaluation and treatment. Pharmacol Res. 2017;117:406&#8211;415. doi: 10.1016/j.phrs.2017.01.003.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.phrs.2017.01.003</ArticleId>
+            <ArticleId IdType="pubmed">28089942</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Mok TS, Wu YL, Ahn MJ, Garassino MC, Kim HR, Ramalingam SS, Shepherd FA, He Y, Akamatsu H, Theelen WS, et al. Osimertinib or platinum-pemetrexed in EGFR T790M-positive lung cancer. New Engl J Med. 2017;376:629&#8211;640. doi: 10.1056/NEJMoa1612674.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1056/NEJMoa1612674</ArticleId>
+            <ArticleId IdType="pmc">PMC6762027</ArticleId>
+            <ArticleId IdType="pubmed">27959700</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Cross DA, Ashton SE, Ghiorghiu S, Eberlein C, Nebhan CA, Spitzler PJ, Orme JP, Finlay MR, Ward RA, Mellor MJ, et al. AZD9291, an irreversible EGFR TKI, overcomes T790M-mediated resistance to EGFR inhibitors in lung cancer. Cancer Discov. 2014;4:1046&#8211;1061. doi: 10.1158/2159-8290.CD-14-0337.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/2159-8290.CD-14-0337</ArticleId>
+            <ArticleId IdType="pmc">PMC4315625</ArticleId>
+            <ArticleId IdType="pubmed">24893891</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Soria JC, Ohe Y, Vansteenkiste J, Reungwetwattana T, Chewaskulyong B, Lee KH, Dechaphunkul A, Imamura F, Nogami N, Kurata T, et al. Osimertinib in untreated EGFR-mutated advanced non-small-cell lung cancer. New Engl J Med. 2018;378:113&#8211;125. doi: 10.1056/NEJMoa1713137.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1056/NEJMoa1713137</ArticleId>
+            <ArticleId IdType="pubmed">29151359</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sequist LV, Soria JC, Camidge DR. Update to rociletinib data with the RECIST confirmed response rate. New Engl J Med. 2016;374:2296&#8211;2297. doi: 10.1056/NEJMc1602688.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1056/NEJMc1602688</ArticleId>
+            <ArticleId IdType="pubmed">27195670</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Yun J, Hong MH, Kim SY, Park CW, Kim S, Yun MR, Kang HN, Pyo KH, Lee SS, Koh JS, et al. YH25448, an irreversible EGFR-TKI with potent intracranial activity in EGFR mutant non-small cell lung cancer. Clin Cancer Res. 2019;25:2575&#8211;2587. doi: 10.1158/1078-0432.CCR-18-2906.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/1078-0432.CCR-18-2906</ArticleId>
+            <ArticleId IdType="pubmed">30670498</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Xu X, Mao L, Xu W, Tang W, Zhang X, Xi B, Xu R, Fang X, Liu J, Fang C, et al. AC0010, an irreversible EGFR inhibitor selectively targeting mutated EGFR and overcoming T790M-induced resistance in animal models and lung cancer patients. Mol Cancer Ther. 2016;15:2586&#8211;2597. doi: 10.1158/1535-7163.MCT-16-0281.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/1535-7163.MCT-16-0281</ArticleId>
+            <ArticleId IdType="pubmed">27573423</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Jia Y, Juarez J, Li J, Manuia M, Niederst MJ, Tompkins C, Timple N, Vaillancourt MT, Pferdekamper AC, Lockerman EL, et al. EGF816 exerts anticancer effects in non-small cell lung cancer by irreversibly and selectively targeting primary and acquired activating mutations in the EGF receptor. Cancer Res. 2016;76:1591&#8211;1602. doi: 10.1158/0008-5472.CAN-15-2581.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/0008-5472.CAN-15-2581</ArticleId>
+            <ArticleId IdType="pubmed">26825170</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Yu HA, Spira A, Horn L, Weiss J, West H, Giaccone G, Evans T, Kelly RJ, Desai B, Krivoshik A, et al. A phase I, dose escalation study of oral ASP8273 in patients with non-small cell lung cancers with epidermal growth factor receptor mutations. Clin Cancer Res. 2017;23:7467&#8211;7473. doi: 10.1158/1078-0432.CCR-17-1447.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/1078-0432.CCR-17-1447</ArticleId>
+            <ArticleId IdType="pmc">PMC8788622</ArticleId>
+            <ArticleId IdType="pubmed">28954786</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Park K, Lee JS, Lee KH, Kim JH, Min YJ, Cho JY, Han JY, Kim BS, Kim JS, Lee DH, et al. Updated safety and efficacy results from phase I/II study of HM61713 in patients (pts) with EGFR mutation positive non-small cell lung cancer (NSCLC) who failed previous EGFR-tyrosine kinase inhibitor (TKI) J Clin Oncol. 2015;33(Suppl 15):S8084. doi: 10.1200/jco.2015.33.15_suppl.8084.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1200/jco.2015.33.15_suppl.8084</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sequist LV, Rolfe L, Allen AR. Rociletinib in EGFR-mutated non-small-cell lung cancer. New Engl J Med. 2015;373:578&#8211;579. doi: 10.1056/NEJMc1506831.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1056/NEJMc1506831</ArticleId>
+            <ArticleId IdType="pubmed">26244318</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wang H, Pan R, Zhang X, Si X, Wang M, Zhang L. Abivertinib in patients with T790M-positive advanced NSCLC and its subsequent treatment with osimertinib. Thorac Cancer. 2020;11:594&#8211;602. doi: 10.1111/1759-7714.13302.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1111/1759-7714.13302</ArticleId>
+            <ArticleId IdType="pmc">PMC7049520</ArticleId>
+            <ArticleId IdType="pubmed">31943845</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Tan DS, Leighl NB, Riely GJ, Yang JC, Sequist LV, Wolf J, Seto T, Felip E, Aix SP, Jonnaert M, et al. Safety and efficacy of nazartinib (EGF816) in adults with EGFR-mutant non-small-cell lung carcinoma: A multicentre, open-label, phase 1 study. Lancet Resp Med. 2020;8:561&#8211;572. doi: 10.1016/S2213-2600(19)30267-X.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S2213-2600(19)30267-X</ArticleId>
+            <ArticleId IdType="pubmed">31954624</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Kim DW, Lee DH, Han JY, Lee J, Cho BC, Kang JH, Lee KH, Cho EK, Kim JS, Min YJ, et al. Safety, tolerability, and anti-tumor activity of olmutinib in non-small cell lung cancer with T790M mutation: A single arm, open label, phase 1/2 trial. Lung Cancer. 2019;135:66&#8211;72. doi: 10.1016/j.lungcan.2019.07.007.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.lungcan.2019.07.007</ArticleId>
+            <ArticleId IdType="pubmed">31447004</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Shi Y, Zhang S, Hu X, Feng J, Ma Z, Zhou J, Yang N, Wu L, Liao W, Zhong D, et al. Safety, clinical activity, and pharmacokinetics of alflutinib (AST2818) in patients with advanced NSCLC With EGFR T790M mutation. J Thorac Oncol. 2020;15:1015&#8211;1026. doi: 10.1016/j.jtho.2020.01.010.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2020.01.010</ArticleId>
+            <ArticleId IdType="pubmed">32007598</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Yang JC, Camidge DR, Yang CT, Zhou J, Guo R, Chiu CH, Chang GC, Shiah HS, Chen Y, Wang CC, et al. Safety, efficacy, and pharmacokinetics of almonertinib (HS-10296) in pretreated patients with EGFR-mutated advanced NSCLC: A multicenter, open-label, phase 1 Trial. J Thorac Oncol. 2020;15:1907&#8211;1918. doi: 10.1016/j.jtho.2020.09.001.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2020.09.001</ArticleId>
+            <ArticleId IdType="pubmed">32916310</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ahn MJ, Han JY, Lee KH, Kim SW, Kim DW, Lee YG, Cho EK, Kim JH, Lee GW, Lee JS, et al. Lazertinib in patients with EGFR mutation-positive advanced non-small-cell lung cancer: Results from the dose escalation and dose expansion parts of a first-in-human, open-label, multicentre, phase 1-2 study. Lancet Oncol. 2019;20:1681&#8211;1690. doi: 10.1016/S1470-2045(19)30504-2.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S1470-2045(19)30504-2</ArticleId>
+            <ArticleId IdType="pubmed">31587882</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Kelly RJ, Shepherd FA, Krivoshik A, Jie F, Horn L. A phase III, randomized, open-label study of ASP8273 versus erlotinib or gefitinib in patients with advanced stage IIIB/IV non-small-cell lung cancer. Ann Oncol. 2019;30:1127&#8211;1133. doi: 10.1093/annonc/mdz128.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/annonc/mdz128</ArticleId>
+            <ArticleId IdType="pmc">PMC6736319</ArticleId>
+            <ArticleId IdType="pubmed">31070709</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Mezquita L, Varga A, Planchard D. Safety of osimertinib in EGFR-mutated non-small cell lung cancer. Expert Opin Drug Saf. 2018;17:1239&#8211;1248. doi: 10.1080/14740338.2018.1549222.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1080/14740338.2018.1549222</ArticleId>
+            <ArticleId IdType="pubmed">30457891</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ramalingam SS, Vansteenkiste J, Planchard D, Cho BC, Gray JE, Ohe Y, Zhou C, Reungwetwattana T, Cheng Y, Chewaskulyong B, et al. Overall Survival with Osimertinib in Untreated, -Mutated Advanced NSCLC. New Engl J Med. 2020;382:41&#8211;50. doi: 10.1056/NEJMoa1913662.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1056/NEJMoa1913662</ArticleId>
+            <ArticleId IdType="pubmed">31751012</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Reungwetwattana T, Nakagawa K, Cho BC, Cobo M, Cho EK, Bertolini A, Bohnet S, Zhou C, Lee KH, Nogami N, et al. CNS response to osimertinib versus standard epidermal growth factor receptor tyrosine kinase inhibitors in patients with untreated EGFR-mutated advanced non-small-cell lung cancer. J Clin Oncol. 2018 Aug 28; doi: 10.1200/JCO.2018.78.3118. Epub ahead of print.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1200/JCO.2018.78.3118</ArticleId>
+            <ArticleId IdType="pubmed">30153097</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Saito H, Fukuhara T, Furuya N, Watanabe K, Sugawara S, Iwasawa S, Tsunezuka Y, Yamaguchi O, Okada M, Yoshimori K, et al. Erlotinib plus bevacizumab versus erlotinib alone in patients with EGFR-positive advanced non-squamous non-small-cell lung cancer (NEJ026): Interim analysis of an open-label, randomised, multicentre, phase 3 trial. Lancet Oncol. 2019;20:625&#8211;635. doi: 10.1016/S1470-2045(19)30035-X.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S1470-2045(19)30035-X</ArticleId>
+            <ArticleId IdType="pubmed">30975627</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Goldberg SB, Redman MW, Lilenbaum R, Politi K, Stinchcombe TE, Horn L, Chen EH, Mashru SH, Gettinger SN, Melnick MA, et al. Randomized trial of afatinib plus cetuximab versus afatinib alone for first-line treatment of -mutant non-small-cell lung cancer: Final results from SWOG S1403. J Clin Oncol. 2020;38:4076&#8211;4085. doi: 10.1200/JCO.20.01149.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1200/JCO.20.01149</ArticleId>
+            <ArticleId IdType="pmc">PMC7768342</ArticleId>
+            <ArticleId IdType="pubmed">33021871</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Oxnard GR, Yang JC, Yu H, Kim SW, Saka H, Horn L, Goto K, Ohe Y, Mann H, Thress KS, et al. TATTON: A multi-arm, phase Ib trial of osimertinib combined with selumetinib, savolitinib, or durvalumab in EGFR-mutant lung cancer. Ann Oncol. 2020;31:507&#8211;516. doi: 10.1016/j.annonc.2020.01.013.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.annonc.2020.01.013</ArticleId>
+            <ArticleId IdType="pubmed">32139298</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sequist LV, Piotrowska Z, Niederst MJ, Heist RS, Digumarthy S, Shaw AT, Engelman JA. Osimertinib responses after disease progression in patients who had been receiving rociletinib. JAMA Oncol. 2016;2:541&#8211;543. doi: 10.1001/jamaoncol.2015.5009.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1001/jamaoncol.2015.5009</ArticleId>
+            <ArticleId IdType="pubmed">26720284</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Nagasaka M, Zhu VW, Lim SM, Greco M, Wu F, Ou SI. Beyond osimertinib: The development of third-generation EGFR tyrosine kinase inhibitors for advanced EGFR+ NSCLC. J Thorac Oncol. 2021;16:740&#8211;763. doi: 10.1016/j.jtho.2020.11.028.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2020.11.028</ArticleId>
+            <ArticleId IdType="pubmed">33338652</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ma Y, Zheng X, Zhao H, Fang W, Zhang Y, Ge J, Wang L, Wang W, Jiang J, Chuai S, et al. First-in-human phase I study of AC0010, a mutant-selective EGFR inhibitor in non-small cell lung cancer: Safety, efficacy, and potential mechanism of resistance. J Thorac Oncol. 2018;13:968&#8211;977. doi: 10.1016/j.jtho.2018.03.025.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2018.03.025</ArticleId>
+            <ArticleId IdType="pubmed">29626621</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wang H, Zhang L, Hu P, Zheng X, Si X, Zhang X, Wang M. Penetration of the blood-brain barrier by avitinib and its control of intra/extra-cranial disease in non-small cell lung cancer harboring the T790M mutation. Lung Cancer. 2018;122:1&#8211;6. doi: 10.1016/j.lungcan.2018.05.010.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.lungcan.2018.05.010</ArticleId>
+            <ArticleId IdType="pubmed">30032814</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Kim ES. Olmutinib: First global approval. Drugs. 2016;76:1153&#8211;1157. doi: 10.1007/s40265-016-0606-z.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/s40265-016-0606-z</ArticleId>
+            <ArticleId IdType="pubmed">27357069</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Arcila ME, Nafa K, Chaft JE, Rekhtman N, Lau C, Reva BA, Zakowski MF, Kris MG, Ladanyi M. EGFR exon 20 insertion mutations in lung adenocarcinomas: Prevalence, molecular heterogeneity, and clinicopathologic characteristics. Mol Cancer Ther. 2013;12:220&#8211;229. doi: 10.1158/1535-7163.MCT-12-0620.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/1535-7163.MCT-12-0620</ArticleId>
+            <ArticleId IdType="pmc">PMC3714231</ArticleId>
+            <ArticleId IdType="pubmed">23371856</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Robichaux JP, Elamin YY, Tan Z, Carter BW, Zhang S, Liu S, Li S, Chen T, Poteete A, Estrada-Bernal A, et al. Mechanisms and clinical activity of an EGFR and HER2 exon 20-selective kinase inhibitor in non-small cell lung cancer. Nat Med. 2018;24:638&#8211;646. doi: 10.1038/s41591-018-0007-9.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/s41591-018-0007-9</ArticleId>
+            <ArticleId IdType="pmc">PMC5964608</ArticleId>
+            <ArticleId IdType="pubmed">29686424</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Qin Y, Jian H, Tong X, Wu X, Wang F, Shao YW, Zhao X. Variability of EGFR exon 20 insertions in 24 468 Chinese lung cancer patients and their divergent responses to EGFR inhibitors. Mol Oncol. 2020;14:1695&#8211;1704. doi: 10.1002/1878-0261.12710.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/1878-0261.12710</ArticleId>
+            <ArticleId IdType="pmc">PMC7400778</ArticleId>
+            <ArticleId IdType="pubmed">32412152</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>van Veggel B, Madeira R, Santos JFV, Hashemi SMS, Paats MS, Monkhorst K, Heideman DAM, Groves M, Radonic T, Smit EF, et al. Osimertinib treatment for patients with EGFR exon 20 mutation positive non-small cell lung cancer. Lung Cancer. 2020;141:9&#8211;13. doi: 10.1016/j.lungcan.2019.12.013.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.lungcan.2019.12.013</ArticleId>
+            <ArticleId IdType="pubmed">31926441</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Li X, Wang S, Li B, Wang Z, Shang S, Shao Y, Sun X, Wang L. BIM deletion polymorphism confers resistance to osimertinib in EGFR T790M lung cancer: A case report and literature review. Target Oncol. 2018;13:517&#8211;523. doi: 10.1007/s11523-018-0573-2.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/s11523-018-0573-2</ArticleId>
+            <ArticleId IdType="pubmed">29907952</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhao M, Zhang Y, Cai W, Li J, Zhou F, Cheng N, Ren R, Zhao C, Li X, Ren S, et al. The Bim deletion polymorphism clinical profile and its relation with tyrosine kinase inhibitor resistance in Chinese patients with non-small cell lung cancer. Cancer. 2014;120:2299&#8211;2307. doi: 10.1002/cncr.28725.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/cncr.28725</ArticleId>
+            <ArticleId IdType="pubmed">24737648</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Tanimoto A, Takeuchi S, Arai S, Fukuda K, Yamada T, Roca X, Ong ST, Yano S. Histone deacetylase 3 inhibition overcomes BIM deletion polymorphism-mediated osimertinib resistance in EGFR-mutant lung cancer. Clin Cancer Res. 2017;23:3139&#8211;3149. doi: 10.1158/1078-0432.CCR-16-2271.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/1078-0432.CCR-16-2271</ArticleId>
+            <ArticleId IdType="pubmed">27986747</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Isobe K, Hata Y, Tochigi N, Kaburaki K, Kobayashi H, Makino T, Otsuka H, Sato F, Ishida F, Kikuchi N, et al. Clinical significance of BIM deletion polymorphism in non-small-cell lung cancer with epidermal growth factor receptor mutation. J Thorac Oncol. 2014;9:483&#8211;487. doi: 10.1097/JTO.0000000000000125.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1097/JTO.0000000000000125</ArticleId>
+            <ArticleId IdType="pmc">PMC4132037</ArticleId>
+            <ArticleId IdType="pubmed">24736070</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Liu SY, Zhou JY, Li WF, Sun H, Zhang YC, Yan HH, Chen ZH, Chen CX, Ye JY, Yang JJ, et al. Concomitant genetic alterations having greater impact on the clinical benefit of EGFR-TKIs in EGFR-mutant advanced NSCLC than BIM deletion polymorphism. Clin Transl Med. 2020;10:337&#8211;345. doi: 10.1002/ctm2.12.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/ctm2.12</ArticleId>
+            <ArticleId IdType="pmc">PMC7240862</ArticleId>
+            <ArticleId IdType="pubmed">32508032</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Papadimitrakopoulou VA, Wu YL, Han JY, Ahn MJ, Ramalingam SS, John T, Okamoto I, Yang JCH, Bulusu KC, Laus G, et al. Analysis of resistance mechanisms to osimertinib in patients with EGFR T790M advanced NSCLC from the AURA3 study. Ann Oncol. 2018;29(Suppl 8):VIII741. doi: 10.1093/annonc/mdy424.064.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/annonc/mdy424.064</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Yang Z, Yang N, Ou Q, Xiang Y, Jiang T, Wu X, Bao H, Tong X, Wang X, Shao YW, et al. Investigating novel resistance mechanisms to third-generation EGFR tyrosine kinase inhibitor osimertinib in non-small cell lung cancer patients. Clin Cancer Res. 2018;24:3097&#8211;3107. doi: 10.1158/1078-0432.CCR-17-2310.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/1078-0432.CCR-17-2310</ArticleId>
+            <ArticleId IdType="pubmed">29506987</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Le X, Puri S, Negrao MV, Nilsson MB, Robichaux J, Boyle T, Hicks JK, Lovinger KL, Roarty E, Rinsurongkawong W, et al. Landscape of EGFR-dependent and -independent resistance mechanisms to osimertinib and continuation therapy beyond progression in -mutant NSCLC. Clin Cancer Res. 2018;24:6195&#8211;6203. doi: 10.1158/1078-0432.CCR-18-1542.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/1078-0432.CCR-18-1542</ArticleId>
+            <ArticleId IdType="pmc">PMC6295279</ArticleId>
+            <ArticleId IdType="pubmed">30228210</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Oxnard GR, Hu Y, Mileham KF, Husain H, Costa DB, Tracy P, Feeney N, Sholl LM, Dahlberg SE, Redig AJ, et al. Assessment of resistance mechanisms and clinical implications in patients with EGFR T790M-positive lung cancer and acquired resistance to osimertinib. JAMA Oncol. 2018;4:1527&#8211;1534. doi: 10.1001/jamaoncol.2018.2969.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1001/jamaoncol.2018.2969</ArticleId>
+            <ArticleId IdType="pmc">PMC6240476</ArticleId>
+            <ArticleId IdType="pubmed">30073261</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Lin CC, Shih JY, Yu CJ, Ho CC, Liao WY, Lee JH, Tsai TH, Su KY, Hsieh MS, Chang YL, et al. Outcomes in patients with non-small-cell lung cancer and acquired Thr790Met mutation treated with osimertinib: A genomic study. Lancet Resp Med. 2018;6:107&#8211;116. doi: 10.1016/S2213-2600(17)30480-0.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S2213-2600(17)30480-0</ArticleId>
+            <ArticleId IdType="pubmed">29249325</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ramalingam SS, Cheng Y, Zhou C, Ohe Y, Imamura F, Cho BC, Lin MC, Majem M, Shah R, Rukazenkov Y, et al. Mechanisms of acquired resistance to first-line osimertinib: Preliminary data from the phase III FLAURA study. Ann Oncol. 2018;29(Suppl 8):viii740. doi: 10.1093/annonc/mdy424.063.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/annonc/mdy424.063</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ramalingam SS, Yang JC, Lee CK, Kurata T, Kim DW, John T, Nogami N, Ohe Y, Mann H, Rukazenkov Y, et al. Osimertinib as first-line treatment of EGFR mutation-positive advanced non-small-cell lung cancer. J Clin Oncol. 2018;36:841&#8211;849. doi: 10.1200/JCO.2017.74.7576.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1200/JCO.2017.74.7576</ArticleId>
+            <ArticleId IdType="pubmed">28841389</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhang YC, Chen ZH, Zhang XC, Xu CR, Yan HH, Xie Z, Chuai SK, Ye JY, Han-Zhang H, Zhang Z, et al. Analysis of resistance mechanisms to abivertinib, a third-generation EGFR tyrosine kinase inhibitor, in patients with EGFR T790M-positive non-small cell lung cancer from a phase I trial. EBioMedicine. 2019;43:180&#8211;187. doi: 10.1016/j.ebiom.2019.04.030.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.ebiom.2019.04.030</ArticleId>
+            <ArticleId IdType="pmc">PMC6558024</ArticleId>
+            <ArticleId IdType="pubmed">31027916</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Chabon JJ, Simmons AD, Lovejoy AF, Esfahani MS, Newman AM, Haringsma HJ, Kurtz DM, Stehr H, Scherer F, Karlovich CA, et al. Circulating tumour DNA profiling reveals heterogeneity of EGFR inhibitor resistance mechanisms in lung cancer patients. Nat Commun. 2016;7:11815. doi: 10.1038/ncomms11815.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/ncomms11815</ArticleId>
+            <ArticleId IdType="pmc">PMC4906406</ArticleId>
+            <ArticleId IdType="pubmed">27283993</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Helman E, Nguyen M, Karlovich CA, Despain D, Choquette AK, Spira AI, Yu HA, Camidge DR, Harding TC, Lanman RB, Simmons AD. Cell-Free DNA next-generation sequencing prediction of response and resistance to third-generation EGFR inhibitor. Clin Lung Cancer. 2018;19:530.e7. doi: 10.1016/j.cllc.2018.07.008.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.cllc.2018.07.008</ArticleId>
+            <ArticleId IdType="pubmed">30279111</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ercan D, Choi HG, Yun CH, Capelletti M, Xie T, Eck MJ, Gray NS, J&#228;nne PA. EGFR mutations and resistance to irreversible pyrimidine-based EGFR inhibitors. Clin Cancer Res. 2015;21:3913&#8211;3923. doi: 10.1158/1078-0432.CCR-14-2789.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/1078-0432.CCR-14-2789</ArticleId>
+            <ArticleId IdType="pmc">PMC4791951</ArticleId>
+            <ArticleId IdType="pubmed">25948633</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Song HN, Jung KS, Yoo KH, Cho J, Lee JY, Lim SH, Kim HS, Sun JM, Lee SH, Ahn JS, et al. Acquired C797S mutation upon treatment with a T790M-specific third-generation EGFR inhibitor (HM61713) in non-small cell lung cancer. J Thorac Oncol. 2016;11:e45&#8211;e47. doi: 10.1016/j.jtho.2015.12.093.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2015.12.093</ArticleId>
+            <ArticleId IdType="pubmed">26749488</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Park S, Ku BM, Jung HA, Sun JM, Ahn JS, Lee SH, Park K, Ahn MJ. EGFR C797S as a resistance mechanism of lazertinib in non-small cell lung cancer with EGFR T790M mutation. Cancer Res Treat. 2020;52:1288&#8211;1290.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7577810</ArticleId>
+            <ArticleId IdType="pubmed">32599977</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Oztan A, Fischer S, Schrock AB, Erlich RL, Lovly CM, Stephens PJ, Ross JS, Miller V, Ali SM, Ou SI, Raez LE. Emergence of EGFR G724S mutation in EGFR-mutant lung adenocarcinoma post progression on osimertinib. Lung Cancer. 2017;111:84&#8211;87. doi: 10.1016/j.lungcan.2017.07.002.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.lungcan.2017.07.002</ArticleId>
+            <ArticleId IdType="pubmed">28838405</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Fassunke J, Muller F, Keul M, Michels S, Dammert MA, Schmitt A, Plenker D, Lategahn J, Heydt C, Bragelmann J, et al. Overcoming EGFRG724S-mediated osimertinib resistance through unique binding characteristics of second-generation EGFR inhibitors. Nat Commun. 2018;9:4655. doi: 10.1038/s41467-018-07078-0.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/s41467-018-07078-0</ArticleId>
+            <ArticleId IdType="pmc">PMC6220297</ArticleId>
+            <ArticleId IdType="pubmed">30405134</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Bersanelli M, Minari R, Bordi P, Gnetti L, Bozzetti C, Squadrilli A, Lagrasta CA, Bottarelli L, Osipova G, Capelletto E, et al. L718Q mutation as new mechanism of acquired resistance to AZD9291 in EGFR-Mutated NSCLC. J Thorac Oncol 11: e121-e123, 2016</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">27257132</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhao S, Li X, Zhao C, Jiang T, Jia Y, Shi J, He Y, Li J, Zhou F, Gao G, et al. Loss of T790M mutation is associated with early progression to osimertinib in Chinese patients with advanced NSCLC who are harboring EGFR T790M. Lung Cancer. 2019;128:33&#8211;39. doi: 10.1016/j.lungcan.2018.12.010.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.lungcan.2018.12.010</ArticleId>
+            <ArticleId IdType="pubmed">30642450</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Piotrowska Z, Niederst MJ, Karlovich CA, Wakelee HA, Neal JW, Mino-Kenudson M, Fulton L, Hata AN, Lockerman EL, Kalsy A, et al. Heterogeneity underlies the emergence of EGFRT790 wild-type clones following treatment of T790M-positive cancers with a third-generation EGFR inhibitor. Cancer Discov. 2015;5:713&#8211;722. doi: 10.1158/2159-8290.CD-15-0399.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/2159-8290.CD-15-0399</ArticleId>
+            <ArticleId IdType="pmc">PMC4497836</ArticleId>
+            <ArticleId IdType="pubmed">25934077</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Knebel FH, Bettoni F, Shimada AK, Cruz M, Alessi JV, Negr&#227;o MV, Reis LFL, Katz A, Camargo AA. Sequential liquid biopsies reveal dynamic alterations of EGFR driver mutations and indicate EGFR amplification as a new mechanism of resistance to osimertinib in NSCLC. Lung Cancer. 2017;108:238&#8211;241. doi: 10.1016/j.lungcan.2017.04.004.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.lungcan.2017.04.004</ArticleId>
+            <ArticleId IdType="pubmed">28625643</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wang Q, Yang S, Wang K, Sun SY. MET inhibitors for targeted therapy of EGFR TKI-resistant lung cancer. J Hematol Oncol. 2019;12:63. doi: 10.1186/s13045-019-0759-9.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1186/s13045-019-0759-9</ArticleId>
+            <ArticleId IdType="pmc">PMC6588884</ArticleId>
+            <ArticleId IdType="pubmed">31227004</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Drilon A, Cappuzzo F, Ou SI, Camidge DR. Targeting MET in lung cancer: Will expectations finally Be MET? J Thorac Oncol. 2017;12:15&#8211;26. doi: 10.1016/j.jtho.2016.10.014.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2016.10.014</ArticleId>
+            <ArticleId IdType="pmc">PMC5603268</ArticleId>
+            <ArticleId IdType="pubmed">27794501</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Hsu CC, Liao BC, Liao WY, Markovets A, Stetson D, Thress K, Yang JC. Exon 16-Skipping HER2 as a Novel Mechanism of Osimertinib Resistance in EGFR L858R/T790M-positive non-small cell lung cancer. J Thorac Oncol. 2020;15:50&#8211;61. doi: 10.1016/j.jtho.2019.09.006.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2019.09.006</ArticleId>
+            <ArticleId IdType="pubmed">31557536</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Desai A, Adjei AA. FGFR signaling as a target for lung cancer therapy. J Thorac Oncol. 2016;11:9&#8211;20. doi: 10.1016/j.jtho.2015.08.003.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2015.08.003</ArticleId>
+            <ArticleId IdType="pubmed">26762735</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Kim TM, Song A, Kim DW, Kim S, Ahn YO, Keam B, Jeon YK, Lee SH, Chung DH, Heo DS. Mechanisms of acquired resistance to AZD9291: A mutation-selective, irreversible EGFR inhibitor. J Thorac Oncol. 2015;10:1736&#8211;1744. doi: 10.1097/JTO.0000000000000688.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1097/JTO.0000000000000688</ArticleId>
+            <ArticleId IdType="pubmed">26473643</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ou SI, Horn L, Cruz M, Vafai D, Lovly CM, Spradlin A, Williamson MJ, Dagogo-Jack I, Johnson A, Miller VA, et al. Emergence of FGFR3-TACC3 fusions as a potential by-pass resistance mechanism to EGFR tyrosine kinase inhibitors in EGFR mutated NSCLC patients. Lung Cancer. 2017;111:61&#8211;64. doi: 10.1016/j.lungcan.2017.07.006.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.lungcan.2017.07.006</ArticleId>
+            <ArticleId IdType="pmc">PMC10203818</ArticleId>
+            <ArticleId IdType="pubmed">28838400</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Hayakawa D, Takahashi F, Mitsuishi Y, Tajima K, Hidayat M, Winardi W, Ihara H, Kanamori K, Matsumoto N, Asao T, et al. Activation of insulin-like growth factor-1 receptor confers acquired resistance to osimertinib in non-small cell lung cancer with EGFR T790M mutation. Thorac Cancer. 2020;11:140&#8211;149. doi: 10.1111/1759-7714.13255.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1111/1759-7714.13255</ArticleId>
+            <ArticleId IdType="pmc">PMC6938756</ArticleId>
+            <ArticleId IdType="pubmed">31758670</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Manabe T, Yasuda H, Terai H, Kagiwada H, Hamamoto J, Ebisudani T, Kobayashi K, Masuzawa K, Ikemura S, Kawada I, et al. IGF2 Autocrine-Mediated IGF1R activation is a clinically relevant mechanism of osimertinib resistance in lung cancer. Mol Cancer Res. 2020;18:549&#8211;559. doi: 10.1158/1541-7786.MCR-19-0956.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/1541-7786.MCR-19-0956</ArticleId>
+            <ArticleId IdType="pubmed">31941753</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Taniguchi H, Yamada T, Wang R, Tanimura K, Adachi Y, Nishiyama A, Tanimoto A, Takeuchi S, Araujo LH, Boroni M, et al. AXL confers intrinsic resistance to osimertinib and advances the emergence of tolerant cells. Nat Commun. 2019;10:259. doi: 10.1038/s41467-018-08074-0.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/s41467-018-08074-0</ArticleId>
+            <ArticleId IdType="pmc">PMC6335418</ArticleId>
+            <ArticleId IdType="pubmed">30651547</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Namba K, Shien K, Takahashi Y, Torigoe H, Sato H, Yoshioka T, Takeda T, Kurihara E, Ogoshi Y, Yamamoto H, et al. Activation of AXL as a preclinical acquired resistance mechanism against osimertinib treatment in EGFR-mutant non-small cell lung cancer cells. Mol Cancer Res. 2019;17:499&#8211;507. doi: 10.1158/1541-7786.MCR-18-0628.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/1541-7786.MCR-18-0628</ArticleId>
+            <ArticleId IdType="pubmed">30463991</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Nakatani K, Yamaoka T, Ohba M, Fujita KI, Arata S, Kusumoto S, Taki-Takemoto I, Kamei D, Iwai S, Tsurutani J, Ohmori T. KRAS and EGFR amplifications mediate resistance to rociletinib and osimertinib in acquired afatinib-resistant NSCLC harboring exon 19 deletion/T790M in. Mol Cancer Ther. 2019;18:112&#8211;126. doi: 10.1158/1535-7163.MCT-18-0591.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/1535-7163.MCT-18-0591</ArticleId>
+            <ArticleId IdType="pubmed">30322949</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Marcoux N, Gettinger SN, O'Kane G, Arbour KC, Neal JW, Husain H, Evans TL, Brahmer JR, Muzikansky A, Bonomi PD, et al. EGFR-mutant adenocarcinomas that transform to small-cell lung cancer and other neuroendocrine carcinomas: Clinical outcomes. J Clin Oncol. 2019;37:278&#8211;285. doi: 10.1200/JCO.18.01585.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1200/JCO.18.01585</ArticleId>
+            <ArticleId IdType="pmc">PMC7001776</ArticleId>
+            <ArticleId IdType="pubmed">30550363</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Schoenfeld AJ, Chan JM, Kubota D, Sato H, Rizvi H, Daneshbod Y, Chang JC, Paik PK, Offin M, Arcila ME, et al. Tumor analyses reveal squamous transformation and off-target alterations as early resistance mechanisms to first-line osimertinib in EGFR-mutant lung cancer. Clin Cancer Res. 2020;26:2654&#8211;2663. doi: 10.1158/1078-0432.CCR-19-3563.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/1078-0432.CCR-19-3563</ArticleId>
+            <ArticleId IdType="pmc">PMC7448565</ArticleId>
+            <ArticleId IdType="pubmed">31911548</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Dongre A, Weinberg RA. New insights into the mechanisms of epithelial-mesenchymal transition and implications for cancer. Nat Rev Mol Cell Biol. 2019;20:69&#8211;84. doi: 10.1038/s41580-018-0080-4.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/s41580-018-0080-4</ArticleId>
+            <ArticleId IdType="pubmed">30459476</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Nukaga S, Yasuda H, Tsuchihara K, Hamamoto J, Masuzawa K, Kawada I, Naoki K, Matsumoto S, Mimaki S, Ikemura S, et al. Amplification of EGFR wild-type alleles in non-small cell lung cancer cells confers acquired resistance to mutation-selective EGFR tyrosine kinase inhibitors. Cancer Res. 2017;77:2078&#8211;2089. doi: 10.1158/0008-5472.CAN-16-2359.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/0008-5472.CAN-16-2359</ArticleId>
+            <ArticleId IdType="pubmed">28202511</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Weng CH, Chen LY, Lin YC, Shih JY, Lin YC, Tseng RY, Chiu AC, Yeh YH, Liu C, Lin YT, et al. Epithelial-mesenchymal transition (EMT) beyond EGFR mutations per se is a common mechanism for acquired resistance to EGFR TKI. Oncogene. 2019;38:455&#8211;468. doi: 10.1038/s41388-018-0454-2.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/s41388-018-0454-2</ArticleId>
+            <ArticleId IdType="pubmed">30111817</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Schrock AB, Zhu VW, Hsieh WS, Madison R, Creelan B, Silberberg J, Costin D, Bharne A, Bonta I, Bosemani T, et al. Receptor tyrosine kinase fusions and BRAF kinase fusions are rare but actionable resistance mechanisms to EGFR tyrosine kinase inhibitors. J Thorac Oncol. 2018;13:1312&#8211;1323. doi: 10.1016/j.jtho.2018.05.027.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2018.05.027</ArticleId>
+            <ArticleId IdType="pubmed">29883838</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Batra U, Sharma M, Amrith BP, Mehta A, Jain P. EML4-ALK fusion as a resistance mechanism to osimertinib and its successful management with osimertinib and alectinib: Case report and review of the literature. Clin Lung Cancer. 2020;21:e597&#8211;e600. doi: 10.1016/j.cllc.2020.05.016.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.cllc.2020.05.016</ArticleId>
+            <ArticleId IdType="pubmed">32620470</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Jia Y, Yun CH, Park E, Ercan D, Manuia M, Juarez J, Xu C, Rhee K, Chen T, Zhang H, et al. Overcoming EGFR(T790M) and EGFR(C797S) resistance with mutant-selective allosteric inhibitors. Nature. 2016;534:129&#8211;132. doi: 10.1038/nature17960.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/nature17960</ArticleId>
+            <ArticleId IdType="pmc">PMC4929832</ArticleId>
+            <ArticleId IdType="pubmed">27251290</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Uchibori K, Inase N, Araki M, Kamada M, Sato S, Okuno Y, Fujita N, Katayama R. Brigatinib combined with anti-EGFR antibody overcomes osimertinib resistance in EGFR-mutated non-small-cell lung cancer. Nat Commun. 2017;8:14768. doi: 10.1038/ncomms14768.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/ncomms14768</ArticleId>
+            <ArticleId IdType="pmc">PMC5355811</ArticleId>
+            <ArticleId IdType="pubmed">28287083</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Schalm SS, Dineen T, Lim SM, Park CW, Hsieh J, Woessner R, Zhang Z, Wilson K, Eno M, Wilson D, et al. 1296P BLU-945, a highly potent and selective 4th generation EGFR TKI for the treatment of EGFR T790M/C797S resistant NSCLC. Ann Oncol. 2020;31(Suppl 6):S1386&#8211;S1406.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Liu X, Zhang X, Yang L, Tian X, Dong T, Ding CZ, Hu L, Wu L, Zhao L, Mao J, et al. Abstract 1320: Preclinical evaluation of TQB3804, a potent EGFR C797S inhibitor. 2019;79(Suppl 13):S1320.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Kim DW, Tiseo M, Ahn MJ, Reckamp KL, Hansen KH, Kim SW, Huber RM, West HL, Groen HJ, Hochmair MJ, et al. Brigatinib in patients with crizotinib-refractory anaplastic lymphoma kinase-positive non-small-cell lung cancer: A randomized, multicenter phase II trial. J Clin Oncol. 2017;35:2490&#8211;2498. doi: 10.1200/JCO.2016.71.5904.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1200/JCO.2016.71.5904</ArticleId>
+            <ArticleId IdType="pubmed">28475456</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wang Y, Yang N, Zhang Y, Li L, Han R, Zhu M, Feng M, Chen H, Lizaso A, Qin T, et al. Effective treatment of lung adenocarcinoma harboring EGFR-activating mutation, T790M, and cis-C797S triple mutations by brigatinib and cetuximab combination therapy. J Thorac Oncol. 2020;15:1369&#8211;1375. doi: 10.1016/j.jtho.2020.04.014.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2020.04.014</ArticleId>
+            <ArticleId IdType="pubmed">32353596</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhao J, Zou M, Lv J, Han Y, Wang G, Wang G. Effective treatment of pulmonary adenocarcinoma harboring triple EGFR mutations of L858R, T790M, and -C797S by osimertinib, bevacizumab, and brigatinib combination therapy: A case report. Onco Targets Ther. 2018;11:5545&#8211;5550. doi: 10.2147/OTT.S170358.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.2147/OTT.S170358</ArticleId>
+            <ArticleId IdType="pmc">PMC6134962</ArticleId>
+            <ArticleId IdType="pubmed">30233215</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Arulananda S, Do H, Musafer A, Mitchell P, Dobrovic A, John T. Combination osimertinib and gefitinib in C797S and T790M EGFR-mutated non-small cell lung cancer. J Thorac Oncol. 2017;12:1728&#8211;1732. doi: 10.1016/j.jtho.2017.08.006.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2017.08.006</ArticleId>
+            <ArticleId IdType="pubmed">28843359</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Giroux-Leprieur E, Dumenil C, Chinet T. Combination of crizotinib and osimertinib or erlotinib might overcome MET-mediated resistance to EGFR Tyrosine kinase inhibitor in EGFR-mutated adenocarcinoma. J Thorac Oncol. 2018;13:e232&#8211;e234. doi: 10.1016/j.jtho.2018.07.012.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2018.07.012</ArticleId>
+            <ArticleId IdType="pubmed">30368417</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sequist LV, Han JY, Ahn MJ, Cho BC, Yu H, Kim SW, Yang JC, Lee JS, Su WC, Kowalski D, et al. Osimertinib plus savolitinib in patients with EGFR mutation-positive, MET-amplified, non-small-cell lung cancer after progression on EGFR tyrosine kinase inhibitors: Interim results from a multicentre, open-label, phase 1b study. Lancet Oncol. 2020;21:373&#8211;386. doi: 10.1016/S1470-2045(19)30785-5.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S1470-2045(19)30785-5</ArticleId>
+            <ArticleId IdType="pubmed">32027846</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Odogwu L, Mathieu L, Blumenthal G, Larkins E, Goldberg KB, Griffin N, Bijwaard K, Lee EY, Philip R, Jiang X, et al. FDA approval summary: Dabrafenib and trametinib for the treatment of metastatic non-small cell lung cancers harboring BRAF V600E mutations. Oncologist. 2018;23:740&#8211;745. doi: 10.1634/theoncologist.2017-0642.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1634/theoncologist.2017-0642</ArticleId>
+            <ArticleId IdType="pmc">PMC6067947</ArticleId>
+            <ArticleId IdType="pubmed">29438093</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Oh DK, Ji WJ, Kim WS, Choi CM, Yoon SK, Rho JK, Lee JC. Efficacy, safety, and resistance profile of osimertinib in T790M mutation-positive non-small cell lung cancer in real-world practice. PLoS One. 2019;14:e0210225. doi: 10.1371/journal.pone.0210225.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1371/journal.pone.0210225</ArticleId>
+            <ArticleId IdType="pmc">PMC6326493</ArticleId>
+            <ArticleId IdType="pubmed">30625213</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Piotrowska Z, Isozaki H, Lennerz JK, Gainor JF, Lennes IT, Zhu VW, Marcoux N, Banwait MK, Digumarthy SR, Su W, et al. Landscape of acquired resistance to osimertinib in EGFR-Mutant NSCLC and clinical validation of combined EGFR and RET inhibition with osimertinib and BLU-667 for acquired fusion. Cancer Discov. 2018;8:1529&#8211;1539. doi: 10.1158/2159-8290.CD-18-1022.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/2159-8290.CD-18-1022</ArticleId>
+            <ArticleId IdType="pmc">PMC6279502</ArticleId>
+            <ArticleId IdType="pubmed">30257958</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Han R, Hao S, Lu C, Zhang C, Lin C, Li L, Wang Y, Hu C, He Y. Aspirin sensitizes osimertinib-resistant NSCLC cells in vitro and in vivo via Bim-dependent apoptosis induction. Mol Oncol. 2020;14:1152&#8211;1169. doi: 10.1002/1878-0261.12682.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/1878-0261.12682</ArticleId>
+            <ArticleId IdType="pmc">PMC7266273</ArticleId>
+            <ArticleId IdType="pubmed">32239624</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Niederst MJ, Hu H, Mulvey HE, Lockerman EL, Garcia AR, Piotrowska Z, Sequist LV, Engelman JA. The allelic context of the C797S mutation acquired upon treatment with third-generation EGFR inhibitors impacts sensitivity to subsequent treatment strategies. Clin Cancer Res. 2015;21:3924&#8211;3933. doi: 10.1158/1078-0432.CCR-15-0560.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/1078-0432.CCR-15-0560</ArticleId>
+            <ArticleId IdType="pmc">PMC4587765</ArticleId>
+            <ArticleId IdType="pubmed">25964297</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wang Z, Yang JJ, Huang J, Ye JY, Zhang XC, Tu HY, Han-Zhang H, Wu YL. Lung Adenocarcinoma Harboring EGFR T790M and in trans C797S responds to combination therapy of first- and third-generation EGFR TKIs and shifts allelic configuration at resistance. J Thorac Oncol. 2017;12:1723&#8211;1727. doi: 10.1016/j.jtho.2017.06.017.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2017.06.017</ArticleId>
+            <ArticleId IdType="pubmed">28662863</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Rotow JK, Costa DB, Paweletz CP, Awad MM, Marcoux P, Rangachari D, Barbie DA, Sands J, Cheng ML, Johnson BE, et al. Concurrent osimertinib plus gefitinib for first-line treatment of EGFR-mutated non-small cell lung cancer (NSCLC) J Clin Oncol. 2020;38:9507. doi: 10.1200/JCO.2020.38.15_suppl.9507.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1200/JCO.2020.38.15_suppl.9507</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Chic N, Mayo-de-Las-Casas C, Reguart N. Successful treatment with gefitinib in advanced non-small cell lung cancer after acquired resistance to osimertinib. J Thorac Oncol. 2017;12:e78&#8211;e80. doi: 10.1016/j.jtho.2017.02.014.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2017.02.014</ArticleId>
+            <ArticleId IdType="pubmed">28532569</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Rangachari D, To C, Shpilsky JE, VanderLaan PA, Kobayashi SS, Mushajiang M, Lau CJ, Paweletz CP, Oxnard GR, J&#228;nne PA, Costa DB. EGFR-mutated lung cancers resistant to osimertinib through EGFR C797S respond to first-generation reversible EGFR inhibitors but eventually acquire EGFR T790M/C797S in preclinical models and clinical samples. J Thorac Oncol. 2019;14:1995&#8211;2002. doi: 10.1016/j.jtho.2019.07.016.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2019.07.016</ArticleId>
+            <ArticleId IdType="pmc">PMC6823139</ArticleId>
+            <ArticleId IdType="pubmed">31377341</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Yang X, Huang C, Chen R, Zhao J. Resolving resistance to osimertinib therapy with afatinib in an NSCLC patient with EGFR L718Q mutation. Clin Lung Cancer. 2020;21:e258&#8211;e260. doi: 10.1016/j.cllc.2019.12.002.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.cllc.2019.12.002</ArticleId>
+            <ArticleId IdType="pubmed">32146032</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Romaniello D, Mazzeo L, Mancini M, Marrocco I, Noronha A, Kreitman M, Srivastava S, Ghosh S, Lindzen M, Salame TM, et al. A combination of approved antibodies overcomes resistance of lung cancer to osimertinib by blocking bypass pathways. Clin Cancer Res. 2018;24:5610&#8211;5621. doi: 10.1158/1078-0432.CCR-18-0450.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/1078-0432.CCR-18-0450</ArticleId>
+            <ArticleId IdType="pubmed">29967248</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Yu HA, Baik CS, Gold K, Hayashi H, Johnson M, Koczywas M, Murakami H, Nishio M, Steuer C, Su WC, et al. LBA62 Efficacy and safety of patritumab deruxtecan (U3-1402), a novel HER3 directed antibody drug conjugate, in patients (pts) with EGFR-mutated (EGFRm) NSCLC. Ann Oncol. 2020;31:S1189&#8211;S1190. doi: 10.1016/j.annonc.2020.08.2295.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.annonc.2020.08.2295</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Cho BC, Lee KH, Cho EK, Kim DW, Lee JS, Han JY, Kim SW, Spira A, Haura EB, Sabari JK, et al. 1258O Amivantamab (JNJ-61186372), an EGFR-MET bispecific antibody, in combination with lazertinib, a 3rd-generation tyrosine kinase inhibitor (TKI), in advanced EGFR NSCLC. Ann Oncol. 2020;31(Suppl 4):S813. doi: 10.1016/j.annonc.2020.08.1572.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.annonc.2020.08.1572</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Okura N, Nishioka N, Yamada T, Taniguchi H, Tanimura K, Katayama Y, Yoshimura A, Watanabe S, Kikuchi T, Shiotsu S, et al. ONO-7475, a Novel AXL inhibitor, suppresses the adaptive resistance to initial EGFR-TKI treatment in -mutated non-small cell lung cancer. Clin Cancer Res. 2020;26:2244&#8211;2256. doi: 10.1158/1078-0432.CCR-19-2321.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/1078-0432.CCR-19-2321</ArticleId>
+            <ArticleId IdType="pubmed">31953310</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Kim D, Bach DH, Fan YH, Luu TT, Hong JY, Park HJ, Lee SK. AXL degradation in combination with EGFR-TKI can delay and overcome acquired resistance in human non-small cell lung cancer cells. Cell Death Dis. 2019;10:361. doi: 10.1038/s41419-019-1601-6.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/s41419-019-1601-6</ArticleId>
+            <ArticleId IdType="pmc">PMC6494839</ArticleId>
+            <ArticleId IdType="pubmed">31043587</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Yang YM, Jang Y, Lee SH, Kang B, Lim SM. AXL/MET dual inhibitor, CB469, has activity in non-small cell lung cancer with acquired resistance to EGFR TKI with AXL or MET activation. Lung Cancer. 2020;46:70&#8211;77. doi: 10.1016/j.lungcan.2020.05.031.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.lungcan.2020.05.031</ArticleId>
+            <ArticleId IdType="pubmed">32521387</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Shi P, Oh YT, Deng L, Zhang G, Qian G, Zhang S, Ren H, Wu G, Legendre B, Jr, Anderson E, et al. Overcoming acquired resistance to AZD9291, A third-generation EGFR inhibitor, through modulation of MEK/ERK-dependent Bim and Mcl-1 Degradation. Clin Cancer Res. 2017;23:6567&#8211;6579. doi: 10.1158/1078-0432.CCR-17-1574.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/1078-0432.CCR-17-1574</ArticleId>
+            <ArticleId IdType="pmc">PMC5668147</ArticleId>
+            <ArticleId IdType="pubmed">28765329</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Gu J, Yao W, Shi P, Zhang G, Owonikoko TK, Ramalingam SS, Sun SY. MEK or ERK inhibition effectively abrogates emergence of acquired osimertinib resistance in the treatment of epidermal growth factor receptor-mutant lung cancers. Cancer. 2020;126:3788&#8211;3799. doi: 10.1002/cncr.32996.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/cncr.32996</ArticleId>
+            <ArticleId IdType="pmc">PMC7381372</ArticleId>
+            <ArticleId IdType="pubmed">32497272</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Xie Z, Gu Y, Xie X, Lin X, Ouyang M, Qin Y, Zhang J, Lizaso A, Chen S, Zhou C. Lung adenocarcinoma harboring concomitant EGFR mutations and BRAF V600E responds to a combination of osimertinib and vemurafenib to overcome osimertinib resistance. Clin Lung Cancer. 2021;22:e390&#8211;e394. doi: 10.1016/j.cllc.2020.06.008.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.cllc.2020.06.008</ArticleId>
+            <ArticleId IdType="pubmed">32693944</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Raoof S, Mulford IJ, Frisco-Cabanos H, Nangia V, Timonina D, Labrot E, Hafeez N, Bilton SJ, Drier Y, Ji F, et al. Targeting FGFR overcomes EMT-mediated resistance in EGFR mutant non-small cell lung cancer. Oncogene. 2019;38:6399&#8211;6413. doi: 10.1038/s41388-019-0887-2.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/s41388-019-0887-2</ArticleId>
+            <ArticleId IdType="pmc">PMC6742540</ArticleId>
+            <ArticleId IdType="pubmed">31324888</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Yochum ZA, Cades J, Wang H, Chatterjee S, Simons BW, O'Brien JP, Khetarpal SK, Lemtiri-Chlieh G, Myers KV, Huang EH, et al. Targeting the EMT transcription factor TWIST1 overcomes resistance to EGFR inhibitors in EGFR-mutant non-small-cell lung cancer. Oncogene. 2019;38:656&#8211;670. doi: 10.1038/s41388-018-0482-y.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/s41388-018-0482-y</ArticleId>
+            <ArticleId IdType="pmc">PMC6358506</ArticleId>
+            <ArticleId IdType="pubmed">30171258</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Yang JC, Schuler M, Popat S, Miura S, Heeke S, Park K, M&#228;rten A, Kim ES. Afatinib for the treatment of NSCLC harboring uncommon EGFR mutations: A database of 693 cases. J Thorac Oncol. 2020;15:803&#8211;815. doi: 10.1016/j.jtho.2019.12.126.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2019.12.126</ArticleId>
+            <ArticleId IdType="pubmed">31931137</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Fang W, Huang Y, Gan J, Shao YW, Zhang L. Durable response of low-dose afatinib plus cetuximab in an adenocarcinoma patient with a novel EGFR exon 20 insertion mutation. J Thorac Oncol. 2019;14:e220&#8211;e221. doi: 10.1016/j.jtho.2019.05.023.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2019.05.023</ArticleId>
+            <ArticleId IdType="pubmed">31558231</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Hasegawa H, Yasuda H, Hamamoto J, Masuzawa K, Tani T, Nukaga S, Hirano T, Kobayashi K, Manabe T, Terai H, et al. Efficacy of afatinib or osimertinib plus cetuximab combination therapy for non-small-cell lung cancer with EGFR exon 20 insertion mutations. Lung Cancer. 2019;127:146&#8211;152. doi: 10.1016/j.lungcan.2018.11.039.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.lungcan.2018.11.039</ArticleId>
+            <ArticleId IdType="pubmed">30642543</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>van Veggel B, de Langen AJ, Hashemi SMS, Monkhorst K, Heideman DAM, Thunnissen E, Smit EF. Afatinib and cetuximab in four patients with EGFR exon 20 insertion-positive advanced NSCLC. J Thorac Oncol. 2018;13:1222&#8211;1226. doi: 10.1016/j.jtho.2018.04.012.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2018.04.012</ArticleId>
+            <ArticleId IdType="pubmed">29702285</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Yun J, Lee SH, Kim SY, Jeong SY, Kim JH, Pyo KH, Park CW, Heo SG, Yun MR, Lim S, et al. Antitumor activity of amivantamab (JNJ-61186372), an EGFR-MET bispecific antibody, in diverse models of exon 20 insertion-driven NSCLC. Cancer Discov. 2020;10:1194&#8211;1209.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">32414908</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Riely GJ, Neal JW, Camidge DR, Spira A, Piotrowska Z, Horn L, Costa DB, Tsao A, Patel J, Gadgeel S, et al. 1261MO Updated results from a phase I/II study of mobocertinib (TAK-788) in NSCLC with EGFR exon 20 insertions (exon20ins) Ann Oncol. 2020;31:S815&#8211;S816. doi: 10.1016/j.annonc.2020.08.1575.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.annonc.2020.08.1575</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Nakahara Y, Kato T, Isomura R, Seki N, Furuya N, Naoki K, Yamanaka T, Okamoto H. A multicenter, open label, randomized phase II study of osimertinib plus ramucirumab versus osimertinib alone as initial chemotherapy for EGFR mutation-positive non-squamous non-small cell lung cancer: TORG1833. J Clin Oncol. 2019;37:TPS9120. doi: 10.1200/JCO.2019.37.15_suppl.TPS9120.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1200/JCO.2019.37.15_suppl.TPS9120</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Yu HA, Schoenfeld AJ, Makhnin A, Kim R, Rizvi H, Tsui D, Falcon C, Houck-Loomis B, Meng F, Yang JL, et al. Effect of osimertinib and bevacizumab on progression-free survival for patients with metastatic EGFR-mutant lung cancers: A Phase 1/2 single-group open-label trial. JAMA Oncol. 2020;6:1048&#8211;1054. doi: 10.1001/jamaoncol.2020.1260.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1001/jamaoncol.2020.1260</ArticleId>
+            <ArticleId IdType="pmc">PMC7256866</ArticleId>
+            <ArticleId IdType="pubmed">32463456</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Kobayashi N, Hashimoto H, Kamimaki C, Nagasawa R, Tanaka K, Kubo S, Katakura S, Chen H, Hirama N, Ushio R, et al. Afatinib + bevacizumab combination therapy in EGFR-mutant NSCLC patients with osimertinib resistance: Protocol of an open-label, phase II, multicenter, single-arm trial. Thorac Cancer. 2020;11:2125&#8211;2129. doi: 10.1111/1759-7714.13503.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1111/1759-7714.13503</ArticleId>
+            <ArticleId IdType="pmc">PMC7396380</ArticleId>
+            <ArticleId IdType="pubmed">32495514</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Lisberg A, Cummings A, Goldman JW, Bornazyan K, Reese N, Wang T, Coluzzi P, Ledezma B, Mendenhall M, Hunt J, et al. A phase II study of pembrolizumab in EGFR-Mutant, PD-L1+, tyrosine kinase inhibitor na&#239;ve patients with advanced NSCLC. J Thorac Oncol. 2018;13:1138&#8211;1145. doi: 10.1016/j.jtho.2018.03.035.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtho.2018.03.035</ArticleId>
+            <ArticleId IdType="pmc">PMC6063769</ArticleId>
+            <ArticleId IdType="pubmed">29874546</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ahn MJ, Yang J, Yu H, Saka H, Ramalingam S, Goto K, Kim SW, Yang L, Walding A, Oxnard GR. 136O: Osimertinib combined with durvalumab in EGFR-mutant non-small cell lung cancer: Results from the TATTON phase Ib trial. J Thorac Oncol. 2016;11:S115. doi: 10.1016/S1556-0864(16)30246-5.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S1556-0864(16)30246-5</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhou J, Zhou F, Xie H, Wu Y, Zhao J, Su C. An advanced non-small cell lung cancer patient with epidermal growth factor receptor sensitizing mutation responded to toripalimab in combination with chemotherapy after resistance to osimertinib: A case report. Transl Lung Cancer Res. 2020;9:354&#8211;359. doi: 10.21037/tlcr.2020.02.09.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.21037/tlcr.2020.02.09</ArticleId>
+            <ArticleId IdType="pmc">PMC7225156</ArticleId>
+            <ArticleId IdType="pubmed">32420075</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhang YC, Zhou Q, Wu YL. Clinical management of third-generation EGFR inhibitor-resistant patients with advanced non-small cell lung cancer: Current status and future perspectives. Cancer Lett. 2019;459:240&#8211;247. doi: 10.1016/j.canlet.2019.05.044.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.canlet.2019.05.044</ArticleId>
+            <ArticleId IdType="pubmed">31201840</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wu YL, Planchard D, Lu S, Sun H, Yamamoto N, Kim DW, Tan DSW, Yang JC, Azrif M, Mitsudomi T, et al. Pan-Asian adapted clinical practice guidelines for the management of patients with metastatic non-small-cell lung cancer: A CSCO-ESMO initiative endorsed by JSMO, KSMO, MOS, SSO and TOS. Ann Oncol. 2019;30:171&#8211;210. doi: 10.1093/annonc/mdy554.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/annonc/mdy554</ArticleId>
+            <ArticleId IdType="pubmed">30596843</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Non-Small Cell Lung Cancer Version 4. NCCN Clinical Practice Guidelines in Oncology. 2021.   https://www.nccn.org. Accessed at 25 Jun 2021.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Jang J, To C, De Clercq DJH, Park E, Ponthier CM, Shin BH, Mushajiang M, Nowak RP, Fischer ES, Eck MJ, et al. Mutant-selective allosteric EGFR degraders are effective against a broad range of drug-resistant mutations. Angew Chem Int Ed Engl. 2020;59:14481&#8211;14489. doi: 10.1002/anie.202003500.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/anie.202003500</ArticleId>
+            <ArticleId IdType="pmc">PMC7686272</ArticleId>
+            <ArticleId IdType="pubmed">32510788</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>To C, Jang J, Chen T, Park E, Mushajiang M, De Clercq DJH, Xu M, Wang S, Cameron MD, Heppner DE, et al. Single and dual targeting of mutant EGFR with an allosteric inhibitor. Cancer Discov. 2019;9:926&#8211;943. doi: 10.1158/2159-8290.CD-18-0903.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1158/2159-8290.CD-18-0903</ArticleId>
+            <ArticleId IdType="pmc">PMC6664433</ArticleId>
+            <ArticleId IdType="pubmed">31092401</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

@@ -1,0 +1,175 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">39971531</PMID>
+      <DateCompleted>
+        <Year>2025</Year>
+        <Month>03</Month>
+        <Day>03</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2026</Year>
+        <Month>03</Month>
+        <Day>12</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">1007-3418</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>32</Volume>
+            <Issue>S2</Issue>
+            <PubDate>
+              <Year>2024</Year>
+              <Month>Dec</Month>
+              <Day>30</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>Zhonghua gan zang bing za zhi = Zhonghua ganzangbing zazhi = Chinese journal of hepatology</Title>
+          <ISOAbbreviation>Zhonghua Gan Zang Bing Za Zhi</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Emphasis on scientific research related to viral hepatitis].</ArticleTitle>
+        <Pagination>
+          <StartPage>1</StartPage>
+          <EndPage>2</EndPage>
+          <MedlinePgn>1-2</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.3760/cma.j.cn501113-20241127-00600</ELocationID>
+        <Abstract>
+          <AbstractText>The Chinese Journal of Hepatology second supplementary issue in 2024 focused on viral hepatitis. The context of hepatitis B and C encompassed the exploration of expanding treatment advantages, research on the treatment of special populations, the clinical cure concept, and the regional and special population genotyping, treatment of patients who failed to receive direct-acting antiviral drugs, and medical prevention and elimination fusion models. The supplement's findings reflect the current trends in prevention and treatment, such as epidemiology, clinical practice, and elimination models, and serve as references for exploring antiviral treatment plans and hepatitis elimination models, assisting readers to experience the academic dynamism of liver disease, address elimination challenges, and facilitate goal attainment.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Ren</LastName>
+            <ForeName>H</ForeName>
+            <Initials>H</Initials>
+            <AffiliationInfo>
+              <Affiliation>Institute of Viral Hepatitis, Chongqing Medical University, Affiliated Second Hospital, Chongqing Medical University, Chongqing 401336, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Hu</LastName>
+            <ForeName>P</ForeName>
+            <Initials>P</Initials>
+            <AffiliationInfo>
+              <Affiliation>The First Affiliated Hospital of Chongqing Medical University, Chongqing 400016, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>chi</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D054711">Introductory Journal Article</PublicationType>
+          <PublicationType UI="D016421">Editorial</PublicationType>
+          <PublicationType UI="D004740">English Abstract</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>China</Country>
+        <MedlineTA>Zhonghua Gan Zang Bing Za Zhi</MedlineTA>
+        <NlmUniqueID>9710009</NlmUniqueID>
+        <ISSNLinking>1007-3418</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D000998">Antiviral Agents</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>WJ6CA3ZU8B</RegistryNumber>
+          <NameOfSubstance UI="D000069474">Sofosbuvir</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D006509" MajorTopicYN="Y">Hepatitis B</DescriptorName>
+          <QualifierName UI="Q000188" MajorTopicYN="N">drug therapy</QualifierName>
+          <QualifierName UI="Q000453" MajorTopicYN="N">epidemiology</QualifierName>
+          <QualifierName UI="Q000517" MajorTopicYN="N">prevention &amp; control</QualifierName>
+          <QualifierName UI="Q000821" MajorTopicYN="N">virology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006526" MajorTopicYN="Y">Hepatitis C</DescriptorName>
+          <QualifierName UI="Q000188" MajorTopicYN="N">drug therapy</QualifierName>
+          <QualifierName UI="Q000453" MajorTopicYN="N">epidemiology</QualifierName>
+          <QualifierName UI="Q000517" MajorTopicYN="N">prevention &amp; control</QualifierName>
+          <QualifierName UI="Q000821" MajorTopicYN="N">virology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D060005" MajorTopicYN="N">Genotyping Techniques</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000998" MajorTopicYN="Y">Antiviral Agents</DescriptorName>
+          <QualifierName UI="Q000627" MajorTopicYN="N">therapeutic use</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D060740" MajorTopicYN="N">Disease Eradication</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006515" MajorTopicYN="N">Hepatitis B virus</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000302" MajorTopicYN="N">isolation &amp; purification</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D016174" MajorTopicYN="N">Hepacivirus</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000302" MajorTopicYN="N">isolation &amp; purification</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000069474" MajorTopicYN="N">Sofosbuvir</DescriptorName>
+          <QualifierName UI="Q000031" MajorTopicYN="N">analogs &amp; derivatives</QualifierName>
+          <QualifierName UI="Q000627" MajorTopicYN="N">therapeutic use</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D016896" MajorTopicYN="N">Treatment Outcome</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002681" MajorTopicYN="N" Type="Geographic">China</DescriptorName>
+          <QualifierName UI="Q000453" MajorTopicYN="N">epidemiology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <OtherAbstract Type="Publisher" Language="chi">
+        <AbstractText>&#26412;&#26399;&#12298;&#20013;&#21326;&#32925;&#33039;&#30149;&#26434;&#24535;&#12299;&#32858;&#28966;&#30149;&#27602;&#24615;&#32925;&#28814;&#30456;&#20851;&#30340;&#35786;&#26029;&#19982;&#27835;&#30103;&#12290;&#20057;&#22411;&#32925;&#28814;&#26041;&#38754;&#65292;&#28085;&#30422;&#20102;&#25193;&#22823;&#27835;&#30103;&#33719;&#30410;&#25506;&#35752;&#12289;&#29305;&#27530;&#20154;&#32676;&#27835;&#30103;&#30740;&#31350;&#21450;&#20020;&#24202;&#27835;&#24840;&#24605;&#36335;&#31561;&#65307;&#19993;&#22411;&#32925;&#28814;&#26041;&#38754;&#65292;&#21253;&#25324;&#21306;&#22495;&#19982;&#29305;&#27530;&#20154;&#32676;&#22522;&#22240;&#20998;&#22411;&#12289;&#30452;&#25509;&#25239;&#30149;&#27602;&#33647;&#29289;&#32463;&#27835;&#22833;&#36133;&#24739;&#32773;&#27835;&#30103;&#21450;&#21307;&#38450;&#34701;&#21512;&#28040;&#38500;&#27169;&#24335;&#31561;&#12290;&#26412;&#26399;&#21002;&#30331;&#30340;&#30740;&#31350;&#25104;&#26524;&#21453;&#26144;&#20102;&#30149;&#27602;&#24615;&#32925;&#28814;&#30340;&#38450;&#27835;&#21069;&#27839;&#21160;&#24577;&#65292;&#28041;&#21450;&#27969;&#34892;&#30149;&#23398;&#12289;&#20020;&#24202;&#23454;&#36341;&#19982;&#28040;&#38500;&#27169;&#24335;&#31561;&#65292;&#24076;&#26395;&#33021;&#20026;&#25239;&#30149;&#27602;&#27835;&#30103;&#26041;&#26696;&#21644;&#32925;&#28814;&#28040;&#38500;&#27169;&#24335;&#25506;&#32034;&#25552;&#20379;&#21442;&#32771;&#65292;&#21161;&#21147;&#35835;&#32773;&#24863;&#21463;&#32925;&#30149;&#23398;&#26415;&#27963;&#21147;&#65292;&#24212;&#23545;&#32925;&#28814;&#28040;&#38500;&#25361;&#25112;&#65292;&#25512;&#21160;&#30446;&#26631;&#23454;&#29616;&#12290;.</AbstractText>
+      </OtherAbstract>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2025</Year>
+          <Month>2</Month>
+          <Day>20</Day>
+          <Hour>0</Hour>
+          <Minute>22</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2025</Year>
+          <Month>2</Month>
+          <Day>20</Day>
+          <Hour>0</Hour>
+          <Minute>21</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2025</Year>
+          <Month>2</Month>
+          <Day>19</Day>
+          <Hour>21</Hour>
+          <Minute>13</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pmc-release">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>30</Day>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">39971531</ArticleId>
+        <ArticleId IdType="pmc">PMC12900453</ArticleId>
+        <ArticleId IdType="doi">10.3760/cma.j.cn501113-20241127-00600</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

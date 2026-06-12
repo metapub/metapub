@@ -1,0 +1,139 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">8901345</PMID>
+      <DateCompleted>
+        <Year>1996</Year>
+        <Month>12</Month>
+        <Day>27</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2022</Year>
+        <Month>03</Month>
+        <Day>10</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0278-7393</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>22</Volume>
+            <Issue>2</Issue>
+            <PubDate>
+              <Year>1996</Year>
+              <Month>Mar</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Journal of experimental psychology. Learning, memory, and cognition</Title>
+          <ISOAbbreviation>J Exp Psychol Learn Mem Cogn</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Unsupervised concept learning and value systematicity: a complex whole aids learning the parts.</ArticleTitle>
+        <Pagination>
+          <StartPage>458</StartPage>
+          <EndPage>475</EndPage>
+          <MedlinePgn>458-475</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1037/0278-7393.22.2.458</ELocationID>
+        <Abstract>
+          <AbstractText>Ease of learning new concepts may best be understood by simultaneously considering models of learning and theories of how "good" systems of categories are organized. The authors tested the effects on learning of value systematicity, a proposed organizing principle: If 1 attribute is predictive of another, it should predict still more. This principle derives from focused sampling in the internal feedback model (D. Billman &amp; E. Heit, 1988) of unsupervised, or observational, learning. In 3 experiments, the authors tested how the organization of structure in input (value systematicity) affected unsupervised learning of categories about alien animals. Across all experiments, learning a target rule was easier in conditions with high value systematicity, relative to several low systematicity controls. The authors compare results to predictions of several learning models and consider the links between learning and the resulting category structure.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Billman</LastName>
+            <ForeName>Dorrit</ForeName>
+            <Initials>D</Initials>
+            <AffiliationInfo>
+              <Affiliation>Georgia Inst of Technology.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Knutson</LastName>
+            <ForeName>James</ForeName>
+            <Initials>J</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <GrantList CompleteYN="Y">
+          <Grant>
+            <GrantID>R23HD20522</GrantID>
+            <Acronym>HD</Acronym>
+            <Agency>NICHD NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+        </GrantList>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D013487">Research Support, U.S. Gov't, P.H.S.</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>J Exp Psychol Learn Mem Cogn</MedlineTA>
+        <NlmUniqueID>8207540</NlmUniqueID>
+        <ISSNLinking>0278-7393</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000328" MajorTopicYN="N">Adult</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D001245" MajorTopicYN="N">Association Learning</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D001288" MajorTopicYN="N">Attention</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D003210" MajorTopicYN="Y">Concept Formation</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004193" MajorTopicYN="N">Discrimination Learning</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D010364" MajorTopicYN="Y">Pattern Recognition, Visual</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011340" MajorTopicYN="Y">Problem Solving</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>1996</Year>
+          <Month>3</Month>
+          <Day>1</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>1996</Year>
+          <Month>3</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>1996</Year>
+          <Month>3</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">8901345</ArticleId>
+        <ArticleId IdType="doi">10.1037/0278-7393.22.2.458</ArticleId>
+        <ArticleId IdType="pii">1996-02947-014</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

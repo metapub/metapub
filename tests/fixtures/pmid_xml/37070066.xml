@@ -1,0 +1,109 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="PubMed-not-MEDLINE" Owner="NLM">
+      <PMID Version="1">37070066</PMID>
+      <DateRevised>
+        <Year>2025</Year>
+        <Month>05</Month>
+        <Day>31</Day>
+      </DateRevised>
+      <Article PubModel="Electronic-eCollection">
+        <Journal>
+          <ISSN IssnType="Electronic">2283-5733</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>10</Volume>
+            <PubDate>
+              <Year>2023</Year>
+              <Season>Jan-Dec</Season>
+            </PubDate>
+          </JournalIssue>
+          <Title>Global &amp; regional health technology assessment</Title>
+          <ISOAbbreviation>Glob Reg Health Technol Assess</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Not Available].</ArticleTitle>
+        <Pagination>
+          <StartPage>29</StartPage>
+          <EndPage>39</EndPage>
+          <MedlinePgn>29-39</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.33393/grhta.2023.2507</ELocationID>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Fiorentino</LastName>
+            <ForeName>Francesca</ForeName>
+            <Initials>F</Initials>
+            <AffiliationInfo>
+              <Affiliation>IQVIA Italia, Milano - Italy.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Di Rienzo</LastName>
+            <ForeName>Paolo</ForeName>
+            <Initials>P</Initials>
+            <AffiliationInfo>
+              <Affiliation>Astellas Pharma S.p.A. Italia, Milano - Italy.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>ita</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>Analisi di impatto sul budget sanitario italiano di enzalutamide per il trattamento del carcinoma prostatico metastatico ormono-sensibile.</VernacularTitle>
+        <ArticleDate DateType="Electronic">
+          <Year>2023</Year>
+          <Month>04</Month>
+          <Day>11</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Italy</Country>
+        <MedlineTA>Glob Reg Health Technol Assess</MedlineTA>
+        <NlmUniqueID>9918417986506676</NlmUniqueID>
+        <ISSNLinking>2284-2403</ISSNLinking>
+      </MedlineJournalInfo>
+      <CoiStatement>Conflict of interest: FF, during the preparation of this article was an employee of IQVIA Italia, who receives honoraria for professional services from several pharma companies. PDR is an employee of Astellas Pharma S.p.A. Italia.</CoiStatement>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="received">
+          <Year>2022</Year>
+          <Month>10</Month>
+          <Day>19</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="accepted">
+          <Year>2023</Year>
+          <Month>3</Month>
+          <Day>8</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2023</Year>
+          <Month>4</Month>
+          <Day>19</Day>
+          <Hour>6</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2023</Year>
+          <Month>4</Month>
+          <Day>18</Day>
+          <Hour>1</Hour>
+          <Minute>46</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2023</Year>
+          <Month>4</Month>
+          <Day>19</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>epublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">37070066</ArticleId>
+        <ArticleId IdType="doi">10.33393/grhta.2023.2507</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

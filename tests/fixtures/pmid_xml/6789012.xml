@@ -1,0 +1,180 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">6789012</PMID>
+      <DateCompleted>
+        <Year>1981</Year>
+        <Month>09</Month>
+        <Day>15</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2013</Year>
+        <Month>12</Month>
+        <Day>13</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0025-6196</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>56</Volume>
+            <Issue>7</Issue>
+            <PubDate>
+              <Year>1981</Year>
+              <Month>Jul</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Mayo Clinic proceedings</Title>
+          <ISOAbbreviation>Mayo Clin Proc</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>The diverse picture of gamma heavy-chain disease. Report of seven cases and review of literature.</ArticleTitle>
+        <Pagination>
+          <StartPage>439</StartPage>
+          <EndPage>451</EndPage>
+          <MedlinePgn>439-51</MedlinePgn>
+        </Pagination>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Kyle</LastName>
+            <ForeName>R A</ForeName>
+            <Initials>RA</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Greipp</LastName>
+            <ForeName>P R</ForeName>
+            <Initials>PR</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Banks</LastName>
+            <ForeName>P M</ForeName>
+            <Initials>PM</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <GrantList CompleteYN="Y">
+          <Grant>
+            <GrantID>CA-04646</GrantID>
+            <Acronym>CA</Acronym>
+            <Agency>NCI NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+          <Grant>
+            <GrantID>CA-16835</GrantID>
+            <Acronym>CA</Acronym>
+            <Agency>NCI NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+          <Grant>
+            <GrantID>NS-14304K</GrantID>
+            <Acronym>NS</Acronym>
+            <Agency>NINDS NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+        </GrantList>
+        <PublicationTypeList>
+          <PublicationType UI="D002363">Case Reports</PublicationType>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D013487">Research Support, U.S. Gov't, P.H.S.</PublicationType>
+          <PublicationType UI="D016454">Review</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>England</Country>
+        <MedlineTA>Mayo Clin Proc</MedlineTA>
+        <NlmUniqueID>0405543</NlmUniqueID>
+        <ISSNLinking>0025-6196</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D000906">Antibodies</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D000911">Antibodies, Monoclonal</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D007142">Immunoglobulin gamma-Chains</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D007136">Immunoglobulins</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000368" MajorTopicYN="N">Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000906" MajorTopicYN="N">Antibodies</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000911" MajorTopicYN="N">Antibodies, Monoclonal</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D001853" MajorTopicYN="N">Bone Marrow</DescriptorName>
+          <QualifierName UI="Q000473" MajorTopicYN="N">pathology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006362" MajorTopicYN="N">Heavy Chain Disease</DescriptorName>
+          <QualifierName UI="Q000150" MajorTopicYN="N">complications</QualifierName>
+          <QualifierName UI="Q000175" MajorTopicYN="Y">diagnosis</QualifierName>
+          <QualifierName UI="Q000473" MajorTopicYN="N">pathology</QualifierName>
+          <QualifierName UI="Q000628" MajorTopicYN="N">therapy</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D007142" MajorTopicYN="N">Immunoglobulin gamma-Chains</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D007136" MajorTopicYN="N">Immunoglobulins</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008198" MajorTopicYN="N">Lymph Nodes</DescriptorName>
+          <QualifierName UI="Q000473" MajorTopicYN="N">pathology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008875" MajorTopicYN="N">Middle Aged</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <NumberOfReferences>70</NumberOfReferences>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>1981</Year>
+          <Month>7</Month>
+          <Day>1</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>1981</Year>
+          <Month>7</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>1981</Year>
+          <Month>7</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">6789012</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

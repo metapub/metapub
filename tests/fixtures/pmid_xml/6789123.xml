@@ -1,0 +1,104 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">6789123</PMID>
+      <DateCompleted>
+        <Year>1981</Year>
+        <Month>09</Month>
+        <Day>15</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2013</Year>
+        <Month>11</Month>
+        <Day>21</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0149-2195</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>30</Volume>
+            <Issue>6</Issue>
+            <PubDate>
+              <Year>1981</Year>
+              <Month>Feb</Month>
+              <Day>20</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>MMWR. Morbidity and mortality weekly report</Title>
+          <ISOAbbreviation>MMWR Morb Mortal Wkly Rep</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Community water supply contaminated with caustic soda--Georgia.</ArticleTitle>
+        <Pagination>
+          <StartPage>67</StartPage>
+          <EndPage>73</EndPage>
+          <MedlinePgn>67-8, 73</MedlinePgn>
+        </Pagination>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <CollectiveName>Centers for Disease Control (CDC)</CollectiveName>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>MMWR Morb Mortal Wkly Rep</MedlineTA>
+        <NlmUniqueID>7802429</NlmUniqueID>
+        <ISSNLinking>0149-2195</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>55X04QC32I</RegistryNumber>
+          <NameOfSubstance UI="D012972">Sodium Hydroxide</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D005845" MajorTopicYN="N" Type="Geographic">Georgia</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D012972" MajorTopicYN="N">Sodium Hydroxide</DescriptorName>
+          <QualifierName UI="Q000506" MajorTopicYN="Y">poisoning</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D014877" MajorTopicYN="Y">Water Pollution, Chemical</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>1981</Year>
+          <Month>2</Month>
+          <Day>20</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>1981</Year>
+          <Month>2</Month>
+          <Day>20</Day>
+          <Hour>0</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>1981</Year>
+          <Month>2</Month>
+          <Day>20</Day>
+          <Hour>0</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">6789123</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

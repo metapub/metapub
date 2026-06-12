@@ -1,0 +1,147 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Automated">
+      <PMID Version="1">39731248</PMID>
+      <DateCompleted>
+        <Year>2024</Year>
+        <Month>12</Month>
+        <Day>28</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2024</Year>
+        <Month>12</Month>
+        <Day>28</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0042-465X</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>140</Volume>
+            <Issue>6</Issue>
+            <PubDate>
+              <Year>2024</Year>
+            </PubDate>
+          </JournalIssue>
+          <Title>Vestnik oftalmologii</Title>
+          <ISOAbbreviation>Vestn Oftalmol</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Peripapillary pachychoroid syndrome].</ArticleTitle>
+        <Pagination>
+          <StartPage>138</StartPage>
+          <EndPage>144</EndPage>
+          <MedlinePgn>138-144</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.17116/oftalma2024140061138</ELocationID>
+        <Abstract>
+          <AbstractText>Peripapillary pachychoroid syndrome (PPS) is a recently described condition, classified within the pachychoroid disease spectrum characterized by focal or diffuse thickening of the choroid due to dilation of choroidal vessels in the Haller's layer (pachyvessels), thinning of the choriocapillaris and the Sattler's layer, and accompanied by increased choroidal permeability and damage to the retinal pigment epithelium. Unlike other pachychoroid diseases that involve changes in the central retina, PPS presents with choroidal thickening and intra- or subretinal fluid located nasally in the macular region, near the optic disc. This review aims to summarize and analyze current data on the clinical features, pathogenesis, and treatment options for PPS found in the literature. Differentiating PPS is crucial, as its similarity to other conditions with overlapping features may lead to misdiagnosis and ineffective or inappropriate treatment.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Andreeva</LastName>
+            <ForeName>N A</ForeName>
+            <Initials>NA</Initials>
+            <Identifier Source="ORCID">0000-0001-7329-5725</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Krasnov Research Institute of Eye Diseases, Moscow, Russia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Sheremet</LastName>
+            <ForeName>N L</ForeName>
+            <Initials>NL</Initials>
+            <Identifier Source="ORCID">0000-0003-4597-4987</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Krasnov Research Institute of Eye Diseases, Moscow, Russia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>rus</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D016454">Review</PublicationType>
+          <PublicationType UI="D004740">English Abstract</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>Peripapillyarnyi pakhikhorioidal'nyi sindrom.</VernacularTitle>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Russia (Federation)</Country>
+        <MedlineTA>Vestn Oftalmol</MedlineTA>
+        <NlmUniqueID>0415216</NlmUniqueID>
+        <ISSNLinking>0042-465X</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002829" MajorTopicYN="Y">Choroid</DescriptorName>
+          <QualifierName UI="Q000000981" MajorTopicYN="N">diagnostic imaging</QualifierName>
+          <QualifierName UI="Q000098" MajorTopicYN="N">blood supply</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015862" MajorTopicYN="Y">Choroid Diseases</DescriptorName>
+          <QualifierName UI="Q000175" MajorTopicYN="N">diagnosis</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D003937" MajorTopicYN="N">Diagnosis, Differential</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D013577" MajorTopicYN="N">Syndrome</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D041623" MajorTopicYN="N">Tomography, Optical Coherence</DescriptorName>
+          <QualifierName UI="Q000379" MajorTopicYN="N">methods</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005451" MajorTopicYN="N">Fluorescein Angiography</DescriptorName>
+          <QualifierName UI="Q000379" MajorTopicYN="N">methods</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009898" MajorTopicYN="N">Optic Disk</DescriptorName>
+          <QualifierName UI="Q000000981" MajorTopicYN="N">diagnostic imaging</QualifierName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <OtherAbstract Type="Publisher" Language="rus">
+        <AbstractText>&#1055;&#1077;&#1088;&#1080;&#1087;&#1072;&#1087;&#1080;&#1083;&#1083;&#1103;&#1088;&#1085;&#1099;&#1081; &#1087;&#1072;&#1093;&#1080;&#1093;&#1086;&#1088;&#1080;&#1086;&#1080;&#1076;&#1072;&#1083;&#1100;&#1085;&#1099;&#1081; &#1089;&#1080;&#1085;&#1076;&#1088;&#1086;&#1084; (&#1055;&#1055;&#1057;) &#8212; &#1085;&#1077;&#1076;&#1072;&#1074;&#1085;&#1086; &#1086;&#1087;&#1080;&#1089;&#1072;&#1085;&#1085;&#1086;&#1077; &#1079;&#1072;&#1073;&#1086;&#1083;&#1077;&#1074;&#1072;&#1085;&#1080;&#1077;, &#1082;&#1086;&#1090;&#1086;&#1088;&#1086;&#1077; &#1086;&#1090;&#1085;&#1086;&#1089;&#1103;&#1090; &#1082; &#1075;&#1088;&#1091;&#1087;&#1087;&#1077; &#1087;&#1072;&#1093;&#1080;&#1093;&#1086;&#1088;&#1080;&#1086;&#1080;&#1076;&#1072;&#1083;&#1100;&#1085;&#1099;&#1093; &#1079;&#1072;&#1073;&#1086;&#1083;&#1077;&#1074;&#1072;&#1085;&#1080;&#1081;, &#1093;&#1072;&#1088;&#1072;&#1082;&#1090;&#1077;&#1088;&#1080;&#1079;&#1091;&#1102;&#1097;&#1080;&#1093;&#1089;&#1103; &#1086;&#1095;&#1072;&#1075;&#1086;&#1074;&#1099;&#1084; &#1080;&#1083;&#1080; &#1076;&#1080;&#1092;&#1092;&#1091;&#1079;&#1085;&#1099;&#1084; &#1091;&#1074;&#1077;&#1083;&#1080;&#1095;&#1077;&#1085;&#1080;&#1077;&#1084; &#1090;&#1086;&#1083;&#1097;&#1080;&#1085;&#1099; &#1093;&#1086;&#1088;&#1080;&#1086;&#1080;&#1076;&#1077;&#1080;, &#1086;&#1073;&#1091;&#1089;&#1083;&#1086;&#1074;&#1083;&#1077;&#1085;&#1085;&#1099;&#1084; &#1076;&#1080;&#1083;&#1072;&#1090;&#1072;&#1094;&#1080;&#1077;&#1081; &#1093;&#1086;&#1088;&#1080;&#1086;&#1080;&#1076;&#1072;&#1083;&#1100;&#1085;&#1099;&#1093; &#1089;&#1086;&#1089;&#1091;&#1076;&#1086;&#1074; &#1074; &#1089;&#1083;&#1086;&#1077; &#1043;&#1072;&#1083;&#1083;&#1077;&#1088;&#1072; (&#1087;&#1072;&#1093;&#1080;&#1089;&#1086;&#1089;&#1091;&#1076;&#1099;), &#1080;&#1089;&#1090;&#1086;&#1085;&#1095;&#1077;&#1085;&#1080;&#1077;&#1084; &#1093;&#1086;&#1088;&#1080;&#1086;&#1082;&#1072;&#1087;&#1080;&#1083;&#1083;&#1103;&#1088;&#1086;&#1074; &#1080; &#1089;&#1083;&#1086;&#1103; &#1057;&#1072;&#1090;&#1090;&#1083;&#1077;&#1088;&#1072;, &#1089;&#1086;&#1087;&#1088;&#1086;&#1074;&#1086;&#1078;&#1076;&#1072;&#1102;&#1097;&#1077;&#1077;&#1089;&#1103; &#1087;&#1086;&#1074;&#1099;&#1096;&#1077;&#1085;&#1085;&#1086;&#1081; &#1087;&#1088;&#1086;&#1085;&#1080;&#1094;&#1072;&#1077;&#1084;&#1086;&#1089;&#1090;&#1100;&#1102; &#1093;&#1086;&#1088;&#1080;&#1086;&#1080;&#1076;&#1077;&#1080; &#1080; &#1087;&#1086;&#1074;&#1088;&#1077;&#1078;&#1076;&#1077;&#1085;&#1080;&#1077;&#1084; &#1088;&#1077;&#1090;&#1080;&#1085;&#1072;&#1083;&#1100;&#1085;&#1086;&#1075;&#1086; &#1087;&#1080;&#1075;&#1084;&#1077;&#1085;&#1090;&#1085;&#1086;&#1075;&#1086; &#1101;&#1087;&#1080;&#1090;&#1077;&#1083;&#1080;&#1103;. &#1059; &#1087;&#1072;&#1094;&#1080;&#1077;&#1085;&#1090;&#1086;&#1074; &#1089; &#1055;&#1055;&#1057; &#1074; &#1086;&#1090;&#1083;&#1080;&#1095;&#1080;&#1077; &#1086;&#1090; &#1076;&#1088;&#1091;&#1075;&#1080;&#1093; &#1087;&#1072;&#1093;&#1080;&#1093;&#1086;&#1088;&#1080;&#1086;&#1080;&#1076;&#1072;&#1083;&#1100;&#1085;&#1099;&#1093; &#1079;&#1072;&#1073;&#1086;&#1083;&#1077;&#1074;&#1072;&#1085;&#1080;&#1081; &#1089; &#1080;&#1079;&#1084;&#1077;&#1085;&#1077;&#1085;&#1080;&#1103;&#1084;&#1080; &#1074; &#1094;&#1077;&#1085;&#1090;&#1088;&#1072;&#1083;&#1100;&#1085;&#1086;&#1081; &#1079;&#1086;&#1085;&#1077; &#1089;&#1077;&#1090;&#1095;&#1072;&#1090;&#1082;&#1080; &#1091;&#1090;&#1086;&#1083;&#1097;&#1077;&#1085;&#1080;&#1077; &#1093;&#1086;&#1088;&#1080;&#1086;&#1080;&#1076;&#1077;&#1080;, &#1085;&#1072;&#1083;&#1080;&#1095;&#1080;&#1077; &#1080;&#1085;&#1090;&#1088;&#1072;- &#1080;&#1083;&#1080; &#1089;&#1091;&#1073;&#1088;&#1077;&#1090;&#1080;&#1085;&#1072;&#1083;&#1100;&#1085;&#1086;&#1081; &#1078;&#1080;&#1076;&#1082;&#1086;&#1089;&#1090;&#1080; &#1085;&#1072;&#1073;&#1083;&#1102;&#1076;&#1072;&#1102;&#1090;&#1089;&#1103; &#1074; &#1085;&#1086;&#1089;&#1086;&#1074;&#1086;&#1081; &#1095;&#1072;&#1089;&#1090;&#1080; &#1084;&#1072;&#1082;&#1091;&#1083;&#1103;&#1088;&#1085;&#1086;&#1081; &#1079;&#1086;&#1085;&#1099;, &#1074;&#1073;&#1083;&#1080;&#1079;&#1080; &#1076;&#1080;&#1089;&#1082;&#1072; &#1079;&#1088;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1075;&#1086; &#1085;&#1077;&#1088;&#1074;&#1072;. &#1062;&#1077;&#1083;&#1100;&#1102; &#1101;&#1090;&#1086;&#1075;&#1086; &#1086;&#1073;&#1079;&#1086;&#1088;&#1072; &#1103;&#1074;&#1083;&#1103;&#1077;&#1090;&#1089;&#1103; &#1086;&#1073;&#1086;&#1073;&#1097;&#1077;&#1085;&#1080;&#1077; &#1080; &#1072;&#1085;&#1072;&#1083;&#1080;&#1079; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1082;&#1083;&#1080;&#1085;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1081; &#1082;&#1072;&#1088;&#1090;&#1080;&#1085;&#1099;, &#1087;&#1072;&#1090;&#1086;&#1075;&#1077;&#1085;&#1077;&#1079;&#1072; &#1080; &#1074;&#1086;&#1079;&#1084;&#1086;&#1078;&#1085;&#1086;&#1089;&#1090;&#1077;&#1081; &#1083;&#1077;&#1095;&#1077;&#1085;&#1080;&#1103; &#1055;&#1055;&#1057;, &#1087;&#1088;&#1077;&#1076;&#1089;&#1090;&#1072;&#1074;&#1083;&#1077;&#1085;&#1085;&#1099;&#1093; &#1074; &#1083;&#1080;&#1090;&#1077;&#1088;&#1072;&#1090;&#1091;&#1088;&#1077;. &#1042;&#1072;&#1078;&#1085;&#1086; &#1091;&#1084;&#1077;&#1090;&#1100; &#1076;&#1080;&#1092;&#1092;&#1077;&#1088;&#1077;&#1085;&#1094;&#1080;&#1088;&#1086;&#1074;&#1072;&#1090;&#1100; &#1055;&#1055;&#1057;, &#1087;&#1086;&#1089;&#1082;&#1086;&#1083;&#1100;&#1082;&#1091; &#1077;&#1075;&#1086; &#1089;&#1093;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086; &#1089; &#1079;&#1072;&#1073;&#1086;&#1083;&#1077;&#1074;&#1072;&#1085;&#1080;&#1103;&#1084;&#1080; &#1089; &#1087;&#1086;&#1093;&#1086;&#1078;&#1080;&#1084;&#1080; &#1093;&#1072;&#1088;&#1072;&#1082;&#1090;&#1077;&#1088;&#1080;&#1089;&#1090;&#1080;&#1082;&#1072;&#1084;&#1080; &#1084;&#1086;&#1078;&#1077;&#1090; &#1087;&#1088;&#1080;&#1074;&#1077;&#1089;&#1090;&#1080; &#1082; &#1086;&#1096;&#1080;&#1073;&#1086;&#1095;&#1085;&#1086;&#1084;&#1091; &#1076;&#1080;&#1072;&#1075;&#1085;&#1086;&#1079;&#1091; &#1080; &#1085;&#1077;&#1101;&#1092;&#1092;&#1077;&#1082;&#1090;&#1080;&#1074;&#1085;&#1099;&#1084; &#1080;&#1083;&#1080; &#1085;&#1077;&#1074;&#1077;&#1088;&#1085;&#1086; &#1085;&#1072;&#1079;&#1085;&#1072;&#1095;&#1077;&#1085;&#1085;&#1099;&#1084; &#1084;&#1077;&#1090;&#1086;&#1076;&#1072;&#1084; &#1083;&#1077;&#1095;&#1077;&#1085;&#1080;&#1103;.</AbstractText>
+      </OtherAbstract>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">choroid</Keyword>
+        <Keyword MajorTopicYN="N">pachychoroid</Keyword>
+        <Keyword MajorTopicYN="N">pachychoroid diseases</Keyword>
+        <Keyword MajorTopicYN="N">peripapillary pachychoroid syndrome</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>28</Day>
+          <Hour>11</Hour>
+          <Minute>43</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>28</Day>
+          <Hour>11</Hour>
+          <Minute>42</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>28</Day>
+          <Hour>0</Hour>
+          <Minute>50</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">39731248</ArticleId>
+        <ArticleId IdType="doi">10.17116/oftalma2024140061138</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

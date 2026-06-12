@@ -1,0 +1,277 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedBookArticle>
+    <BookDocument>
+      <PMID Version="1">20301546</PMID>
+      <ArticleIdList>
+        <ArticleId IdType="bookaccession">NBK1372</ArticleId>
+      </ArticleIdList>
+      <Book>
+        <Publisher>
+          <PublisherName>University of Washington, Seattle</PublisherName>
+          <PublisherLocation>Seattle (WA)</PublisherLocation>
+        </Publisher>
+        <BookTitle book="gene">GeneReviews<sup>&#174;</sup></BookTitle>
+        <PubDate>
+          <Year>1993</Year>
+        </PubDate>
+        <BeginningDate>
+          <Year>1993</Year>
+        </BeginningDate>
+        <EndingDate>
+          <Year>2026</Year>
+        </EndingDate>
+        <AuthorList Type="editors" CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Adam</LastName>
+            <ForeName>Margaret P</ForeName>
+            <Initials>MP</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Bick</LastName>
+            <ForeName>Sarah</ForeName>
+            <Initials>S</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Mirzaa</LastName>
+            <ForeName>Ghayda M</ForeName>
+            <Initials>GM</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Pagon</LastName>
+            <ForeName>Roberta A</ForeName>
+            <Initials>RA</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Wallace</LastName>
+            <ForeName>Stephanie E</ForeName>
+            <Initials>SE</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Amemiya</LastName>
+            <ForeName>Anne</ForeName>
+            <Initials>A</Initials>
+          </Author>
+        </AuthorList>
+        <Medium>Internet</Medium>
+      </Book>
+      <ArticleTitle book="gene" part="accpn">Hereditary Motor and Sensory Neuropathy with Agenesis of the Corpus Callosum</ArticleTitle>
+      <Language>eng</Language>
+      <AuthorList Type="authors" CompleteYN="Y">
+        <Author ValidYN="Y">
+          <LastName>Gauvreau</LastName>
+          <ForeName>Claudie</ForeName>
+          <Initials>C</Initials>
+          <AffiliationInfo>
+            <Affiliation>Neurology resident, CHU de Qu&#233;bec &#8211; Enfant-J&#233;sus, Laval University, Quebec City, Canada</Affiliation>
+          </AffiliationInfo>
+        </Author>
+        <Author ValidYN="Y">
+          <LastName>Brisson</LastName>
+          <ForeName>Jean-Denis</ForeName>
+          <Initials>JD</Initials>
+          <AffiliationInfo>
+            <Affiliation>Neurologist, Groupe de Recherche Interdisciplinaire sur les Maladies Neuromusculaires, Centre Int&#233;gr&#233; Universitaire de Sant&#233; et de Services Sociaux du Saguenay-Lac-Saint-Jean;, Sherbrooke University, Quebec, Canada</Affiliation>
+          </AffiliationInfo>
+        </Author>
+        <Author ValidYN="Y">
+          <LastName>Dupr&#233;</LastName>
+          <ForeName>Nicolas</ForeName>
+          <Initials>N</Initials>
+          <AffiliationInfo>
+            <Affiliation>Neurologist, Neurogenetics Clinic, Department of Neurological Sciences, CHA &#8211; Enfant-J&#233;sus, Quebec City, Canada</Affiliation>
+          </AffiliationInfo>
+        </Author>
+      </AuthorList>
+      <PublicationType UI="D016454">Review</PublicationType>
+      <Abstract>
+        <AbstractText Label="CLINICAL CHARACTERISTICS">Hereditary motor and sensory neuropathy with agenesis of the corpus callosum (HMSN/ACC), a neurodevelopmental and neurodegenerative disorder, is characterized by severe progressive sensorimotor neuropathy with resulting hypotonia, areflexia, and amyotrophy, and by variable degrees of dysgenesis of the corpus callosum. Mild-to-severe intellectual disability and "psychotic episodes" during adolescence are observed. Sensory modalities are moderately to severely affected beginning in infancy. The average age of onset of walking is 3.8 years; the average age of loss of walking is 13.8 years; the average age of death is 33 years.</AbstractText>
+        <AbstractText Label="DIAGNOSIS/TESTING">The diagnosis of HMSN/ACC is established in a proband with suggestive findings and biallelic pathogenic variants in <i>SLC12A6</i> identified by molecular genetic testing.</AbstractText>
+        <AbstractText Label="MANAGEMENT"><i>Treatment of manifestations:</i> Walking aids such as canes or walkers are required. As the disease progresses, orthoses for upper and lower limbs and physiotherapy are needed to prevent contractures. Early developmental/educational intervention addresses cognitive delays. Depending on severity, individuals with HMSN/ACC usually require corrective surgery for scoliosis. Neuroleptics may be used to treat psychiatric manifestations, usually during adolescence. <i>Surveillance:</i> Monitor in the early teens for scoliosis and in the late teens for psychiatric manifestations.</AbstractText>
+        <AbstractText Label="GENETIC COUNSELING">HMSN/ACC is inherited in an autosomal recessive manner. At conception, each sib of an affected individual has a 25% chance of being affected, a 50% chance of being an asymptomatic carrier, and a 25% chance of being unaffected and not a carrier. Heterozygotes (carriers) are asymptomatic. Once the <i>SLC12A6</i> pathogenic variants have been identified in an affected family member, carrier testing for at-risk family members and prenatal and preimplantation genetic testing are possible.</AbstractText>
+        <CopyrightInformation>Copyright &#169; 1993-2026, University of Washington, Seattle. GeneReviews is a registered trademark of the University of Washington, Seattle. All rights reserved. Test.</CopyrightInformation>
+      </Abstract>
+      <Sections>
+        <Section>
+          <SectionTitle book="gene" part="accpn" sec="accpn.Summary">Summary</SectionTitle>
+        </Section>
+        <Section>
+          <SectionTitle book="gene" part="accpn" sec="accpn.Diagnosis">Diagnosis</SectionTitle>
+        </Section>
+        <Section>
+          <SectionTitle book="gene" part="accpn" sec="accpn.Clinical_Characteristics">Clinical Characteristics</SectionTitle>
+        </Section>
+        <Section>
+          <SectionTitle book="gene" part="accpn" sec="accpn.Genetically_Related_Allelic_Disord">Genetically Related (Allelic) Disorders</SectionTitle>
+        </Section>
+        <Section>
+          <SectionTitle book="gene" part="accpn" sec="accpn.Differential_Diagnosis">Differential Diagnosis</SectionTitle>
+        </Section>
+        <Section>
+          <SectionTitle book="gene" part="accpn" sec="accpn.Management">Management</SectionTitle>
+        </Section>
+        <Section>
+          <SectionTitle book="gene" part="accpn" sec="accpn.Genetic_Counseling">Genetic Counseling</SectionTitle>
+        </Section>
+        <Section>
+          <SectionTitle book="gene" part="accpn" sec="accpn.Resources">Resources</SectionTitle>
+        </Section>
+        <Section>
+          <SectionTitle book="gene" part="accpn" sec="accpn.Molecular_Genetics">Molecular Genetics</SectionTitle>
+        </Section>
+        <Section>
+          <SectionTitle book="gene" part="accpn" sec="accpn.Chapter_Notes">Chapter Notes</SectionTitle>
+        </Section>
+        <Section>
+          <SectionTitle book="gene" part="accpn" sec="accpn.References">References</SectionTitle>
+        </Section>
+      </Sections>
+      <KeywordList Owner="NLM">
+        <Keyword MajorTopicYN="N">Agenesis of Corpus Callosum with Peripheral Neuropathy (ACCPN)</Keyword>
+        <Keyword MajorTopicYN="N">Andermann Syndrome</Keyword>
+        <Keyword MajorTopicYN="N">Solute carrier family 12 member 6</Keyword>
+        <Keyword MajorTopicYN="N">SLC12A6</Keyword>
+        <Keyword MajorTopicYN="N">Hereditary Motor and Sensory Neuropathy with Agenesis of the Corpus Callosum</Keyword>
+        <Keyword MajorTopicYN="N">Agenesis of Corpus Callosum with Peripheral Neuropathy (ACCPN)</Keyword>
+        <Keyword MajorTopicYN="N">Andermann Syndrome</Keyword>
+      </KeywordList>
+      <ContributionDate>
+        <Year>2006</Year>
+        <Month>2</Month>
+        <Day>2</Day>
+      </ContributionDate>
+      <DateRevised>
+        <Year>2020</Year>
+        <Month>9</Month>
+        <Day>17</Day>
+      </DateRevised>
+      <ItemList ListType="Synonyms">
+        <Item>Agenesis of Corpus Callosum with Peripheral Neuropathy (ACCPN)</Item>
+        <Item>Andermann Syndrome</Item>
+      </ItemList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Antoniadi T, Buxton C, Dennis G, Forrester N, Smith D, Lunt P, Burton-Jones S. Application of targeted multi-gene panel testing for the diagnosis of inherited peripheral neuropathy provides a high diagnostic yield with unexpected phenotype-genotype variability. BMC Med Genet. 2015;16:84.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC4578331</ArticleId>
+            <ArticleId IdType="pubmed">26392352</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Auer RN, Lagani&#232;re J, Robitaille Y, Richardson J, Dion PA, Rouleau GA, Shekarabi M. KCC3 axonopathy: neuropathological features in the central and peripheral nervous system. Mod Pathol. 2016;29:962-76.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">27230413</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Delpire E, Kahle KT. The KCC3 cotransporter as a therapeutic target for peripheral neuropathy. Expert Opin Ther Targets. 2017;21:113-6.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">28019725</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Dupr&#233; N, Howard HC, Mathieu J, Karpati G, Vanasse M, Bouchard JP, Carpenter S, Rouleau GA. Hereditary motor and sensory neuropathy with agenesis of the corpus callosum. Ann Neurol. 2003;54:9-18</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">12838516</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Flores B, Schornak CC, Delpire E. A role for kcc3 in maintaining cell volume of peripheral nerve fibers. Neurochemistry international. 2019;123:114-24.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6398598</ArticleId>
+            <ArticleId IdType="pubmed">29366908</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Howard HC, Mount DB, Rochefort D, Byun N, Dupr&#233; N, Lu J, Fan X, Song L, Rivi&#232;re JB, Pr&#233;vost C, Horst J, Simonati A, Lemcke B, Welch R, England R, Zhan FQ, Mercado A, Siesser WB, George AL Jr, McDonald MP, Bouchard JP, Mathieu J, Delpire E, Rouleau GA. The K-Cl cotransporter KCC3 is mutant in a severe peripheral neuropathy associated with agenesis of the corpus callosum. Nat Genet. 2002;32:384-92.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">12368912</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J&#243;nsson H, Sulem P, Kehr B, Kristmundsdottir S, Zink F, Hjartarson E, Hardarson MT, Hjorleifsson KE, Eggertsson HP, Gudjonsson SA, Ward LD, Arnadottir GA, Helgason EA, Helgason H, Gylfason A, Jonasdottir A, Jonasdottir A, Rafnar T, Frigge M, Stacey SN, Th Magnusson O, Thorsteinsdottir U, Masson G, Kong A, Halldorsson BV, Helgason A, Gudbjartsson DF, Stefansson K. Parental influence on human germline de novo mutations in 1,548 trios from Iceland. Nature. 2017;549:519-22.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">28959963</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Larbrisseau L, Sarnat H. Andermann syndrome. In: Roos RP, ed. <i>MedLink Neurology</i>. San Diego: MedLink Corporation; 2017.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Larbrisseau A, Vanasse M, Brochu P, Jasmin G. The Andermann syndrome: agenesis of the corpus callosum associated with mental retardation and progressive sensorimotor neuronopathy. Can J Neurol Sci. 1984;11:257-61.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">6329500</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Mathieu J, B&#233;dard F, Pr&#233;vost C, Langevin P. Motor and sensory neuropathies with or without agenesis of the corpus callosum: a radiological study of 64 cases. Can J Neurol Sci. 1990;17:103-8.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">2357646</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Richards S, Aziz N, Bale S, Bick D, Das S, Gastier-Foster J, Grody WW, Hegde M, Lyon E, Spector E, Voelkerding K, Rehm HL; ACMG Laboratory Quality Assurance Committee. Standards and guidelines for the interpretation of sequence variants: a joint consensus recommendation of the American College of Medical Genetics and Genomics and the Association for Molecular Pathology. Genet Med. 2015;17:405-24.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC4544753</ArticleId>
+            <ArticleId IdType="pubmed">25741868</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Salin-Cantegrel A, Rivi&#232;re JB, Dupr&#233; N, Charron FM, Shekarabi M, Kar&#233;m&#233;ra L, Gaspar C, Horst J, Tekin M, Deda G, Krause A, Lippert MM, Willemsen MA, Jarrar R, Lapointe JY, Rouleau GA. Distal truncation of KCC3 in non-French Canadian HMSN/ACC families. Neurology. 2007;69:1350-5.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">17893295</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Shekarabi M, Moldrich RX, Rasheed S, Salin-Cantegrel A, Lagani&#232;re J, Rochefort D, Hince P, Huot K, Gaudet R, Kurniawan N, Sotocinal SG, Ritchie J, Dion PA, Mogil JS, Richards LJ, Rouleau GA. Loss of neuronal potassium/chloride cotransporter 3 (KCC3) is responsible for the degenerative phenotype in a conditional mouse model of hereditary motor and sensory neuropathy associated with agenesis of the corpus callosum. J Neurosci. 2012;32:3865-76.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC6703451</ArticleId>
+            <ArticleId IdType="pubmed">22423107</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Stenson PD, Mort M, Ball EV, Chapman M, Evans K, Azevedo L, Hayden M, Heywood S, Millar DS, Phillips AD, Cooper DN. The Human Gene Mutation Database (HGMD&#174;): optimizing its use in a clinical diagnostic or research setting. Hum Genet. 2020;139:1197-207.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7497289</ArticleId>
+            <ArticleId IdType="pubmed">32596782</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sun YT, Tzeng SF, Lin TS, Hsu KS, Delpire E, Shen MR. Kcc3 deficiency-induced disruption of paranodal loops and impairment of axonal excitability in the peripheral nervous system. Neuroscience. 2016;335:91-102.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">27568057</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Uyanik G, Elcioglu N, Penzien J, Gross C, Yilmaz Y, Olmez A, Demir E, Wahl D, Scheglmann K, Winner B, Bogdahn U, Topaloglu H, Hehr U, Winkler J. Novel truncating and missense mutations of the KCC3 gene associated with Andermann syndrome. Neurology. 2006;66:1044-8.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">16606917</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+    </BookDocument>
+    <PubmedBookData>
+      <History>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2020</Year>
+          <Month>9</Month>
+          <Day>17</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2020</Year>
+          <Month>9</Month>
+          <Day>17</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2020</Year>
+          <Month>9</Month>
+          <Day>17</Day>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">20301546</ArticleId>
+      </ArticleIdList>
+    </PubmedBookData>
+  </PubmedBookArticle>
+</PubmedArticleSet>

@@ -1,0 +1,294 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="PubMed-not-MEDLINE" Owner="NLM">
+      <PMID Version="1">34690539</PMID>
+      <DateRevised>
+        <Year>2025</Year>
+        <Month>05</Month>
+        <Day>30</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Electronic">2591-1783</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>31</Volume>
+            <Issue>1</Issue>
+            <PubDate>
+              <Year>2021</Year>
+            </PubDate>
+          </JournalIssue>
+          <Title>Annales. Series historia naturalis : anali za istrske in mediteranske studije = annali di studi istriani e mediterranei = annals of Istrian and Mediterranean studies</Title>
+          <ISOAbbreviation>Ann Ser Hist Nat</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Using Citizen Science to Detect Rare and Endangered Species: New Records of the Great White Shark <i>Carcharodon Carcharias</i> off the Libyan Coast.</ArticleTitle>
+        <Pagination>
+          <StartPage>51</StartPage>
+          <EndPage>57</EndPage>
+          <MedlinePgn>51-57</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.19233/ASHN.2021.08</ELocationID>
+        <Abstract>
+          <AbstractText>The presence of the great white shark (Carcharodon carcharias) in the Mediterranean Sea is well documented, but encounters with this species are rare and all assumptions about its spatial and temporal distribution are heavily relying on anecdotal observations. To date, only one record off the Libyan coast has been reported, raising the question if this species is underreported in these waters or simply represents a rare occasional transient. We utilised citizen science-sourced data to document the presence of the great white shark off the Libyan coast, and found six additional records for this species from the period between 2017 and 2020. Our study points out the need for scientific monitoring of this species along the Libyan coast to facilitate the establishment of effective conservation plans to protect this critically endangered species.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Jambura</LastName>
+            <ForeName>Patrick L</ForeName>
+            <Initials>PL</Initials>
+            <AffiliationInfo>
+              <Affiliation>University of Vienna, Department of Palaeontology, Vienna 1090, Austria.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>T&#252;rtscher</LastName>
+            <ForeName>Julia</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>University of Vienna, Department of Palaeontology, Vienna 1090, Austria.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>De Maddalena</LastName>
+            <ForeName>Alessandro</ForeName>
+            <Initials>A</Initials>
+            <AffiliationInfo>
+              <Affiliation>Shark Museum, Cape Town 7995, South Africa.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Giovos</LastName>
+            <ForeName>Ioannis</ForeName>
+            <Initials>I</Initials>
+            <AffiliationInfo>
+              <Affiliation>iSea, Environmental Organization for the Preservation of the Aquatic Ecosystems, Thessaloniki 54645, Greece.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Kriwet</LastName>
+            <ForeName>J&#252;rgen</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>University of Vienna, Department of Palaeontology, Vienna 1090, Austria.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Rizgalla</LastName>
+            <ForeName>Jamila</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>University of Tripoli, Faculty of Agriculture, Department of Aquaculture, Tripoli, Libya.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Al Mabruk</LastName>
+            <ForeName>Sara A A</ForeName>
+            <Initials>SAA</Initials>
+            <AffiliationInfo>
+              <Affiliation>Higher institute of Science and Technology, Department of General Nursing Technology, Cyrene, Libya Marine Biology in Libya Society, El Bayda, Libya.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <GrantList CompleteYN="Y">
+          <Grant>
+            <GrantID>P 33820</GrantID>
+            <Acronym>FWF_</Acronym>
+            <Agency>Austrian Science Fund FWF</Agency>
+            <Country>Austria</Country>
+          </Grant>
+        </GrantList>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Slovenia</Country>
+        <MedlineTA>Ann Ser Hist Nat</MedlineTA>
+        <NlmUniqueID>9918266186406676</NlmUniqueID>
+        <ISSNLinking>1408-533X</ISSNLinking>
+      </MedlineJournalInfo>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">Elasmobranchii</Keyword>
+        <Keyword MajorTopicYN="N">cartilaginous fish</Keyword>
+        <Keyword MajorTopicYN="N">conservation biology</Keyword>
+        <Keyword MajorTopicYN="N">fisheries</Keyword>
+        <Keyword MajorTopicYN="N">social media</Keyword>
+        <Keyword MajorTopicYN="N">threatened species</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2021</Year>
+          <Month>10</Month>
+          <Day>25</Day>
+          <Hour>6</Hour>
+          <Minute>21</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2021</Year>
+          <Month>10</Month>
+          <Day>26</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2021</Year>
+          <Month>10</Month>
+          <Day>26</Day>
+          <Hour>6</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pmc-release">
+          <Year>2021</Year>
+          <Month>10</Month>
+          <Day>21</Day>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">34690539</ArticleId>
+        <ArticleId IdType="mid">EMS135982</ArticleId>
+        <ArticleId IdType="pmc">PMC7611865</ArticleId>
+        <ArticleId IdType="doi">10.19233/ASHN.2021.08</ArticleId>
+      </ArticleIdList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Boldrocchi G, Kiszka J, Purkis S, Storai T, Zinzula L, Burkholder D. Distribution, ecology, and status of the white shark, Carcharodon carcharias in the Mediterranean Sea. Rev Fish Biol Fish. 2017;27(3):515&#8211;534.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Brada&#239; MN, Sa&#239;di B. On the occurrence of the great white shark (Carcharodon carcharias) in Tunisian coasts. Rapp Comm Int Mer M&#233;dit. 2013;40:489.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Ben Amor MM, Bdioui M, Ounifi-Ben Amor K, Capap&#233; C. Captures of large shark species from the northeastern Tunisian coast (Central Mediterranean) Ann Ser Hist Nat. 2020;30(1):15&#8211;24.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Cashion MS, Bailly N, Pauly D. Official catch data underrepresent shark and ray taxa caught in Mediterranean and Black Sea fisheries. Mar Policy. 2019;105:1&#8211;9.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Castro JI. In: Global Perspectives on the Biology and Life History of the White Shark. Domeier ML, editor. CRC Press; Boca Raton: 2012. A summary of observations on the maximum size attained by the white shark Carcharodon carcharias; pp. 85&#8211;90.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Compagno LJV. Sharks of the world: an annotated and illustrated catalogue of shark species known to date, vol 2 Bullhead, mackerel and carpet sharks (Heterodontiformes, Lamniformes and Orectolobiformes) FAO Species Catalogue for Fishery Purposes; Rome: 2001. p. 269.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Damalas D, Megalofonou P. Occurrences of large sharks in the open waters of the southeastern Mediterranean Sea. J Nat Hist. 2012;46(43-44):2701&#8211;2723.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>De Maddalena A. Historical and contemporary presence of the great white shark, Carcharodon carcharias (Linnaeus, 1758), in the Northern and Central Adriatic Sea. Ann Ser Hist Nat. 2000;10(1):3&#8211;18.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>De Maddalena A, Heim W. Mediterranean Great White Sharks: a Comprehensive Study Including All Recorded Sightings. McFarland, Jefferson; 2012. p. 256.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>De Maddalena A, Zuffa M. Historical and contemporary presence of the great white shark, Carcharodon carcharias (Linnaeus, 1758), along the Mediterranean coast of France. Boll Mus Civico Storia Nat Venezia. 2008;59:81&#8211;94.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Ebert DA, Fowler SL, Compagno LJV. Sharks of the World: a Fully Illustrated Guide. Wild Nature Press; Plymouth: 2013. p. 528.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Fergusson IK. In: Great White Sharks: the Biology of Carcharodon carcharias. Klimley AP, Ainley DG, editors. Academic Press; London: 1996. Distribution and autecology of the white shark in the eastern North Atlantic Ocean and the Mediterranean Sea; pp. 321&#8211;345.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Galaz T, De Maddalena A. On a Great White Shark, Carcharodon carcharias (Linnaeus, 1758), trapped in a tuna cage off Libya, Mediterranean Sea. Ann Ser Hist Nat. 2004;14(2):159&#8211;164.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Gardiner MM, Allee LL, Brown PM, Losey JE, Roy HE, Smyth RR. Lessons from lady beetles: accuracy of monitoring data from US and UK citizen-science programs. Front Ecol Environ. 2012;10(9):471&#8211;476.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Giovos I, Stoilas VO, Al-Mabruk SAA, Doumpas N, Marakis P, Maximiadi M, Moutopoulos D, Kleitou P, Keramidas I, Tiralongo F, De Maddalena A. Integrating local ecological knowledge, citizen science and long-term historical data for endangered species conservation: Additional records of angel sharks (Chondrichthyes: Squatinidae) in the Mediterranean Sea. Aquat Conserv. 2019;29(6):881&#8211;890.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Gubili C, Bilgin R, Kalkan E, Karhan S&#220;, Jones CS, Sims DW, Kabasakal H, Martin AP, Noble LR. Antipodean white sharks on a Mediterranean walkabout? Historical dispersal leads to genetic discontinuity and an endangered anomalous population. Proc Royal Soc B. 2011;278(1712):1679&#8211;1686.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC3081765</ArticleId>
+            <ArticleId IdType="pubmed">21084352</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Gubili C, Robinson CE, Cliff G, Wintner SP, de Sabata E, De Innocentiis S, Canese S, Sims DW, Martin AP, Noble LR, Jones CS. DNA from historical and trophy samples provides insights into white shark population origins and genetic diversity. Endangered Species Res. 2015;27(3):233&#8211;241.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Jambura PL, &#262;etkovi&#263; I, Kriwet J, T&#252;rtscher J. Using historical and citizen science data to improve knowledge about the occurrence of the elusive sandbar shark Carcharhinus plumbeus (Chondrichthyes &#8211; Carcharhinidae) in the Adriatic Sea. Mediterr Mar Sci. 2021;22(1):169&#8211;179.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC7611800</ArticleId>
+            <ArticleId IdType="pubmed">34642564</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Jeffries E. Sharks in crisis: a call to action for the Mediterranean. World Wide Fund For Nature (WWF); 2019.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Leone A, Puncher GN, Ferretti F, Sperone E, Tripepi S, Micarelli P, Gambarelli A, Sar&#224; M, Arculeo M, Doria G, Garibaldi F. Pliocene colonization of the Mediterranean by Great White Shark inferred from fossil records, historical jaws, phylogeographic and divergence time analyses. J Biogeogr. 2020;47(5):1119&#8211;1129.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Kabasakal H. Historical and contemporary records of sharks from the Sea of Marmara, Turkey. Ann Ser Hist Nat. 2003;13(1):1&#8211;12.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Kabasakal H. The status of the great white shark Carcharodon carcharias in Turkey&#8217;s waters. Mar Biodivers Rec. 2014;7(e109):1&#8211;8.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Kabasakal H. Historical dispersal of the great white shark, Carcharodon carcharias and bluefin tuna, Thunnus thynnus in Turkish waters: decline of a predator in response to the loss of its prey. Ann Ser Hist Nat. 2016;26(2):213&#8211;218.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Kabasakal H. A review of shark research in Turkish waters. Ann Ser Hist Nat. 2019;29(1):1&#8211;16.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Kabasakal H. Exploring a possible nursery ground of white shark Carcharodon carcharias in Edremit Bay (northeastern Aegean Sea, Turkey) J Black Sea/Medit Environ. 2020a;26(2):176&#8211;189.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Kabasakal H. Agreement with the Monster - Lessons we learned from the Great White Shark in Turkish waters. TUDAV Turkish Marine Research Foundation; Istanbul: 2020b. p. 74.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Kabasakal H, Bileceno&#287;lu MB. Shark infested internet: an analysis of internet-based media reports on rare and large sharks of Turkey. FishTaxa. 2020;16:8&#8211;18.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Morey G, Mart&#237;nez M, Massut&#237; E, Moranta J. The occurrence of white sharks, Carcharodon carcharias around the Balearic Islands (western Mediterranean Sea) Environ Biol Fishes. 2003;68(4):425&#8211;432.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Monkman GG, Kaiser M, Hyder K. The ethics of using social media in fisheries research. Rev Fish Sci Aquac. 2018;26(2):235&#8211;242.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Moro S, Jona-Lasinio G, Block B, Micheli F, De Leo G, Serena F, Bottaro M, Scacco U, Ferretti F. Abundance and distribution of the white shark in the Mediterranean Sea. Fish Fish. 2020;21(2):338&#8211;349.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Papaconstantinou C. Fauna Graeciae. An updated checklist of the fishes in the Hellenic Seas, Monographs on Marine Sciences. Vol. 7 HCMR; 2014.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Randall JE. Size of the great white shark Carcharodon . Science. 1973;181(4095):169&#8211;170.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">17746627</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Rigby CL, Barreto R, Carlson J, Fernando D, Fordham S, Francis MP, Herman K, Jabado RW, Liu KM, Lowe CG, Marshall A, et al. The IUCN Red List of Threatened Species 2019; 2019. [Accessed 18 March 2021]. Carcharodon carcharias. e.T3855A2878674.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.2305/IUCN.UK.2019-3.RLTS.T3855A2878674.en</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sa&#239;di B, Brada&#239; MN, Bouain A, Guelorget O, Capap&#233; C. Capture of a pregnant female white shark, Carcharodon carcharias (Lamnidae) in the Gulf of Gabes (southern Tunisia, central Mediterranean) with comments on oophagy in sharks. Cybium. 2005;29(3):303&#8211;307.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Soldo A, Jardas I. Occurrence of great white shark, Carcharodon carcharias (Linnaeus, 1758) and basking shark, Cetorhinus maximus (Gunnerus, 1758) in the Eastern Adriatic and their protection. Period Biol. 2002;104(2):195&#8211;201.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Soldo A, Bradai MN, Walls RHL.  Carcharodon carcharias. The IUCN Red List of Threatened Species 2016; 2016.  [Accessed 18 March 2021].  e.T3855A16527829.  https://www.iucnredlist.org/species/3855/16527829.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Span&#242; N, De Domenico E. In: Mediterranean Identities: Environment, Society, Culture. Fuerst-Bjelis B, editor. IntechOpen Limited; London: 2017. Biodiversity in Central Mediterranean Sea; pp. 129&#8211;148.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Storai T, Mojetta A, Zuffa M, Giuliani S. Nuove segnalazioni di Carcharodon carcharias (L.) nel Mediterraneo centrale. Atti Soc Tosc Sci Nat Pisa, Mem. 2000;107:139&#8211;142.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Tiralongo F, Monaco C, De Maddalena A. Report on a great white shark Carcharodon carcharias observed off Lampedusa, Italy. Ann Ser Hist Nat. 2020;30(2):181&#8211;186.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Weng KC, O&#8217;Sullivan JB, Lowe CG, Winkler CE, Dewar H, Block BA. Movements, behavior and habitat preferences of juvenile white sharks Carcharodon carcharias in the eastern Pacific. Mar Ecol Prog Ser. 2007;338:211&#8211;224.</Citation>
+        </Reference>
+      </ReferenceList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

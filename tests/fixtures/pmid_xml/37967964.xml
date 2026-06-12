@@ -1,0 +1,85 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="PubMed-not-MEDLINE" Owner="NLM">
+      <PMID Version="1">37967964</PMID>
+      <DateCompleted>
+        <Year>2024</Year>
+        <Month>02</Month>
+        <Day>14</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2024</Year>
+        <Month>02</Month>
+        <Day>14</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0021-4884</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>72</Volume>
+            <Issue>9</Issue>
+            <PubDate>
+              <Year>2023</Year>
+            </PubDate>
+          </JournalIssue>
+          <Title>Arerugi = [Allergy]</Title>
+          <ISOAbbreviation>Arerugi</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Not Available].</ArticleTitle>
+        <Pagination>
+          <StartPage>1174</StartPage>
+          <EndPage>1175</EndPage>
+          <MedlinePgn>1174-1175</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.15036/arerugi.72.1174</ELocationID>
+        <Language>jpn</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Japan</Country>
+        <MedlineTA>Arerugi</MedlineTA>
+        <NlmUniqueID>0241212</NlmUniqueID>
+        <ISSNLinking>0021-4884</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">memory B cell</Keyword>
+        <Keyword MajorTopicYN="N">memory T cell</Keyword>
+        <Keyword MajorTopicYN="N">trained immunity</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2024</Year>
+          <Month>2</Month>
+          <Day>13</Day>
+          <Hour>0</Hour>
+          <Minute>42</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2023</Year>
+          <Month>11</Month>
+          <Day>16</Day>
+          <Hour>0</Hour>
+          <Minute>42</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2023</Year>
+          <Month>11</Month>
+          <Day>15</Day>
+          <Hour>20</Hour>
+          <Minute>44</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">37967964</ArticleId>
+        <ArticleId IdType="doi">10.15036/arerugi.72.1174</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

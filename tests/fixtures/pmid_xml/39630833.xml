@@ -1,0 +1,99 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="PubMed-not-MEDLINE" Owner="NLM">
+      <PMID Version="1">39630833</PMID>
+      <DateRevised>
+        <Year>2025</Year>
+        <Month>02</Month>
+        <Day>13</Day>
+      </DateRevised>
+      <Article PubModel="Electronic">
+        <Journal>
+          <ISSN IssnType="Electronic">2965-2774</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>36</Volume>
+            <PubDate>
+              <Year>2024</Year>
+              <Month>Dec</Month>
+              <Day>02</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>Critical care science</Title>
+          <ISOAbbreviation>Crit Care Sci</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>ERRATUM.</ArticleTitle>
+        <Pagination>
+          <StartPage>e20240066enerr</StartPage>
+          <MedlinePgn>e20240066enerr</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="pii" ValidYN="Y">e20240066enerr</ELocationID>
+        <ELocationID EIdType="doi" ValidYN="Y">10.62675/2965-2774.20240066-enerr</ELocationID>
+        <ELocationID EIdType="pii" ValidYN="Y">S2965-27742024000101500</ELocationID>
+        <Abstract>
+          <AbstractText>[This corrects the article doi: 10.62675/2965-2774.20240066-en] [This corrects the article doi: 10.62675/2965-2774.20240066-pt].</AbstractText>
+        </Abstract>
+        <Language>eng</Language>
+        <Language>por</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016425">Published Erratum</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>02</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Brazil</Country>
+        <MedlineTA>Crit Care Sci</MedlineTA>
+        <NlmUniqueID>9918627781706676</NlmUniqueID>
+        <ISSNLinking>2965-2774</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <CommentsCorrectionsList>
+        <CommentsCorrections RefType="ErratumFor">
+          <RefSource>Crit Care Sci. 2024 Sep 23;36:e20240066en. doi: 10.62675/2965-2774.20240066-en.</RefSource>
+          <PMID Version="1">39319920</PMID>
+        </CommentsCorrections>
+      </CommentsCorrectionsList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>4</Day>
+          <Hour>18</Hour>
+          <Minute>23</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>4</Day>
+          <Hour>18</Hour>
+          <Minute>22</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>4</Day>
+          <Hour>13</Hour>
+          <Minute>45</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pmc-release">
+          <Year>2024</Year>
+          <Month>11</Month>
+          <Day>11</Day>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>epublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">39630833</ArticleId>
+        <ArticleId IdType="pmc">PMC11812949</ArticleId>
+        <ArticleId IdType="doi">10.62675/2965-2774.20240066-enerr</ArticleId>
+        <ArticleId IdType="pii">S2965-27742024000101500</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

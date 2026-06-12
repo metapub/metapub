@@ -1,0 +1,160 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">31671389</PMID>
+      <DateCompleted>
+        <Year>2019</Year>
+        <Month>12</Month>
+        <Day>17</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2020</Year>
+        <Month>01</Month>
+        <Day>08</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Electronic">1669-9106</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>79</Volume>
+            <Issue>5</Issue>
+            <PubDate>
+              <Year>2019</Year>
+            </PubDate>
+          </JournalIssue>
+          <Title>Medicina</Title>
+          <ISOAbbreviation>Medicina (B Aires)</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Hypervitaminosis B12. Our experience and a review].</ArticleTitle>
+        <Pagination>
+          <StartPage>391</StartPage>
+          <EndPage>396</EndPage>
+          <MedlinePgn>391-396</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText>High serum levels of vitamin B12 or cobalamin, also called hypervitaminemia B12, is a frequently underestimated biological abnormality. According to the literature, some of the entities related to this finding are solid neoplasia (primary or metastatic) and acute or chronic hematological diseases. Other causes include liver disorders, monoclonal gammapathy of undetermined significance, renal failure and, less frequently, excess of vitamin B12 intake, inflammatory or autoimmune diseases, and transient hematological disorders (neutrophilia and secondary eosinophilia). This article reports on causes of hypervitaminosis B12, our experience and a review of the literature.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Zulfiqar</LastName>
+            <ForeName>Abrar-Ahmad</ForeName>
+            <Initials>AA</Initials>
+            <AffiliationInfo>
+              <Affiliation>Service de M&#233;decine Interne, Diab&#232;te et Maladies M&#233;taboliques, H&#244;pitaux Universitaires de Strasbourg, France.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Andres</LastName>
+            <ForeName>Emmanuel</ForeName>
+            <Initials>E</Initials>
+            <AffiliationInfo>
+              <Affiliation>Service de M&#233;decine Interne, Diab&#232;te et Maladies M&#233;taboliques, H&#244;pitaux Universitaires de Strasbourg, France.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Lorenzo Villalba</LastName>
+            <ForeName>Noel</ForeName>
+            <Initials>N</Initials>
+            <AffiliationInfo>
+              <Affiliation>Service de M&#233;decine Interne, Diab&#232;te et Maladies M&#233;taboliques, H&#244;pitaux Universitaires de Strasbourg, France. E-mail: noellorenzo@gmail.com.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>spa</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D016454">Review</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>Hipervitaminosis B12. Nuestra experiencia y una revisi&#243;n.</VernacularTitle>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Argentina</Country>
+        <MedlineTA>Medicina (B Aires)</MedlineTA>
+        <NlmUniqueID>0204271</NlmUniqueID>
+        <ISSNLinking>0025-7680</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>P6YC3EG204</RegistryNumber>
+          <NameOfSubstance UI="D014805">Vitamin B 12</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D058186" MajorTopicYN="N">Acute Kidney Injury</DescriptorName>
+          <QualifierName UI="Q000097" MajorTopicYN="N">blood</QualifierName>
+          <QualifierName UI="Q000150" MajorTopicYN="N">complications</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006402" MajorTopicYN="N">Hematologic Diseases</DescriptorName>
+          <QualifierName UI="Q000097" MajorTopicYN="N">blood</QualifierName>
+          <QualifierName UI="Q000150" MajorTopicYN="N">complications</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008107" MajorTopicYN="N">Liver Diseases</DescriptorName>
+          <QualifierName UI="Q000097" MajorTopicYN="N">blood</QualifierName>
+          <QualifierName UI="Q000150" MajorTopicYN="N">complications</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009369" MajorTopicYN="N">Neoplasms</DescriptorName>
+          <QualifierName UI="Q000097" MajorTopicYN="N">blood</QualifierName>
+          <QualifierName UI="Q000150" MajorTopicYN="N">complications</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009748" MajorTopicYN="N">Nutrition Disorders</DescriptorName>
+          <QualifierName UI="Q000097" MajorTopicYN="Y">blood</QualifierName>
+          <QualifierName UI="Q000209" MajorTopicYN="Y">etiology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D014805" MajorTopicYN="N">Vitamin B 12</DescriptorName>
+          <QualifierName UI="Q000009" MajorTopicYN="N">adverse effects</QualifierName>
+          <QualifierName UI="Q000097" MajorTopicYN="Y">blood</QualifierName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <OtherAbstract Type="Publisher" Language="spa">
+        <AbstractText>Los altos niveles de vitamina B12 o cobalamina, tambi&#233;n denominado hipervitaminosis B12 es una anormalidad anal&#237;tica frecuentemente subestimada. De acuerdo con la literatura algunas de las entidades relacionadas con este hallazgo son las neoplasias s&#243;lidas (primarias o metast&#225;sicas) y las enfermedades hematol&#243;gicas agudas o cr&#243;nicas. Otras causas incluyen la afecci&#243;n hep&#225;tica, la gammapat&#237;a monoclonal de significaci&#243;n indeterminada, la insuficiencia renal y, con menor frecuencia, un exceso de consumo de vitamina B12, enfermedades inflamatorias o autoinmunes y los trastornos hematol&#243;gicos transitorios (neutrofilia y eosinofilia secundaria). Este art&#237;culo informa sobre causas de hipervitaminosis B12, nuestra experiencia y hace una revisi&#243;n de la literatura.</AbstractText>
+      </OtherAbstract>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">B12 hypervitaminemia</Keyword>
+        <Keyword MajorTopicYN="N">cobalamin</Keyword>
+        <Keyword MajorTopicYN="N">hematological malignant disease</Keyword>
+        <Keyword MajorTopicYN="N">neoplasia</Keyword>
+        <Keyword MajorTopicYN="N">transcobalamin</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2019</Year>
+          <Month>11</Month>
+          <Day>1</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2019</Year>
+          <Month>11</Month>
+          <Day>2</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2019</Year>
+          <Month>12</Month>
+          <Day>18</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">31671389</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

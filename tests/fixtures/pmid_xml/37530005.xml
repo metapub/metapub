@@ -1,0 +1,172 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="PubMed-not-MEDLINE" Owner="NLM">
+      <PMID Version="1">37530005</PMID>
+      <DateCompleted>
+        <Year>2023</Year>
+        <Month>08</Month>
+        <Day>04</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2023</Year>
+        <Month>08</Month>
+        <Day>22</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Electronic">2038-1840</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>114</Volume>
+            <Issue>9</Issue>
+            <PubDate>
+              <Year>2023</Year>
+              <Month>Sep</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Recenti progressi in medicina</Title>
+          <ISOAbbreviation>Recenti Prog Med</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Not Available].</ArticleTitle>
+        <Pagination>
+          <StartPage>529</StartPage>
+          <EndPage>530</EndPage>
+          <MedlinePgn>529-530</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1701/4088.40798</ELocationID>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Sementilli</LastName>
+            <ForeName>Andrea</ForeName>
+            <Initials>A</Initials>
+            <AffiliationInfo>
+              <Affiliation>Infermiere Coordinatore, Centro salute mentale (Spdc-Csm), Pistoia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Lettieri</LastName>
+            <ForeName>Maria</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Infermiera, Centro salute mentale (Spdc-Csm), Pistoia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Paolacci</LastName>
+            <ForeName>Federica</ForeName>
+            <Initials>F</Initials>
+            <AffiliationInfo>
+              <Affiliation>Infermiera Coordinatrice, Agenzia continuit&#224; ospedale-territorio (Acot), Pistoia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Martinelli</LastName>
+            <ForeName>Angela</ForeName>
+            <Initials>A</Initials>
+            <AffiliationInfo>
+              <Affiliation>Infermiera Coordinatrice, Aft Montagna, Presidio integrato ospedale territorio (Piot), San Marcello Pistoiese, Pistoia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Panichi</LastName>
+            <ForeName>Paola</ForeName>
+            <Initials>P</Initials>
+            <AffiliationInfo>
+              <Affiliation>Infermiere Coordinatore, Aft/Case della salute Pianura Pistoiese; Aft1/Case della Salute, Pistoia; Aft2/Case della Salute, Pistoia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Pantini</LastName>
+            <ForeName>Marco</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Infermiere Coordinatore, Aft/Case della salute Pianura Pistoiese; Aft1/Case della Salute, Pistoia; Aft2/Case della Salute, Pistoia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Gasperetti</LastName>
+            <ForeName>Emanuele</ForeName>
+            <Initials>E</Initials>
+            <AffiliationInfo>
+              <Affiliation>Infermiere Coordinatore, Aft/Case della salute Pianura Pistoiese; Aft1/Case della Salute, Pistoia; Aft2/Case della Salute, Pistoia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Ramazzotti</LastName>
+            <ForeName>Erica</ForeName>
+            <Initials>E</Initials>
+            <AffiliationInfo>
+              <Affiliation>Infermiere di Famiglia e Comunit&#224;, Case di Comunit&#224; Territorio Pistoiese.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Tozzi</LastName>
+            <ForeName>Camilla</ForeName>
+            <Initials>C</Initials>
+            <AffiliationInfo>
+              <Affiliation>Infermiere di Famiglia e Comunit&#224;, Case di Comunit&#224; Territorio Pistoiese.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Cascini</LastName>
+            <ForeName>Cristina</ForeName>
+            <Initials>C</Initials>
+            <AffiliationInfo>
+              <Affiliation>Infermiera Coordinatrice, Dea PO San Jacopo, Pistoia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Pacini</LastName>
+            <ForeName>Riccardo</ForeName>
+            <Initials>R</Initials>
+            <AffiliationInfo>
+              <Affiliation>Direzione Infermieristica Sos Gestione, Pistoia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>ita</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>Insieme &#8220;CONpatibilMENTE&#8221; &#8211; Riflessione sui Tempi di handover per rendere &#8220;visibile l&#8217;invisibile&#8221;.</VernacularTitle>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Italy</Country>
+        <MedlineTA>Recenti Prog Med</MedlineTA>
+        <NlmUniqueID>0401271</NlmUniqueID>
+        <ISSNLinking>0034-1193</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2023</Year>
+          <Month>8</Month>
+          <Day>2</Day>
+          <Hour>6</Hour>
+          <Minute>43</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2023</Year>
+          <Month>8</Month>
+          <Day>2</Day>
+          <Hour>6</Hour>
+          <Minute>42</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2023</Year>
+          <Month>8</Month>
+          <Day>2</Day>
+          <Hour>5</Hour>
+          <Minute>43</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">37530005</ArticleId>
+        <ArticleId IdType="doi">10.1701/4088.40798</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

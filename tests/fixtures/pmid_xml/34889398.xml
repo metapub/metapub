@@ -1,0 +1,445 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">34889398</PMID>
+      <DateCompleted>
+        <Year>2022</Year>
+        <Month>02</Month>
+        <Day>21</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2022</Year>
+        <Month>02</Month>
+        <Day>21</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Electronic">1520-4383</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>2021</Volume>
+            <Issue>1</Issue>
+            <PubDate>
+              <Year>2021</Year>
+              <Month>Dec</Month>
+              <Day>10</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>Hematology. American Society of Hematology. Education Program</Title>
+          <ISOAbbreviation>Hematology Am Soc Hematol Educ Program</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Hereditary hemorrhagic telangiectasia (HHT): a practical guide to management.</ArticleTitle>
+        <Pagination>
+          <StartPage>469</StartPage>
+          <EndPage>477</EndPage>
+          <MedlinePgn>469-477</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1182/hematology.2021000281</ELocationID>
+        <Abstract>
+          <AbstractText>Hereditary hemorrhagic telangiectasia (HHT), the second most common inherited bleeding disorder, is associated with the development of malformed blood vessels. Abnormal blood vessels may be small and cutaneous or mucosal (telangiectasia), with frequent complications of bleeding, or large and visceral (arteriovenous malformations [AVMs]), with additional risks that can lead to significant morbidity and even mortality. HHT can present in many different ways and can be difficult to recognize, particularly in younger patients in the absence of a known family history of disease or epistaxis, its most common manifestation. HHT is commonly diagnosed using the established Cura&#231;ao clinical criteria, which include (1) family history, (2) recurrent epistaxis, (3) telangiectasia, and (4) visceral AVMs. Fulfillment of 3 or more criteria provides a definite diagnosis of HHT, whereas 2 criteria constitute a possible diagnosis of HHT. However, these criteria are insufficient in children to rule out disease due to the age-dependent development of some of these criteria. Genetic testing, when positive, can provide definitive diagnosis of HHT in all age groups. Clinical course is often complicated by significant epistaxis and/or gastrointestinal bleeding, leading to anemia in half of adult patients with HHT. The management paradigm has recently shifted from surgical approaches to medical treatments aimed at control of chronic bleeding, such as antifibrinolytic and antiangiogenic agents, combined with aggressive iron replacement with intravenous iron. Guidelines for management of HHT, including screening and treatment, were determined by expert consensus and originally published in 2009 with updates and new guidelines in 2020.</AbstractText>
+          <CopyrightInformation>Copyright &#169; 2021 by The American Society of Hematology.</CopyrightInformation>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Hammill</LastName>
+            <ForeName>Adrienne M</ForeName>
+            <Initials>AM</Initials>
+            <AffiliationInfo>
+              <Affiliation>Cancer and Blood Diseases Institute, Division of Hematology, Cincinnati Children's Hospital Medical Center, and Department of Pediatrics, University of Cincinnati College of Medicine, Cincinnati, OH.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Wusik</LastName>
+            <ForeName>Katie</ForeName>
+            <Initials>K</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Human Genetics, Cincinnati Children's Hospital Medical Center, Cincinnati, OH.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Kasthuri</LastName>
+            <ForeName>Raj S</ForeName>
+            <Initials>RS</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Hematology, Department of Medicine, University of North Carolina School of Medicine, Chapel Hill, NC.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D002363">Case Reports</PublicationType>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>Hematology Am Soc Hematol Educ Program</MedlineTA>
+        <NlmUniqueID>100890099</NlmUniqueID>
+        <ISSNLinking>1520-4383</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000293" MajorTopicYN="N">Adolescent</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000740" MajorTopicYN="N">Anemia</DescriptorName>
+          <QualifierName UI="Q000150" MajorTopicYN="N">complications</QualifierName>
+          <QualifierName UI="Q000175" MajorTopicYN="N">diagnosis</QualifierName>
+          <QualifierName UI="Q000628" MajorTopicYN="N">therapy</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D019468" MajorTopicYN="N">Disease Management</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004844" MajorTopicYN="N">Epistaxis</DescriptorName>
+          <QualifierName UI="Q000150" MajorTopicYN="N">complications</QualifierName>
+          <QualifierName UI="Q000175" MajorTopicYN="N">diagnosis</QualifierName>
+          <QualifierName UI="Q000628" MajorTopicYN="N">therapy</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006471" MajorTopicYN="N">Gastrointestinal Hemorrhage</DescriptorName>
+          <QualifierName UI="Q000150" MajorTopicYN="N">complications</QualifierName>
+          <QualifierName UI="Q000175" MajorTopicYN="N">diagnosis</QualifierName>
+          <QualifierName UI="Q000628" MajorTopicYN="N">therapy</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011247" MajorTopicYN="N">Pregnancy</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011250" MajorTopicYN="N">Pregnancy Complications, Hematologic</DescriptorName>
+          <QualifierName UI="Q000175" MajorTopicYN="N">diagnosis</QualifierName>
+          <QualifierName UI="Q000628" MajorTopicYN="N">therapy</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D013683" MajorTopicYN="N">Telangiectasia, Hereditary Hemorrhagic</DescriptorName>
+          <QualifierName UI="Q000150" MajorTopicYN="N">complications</QualifierName>
+          <QualifierName UI="Q000175" MajorTopicYN="Y">diagnosis</QualifierName>
+          <QualifierName UI="Q000628" MajorTopicYN="Y">therapy</QualifierName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <CoiStatement>Adrienne M. Hammill: none related to this paper. But AH has clinical trials (for other diseases) with novartis, cerecor, Venthera, Merck; had study drug provided by Pfizer; serves as a consultant for Novartis. Katie Wusik: none reported. Raj S. Kasthuri: none reported.</CoiStatement>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2021</Year>
+          <Month>12</Month>
+          <Day>10</Day>
+          <Hour>8</Hour>
+          <Minute>45</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2021</Year>
+          <Month>12</Month>
+          <Day>11</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2022</Year>
+          <Month>2</Month>
+          <Day>22</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pmc-release">
+          <Year>2021</Year>
+          <Month>12</Month>
+          <Day>10</Day>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">34889398</ArticleId>
+        <ArticleId IdType="pmc">PMC8791148</ArticleId>
+        <ArticleId IdType="doi">10.1182/hematology.2021000281</ArticleId>
+        <ArticleId IdType="pii">482972</ArticleId>
+      </ArticleIdList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Faughnan ME, Mager JJ, Hetts SW, et al.. Second International Guidelines for the Diagnosis and Management of Hereditary Hemorrhagic Telangiectasia. Ann Intern Med. 2020;173(12):989-1001. doi: 10.7326/M20-1443.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.7326/M20-1443</ArticleId>
+            <ArticleId IdType="pubmed">32894695</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ginon I, Decullier E, Finet G, et al.. Hereditary hemorrhagic telangiectasia, liver vascular malformations and cardiac consequences. Eur J Intern Med. 2013;24(3):e35-e39. doi: 10.1016/j.ejim.2012.12.013.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.ejim.2012.12.013</ArticleId>
+            <ArticleId IdType="pubmed">23312966</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Weber LM, McDonald J, Whitehead K. Vitamin D levels are associated with epistaxis severity and bleeding duration in hereditary hemorrhagic telangiectasia. Biomark Med. 2018;12(4):365-371. doi: 10.2217/bmm-2017-0229.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.2217/bmm-2017-0229</ArticleId>
+            <ArticleId IdType="pmc">PMC6367804</ArticleId>
+            <ArticleId IdType="pubmed">29537299</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ratjen A, Au J, Carpenter S, John P, Ratjen F. Growth of pulmonary arteriovenous malformations in pediatric patients with hereditary hemorrhagic telangiectasia. J Pediatr. 2019;208:279-281. doi: 10.1016/j.jpeds.2018.12.069.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jpeds.2018.12.069</ArticleId>
+            <ArticleId IdType="pubmed">30853205</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>McDonald J, Stevenson DA, Whitehead K. Incidence of epistaxis and telangiectases in the general population. Angiogenesis. 2017;18:531.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Kjeldsen AD, Vase P, Green A. Hereditary haemorrhagic telangiectasia: a population-based study of prevalence and mortality in Danish patients. J Intern Med. 1999;245(1):31-39. doi: 10.1046/j.1365-2796.1999.00398.x.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1046/j.1365-2796.1999.00398.x</ArticleId>
+            <ArticleId IdType="pubmed">10095814</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>McDonald J, Wooderchak-Donahue WL, Henderson K, Paul E, Morris A, Bayrak-Toydemir P. Tissue-specific mosaicism in hereditary hemorrhagic telangiectasia: implications for genetic testing in families. Am J Med Genet A. 2018;176(7):1618-1621. doi: 10.1002/ajmg.a.38695.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/ajmg.a.38695</ArticleId>
+            <ArticleId IdType="pubmed">29736967</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>T&#248;rring PM, Kjeldsen AD, Ousager LB, Brusgaard K. ENG mutational mosaicism in a family with hereditary hemorrhagic telangiectasia. Mol Genet Genomic Med. 2018;6(1):121-125. doi: 10.1002/mgg3.361.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/mgg3.361</ArticleId>
+            <ArticleId IdType="pmc">PMC5823686</ArticleId>
+            <ArticleId IdType="pubmed">29243366</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Best DH, Vaughn C, McDonald J, et al.. Mosaic ACVRL1 and ENG mutations in hereditary haemorrhagic telangiectasia patients. J Med Genet. 2011;48(5):358-360. doi: 10.1136/jmg.2010.088286.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1136/jmg.2010.088286</ArticleId>
+            <ArticleId IdType="pubmed">21378382</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Lee NP, Matevski D, Dumitru D, Piovesan B, Rushlow D, Gallie BL. Identification of clinically relevant mosaicism in type I hereditary haemorrhagic telangiectasia. J Med Genet. 2011;48(5):353-357. doi: 10.1136/jmg.2010.088112.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1136/jmg.2010.088112</ArticleId>
+            <ArticleId IdType="pubmed">21415079</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Gedge F, McDonald J, Phansalkar A, et al.. Clinical and analytical sensitivities in hereditary hemorrhagic telangiectasia testing and a report of de novo mutations. J Mol Diagn. 2007;9(2):258-265. doi: 10.2353/jmoldx.2007.060117.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.2353/jmoldx.2007.060117</ArticleId>
+            <ArticleId IdType="pmc">PMC1867450</ArticleId>
+            <ArticleId IdType="pubmed">17384219</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Shovlin CL, Guttmacher AE, Buscarini E, et al.. Diagnostic criteria for hereditary hemorrhagic telangiectasia (Rendu-Osler-Weber syndrome). Am J Med Genet. 2000;91(1):66-67. doi: 10.1002/(sici)1096-8628(20000306)91:1&lt;66::aid-ajmg12&gt;3.0.co;2-p.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/(sici)1096-8628(20000306)91:1&lt;66::aid-ajmg12&gt;3.0.co;2-p</ArticleId>
+            <ArticleId IdType="pubmed">10751092</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Pierucci P, Lenato GM, Suppressa P, et al.. A long diagnostic delay in patients with hereditary haemorrhagic telangiectasia: a questionnaire-based retrospective study. Orphanet J Rare Dis. 2012;7:33. doi: 10.1186/1750-1172-7-33.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1186/1750-1172-7-33</ArticleId>
+            <ArticleId IdType="pmc">PMC3458963</ArticleId>
+            <ArticleId IdType="pubmed">22676497</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Pahl KS, Choudhury A, Wusik K, et al.. Applicability of the Cura&#231;ao criteria for the diagnosis of hereditary hemorrhagic telangiectasia in the pediatric population. J Pediatr. 2018;197:207-213. doi: 10.1016/j.jpeds.2018.01.079.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jpeds.2018.01.079</ArticleId>
+            <ArticleId IdType="pubmed">29655863</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Faughnan ME, Palda VA, Garcia-Tsao G, et al; HHT Foundation International&#8212; Guidelines Working Group. International guidelines for the diagnosis and management of hereditary haemorrhagic telangiectasia. J Med Genet. 2011;48(2):73-87. doi: 10.1136/jmg.2009.069013.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1136/jmg.2009.069013</ArticleId>
+            <ArticleId IdType="pubmed">19553198</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>McDonald J, Bayrak-Toydemir P, DeMille D, Wooderchak-Donahue W, Whitehead K. Cura&#231;ao diagnostic criteria for hereditary hemorrhagic telangiectasia is highly predictive of a pathogenic variant in ENG or ACVRL1 (HHT1 and HHT2). Genet Med. 2020;22(7):1201-1205. doi: 10.1038/s41436-020-0775-8.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/s41436-020-0775-8</ArticleId>
+            <ArticleId IdType="pubmed">32300199</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Gallione CJ, Richards JA, Letteboer TG, et al.. SMAD4 mutations found in unselected HHT patients. J Med Genet. 2006;43(10):793-797. doi: 10.1136/jmg.2006.041517.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1136/jmg.2006.041517</ArticleId>
+            <ArticleId IdType="pmc">PMC2563178</ArticleId>
+            <ArticleId IdType="pubmed">16613914</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Gallione C, Aylsworth AS, Beis J, et al.. Overlapping spectra of SMAD4 mutations in juvenile polyposis (JP) and JP-HHT syndrome. Am J Med Genet A. 2010;152A(2):333-339. doi: 10.1002/ajmg.a.33206.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/ajmg.a.33206</ArticleId>
+            <ArticleId IdType="pubmed">20101697</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Heald B, Rigelsky C, Moran R, et al.. Prevalence of thoracic aortopathy in patients with juvenile polyposis syndrome&#8211;hereditary hemorrhagic telangiectasia due to SMAD4. Am J Med Genet A. 2015;167(8):1758-1762. doi: 10.1002/ajmg.a.37093.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/ajmg.a.37093</ArticleId>
+            <ArticleId IdType="pubmed">25931195</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Hernandez F, Huether R, Carter L, et al.. Mutations in RASA1 and GDF2 identified in patients with clinical features of hereditary hemorrhagic telangiectasia. Hum Genome Var. 2015;2:15040. doi: 10.1038/hgv.2015.40.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/hgv.2015.40</ArticleId>
+            <ArticleId IdType="pmc">PMC4785548</ArticleId>
+            <ArticleId IdType="pubmed">27081547</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wooderchak-Donahue WL, Akay G, Whitehead K, et al.. Phenotype of CM-AVM2 caused by variants in EPHB4: how much overlap with hereditary hemorrhagic telangiectasia (HHT)? Genet Med. 2019;21(9):2007-2014. doi: 10.1038/s41436-019-0443-z.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/s41436-019-0443-z</ArticleId>
+            <ArticleId IdType="pubmed">30760892</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Hoag JB, Terry P, Mitchell S, Reh D, Merlo CA. An epistaxis severity score for hereditary hemorrhagic telangiectasia. Laryngoscope. 2010;120(4):838-843. doi: 10.1002/lary.20818.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/lary.20818</ArticleId>
+            <ArticleId IdType="pubmed">20087969</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Gaillard S, Dupuis-Girod S, Boutitie F, et al; ATERO Study Group. Tranexamic acid for epistaxis in hereditary hemorrhagic telangiectasia patients: a European cross-over controlled trial in a rare disease. J Thromb Haemost. 2014;12(9):1494-1502. doi: 10.1111/jth.12654.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1111/jth.12654</ArticleId>
+            <ArticleId IdType="pubmed">25040799</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Geisthoff UW, Seyfert UT, K&#252;bler M, Bieg B, Plinkert PK, K&#246;nig J. Treatment of epistaxis in hereditary hemorrhagic telangiectasia with tranexamic acid&#8212;a double-blind placebo-controlled cross-over phase IIIB study. Thromb Res. 2014;134(3):565-571. doi: 10.1016/j.thromres.2014.06.012.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.thromres.2014.06.012</ArticleId>
+            <ArticleId IdType="pubmed">25005464</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Canzonieri C, Centenara L, Ornati F, et al.. Endoscopic evaluation of gastrointestinal tract in patients with hereditary hemorrhagic telangiectasia and correlation with their genotypes. Genet Med. 2014;16(1):3-10. doi: 10.1038/gim.2013.62.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/gim.2013.62</ArticleId>
+            <ArticleId IdType="pubmed">23722869</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Kasthuri RS, Montifar M, Nelson J, et al; Brain Vascular Malformation Consortium HHT Investigator Group. Prevalence and predictors of anemia in hereditary hemorrhagic telangiectasia. Am J Hematol. 2017;92(10):e591-e593. doi: 10.1002/ajh.24832.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/ajh.24832</ArticleId>
+            <ArticleId IdType="pmc">PMC5997494</ArticleId>
+            <ArticleId IdType="pubmed">28639385</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Serra MM, Besada CH, Cabana Cal A, et al.. Central nervous system manganese induced lesions and clinical consequences in patients with hereditary hemorrhagic telangiectasia. Orphanet J Rare Dis. 2017;12(1):92. doi: 10.1186/s13023-017-0632-2.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1186/s13023-017-0632-2</ArticleId>
+            <ArticleId IdType="pmc">PMC5437640</ArticleId>
+            <ArticleId IdType="pubmed">28521822</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Livesey JA, Manning RA, Meek JH, et al.. Low serum iron levels are associated with elevated plasma levels of coagulation factor VIII and pulmonary emboli/deep venous thromboses in replicate cohorts of patients with hereditary haemorrhagic telangiectasia. Thorax. 2012;67(4):328-333. doi: 10.1136/thoraxjnl-2011-201076.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1136/thoraxjnl-2011-201076</ArticleId>
+            <ArticleId IdType="pubmed">22169361</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Iyer VN, Apala DR, Pannu BS, et al.. Intravenous bevacizumab for refractory hereditary hemorrhagic telangiectasia-related epistaxis and gastrointestinal bleeding. Mayo Clin Proc. 2018;93(2):155-166. doi: 10.1016/j.mayocp.2017.11.013.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.mayocp.2017.11.013</ArticleId>
+            <ArticleId IdType="pubmed">29395350</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Al-Samkari H, Kasthuri RS, Parambil JG, et al.. An international, multicenter study of intravenous bevacizumab for bleeding in hereditary hemorrhagic telangiectasia: the InHIBIT-Bleed study. Haematologica. 2020;106(8):2161-2169. doi: 10.3324/haematol.2020.261859.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3324/haematol.2020.261859</ArticleId>
+            <ArticleId IdType="pmc">PMC8327711</ArticleId>
+            <ArticleId IdType="pubmed">32675221</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>McCrae K, Swaidani S, Samour M, Silver B, Parambil J, Thomas S. Pomalidomide in HHT: results of a pilot study. Angiogenesis. 2019;22(4):624. doi: 10.1007/s10456-019-09686-w.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/s10456-019-09686-w</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Faughnan ME, Gossage JR, Chakinala MM, et al.. Pazopanib may reduce bleeding in hereditary hemorrhagic telangiectasia. Angiogenesis. 2019;22(1):145-155. doi: 10.1007/s10456-018-9646-1.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/s10456-018-9646-1</ArticleId>
+            <ArticleId IdType="pmc">PMC6510884</ArticleId>
+            <ArticleId IdType="pubmed">30191360</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Meek M, Womble P, Jordan A, Kanaan A, Meek J. Oral doxycycline for the treatment of epistaxis in patients with hereditary hemorrhagic telangiectasia. Angiogenesis. 2015;18(4):530-530.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>de Gussem EM, Edwards CP, Hosman AE, et al.. Life expectancy of parents with hereditary haemorrhagic telangiectasia. Orphanet J Rare Dis. 2016;11:46. doi: 10.1186/s13023-016-0427-x.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1186/s13023-016-0427-x</ArticleId>
+            <ArticleId IdType="pmc">PMC4841052</ArticleId>
+            <ArticleId IdType="pubmed">27102204</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Iyer VN, Brinjikji W, Pannu BS, et al.. Effect of center volume on outcomes in hospitalized patients with hereditary hemorrhagic telangiectasia. Mayo Clin Proc. 2016;91(12):1753-1760. doi: 10.1016/j.mayocp.2016.07.005.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.mayocp.2016.07.005</ArticleId>
+            <ArticleId IdType="pubmed">27814895</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Dupuis O, Delagrange L, Dupuis-Girod S. Hereditary haemorrhagic telangiectasia and pregnancy: a review of the literature. Orphanet J Rare Dis. 2020;15(1):5. doi: 10.1186/s13023-019-1286-z.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1186/s13023-019-1286-z</ArticleId>
+            <ArticleId IdType="pmc">PMC6947864</ArticleId>
+            <ArticleId IdType="pubmed">31910869</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>de Gussem EM, Lausman AY, Beder AJ, et al.. Outcomes of pregnancy in women with hereditary hemorrhagic telangiectasia. Obstet Gynecol. 2014;123(3):514-520. doi: 10.1097/AOG.0000000000000120.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1097/AOG.0000000000000120</ArticleId>
+            <ArticleId IdType="pubmed">24499751</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Shovlin CL, Sodhi V, McCarthy A, Lasjaunias P, Jackson JE, Sheppard MN. Estimates of maternal risks of pregnancy for women with hereditary haemorrhagic telangiectasia (Osler-Weber-Rendu syndrome): suggested approach for obstetric services. BJOG. 2008;115(9):1108-1115. doi: 10.1111/j.1471-0528.2008.01786.x.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1111/j.1471-0528.2008.01786.x</ArticleId>
+            <ArticleId IdType="pubmed">18518871</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Al-Samkari H. Hereditary hemorrhagic telangiectasia: systemic therapies, guidelines, and an evolving standard of care. Blood. 2021;137(7):888-895. doi: 10.1182/blood.2020008739.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1182/blood.2020008739</ArticleId>
+            <ArticleId IdType="pubmed">33171488</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

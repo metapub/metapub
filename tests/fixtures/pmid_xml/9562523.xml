@@ -1,0 +1,172 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">9562523</PMID>
+      <DateCompleted>
+        <Year>1998</Year>
+        <Month>06</Month>
+        <Day>09</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2019</Year>
+        <Month>09</Month>
+        <Day>21</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0785-3890</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>29</Volume>
+            <Issue>6</Issue>
+            <PubDate>
+              <Year>1997</Year>
+              <Month>Dec</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Annals of medicine</Title>
+          <ISOAbbreviation>Ann Med</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Molecular background of the Finnish disease heritage.</ArticleTitle>
+        <Pagination>
+          <StartPage>553</StartPage>
+          <EndPage>556</EndPage>
+          <MedlinePgn>553-6</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText>Finland has a population with a history revealing features of founder effect, genetic drift and isolation. Relatively small founder populations have slowly inhabited a large country and internal isolates have developed within Finland. This is reflected even today in the regional enrichment of some diseases belonging to the Finnish disease heritage. This concept was launched before the DNA era by skillful clinicians and today it comprises some 30 diseases with a wide variety of clinical phenotypes. Special strategies have been adapted in the initial locus assignment and in the restriction of the critical chromosomal DNA region having so far resulted in the successful isolation of 11 disease genes. Detailed analyses of these disease genes and their function have provided new insights into the structure and function of defective proteins as well as into the biology of affected tissues.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Peltonen</LastName>
+            <ForeName>L</ForeName>
+            <Initials>L</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Human Molecular Genetics, University of Helsinki, National Public Health Institute, Finland. Leena.Peltonen@ktl.fi</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D016454">Review</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>England</Country>
+        <MedlineTA>Ann Med</MedlineTA>
+        <NlmUniqueID>8906388</NlmUniqueID>
+        <ISSNLinking>0785-3890</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D011506">Proteins</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>9007-49-2</RegistryNumber>
+          <NameOfSubstance UI="D004247">DNA</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>EC 3.5.1.26</RegistryNumber>
+          <NameOfSubstance UI="D001227">Aspartylglucosylaminase</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D054880" MajorTopicYN="N">Aspartylglucosaminuria</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D001227" MajorTopicYN="N">Aspartylglucosylaminase</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D001695" MajorTopicYN="N">Biology</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002874" MajorTopicYN="N">Chromosome Mapping</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004247" MajorTopicYN="N">DNA</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005387" MajorTopicYN="N" Type="Geographic">Finland</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D018703" MajorTopicYN="N">Founder Effect</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005787" MajorTopicYN="N">Gene Frequency</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005788" MajorTopicYN="N">Gene Pool</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D030342" MajorTopicYN="N">Genetic Diseases, Inborn</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="Y">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008661" MajorTopicYN="N">Metabolism, Inborn Errors</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008967" MajorTopicYN="Y">Molecular Biology</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009472" MajorTopicYN="N">Neuronal Ceroid-Lipofuscinoses</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D010641" MajorTopicYN="N">Phenotype</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D017354" MajorTopicYN="N">Point Mutation</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011506" MajorTopicYN="N">Proteins</DescriptorName>
+          <QualifierName UI="Q000737" MajorTopicYN="N">chemistry</QualifierName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000502" MajorTopicYN="N">physiology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D013329" MajorTopicYN="N">Structure-Activity Relationship</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <NumberOfReferences>20</NumberOfReferences>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>1998</Year>
+          <Month>4</Month>
+          <Day>30</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>1998</Year>
+          <Month>4</Month>
+          <Day>30</Day>
+          <Hour>0</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>1998</Year>
+          <Month>4</Month>
+          <Day>30</Day>
+          <Hour>0</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">9562523</ArticleId>
+        <ArticleId IdType="doi">10.3109/07853899709007481</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

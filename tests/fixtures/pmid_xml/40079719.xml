@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Automated">
+      <PMID Version="1">40079719</PMID>
+      <DateCompleted>
+        <Year>2025</Year>
+        <Month>03</Month>
+        <Day>13</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2025</Year>
+        <Month>05</Month>
+        <Day>13</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0040-5930</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>81</Volume>
+            <Issue>7</Issue>
+            <PubDate>
+              <Year>2024</Year>
+              <Month>Dec</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Therapeutische Umschau. Revue therapeutique</Title>
+          <ISOAbbreviation>Ther Umsch</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Introduction: Foot].</ArticleTitle>
+        <Pagination>
+          <StartPage>239</StartPage>
+          <MedlinePgn>239</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.23785/TU.2024.07.001</ELocationID>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Knupp</LastName>
+            <ForeName>Markus</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Mein Fusszentrum, Basel.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>markus.knupp@meinfusszentrum.ch.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>ger</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D054711">Introductory Journal Article</PublicationType>
+          <PublicationType UI="D016421">Editorial</PublicationType>
+          <PublicationType UI="D004740">English Abstract</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>Einf&#252;hrung: Fuss.</VernacularTitle>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Switzerland</Country>
+        <MedlineTA>Ther Umsch</MedlineTA>
+        <NlmUniqueID>0407224</NlmUniqueID>
+        <ISSNLinking>0040-5930</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005534" MajorTopicYN="Y">Foot Diseases</DescriptorName>
+          <QualifierName UI="Q000175" MajorTopicYN="N">diagnosis</QualifierName>
+          <QualifierName UI="Q000628" MajorTopicYN="N">therapy</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005528" MajorTopicYN="Y">Foot</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <OtherAbstract Type="Publisher" Language="ger">
+        <AbstractText Label="TITEL" NlmCategory="UNASSIGNED">Einf&#252;hrung: Fuss.</AbstractText>
+        <CopyrightInformation>&#169; 2024 Aerzteverlag medinfo AG.</CopyrightInformation>
+      </OtherAbstract>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2025</Year>
+          <Month>3</Month>
+          <Day>13</Day>
+          <Hour>14</Hour>
+          <Minute>8</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2025</Year>
+          <Month>3</Month>
+          <Day>13</Day>
+          <Hour>14</Hour>
+          <Minute>7</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2025</Year>
+          <Month>3</Month>
+          <Day>13</Day>
+          <Hour>9</Hour>
+          <Minute>52</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">40079719</ArticleId>
+        <ArticleId IdType="doi">10.23785/TU.2024.07.001</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

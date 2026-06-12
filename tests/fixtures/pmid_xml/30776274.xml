@@ -1,0 +1,136 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">30776274</PMID>
+      <DateCompleted>
+        <Year>2020</Year>
+        <Month>03</Month>
+        <Day>11</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2020</Year>
+        <Month>03</Month>
+        <Day>11</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0025-7680</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>79</Volume>
+            <Issue>Suppl 1</Issue>
+            <PubDate>
+              <Year>2019</Year>
+            </PubDate>
+          </JournalIssue>
+          <Title>Medicina</Title>
+          <ISOAbbreviation>Medicina (B Aires)</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Autism. Genetic and biological aspects].</ArticleTitle>
+        <Pagination>
+          <StartPage>16</StartPage>
+          <EndPage>21</EndPage>
+          <MedlinePgn>16-21</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText>Autism is a neurodevelopmental disorder characterized by commitment to social interaction and communication, associated with interests restricted and stereotyped behaviors with a high population prevalence, neurobiological bases and high heritability. Its etiology is heterogeneous, numerous genetic bases, environmental factors and epigenetic mechanisms have been recognized. Advances in molecular genetics, as well as epidemiological studies of large cohorts, have made it possible to identify specific medical entities, as well as genes and environmental factors partially or totally linked in their pathogenesis. This knowledge, according to the clinical characteristics, allows to guide the complementary studies, the therapeutic conducts, to infer a clinical prognosis and to propitiate the familiar genetic advice. In this work, the most prevalent clinical characteristics identified are described; the specific medical entities that are strongly related to autism are stated, as well as the recognized genes, the possible environmental factors and the epidemiological results that allow family counseling.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Arberas</LastName>
+            <ForeName>Claudia</ForeName>
+            <Initials>C</Initials>
+            <AffiliationInfo>
+              <Affiliation>Secci&#243;n Gen&#233;tica M&#233;dica, Hospital de Ni&#241;os Dr. Ricardo Guti&#233;rrez, Buenos Aires, Argentina. E-mail: carberas@gmail.com.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Ruggieri</LastName>
+            <ForeName>V&#237;ctor</ForeName>
+            <Initials>V</Initials>
+            <AffiliationInfo>
+              <Affiliation>Hospital de Pediatr&#237;a Prof. Dr. Juan P. Garrahan, Buenos Aires, Argentina.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>spa</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>Autismo. Aspectos gen&#233;ticos y biol&#243;gicos.</VernacularTitle>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Argentina</Country>
+        <MedlineTA>Medicina (B Aires)</MedlineTA>
+        <NlmUniqueID>0204271</NlmUniqueID>
+        <ISSNLinking>0025-7680</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000067877" MajorTopicYN="N">Autism Spectrum Disorder</DescriptorName>
+          <QualifierName UI="Q000209" MajorTopicYN="N">etiology</QualifierName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000503" MajorTopicYN="N">physiopathology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D001321" MajorTopicYN="N">Autistic Disorder</DescriptorName>
+          <QualifierName UI="Q000209" MajorTopicYN="N">etiology</QualifierName>
+          <QualifierName UI="Q000235" MajorTopicYN="Y">genetics</QualifierName>
+          <QualifierName UI="Q000503" MajorTopicYN="N">physiopathology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004777" MajorTopicYN="N">Environment</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D044127" MajorTopicYN="N">Epigenesis, Genetic</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005817" MajorTopicYN="N">Genetic Counseling</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <OtherAbstract Type="Publisher" Language="spa">
+        <AbstractText>El autismo es un trastorno del neurodesarrollo caracterizado por compromiso en la interacci&#243;n social y la comunicaci&#243;n, asociado a intereses restringidos y conductas estereotipadas con gran prevalencia poblacional, bases neurobiol&#243;gicas y alta heredabilidad. Su etiolog&#237;a es heterog&#233;nea y se han reconocido numerosas bases gen&#233;ticas, factores ambientales y mecanismos epigen&#233;ticos. Los avances en la gen&#233;tica molecular, as&#237; como los estudios epidemiol&#243;gicos de grandes cohortes, han posibilitado identificar entidades m&#233;dicas espec&#237;ficas, as&#237; como genes y factores ambientales vinculados parcial o totalmente en su patogenia. Estos conocimientos, conforme las caracter&#237;sticas cl&#237;nicas, permiten orientar los estudios complementarios, las conductas terap&#233;uticas, inferir un pron&#243;stico cl&#237;nico y propiciar el asesoramiento gen&#233;tico familiar. En este trabajo analizamos las caracter&#237;sticas cl&#237;nicas de los trastornos del espectro del autismo, las entidades m&#233;dicas espec&#237;ficas que est&#225;n fuertemente relacionadas a los mismos, as&#237; como los genes reconocidos, los posibles factores ambientales y los resultados epidemiol&#243;gicos que permiten el adecuado asesoramiento familiar.</AbstractText>
+      </OtherAbstract>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">autism</Keyword>
+        <Keyword MajorTopicYN="N">epigenetic</Keyword>
+        <Keyword MajorTopicYN="N">genes</Keyword>
+        <Keyword MajorTopicYN="N">genomic hybridization</Keyword>
+        <Keyword MajorTopicYN="N">heritability</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2019</Year>
+          <Month>2</Month>
+          <Day>19</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2019</Year>
+          <Month>2</Month>
+          <Day>19</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2020</Year>
+          <Month>3</Month>
+          <Day>12</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">30776274</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

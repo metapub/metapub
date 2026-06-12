@@ -1,0 +1,118 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Automated">
+      <PMID Version="1">37743333</PMID>
+      <DateCompleted>
+        <Year>2023</Year>
+        <Month>09</Month>
+        <Day>26</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2023</Year>
+        <Month>09</Month>
+        <Day>26</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0301-2603</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>51</Volume>
+            <Issue>5</Issue>
+            <PubDate>
+              <Year>2023</Year>
+              <Month>Sep</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>No shinkei geka. Neurological surgery</Title>
+          <ISOAbbreviation>No Shinkei Geka</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Glioblastoma, IDH-Wildtype].</ArticleTitle>
+        <Pagination>
+          <StartPage>821</StartPage>
+          <EndPage>828</EndPage>
+          <MedlinePgn>821-828</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.11477/mf.1436204823</ELocationID>
+        <Abstract>
+          <AbstractText>The 5th edition of the WHO Classification of Central Nervous System Tumours(WHO2021)emphasizes the importance of molecular classification. A significant update was that glioblastoma IDH-mutant from WHO2016 was renamed and classified as astrocytoma IDH-mutant WHO grade 4 in WHO2021. This review describes the current updates to the glioblastoma classification, and discusses the essential knowledge regarding daily practice, especially for young neurosurgeons.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Shibahara</LastName>
+            <ForeName>Ichiyo</ForeName>
+            <Initials>I</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Kitasato University School of Medicine.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Kumabe</LastName>
+            <ForeName>Toshihiro</ForeName>
+            <Initials>T</Initials>
+          </Author>
+        </AuthorList>
+        <Language>jpn</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016454">Review</PublicationType>
+          <PublicationType UI="D004740">English Abstract</PublicationType>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Japan</Country>
+        <MedlineTA>No Shinkei Geka</MedlineTA>
+        <NlmUniqueID>0377015</NlmUniqueID>
+        <ISSNLinking>0301-2603</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005909" MajorTopicYN="Y">Glioblastoma</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D001254" MajorTopicYN="Y">Astrocytoma</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000069471" MajorTopicYN="N">Neurosurgeons</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2023</Year>
+          <Month>9</Month>
+          <Day>26</Day>
+          <Hour>13</Hour>
+          <Minute>43</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2023</Year>
+          <Month>9</Month>
+          <Day>25</Day>
+          <Hour>0</Hour>
+          <Minute>42</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2023</Year>
+          <Month>9</Month>
+          <Day>24</Day>
+          <Hour>22</Hour>
+          <Minute>33</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">37743333</ArticleId>
+        <ArticleId IdType="doi">10.11477/mf.1436204823</ArticleId>
+        <ArticleId IdType="pii">1436204823</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

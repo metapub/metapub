@@ -1,0 +1,390 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">7890234</PMID>
+      <DateCompleted>
+        <Year>1995</Year>
+        <Month>04</Month>
+        <Day>18</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2019</Year>
+        <Month>05</Month>
+        <Day>01</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0017-5749</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>36</Volume>
+            <Issue>1</Issue>
+            <PubDate>
+              <Year>1995</Year>
+              <Month>Jan</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Gut</Title>
+          <ISOAbbreviation>Gut</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Soluble interleukin-6 receptors in inflammatory bowel disease: relation to circulating interleukin-6.</ArticleTitle>
+        <Pagination>
+          <StartPage>45</StartPage>
+          <EndPage>49</EndPage>
+          <MedlinePgn>45-9</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText>The in vivo appearance of soluble interleukin (IL)-6 receptor (sIL-6R) in serum from patients with inflammatory bowel disease was examined using an enzyme linked immunosorbent assay (ELISA). The serum sIL-6R concentrations in patients with active disease (ulcerative colitis, 148.4 (5.1); Crohn's disease, 142.3 (9.3) ng/ml; mean (SEM)) were significantly raised compared with those in patients with inactive disease (ulcerative colitis, 116.2 (7.2); Crohn's disease, 114.3 (7.1) ng/ml), some other type of colitis (104.8 (11.6) ng/ml), or in normal subjects (107.3 (2.4) ng/ml). These differences were also seen in paired samples examined during both active and inactive phases. Additionally, serum sIL-6R and IL-6 concentrations correlated significantly with C-reactive protein levels in both ulcerative colitis and Crohn's disease patients (r = 0.23 and 0.56, respectively; p &lt; 0.05 for both). Furthermore, gel filtration analysis of serum from these patients showed two major peaks of immunoreactive IL-6-one peak corresponding to free IL-6 and another peak to sIL-6R-bound IL-6-this was further confirmed by a luminescence sandwich ELISA. These results, together with its in vitro effects, indicate that natural sIL-6R may function as a powerful enhancer of the IL-6-dependent immune processes observed in inflammatory bowel disease.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Mitsuyama</LastName>
+            <ForeName>K</ForeName>
+            <Initials>K</Initials>
+            <AffiliationInfo>
+              <Affiliation>Second Department of Medicine, Kurume University School of Medicine, Fukuoka, Japan.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Toyonaga</LastName>
+            <ForeName>A</ForeName>
+            <Initials>A</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Sasaki</LastName>
+            <ForeName>E</ForeName>
+            <Initials>E</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Ishida</LastName>
+            <ForeName>O</ForeName>
+            <Initials>O</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Ikeda</LastName>
+            <ForeName>H</ForeName>
+            <Initials>H</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Tsuruta</LastName>
+            <ForeName>O</ForeName>
+            <Initials>O</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Harada</LastName>
+            <ForeName>K</ForeName>
+            <Initials>K</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Tateishi</LastName>
+            <ForeName>H</ForeName>
+            <Initials>H</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Nishiyama</LastName>
+            <ForeName>T</ForeName>
+            <Initials>T</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Tanikawa</LastName>
+            <ForeName>K</ForeName>
+            <Initials>K</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>England</Country>
+        <MedlineTA>Gut</MedlineTA>
+        <NlmUniqueID>2985108R</NlmUniqueID>
+        <ISSNLinking>0017-5749</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D015850">Interleukin-6</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D018123">Receptors, Interleukin</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D019947">Receptors, Interleukin-6</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000293" MajorTopicYN="N">Adolescent</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000328" MajorTopicYN="N">Adult</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000368" MajorTopicYN="N">Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002850" MajorTopicYN="N">Chromatography, Gel</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D003092" MajorTopicYN="N">Colitis</DescriptorName>
+          <QualifierName UI="Q000276" MajorTopicYN="N">immunology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D003093" MajorTopicYN="N">Colitis, Ulcerative</DescriptorName>
+          <QualifierName UI="Q000097" MajorTopicYN="Y">blood</QualifierName>
+          <QualifierName UI="Q000276" MajorTopicYN="N">immunology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D003424" MajorTopicYN="N">Crohn Disease</DescriptorName>
+          <QualifierName UI="Q000097" MajorTopicYN="Y">blood</QualifierName>
+          <QualifierName UI="Q000276" MajorTopicYN="N">immunology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004797" MajorTopicYN="N">Enzyme-Linked Immunosorbent Assay</DescriptorName>
+          <QualifierName UI="Q000379" MajorTopicYN="N">methods</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015850" MajorTopicYN="N">Interleukin-6</DescriptorName>
+          <QualifierName UI="Q000097" MajorTopicYN="Y">blood</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008875" MajorTopicYN="N">Middle Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D018123" MajorTopicYN="N">Receptors, Interleukin</DescriptorName>
+          <QualifierName UI="Q000032" MajorTopicYN="Y">analysis</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D019947" MajorTopicYN="N">Receptors, Interleukin-6</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D012995" MajorTopicYN="N">Solubility</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>1995</Year>
+          <Month>1</Month>
+          <Day>1</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>1995</Year>
+          <Month>1</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>1995</Year>
+          <Month>1</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pmc-release">
+          <Year>1995</Year>
+          <Month>1</Month>
+          <Day>1</Day>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">7890234</ArticleId>
+        <ArticleId IdType="pmc">PMC1382351</ArticleId>
+        <ArticleId IdType="doi">10.1136/gut.36.1.45</ArticleId>
+      </ArticleIdList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Lab Invest. 1989 Dec;61(6):588-602</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">2481148</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Immunol. 1989 Nov 1;143(9):2900-6</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">2681418</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ann Intern Med. 1990 Oct 15;113(8):619-27</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">2205142</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Biochem. 1990 Oct;108(4):673-6</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">2292596</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Lab Invest. 1991 Jul;65(1):3-14</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1712874</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>FASEB J. 1991 Aug;5(11):2567-74</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1868981</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Gastroenterology. 1992 Feb;102(2):514-9</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1370661</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Gut. 1991 Dec;32(12):1531-4</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1773961</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Immunol Lett. 1992 Feb;31(2):123-30</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1740350</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Immunol. 1992 Apr 1;148(7):2175-80</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1545125</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Digestion. 1991;50(2):104-11</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1804734</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Chem Immunol. 1992;51:181-204</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1533128</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Dig Dis Sci. 1992 Jun;37(6):818-26</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1587185</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>FEBS Lett. 1992 Jul 20;306(2-3):257-61</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1321738</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Arthritis Rheum. 1992 Aug;35(8):940-3</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1642659</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Jpn J Cancer Res. 1992 Apr;83(4):373-8</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1506271</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Immunol. 1992 Sep 15;149(6):2021-7</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1381393</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Science. 1992 Oct 23;258(5082):593-7</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1411569</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Clin Exp Immunol. 1992 Nov;90(2):161-9</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1330388</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Gastroenterology. 1992 Nov;103(5):1587-95</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1426879</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Br Med J. 1955 Oct 29;2(4947):1041-8</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">13260656</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Scand J Gastroenterol Suppl. 1984;95:1-27</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">6379849</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Immunol. 1989 Jan 1;142(1):148-52</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">2462586</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Immunol. 1989 Jun 15;142(12):4248-55</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">2566634</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Biol Chem. 1989 Jul 15;264(20):11966-73</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">2545692</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Blood. 1989 Jul;74(1):1-10</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">2473791</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Cell. 1989 Aug 11;58(3):573-81</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">2788034</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Exp Med. 1989 Oct 1;170(4):1409-14</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">2529343</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Gastroenterology. 1990 Mar;98(3):639-46</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">2298368</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

@@ -1,0 +1,152 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">500000</PMID>
+      <DateCompleted>
+        <Year>1980</Year>
+        <Month>01</Month>
+        <Day>24</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2013</Year>
+        <Month>11</Month>
+        <Day>21</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0018-5043</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>11</Volume>
+            <Issue>9</Issue>
+            <PubDate>
+              <Year>1979</Year>
+              <Month>Oct</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Hormone and metabolic research = Hormon- und Stoffwechselforschung = Hormones et metabolisme</Title>
+          <ISOAbbreviation>Horm Metab Res</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Effects of a synthetic hexapeptide (beta-Ala-Arg-Gly-Phe-Phe-Tyr-Nh2) on insulin binding and glucose metabolism of rat adipocytes.</ArticleTitle>
+        <Pagination>
+          <StartPage>498</StartPage>
+          <EndPage>502</EndPage>
+          <MedlinePgn>498-502</MedlinePgn>
+        </Pagination>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Taketomi</LastName>
+            <ForeName>S</ForeName>
+            <Initials>S</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Iwatsuka</LastName>
+            <ForeName>H</ForeName>
+            <Initials>H</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Germany</Country>
+        <MedlineTA>Horm Metab Res</MedlineTA>
+        <NlmUniqueID>0177722</NlmUniqueID>
+        <ISSNLinking>0018-5043</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D007328">Insulin</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D010446">Peptide Fragments</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>3CHI920QS7</RegistryNumber>
+          <NameOfSubstance UI="D003571">Cytochalasin B</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>EC 2.7.10.1</RegistryNumber>
+          <NameOfSubstance UI="D011972">Receptor, Insulin</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>IY9XDZ35W2</RegistryNumber>
+          <NameOfSubstance UI="D005947">Glucose</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000273" MajorTopicYN="N">Adipose Tissue</DescriptorName>
+          <QualifierName UI="Q000187" MajorTopicYN="N">drug effects</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="Y">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000818" MajorTopicYN="N">Animals</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D003571" MajorTopicYN="N">Cytochalasin B</DescriptorName>
+          <QualifierName UI="Q000494" MajorTopicYN="N">pharmacology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005947" MajorTopicYN="N">Glucose</DescriptorName>
+          <QualifierName UI="Q000378" MajorTopicYN="Y">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D007328" MajorTopicYN="N">Insulin</DescriptorName>
+          <QualifierName UI="Q000031" MajorTopicYN="Y">analogs &amp; derivatives</QualifierName>
+          <QualifierName UI="Q000494" MajorTopicYN="N">pharmacology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D010446" MajorTopicYN="N">Peptide Fragments</DescriptorName>
+          <QualifierName UI="Q000494" MajorTopicYN="Y">pharmacology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D051381" MajorTopicYN="N">Rats</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011972" MajorTopicYN="N">Receptor, Insulin</DescriptorName>
+          <QualifierName UI="Q000187" MajorTopicYN="N">drug effects</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D013268" MajorTopicYN="N">Stimulation, Chemical</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>1979</Year>
+          <Month>10</Month>
+          <Day>1</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>1979</Year>
+          <Month>10</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>1979</Year>
+          <Month>10</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">500000</ArticleId>
+        <ArticleId IdType="doi">10.1055/s-0028-1092769</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

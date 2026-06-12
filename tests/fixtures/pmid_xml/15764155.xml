@@ -1,0 +1,197 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">15764155</PMID>
+      <DateCompleted>
+        <Year>2005</Year>
+        <Month>07</Month>
+        <Day>15</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2026</Year>
+        <Month>01</Month>
+        <Day>28</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0036-5521</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>40</Volume>
+            <Issue>2</Issue>
+            <PubDate>
+              <Year>2005</Year>
+              <Month>Feb</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Scandinavian journal of gastroenterology</Title>
+          <ISOAbbreviation>Scand J Gastroenterol</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Mutations N34S and P55S of the SPINK1 gene in patients with chronic pancreatitis or pancreatic cancer and in healthy subjects: a report from Finland.</ArticleTitle>
+        <Pagination>
+          <StartPage>225</StartPage>
+          <EndPage>230</EndPage>
+          <MedlinePgn>225-30</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText Label="OBJECTIVE" NlmCategory="OBJECTIVE">Mutations in the Kazal type 1 serine protease inhibitor (SPINK1) gene have recently been associated with chronic pancreatitis (CP), an established risk factor for pancreatic cancer. The aim of this study was to investigate the frequency of the SPINK1 gene mutations (N34S and P55S) in patients with CP, or pancreatic cancer, and in healthy subjects in Finland.</AbstractText>
+          <AbstractText Label="MATERIAL AND METHODS" NlmCategory="METHODS">The N34S and P55S mutations were determined by PCR amplification followed by solid-phase minisequencing in 116 patients with CP and in 188 with pancreatic cancer. In patients with CP, alcohol was the aetiological factor in 87 (75%), pancreas divisum in 4 (3%), gallstones in 5 (5%) and 20 patients (17%) had an idiopathic disease; 459 healthy individuals were enrolled as controls.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">The frequency of the N34S mutation was significantly higher in patients with CP (14/116, 12%) than in controls (12/459, 2.6%) (p&lt;0.0001). There was no difference in the frequency of the P55S mutation between patients with CP (1/116, 0.9%) and controls (6/459, 1.3%). The N34S mutation was present in 9 (10%) out of 87 patients with alcoholic CP, and in 5 (25%) patients with idiopathic CP. No SPINK1 mutations were found in patients with CP caused by anatomical variations or gallstones. Among the 188 patients with a pancreatic malignant tumour, the N34S mutation was present in 7 cases (3.7%). The frequency of the N34S mutation in healthy controls in this study was significantly higher than earlier reported in other countries (p=0.03).</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">The SPINK1 N34S mutation was significantly associated with an increased risk of CP. The association of the N34S mutation with alcoholic CP was marginally stronger than in earlier studies, whereas in the Finnish population in general, this mutation was significantly more frequent than reported elsewhere.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Lempinen</LastName>
+            <ForeName>Marko</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Fourth Department of Surgery, Helsinki University Central Hospital, FI-00029 Helsinki, Finland. marko.lempinen@hus.fi</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Paju</LastName>
+            <ForeName>Annukka</ForeName>
+            <Initials>A</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Kemppainen</LastName>
+            <ForeName>Esko</ForeName>
+            <Initials>E</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Smura</LastName>
+            <ForeName>Teemu</ForeName>
+            <Initials>T</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Kyl&#228;np&#228;&#228;</LastName>
+            <ForeName>Marja-Leena</ForeName>
+            <Initials>ML</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Nevanlinna</LastName>
+            <ForeName>Heli</ForeName>
+            <Initials>H</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Stenman</LastName>
+            <ForeName>Jakob</ForeName>
+            <Initials>J</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Stenman</LastName>
+            <ForeName>Ulf-H&#229;kan</ForeName>
+            <Initials>UH</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>England</Country>
+        <MedlineTA>Scand J Gastroenterol</MedlineTA>
+        <NlmUniqueID>0060105</NlmUniqueID>
+        <ISSNLinking>0036-5521</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D002352">Carrier Proteins</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="C486642">SPINK1 protein, human</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>50936-63-5</RegistryNumber>
+          <NameOfSubstance UI="D014359">Trypsin Inhibitor, Kazal Pancreatic</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000293" MajorTopicYN="N">Adolescent</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000328" MajorTopicYN="N">Adult</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000368" MajorTopicYN="N">Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000369" MajorTopicYN="N">Aged, 80 and over</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002352" MajorTopicYN="N">Carrier Proteins</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="Y">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002908" MajorTopicYN="N">Chronic Disease</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005387" MajorTopicYN="N" Type="Geographic">Finland</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008875" MajorTopicYN="N">Middle Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009154" MajorTopicYN="N">Mutation</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D010190" MajorTopicYN="N">Pancreatic Neoplasms</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="Y">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D010195" MajorTopicYN="N">Pancreatitis</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="Y">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D014359" MajorTopicYN="N">Trypsin Inhibitor, Kazal Pancreatic</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2005</Year>
+          <Month>3</Month>
+          <Day>15</Day>
+          <Hour>9</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2005</Year>
+          <Month>7</Month>
+          <Day>16</Day>
+          <Hour>9</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2005</Year>
+          <Month>3</Month>
+          <Day>15</Day>
+          <Hour>9</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">15764155</ArticleId>
+        <ArticleId IdType="doi">10.1080/00365520510011560</ArticleId>
+        <ArticleId IdType="pii">HR3YPC6AWB33CDKF</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

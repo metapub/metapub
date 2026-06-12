@@ -1,0 +1,129 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="In-Process" Owner="NLM">
+      <PMID Version="1">39663965</PMID>
+      <DateRevised>
+        <Year>2024</Year>
+        <Month>12</Month>
+        <Day>12</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">1660-9379</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>20</Volume>
+            <Issue>898-2</Issue>
+            <PubDate>
+              <Year>2024</Year>
+              <Month>Dec</Month>
+              <Day>11</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>Revue medicale suisse</Title>
+          <ISOAbbreviation>Rev Med Suisse</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Not Available].</ArticleTitle>
+        <Pagination>
+          <StartPage>2323</StartPage>
+          <EndPage>2324</EndPage>
+          <MedlinePgn>2323-2324</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.53738/REVMED.2024.20.898-2.2323</ELocationID>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Gentizon</LastName>
+            <ForeName>Jenny</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>Direction du D&#233;partement de m&#233;decine, CHUV, 1011 Lausanne.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Colomer-Lahiguera</LastName>
+            <ForeName>Sara</ForeName>
+            <Initials>S</Initials>
+            <AffiliationInfo>
+              <Affiliation>Institut universitaire de formation et recherche en soins, Facult&#233; de biologie et m&#233;decine, Universit&#233; de Lausanne et Centre hospitalier universitaire vaudois, 1010 Lausanne.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Mabire</LastName>
+            <ForeName>C&#233;dric</ForeName>
+            <Initials>C</Initials>
+            <AffiliationInfo>
+              <Affiliation>Facult&#233; de biologie et m&#233;decine, Universit&#233; de Lausanne, Institut universitaire de formation et de recherche en soins, 1010 Lausanne.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Eicher</LastName>
+            <ForeName>Manuela</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Institut universitaire de formation et de recherche en soins.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Robatto</LastName>
+            <ForeName>Laurence</ForeName>
+            <Initials>L</Initials>
+            <AffiliationInfo>
+              <Affiliation>Facult&#233; de biologie et de m&#233;decine, Centre hospitalier universitaire vaudois et Universit&#233; de Lausanne.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Peguet</LastName>
+            <ForeName>Coralie</ForeName>
+            <Initials>C</Initials>
+            <AffiliationInfo>
+              <Affiliation>Facult&#233; de biologie et de m&#233;decine, Centre hospitalier universitaire vaudois et Universit&#233; de Lausanne.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>fre</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016421">Editorial</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>La pratique infirmi&#232;re avanc&#233;e : une r&#233;ponse aux d&#233;fis du syst&#232;me de sant&#233;.</VernacularTitle>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Switzerland</Country>
+        <MedlineTA>Rev Med Suisse</MedlineTA>
+        <NlmUniqueID>101219148</NlmUniqueID>
+        <ISSNLinking>1660-9379</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>12</Day>
+          <Hour>6</Hour>
+          <Minute>23</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>12</Day>
+          <Hour>6</Hour>
+          <Minute>23</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>12</Day>
+          <Hour>4</Hour>
+          <Minute>23</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">39663965</ArticleId>
+        <ArticleId IdType="doi">10.53738/REVMED.2024.20.898-2.2323</ArticleId>
+        <ArticleId IdType="pii">RMS0898-2-001</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

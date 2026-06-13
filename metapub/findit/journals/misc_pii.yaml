@@ -94,9 +94,6 @@ journals:
   Ophthalmology:
     parameters:
       template: http://www.aaojournal.org/article/{a.pii}/pdf
-  Orv Hetil:
-    parameters:
-      template: http://www.akademiai.com/content/{a.pii}/fulltext.pdf
   Med Hypotheses:
     parameters:
       template: http://www.medical-hypotheses.com/article/{a.pii}/pdf

@@ -4,21 +4,19 @@ publisher:
   pattern_type: aaas
   description: Configuration for aaas journals
 url_patterns:
-  primary_template: http://{ja}.sciencemag.org/content/{volume}/{issue}/{first_page}.full.pdf
+  primary_template: https://www.science.org/doi/reader/{doi}
 journals:
-  Science:
-    parameters:
-      ja: www
-  Sci Adv:
-    parameters:
-      ja: advances
-  Sci Signal:
-    parameters:
-      ja: stke
-  Sci Transl Med:
-    parameters:
-      ja: stm
+  simple_list:
+  - Sci Adv
+  - Sci Signal
+  - Sci Transl Med
 metadata:
   migrated_from: aaas.py
   migration_date: '2025-08-16'
   pattern_type: aaas
+  verification_notes: 'the_aaas_twist is DOI-based (science.org/doi/reader/{doi}); the
+    legacy per-journal sciencemag.org VIP template and its ja params are no longer
+    used. Journals converted to simple_list so the registry builder ingests them
+    (it ignores dict-style entries) — this fixes Sci Adv / Sci Signal / Sci Transl Med
+    being silently orphaned. ''Science'' is intentionally owned by the separate
+    Science Magazine publisher (science.yaml), so it is not listed here.'

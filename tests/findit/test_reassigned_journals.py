@@ -53,3 +53,38 @@ def test_reassigned_journal_resolves_and_builds_url(lookup, pmid, journal, publi
     url, reason = handler.get_pdf_url(pma, verify=False)
     assert url, f"{journal!r} built no URL (reason={reason})"
     assert domain in url, f"{journal!r} built {url}, expected domain {domain}"
+
+
+# Journals whose true publisher was verified (by DOI resolution) to be a platform we
+# DO handle, but which was not the winning claimant. Resolution-only check (some, e.g.
+# jstage, construct URLs via a live DOI resolve and so can't be URL-checked offline).
+KEEP_VERIFIED = [
+    ('Yakugaku Zasshi', 'Jstage'),            # resolves to jstage.jst.go.jp
+    ('Neurol Med Chir (Tokyo)', 'Jstage'),    # resolves to jstage.jst.go.jp
+    ('Rinsho Ketsueki', 'Jstage'),            # resolves to jstage.jst.go.jp
+    ('Infect Dis Obstet Gynecol', 'Wiley'),   # Hindawi migrated to Wiley Online Library
+    ('Bijdragen', 'Taylor Francis'),          # Peeters DOI resolves to tandfonline.com
+]
+
+
+@pytest.mark.parametrize('journal,publisher', KEEP_VERIFIED)
+def test_kept_journal_resolves_to_verified_publisher(lookup, journal, publisher):
+    info = lookup.registry.get_publisher_for_journal(journal)
+    assert info is not None, f"{journal!r} not in registry"
+    assert info['name'] == publisher, f"{journal!r} -> {info['name']}, expected {publisher}"
+
+
+# Journals whose true publisher (by DOI resolution) is a third party we have NO handler
+# for. Per policy these honestly return NOFORMAT rather than constructing a wrong URL.
+# This guards against a future change silently re-claiming them under a bogus publisher.
+NOFORMAT_NO_HANDLER = [
+    'Zhonghua Er Ke Za Zhi', 'Zhonghua Yan Ke Za Zhi', 'Zhonghua Fu Chan Ke Za Zhi',
+    'Eur J Gynaecol Oncol', 'Zh Nevrol Psikhiatr Im S S Korsakova', 'Dermatol Online J',
+    'Neonatal Netw', 'Zhongguo Yi Xue Ke Xue Yuan Xue Bao', 'Mikrobiyol Bul',
+]
+
+
+@pytest.mark.parametrize('journal', NOFORMAT_NO_HANDLER)
+def test_no_handler_journal_returns_noformat(lookup, journal):
+    info = lookup.registry.get_publisher_for_journal(journal)
+    assert info is None, f"{journal!r} should have no handler (NOFORMAT), got {info!r}"

@@ -1,0 +1,270 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="Publisher" Owner="NLM">
+      <PMID Version="1">42287096</PMID>
+      <DateRevised>
+        <Year>2026</Year>
+        <Month>06</Month>
+        <Day>13</Day>
+      </DateRevised>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISSN IssnType="Electronic">1879-3479</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <PubDate>
+              <Year>2026</Year>
+              <Month>Jun</Month>
+              <Day>13</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>International journal of gynaecology and obstetrics: the official organ of the International Federation of Gynaecology and Obstetrics</Title>
+          <ISOAbbreviation>Int J Gynaecol Obstet</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Determinants of obstructed labor among pregnant women in Mogadishu, Somalia: A case-control study.</ArticleTitle>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1002/ijgo.71136</ELocationID>
+        <Abstract>
+          <AbstractText Label="OBJECTIVE" NlmCategory="OBJECTIVE">Obstructed labor is a preventable cause of maternal and perinatal mortality, with a disproportionately high burden in low-resource settings. In Somalia, decades of conflict have fragmented the health system, contributing to one of the world's highest maternal mortality ratios. The aim of the present study was to identify the determinants of obstructed labor among women delivering at Banadir Hospital, Mogadishu, Somalia.</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">A hospital-based unmatched case-control study was conducted from June to August 2025. A total of 450 participants were enrolled. Data were collected using a structured questionnaire through participant interviews. Multivariable logistic regression analysis was performed to identify independent risk factors associated with obstructed labor. Results are presented as adjusted odds ratios (aOR) with 95% confidence intervals (CIs).</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">Cephalopelvic disproportion was the primary cause of obstructed labor (63.3%). Significant independent risk factors included diabetes in pregnancy (aOR&#8201;=&#8201;9.09, 95% CI: 2.73-30.29), being referred from another health facility (aOR&#8201;=&#8201;7.00, 95% CI: 2.98-16.46), labor duration &#8805;12&#8201;h (aOR&#8201;=&#8201;5.11, 95% CI: 2.71-9.63), and attending fewer than four antenatal care (ANC) visits (aOR&#8201;=&#8201;3.71, 95% CI: 1.21-11.40). Other determinants included residing outside Mogadishu (aOR&#8201;=&#8201;2.84, 95% CI: 1.16-6.93), maternal overweight body mass index (BMI) (aOR&#8201;=&#8201;2.56, 95% CI: 1.36-4.82), neonatal birth weight &#8805;3.5&#8201;kg (aOR&#8201;=&#8201;2.41, 95% CI: 1.37-4.24), and a previous history of obstructed labor (aOR&#8201;=&#8201;2.06, 95% CI: 1.20-3.53). Primiparity was also a major risk factor, as multiparity demonstrated a 90% reduction in risk (aOR&#8201;=&#8201;0.10, 95% CI: 0.05-0.23).</AbstractText>
+          <AbstractText Label="CONCLUSION" NlmCategory="CONCLUSIONS">Obstructed labor in Mogadishu is driven by a convergence of physiological vulnerabilities and systemic health system failures, characterized by the three delays in accessing and receiving care. To reduce the burden of this condition, interventions must focus on strengthening the continuum of care. Key priorities include improving early risk identification and diabetes screening during ANC, streamlining referral pathways from peripheral clinics, and ensuring the consistent use of partographs for intrapartum monitoring to prevent dangerously prolonged labor.</AbstractText>
+          <CopyrightInformation>&#169; 2026 International Federation of Gynecology and Obstetrics.</CopyrightInformation>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Abdi</LastName>
+            <ForeName>Abdirizak Ali</ForeName>
+            <Initials>AA</Initials>
+            <AffiliationInfo>
+              <Affiliation>Banadir Hospital, Mogadishu, Somalia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Hassan</LastName>
+            <ForeName>Yahye Sheikh Abdulle</ForeName>
+            <Initials>YSA</Initials>
+            <Identifier Source="ORCID">0000-0002-2578-3000</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Faculty of Medicine and Health Sciences, Jamhuriya University of Science and Technology, Mogadishu, Somalia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Karikari</LastName>
+            <ForeName>Julius Kwabena</ForeName>
+            <Initials>JK</Initials>
+            <Identifier Source="ORCID">0009-0000-1859-2620</Identifier>
+            <AffiliationInfo>
+              <Affiliation>University Hospital, Kwame Nkrumah University of Science and Technology, Kumasi, Ghana.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Department of Epidemiology and Biostatistics, Kwame Nkrumah University of Science and Technology, Kumasi, Ghana.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Ali</LastName>
+            <ForeName>Abdirasak Sharif</ForeName>
+            <Initials>AS</Initials>
+            <Identifier Source="ORCID">0000-0001-5546-5778</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Department of Microbiology and Laboratory Sciences, Faculty of Medicine and Health Sciences, SIMAD University, Mogadishu, Somalia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Hussein</LastName>
+            <ForeName>Saadaq Adan</ForeName>
+            <Initials>SA</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department Mentorship Program Coordinator School of Postgraduate, Benadir University, Mogadishu, Somalia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Gargaar</LastName>
+            <ForeName>Nasra Hassan</ForeName>
+            <Initials>NH</Initials>
+            <AffiliationInfo>
+              <Affiliation>Banadir Hospital, Mogadishu, Somalia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Hassan</LastName>
+            <ForeName>Amina Sheikh</ForeName>
+            <Initials>AS</Initials>
+            <AffiliationInfo>
+              <Affiliation>Banadir Hospital, Mogadishu, Somalia.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2026</Year>
+          <Month>06</Month>
+          <Day>13</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>Int J Gynaecol Obstet</MedlineTA>
+        <NlmUniqueID>0210174</NlmUniqueID>
+        <ISSNLinking>0020-7292</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">Somalia</Keyword>
+        <Keyword MajorTopicYN="N">antenatal care</Keyword>
+        <Keyword MajorTopicYN="N">health system</Keyword>
+        <Keyword MajorTopicYN="N">maternal mortality</Keyword>
+        <Keyword MajorTopicYN="N">obstructed labor</Keyword>
+        <Keyword MajorTopicYN="N">risk factors</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>13</Day>
+          <Hour>6</Hour>
+          <Minute>38</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>13</Day>
+          <Hour>6</Hour>
+          <Minute>38</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="revised">
+          <Year>2026</Year>
+          <Month>5</Month>
+          <Day>13</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="received">
+          <Year>2026</Year>
+          <Month>1</Month>
+          <Day>21</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="accepted">
+          <Year>2026</Year>
+          <Month>5</Month>
+          <Day>26</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>13</Day>
+          <Hour>4</Hour>
+          <Minute>33</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>aheadofprint</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">42287096</ArticleId>
+        <ArticleId IdType="doi">10.1002/ijgo.71136</ArticleId>
+      </ArticleIdList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Neilson J, Lavender T, Quenby S, Wray S. Obstructed labour. Br Med Bull. 2003;67:191&#8208;204. doi:10.1093/bmb/ldg018</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Kabakyenga JK, &#214;stergren P&#8208;O, Turyakira E, Mukasa PK, Pettersson KO. Individual and health facility factors and the risk for obstructed labour and its adverse outcomes in south&#8208;western Uganda. BMC Pregnancy Childbirth. 2011;11:73. doi:10.1186/1471-2393-11-73</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Addisu D, Mekie M, Melkie A, Yeshambel A. Burden of obstructed labor in Ethiopia: a systematic review and meta&#8208;analysis. Midwifery. 2021;95:102930. doi:10.1016/j.midw.2021.102930</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Bailey PE, Andualem W, Brun M, et&#160;al. Institutional maternal and perinatal deaths: a review of 40 low and middle income countries. BMC Pregnancy Childbirth. 2017;17:295. doi:10.1186/s12884-017-1479-1</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Ayenew AA. Incidence, causes, and maternofetal outcomes of obstructed labor in Ethiopia: systematic review and meta&#8208;analysis. Reprod Health. 2021;18:61. doi:10.1186/s12978-021-01103-0</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Desta M, Mekonen Z, Alemu AA, et&#160;al. Determinants of obstructed labour and its adverse outcomes among women who gave birth in Hawassa university referral hospital: a case&#8208;control study. PLoS One. 2022;17:e0268938. doi:10.1371/journal.pone.0268938</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Musaba MW, Ndeezi G, Barageine JK, et&#160;al. Risk factors for obstructed labour in eastern Uganda: a case control study. PLoS One. 2020;15:e0228856. doi:10.1371/journal.pone.0228856</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Melesse Y, Assebe Yadeta T, Lami M, et&#160;al. One&#8208;sixth of women experienced obstructed labor among those delivered at public hospitals in Southern Ethiopia: a multicenter study. SAGE Open Med. 2023;11:11. doi:10.1177/20503121231164056</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Mohamed AA, Ak&#305;n A, Mihciokur S, &#220;ner S, Gele A. Level of completion of maternity continuum of care among ever&#8208;married women: an analysis of Somalia's health and demographic survey 2020. PLoS Glob Public Health. 2025;5:e0004102. doi:10.1371/journal.pgph.0004102</Citation>
+        </Reference>
+        <Reference>
+          <Citation>World Health Organization. Trends in maternal mortality 2000 to 2020: estimates by WHO, UNICEF, UNFPA, World Bank Group and UNDESA/Population Division. WHO; 2023. Accessed October 11, 2025. https://www.who.int/publications/i/item/9789240068759</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Hassan HB, Hassan YB, Hassan YSA, et&#160;al. Preterm birth in Mogadishu, Somalia: burden and determinants from a retrospective cross&#8208;sectional study. Women's Health (Lond Engl). 2025;21:17455057251350529. doi:10.1177/17455057251350529</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Ahmed Keynan AM, Omar Qalbi MA, Bashir AM, et&#160;al. Prevalence and factors associated with neonatal mortality in a National Referral Hospital, Mogadishu, Somalia, 2023. Sage Open Pediatrics. 2025;12:30502225251309000. doi:10.1177/30502225251309000</Citation>
+        </Reference>
+        <Reference>
+          <Citation>World Health Organization. WHO recommendations on antenatal care. WHO Library Cataloguing; 2016:172. Accessed October 17, 2025. https://iris.who.int/bitstream/handle/10665/250796/9789241549912&#8208;eng.pdf;sequence=1</Citation>
+        </Reference>
+        <Reference>
+          <Citation>World Health Organization. WHO recommendations. intrapartum care for a positive childbirth experience. WHO; 2018:200.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Alkema L, Chou D, Hogan D, et&#160;al. Global, regional, and national levels and trends in maternal mortality between 1990 and 2015, with scenario&#8208;based projections to 2030: a systematic analysis by the UN maternal mortality estimation inter&#8208;agency group. Lancet. 2016;387:462&#8208;474. doi:10.1016/S0140-6736(15)00838-7</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Harrison MS, Ali S, Pasha O, et&#160;al. A prospective population&#8208;based study of maternal, fetal, and neonatal outcomes in the setting of prolonged labor, obstructed labor and failure to progress in low&#8208; and middle&#8208;income countries. Reprod Health. 2015;12:S9. doi:10.1186/1742-4755-12-S2-S9</Citation>
+        </Reference>
+        <Reference>
+          <Citation>The Federal Republic of Somalia, Ministry of Health and Human Services, United Nations Children's Fund (UNICEF). Somalia Health and Demographic Survey 2020. 2020.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Sheikh NS, Hussein AM, Mohamed SS, Gele A. Does living in major towns favor institutional delivery in Somalia? Front Glob Womens Health. 2024;5:1216290. doi:10.3389/fgwh.2024.1216290</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Dile M, Demelash H, Meseret L, et&#160;al. Determinants of obstructed labor among women attending intrapartum care in Amhara region, Northwest Ethiopia: a hospital&#8208;based unmatched case&#8211;control study. Women's Health (Lond Engl). 2020;16:1745506520949727. doi:10.1177/1745506520949727</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Girma T, Gezimu W, Demeke A. Prevalence, causes, and factors associated with obstructed labour among mothers who gave birth at public health facilities in mojo town, Central Ethiopia, 2019: a cross&#8208;sectional study. PLoS One. 2022;17:e0275170. doi:10.1371/journal.pone.0275170</Citation>
+        </Reference>
+        <Reference>
+          <Citation>World Health Organization. WHO recommendations on antenatal care for a positive pregnancy experience. WHO; 2016. Accessed January 10, 2026. https://www.who.int/publications/i/item/9789241549912</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Hosmer DW, Lemeshow S, Sturdivant RX. Applied logistic regression. Wiley; 2013. doi:10.1002/9781118548387</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Menard S. Applied logistic regression analysis. SAGE Publications, Inc.; 2002. doi:10.4135/9781412983433</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Hosmer DW, Lemeshow S, Sturdivant RX. Applied logistic regression. John Wiley &amp; Sons; 2013.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Green G, Tesler R, Marques A. Primiparous and multiparous Women's mode of birth and negative emotions. Int J Environ Res Public Health. 2022;19:5189. doi:10.3390/ijerph19095189</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Benova L, Dennis ML, Lange IL, et&#160;al. Two decades of antenatal and delivery care in Uganda: a cross&#8208;sectional study using demographic and health surveys. BMC Health Serv Res. 2018;18:758. doi:10.1186/s12913-018-3546-3</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Thaddeus S, Maine D. Too far to walk: maternal mortality in context. Soc Sci Med. 1994;38:1091&#8208;1110. doi:10.1016/0277-9536(94)90226-7</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Hussein J, D'Ambruoso L, Armar&#8208;Klemesu M, et&#160;al. Confidential inquiries into maternal deaths: modifications and adaptations in Ghana and Indonesia. Int J Gynecol Obstet. 2009;106:80&#8208;84. doi:10.1016/j.ijgo.2009.04.007</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Mathai M. The Partograph for the prevention of obstructed labor. Clin Obstet Gynecol. 2009;52:256&#8208;269. doi:10.1097/GRF.0b013e3181a4f163</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Koyanagi A, Zhang J, Dagvadorj A, et&#160;al. Macrosomia in 23 developing countries: an analysis of a multicountry, facility&#8208;based, cross&#8208;sectional survey. Lancet. 2013;381:476&#8208;483. doi:10.1016/S0140-6736(12)61605-5</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Onubi OJ, Marais D, Aucott L, Okonofua F, Poobalan AS. Maternal obesity in Africa: a systematic review and meta&#8208;analysis. J Public Health (Bangkok). 2016;38:e218&#8208;e231. doi:10.1093/pubmed/fdv138</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Justus Hofmeyr G, Say L, Metin G&#252;lmezoglu A. Systematic review: WHO systematic review of maternal mortality and morbidity: the prevalence of uterine rupture. BJOG. 2005;112:1221&#8208;1228. doi:10.1111/j.1471-0528.2005.00725.x</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Landon MB, Hauth JC, Leveno KJ, et&#160;al. Maternal and perinatal outcomes associated with a trial of labor after prior cesarean delivery. N Engl J Med. 2004;351:2581&#8208;2589. doi:10.1056/NEJMoa040405</Citation>
+        </Reference>
+      </ReferenceList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

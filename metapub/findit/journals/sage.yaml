@@ -29,8 +29,8 @@ dance_function: the_doi_slide
 journals:
   simple_list:
   - Acupunct Electrother Res
-  - Ann Clin Biochem
   - Angiology
+  - Ann Clin Biochem
   - Assessment
   - Autism
   - Clin Appl Thromb Hemost
@@ -40,6 +40,7 @@ journals:
   - J Child Neurol
   - J Dent Res
   - J Hum Lact
+  - J Investig Med
   - J Renin Angiotensin Aldosterone Syst
   - Lupus
 metadata:

@@ -6,7 +6,7 @@ This file provides coding guidelines for Claude when working on the metapub proj
 1. **Never use Opus** - Always use Sonnet or Haiku models for this project.
 
 ## Import Guidelines
-2. **Avoid in-function imports** - Place imports at the module level unless ABSOLUTELY necessary to avoid circular import problems. In-function imports should be a last resort and well-documented when used.
+2. **All imports at module level** - Every import belongs at the top of the file. No `import` statements inside functions, methods, or closures. The only exception is a genuine circular import that cannot be resolved by restructuring — in that case, document why with a comment at the import site. Standard library modules (`os`, `re`, `logging`, etc.) have no circular-import risk and must always be at module level.
 
 ## Exception Handling
 3. **Avoid huge try-except blocks** - Keep exception handling focused and specific to the operations that might fail.

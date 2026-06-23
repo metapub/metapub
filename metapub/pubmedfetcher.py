@@ -4,13 +4,15 @@ __doc__ = '''metapub.PubMedFetcher -- tools to deal with NCBI's E-utilities inte
 from lxml import etree
 import requests
 import logging
+import os
 
 from .eutils_common import get_eutils_client
 from .eutils_compat import EutilsRequestError
 from .cache_utils import get_cache_path
+from .localfetcher import LocalPubMedBackend, make_local_fetcher_methods
 from .pubmedarticle import PubMedArticle
 from .pubmedcentral import get_pmid_for_otherid
-from .pubmed_clinicalqueries import *
+from .pubmed_clinicalqueries import clinical_query_map, medical_genetics_query_map
 from .utils import kpick, parameterize, lowercase_keys, remove_chars
 from .text_mining import re_pmid, is_ncbi_bookID, re_matching_quotes
 from .exceptions import MetaPubError, InvalidPMID, InvalidBookID
@@ -128,34 +130,51 @@ class PubMedFetcher(Borg):
 
     _cache_filename = 'pubmedfetcher.db'
 
-    def __init__(self, method='eutils', **kwargs):
+    def __init__(self, method='eutils', db_url=None, **kwargs):
         """Initialize PubMedFetcher with specified service method.
-        
+
         Args:
-            method (str, optional): Service method to use. Currently only 'eutils' 
-                is supported. Defaults to 'eutils'.
+            method (str, optional): Service method. 'eutils' (default) or 'local'.
+            db_url (str, optional): PostgreSQL connection URL for the local
+                medgen-stacks pubmed schema, e.g.
+                ``"postgresql://medgen:medgen@loki.local/medgen"``.
+                If provided, the local database is checked first and NCBI
+                eutils is used as a fallback for any missing PMIDs.
+                Also read from the ``METAPUB_DB_URL`` environment variable.
             **kwargs: Additional keyword arguments.
-                cachedir (str, optional): Custom directory for caching responses.
-                    If not provided, uses default cache directory.
-        
-        Raises:
-            NotImplementedError: If an unsupported method is specified.
-        
+                cachedir (str, optional): Custom cache directory for eutils responses.
+                write_through (bool, optional): When using local DB, store NCBI-fetched
+                    articles back into the local DB for future fast access. Default True.
+
         Note:
             This is a Borg singleton - all instances share the same state.
         """
         self.method = method
         cachedir = kwargs.get("cachedir")
 
-        if method=='eutils':
-            self._cache_path = get_cache_path(cachedir, self._cache_filename)
-            self.qs = get_eutils_client(self._cache_path)
+        # Always set up eutils as the base (and fallback)
+        self._cache_path = get_cache_path(cachedir, self._cache_filename)
+        self.qs = get_eutils_client(self._cache_path)
+        self.article_by_pmcid = self._eutils_article_by_pmcid
+        self.article_by_doi = self._eutils_article_by_doi
+        self.pmids_for_query = self._eutils_pmids_for_query
+
+        # Wire up local PostgreSQL backend if a db_url is available
+        resolved_db_url = db_url or os.environ.get("METAPUB_DB_URL")
+        write_through = kwargs.get("write_through", True)
+        if resolved_db_url:
+            self.method = 'local'
+            backend = LocalPubMedBackend(resolved_db_url)
+            self.article_by_pmid, self.articles_by_pmids = \
+                make_local_fetcher_methods(backend, self._eutils_article_by_pmid,
+                                           write_through=write_through)
+        elif method == 'eutils':
             self.article_by_pmid = self._eutils_article_by_pmid
-            self.article_by_pmcid = self._eutils_article_by_pmcid
-            self.article_by_doi = self._eutils_article_by_doi
-            self.pmids_for_query = self._eutils_pmids_for_query
         else:
-            raise NotImplementedError('Planned future options: "mysql", "cache-only"')
+            raise NotImplementedError(
+                f'Unknown method {method!r}. '
+                'Use method="eutils" or pass db_url for local PostgreSQL backend.'
+            )
 
     def _eutils_article_by_pmid(self, pmid):
         pmid = str(pmid)
@@ -488,7 +507,13 @@ class PubMedFetcher(Borg):
         req = base_uri.format(**inp_dict)
         log.debug('pmids_for_citation: querying with %s', req)
 
-        content = requests.get(req, timeout=30).text
+        try:
+            response = requests.get(req, timeout=30)
+            response.raise_for_status()
+            content = response.text
+        except requests.RequestException as e:
+            log.warning("pmids_for_citation: request failed: %s", e)
+            return []
         pmids = []
         for item in content.split('\n'):
             if item.strip():

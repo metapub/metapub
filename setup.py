@@ -93,10 +93,10 @@ setup(
         ],
     },
     install_requires=[
-        "setuptools",
-        "lxml",
-        "lxml_html_clean",
-        "requests",
+        "setuptools>=78.1.1",
+        "lxml>=4.9.1",
+        "lxml_html_clean>=0.4.4",
+        "requests>=2.32.4",
         "brotli",
         "habanero",
         "tabulate",
@@ -105,7 +105,7 @@ setup(
         "docopt",
         "coloredlogs",
         "python-Levenshtein",
-        "pyyaml",
+        "pyyaml>=5.4",
     ],
     classifiers=[
         "Development Status :: 4 - Beta",

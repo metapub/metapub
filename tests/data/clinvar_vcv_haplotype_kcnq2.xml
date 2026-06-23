@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+                        
+<ClinVarResult-Set><VariationArchive VariationID="4818726" VariationName="NM_172107.4(KCNQ2):c.[875T&gt;C;877C&gt;T]" VariationType="Haplotype" Accession="VCV004818726" Version="1" RecordType="classified" NumberOfSubmissions="5" NumberOfSubmitters="1" DateLastUpdated="2026-04-13" DateCreated="2026-04-04" MostRecentSubmission="2026-04-04">
+  <RecordStatus>current</RecordStatus>
+  <Species>Homo sapiens</Species>
+  <ClassifiedRecord>
+    <Haplotype VariationID="4818726" NumberOfChromosomes="1">
+      <SimpleAllele AlleleID="404202" VariationID="405208">
+        <GeneList>
+          <Gene Symbol="KCNQ2" FullName="potassium voltage-gated channel subfamily Q member 2" GeneID="3785" HGNC_ID="HGNC:6296" Source="submitted" RelationshipType="within single gene">
+            <Location>
+              <CytogeneticLocation>20q13.33</CytogeneticLocation>
+              <SequenceLocation Assembly="GRCh38" AssemblyAccessionVersion="GCF_000001405.38" AssemblyStatus="current" Chr="20" Accession="NC_000020.11" start="63400208" stop="63472655" display_start="63400208" display_stop="63472655" Strand="-"/>
+              <SequenceLocation Assembly="GRCh38" AssemblyAccessionVersion="GCF_000001405.38" AssemblyStatus="current" Chr="20" Accession="NT_187625.1" start="183" stop="33239" display_start="183" display_stop="33239" Strand="-"/>
+              <SequenceLocation Assembly="GRCh37" AssemblyAccessionVersion="GCF_000001405.25" AssemblyStatus="previous" Chr="20" Accession="NC_000020.10" start="62037541" stop="62103992" display_start="62037541" display_stop="62103992" Strand="-"/>
+            </Location>
+            <OMIM>602235</OMIM>
+            <Haploinsufficiency last_evaluated="2013-07-18" ClinGen="https://www.ncbi.nlm.nih.gov/projects/dbvar/ISCA/isca_gene.cgi?sym=KCNQ2">Sufficient evidence for dosage pathogenicity</Haploinsufficiency>
+            <Triplosensitivity last_evaluated="2013-07-18" ClinGen="https://www.ncbi.nlm.nih.gov/projects/dbvar/ISCA/isca_gene.cgi?sym=KCNQ2">No evidence available</Triplosensitivity>
+          </Gene>
+        </GeneList>
+        <Name>NM_172107.4(KCNQ2):c.875T&gt;C (p.Leu292Pro)</Name>
+        <CanonicalSPDI>NC_000020.11:63439649:A:G</CanonicalSPDI>
+        <VariantType>single nucleotide variant</VariantType>
+        <Location>
+          <CytogeneticLocation>20q13.33</CytogeneticLocation>
+          <SequenceLocation Assembly="GRCh38" AssemblyAccessionVersion="GCF_000001405.38" forDisplay="true" AssemblyStatus="current" Chr="20" Accession="NC_000020.11" start="63439650" stop="63439650" display_start="63439650" display_stop="63439650" variantLength="1" positionVCF="63439650" referenceAlleleVCF="A" alternateAlleleVCF="G"/>
+          <SequenceLocation Assembly="GRCh37" AssemblyAccessionVersion="GCF_000001405.25" AssemblyStatus="previous" Chr="20" Accession="NC_000020.10" start="62071003" stop="62071003" display_start="62071003" display_stop="62071003" variantLength="1" positionVCF="62071003" referenceAlleleVCF="A" alternateAlleleVCF="G"/>
+        </Location>
+        <ProteinChange>L292P</ProteinChange>
+        <HGVSlist>
+          <HGVS Assembly="GRCh37" Type="genomic, top-level">
+            <NucleotideExpression sequenceAccessionVersion="NC_000020.10" sequenceAccession="NC_000020" sequenceVersion="10" change="g.62071003A&gt;G" Assembly="GRCh37">
+              <Expression>NC_000020.10:g.62071003A&gt;G</Expression>
+            </NucleotideExpression>
+          </HGVS>
+          <HGVS Assembly="GRCh38" Type="genomic, top-level">
+            <NucleotideExpression sequenceAccessionVersion="NC_000020.11" sequenceAccession="NC_000020" sequenceVersion="11" change="g.63439650A&gt;G" Assembly="GRCh38">
+              <Expression>NC_000020.11:g.63439650A&gt;G</Expression>
+            </NucleotideExpression>
+          </HGVS>
+          <HGVS Type="genomic">
+            <NucleotideExpression sequenceAccessionVersion="NG_009004.2" sequenceAccession="NG_009004" sequenceVersion="2" change="g.37991T&gt;C">
+              <Expression>NG_009004.2:g.37991T&gt;C</Expression>
+            </NucleotideExpression>
+          </HGVS>
+          <HGVS Type="coding">
+            <NucleotideExpression sequenceAccessionVersion="NM_004518.6" sequenceAccession="NM_004518" sequenceVersion="6" change="c.875T&gt;C">
+              <Expression>NM_004518.6:c.875T&gt;C</Expression>
+            </NucleotideExpression>
+            <ProteinExpression sequenceAccessionVersion="NP_004509.2" sequenceAccession="NP_004509" sequenceVersion="2" change="p.Leu292Pro" singleLetterProteinChange="L292P">
+              <Expression>NP_004509.2:p.Leu292Pro</Expression>
+            </ProteinExpression>
+            <MolecularConsequence ID="SO:0001583" Type="missense variant" DB="SO"/>
+          </HGVS>
+          <HGVS Type="coding">
+            <NucleotideExpression sequenceAccessionVersion="NM_172106.3" sequenceAccession="NM_172106" sequenceVersion="3" change="c.875T&gt;C">
+              <Expression>NM_172106.3:c.875T&gt;C</Expression>
+            </NucleotideExpression>
+            <ProteinExpression sequenceAccessionVersion="NP_742104.1" sequenceAccession="NP_742104" sequenceVersion="1" change="p.Leu292Pro" singleLetterProteinChange="L292P">
+              <Expression>NP_742104.1:p.Leu292Pro</Expression>
+            </ProteinExpression>
+            <MolecularConsequence ID="SO:0001583" Type="missense variant" DB="SO"/>
+          </HGVS>
+          <HGVS Type="coding">
+            <NucleotideExpression sequenceAccessionVersion="NM_172107.4" sequenceAccession="NM_172107" sequenceVersion="4" change="c.875T&gt;C" MANESelect="true">
+              <Expression>NM_172107.4:c.875T&gt;C</Expression>
+            </NucleotideExpression>
+            <ProteinExpression sequenceAccessionVersion="NP_742105.1" sequenceAccession="NP_742105" sequenceVersion="1" change="p.Leu292Pro" singleLetterProteinChange="L292P">
+              <Expression>NP_742105.1:p.Leu292Pro</Expression>
+            </ProteinExpression>
+            <MolecularConsequence ID="SO:0001583" Type="missense variant" DB="SO"/>
+          </HGVS>
+          <HGVS Type="coding">
+            <NucleotideExpression sequenceAccessionVersion="NM_172108.5" sequenceAccession="NM_172108" sequenceVersion="5" change="c.875T&gt;C">
+              <Expression>NM_172108.5:c.875T&gt;C</Expression>
+            </NucleotideExpression>
+            <ProteinExpression sequenceAccessionVersion="NP_742106.1" sequenceAccession="NP_742106" sequenceVersion="1" change="p.Leu292Pro" singleLetterProteinChange="L292P">
+              <Expression>NP_742106.1:p.Leu292Pro</Expression>
+            </ProteinExpression>
+            <MolecularConsequence ID="SO:0001583" Type="missense variant" DB="SO"/>
+          </HGVS>
+          <HGVS Type="coding">
+            <NucleotideExpression sequenceAccessionVersion="NM_172109.3" sequenceAccession="NM_172109" sequenceVersion="3" change="c.875T&gt;C">
+              <Expression>NM_172109.3:c.875T&gt;C</Expression>
+            </NucleotideExpression>
+            <ProteinExpression sequenceAccessionVersion="NP_742107.1" sequenceAccession="NP_742107" sequenceVersion="1" change="p.Leu292Pro" singleLetterProteinChange="L292P">
+              <Expression>NP_742107.1:p.Leu292Pro</Expression>
+            </ProteinExpression>
+            <MolecularConsequence ID="SO:0001583" Type="missense variant" DB="SO"/>
+          </HGVS>
+        </HGVSlist>
+        <Classifications>
+          <GermlineClassification DateLastEvaluated="2025-06-09" DateCreated="2017-04-13" MostRecentSubmission="2026-02-10" NumberOfSubmissions="2" NumberOfSubmitters="2">
+            <ReviewStatus>criteria provided, multiple submitters, no conflicts</ReviewStatus>
+            <Description>Pathogenic/Likely pathogenic</Description>
+            <Citation Type="general">
+              <ID Source="PubMed">29644095</ID>
+            </Citation>
+            <Citation Type="general">
+              <ID Source="PubMed">29655203</ID>
+            </Citation>
+            <DescriptionHistory Dated="2026-02-10">
+              <Description>Likely pathogenic</Description>
+            </DescriptionHistory>
+            <DescriptionHistory Dated="2020-07-15">
+              <Description>Conflicting classifications of pathogenicity</Description>
+            </DescriptionHistory>
+            <DescriptionHistory Dated="2019-10-18">
+              <Description>Uncertain significance</Description>
+            </DescriptionHistory>
+            <ConditionList>
+              <TraitSet ID="105574" Type="Disease" ContributesToAggregateClassification="true">
+                <Trait ID="78150" Type="Disease">
+                  <Name>
+                    <ElementValue Type="Alternate">Ohtahara syndrome</ElementValue>
+                    <XRef ID="1934" DB="Orphanet"/>
+                  </Name>
+                  <Name>
+                    <ElementValue Type="Alternate">Early infantile epileptic encephalopathy with suppression bursts</ElementValue>
+                    <XRef ID="230429005" DB="SNOMED CT"/>
+                  </Name>
+                  <Name>
+                    <ElementValue Type="Alternate">Early infantile epileptic encephalopathy</ElementValue>
+                    <XRef ID="1934" DB="Orphanet"/>
+                  </Name>
+                  <Name>
+                    <ElementValue Type="Preferred">Early-infantile DEE</ElementValue>
+                    <XRef ID="MONDO:0800491" DB="MONDO"/>
+                  </Name>
+                  <AttributeSet>
+                    <Attribute Type="GARD id" integerValue="27299"/>
+                    <XRef ID="27299" DB="Office of Rare Diseases"/>
+                  </AttributeSet>
+                  <XRef ID="1934" DB="Orphanet"/>
+                  <XRef ID="C0393706" DB="MedGen"/>
+                  <XRef ID="MONDO:0800491" DB="MONDO"/>
+                </Trait>
+              </TraitSet>
+              <TraitSet ID="6737" Type="Disease" ContributesToAggregateClassification="true">
+                <Trait ID="15768" Type="Disease">
+                  <Name>
+                    <ElementValue Type="Alternate">Early infantile epileptic encephalopathy 7</ElementValue>
+                  </Name>
+                  <Name>
+                    <ElementValue Type="Preferred">Developmental and epileptic encephalopathy, 7</ElementValue>
+                    <XRef ID="MONDO:0013387" DB="MONDO"/>
+                  </Name>
+                  <Name>
+                    <ElementValue Type="Alternate">KCNQ2-Related Neonatal Epileptic Encephalopathy</ElementValue>
+                  </Name>
+                  <Symbol>
+                    <ElementValue Type="Preferred">DEE7</ElementValue>
+                    <XRef Type="MIM" ID="613720" DB="OMIM"/>
+                  </Symbol>
+                  <AttributeSet>
+                    <Attribute Type="public definition">KCNQ2-related disorders represent a continuum of overlapping neonatal epileptic phenotypes ranging from self-limited familial neonatal epilepsy (SLFNE) at the mild end to neonatal-onset developmental and epileptic encephalopathy (NEO-DEE) at the severe end. Additional, less common phenotypes consisting of neonatal encephalopathy with non-epileptic myoclonus, infantile or childhood-onset developmental and epileptic encephalopathy (DEE), and isolated intellectual disability (ID) without epilepsy have also been described. KCNQ2-SLFNE is characterized by seizures that start in otherwise healthy infants between two and eight days after term birth and spontaneously disappear between the first and the sixth to 12th month of life. There is always a seizure-free interval between birth and the onset of seizures. Seizures are characterized by sudden onset with prominent motor involvement, often accompanied by apnea and cyanosis; video EEG identifies seizures as focal onset with tonic stiffening of limb(s) and some migration during each seizure's evolution. About 30% of individuals with KCNQ2-SLFNE develop epileptic seizures later in life. KCNQ2-NEO-DEE is characterized by multiple daily seizures beginning in the first week of life that are mostly tonic, with associated focal motor and autonomic features. Seizures generally cease between ages nine months and four years. At onset, EEG shows a burst-suppression pattern or multifocal epileptiform activity; early brain MRI can show basal ganglia hyperdensities and later MRIs may show white matter or general volume loss. Moderate-to-profound developmental impairment is present.</Attribute>
+                    <XRef ID="NBK32534" DB="GeneReviews"/>
+                  </AttributeSet>
+                  <AttributeSet>
+                    <Attribute Type="GARD id" integerValue="13060"/>
+                    <XRef ID="13060" DB="Office of Rare Diseases"/>
+                  </AttributeSet>
+                  <AttributeSet>
+                    <Attribute Type="keyword">KCNQ2-Related Disorders</Attribute>
+                  </AttributeSet>
+                  <Citation Type="review" Abbrev="GeneReviews">
+                    <ID Source="PubMed">20437616</ID>
+                    <ID Source="BookShelf">NBK32534</ID>
+                  </Citation>
+                  <XRef ID="439218" DB="Orphanet"/>
+                  <XRef ID="C3150986" DB="MedGen"/>
+                  <XRef ID="MONDO:0013387" DB="MONDO"/>
+                  <XRef Type="MIM" ID="613720" DB="OMIM"/>
+                </Trait>
+              </TraitSet>
+            </ConditionList>
+          </GermlineClassification>
+        </Classifications>
+        <XRefList>
+          <XRef ID="CA16616483" DB="ClinGen"/>
+          <XRef Type="rs" ID="1060500602" DB="dbSNP"/>
+          <XRef Type="Interpreted" ID="4818726" DB="ClinVar"/>
+        </XRefList>
+      </SimpleAllele>
+      <SimpleAllele AlleleID="929246" VariationID="948377">
+        <GeneList>
+          <Gene Symbol="KCNQ2" FullName="potassium voltage-gated channel subfamily Q member 2" GeneID="3785" HGNC_ID="HGNC:6296" Source="submitted" RelationshipType="within single gene">
+            <Location>
+              <CytogeneticLocation>20q13.33</CytogeneticLocation>
+              <SequenceLocation Assembly="GRCh38" AssemblyAccessionVersion="GCF_000001405.38" AssemblyStatus="current" Chr="20" Accession="NC_000020.11" start="63400208" stop="63472655" display_start="63400208" display_stop="63472655" Strand="-"/>
+              <SequenceLocation Assembly="GRCh38" AssemblyAccessionVersion="GCF_000001405.38" AssemblyStatus="current" Chr="20" Accession="NT_187625.1" start="183" stop="33239" display_start="183" display_stop="33239" Strand="-"/>
+              <SequenceLocation Assembly="GRCh37" AssemblyAccessionVersion="GCF_000001405.25" AssemblyStatus="previous" Chr="20" Accession="NC_000020.10" start="62037541" stop="62103992" display_start="62037541" display_stop="62103992" Strand="-"/>
+            </Location>
+            <OMIM>602235</OMIM>
+            <Haploinsufficiency last_evaluated="2013-07-18" ClinGen="https://www.ncbi.nlm.nih.gov/projects/dbvar/ISCA/isca_gene.cgi?sym=KCNQ2">Sufficient evidence for dosage pathogenicity</Haploinsufficiency>
+            <Triplosensitivity last_evaluated="2013-07-18" ClinGen="https://www.ncbi.nlm.nih.gov/projects/dbvar/ISCA/isca_gene.cgi?sym=KCNQ2">No evidence available</Triplosensitivity>
+          </Gene>
+        </GeneList>
+        <Name>NM_172107.4(KCNQ2):c.877C&gt;T (p.Leu293Phe)</Name>
+        <CanonicalSPDI>NC_000020.11:63439647:G:A</CanonicalSPDI>
+        <VariantType>single nucleotide variant</VariantType>
+        <Location>
+          <CytogeneticLocation>20q13.33</CytogeneticLocation>
+          <SequenceLocation Assembly="GRCh38" AssemblyAccessionVersion="GCF_000001405.38" forDisplay="true" AssemblyStatus="current" Chr="20" Accession="NC_000020.11" start="63439648" stop="63439648" display_start="63439648" display_stop="63439648" variantLength="1" positionVCF="63439648" referenceAlleleVCF="G" alternateAlleleVCF="A"/>
+          <SequenceLocation Assembly="GRCh37" AssemblyAccessionVersion="GCF_000001405.25" AssemblyStatus="previous" Chr="20" Accession="NC_000020.10" start="62071001" stop="62071001" display_start="62071001" display_stop="62071001" variantLength="1" positionVCF="62071001" referenceAlleleVCF="G" alternateAlleleVCF="A"/>
+        </Location>
+        <ProteinChange>L293F</ProteinChange>
+        <HGVSlist>
+          <HGVS Assembly="GRCh37" Type="genomic, top-level">
+            <NucleotideExpression sequenceAccessionVersion="NC_000020.10" sequenceAccession="NC_000020" sequenceVersion="10" change="g.62071001G&gt;A" Assembly="GRCh37">
+              <Expression>NC_000020.10:g.62071001G&gt;A</Expression>
+            </NucleotideExpression>
+          </HGVS>
+          <HGVS Assembly="GRCh38" Type="genomic, top-level">
+            <NucleotideExpression sequenceAccessionVersion="NC_000020.11" sequenceAccession="NC_000020" sequenceVersion="11" change="g.63439648G&gt;A" Assembly="GRCh38">
+              <Expression>NC_000020.11:g.63439648G&gt;A</Expression>
+            </NucleotideExpression>
+          </HGVS>
+          <HGVS Type="genomic">
+            <NucleotideExpression sequenceAccessionVersion="NG_009004.2" sequenceAccession="NG_009004" sequenceVersion="2" change="g.37993C&gt;T">
+              <Expression>NG_009004.2:g.37993C&gt;T</Expression>
+            </NucleotideExpression>
+          </HGVS>
+          <HGVS Type="coding">
+            <NucleotideExpression sequenceAccessionVersion="NM_001382235.1" sequenceAccession="NM_001382235" sequenceVersion="1" change="c.877C&gt;T">
+              <Expression>NM_001382235.1:c.877C&gt;T</Expression>
+            </NucleotideExpression>
+            <ProteinExpression sequenceAccessionVersion="NP_001369164.1" sequenceAccession="NP_001369164" sequenceVersion="1" change="p.Leu293Phe" singleLetterProteinChange="L293F">
+              <Expression>NP_001369164.1:p.Leu293Phe</Expression>
+            </ProteinExpression>
+            <MolecularConsequence ID="SO:0001583" Type="missense variant" DB="SO"/>
+          </HGVS>
+          <HGVS Type="coding">
+            <NucleotideExpression sequenceAccessionVersion="NM_004518.6" sequenceAccession="NM_004518" sequenceVersion="6" change="c.877C&gt;T">
+              <Expression>NM_004518.6:c.877C&gt;T</Expression>
+            </NucleotideExpression>
+            <ProteinExpression sequenceAccessionVersion="NP_004509.2" sequenceAccession="NP_004509" sequenceVersion="2" change="p.Leu293Phe" singleLetterProteinChange="L293F">
+              <Expression>NP_004509.2:p.Leu293Phe</Expression>
+            </ProteinExpression>
+            <MolecularConsequence ID="SO:0001583" Type="missense variant" DB="SO"/>
+          </HGVS>
+          <HGVS Type="coding">
+            <NucleotideExpression sequenceAccessionVersion="NM_172106.3" sequenceAccession="NM_172106" sequenceVersion="3" change="c.877C&gt;T">
+              <Expression>NM_172106.3:c.877C&gt;T</Expression>
+            </NucleotideExpression>
+            <ProteinExpression sequenceAccessionVersion="NP_742104.1" sequenceAccession="NP_742104" sequenceVersion="1" change="p.Leu293Phe" singleLetterProteinChange="L293F">
+              <Expression>NP_742104.1:p.Leu293Phe</Expression>
+            </ProteinExpression>
+            <MolecularConsequence ID="SO:0001583" Type="missense variant" DB="SO"/>
+          </HGVS>
+          <HGVS Type="coding">
+            <NucleotideExpression sequenceAccessionVersion="NM_172107.4" sequenceAccession="NM_172107" sequenceVersion="4" change="c.877C&gt;T" MANESelect="true">
+              <Expression>NM_172107.4:c.877C&gt;T</Expression>
+            </NucleotideExpression>
+            <ProteinExpression sequenceAccessionVersion="NP_742105.1" sequenceAccession="NP_742105" sequenceVersion="1" change="p.Leu293Phe" singleLetterProteinChange="L293F">
+              <Expression>NP_742105.1:p.Leu293Phe</Expression>
+            </ProteinExpression>
+            <MolecularConsequence ID="SO:0001583" Type="missense variant" DB="SO"/>
+          </HGVS>
+          <HGVS Type="coding">
+            <NucleotideExpression sequenceAccessionVersion="NM_172108.5" sequenceAccession="NM_172108" sequenceVersion="5" change="c.877C&gt;T">
+              <Expression>NM_172108.5:c.877C&gt;T</Expression>
+            </NucleotideExpression>
+            <ProteinExpression sequenceAccessionVersion="NP_742106.1" sequenceAccession="NP_742106" sequenceVersion="1" change="p.Leu293Phe" singleLetterProteinChange="L293F">
+              <Expression>NP_742106.1:p.Leu293Phe</Expression>
+            </ProteinExpression>
+            <MolecularConsequence ID="SO:0001583" Type="missense variant" DB="SO"/>
+          </HGVS>
+          <HGVS Type="coding">
+            <NucleotideExpression sequenceAccessionVersion="NM_172109.3" sequenceAccession="NM_172109" sequenceVersion="3" change="c.877C&gt;T">
+              <Expression>NM_172109.3:c.877C&gt;T</Expression>
+            </NucleotideExpression>
+            <ProteinExpression sequenceAccessionVersion="NP_742107.1" sequenceAccession="NP_742107" sequenceVersion="1" change="p.Leu293Phe" singleLetterProteinChange="L293F">
+              <Expression>NP_742107.1:p.Leu293Phe</Expression>
+            </ProteinExpression>
+            <MolecularConsequence ID="SO:0001583" Type="missense variant" DB="SO"/>
+          </HGVS>
+        </HGVSlist>
+        <Classifications>
+          <GermlineClassification DateLastEvaluated="2025-06-09" DateCreated="2020-07-12" MostRecentSubmission="2026-02-10" NumberOfSubmissions="1" NumberOfSubmitters="1">
+            <ReviewStatus>criteria provided, single submitter</ReviewStatus>
+            <Description>Uncertain significance</Description>
+            <Citation Type="general">
+              <ID Source="PubMed">29655203</ID>
+            </Citation>
+            <ConditionList>
+              <TraitSet ID="105574" Type="Disease" ContributesToAggregateClassification="true">
+                <Trait ID="78150" Type="Disease">
+                  <Name>
+                    <ElementValue Type="Preferred">Early-infantile DEE</ElementValue>
+                    <XRef ID="MONDO:0800491" DB="MONDO"/>
+                  </Name>
+                  <Name>
+                    <ElementValue Type="Alternate">Early infantile epileptic encephalopathy</ElementValue>
+                    <XRef ID="1934" DB="Orphanet"/>
+                  </Name>
+                  <Name>
+                    <ElementValue Type="Alternate">Ohtahara syndrome</ElementValue>
+                    <XRef ID="1934" DB="Orphanet"/>
+                  </Name>
+                  <Name>
+                    <ElementValue Type="Alternate">Early infantile epileptic encephalopathy with suppression bursts</ElementValue>
+                    <XRef ID="230429005" DB="SNOMED CT"/>
+                  </Name>
+                  <AttributeSet>
+                    <Attribute Type="GARD id" integerValue="27299"/>
+                    <XRef ID="27299" DB="Office of Rare Diseases"/>
+                  </AttributeSet>
+                  <XRef ID="1934" DB="Orphanet"/>
+                  <XRef ID="C0393706" DB="MedGen"/>
+                  <XRef ID="MONDO:0800491" DB="MONDO"/>
+                </Trait>
+              </TraitSet>
+            </ConditionList>
+          </GermlineClassification>
+        </Classifications>
+        <XRefList>
+          <XRef ID="CA409652590" DB="ClinGen"/>
+          <XRef Type="rs" ID="2081099943" DB="dbSNP"/>
+          <XRef Type="Interpreted" ID="4818726" DB="ClinVar"/>
+        </XRefList>
+      </SimpleAllele>
+      <Name>NM_172107.4(KCNQ2):c.[875T&gt;C;877C&gt;T]</Name>
+      <VariationType>Haplotype</VariationType>
+      <HGVSlist>
+        <HGVS Type="coding">
+          <NucleotideExpression MANESelect="true">
+            <Expression>NM_172107.4:c.[875T&gt;C;877C&gt;T]</Expression>
+          </NucleotideExpression>
+        </HGVS>
+      </HGVSlist>
+    </Haplotype>
+    <RCVList>
+      <RCVAccession Title="NM_172107.4(KCNQ2):c.[875T&gt;C;877C&gt;T] AND not provided" Accession="RCV006645436" Version="1">
+        <ClassifiedConditionList TraitSetID="9460">
+          <ClassifiedCondition DB="MedGen" ID="C3661900">not provided</ClassifiedCondition>
+        </ClassifiedConditionList>
+        <RCVClassifications>
+          <NoClassification>
+            <ReviewStatus>no classification provided</ReviewStatus>
+            <Description SubmissionCount="5">evidence_only</Description>
+          </NoClassification>
+        </RCVClassifications>
+      </RCVAccession>
+    </RCVList>
+    <Classifications>
+      <NoClassification DateCreated="2026-03-30" MostRecentSubmission="2026-04-01" NumberOfSubmissions="5" NumberOfSubmitters="1">
+        <ReviewStatus>no classification provided</ReviewStatus>
+        <Description>evidence_only</Description>
+        <ConditionList>
+          <TraitSet ID="9460" Type="Disease" ContributesToAggregateClassification="false">
+            <Trait ID="17556" Type="Disease">
+              <Name>
+                <ElementValue Type="Preferred">not provided</ElementValue>
+                <XRef ID="13DG0619" DB="Genomic Medicine Center of Excellence, King Faisal Specialist Hospital and Research Centre"/>
+              </Name>
+              <Name>
+                <ElementValue Type="Alternate">none provided</ElementValue>
+              </Name>
+              <AttributeSet>
+                <Attribute Type="public definition">The term 'not provided' is registered in MedGen to support identification of submissions to ClinVar for which no condition was named when assessing the variant. 'not provided' differs from 'not specified', which is used when a variant is asserted to be benign, likely benign, or of uncertain significance for conditions that have not been specified.</Attribute>
+              </AttributeSet>
+              <XRef ID="C3661900" DB="MedGen"/>
+            </Trait>
+          </TraitSet>
+        </ConditionList>
+      </NoClassification>
+    </Classifications>
+    <ClinicalAssertionList>
+      <ClinicalAssertion ID="14383418" SubmissionDate="2026-02-11" ContributesToAggregateClassification="false" DateLastUpdated="2026-04-04" DateCreated="2026-04-04">
+        <ClinVarSubmissionID localKey="NM_172107.4:c.[875T&gt;C;877C&gt;T]|not provided|NoClassification|EFO:0022948|BD51259B0AD12F6AA07E2AB223E8973E" submittedAssembly="not applicable"/>
+        <ClinVarAccession Accession="SCV007537089" DateUpdated="2026-04-04" DateCreated="2026-04-04" Type="SCV" Version="1" SubmitterName="Channelopathy-Associated Epilepsy Research Center" OrgID="507249" OrganizationCategory="consortium" OrgAbbreviation="CAERC"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification>
+          <ReviewStatus>no classification provided</ReviewStatus>
+          <NoClassification>evidence_only</NoClassification>
+        </Classification>
+        <Assertion>variation to disease</Assertion>
+        <ObservedInList>
+          <ObservedIn Type="Functional">
+            <Sample>
+              <Origin>not applicable</Origin>
+              <CellLine>HEK293T</CellLine>
+              <Species TaxonomyId="9606">human</Species>
+              <AffectedStatus>not applicable</AffectedStatus>
+            </Sample>
+            <Method>
+              <Description>Whole-cell voltage clamp assay in HEK293T cells measuring Current density at -20 mV</Description>
+              <MethodType>in vitro</MethodType>
+              <AssayType Id="EFO:0022948" Source="EFO: The Experimental Factor Ontology">patch clamp</AssayType>
+              <MolecularPhenotypeMeasured>Current density at -20 mV</MolecularPhenotypeMeasured>
+            </Method>
+            <FunctionalData>
+              <FunctionalEffect Id="SO:0002218" Source="Sequence Ontology">functionally abnormal</FunctionalEffect>
+              <FunctionalConsequence Id="FENICS-0084" Source="Functional Epilepsy Nomenclature for Ion Channels">Decrease in peak current</FunctionalConsequence>
+              <Result>Decrease in peak current at -20 mV</Result>
+            </FunctionalData>
+          </ObservedIn>
+        </ObservedInList>
+        <Haplotype>
+          <SimpleAllele>
+            <GeneList>
+              <Gene Symbol="KCNQ2"/>
+            </GeneList>
+            <VariantType>Variation</VariantType>
+            <AttributeSet>
+              <Attribute Type="HGVS">NM_172107.4:c.875T&gt;C</Attribute>
+            </AttributeSet>
+          </SimpleAllele>
+          <SimpleAllele>
+            <GeneList>
+              <Gene Symbol="KCNQ2"/>
+            </GeneList>
+            <VariantType>Variation</VariantType>
+            <AttributeSet>
+              <Attribute Type="HGVS">NM_172107.4:c.877C&gt;T</Attribute>
+            </AttributeSet>
+          </SimpleAllele>
+        </Haplotype>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="Preferred">not provided</ElementValue>
+            </Name>
+          </Trait>
+        </TraitSet>
+        <SubmissionNameList>
+          <SubmissionName>SUB16001976</SubmissionName>
+        </SubmissionNameList>
+      </ClinicalAssertion>
+      <ClinicalAssertion ID="14383529" SubmissionDate="2026-02-11" ContributesToAggregateClassification="false" DateLastUpdated="2026-04-04" DateCreated="2026-04-04">
+        <ClinVarSubmissionID localKey="NM_172107.4:c.[875T&gt;C;877C&gt;T]|not provided|NoClassification|EFO:0022948|A63E3C0FF69C8920A4FABC12F32804F9" submittedAssembly="not applicable"/>
+        <ClinVarAccession Accession="SCV007537200" DateUpdated="2026-04-04" DateCreated="2026-04-04" Type="SCV" Version="1" SubmitterName="Channelopathy-Associated Epilepsy Research Center" OrgID="507249" OrganizationCategory="consortium" OrgAbbreviation="CAERC"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification>
+          <ReviewStatus>no classification provided</ReviewStatus>
+          <NoClassification>evidence_only</NoClassification>
+        </Classification>
+        <Assertion>variation to disease</Assertion>
+        <ObservedInList>
+          <ObservedIn Type="Functional">
+            <Sample>
+              <Origin>not applicable</Origin>
+              <CellLine>HEK293T</CellLine>
+              <Species TaxonomyId="9606">human</Species>
+              <AffectedStatus>not applicable</AffectedStatus>
+            </Sample>
+            <Method>
+              <Description>Whole-cell voltage clamp assay in HEK293T cells measuring Current density at +40 mV</Description>
+              <MethodType>in vitro</MethodType>
+              <AssayType Id="EFO:0022948" Source="EFO: The Experimental Factor Ontology">patch clamp</AssayType>
+              <MolecularPhenotypeMeasured>Current density at +40 mV</MolecularPhenotypeMeasured>
+            </Method>
+            <FunctionalData>
+              <FunctionalEffect Id="SO:0002218" Source="Sequence Ontology">functionally abnormal</FunctionalEffect>
+              <FunctionalConsequence Id="FENICS-0084" Source="Functional Epilepsy Nomenclature for Ion Channels">Decrease in peak current</FunctionalConsequence>
+              <Result>Decrease in peak current at +40 mV</Result>
+            </FunctionalData>
+          </ObservedIn>
+        </ObservedInList>
+        <Haplotype>
+          <SimpleAllele>
+            <GeneList>
+              <Gene Symbol="KCNQ2"/>
+            </GeneList>
+            <VariantType>Variation</VariantType>
+            <AttributeSet>
+              <Attribute Type="HGVS">NM_172107.4:c.875T&gt;C</Attribute>
+            </AttributeSet>
+          </SimpleAllele>
+          <SimpleAllele>
+            <GeneList>
+              <Gene Symbol="KCNQ2"/>
+            </GeneList>
+            <VariantType>Variation</VariantType>
+            <AttributeSet>
+              <Attribute Type="HGVS">NM_172107.4:c.877C&gt;T</Attribute>
+            </AttributeSet>
+          </SimpleAllele>
+        </Haplotype>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="Preferred">not provided</ElementValue>
+            </Name>
+          </Trait>
+        </TraitSet>
+        <SubmissionNameList>
+          <SubmissionName>SUB16001976</SubmissionName>
+        </SubmissionNameList>
+      </ClinicalAssertion>
+      <ClinicalAssertion ID="14383640" SubmissionDate="2026-02-11" ContributesToAggregateClassification="false" DateLastUpdated="2026-04-04" DateCreated="2026-04-04">
+        <ClinVarSubmissionID localKey="NM_172107.4:c.[875T&gt;C;877C&gt;T]|not provided|NoClassification|EFO:0022948|9C289D375D37A035F5FE2F8F904F89B9" submittedAssembly="not applicable"/>
+        <ClinVarAccession Accession="SCV007537311" DateUpdated="2026-04-04" DateCreated="2026-04-04" Type="SCV" Version="1" SubmitterName="Channelopathy-Associated Epilepsy Research Center" OrgID="507249" OrganizationCategory="consortium" OrgAbbreviation="CAERC"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification>
+          <ReviewStatus>no classification provided</ReviewStatus>
+          <NoClassification>evidence_only</NoClassification>
+        </Classification>
+        <Assertion>variation to disease</Assertion>
+        <ObservedInList>
+          <ObservedIn Type="Functional">
+            <Sample>
+              <Origin>not applicable</Origin>
+              <CellLine>HEK293T</CellLine>
+              <Species TaxonomyId="9606">human</Species>
+              <AffectedStatus>not applicable</AffectedStatus>
+            </Sample>
+            <Method>
+              <Description>Whole-cell voltage clamp assay in HEK293T cells measuring Voltage dependence of activation V1/2</Description>
+              <MethodType>in vitro</MethodType>
+              <AssayType Id="EFO:0022948" Source="EFO: The Experimental Factor Ontology">patch clamp</AssayType>
+              <MolecularPhenotypeMeasured>Voltage dependence of activation V1/2</MolecularPhenotypeMeasured>
+            </Method>
+            <FunctionalData>
+              <FunctionalEffect Id="SO:0002219" Source="Sequence Ontology">functionally normal</FunctionalEffect>
+              <FunctionalConsequence Id="FENICS-0032" Source="Functional Epilepsy Nomenclature for Ion Channels">Normal voltage dependence of activation</FunctionalConsequence>
+              <Result>Normal voltage dependence of activation</Result>
+            </FunctionalData>
+          </ObservedIn>
+        </ObservedInList>
+        <Haplotype>
+          <SimpleAllele>
+            <GeneList>
+              <Gene Symbol="KCNQ2"/>
+            </GeneList>
+            <VariantType>Variation</VariantType>
+            <AttributeSet>
+              <Attribute Type="HGVS">NM_172107.4:c.875T&gt;C</Attribute>
+            </AttributeSet>
+          </SimpleAllele>
+          <SimpleAllele>
+            <GeneList>
+              <Gene Symbol="KCNQ2"/>
+            </GeneList>
+            <VariantType>Variation</VariantType>
+            <AttributeSet>
+              <Attribute Type="HGVS">NM_172107.4:c.877C&gt;T</Attribute>
+            </AttributeSet>
+          </SimpleAllele>
+        </Haplotype>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="Preferred">not provided</ElementValue>
+            </Name>
+          </Trait>
+        </TraitSet>
+        <SubmissionNameList>
+          <SubmissionName>SUB16001976</SubmissionName>
+        </SubmissionNameList>
+      </ClinicalAssertion>
+      <ClinicalAssertion ID="14383709" SubmissionDate="2026-02-11" ContributesToAggregateClassification="false" DateLastUpdated="2026-04-04" DateCreated="2026-04-04">
+        <ClinVarSubmissionID localKey="NM_172107.4:c.[875T&gt;C;877C&gt;T]|not provided|NoClassification|EFO:0022948|F5759552A2EE9FACFC0A79281DB4BC46" submittedAssembly="not applicable"/>
+        <ClinVarAccession Accession="SCV007537380" DateUpdated="2026-04-04" DateCreated="2026-04-04" Type="SCV" Version="1" SubmitterName="Channelopathy-Associated Epilepsy Research Center" OrgID="507249" OrganizationCategory="consortium" OrgAbbreviation="CAERC"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification>
+          <ReviewStatus>no classification provided</ReviewStatus>
+          <NoClassification>evidence_only</NoClassification>
+        </Classification>
+        <Assertion>variation to disease</Assertion>
+        <ObservedInList>
+          <ObservedIn Type="Functional">
+            <Sample>
+              <Origin>not applicable</Origin>
+              <CellLine>HEK293T</CellLine>
+              <Species TaxonomyId="9606">human</Species>
+              <AffectedStatus>not applicable</AffectedStatus>
+            </Sample>
+            <Method>
+              <Description>Whole-cell voltage clamp assay in HEK293T cells measuring Slope of activation</Description>
+              <MethodType>in vitro</MethodType>
+              <AssayType Id="EFO:0022948" Source="EFO: The Experimental Factor Ontology">patch clamp</AssayType>
+              <MolecularPhenotypeMeasured>Slope of activation</MolecularPhenotypeMeasured>
+            </Method>
+            <FunctionalData>
+              <FunctionalEffect Id="SO:0002218" Source="Sequence Ontology">functionally abnormal</FunctionalEffect>
+              <FunctionalConsequence Id="FENICS-0035" Source="Functional Epilepsy Nomenclature for Ion Channels">Increase in slope of activation</FunctionalConsequence>
+              <Result>Increase in slope of activation</Result>
+            </FunctionalData>
+          </ObservedIn>
+        </ObservedInList>
+        <Haplotype>
+          <SimpleAllele>
+            <GeneList>
+              <Gene Symbol="KCNQ2"/>
+            </GeneList>
+            <VariantType>Variation</VariantType>
+            <AttributeSet>
+              <Attribute Type="HGVS">NM_172107.4:c.875T&gt;C</Attribute>
+            </AttributeSet>
+          </SimpleAllele>
+          <SimpleAllele>
+            <GeneList>
+              <Gene Symbol="KCNQ2"/>
+            </GeneList>
+            <VariantType>Variation</VariantType>
+            <AttributeSet>
+              <Attribute Type="HGVS">NM_172107.4:c.877C&gt;T</Attribute>
+            </AttributeSet>
+          </SimpleAllele>
+        </Haplotype>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="Preferred">not provided</ElementValue>
+            </Name>
+          </Trait>
+        </TraitSet>
+        <SubmissionNameList>
+          <SubmissionName>SUB16001976</SubmissionName>
+        </SubmissionNameList>
+      </ClinicalAssertion>
+      <ClinicalAssertion ID="14383720" SubmissionDate="2026-02-11" ContributesToAggregateClassification="false" DateLastUpdated="2026-04-04" DateCreated="2026-04-04">
+        <ClinVarSubmissionID localKey="NM_172107.4:c.[875T&gt;C;877C&gt;T]|not provided|NoClassification|EFO:0022948|1903BDD93CE0926C9C3E6E7F6EC771F2" submittedAssembly="not applicable"/>
+        <ClinVarAccession Accession="SCV007537391" DateUpdated="2026-04-04" DateCreated="2026-04-04" Type="SCV" Version="1" SubmitterName="Channelopathy-Associated Epilepsy Research Center" OrgID="507249" OrganizationCategory="consortium" OrgAbbreviation="CAERC"/>
+        <RecordStatus>current</RecordStatus>
+        <Classification>
+          <ReviewStatus>no classification provided</ReviewStatus>
+          <NoClassification>evidence_only</NoClassification>
+        </Classification>
+        <Assertion>variation to disease</Assertion>
+        <ObservedInList>
+          <ObservedIn Type="Functional">
+            <Sample>
+              <Origin>not applicable</Origin>
+              <CellLine>HEK293T</CellLine>
+              <Species TaxonomyId="9606">human</Species>
+              <AffectedStatus>not applicable</AffectedStatus>
+            </Sample>
+            <Method>
+              <Description>Whole-cell voltage clamp assay in HEK293T cells measuring Activation time constant</Description>
+              <MethodType>in vitro</MethodType>
+              <AssayType Id="EFO:0022948" Source="EFO: The Experimental Factor Ontology">patch clamp</AssayType>
+              <MolecularPhenotypeMeasured>Activation time constant</MolecularPhenotypeMeasured>
+            </Method>
+            <FunctionalData>
+              <FunctionalEffect Id="SO:0002219" Source="Sequence Ontology">functionally normal</FunctionalEffect>
+              <FunctionalConsequence Id="FENICS-0011" Source="Functional Epilepsy Nomenclature for Ion Channels">Normal rate of activation</FunctionalConsequence>
+              <Result>Normal rate of activation</Result>
+            </FunctionalData>
+          </ObservedIn>
+        </ObservedInList>
+        <Haplotype>
+          <SimpleAllele>
+            <GeneList>
+              <Gene Symbol="KCNQ2"/>
+            </GeneList>
+            <VariantType>Variation</VariantType>
+            <AttributeSet>
+              <Attribute Type="HGVS">NM_172107.4:c.875T&gt;C</Attribute>
+            </AttributeSet>
+          </SimpleAllele>
+          <SimpleAllele>
+            <GeneList>
+              <Gene Symbol="KCNQ2"/>
+            </GeneList>
+            <VariantType>Variation</VariantType>
+            <AttributeSet>
+              <Attribute Type="HGVS">NM_172107.4:c.877C&gt;T</Attribute>
+            </AttributeSet>
+          </SimpleAllele>
+        </Haplotype>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="Preferred">not provided</ElementValue>
+            </Name>
+          </Trait>
+        </TraitSet>
+        <SubmissionNameList>
+          <SubmissionName>SUB16001976</SubmissionName>
+        </SubmissionNameList>
+      </ClinicalAssertion>
+    </ClinicalAssertionList>
+    <TraitMappingList>
+      <TraitMapping ClinicalAssertionID="14383418" TraitType="Disease" MappingType="Name" MappingValue="not provided" MappingRef="Preferred">
+        <MedGen CUI="C3661900" Name="not provided"/>
+      </TraitMapping>
+      <TraitMapping ClinicalAssertionID="14383529" TraitType="Disease" MappingType="Name" MappingValue="not provided" MappingRef="Preferred">
+        <MedGen CUI="C3661900" Name="not provided"/>
+      </TraitMapping>
+      <TraitMapping ClinicalAssertionID="14383640" TraitType="Disease" MappingType="Name" MappingValue="not provided" MappingRef="Preferred">
+        <MedGen CUI="C3661900" Name="not provided"/>
+      </TraitMapping>
+      <TraitMapping ClinicalAssertionID="14383709" TraitType="Disease" MappingType="Name" MappingValue="not provided" MappingRef="Preferred">
+        <MedGen CUI="C3661900" Name="not provided"/>
+      </TraitMapping>
+      <TraitMapping ClinicalAssertionID="14383720" TraitType="Disease" MappingType="Name" MappingValue="not provided" MappingRef="Preferred">
+        <MedGen CUI="C3661900" Name="not provided"/>
+      </TraitMapping>
+    </TraitMappingList>
+  </ClassifiedRecord>
+</VariationArchive>
+</ClinVarResult-Set>

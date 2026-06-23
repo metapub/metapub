@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DocumentSummarySet>
+  <DocumentSummary>
+    <SNP_ID>3000</SNP_ID>
+    <SPDI>NC_000004.12:56911778:C:T</SPDI>
+    <DOCSUM>HGVS=NC_000004.12:g.56911779C&gt;T|SEQ=[C/T]</DOCSUM>
+    <GLOBAL_MAFS>
+      <MAF>
+        <STUDY>1000Genomes</STUDY>
+        <FREQ>T=0.300319/1504</FREQ>
+      </MAF>
+    </GLOBAL_MAFS>
+  </DocumentSummary>
+</DocumentSummarySet>

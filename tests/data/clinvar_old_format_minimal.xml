@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<VariationReport VariationID="12397" VariationName="NM_000548.4(TSC2):c.1832G>A (p.Arg611Gln)" VariationType="Variant">
+  <GeneList>
+    <Gene Symbol="TSC2" FullName="TSC complex subunit 2" GeneID="7249"/>
+  </GeneList>
+  <Allele AlleleID="27436">
+    <Name>NM_000548.4(TSC2):c.1832G&gt;A (p.Arg611Gln)</Name>
+    <VariantType>single nucleotide variant</VariantType>
+    <XRefList>
+      <XRef Type="rs" ID="28934872" DB="dbSNP"/>
+      <XRef Type="Allelic variant" ID="191092.0006" DB="OMIM"/>
+    </XRefList>
+  </Allele>
+</VariationReport>

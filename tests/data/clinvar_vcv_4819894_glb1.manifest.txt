@@ -1,0 +1,29 @@
+Source:   NCBI ClinVar E-utilities (efetch)
+Date:     2026-04-19
+Variant:  VCV004819894 — NM_000404.4(GLB1):c.815G>T (p.Gly272Val)
+Type:     single nucleotide variant
+Purpose:  Real-record evidence that Orphanet and MedGen cross-references appear
+          at the condition level (RCVList, TraitSet), NOT in SimpleAllele/XRefList.
+          Motivates why orphanet_id and medgen_id always return None/[] on real
+          VCV records when using the current _get_xref_ids path.
+
+Fetch command:
+  curl -s "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=clinvar&id=4819894&rettype=vcv&is_variationid=true" \
+    > clinvar_vcv_4819894_glb1.xml
+
+Orphanet/MedGen XRef locations in this record (confirmed by lxml inspection):
+  RCVList/RCVAccession/ClassifiedConditionList/ClassifiedCondition
+    → DB="MedGen" ID="C0268272"
+
+  Classifications/GermlineClassification/ConditionList/TraitSet/Trait/Name/XRef
+    → DB="Orphanet" ID="79256"
+
+  Classifications/GermlineClassification/ConditionList/TraitSet/Trait/XRef
+    → DB="Orphanet" ID="354"
+    → DB="Orphanet" ID="79256"
+    → DB="MedGen"   ID="C0268272"
+
+  SimpleAllele/XRefList — Orphanet/MedGen: NOT PRESENT
+
+Discovery: record found via esearch text search for "Orphanet[All Fields]", then
+batch-fetched and confirmed Orphanet/MedGen presence. One of 10 candidates checked.

@@ -511,7 +511,12 @@ class PubMedArticle(MetaPubObject):
             return lastnum
 
     def _get_title(self):
-        return self._get(self._root+'/Article/ArticleTitle')
+        title = self._get(self._root+'/Article/ArticleTitle')
+        if title == '[Not Available].':
+            vernacular_title = self._get(self._root+'/Article/VernacularTitle')
+            if vernacular_title:
+                return vernacular_title
+        return title
 
     def _get_volume(self):
         try:

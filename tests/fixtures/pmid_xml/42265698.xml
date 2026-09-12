@@ -1,0 +1,1125 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Automated">
+      <PMID Version="1">42265698</PMID>
+      <DateCompleted>
+        <Year>2026</Year>
+        <Month>06</Month>
+        <Day>11</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2026</Year>
+        <Month>06</Month>
+        <Day>11</Day>
+      </DateRevised>
+      <Article PubModel="Electronic">
+        <Journal>
+          <ISSN IssnType="Electronic">1423-0127</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>33</Volume>
+            <Issue>1</Issue>
+            <PubDate>
+              <Year>2026</Year>
+              <Month>Jun</Month>
+              <Day>10</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>Journal of biomedical science</Title>
+          <ISOAbbreviation>J Biomed Sci</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Selective molecular and network architecture features underlie brain cortical atrophy in dementia with Lewy bodies.</ArticleTitle>
+        <ELocationID EIdType="pii" ValidYN="Y">61</ELocationID>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1186/s12929-026-01267-6</ELocationID>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">Dementia with Lewy bodies shares clinical and pathological features with both Parkinson's disease and Alzheimer's disease, but the local biological factors that render specific cortical regions vulnerable to atrophy remain poorly defined. In particular, it is unclear whether cortical thinning in dementia with Lewy bodies reflects generic neurodegenerative mechanisms, processes shared with Parkinson's disease and Alzheimer's disease, or dementia with Lewy bodies-specific molecular and network susceptibilities.</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">A total of 89 patients with dementia with Lewy bodies and 89 matched controls underwent T1-weighted brain MRI. Scans were processed to generate surface-based cortical thickness maps. Regional cortical thickness estimates, after slice-by-slice manual correction, were mapped to gene expression data from healthy postmortem human brains to identify transcriptomic signatures associated with decreased thickness in dementia with Lewy bodies. We assessed whether genes whose expression was increased with regional thinning converged onto established Parkinson's disease- and Alzheimer's disease-related pathways and identified genes uniquely implicated in dementia with Lewy bodies. Spatial annotation mapping was then used to test whether patterns of cortical thinning overlapped with in vivo neurotransmitter system distributions and whether the observed thickness pattern was constrained by large-scale structural connectivity, consistent with a network-based propagation process.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">Cortical thinning predominated in regions that, in the healthy brain, show higher expression of genes involved in mitochondrial function and synaptic transmission. The transcriptomic profile associated with thinning significantly overlapped with genes belonging to Parkinson's disease and Alzheimer's disease pathways, supporting shared pathogenic mechanisms across Lewy body- and Alzheimer-type neurodegeneration. However, 90 genes associated with cortical thinning did not overlap with Parkinson's disease or Alzheimer's disease pathways and were enriched for GABAergic signalling. Spatial mapping analyses showed that regions with greatest thickness reductions colocalized with GABA<sub>A</sub>, serotoninergic 5-HT<sub>1A</sub>, 5-HT<sub>1B</sub>, 5-HT4, and dopaminergic D2 receptor distributions, and that the thickness pattern followed structural connectivity.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">MRI-derived cortical thickness changes in dementia with Lewy bodies reflect selective molecular and network vulnerabilities rather than a non-specific degenerative process. Mitochondrial and synaptic genes, together with a distinct GABAergic association and connectivity constraints, delineate mechanisms explaining why some cortical territories are more affected in dementia with Lewy bodies.</AbstractText>
+          <CopyrightInformation>&#169; 2026. The Author(s).</CopyrightInformation>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Delva</LastName>
+            <ForeName>Aline</ForeName>
+            <Initials>A</Initials>
+            <Identifier Source="ORCID">0000-0001-8497-2314</Identifier>
+            <AffiliationInfo>
+              <Affiliation>The Neuro (Montreal Neurological Institute-Hospital), McGill University, Montreal, Canada.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurology, University Hospitals Leuven, Leuven, Belgium.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Joza</LastName>
+            <ForeName>Stephen</ForeName>
+            <Initials>S</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Neurology, Department of Medicine, University of Alberta, Edmonton, AB, Canada.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Tremblay</LastName>
+            <ForeName>Christina</ForeName>
+            <Initials>C</Initials>
+            <AffiliationInfo>
+              <Affiliation>Centre for Advanced Research in Sleep Medicine, H&#244;pital du Sacr&#233;-Coeur de Montr&#233;al, Quebec Integrated University Centre for Health and Social Services of Northern Island of Montreal, 5400 West Gouin Boulevard, Montreal, QC, H4J 1C5, Canada.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Vo</LastName>
+            <ForeName>Andrew</ForeName>
+            <Initials>A</Initials>
+            <AffiliationInfo>
+              <Affiliation>The Neuro (Montreal Neurological Institute-Hospital), McGill University, Montreal, Canada.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Filiatrault</LastName>
+            <ForeName>Marie</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Centre for Advanced Research in Sleep Medicine, H&#244;pital du Sacr&#233;-Coeur de Montr&#233;al, Quebec Integrated University Centre for Health and Social Services of Northern Island of Montreal, 5400 West Gouin Boulevard, Montreal, QC, H4J 1C5, Canada.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Carrier</LastName>
+            <ForeName>Madeleine</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Centre for Advanced Research in Sleep Medicine, H&#244;pital du Sacr&#233;-Coeur de Montr&#233;al, Quebec Integrated University Centre for Health and Social Services of Northern Island of Montreal, 5400 West Gouin Boulevard, Montreal, QC, H4J 1C5, Canada.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Taylor</LastName>
+            <ForeName>John-Paul</ForeName>
+            <Initials>JP</Initials>
+            <AffiliationInfo>
+              <Affiliation>Translational and Clinical Research Institute, Newcastle University, Newcastle, UK.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>O'Brien</LastName>
+            <ForeName>John T</ForeName>
+            <Initials>JT</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Psychiatry, University of Cambridge School of Clinical Medicine, Cambridge, UK.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Firbank</LastName>
+            <ForeName>Michael</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Translational and Clinical Research Institute, Newcastle University, Newcastle, UK.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Thomas</LastName>
+            <ForeName>Alan</ForeName>
+            <Initials>A</Initials>
+            <AffiliationInfo>
+              <Affiliation>Translational and Clinical Research Institute, Newcastle University, Newcastle, UK.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Donaghy</LastName>
+            <ForeName>Paul C</ForeName>
+            <Initials>PC</Initials>
+            <AffiliationInfo>
+              <Affiliation>Translational and Clinical Research Institute, Newcastle University, Newcastle, UK.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Camicioli</LastName>
+            <ForeName>Richard</ForeName>
+            <Initials>R</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Neurology, Department of Medicine, University of Alberta, Edmonton, AB, Canada.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Chertkow</LastName>
+            <ForeName>Howard</ForeName>
+            <Initials>H</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Medicine (Neurology), University of Toronto, Toronto, ON, Canada.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Rotman Research Institute, Baycrest Health Services, Toronto, ON, Canada.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Dagher</LastName>
+            <ForeName>Alain</ForeName>
+            <Initials>A</Initials>
+            <AffiliationInfo>
+              <Affiliation>The Neuro (Montreal Neurological Institute-Hospital), McGill University, Montreal, Canada.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Postuma</LastName>
+            <ForeName>Ronald B</ForeName>
+            <Initials>RB</Initials>
+            <AffiliationInfo>
+              <Affiliation>The Neuro (Montreal Neurological Institute-Hospital), McGill University, Montreal, Canada.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Centre for Advanced Research in Sleep Medicine, H&#244;pital du Sacr&#233;-Coeur de Montr&#233;al, Quebec Integrated University Centre for Health and Social Services of Northern Island of Montreal, 5400 West Gouin Boulevard, Montreal, QC, H4J 1C5, Canada.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Rahayel</LastName>
+            <ForeName>Shady</ForeName>
+            <Initials>S</Initials>
+            <Identifier Source="ORCID">0000-0001-5786-3278</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Centre for Advanced Research in Sleep Medicine, H&#244;pital du Sacr&#233;-Coeur de Montr&#233;al, Quebec Integrated University Centre for Health and Social Services of Northern Island of Montreal, 5400 West Gouin Boulevard, Montreal, QC, H4J 1C5, Canada. shady.rahayel@umontreal.ca.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Department of Medicine, University of Montreal, Montreal, Canada. shady.rahayel@umontreal.ca.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <GrantList CompleteYN="Y">
+          <Grant>
+            <GrantID>PPG-2023-0000000122</GrantID>
+            <Agency>Parkinson Canada</Agency>
+            <Country/>
+          </Grant>
+          <Grant>
+            <GrantID>0000000082</GrantID>
+            <Agency>Alzheimer Society</Agency>
+            <Country/>
+          </Grant>
+          <Grant>
+            <GrantID>MJFF-025745</GrantID>
+            <Agency>Michael J. Fox Foundation for Parkinson's Research</Agency>
+            <Country/>
+          </Grant>
+        </GrantList>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2026</Year>
+          <Month>06</Month>
+          <Day>10</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>England</Country>
+        <MedlineTA>J Biomed Sci</MedlineTA>
+        <NlmUniqueID>9421567</NlmUniqueID>
+        <ISSNLinking>1021-7770</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D020961" MajorTopicYN="Y">Lewy Body Disease</DescriptorName>
+          <QualifierName UI="Q000473" MajorTopicYN="N">pathology</QualifierName>
+          <QualifierName UI="Q000000981" MajorTopicYN="N">diagnostic imaging</QualifierName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000368" MajorTopicYN="N">Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D001284" MajorTopicYN="Y">Atrophy</DescriptorName>
+          <QualifierName UI="Q000473" MajorTopicYN="N">pathology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008279" MajorTopicYN="N">Magnetic Resonance Imaging</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002540" MajorTopicYN="Y">Cerebral Cortex</DescriptorName>
+          <QualifierName UI="Q000473" MajorTopicYN="N">pathology</QualifierName>
+          <QualifierName UI="Q000000981" MajorTopicYN="N">diagnostic imaging</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000369" MajorTopicYN="N">Aged, 80 and over</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000544" MajorTopicYN="N">Alzheimer Disease</DescriptorName>
+          <QualifierName UI="Q000473" MajorTopicYN="N">pathology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D059467" MajorTopicYN="Y">Transcriptome</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">Alzheimer&#8217;s disease</Keyword>
+        <Keyword MajorTopicYN="N">Atrophy</Keyword>
+        <Keyword MajorTopicYN="N">Connectivity</Keyword>
+        <Keyword MajorTopicYN="N">Dementia with Lewy bodies</Keyword>
+        <Keyword MajorTopicYN="N">MRI</Keyword>
+        <Keyword MajorTopicYN="N">Neurodegeneration</Keyword>
+        <Keyword MajorTopicYN="N">Parkinson&#8217;s disease</Keyword>
+        <Keyword MajorTopicYN="N">Transcriptomics</Keyword>
+      </KeywordList>
+      <CoiStatement>Declarations. Ethics approval and consent to participate: All participants provided written informed consent in accordance with institutional ethics protocols. The original study protocols received approval from local research ethics committees, and the present study was approved by the Research Ethics Boards of the McGill University Health Centre and the Quebec Integrated University Centre for Health and Social Services of Northern Island of Montreal. Consent for publication: Not applicable. Competing interests: The authors declare no competing interests.</CoiStatement>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="received">
+          <Year>2025</Year>
+          <Month>12</Month>
+          <Day>3</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="accepted">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>2</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>11</Day>
+          <Hour>6</Hour>
+          <Minute>38</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>10</Day>
+          <Hour>6</Hour>
+          <Minute>52</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>10</Day>
+          <Hour>0</Hour>
+          <Minute>9</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pmc-release">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>10</Day>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>epublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">42265698</ArticleId>
+        <ArticleId IdType="doi">10.1186/s12929-026-01267-6</ArticleId>
+        <ArticleId IdType="pii">10.1186/s12929-026-01267-6</ArticleId>
+        <ArticleId IdType="pmc">PMC13251274</ArticleId>
+      </ArticleIdList>
+      <ReferenceList>
+        <Reference>
+          <Citation>McKeith IG, Boeve BF, Dickson DW, et al. Diagnosis and management of dementia with Lewy bodies: fourth consensus report of the DLB Consortium. Neurology. 2017;89:88&#8211;100.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1212/WNL.0000000000004058</ArticleId>
+            <ArticleId IdType="pmc">PMC5496518</ArticleId>
+            <ArticleId IdType="pubmed">28592453</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Armstrong MJ. Advances in dementia with Lewy bodies. Ther Adv Neurol Disord. 2021;14:17562864211057666.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1177/17562864211057666</ArticleId>
+            <ArticleId IdType="pmc">PMC8613883</ArticleId>
+            <ArticleId IdType="pubmed">34840608</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Outeiro TF, Koss DJ, Erskine D, et al. Dementia with Lewy bodies: an update and outlook. Mol Neurodegener. 2019;14:5.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1186/s13024-019-0306-8</ArticleId>
+            <ArticleId IdType="pmc">PMC6341685</ArticleId>
+            <ArticleId IdType="pubmed">30665447</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Dugger BN, Adler CH, Shill HA, et al. Concomitant pathologies among a spectrum of parkinsonian disorders. Parkinsonism Relat Disord. 2014;20:525&#8211;9.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.parkreldis.2014.02.012</ArticleId>
+            <ArticleId IdType="pmc">PMC4028418</ArticleId>
+            <ArticleId IdType="pubmed">24637124</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Howlett DR, Whitfield D, Johnson M, et al. Regional multiple pathology scores are associated with cognitive decline in lewy body dementias. Brain Pathol. 2015;25:401&#8211;8.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1111/bpa.12182</ArticleId>
+            <ArticleId IdType="pmc">PMC8029273</ArticleId>
+            <ArticleId IdType="pubmed">25103200</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Nedelska Z, Ferman TJ, Boeve BF, et al. Pattern of brain atrophy rates in autopsy-confirmed dementia with Lewy bodies. Neurobiol Aging. 2015;36:452&#8211;61.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.neurobiolaging.2014.07.005</ArticleId>
+            <ArticleId IdType="pmc">PMC4268128</ArticleId>
+            <ArticleId IdType="pubmed">25128280</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sarro L, Senjem ML, Lundt ES, et al. Amyloid-&#946; deposition and regional grey matter atrophy rates in dementia with Lewy bodies. Brain. 2016;139:2740&#8211;50.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/brain/aww193</ArticleId>
+            <ArticleId IdType="pmc">PMC5035818</ArticleId>
+            <ArticleId IdType="pubmed">27452602</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>van Steenoven I, Aarsland D, Weintraub D, et al. Cerebrospinal fluid Alzheimer&#8217;s disease biomarkers across the spectrum of lewy body diseases: results from a large multicenter cohort. J Alzheimers Dis. 2016;54:287&#8211;95.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3233/JAD-160322</ArticleId>
+            <ArticleId IdType="pmc">PMC5535729</ArticleId>
+            <ArticleId IdType="pubmed">27567832</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Colloby SJ, Watson R, Blamire AM, O&#8217;Brien JT, Taylor JP. Cortical thinning in dementia with Lewy bodies and Parkinson disease dementia. Aust N Z J Psychiatry. 2020;54:633&#8211;43.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1177/0004867419885165</ArticleId>
+            <ArticleId IdType="pmc">PMC7285984</ArticleId>
+            <ArticleId IdType="pubmed">31696728</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Watson R, Colloby SJ, Blamire AM, O&#8217;Brien JT. Assessment of regional gray matter loss in dementia with Lewy bodies: a surface-based MRI analysis. Am J Geriatr Psychiatry. 2015;23:38&#8211;46.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jagp.2014.07.005</ArticleId>
+            <ArticleId IdType="pubmed">25218360</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Vogel JW, Corriveau-Lecavalier N, Franzmeier N, et al. Connectome-based modelling of neurodegenerative diseases: towards precision medicine and mechanistic insight. Nat Rev Neurosci. 2023;24:620&#8211;39.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/s41583-023-00731-8</ArticleId>
+            <ArticleId IdType="pubmed">37620599</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Tremblay C, Rahayel S, Pastor-Bernier A, et al. Uncovering atrophy progression pattern and mechanisms in individuals at risk of Alzheimer&#8217;s disease. Brain Commun. 2025;7:fcaf099.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/braincomms/fcaf099</ArticleId>
+            <ArticleId IdType="pmc">PMC11906971</ArticleId>
+            <ArticleId IdType="pubmed">40092368</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Rahayel S, Misic B, Zheng YQ, et al. Differentially targeted seeding reveals unique pathological alpha-synuclein propagation patterns. Brain. 2022;145:1743&#8211;56.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/brain/awab440</ArticleId>
+            <ArticleId IdType="pmc">PMC9166565</ArticleId>
+            <ArticleId IdType="pubmed">34910119</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Rey NL, Steiner JA, Maroof N, et al. Widespread transneuronal propagation of alpha-synucleinopathy triggered in olfactory bulb mimics prodromal Parkinson&#8217;s disease. J Exp Med. 2016;213:1759&#8211;78.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1084/jem.20160368</ArticleId>
+            <ArticleId IdType="pmc">PMC4995088</ArticleId>
+            <ArticleId IdType="pubmed">27503075</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Luk KC, Kehm V, Carroll J, et al. Pathological alpha-synuclein transmission initiates Parkinson-like neurodegeneration in nontransgenic mice. Science. 2012;338:949&#8211;53.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1126/science.1227157</ArticleId>
+            <ArticleId IdType="pmc">PMC3552321</ArticleId>
+            <ArticleId IdType="pubmed">23161999</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Masuda-Suzukake M, Nonaka T, Hosokawa M, et al. Prion-like spreading of pathological alpha-synuclein in brain. Brain. 2013;136:1128&#8211;38.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/brain/awt037</ArticleId>
+            <ArticleId IdType="pmc">PMC3613715</ArticleId>
+            <ArticleId IdType="pubmed">23466394</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Henderson MX, Henrich MT, Geibl FF, Oertel WH, Brundin P, Surmeier DJ. The roles of connectivity and neuronal phenotype in determining the pattern of alpha-synuclein pathology in Parkinson&#8217;s disease. Neurobiol Dis. 2022;168:105687.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.nbd.2022.105687</ArticleId>
+            <ArticleId IdType="pmc">PMC9610381</ArticleId>
+            <ArticleId IdType="pubmed">35283326</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Henrich MT, Geibl FF, Lakshminarasimhan H, et al. Determinants of seeding and spreading of alpha-synuclein pathology in the brain. Sci Adv. 2020;6:eabc2487.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1126/sciadv.abc2487</ArticleId>
+            <ArticleId IdType="pmc">PMC7673735</ArticleId>
+            <ArticleId IdType="pubmed">33177086</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Postuma RB, Iranzo A, Hu M, et al. Risk and predictors of dementia and parkinsonism in idiopathic REM sleep behaviour disorder: a multicentre study. Brain. 2019;142:744&#8211;59.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/brain/awz030</ArticleId>
+            <ArticleId IdType="pmc">PMC6391615</ArticleId>
+            <ArticleId IdType="pubmed">30789229</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Rahayel S, Tremblay C, Vo A, et al. Brain atrophy in prodromal synucleinopathy is shaped by structural connectivity and gene expression. Brain. 2022;145:3162&#8211;78.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/brain/awac187</ArticleId>
+            <ArticleId IdType="pubmed">35594873</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Vo A, Tremblay C, Rahayel S, et al. Network connectivity and local transcriptomic vulnerability underpin cortical atrophy progression in Parkinson&#8217;s disease. Neuroimage Clin. 2023;40:103523.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.nicl.2023.103523</ArticleId>
+            <ArticleId IdType="pmc">PMC10687705</ArticleId>
+            <ArticleId IdType="pubmed">38016407</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Rahayel S, Tremblay C, Vo A, et al. Mitochondrial function-associated genes underlie cortical atrophy in prodromal synucleinopathies. Brain. 2023;146:3301&#8211;18.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/brain/awad044</ArticleId>
+            <ArticleId IdType="pmc">PMC10393413</ArticleId>
+            <ArticleId IdType="pubmed">36826230</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Basaia S, Agosta F, Sarasso E, et al. Brain Connectivity Networks Constructed Using MRI for Predicting Patterns of Atrophy Progression in Parkinson Disease. Radiology. 2024;311:e232454.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1148/radiol.232454</ArticleId>
+            <ArticleId IdType="pubmed">38916507</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Chougar L, Tremblay C, Delva A, et al. MRI-derived atrophy in multiple system atrophy aligns with mitochondrial and glial gene expression patterns. NPJ Parkinsons Dis. 2025;12:16.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC12800306</ArticleId>
+            <ArticleId IdType="pubmed">41453978</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Guerreiro R, Ross OA, Kun-Rodrigues C, et al. Investigating the genetic architecture of dementia with Lewy bodies: a two-stage genome-wide association study. Lancet Neurol. 2018;17:64&#8211;74.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S1474-4422(17)30400-3</ArticleId>
+            <ArticleId IdType="pmc">PMC5805394</ArticleId>
+            <ArticleId IdType="pubmed">29263008</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Chia R, Sabir MS, Bandres-Ciga S, et al. Genome sequencing analysis identifies new loci associated with Lewy body dementia and provides insights into its genetic architecture. Nat Genet. 2021;53:294&#8211;303.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/s41588-021-00785-3</ArticleId>
+            <ArticleId IdType="pmc">PMC7946812</ArticleId>
+            <ArticleId IdType="pubmed">33589841</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Simuni T, Chahine LM, Poston K, et al. A biological definition of neuronal alpha-synuclein disease: towards an integrated staging system for research. Lancet Neurol. 2024;23:178&#8211;90.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S1474-4422(23)00405-2</ArticleId>
+            <ArticleId IdType="pubmed">38267190</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Borghammer P, Okkels N, Weintraub D. Parkinson&#8217;s disease and dementia with Lewy bodies: one and the same. J Parkinsons Dis. 2024;14:383&#8211;97.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3233/JPD-240002</ArticleId>
+            <ArticleId IdType="pmc">PMC11091584</ArticleId>
+            <ArticleId IdType="pubmed">38640172</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Rahayel S, Postuma RB, Montplaisir J, et al. A prodromal brain-clinical pattern of cognition in synucleinopathies. Ann Neurol. 2021;89:341&#8211;57.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/ana.25962</ArticleId>
+            <ArticleId IdType="pubmed">33217037</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Greve DN, Fischl B. False positive rates in surface-based anatomical analysis. Neuroimage. 2018;171:6&#8211;14.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.neuroimage.2017.12.072</ArticleId>
+            <ArticleId IdType="pmc">PMC5857431</ArticleId>
+            <ArticleId IdType="pubmed">29288131</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Desikan RS, Segonne F, Fischl B, et al. An automated labeling system for subdividing the human cerebral cortex on MRI scans into gyral based regions of interest. Neuroimage. 2006;31:968&#8211;80.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.neuroimage.2006.01.021</ArticleId>
+            <ArticleId IdType="pubmed">16530430</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Fortin JP, Cullen N, Sheline YI, et al. Harmonization of cortical thickness measurements across scanners and sites. Neuroimage. 2018;167:104&#8211;20.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.neuroimage.2017.11.024</ArticleId>
+            <ArticleId IdType="pmc">PMC5845848</ArticleId>
+            <ArticleId IdType="pubmed">29155184</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Radua J, Vieta E, Shinohara R, et al. Increased power by harmonizing structural MRI site differences with the ComBat batch adjustment method in ENIGMA. Neuroimage. 2020;218:116956.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.neuroimage.2020.116956</ArticleId>
+            <ArticleId IdType="pmc">PMC7524039</ArticleId>
+            <ArticleId IdType="pubmed">32470572</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Tremblay C, Abbasi N, Zeighami Y, et al. Sex effects on brain structure in de novo Parkinson&#8217;s disease: a multimodal neuroimaging study. Brain. 2020;143:3052&#8211;66.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/brain/awaa234</ArticleId>
+            <ArticleId IdType="pubmed">32980872</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Oltra J, Habich A, Schwarz CG, et al. Sex differences in brain atrophy in dementia with Lewy bodies. Alzheimers Dement 2023.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC10947875</ArticleId>
+            <ArticleId IdType="pubmed">38131463</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Arnatkeviciute A, Fulcher BD, Fornito A. A practical guide to linking brain-wide gene expression and neuroimaging data. Neuroimage. 2019;189:353&#8211;67.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.neuroimage.2019.01.011</ArticleId>
+            <ArticleId IdType="pubmed">30648605</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Arnatkeviciute A, Fulcher BD, Bellgrove MA, Fornito A. Imaging transcriptomics of brain disorders. Biol Psychiatry Glob Open Sci. 2022;2:319&#8211;31.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.bpsgos.2021.10.002</ArticleId>
+            <ArticleId IdType="pmc">PMC9616271</ArticleId>
+            <ArticleId IdType="pubmed">36324650</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Arnatkeviciute A, Markello RD, Fulcher BD, Misic B, Fornito A. Toward best practices for imaging transcriptomics of the human brain. Biol Psychiatry. 2023;93:391&#8211;404.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.biopsych.2022.10.016</ArticleId>
+            <ArticleId IdType="pubmed">36725139</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Markello RD, Arnatkeviciute A, Poline JB, Fulcher BD, Fornito A, Misic B. Standardizing workflows in imaging transcriptomics with the abagen toolbox. Elife. 2021. 10.7554/eLife.72129.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.7554/eLife.72129</ArticleId>
+            <ArticleId IdType="pmc">PMC8660024</ArticleId>
+            <ArticleId IdType="pubmed">34783653</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Hawrylycz MJ, Lein ES, Guillozet-Bongaarts AL, et al. An anatomically comprehensive atlas of the adult human brain transcriptome. Nature. 2012;489:391&#8211;9.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/nature11405</ArticleId>
+            <ArticleId IdType="pmc">PMC4243026</ArticleId>
+            <ArticleId IdType="pubmed">22996553</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Quackenbush J. Microarray data normalization and transformation. Nat Genet. 2002;32(Suppl):496&#8211;501.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/ng1032</ArticleId>
+            <ArticleId IdType="pubmed">12454644</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Hawrylycz M, Miller JA, Menon V, et al. Canonical genetic signatures of the adult human brain. Nat Neurosci. 2015;18:1832&#8211;44.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/nn.4171</ArticleId>
+            <ArticleId IdType="pmc">PMC4700510</ArticleId>
+            <ArticleId IdType="pubmed">26571460</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Abdi H, Williams LJ. Partial least squares methods: partial least squares correlation and partial least square regression. Methods Mol Biol. 2013;930:549&#8211;79.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/978-1-62703-059-5_23</ArticleId>
+            <ArticleId IdType="pubmed">23086857</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Alexander-Bloch AF, Shou H, Liu S, et al. On testing for spatial correspondence between maps of human brain structure and function. Neuroimage. 2018;178:540&#8211;51.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.neuroimage.2018.05.070</ArticleId>
+            <ArticleId IdType="pmc">PMC6095687</ArticleId>
+            <ArticleId IdType="pubmed">29860082</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Subramanian A, Tamayo P, Mootha VK, et al. Gene set enrichment analysis: a knowledge-based approach for interpreting genome-wide expression profiles. Proc Natl Acad Sci U S A. 2005;102:15545&#8211;50.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1073/pnas.0506580102</ArticleId>
+            <ArticleId IdType="pmc">PMC1239896</ArticleId>
+            <ArticleId IdType="pubmed">16199517</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhang B, Kirov S, Snoddy J. WebGestalt: an integrated system for exploring gene sets in various biological contexts. Nucleic Acids Res. 2005;33:W741-748.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/nar/gki475</ArticleId>
+            <ArticleId IdType="pmc">PMC1160236</ArticleId>
+            <ArticleId IdType="pubmed">15980575</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Elizarraras JM, Liao Y, Shi Z, Zhu Q, Pico AR, Zhang B. WebGestalt 2024: faster gene set analysis and new support for metabolomics and multi-omics. Nucleic Acids Res. 2024;52:W415&#8211;21.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/nar/gkae456</ArticleId>
+            <ArticleId IdType="pmc">PMC11223849</ArticleId>
+            <ArticleId IdType="pubmed">38808672</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Mi H, Thomas P. PANTHER pathway: an ontology-based pathway database coupled with data analysis tools. Methods Mol Biol. 2009;563:123&#8211;40.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/978-1-60761-175-2_7</ArticleId>
+            <ArticleId IdType="pmc">PMC6608593</ArticleId>
+            <ArticleId IdType="pubmed">19597783</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Guo P, Gong W, Li Y, et al. Pinpointing novel risk loci for Lewy body dementia and the shared genetic etiology with Alzheimer&#8217;s disease and Parkinson&#8217;s disease: a large-scale multi-trait association analysis. BMC Med. 2022;20:214.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1186/s12916-022-02404-2</ArticleId>
+            <ArticleId IdType="pmc">PMC9214990</ArticleId>
+            <ArticleId IdType="pubmed">35729600</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Kanehisa M, Furumichi M, Sato Y, Kawashima M, Ishiguro-Watanabe M. KEGG for taxonomy-based analysis of pathways and genomes. Nucleic Acids Res. 2023;51:D587&#8211;92.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/nar/gkac963</ArticleId>
+            <ArticleId IdType="pmc">PMC9825424</ArticleId>
+            <ArticleId IdType="pubmed">36300620</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Consortium GT. The Genotype-Tissue Expression (GTEx) project. Nat Genet. 2013;45:580&#8211;5.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/ng.2653</ArticleId>
+            <ArticleId IdType="pmc">PMC4010069</ArticleId>
+            <ArticleId IdType="pubmed">23715323</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Elam JS, Glasser MF, Harms MP, et al. The human connectome project: a retrospective. Neuroimage. 2021;244:118543.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.neuroimage.2021.118543</ArticleId>
+            <ArticleId IdType="pmc">PMC9387634</ArticleId>
+            <ArticleId IdType="pubmed">34508893</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Shafiei G, Markello RD, Makowski C, et al. Spatial patterning of tissue volume loss in schizophrenia reflects brain network architecture. Biol Psychiatry. 2020;87:727&#8211;35.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.biopsych.2019.09.031</ArticleId>
+            <ArticleId IdType="pubmed">31837746</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Hansen JY, Shafiei G, Markello RD, et al. Mapping neurotransmitter systems to the structural and functional organization of the human neocortex. Nat Neurosci. 2022;25:1569&#8211;81. 10.1038/s41593-022-01186-3.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/s41593-022-01186-3</ArticleId>
+            <ArticleId IdType="pmc">PMC9630096</ArticleId>
+            <ArticleId IdType="pubmed">36303070</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Joza S, Delva A, Tremblay C, et al. Distinct brain atrophy progression subtypes underlie phenoconversion in isolated REM sleep behaviour disorder. EBioMedicine. 2025;117:105753.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.ebiom.2025.105753</ArticleId>
+            <ArticleId IdType="pmc">PMC12177146</ArticleId>
+            <ArticleId IdType="pubmed">40447483</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Oppedal K, Ferreira D, Cavallin L, et al. A signature pattern of cortical atrophy in dementia with Lewy bodies: a study on 333 patients from the European DLB consortium. Alzheimers Dement. 2019;15:400&#8211;9.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jalz.2018.09.011</ArticleId>
+            <ArticleId IdType="pubmed">30439333</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Chougar L, Tremblay C, Delva A, et al. MRI-derived atrophy in multiple system atrophy aligns with mitochondrial and glial gene expression patterns. NPJ Parkinsons Dis. 2025: 16.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC12800306</ArticleId>
+            <ArticleId IdType="pubmed">41453978</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Filiatrault M, Ayral V, Tremblay C, et al. Estrogen-related receptor gene expression associates with sex differences in cortical atrophy in isolated REM sleep behavior disorder. Nat Commun. 2025;16:9016.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/s41467-025-63829-w</ArticleId>
+            <ArticleId IdType="pmc">PMC12514017</ArticleId>
+            <ArticleId IdType="pubmed">41073384</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Vo A, Tremblay C, Rahayel S, et al. Global network and local vulnerabilities underlie brain atrophy across Parkinson's disease stages. Brain. 2025;14:awaf432.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">41237265</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Winkler AM, Greve DN, Bjuland KJ, et al. Joint analysis of cortical area and thickness as a replacement for the analysis of the volume of the cerebral cortex. Cereb Cortex. 2018;28:738&#8211;49.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/cercor/bhx308</ArticleId>
+            <ArticleId IdType="pmc">PMC5972607</ArticleId>
+            <ArticleId IdType="pubmed">29190325</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Winkler AM, Kochunov P, Blangero J, et al. Cortical thickness or grey matter volume? The importance of selecting the phenotype for imaging genetics studies. Neuroimage. 2010;53:1135&#8211;46.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.neuroimage.2009.12.028</ArticleId>
+            <ArticleId IdType="pmc">PMC2891595</ArticleId>
+            <ArticleId IdType="pubmed">20006715</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wierenga LM, Langen M, Oranje B, Durston S. Unique developmental trajectories of cortical thickness and surface area. Neuroimage. 2014;87:120&#8211;6.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.neuroimage.2013.11.010</ArticleId>
+            <ArticleId IdType="pubmed">24246495</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Panizzon MS, Fennema-Notestine C, Eyler LT, et al. Distinct genetic influences on cortical surface area and cortical thickness. Cereb Cortex. 2009;19:2728&#8211;35.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/cercor/bhp026</ArticleId>
+            <ArticleId IdType="pmc">PMC2758684</ArticleId>
+            <ArticleId IdType="pubmed">19299253</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Im K, Lee JM, Lyttelton O, Kim SH, Evans AC, Kim SI. Brain size and cortical structure in the adult human brain. Cereb Cortex. 2008;18:2181&#8211;91.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/cercor/bhm244</ArticleId>
+            <ArticleId IdType="pubmed">18234686</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Peng C, Trojanowski JQ, Lee VM. Protein transmission in neurodegenerative disease. Nat Rev Neurol. 2020;16:199&#8211;212.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/s41582-020-0333-7</ArticleId>
+            <ArticleId IdType="pmc">PMC9242841</ArticleId>
+            <ArticleId IdType="pubmed">32203399</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Abdelgawad A, Rahayel S, Zheng YQ, et al. Predicting longitudinal brain atrophy in Parkinson&#8217;s disease using a Susceptible-Infected-Removed agent-based model. Netw Neurosci. 2023;7:906&#8211;25.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1162/netn_a_00296</ArticleId>
+            <ArticleId IdType="pmc">PMC10473281</ArticleId>
+            <ArticleId IdType="pubmed">37781140</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Frigerio I, Bouwman MMA, Noordermeer R, et al. Regional differences in synaptic degeneration are linked to alpha-synuclein burden and axonal damage in Parkinson&#8217;s disease and dementia with Lewy bodies. Acta Neuropathol Commun. 2024;12:4.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1186/s40478-023-01711-w</ArticleId>
+            <ArticleId IdType="pmc">PMC10765668</ArticleId>
+            <ArticleId IdType="pubmed">38173031</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Taddei RN, Duff KE. Synapse vulnerability and resilience across the clinical spectrum of dementias. Nat Rev Neurol. 2025;21:353&#8211;69.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1038/s41582-025-01094-7</ArticleId>
+            <ArticleId IdType="pubmed">40404832</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Andersen KB, Hansen AK, Damholdt MF, et al. Reduced synaptic density in patients with Lewy body dementia: an [(11) C]UCB-J PET Imaging Study. Mov Disord. 2021;36:2057&#8211;65.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/mds.28617</ArticleId>
+            <ArticleId IdType="pubmed">33899255</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Khundakar AA, Hanson PS, Erskine D, et al. Analysis of primary visual cortex in dementia with Lewy bodies indicates GABAergic involvement associated with recurrent complex visual hallucinations. Acta Neuropathol Commun. 2016;4:66.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1186/s40478-016-0334-3</ArticleId>
+            <ArticleId IdType="pmc">PMC4928325</ArticleId>
+            <ArticleId IdType="pubmed">27357212</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Mak E, Su L, Williams GB, et al. Longitudinal assessment of global and regional atrophy rates in Alzheimer&#8217;s disease and dementia with Lewy bodies. Neuroimage Clin. 2015;7:456&#8211;62.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.nicl.2015.01.017</ArticleId>
+            <ArticleId IdType="pmc">PMC4325088</ArticleId>
+            <ArticleId IdType="pubmed">25685712</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Mak E, Su L, Williams GB, et al. Progressive cortical thinning and subcortical atrophy in dementia with Lewy bodies and Alzheimer&#8217;s disease. Neurobiol Aging. 2015;36:1743&#8211;50.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.neurobiolaging.2014.12.038</ArticleId>
+            <ArticleId IdType="pubmed">25649023</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Whitwell JL, Jack CR, Parisi JE, et al. Rates of cerebral atrophy differ in different degenerative pathologies. Brain. 2007;130:1148&#8211;58.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/brain/awm021</ArticleId>
+            <ArticleId IdType="pmc">PMC2752409</ArticleId>
+            <ArticleId IdType="pubmed">17347250</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Galli A, Pilotto A, Chiarini B, et al. Occipital atrophy signature in prodromal Lewy bodies disease. Alzheimers Dement (Amst). 2023;15:e12462.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/dad2.12462</ArticleId>
+            <ArticleId IdType="pmc">PMC10668003</ArticleId>
+            <ArticleId IdType="pubmed">38026754</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Blanc F, Colloby SJ, Philippi N, et al. Cortical thickness in dementia with Lewy bodies and Alzheimer&#8217;s disease: a comparison of prodromal and dementia stages. PLoS ONE. 2015;10:e0127396.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1371/journal.pone.0127396</ArticleId>
+            <ArticleId IdType="pmc">PMC4489516</ArticleId>
+            <ArticleId IdType="pubmed">26061655</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Nakata T, Shimada K, Iba A, et al. Differential diagnosis of MCI with Lewy bodies and MCI due to Alzheimer&#8217;s disease by visual assessment of occipital hypoperfusion on SPECT images. Jpn J Radiol. 2024;42:308&#8211;18.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/s11604-023-01501-3</ArticleId>
+            <ArticleId IdType="pubmed">37861956</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Kantarci K, Boeve BF, Przybelski SA, et al. FDG PET metabolic signatures distinguishing prodromal DLB and prodromal AD. Neuroimage Clin. 2021;31:102754.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.nicl.2021.102754</ArticleId>
+            <ArticleId IdType="pmc">PMC8278422</ArticleId>
+            <ArticleId IdType="pubmed">34252877</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Navarro A, Boveris A, Bandez MJ, et al. Human brain cortex: mitochondrial oxidative damage and adaptive response in Parkinson disease and in dementia with Lewy bodies. Free Radic Biol Med. 2009;46:1574&#8211;80.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.freeradbiomed.2009.03.007</ArticleId>
+            <ArticleId IdType="pubmed">19298851</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Schumacher J, Ray NJ, Hamilton CA, et al. Free water imaging of the cholinergic system in dementia with Lewy bodies and Alzheimer&#8217;s disease. Alzheimers Dement. 2023;19:4549&#8211;63.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/alz.13034</ArticleId>
+            <ArticleId IdType="pubmed">36919460</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Schumacher J, Teipel S, Storch A. Association of Alzheimer&#8217;s and Lewy body disease pathology with basal forebrain volume and cognitive impairment. Alzheimers Res Ther. 2025;17:28.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1186/s13195-025-01678-x</ArticleId>
+            <ArticleId IdType="pmc">PMC11771035</ArticleId>
+            <ArticleId IdType="pubmed">39865328</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Kantarci K, Nedelska Z, Chen Q, et al. Longitudinal atrophy in prodromal dementia with Lewy bodies points to cholinergic degeneration. Brain Commun. 2022;4:fcac013.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/braincomms/fcac013</ArticleId>
+            <ArticleId IdType="pmc">PMC8994111</ArticleId>
+            <ArticleId IdType="pubmed">35415608</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Woo KA, Kim H, Kim R, et al. Cholinergic degeneration and early cognitive signs in prodromal Lewy body dementia. Alzheimers Dement. 2025;21:e14584.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/alz.14584</ArticleId>
+            <ArticleId IdType="pmc">PMC11846479</ArticleId>
+            <ArticleId IdType="pubmed">39985502</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Hatton C, Reeve A, Lax NZ, et al. Complex I reductions in the nucleus basalis of Meynert in Lewy body dementia: the role of Lewy bodies. Acta Neuropathol Commun. 2020;8:103.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1186/s40478-020-00985-8</ArticleId>
+            <ArticleId IdType="pmc">PMC7346628</ArticleId>
+            <ArticleId IdType="pubmed">32646480</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wu KM, Xu QH, Liu YQ, et al. Neuronal FAM171A2 mediates &#945;-synuclein fibril uptake and drives Parkinson&#8217;s disease. Science. 2025;387:892&#8211;900.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1126/science.adp3645</ArticleId>
+            <ArticleId IdType="pubmed">39977508</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Irwin DJ, Grossman M, Weintraub D, et al. Neuropathological and genetic correlates of survival and dementia onset in synucleinopathies: a retrospective analysis. Lancet Neurol. 2017;16:55&#8211;65.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S1474-4422(16)30291-5</ArticleId>
+            <ArticleId IdType="pmc">PMC5181646</ArticleId>
+            <ArticleId IdType="pubmed">27979356</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Irwin DJ, Hurtig HI. The contribution of tau, amyloid-beta and alpha-synuclein pathology to dementia in Lewy body disorders. J Alzheimers Dis Parkinsonism. 2018;8:444.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.4172/2161-0460.1000444</ArticleId>
+            <ArticleId IdType="pmc">PMC6248323</ArticleId>
+            <ArticleId IdType="pubmed">30473927</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Irwin DJ, Xie SX, Coughlin D, et al. CSF tau and beta-amyloid predict cerebral synucleinopathy in autopsied Lewy body disorders. Neurology. 2018;90:e1038&#8211;46.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1212/WNL.0000000000005166</ArticleId>
+            <ArticleId IdType="pmc">PMC5874449</ArticleId>
+            <ArticleId IdType="pubmed">29467305</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Delva A, Pelletier A, Somerville E, et al. Plasma pTau181 and amyloid markers predict conversion to dementia in idiopathic REM sleep behaviour disorder. Brain. 2025;148:2049&#8211;59.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/brain/awaf003</ArticleId>
+            <ArticleId IdType="pmc">PMC12129744</ArticleId>
+            <ArticleId IdType="pubmed">39761530</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Firbank MJ, Parikh J, Murphy N, et al. Reduced occipital GABA in Parkinson disease with visual hallucinations. Neurology. 2018;91:e675&#8211;85.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1212/WNL.0000000000006007</ArticleId>
+            <ArticleId IdType="pmc">PMC6105043</ArticleId>
+            <ArticleId IdType="pubmed">30021920</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Taylor JP, Firbank M, O&#8217;Brien JT. Visual cortical excitability in dementia with Lewy bodies. Br J Psychiatry. 2016;208:497&#8211;8.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1192/bjp.bp.114.152736</ArticleId>
+            <ArticleId IdType="pmc">PMC4853644</ArticleId>
+            <ArticleId IdType="pubmed">26541688</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Borda MG, Jaramillo-Jimenez A, Oesterhus R, et al. Benzodiazepines and antidepressants: effects on cognitive and functional decline in Alzheimer&#8217;s disease and Lewy body dementia. Int J Geriatr Psychiatry. 2021;36:917&#8211;25.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/gps.5494</ArticleId>
+            <ArticleId IdType="pubmed">33382911</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Pariente A, de Gage SB, Moore N, Begaud B. The benzodiazepine-dementia disorders link: current state of knowledge. CNS Drugs. 2016;30:1&#8211;7.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/s40263-015-0305-4</ArticleId>
+            <ArticleId IdType="pubmed">26715389</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Stinton C, McKeith I, Taylor JP, et al. Pharmacological management of Lewy body dementia: a systematic review and meta-analysis. Am J Psychiatry. 2015;172:731&#8211;42.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1176/appi.ajp.2015.14121582</ArticleId>
+            <ArticleId IdType="pubmed">26085043</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Braak H, Del Tredici K, Rub U, de Vos RA, Jansen Steur EN, Braak E. Staging of brain pathology related to sporadic Parkinson&#8217;s disease. Neurobiol Aging. 2003;24:197&#8211;211.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S0197-4580(02)00065-9</ArticleId>
+            <ArticleId IdType="pubmed">12498954</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Jellinger KA. Depression in dementia with Lewy bodies: a critical update. J Neural Transm (Vienna). 2023;130:1207&#8211;18.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/s00702-023-02669-8</ArticleId>
+            <ArticleId IdType="pubmed">37418037</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sharp SI, Ballard CG, Ziabreva I, et al. Cortical serotonin 1A receptor levels are associated with depression in patients with dementia with Lewy bodies and Parkinson&#8217;s disease dementia. Dement Geriatr Cogn Disord. 2008;26:330&#8211;8.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1159/000161058</ArticleId>
+            <ArticleId IdType="pubmed">18841018</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Barrett MJ, Cloud LJ, Shah H, Holloway KL. Therapeutic approaches to cholinergic deficiency in Lewy body diseases. Expert Rev Neurother. 2020;20:41&#8211;53.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1080/14737175.2020.1676152</ArticleId>
+            <ArticleId IdType="pubmed">31577469</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Heller NH, Barrett FS, Buchborn T, et al. Visual hallucinations in serotonergic psychedelics and Lewy body diseases. Schizophr Bull. 2025;51:S273&#8211;91.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/schbul/sbaf068</ArticleId>
+            <ArticleId IdType="pmc">PMC12498954</ArticleId>
+            <ArticleId IdType="pubmed">41051875</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Luk KC, Kehm VM, Zhang B, O&#8217;Brien P, Trojanowski JQ, Lee VM. Intracerebral inoculation of pathological alpha-synuclein initiates a rapidly progressive neurodegenerative alpha-synucleinopathy in mice. J Exp Med. 2012;209:975&#8211;86.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1084/jem.20112457</ArticleId>
+            <ArticleId IdType="pmc">PMC3348112</ArticleId>
+            <ArticleId IdType="pubmed">22508839</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Rey NL, George S, Steiner JA, et al. Spread of aggregates after olfactory bulb injection of alpha-synuclein fibrils is associated with early neuronal loss and is reduced long term. Acta Neuropathol. 2018;135:65&#8211;83.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/s00401-017-1792-9</ArticleId>
+            <ArticleId IdType="pmc">PMC5756266</ArticleId>
+            <ArticleId IdType="pubmed">29209768</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Tremblay C, Pastor-Bernier A, Rheault F, et al. Altered network efficiency in isolated REM sleep behavior disorder: a multicentric study. Alzheimers Dement. 2025;21:e70574.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/alz.70574</ArticleId>
+            <ArticleId IdType="pmc">PMC12340432</ArticleId>
+            <ArticleId IdType="pubmed">40791089</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ayral V, Pastor-Bernier A, Daneault V, et al. Association of DTI-ALPS Glymphatic index with differential phenoconversion in Isolated REM Sleep behavior disorder: a multi-cohort MRI study. Neurology. 2025;105:e214042.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1212/WNL.0000000000214042</ArticleId>
+            <ArticleId IdType="pmc">PMC12456434</ArticleId>
+            <ArticleId IdType="pubmed">40956987</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Haddad C, Daneault V, Ayral V, et al. Free water predicts dementia with Lewy bodies in isolated REM sleep behavior disorder. Alzheimers Dement. 2025;21:e70570.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/alz.70570</ArticleId>
+            <ArticleId IdType="pmc">PMC12447249</ArticleId>
+            <ArticleId IdType="pubmed">40970479</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Genier Marchand D, Montplaisir J, Postuma RB, Rahayel S, Gagnon JF. Detecting the cognitive prodrome of dementia with Lewy bodies: a prospective study of REM sleep behavior disorder. Sleep. 2017;40:zsw014.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">28364450</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Harding AJ, Halliday GM. Cortical Lewy body pathology in the diagnosis of dementia. Acta Neuropathol. 2001;102:355&#8211;63.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/s004010100390</ArticleId>
+            <ArticleId IdType="pubmed">11603811</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

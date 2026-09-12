@@ -20,66 +20,67 @@ url_patterns:
 dance_function: the_doi_slide
 journals:
   simple_list:
-  - Front Vet Sci
-  - Front Cardiovasc Med
-  - Front Chem
-  - Front Cell Dev Biol
+  - Front Aging Neurosci
+  - Front Appl Math Stat
+  - Front Artif Intell
+  - Front Big Data
   - Front Bioeng Biotechnol
+  - Front Built Environ
+  - Front Cardiovasc Med
+  - Front Cell Dev Biol
+  - Front Cell Infect Microbiol
+  - Front Cell Neurosci
+  - Front Chem
+  - Front Commun (Lausanne)
+  - Front Comput Neurosci
+  - Front Digit Health
+  - Front Earth Sci (Lausanne)
   - Front Ecol Evol
+  - Front Educ (Lausanne)
+  - Front Endocrinol (Lausanne)
+  - Front Energy Res
+  - Front Environ Sci
   - Front Evol Neurosci
-  - Frontiers (Boulder)
+  - Front Genet
+  - Front Hum Neurosci
+  - Front ICT
+  - Front Immunol
+  - Front Mar Sci
+  - Front Mater
+  - Front Mech Eng
+  - Front Med (Lausanne)
+  - Front Med Technol
+  - Front Microbiol
+  - Front Mol Biosci
   - Front Mol Neurosci
   - Front Neural Circuits
-  - Front Cell Neurosci
-  - Front Syst Neurosci
   - Front Neuroanat
-  - Front Comput Neurosci
-  - Front Hum Neurosci
-  - Front Neurorobot
-  - Front Neuroinform
-  - Front Mar Sci
-  - Front Phys
-  - Front Nutr
-  - Front Surg
-  - Front Med (Lausanne)
-  - Front Aging Neurosci
-  - Front Pediatr
-  - Front Public Health
-  - Front Neurol
-  - Front Pharmacol
-  - Front Synaptic Neurosci
-  - Front Physiol
-  - Front Microbiol
-  - Front Psychol
-  - Front Psychiatry
-  - Front Cell Infect Microbiol
-  - Front Sports Act Living
-  - Front Big Data
-  - Front Artif Intell
-  - Front Mol Biosci
-  - Front Earth Sci (Lausanne)
-  - Front Robot AI
-  - Front Sustain Food Syst
-  - Front Mech Eng
-  - Front Built Environ
-  - Front Appl Math Stat
-  - Front Digit Health
-  - Front Med Technol
-  - Front Mater
-  - Front Environ Sci
-  - Front Commun (Lausanne)
-  - Front Res Metr Anal
-  - Oncol Rev
-  - Front Endocrinol (Lausanne)
-  - Front Genet
-  - Front Immunol
-  - Front Plant Sci
-  - Front Oncol
   - Front Neuroenergetics
+  - Front Neuroinform
+  - Front Neurol
+  - Front Neurorobot
   - Front Neurosci
-  - Front Energy Res
-  - Front Educ (Lausanne)
-  - Front ICT
+  - Front Nutr
+  - Front Oncol
+  - Front Pediatr
+  - Front Pharmacol
+  - Front Phys
+  - Front Physiol
+  - Front Plant Sci
+  - Front Psychiatry
+  - Front Psychol
+  - Front Public Health
+  - Front Res Metr Anal
+  - Front Robot AI
+  - Front Sports Act Living
+  - Front Surg
+  - Front Sustain Food Syst
+  - Front Synaptic Neurosci
+  - Front Syst Neurosci
+  - Front Vet Sci
+  - Frontiers (Boulder)
+  - Oncol Rev
+  - Transpl Int
 metadata:
   evidence_date: '2025-08-11'
   verification_notes: ''

@@ -8,33 +8,7 @@ url_patterns:
 dance_function: the_sciencedirect_disco
 journals:
   simple_list:
-  - Am J Hum Genet
-  - Biophys J
-  - Cancer Cell
-  - Cell
-  - Cell Host Microbe
-  - Cell Metab
-  - Cell Stem Cell
-  - Chem Biol
-  - Curr Biol
-  - Dev Cell
-  - Immunity
-  - Mol Cell
-  - Neuron
-  - Structure
-  - Trends Mol Med
-  - Lancet
-  - Lancet Diabetes Endocrinol
-  - Lancet Glob Health
-  - Lancet Haematol
-  - Lancet HIV
-  - Lancet Infect Dis
-  - Lancet Neurol
-  - Lancet Oncol
-  - Lancet Psychiatry
-  - Lancet Respir Med
   - AACE Clin Case Rep
-  - AWHONN Lifelines
   - Acad Pathol
   - Acad Pediatr
   - Acad Radiol
@@ -162,6 +136,7 @@ journals:
   - Am J Emerg Med
   - Am J Geriatr Pharmacother
   - Am J Geriatr Psychiatry
+  - Am J Hum Genet
   - Am J Infect Control
   - Am J Kidney Dis
   - Am J Med
@@ -336,8 +311,7 @@ journals:
   - Autoimmun Rev
   - Automatica (Oxf)
   - Auton Neurosci
-  - BBA Clin
-  - BJA Educ
+  - AWHONN Lifelines
   - Baillieres Best Pract Res Clin Endocrinol Metab
   - Baillieres Best Pract Res Clin Gastroenterol
   - Baillieres Best Pract Res Clin Haematol
@@ -351,6 +325,7 @@ journals:
   - Baillieres Clin Rheumatol
   - Basal Ganglia
   - Basic Appl Ecol
+  - BBA Clin
   - Behav Biol
   - Behav Brain Res
   - Behav Neural Biol
@@ -366,7 +341,6 @@ journals:
   - Best Pract Res Clin Obstet Gynaecol
   - Best Pract Res Clin Rheumatol
   - Bibl Laeger
-  - BioSystems
   - Bioact Mater
   - Biocatal Agric Biotechnol
   - Biochem Biophys Rep
@@ -416,6 +390,7 @@ journals:
   - Bioorg Med Chem
   - Bioorg Med Chem Lett
   - Biophys Chem
+  - Biophys J
   - Bioprinting
   - Bioresour Technol
   - Bioresour Technol Rep
@@ -425,11 +400,13 @@ journals:
   - Biosens Bioelectron X
   - Biosurf Biotribol
   - Biosyst Eng
+  - BioSystems
   - Biosystems
   - Biotechnol Adv
   - Biotechnol Annu Rev
   - Biotechnol Rep (Amst)
   - Biotribology (Oxf)
+  - BJA Educ
   - Blood Cells Mol Dis
   - Blood Rev
   - Body Image
@@ -480,13 +457,10 @@ journals:
   - C R Acad Sci III, Sci Vie
   - C R Biol
   - CALPHAD
-  - CASE (Phila)
-  - CIRP Ann Manuf Technol
-  - CIRP J Manuf Sci Technol
-  - CJC Open
   - Can J Cardiol
   - Can J Diabetes
   - Can J Ophthalmol
+  - Cancer Cell
   - Cancer Chemother Biol Response Modif
   - Cancer Detect Prev
   - Cancer Epidemiol
@@ -509,6 +483,7 @@ journals:
   - Cardiovasc Revasc Med
   - Cardiovasc Surg
   - Cas Lek Cesk
+  - CASE (Phila)
   - Case Manager
   - Case Rep Womens Health
   - Case Stud Eng Fail Anal
@@ -516,16 +491,20 @@ journals:
   - Catal Commun
   - Catal Today
   - Catena (Amst)
+  - Cell
   - Cell Calcium
   - Cell Chem Biol
   - Cell Differ
   - Cell Differ Dev
+  - Cell Host Microbe
   - Cell Immunol
+  - Cell Metab
   - Cell Mol Gastroenterol Hepatol
   - Cell Rep
   - Cell Rep Med
   - Cell Rep Phys Sci
   - Cell Signal
+  - Cell Stem Cell
   - Cell Surf
   - Cell Syst
   - Cem Concr Compos
@@ -533,6 +512,7 @@ journals:
   - Ceram Int
   - Chaos Solitons Fractals
   - Chem
+  - Chem Biol
   - Chem Biol Interact
   - Chem Eng J
   - Chem Eng Process
@@ -558,7 +538,10 @@ journals:
   - Chir Main
   - Chromatogr Rev
   - Cir Esp
+  - CIRP Ann Manuf Technol
+  - CIRP J Manuf Sci Technol
   - Cities
+  - CJC Open
   - Clim Risk Manag
   - Clim Serv
   - Clin Appl Immunol Rev
@@ -739,6 +722,7 @@ journals:
   - Cryogenics (Guildf)
   - Curr Anaesth Crit Care
   - Curr Appl Phys
+  - Curr Biol
   - Curr Dev Nutr
   - Curr Med Res Pract
   - Curr Mod Biol
@@ -799,7 +783,6 @@ journals:
   - Cytokine Growth Factor Rev
   - Cytokine X
   - Cytotherapy
-  - DNA Repair (Amst)
   - Data Brief
   - Data Inf Manag
   - Data Knowl Eng
@@ -815,6 +798,7 @@ journals:
   - Des Stud
   - Desalination
   - Dev Biol
+  - Dev Cell
   - Dev Clay Sci
   - Dev Cogn Neurosci
   - Dev Comp Immunol
@@ -839,6 +823,7 @@ journals:
   - Disaster Manag Response
   - Discrete Appl Math
   - Discrete Math
+  - DNA Repair (Amst)
   - Domest Anim Endocrinol
   - Drug Alcohol Depend
   - Drug Discov Today
@@ -850,19 +835,13 @@ journals:
   - Drug Resist Updat
   - Dyes Pigm
   - E Spen Eur E J Clin Nutr Metab
-  - EBioMedicine
-  - EClinicalMedicine
-  - EJC Suppl
-  - EJVES Short Rep
-  - EJVES Vasc Forum
-  - EMC Pediatr
-  - ESCAPE
-  - ESPEN J
   - Early Child Res Q
   - Early Hum Dev
   - Earth Planet Sci Lett
   - Earth Sci Rev
   - Eat Behav
+  - EBioMedicine
+  - EClinicalMedicine
   - Ecol Econ
   - Ecol Genet Genom
   - Ecol Indic
@@ -877,6 +856,9 @@ journals:
   - Ecosyst Serv
   - Ecotoxicol Environ Saf
   - Egypt J Chest Dis Tuberc
+  - EJC Suppl
+  - EJVES Short Rep
+  - EJVES Vasc Forum
   - Elect Stud
   - Electrochem commun
   - Electrochim Acta
@@ -885,6 +867,7 @@ journals:
   - Electron J Biotechnol
   - Electron Microsc Rev
   - Electron Notes Theor Comput Sci
+  - EMC Pediatr
   - Emerg Contam
   - Emerg Med Clin North Am
   - Emot Space Soc
@@ -902,6 +885,7 @@ journals:
   - Energy Res Soc Sci
   - Energy Storage Mater
   - Energy Sustain Dev
+  - eNeurologicalSci
   - Enferm Clin
   - Enferm Infecc Microbiol Clin
   - Enferm Intensiva
@@ -931,6 +915,8 @@ journals:
   - Epilepsy Behav Case Rep
   - Epilepsy Behav Rep
   - Epilepsy Res
+  - ESCAPE
+  - ESPEN J
   - Estuar Coast Shelf Sci
   - Ethics Med Public Health
   - Ethique Sante
@@ -946,7 +932,6 @@ journals:
   - Eur J Cell Biol
   - Eur J Comb
   - Eur J Control
-  - Eur J Gynaecol Oncol
   - Eur J Integr Med
   - Eur J Intern Med
   - Eur J Mech A Solids
@@ -1004,12 +989,11 @@ journals:
   - F S Rep
   - F S Rev
   - F S Sci
-  - FEBS Lett
-  - FMC
   - Facial Plast Surg Clin North Am
   - Fam Pract
   - Farm Hosp
   - Farmaco
+  - FEBS Lett
   - Fertil Steril
   - Fibrinolysis
   - Field Crops Res
@@ -1023,6 +1007,7 @@ journals:
   - Flora
   - Flow Meas Instrum
   - Fluid Phase Equilib
+  - FMC
   - Fold Des
   - Food Biosci
   - Food Chem
@@ -1087,12 +1072,12 @@ journals:
   - Genom Data
   - Genomics
   - Genomics Proteomics Bioinformatics
-  - GeoResJ
   - Geochim Cosmochim Acta
   - Geod Geodyn
   - Geoderma
   - Geoforum
   - Geomorphology (Amst)
+  - GeoResJ
   - Geothermics
   - Geriatr Nurs
   - Gerontologie
@@ -1116,9 +1101,6 @@ journals:
   - Gynecol Oncol
   - Gynecol Oncol Case Rep
   - Gynecol Oncol Rep
-  - HBPD INT
-  - HGG Adv
-  - HPB (Oxford)
   - Habitat Int
   - Hand Clin
   - Hand Surg Rehabil
@@ -1127,6 +1109,7 @@ journals:
   - HardwareX
   - Harmful Algae
   - Hayati
+  - HBPD INT
   - Health Outcomes Res Med
   - Health Place
   - Health Policy
@@ -1149,6 +1132,7 @@ journals:
   - Hematol Transfus Cell Ther
   - Hepatobiliary Pancreat Dis Int
   - Hepatol Res
+  - HGG Adv
   - High Energy Density Phys
   - Hipertens Riesgo Vasc
   - Home Care Provid
@@ -1157,19 +1141,19 @@ journals:
   - Horm Behav
   - Hosp Aviat
   - Hosp Med Clin
+  - HPB (Oxford)
   - Hum Immunol
   - Hum Microb J
   - Hum Mov Sci
   - Hum Pathol
   - Hum Pathol (N Y)
   - IBRO Rep
+  - Icarus
   - ICS
   - IDCases
   - IJC Metab Endocr
-  - ISA Trans
-  - ISPRS J Photogramm Remote Sens
-  - Icarus
   - Image Vis Comput
+  - Immunity
   - Immunobiology
   - Immunochemistry
   - Immunol Allergy Clin North Am
@@ -1247,7 +1231,6 @@ journals:
   - Int J Forecast
   - Int J Gastron Food Sci
   - Int J Gerontol
-  - Int J Gynaecol Obstet
   - Int J Heat Fluid Flow
   - Int J Heat Mass Transf
   - Int J Hosp Manag
@@ -1326,7 +1309,10 @@ journals:
   - Internet High Educ
   - Internet Interv
   - Interv Cardiol Clin
+  - ISA Trans
+  - iScience
   - Isot Geosci
+  - ISPRS J Photogramm Remote Sens
   - J AAPOS
   - J Acad Nutr Diet
   - J Acupunct Meridian Stud
@@ -1525,6 +1511,7 @@ journals:
   - J Exp Mar Biol Ecol
   - J Exp Soc Psychol
   - J Fac Radiol
+  - J financ econ
   - J Fluency Disord
   - J Fluids Struct
   - J Fluor Chem
@@ -1723,7 +1710,6 @@ journals:
   - J Reprod Immunol
   - J Res Pers
   - J Rural Stud
-  - J SOGC
   - J Safety Res
   - J Sch Psychol
   - J Sci Med Sport
@@ -1733,6 +1719,7 @@ journals:
   - J Soc Biol Struct
   - J Soc Gynecol Investig
   - J Socio Econ
+  - J SOGC
   - J Solid State Chem
   - J Sound Vib
   - J South Am Earth Sci
@@ -1790,7 +1777,6 @@ journals:
   - J Vocat Behav
   - J Voice
   - J World Fed Orthod
-  - J financ econ
   - JAAD Case Rep
   - JACC Basic Transl Sci
   - JACC CardioOncol
@@ -1800,21 +1786,21 @@ journals:
   - JACC Clin Electrophysiol
   - JACC Heart Fail
   - JACEP
+  - Japan World Econ
   - JHEP Rep
   - JOGN Nurs
-  - JPRAS Open
-  - JSES Int
-  - JSES Open Access
-  - JTCVS Tech
-  - JTO Clin Res Rep
-  - JVS Vasc Sci
-  - Japan World Econ
   - Joint Bone Spine
   - Joule
   - Jpn Dent Sci Rev
+  - JPRAS Open
+  - JSES Int
+  - JSES Open Access
   - Jt Comm J Qual Improv
   - Jt Comm J Qual Patient Saf
   - Jt Comm J Qual Saf
+  - JTCVS Tech
+  - JTO Clin Res Rep
+  - JVS Vasc Sci
   - Kaohsiung J Med Sci
   - Kidney Int Rep
   - Kidney Int Suppl
@@ -1826,13 +1812,23 @@ journals:
   - Krankenhaushyg Infektionsverhut
   - Lab Invest
   - Labour Econ
+  - Lancet
   - Lancet Child Adolesc Health
+  - Lancet Diabetes Endocrinol
   - Lancet Digit Health
   - Lancet Gastroenterol Hepatol
+  - Lancet Glob Health
+  - Lancet Haematol
   - Lancet Healthy Longev
+  - Lancet HIV
+  - Lancet Infect Dis
   - Lancet Microbe
+  - Lancet Neurol
+  - Lancet Oncol
   - Lancet Planet Health
+  - Lancet Psychiatry
   - Lancet Public Health
+  - Lancet Respir Med
   - Lancet Rheumatol
   - Land use policy
   - Landsc Urban Plan
@@ -1956,12 +1952,12 @@ journals:
   - Microprocess Microsyst
   - Microvasc Res
   - Midwifery
-  - Mikrobiyol Bul
   - Mindfulness Compassion
   - Mitochondrion
   - Mol Aspects Med
   - Mol Astrophys
   - Mol Biochem Parasitol
+  - Mol Cell
   - Mol Cell Biol Res Commun
   - Mol Cell Endocrinol
   - Mol Cell Neurosci
@@ -1990,12 +1986,12 @@ journals:
   - Mutat Res Rev Mutat Res
   - Mycol Res
   - N Biotechnol
-  - NDT E Int
   - Nano Commun Netw
   - Nano Energy
   - Nano Today
   - NanoImpact
   - Nanomedicine
+  - NDT E Int
   - Nefrologia
   - Neoplasia
   - Nephrol Ther
@@ -2024,6 +2020,7 @@ journals:
   - Neurologia
   - Neuromodulation
   - Neuromuscul Disord
+  - Neuron
   - Neuropeptides
   - Neuropharmacology
   - Neurophysiol Clin
@@ -2083,6 +2080,7 @@ journals:
   - Oper Tech Thorac Cardiovasc Surg
   - Ophthalmol Glaucoma
   - Ophthalmol Retina
+  - Ophthalmology
   - Opt Commun
   - Opt Laser Technol
   - Opt Lasers Eng
@@ -2110,7 +2108,6 @@ journals:
   - Osteoporos Sarcopenia
   - Otolaryngol Clin North Am
   - Otolaryngol Pol
-  - PET Clin
   - Paediatr Child Health (Oxford)
   - Paediatr Respir Rev
   - Pain Manag Nurs
@@ -2153,14 +2150,15 @@ journals:
   - Perspect Sci (Neth)
   - Pervasive Mob Comput
   - Pestic Biochem Physiol
+  - PET Clin
   - Pharm Acta Helv
   - Pharm Sci Technol Today
-  - PharmaNutrition
   - Pharmacol Biochem Behav
   - Pharmacol Res
   - Pharmacol Res Commun
   - Pharmacol Ther
   - Pharmacol Ther B
+  - PharmaNutrition
   - Photoacoustics
   - Photodiagnosis Photodyn Ther
   - Photonics Nanostruct
@@ -2217,8 +2215,8 @@ journals:
   - Proc Combust Inst
   - Proc Geol Assoc
   - Proc IFAC World Congress
-  - Procedia CIRP
   - Procedia Chem
+  - Procedia CIRP
   - Procedia Comput Sci
   - Procedia Eng
   - Procedia Environ Sci
@@ -2270,7 +2268,6 @@ journals:
   - Protist
   - Prz Lek
   - Psychiatr Clin North Am
-  - Psychiatry
   - Psychiatry (Abingdon)
   - Psychiatry Res
   - Psychiatry Res Neuroimaging
@@ -2334,8 +2331,8 @@ journals:
   - Respir Care Clin N Am
   - Respir Investig
   - Respir Med
-  - Respir Med CME
   - Respir Med Case Rep
+  - Respir Med CME
   - Respir Med Res
   - Respir Med X
   - Respir Physiol
@@ -2405,10 +2402,6 @@ journals:
   - Ross Fiziol Zh Im I M Sechenova
   - S Afr J Bot
   - S Afr J Chem Eng
-  - SLAS Discov
-  - SLAS Technol
-  - SSM Popul Health
-  - STAR Protoc
   - Saf Health Work
   - Saf Sci
   - Saudi Dent J
@@ -2471,6 +2464,8 @@ journals:
   - Signal Processing
   - Simul Model Pract Theory
   - Singapore Dent J
+  - SLAS Discov
+  - SLAS Technol
   - Sleep Health
   - Sleep Med
   - Sleep Med Clin
@@ -2515,6 +2510,8 @@ journals:
   - Spectrochim Acta Part B At Spectrosc
   - Speech Commun
   - Spine J
+  - SSM Popul Health
+  - STAR Protoc
   - Stat Methodol
   - Stat Probab Lett
   - Stem Cell Reports
@@ -2522,6 +2519,7 @@ journals:
   - Steroids
   - Stoch Process Their Appl
   - Struct Heart
+  - Structure
   - Stud Hist Philos Biol Biomed Sci
   - Stud Hist Philos Sci
   - Stud Surf Sci Catal
@@ -2626,6 +2624,7 @@ journals:
   - Trends Genet
   - Trends Immunol
   - Trends Microbiol
+  - Trends Mol Med
   - Trends Neurosci
   - Trends Neurosci Educ
   - Trends Parasitol
@@ -2714,14 +2713,9 @@ journals:
   - Zentralbl Bakteriol Mikrobiol Hyg A Med Mikrobiol Infekt Parasitol
   - Zentralbl Bakteriol Naturwiss
   - Zentralbl Bakteriol Parasitenkd Infektionskr Hyg
-  - Zh Nevrol Psikhiatr Im S S Korsakova
-  - Zhonghua Fu Chan Ke Za Zhi
-  - Zhonghua Yan Ke Za Zhi
   - Zhonghua Yi Xue Za Zhi
   - Zool Anz
   - Zoology (Jena)
-  - eNeurologicalSci
-  - iScience
 metadata:
   evidence_date: '2025-08-11'
   verification_notes: ''

@@ -1,0 +1,372 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="In-Process" Owner="NLM">
+      <PMID Version="1">42273363</PMID>
+      <DateRevised>
+        <Year>2026</Year>
+        <Month>06</Month>
+        <Day>11</Day>
+      </DateRevised>
+      <Article PubModel="Electronic-eCollection">
+        <Journal>
+          <ISSN IssnType="Electronic">1432-2277</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>39</Volume>
+            <PubDate>
+              <Year>2026</Year>
+            </PubDate>
+          </JournalIssue>
+          <Title>Transplant international : official journal of the European Society for Organ Transplantation</Title>
+          <ISOAbbreviation>Transpl Int</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>ABO-incompatible kidney transplantation: impact of apheresis on graft and patient survival in recipients with low isoagglutinin titer.</ArticleTitle>
+        <Pagination>
+          <StartPage>16059</StartPage>
+          <MedlinePgn>16059</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="pii" ValidYN="Y">16059</ELocationID>
+        <ELocationID EIdType="doi" ValidYN="Y">10.3389/ti.2026.16059</ELocationID>
+        <Abstract>
+          <AbstractText>ABO-incompatible (ABOi) kidney transplantation carries a high risk of acute antibody-mediated rejection due to the presence of isoagglutinins. To mitigate this risk, current protocols recommend performing apheresis before transplantation. Our objective was to evaluate outcomes in ABOi recipients with low isoagglutinin titers, comparing those who did and did not undergo pre-transplant apheresis. We conducted a multicenter study including recipients of ABOi kidney transplants between 2012 and 2022. A total of 78 patients with baseline isoagglutinin titers &#8804;1:8 were included; 41 received pre-transplant apheresis, 37 did not. Patients who did not undergo apheresis had more rejection episodes (p = 0.01), and a trend toward higher rates of delayed graft function and antibody mediated rejection, which adversely impacted patient and graft survival. At 3 years, event-free survival (death or graft loss) was 90% in the apheresis versus 79% in the no-apheresis group (p = 0.02). In multivariable analysis, factors associated with improved event-free survival included pre-transplant apheresis (HR = 0.31, p = 0.049) while ABMR within the first month was associated with poorer outcome (HR = 5.18, p = 0.0007). No differences emerged regarding the occurrence of overall infections. These findings suggest that apheresis should be systematically performed prior to ABOi transplantation, regardless of baseline isoagglutinin titer.</AbstractText>
+          <CopyrightInformation>Copyright &#169; 2026 Mangin, Lucas, Taton, Anglicheau, Blancho, Bertrand, Leon, Apithy, Benotmane, Couzi and Caillard.</CopyrightInformation>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y" EqualContrib="Y">
+            <LastName>Mangin</LastName>
+            <ForeName>Marion</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Nephrology Dialysis and Transplantation, Strasbourg University Hospital, Strasbourg, France.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y" EqualContrib="Y">
+            <LastName>Lucas</LastName>
+            <ForeName>Juliette</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Nephrology, Transplantation, Dialysis and Apheresis, Bordeaux University Hospital, Bordeaux, France.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Taton</LastName>
+            <ForeName>Benjamin</ForeName>
+            <Initials>B</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Nephrology, Transplantation, Dialysis and Apheresis, Bordeaux University Hospital, Bordeaux, France.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>INSERM U1219 Bordeaux Population Health, Equipe LEHA, Bordeaux University, Bordeaux, France.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Anglicheau</LastName>
+            <ForeName>Dany</ForeName>
+            <Initials>D</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Kidney and Metabolic Diseases, Transplantation and Clinical Immunology, Necker Hospital, Assistance Publique - H&#244;pitaux de Paris, Universit&#233; Paris Cit&#233;, Paris, France.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Blancho</LastName>
+            <ForeName>Gilles</ForeName>
+            <Initials>G</Initials>
+            <AffiliationInfo>
+              <Affiliation>CHU Nantes, Nantes Universit&#233;, Service de N&#233;phrologie - Immunologie Clinique, ITUN, INSERM, Center for Research in Transplantation and Translational Immunology, UMR 1064, Nantes, France.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Bertrand</LastName>
+            <ForeName>Dominique</ForeName>
+            <Initials>D</Initials>
+            <AffiliationInfo>
+              <Affiliation>Nephrology and Transplantation Department, Rouen University Hospital, Rouen, France.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Leon</LastName>
+            <ForeName>Juliette</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Kidney and Metabolic Diseases, Transplantation and Clinical Immunology, Necker Hospital, Assistance Publique - H&#244;pitaux de Paris, Universit&#233; Paris Cit&#233;, Paris, France.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Apithy</LastName>
+            <ForeName>Marie-Jo&#235;lle</ForeName>
+            <Initials>MJ</Initials>
+            <AffiliationInfo>
+              <Affiliation>Etablissement Francais du Sang Grand Est, Strasbourg, France.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Benotmane</LastName>
+            <ForeName>Ilies</ForeName>
+            <Initials>I</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Nephrology Dialysis and Transplantation, Strasbourg University Hospital, Strasbourg, France.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Molecular ImmunoRhumatology, INSERM UMR_S1109, Strasbourg University, Strasbourg, France.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y" EqualContrib="Y">
+            <LastName>Couzi</LastName>
+            <ForeName>Lionel</ForeName>
+            <Initials>L</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Nephrology, Transplantation, Dialysis and Apheresis, Bordeaux University Hospital, Bordeaux, France.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>CNRS-UMR 5164 ImmunoConcEpT, Bordeaux University, Bordeaux, France.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y" EqualContrib="Y">
+            <LastName>Caillard</LastName>
+            <ForeName>Sophie</ForeName>
+            <Initials>S</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Nephrology Dialysis and Transplantation, Strasbourg University Hospital, Strasbourg, France.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Molecular ImmunoRhumatology, INSERM UMR_S1109, Strasbourg University, Strasbourg, France.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2026</Year>
+          <Month>05</Month>
+          <Day>26</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Switzerland</Country>
+        <MedlineTA>Transpl Int</MedlineTA>
+        <NlmUniqueID>8908516</NlmUniqueID>
+        <ISSNLinking>0934-0874</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">ABO incompatible</Keyword>
+        <Keyword MajorTopicYN="N">antibody mediated rejection</Keyword>
+        <Keyword MajorTopicYN="N">apheresis</Keyword>
+        <Keyword MajorTopicYN="N">delayed graft function</Keyword>
+        <Keyword MajorTopicYN="N">infections</Keyword>
+      </KeywordList>
+      <CoiStatement>SC participated to advisory boards for Pierre Fabre, Astra Zeneca and Sobi and received travel grants from Chiesi, Astellas, Alexion, Novartis and Sanofi. IB received speaker fees from AstraZeneca, MSD and Biotest, was on advisory boards for Chiesi, Takeda, and MSD and received travel grants from Chiesi, MSD, AstraZeneca and Biotest. The remaining author(s) declared that this work was conducted in the absence of any commercial or financial relationships that could be construed as a potential conflict of interest.</CoiStatement>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="received">
+          <Year>2025</Year>
+          <Month>12</Month>
+          <Day>13</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="revised">
+          <Year>2026</Year>
+          <Month>4</Month>
+          <Day>22</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="accepted">
+          <Year>2026</Year>
+          <Month>5</Month>
+          <Day>1</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>11</Day>
+          <Hour>6</Hour>
+          <Minute>38</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>11</Day>
+          <Hour>6</Hour>
+          <Minute>38</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>11</Day>
+          <Hour>4</Hour>
+          <Minute>53</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pmc-release">
+          <Year>2026</Year>
+          <Month>5</Month>
+          <Day>26</Day>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>epublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">42273363</ArticleId>
+        <ArticleId IdType="pmc">PMC13246458</ArticleId>
+        <ArticleId IdType="doi">10.3389/ti.2026.16059</ArticleId>
+        <ArticleId IdType="pii">16059</ArticleId>
+      </ArticleIdList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Opelz G, Morath C, S&#252;sal C, Tran TH, Zeier M, D&#246;hler B. Three-year outcomes following 1420 ABO-incompatible living-donor kidney transplants performed ayer ABO antibody reduction: results from 101 centers. Transplantation (2015) 99(2):400&#8211;4. 10.1097/TP.0000000000000312</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1097/TP.0000000000000312</ArticleId>
+            <ArticleId IdType="pubmed">25050471</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Koo TY, Lee J, Lee Y, Kim HW, Kim BS, Huh KH, et al. Outcomes of ABO-incompatible living donor kidney transplantation compared to waiting or deceased donor kidney transplantation. Am J Nephrol (2024) 55(2):235&#8211;44. 10.1159/000535583</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1159/000535583</ArticleId>
+            <ArticleId IdType="pubmed">38035562</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Scurt FG, Ewert L, Mertens PR, Haller H, Schmidt BMW, Chatzikyrkou C. Clinical outcomes ayer ABO-Incompatible renal transplantation: a systematic review and meta-analysis. The Lancet (2019) 393(10185):2059&#8211;72. 10.1016/S0140-6736(18)32091-9</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S0140-6736(18)32091-9</ArticleId>
+            <ArticleId IdType="pubmed">31006573</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>De Weerd AE, Betjes MGH. ABO-incompatible kidney transplant outcomes: a meta-analysis. Clin J Am Soc Nephrol (2018) 13(8):1234&#8211;43. 10.2215/CJN.00540118</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.2215/CJN.00540118</ArticleId>
+            <ArticleId IdType="pmc">PMC6086717</ArticleId>
+            <ArticleId IdType="pubmed">30012630</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Bertrand D, Del Bello A, Sberro Soussan R, Caillard S, Claisse G, Couzi L, et al. Early thrombotic microangiopathy after ABO-incompatible living donor kidney transplantation. Kidney Int Rep (2024) 10(3):828&#8211;37. 10.1016/j.ekir.2024.12.031</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.ekir.2024.12.031</ArticleId>
+            <ArticleId IdType="pmc">PMC11993204</ArticleId>
+            <ArticleId IdType="pubmed">40225375</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Shimmura H, Tanabe K, Ishida H, Tokumoto T, Ishikawa N, Miyamoto N, et al. Lack of correlation between results of ABO-incompatible living kidney transplantation and Anti-ABO blood type antibody titers under our current immunosuppression. Transplantation (2005) 80(7):985&#8211;8. 10.1097/01.tp.0000173647.43616.78</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1097/01.tp.0000173647.43616.78</ArticleId>
+            <ArticleId IdType="pubmed">16249749</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Kim H, Choe W, Shin S, Kim YH, Han D, Park S, et al. ABO-incompatible kidney transplantation can be successfully conducted by monitoring IGM isoagglutinin titers during desensibilisation. Transfusion (2020) 60(3):598&#8211;606. 10.1111/trf.15672</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1111/trf.15672</ArticleId>
+            <ArticleId IdType="pubmed">31957888</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Masterson R, Hughes P, Walker RG, Hogan C, Haeusler M, Robertson AR, et al. ABO incompatible renal transplantation without antibody removal using conventional immunosuppression alone. Am J Transplant (2014) 14(12):2807&#8211;13. 10.1111/ajt.12920</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1111/ajt.12920</ArticleId>
+            <ArticleId IdType="pubmed">25389083</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Montgomery JR, Berger JC, Warren DS, James NT, Montgomery RA, Segev DL. Outcomes of ABO-incompatible kidney transplantation in the United States. Transplantation (2012) 93(6):603&#8211;9. 10.1097/TP.0b013e318245b2af</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1097/TP.0b013e318245b2af</ArticleId>
+            <ArticleId IdType="pmc">PMC3299822</ArticleId>
+            <ArticleId IdType="pubmed">22290268</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Barnett ANR, Manook M, Nagendran M, Kenchayikoppad S, Vaughan R, Dorling A, et al. Tailored desensitization strategies in ABO blood group antibody incompatible renal transplantation. Transpl Int (2014) 27(2):187&#8211;96. 10.1111/tri.12234</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1111/tri.12234</ArticleId>
+            <ArticleId IdType="pubmed">24188566</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Gelpi R, Cid J, Lozano M, Revuelta I, Sanchez-Escuredo A, Blasco M, et al. Desensitization in ABO-incompatible kidney transplantation with low ABO iso-agglutinin titers. Transplant Proc (2015) 47(8):2340&#8211;3. 10.1016/j.transproceed.2015.08.021</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.transproceed.2015.08.021</ArticleId>
+            <ArticleId IdType="pubmed">26518921</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Shinoda K, Hyodo Y, Oguchi H, Mikami T, Nishikawa K, Sakurabayashi K, et al. Outcome of ABO-Incompatible kidney transplantation using a modified desensibilisation protocol without plasmapheresis. Int J Urol Sept (2022) 29(9):1017&#8211;25. 10.1111/iju.14944</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1111/iju.14944</ArticleId>
+            <ArticleId IdType="pubmed">35661428</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Kawamura T, Hamasaki Y, Takahashi Y, Hashimoto J, Kubota M, Muramatu M, et al. ABO-incompatible pediatric kidney transplantation without antibody removal. Pediatr Nephrol (2020) 35(1):95&#8211;102. 10.1007/s00467-019-04376-7</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/s00467-019-04376-7</ArticleId>
+            <ArticleId IdType="pubmed">31673829</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>De Weerd AE, van den Brand JAJG, Bouwsma H, de Vries APJ, Dooper IPMM, Sanders JF, et al. ABO-incompatible kidney transplantation in perspective of deceased donor transplantation and induction strategies: a propensity-matched analysis. Transpl Int (2021) 34(12):2706&#8211;19. 10.1111/tri.14145</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1111/tri.14145</ArticleId>
+            <ArticleId IdType="pmc">PMC9299000</ArticleId>
+            <ArticleId IdType="pubmed">34687095</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Bentall A, Regan F, White J, Milkins C, Rowley M, Ball S, et al. No progress in ABO titer measurement: time to aim for a reference? Transplantation (2014) 97(3):e19&#8211;21. 10.1097/01.TP.0000438210.27218.9e</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1097/01.TP.0000438210.27218.9e</ArticleId>
+            <ArticleId IdType="pubmed">24492427</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Bentall A, Jeyakanthan M, Braitch M, Cairo CW, Lowary TL, Maier S, et al. Characterization of ABH-subtype donor-specific antibodies in ABO-A-incompatible kidney transplantation. Am J Transpl (2021) 21(11):3649&#8211;62. 10.1111/ajt.16712</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1111/ajt.16712</ArticleId>
+            <ArticleId IdType="pmc">PMC8597088</ArticleId>
+            <ArticleId IdType="pubmed">34101982</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Naciri BH, Abdulrahman Z, Allal A, Sallusto F, Delarche A, Game X, et al. Early post-transplant complications following ABO-incompatible kidney transplantation. J Nephropathol (2016) 5:19&#8211;27. 10.15171/jnp.2016.04</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.15171/jnp.2016.04</ArticleId>
+            <ArticleId IdType="pmc">PMC4790183</ArticleId>
+            <ArticleId IdType="pubmed">27047806</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Lentine KL, Axelrod D, Klein C, Simpkins C, Xiao H, Schnitzler MA, et al. Early clinical complications after ABO-incompatible live-donor kidney transplantation: a national study of Medicare-insured recipients. Transplantation (2014) 98(1):54&#8211;65. 10.1097/TP.0000000000000029</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1097/TP.0000000000000029</ArticleId>
+            <ArticleId IdType="pmc">PMC4411309</ArticleId>
+            <ArticleId IdType="pubmed">24978035</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Habicht A, Br&#246;ker V, Blume C, Lorenzen J, Schiffer M, Richter N, et al. Increase of infectious complications in ABO-incompatible kidney transplant recipients &#8211; a single centre experience. Nephrol Dial Transpl (2011) 26:4124&#8211;31. 10.1093/ndt/gfr215</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/ndt/gfr215</ArticleId>
+            <ArticleId IdType="pubmed">21622990</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Wilpert J, Fischer KG, Pisarski P, Wiech T, Daskalakis M, Ziegler A, et al. Longterm outcome of ABO-incompatible living donor kidney transplantation based on antigen-specific desensitization. An observational comparative analysis. Nephrol Dial Transpl (2010) 25:3778&#8211;86. 10.1093/ndt/gfq229</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1093/ndt/gfq229</ArticleId>
+            <ArticleId IdType="pubmed">20466677</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Zhou S, Liu Q, Fang M, Shen S, Wang R, Jing Y, et al. Evaluation of different methods for antibody titre determination in ABO-incompatible kidney transplantation. Transl Androl Urol (2025) 14(3):540&#8211;52. 10.21037/tau-24-617</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.21037/tau-24-617</ArticleId>
+            <ArticleId IdType="pmc">PMC11986527</ArticleId>
+            <ArticleId IdType="pubmed">40226066</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

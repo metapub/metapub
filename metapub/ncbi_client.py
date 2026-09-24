@@ -12,6 +12,9 @@ from threading import Lock
 from urllib.parse import urlencode
 from typing import Dict, List, Optional, Union
 
+from requests.adapters import HTTPAdapter
+from urllib3.util import Retry
+
 from .exceptions import MetaPubError
 from .ncbi_errors import diagnose_ncbi_error, NCBIServiceError
 
@@ -302,11 +305,33 @@ class NCBIClient:
         # Setup caching
         self.cache = SimpleCache(cache_path) if cache_path else None
         
-        # Setup HTTP session
+        # Setup HTTP session with retry/backoff for transient NCBI failures.
+        # NCBI sheds load two ways: it returns 429/5xx, and it also resets
+        # connections outright ("Connection reset by peer"), so we retry on
+        # both status codes and connection/read errors. The client-side
+        # RateLimiter paces our own requests, but the limit is enforced per
+        # API key + source IP, so bursts from shared IPs (e.g. CI runners) can
+        # still trip it -- these retries absorb that. backoff_factor spaces
+        # attempts out past the per-second window, and Retry-After headers on
+        # 429 responses are respected.
         self.session = requests.Session()
         self.session.headers.update({
             'User-Agent': f'{tool}/metapub-ncbi-client'
         })
+        retry_strategy = Retry(
+            total=3,
+            connect=3,
+            read=3,
+            status=3,
+            backoff_factor=0.5,
+            status_forcelist=[429, 500, 502, 503, 504],
+            allowed_methods=frozenset(['GET', 'POST']),
+            respect_retry_after_header=True,
+            raise_on_status=False,
+        )
+        adapter = HTTPAdapter(max_retries=retry_strategy)
+        self.session.mount('https://', adapter)
+        self.session.mount('http://', adapter)
     
     def _build_params(self, **kwargs) -> Dict[str, str]:
         """Build standard parameters for NCBI requests."""

@@ -1,0 +1,15 @@
+Source:   NCBI ClinVar E-utilities (efetch)
+Date:     2026-04-18
+Variant:  VCV004819006 — NM_198253.3(TERT):c.68C>T (p.Pro23Leu)
+Type:     single nucleotide variant (SimpleAllele has no XRefList element)
+Purpose:  Tests that _get_xref_list returns [] without crashing when the
+          SimpleAllele element contains no XRefList child.
+
+Fetch command:
+  curl -s "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=clinvar&id=4819006&rettype=vcv&is_variationid=true" \
+    > clinvar_vcv_no_xreflist_tert.xml
+
+Discovery note:
+  Confirmed via XML inspection that SimpleAllele contains no XRefList element.
+  Other XRef elements appear elsewhere in the record (e.g. under RCV conditions)
+  but not under SimpleAllele, which is the path _get_xref_list traverses.

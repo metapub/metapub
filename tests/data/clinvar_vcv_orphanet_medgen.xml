@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ClinVarResult-Set>
+  <VariationArchive VariationID="999003" VariationName="NM_000001.1(GENE1):c.200A>G (p.Tyr67Cys)" VariationType="single nucleotide variant" Accession="VCV000999003" Version="1" RecordType="classified" NumberOfSubmissions="1" NumberOfSubmitters="1" DateLastUpdated="2024-01-01" DateCreated="2024-01-01" MostRecentSubmission="2024-01-01">
+    <RecordStatus>current</RecordStatus>
+    <Species>Homo sapiens</Species>
+    <ClassifiedRecord>
+      <SimpleAllele AlleleID="333001" VariationID="999003">
+        <GeneList>
+          <Gene Symbol="GENE1" FullName="Gene 1" GeneID="11111" Source="submitted" RelationshipType="within single gene"/>
+        </GeneList>
+        <Name>NM_000001.1(GENE1):c.200A&gt;G (p.Tyr67Cys)</Name>
+        <VariantType>single nucleotide variant</VariantType>
+        <XRefList>
+          <XRef Type="rs" ID="987654321" DB="dbSNP"/>
+          <XRef ID="ORPHA:123456" DB="Orphanet"/>
+          <XRef ID="ORPHA:789012" DB="Orphanet"/>
+          <XRef ID="C0123456" DB="MedGen"/>
+        </XRefList>
+      </SimpleAllele>
+    </ClassifiedRecord>
+  </VariationArchive>
+</ClinVarResult-Set>

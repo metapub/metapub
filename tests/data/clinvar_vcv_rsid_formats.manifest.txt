@@ -1,0 +1,24 @@
+Source:   Synthetic — hand-authored
+Date:     2026-04-18
+Variant:  VCV000999002 (fictional) — NM_000001.1(GENE1):c.1A>G (p.Met1Val)
+Type:     single nucleotide variant
+Purpose:  Tests two properties of _get_rsids:
+          (1) Type-agnostic collection — all four documented dbSNP XRef formats
+              must be captured regardless of the Type attribute value.
+          (2) Cross-format deduplication — bare "1799945" and prefixed "rs1799945"
+              represent the same variant; after normalization both become "1799945"
+              and must collapse to a single entry.
+
+Why synthetic:
+  The four XRef formats are drawn from real ClinVar XML observations documented
+  in _get_rsids comments, but a record containing all four for the same ID
+  simultaneously does not need to be a real accession — the point is to exercise
+  the normalization and dedup logic in isolation.
+
+XRef entries in the fixture (all for rsID 1799945):
+  <XRef Type="rs"       ID="1799945"   DB="dbSNP"/>  -- idiomatic
+  <XRef Type="rsNumber" ID="1799945"   DB="dbSNP"/>  -- non-standard Type
+  <XRef               ID="rs1799945"  DB="dbSNP"/>  -- rs prefix in ID field
+  <XRef               ID="1799945"    DB="dbSNP"/>  -- bare number, no Type
+
+Expected result: rsids == ['1799945']  (one entry, no "rs" prefix, no duplicates)

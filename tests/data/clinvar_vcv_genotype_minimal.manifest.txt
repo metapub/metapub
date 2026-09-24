@@ -1,0 +1,66 @@
+Source:   Synthetic — hand-authored (no real NCBI record exists in current VCV format)
+Date:     2026-04-18
+Variant:  VCV000999001 (fictional) — NM_000001.1(GENE1):c.[100A>G];[200C>T]
+Type:     Genotype (two SimpleAllele elements under ClassifiedRecord/Genotype)
+Purpose:  Tests that _get_xref_list collects XRefs from SimpleAlleles nested under
+          a Genotype element (same .//SimpleAllele/XRefList XPath as Haplotype).
+
+Investigation to confirm no real Genotype-type VCV record can be fetched
+-------------------------------------------------------------------------
+
+Step 1 — tried esearch with VariationType field:
+  curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=genotype[VariationType]&retmax=5"
+  Result: FieldNotFound for "VariationType"; fell back to all-fields text match;
+          returned SNV records (e.g., TERT VCV004819006) not Genotype-type records.
+
+Step 2 — tried esearch with vtype field:
+  curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=Genotype[vtype]&retmax=5"
+  Result: FieldNotFound for "vtype"; same all-fields fallback to 5,614 text matches.
+
+Step 3 — tried "variation type:Genotype" phrase:
+  curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=%22variation+type%3AGenotype%22&retmax=5"
+  Result: 0 results, PhraseNotFound.
+
+Step 4 — tried "Compound heterozygote"[Variant type]:
+  curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=%22Compound+heterozygote%22%5BVariant+type%5D&retmax=5"
+  Result: FieldNotFound for "Variant type"; fell back to all-fields; returned 525
+          text matches. Fetched top 5 IDs — all VariationType="single nucleotide variant".
+
+Step 5 — tried "Compound heterozygous" text search (50 results):
+  curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=%22Compound+heterozygous%22&retmax=50"
+  Batch-fetched all 50 via efetch with rettype=vcv&is_variationid=true.
+  Result: zero records with VariationType="Genotype"; all were SNV/Deletion/Duplication.
+
+Step 6 — tried CFTR gene + compound heterozygous (classic disease model):
+  curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=CFTR%5Bgene%5D+AND+%22compound+heterozygous%22&retmax=10"
+  Returned 10 IDs; fetched all — VariationTypes were "single nucleotide variant",
+  "Deletion", "Duplication". None were Genotype-type.
+
+Step 7 — scanned ClinVar FTP variant_summary.txt (first ~2MB):
+  curl --range 0-2000000 "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/variant_summary.txt.gz" | gunzip | awk ...
+  Result: Type column values observed: single nucleotide variant, Deletion,
+          Duplication, Microsatellite, Indel, Insertion, Variation, Inversion,
+          Translocation, Complex, copy number gain. No "Genotype" type present.
+
+Step 8 — scanned ClinVar full VCV XML release (first 100MB):
+  curl --range 0-100000000 "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/xml/ClinVarVCVRelease_00-latest.xml.gz" | gunzip | grep 'VariationType='
+  Result: ~113K records across 15 VariationType values observed:
+    single nucleotide variant (54320), Deletion (15693), copy number gain (14427),
+    copy number loss (11811), Duplication (9545), Microsatellite (4620),
+    Insertion (1318), Indel (897), Variation (228), Translocation (61),
+    Inversion (49), Haplotype (12), Complex (6), fusion (4), protein only (3).
+  VariationType="Genotype" does not appear.
+
+Conclusion: VariationType="Genotype" does not exist in the current ClinVar VCV XML
+format. It was a type in the legacy VariationReport format (retired April 2019) that
+was not carried over when NCBI migrated to VCV. The code path being tested exists for
+backwards compatibility with pre-2019 cached XML. This synthetic fixture is the only
+way to exercise it.
+
+Structure:
+  ClinVarResult-Set
+  └── VariationArchive (VariationType="Genotype")
+      └── ClassifiedRecord
+          └── Genotype
+              ├── SimpleAllele (AlleleID=111001) — XRefList: dbSNP + OMIM
+              └── SimpleAllele (AlleleID=111002) — XRefList: dbSNP only

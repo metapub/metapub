@@ -32,15 +32,31 @@ DATETYPE_TAGS = {
 
 DEFAULT_DATETYPE = 'pdat'
 
-def get_uids_from_esearch_result(xmlstr):
-    """Extract unique identifiers from an ESearch XML result.
-    
+class PMIDList(list):
+    """A list of PMIDs that also carries how many records matched the query.
+
+    Behaves as an ordinary list everywhere; `total_count` is the <Count> Pubmed
+    reported, which is often larger than the number of PMIDs actually returned
+    (see the retmax discussion in PubMedFetcher.pmids_for_query). Slicing or
+    copying yields a plain list and drops the count, which is intended -- the
+    count describes the query, not the items.
+    """
+
+    def __init__(self, pmids=(), total_count=None):
+        super().__init__(pmids)
+        self.total_count = len(self) if total_count is None else total_count
+
+
+def parse_esearch_result(xmlstr):
+    """Extract PMIDs and the total match count from an ESearch XML result.
+
     Args:
         xmlstr (str): XML string returned from NCBI ESearch query.
-        
+
     Returns:
-        List[str]: List of PMID strings extracted from the XML.
-        
+        PMIDList: PMIDs in this response, with `total_count` set to the number
+            of records matching the query overall.
+
     Raises:
         NCBIServiceError: If XML parsing fails due to NCBI service issues.
     """
@@ -55,7 +71,12 @@ def get_uids_from_esearch_result(xmlstr):
         if idlist is not None:
             for item in idlist.findall('Id'):
                 uids.append(item.text.strip())
-        return uids
+
+        # <Count> is the size of the whole result set, not of this page of it.
+        # Pubmed always sends it; fall back to the page size if it ever doesn't.
+        count = dom.find('Count')
+        total = int(count.text) if count is not None and count.text else len(uids)
+        return PMIDList(uids, total)
     except Exception as e:
         # Handle XML parsing errors that might indicate service issues
         diagnosis = diagnose_ncbi_error(e)
@@ -67,6 +88,20 @@ def get_uids_from_esearch_result(xmlstr):
             ) from e
         else:
             raise
+
+def get_uids_from_esearch_result(xmlstr):
+    """Extract unique identifiers from an ESearch XML result.
+
+    Thin wrapper kept for callers that only want the PMIDs. See
+    parse_esearch_result for the total match count as well.
+
+    Args:
+        xmlstr (str): XML string returned from NCBI ESearch query.
+
+    Returns:
+        List[str]: List of PMID strings extracted from the XML.
+    """
+    return list(parse_esearch_result(xmlstr))
 
 def parse_related_pmids_result(xmlstr):
     """Parse XML results from ELink query for related PMIDs.
@@ -252,7 +287,24 @@ class PubMedFetcher(Borg):
 
         Keyword arguments are case-INsensitive since they are lowercased upon arrival.
 
-        Example of series of queries to accomplish "pagination" of data:
+        At most `retmax` pmids come back (250 by default), however many records
+        actually matched. The returned list carries the full total on its
+        `total_count` attribute, and a truncated result logs a warning:
+
+        pmids = fetch.pmids_for_query('some query')
+        len(pmids)          # 250, one page
+        pmids.total_count   # 3922, the whole result set
+
+        To collect a whole result set, raise retmax rather than paging with
+        retstart. Results are sorted by relevance and that order is not stable
+        between requests, so paging can repeat one record and drop another
+        (issue #183):
+
+        pmids = fetch.pmids_for_query('some query')
+        if pmids.total_count > len(pmids):
+            pmids = fetch.pmids_for_query('some query', retmax=pmids.total_count)
+
+        retstart still works for sampling a slice, with that caveat:
 
         first_250 = fetch.pmids_for_query('some query')
         second_250 = fetch.pmids_for_query('some query', retstart=500, retmax=250)
@@ -280,7 +332,7 @@ class PubMedFetcher(Borg):
         :param: until (string) default None  # Y/m/d format expected. Y alone or Y/m allowed.
         :param: datetype (string) default 'pdat'  # date field that since/until search.
         :param: retstart (int) default 0
-        :param: retmax (int) default 250
+        :param: retmax (int) default 250  # max pmids returned; see total_count above.
         :param: pmc_only (bool) default False  # constructs query to only search Pubmed Central.
         :raises: MetaPubError if datetype is not one of the values listed above.
         '''
@@ -403,7 +455,13 @@ class PubMedFetcher(Borg):
                     "sort": "relevance",
                 }
             )
-            return get_uids_from_esearch_result(result)
+            pmids = parse_esearch_result(result)
+            if pmids.total_count > retstart + len(pmids):
+                log.warning(
+                    'pmids_for_query: returning %d of %d matching records. Raise retmax '
+                    '(currently %d) to get the rest; see total_count on the returned list.',
+                    len(pmids), pmids.total_count, retmax)
+            return pmids
         except Exception as e:
             # Handle search errors with intelligent diagnosis
             diagnosis = diagnose_ncbi_error(e, 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi')

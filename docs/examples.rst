@@ -47,6 +47,33 @@ Complex PubMed Queries
        retmax=25
    )
 
+Knowing when a result was truncated
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``pmids_for_query`` returns at most ``retmax`` pmids (250 by default), however
+many records matched. The returned list carries the real total on
+``total_count``, and a truncated result also logs a warning::
+
+   pmids = fetch.pmids_for_query(author='Smith JA')
+   len(pmids)           # 250 -- one page
+   pmids.total_count    # 3922 -- the whole result set
+
+This matters most for batch harvesting, where one prolific author or a loose
+search term quietly caps at 250 and the gap looks like a metapub-vs-PubMed
+discrepancy rather than a paging limit.
+
+To collect everything, raise ``retmax`` past ``total_count`` and make a single
+request::
+
+   pmids = fetch.pmids_for_query(author='Smith JA')
+   if pmids.total_count > len(pmids):
+       pmids = fetch.pmids_for_query(author='Smith JA', retmax=pmids.total_count)
+
+Prefer this over paging with ``retstart``. Results are currently sorted by
+relevance, and that ordering is not stable between requests, so paging the same
+query can return a record on two pages and omit another entirely (see issue
+#183). A single large request has no such problem.
+
 Date ranges are fuzzier than they look
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

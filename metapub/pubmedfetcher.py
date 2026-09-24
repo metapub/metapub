@@ -356,7 +356,7 @@ class PubMedFetcher(Borg):
 
         # Content characteristics
         q['LA'] = kpick(kwargs, options=['la', 'language'])
-        q['TW'] = kpick(kwargs, options=['tw', 'text'])
+        q['TW'] = kpick(kwargs, options=['tw', 'text', 'keyword', 'kw'])
         q['PS'] = kpick(kwargs, options=['ps', 'personal name as subject'])
         q['PA'] = kpick(kwargs, options=['pa', 'pharmacological action'])
         q['SB'] = kpick(kwargs, options=['sb', 'subset'])
@@ -381,6 +381,35 @@ class PubMedFetcher(Borg):
         q['OT'] = kpick(kwargs, options=['ot', 'other term'])
         q['NM'] = kpick(kwargs, options=['nm', 'substance name'])
         q['SI'] = kpick(kwargs, options=['si', 'secondary source id'])
+
+        # Anything left over matched no query feature, so it would be silently
+        # dropped from the term (issue #168: keyword= searched as if absent).
+        # Fail loudly instead -- see also pmc_only and datetype above.
+        supported = {'book', 'clinical_query', 'pmc_only', 'datetype', 'debug',
+                     'pmid', 'uid', 'pubmed_id', 'aid', 'doi', 'jid', 'nlm uid',
+                     'nlm unique id', 'isbn', 'rn', 'rcn', 'ecn', 'gr', 'grant number',
+                     'da', 'date created', 'lr', 'date revised', 'date last revised',
+                     'edat', 'entrez date', 'ta', 'journal', 'jtitle', 'journal_title',
+                     'tiab', 'abstract', 'title/abstract', 'ti', 'title', 'atitle',
+                     'article_title', 'tt', 'transliterated title', 'au', 'author',
+                     '1au', 'aulast', 'author1_lastfm', 'author1_last_fm', 'fau',
+                     'first_author', 'author1', 'lastau', 'last author', 'cn',
+                     'corporate author', 'fir', 'full investigator name', 'ir',
+                     'investigator', 'pg', 'pages', 'spage', 'first_page', 'ip',
+                     'issue', 'vta', 'volume title', 'vi', 'volume', 'vol', 'la',
+                     'language', 'tw', 'text', 'keyword', 'kw', 'ps',
+                     'personal name as subject', 'pa', 'pharmacological action',
+                     'sb', 'subset', 'nm', 'supplementary concept', 'mhda', 'mesh date',
+                     'mh', 'mesh', 'mesh terms', 'majr', 'mesh major topic',
+                     'mesh major', 'sh', 'mesh subheadings', 'dcom', 'completion date',
+                     'dp', 'date of publication', 'year', 'pdat', 'lid', 'location id',
+                     'location identifier', 'pubn', 'publisher', 'pt', 'pubmed_type',
+                     'publication type', 'pl', 'place of publication', 'ad',
+                     'affiliation', 'ot', 'other term', 'si', 'secondary source id'}
+        leftovers = set(kwargs) - supported
+        if leftovers:
+            raise MetaPubError('Unrecognized keyword argument(s) %s: expected one of %s' % (
+                ', '.join(sorted(leftovers)), ', '.join(sorted(supported))))
 
         for feature in q.keys():
             if q[feature] != None:

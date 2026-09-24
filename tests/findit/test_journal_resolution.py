@@ -16,6 +16,11 @@ stub the dance out entirely, so they never exercise routing at all.
 
 Expected values are pinned from the registry and eyeballed for sanity. When
 routing legitimately changes, update EXPECTED_ROUTING in the same change.
+
+Coverage is self-enforcing: test_every_active_publisher_is_covered_or_excluded
+and test_every_wired_dance_is_covered fail if a publisher/dance is added to the
+registry without either a routing entry here or a documented EXCLUDED_PUBLISHERS
+exemption -- so the "every publisher is tested" promise can't silently rot.
 """
 import pytest
 
@@ -92,6 +97,65 @@ EXPECTED_ROUTING = {
     'Xenobiotica': ('Taylor Francis', 'the_doi_slide'),
     'Yonago Acta Med': ('Jstage', 'the_jstage_dive'),
     'mSystems': ('Asm', 'the_asm_shimmy'),
+
+    # --- Publisher/dance coverage backfill (issue #177) -------------------
+    # One resolving journal per publisher that previously had zero coverage,
+    # so every active publisher and every wired dance is exercised by the
+    # guard below. Each journal was confirmed to resolve to the listed
+    # publisher/dance against the shipped registry. This closes the gap where
+    # ~half the registry (incl. the whole the_vip_shake family of 9
+    # publishers) was silently untested by the offline suite.
+    'ACG Case Rep J': ('Lww', 'the_doi_slide'),
+    'ACM Comput Surv': ('acm', 'the_acm_reel'),
+    'ACS Nano': ('acs', 'the_doi_slide'),
+    'AIP Adv': ('Aip', 'the_vip_shake'),
+    'Acta Cytol': ('Karger', 'the_karger_conga'),
+    'Acta Neuropathol Commun': ('Bmc', 'the_bmc_boogie'),
+    'Acta Pharm': ('Sciendo', 'the_doi_slide'),
+    'Adv Health Care Manag': ('Emerald', 'the_doi_slide'),
+    'Am J Clin Pathol': ('Miscellaneous VIP Publishers', 'the_vip_shake'),
+    'Am J Intellect Dev Disabil': ('Allenpress', 'the_allenpress_advance'),
+    'Am J Respir Crit Care Med': ('Ats', 'the_doi_slide'),
+    'Am J Sociol': ('Uchicago', 'the_doi_slide'),
+    'Am Midl Nat': ('bioone', 'the_vip_shake'),
+    'Anat Physiol': ('Longdom', 'the_longdom_hustle'),
+    'Angiology': ('Sage', 'the_doi_slide'),
+    'Ann Rheum Dis': ('bmj', 'the_bmj_bump'),
+    'Biomed Mater Eng': ('Iospress', 'the_doi_slide'),
+    'Blood': ('American Society of Hematology', 'the_vip_shake_nonstandard'),
+    'Cancer Biol Med': ('Cancerbiomed', 'the_vip_shake'),
+    'Cancer Discov': ('Aacr', 'the_aacr_jitterbug'),
+    'Circ Res': ('Aha', 'the_aha_waltz'),
+    'Clin Nephrol': ('Dustri', 'the_dustri_polka'),
+    'Diabetes Care': ('American Diabetes Association', 'the_vip_shake'),
+    'Front Aging Neurosci': ('Frontiers', 'the_doi_slide'),
+    'Genes Dev': ('Cold Spring Harbor Laboratory Press', 'the_vip_shake'),
+    'Int J Oncol': ('Spandidos', 'the_doi_slide'),
+    'Invest Ophthalmol Vis Sci': ('Association for Research in Vision and Ophthalmology', 'the_vip_shake'),
+    'J Cell Biol': ('Rockefeller University Press', 'the_vip_shake'),
+    'J Pharmacol Exp Ther': ('American Society for Pharmacology', 'the_vip_shake'),
+    'JAMA': ('jama', 'the_jama_dance'),
+    'N Engl J Med': ('Nejm', 'the_doi_slide'),
+    'PLoS Biol': ('Plos', 'the_plos_pogo'),
+}
+
+# Active publishers that are deliberately NOT in EXPECTED_ROUTING, with the
+# reason. The completeness test below asserts every active publisher is either
+# covered above or listed here -- so a new publisher can't be added to the
+# registry without either getting test coverage or a documented exemption.
+EXCLUDED_PUBLISHERS = {
+    'informa': 'no journals wired in the registry; the_doi_slide covered by many others',
+    'single journal publishers': 'internal catch-all bucket, no journals of its own',
+    'publisher name': 'placeholder/test-fixture publisher with synthetic journal names',
+    'aaas': "empty duplicate of 'Science Magazine'; the_aaas_twist covered via 'Science'",
+    'misc_pii': 'no journals wired; the_pii_prance is an orphaned dance (issue #177), unreachable',
+    'pnas': ("wired to the_doi_slide but the registry alias 'Proc Natl Acad Sci USA' "
+             "does not match PubMed's abbreviation 'Proc Natl Acad Sci U S A' "
+             "(see KNOWN_UNRESOLVED); the_doi_slide is covered elsewhere"),
+    'elsevier': ("only journal 'Metab Clin Exp' is emitted by PubMed as 'Metabolism', "
+                 "which resolves to sciencedirect/the_sciencedirect_disco (a #159-class "
+                 "multi-claim conflict); no real article routes to Elsevier/the_pii_shuffle, "
+                 "so it can't be given evidence -- verified via eutils"),
 }
 
 # Evidence journals that currently resolve to NO dance. Documented here rather
@@ -141,3 +205,48 @@ def test_known_unresolved_journal_still_unresolved(registry, journal):
     info = registry.get_publisher_for_journal(standardize_journal_name(journal))
     assert info and info.get('dance_function'), \
         "%r resolves to no dance: %s" % (journal, KNOWN_UNRESOLVED[journal])
+
+
+def _active_publishers(registry):
+    cur = registry._get_connection().cursor()
+    cur.execute('SELECT name FROM publishers WHERE is_active=1')
+    return [row[0] for row in cur.fetchall()]
+
+
+def test_every_active_publisher_is_covered_or_excluded(registry):
+    """Goal: every publisher in the registry has at least one journal exercised.
+
+    Any active publisher must be either covered by an EXPECTED_ROUTING entry or
+    listed in EXCLUDED_PUBLISHERS with a reason. This makes the coverage promise
+    self-enforcing: adding a new publisher to the registry without giving it a
+    routing test (or a documented exemption) fails here, rather than silently
+    leaving a dance untested.
+    """
+    covered = {publisher.lower() for publisher, _dance in EXPECTED_ROUTING.values()}
+    missing = [
+        name for name in _active_publishers(registry)
+        if name.lower() not in covered and name.lower() not in EXCLUDED_PUBLISHERS
+    ]
+    assert not missing, (
+        "Active publishers with no routing coverage and no documented exemption: %r. "
+        "Add a resolving journal to EXPECTED_ROUTING or an entry to "
+        "EXCLUDED_PUBLISHERS." % sorted(missing))
+
+
+def test_every_wired_dance_is_covered(registry):
+    """Every dance an active publisher points at should be exercised by a
+    resolving journal above -- except the documented orphaned dances whose
+    publishers have no journals to route (tracked in EXCLUDED_PUBLISHERS)."""
+    cur = registry._get_connection().cursor()
+    cur.execute('SELECT DISTINCT dance_function FROM publishers WHERE is_active=1')
+    wired = {row[0] for row in cur.fetchall() if row[0]}
+    covered = {dance for _publisher, dance in EXPECTED_ROUTING.values()}
+    # Dances whose only publisher is unreachable from real PubMed data, so they
+    # cannot be given a resolving journal (see EXCLUDED_PUBLISHERS):
+    #   the_pii_prance  -- only misc_pii, which has zero journals wired
+    #   the_pii_shuffle -- only Elsevier, whose journal PubMed emits as
+    #                      'Metabolism' -> resolves to the_sciencedirect_disco
+    orphaned = {'the_pii_prance', 'the_pii_shuffle'}
+    uncovered = wired - covered - orphaned
+    assert not uncovered, \
+        "Wired dances with no routing coverage: %r" % sorted(uncovered)

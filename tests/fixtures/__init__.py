@@ -326,3 +326,53 @@ LWW_EVIDENCE_PMIDS = {
     '38878148': {'doi': '10.1007/s10554-024-03145-4', 'journal': 'Int J Cardiovasc Imaging', 'pmc': 'PMC11258094'},
     '35195805': {'doi': '10.1007/s10554-022-02558-3', 'journal': 'Int J Cardiovasc Imaging'},
 }
+
+# ---------------------------------------------------------------------------
+# Backfill evidence for publishers that previously had ZERO test PMIDs (#177).
+#
+# One representative PMID per publisher that had no evidence, so every active
+# registry publisher/dance can be exercised by the live drift-detection suite.
+# The the_vip_shake family is a single dance shared across 10 publishers; each
+# gets its own PMID here.
+#
+# Every entry was verified via NCBI eutils (allowlisted): the *real* pma.journal
+# emitted by PubMed routes to the listed publisher/dance in the shipped
+# registry -- not just a hand-typed abbreviation. Publisher/dance are recorded
+# inline so the live test in test_uncovered_publisher_dances.py can assert the
+# correct dance is reached. These are drift detectors, run manually
+# (`pytest -m live_network`), never in CI.
+# ---------------------------------------------------------------------------
+UNCOVERED_PUBLISHER_EVIDENCE_PMIDS = {
+    '40761336': {'doi': '10.14309/crj.0000000000001776', 'journal': 'ACG Case Rep J', 'publisher': 'Lww', 'dance': 'the_doi_slide'},
+    '29497234': {'doi': '10.1145/3150225', 'journal': 'ACM Comput Surv', 'publisher': 'acm', 'dance': 'the_acm_reel'},
+    '42584598': {'doi': '10.1021/jacs.6c11007', 'journal': 'J Am Chem Soc', 'publisher': 'acs', 'dance': 'the_doi_slide'},
+    '36397822': {'doi': '10.1063/5.0124414', 'journal': 'AIP Adv', 'publisher': 'Aip', 'dance': 'the_vip_shake'},
+    '37497929': {'doi': '10.1159/000525614', 'journal': 'Acta Cytol', 'publisher': 'Karger', 'dance': 'the_karger_conga'},
+    '40450333': {'doi': '10.1186/s40478-025-02045-5', 'journal': 'Acta Neuropathol Commun', 'publisher': 'Bmc', 'dance': 'the_bmc_boogie'},
+    '31639093': {'doi': '10.2478/acph-2019-0048', 'journal': 'Acta Pharm', 'publisher': 'Sciendo', 'dance': 'the_doi_slide'},
+    '36437620': {'doi': '10.1108/S1474-823120220000021007', 'journal': 'Adv Health Care Manag', 'publisher': 'Emerald', 'dance': 'the_doi_slide'},
+    '38124547': {'doi': '10.1093/ajcp/aqad170', 'journal': 'Am J Clin Pathol', 'publisher': 'Miscellaneous VIP Publishers', 'dance': 'the_vip_shake'},
+    '32058815': {'doi': '10.1352/1944-7558-125.2.148', 'journal': 'Am J Intellect Dev Disabil', 'publisher': 'Allenpress', 'dance': 'the_allenpress_advance'},
+    '41738173': {'doi': '10.1093/ajrccm/aamag034', 'journal': 'Am J Respir Crit Care Med', 'publisher': 'Ats', 'dance': 'the_doi_slide'},
+    '37963124': {'doi': '10.1086/727510', 'journal': 'Am Nat', 'publisher': 'Uchicago', 'dance': 'the_doi_slide'},
+    '32437535': {'doi': '10.1645/20-60', 'journal': 'J Parasitol', 'publisher': 'bioone', 'dance': 'the_vip_shake'},
+    '24575359': {'doi': '10.4172/2161-0940.s12-001', 'journal': 'Anat Physiol', 'publisher': 'Longdom', 'dance': 'the_longdom_hustle'},
+    '39152993': {'doi': '10.1177/00033197241274815', 'journal': 'Angiology', 'publisher': 'Sage', 'dance': 'the_doi_slide'},
+    '40912974': {'doi': '10.1016/j.ard.2025.08.021', 'journal': 'Ann Rheum Dis', 'publisher': 'bmj', 'dance': 'the_bmj_bump'},
+    '31498119': {'doi': '10.3233/BME-191063', 'journal': 'Biomed Mater Eng', 'publisher': 'Iospress', 'dance': 'the_doi_slide'},
+    '42013019': {'doi': '10.1182/blood.2025032422', 'journal': 'Blood', 'publisher': 'American Society of Hematology', 'dance': 'the_vip_shake_nonstandard'},
+    '36069534': {'doi': '10.20892/j.issn.2095-3941.2022.0231', 'journal': 'Cancer Biol Med', 'publisher': 'Cancerbiomed', 'dance': 'the_vip_shake'},
+    '41532856': {'doi': '10.1158/2159-8290.CD-25-1483', 'journal': 'Cancer Discov', 'publisher': 'Aacr', 'dance': 'the_aacr_jitterbug'},
+    '41031411': {'doi': '10.1161/CIRCRESAHA.125.326336', 'journal': 'Circ Res', 'publisher': 'Aha', 'dance': 'the_aha_waltz'},
+    '36633378': {'doi': '10.5414/CN110989', 'journal': 'Clin Nephrol', 'publisher': 'Dustri', 'dance': 'the_dustri_polka'},
+    '41358893': {'doi': '10.2337/dc26-S002', 'journal': 'Diabetes Care', 'publisher': 'American Diabetes Association', 'dance': 'the_vip_shake'},
+    '42358604': {'doi': '10.3389/fnagi.2026.1837327', 'journal': 'Front Aging Neurosci', 'publisher': 'Frontiers', 'dance': 'the_doi_slide'},
+    '37061958': {'doi': '10.1101/gad.350444.123', 'journal': 'Genes Dev', 'publisher': 'Cold Spring Harbor Laboratory Press', 'dance': 'the_vip_shake'},
+    '42132459': {'doi': '10.1167/iovs.67.5.33', 'journal': 'Invest Ophthalmol Vis Sci', 'publisher': 'Association for Research in Vision and Ophthalmology', 'dance': 'the_vip_shake'},
+    '41474611': {'doi': '10.1083/jcb.202511183', 'journal': 'J Cell Biol', 'publisher': 'Rockefeller University Press', 'dance': 'the_vip_shake'},
+    '42139800': {'doi': '10.1016/j.jpet.2026.104900', 'journal': 'J Pharmacol Exp Ther', 'publisher': 'American Society for Pharmacology', 'dance': 'the_vip_shake'},
+    '42371647': {'doi': '10.1001/jama.2026.8822', 'journal': 'JAMA', 'publisher': 'jama', 'dance': 'the_jama_dance'},
+    '37417358': {'doi': '10.3892/ijo.2023.5545', 'journal': 'Int J Oncol', 'publisher': 'Spandidos', 'dance': 'the_doi_slide'},
+    '42090791': {'doi': '10.1056/NEJMoa2505783', 'journal': 'N Engl J Med', 'publisher': 'Nejm', 'dance': 'the_doi_slide'},
+    '42013164': {'doi': '10.1371/journal.pbio.3003780', 'journal': 'PLoS Biol', 'publisher': 'Plos', 'dance': 'the_plos_pogo'},
+}

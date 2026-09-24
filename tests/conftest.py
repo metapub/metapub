@@ -188,67 +188,13 @@ def get_ncbi_service_status():
         _ncbi_service_available = check_ncbi_service()
     return _ncbi_service_available
 
-# Pytest marker for network-dependent tests
-def pytest_configure(config):
-    """Configure pytest markers."""
-    config.addinivalue_line(
-        "markers", "network: mark test as requiring network/NCBI connectivity"
-    )
-
-def pytest_addoption(parser):
-    """Add custom command line options."""
-    parser.addoption(
-        "--skip-network",
-        action="store_true", 
-        default=False,
-        help="Skip all tests that require network/NCBI API calls (useful for offline development)"
-    )
-
-def pytest_collection_modifyitems(config, items):
-    """Add network coordination marker and handle --skip-network option."""
-    skip_network = config.getoption("--skip-network")
-    
-    for item in items:
-        # Mark network-dependent tests for coordination
-        # Note: ncbi_health_check tests are excluded because they use mocked responses  
-        if any(keyword in item.nodeid.lower() for keyword in [
-            'pmid', 'doi', 'fetch', 'pubmed', 'medgen', 'citation',
-            'advquery', 'findit', 'convert', 'mesh_heading', 'random_efetch'
-        ]) and 'ncbi_health_check' not in item.nodeid.lower():
-            item.add_marker(pytest.mark.network)
-            
-            # Skip network tests if --skip-network flag is used
-            if skip_network:
-                item.add_marker(pytest.mark.skip(reason="Skipped network test due to --skip-network flag"))
-
-
-# Global coordination for network tests
-import threading
-import time
-_network_test_lock = threading.Lock()
-_last_network_request = 0
-
-
-@pytest.fixture(autouse=True)
-def coordinate_network_tests(request):
-    """Coordinate network tests to prevent rate limiting."""
-    global _last_network_request
-    
-    # Check if this test is marked as network-dependent
-    if request.node.get_closest_marker('network'):
-        with _network_test_lock:
-            current_time = time.time()
-            time_since_last = current_time - _last_network_request
-            
-            # Ensure at least 0.5 seconds between network tests
-            if time_since_last < 0.5:
-                sleep_time = 0.5 - time_since_last
-                time.sleep(sleep_time)
-            
-            _last_network_request = time.time()
-    
-    yield  # Run the test
-    
-    # Small delay after network tests to be extra conservative
-    if request.node.get_closest_marker('network'):
-        time.sleep(0.1)
+# NOTE: there used to be a `network` marker here, auto-applied to any test whose
+# nodeid contained 'findit'/'doi'/'pmid'/'fetch'/etc., plus a coordinate_network_tests
+# fixture that slept 0.5s before and 0.1s after every such test to avoid NCBI rate
+# limits. That was both wrong and expensive: it marked by filename, so ~600 offline
+# tests that make zero network calls (URL construction, registry lookups, this file's
+# journal-resolution guard) each paid ~0.6s of pure sleep. It was also redundant --
+# get_eutils_client() is an lru_cache(maxsize=1) singleton, so the whole suite shares
+# one NCBIClient whose RateLimiter already paces every eutils call to NCBI's limit,
+# and the client's Retry adapter absorbs transient 429s. NCBI pacing is the client's
+# job; publisher hygiene is the guardrail's (above). The apparatus is gone.

@@ -140,6 +140,7 @@ class TestAAASTest(BaseDanceTest):
         assert 'AAAS_USERNAME/AAAS_PASSWORD' in error_msg
         print(f"Test 5 - Paywall detection: {error_msg}")
 
+    @pytest.mark.live_network  # dance still reaches science.org live; drift detector
     @patch('metapub.findit.dances.aaas.AAAS_USERNAME', 'testuser')
     @patch('metapub.findit.dances.aaas.AAAS_PASSWORD', 'testpass')
     @patch('metapub.findit.dances.aaas.unified_uri_get')

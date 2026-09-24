@@ -72,6 +72,7 @@ class TestJSTAGEXMLFixtures:
             
             print(f"✓ PMID {pmid} URL: {result}")
 
+    @pytest.mark.live_network  # dance still fetches jstage.jst.go.jp live; drift detector
     @patch('metapub.findit.dances.jstage.verify_pdf_url')
     def test_jstage_paywall_handling(self, mock_verify):
         """Test paywall detection."""

@@ -135,7 +135,6 @@ EXPECTED_ROUTING = {
     'J Cell Biol': ('Rockefeller University Press', 'the_vip_shake'),
     'J Pharmacol Exp Ther': ('American Society for Pharmacology', 'the_vip_shake'),
     'JAMA': ('jama', 'the_jama_dance'),
-    'Metab Clin Exp': ('Elsevier', 'the_pii_shuffle'),
     'N Engl J Med': ('Nejm', 'the_doi_slide'),
     'PLoS Biol': ('Plos', 'the_plos_pogo'),
 }
@@ -153,6 +152,10 @@ EXCLUDED_PUBLISHERS = {
     'pnas': ("wired to the_doi_slide but the registry alias 'Proc Natl Acad Sci USA' "
              "does not match PubMed's abbreviation 'Proc Natl Acad Sci U S A' "
              "(see KNOWN_UNRESOLVED); the_doi_slide is covered elsewhere"),
+    'elsevier': ("only journal 'Metab Clin Exp' is emitted by PubMed as 'Metabolism', "
+                 "which resolves to sciencedirect/the_sciencedirect_disco (a #159-class "
+                 "multi-claim conflict); no real article routes to Elsevier/the_pii_shuffle, "
+                 "so it can't be given evidence -- verified via eutils"),
 }
 
 # Evidence journals that currently resolve to NO dance. Documented here rather
@@ -238,8 +241,12 @@ def test_every_wired_dance_is_covered(registry):
     cur.execute('SELECT DISTINCT dance_function FROM publishers WHERE is_active=1')
     wired = {row[0] for row in cur.fetchall() if row[0]}
     covered = {dance for _publisher, dance in EXPECTED_ROUTING.values()}
-    # the_pii_prance: only misc_pii uses it, and misc_pii has zero journals wired.
-    orphaned = {'the_pii_prance'}
+    # Dances whose only publisher is unreachable from real PubMed data, so they
+    # cannot be given a resolving journal (see EXCLUDED_PUBLISHERS):
+    #   the_pii_prance  -- only misc_pii, which has zero journals wired
+    #   the_pii_shuffle -- only Elsevier, whose journal PubMed emits as
+    #                      'Metabolism' -> resolves to the_sciencedirect_disco
+    orphaned = {'the_pii_prance', 'the_pii_shuffle'}
     uncovered = wired - covered - orphaned
     assert not uncovered, \
         "Wired dances with no routing coverage: %r" % sorted(uncovered)

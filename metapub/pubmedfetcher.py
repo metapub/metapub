@@ -20,6 +20,18 @@ from .ncbi_errors import diagnose_ncbi_error, NCBIServiceError, handle_ncbi_requ
 
 log = logging.getLogger('metapub.pubmedfetcher')
 
+# Maps the `datetype` argument of pmids_for_query onto the PubMed date field it
+# searches. Key names follow NCBI's own esearch `datetype` vocabulary, plus
+# 'crdt' for the record-creation date (which esearch has no datetype code for).
+DATETYPE_TAGS = {
+    'pdat': 'DP',       # date of publication -- what the PubMed web UI filters on
+    'edat': 'EDAT',     # date the record entered PubMed
+    'crdt': 'CRDT',     # date the record was created in PubMed
+    'mdat': 'LR',       # date the record was last modified / revised
+}
+
+DEFAULT_DATETYPE = 'pdat'
+
 def get_uids_from_esearch_result(xmlstr):
     """Extract unique identifiers from an ESearch XML result.
     
@@ -227,7 +239,7 @@ class PubMedFetcher(Borg):
         return self._eutils_article_by_pmid(pmid)
 
     def _eutils_pmids_for_query(self, query='', since=None, until=None, retstart=0, retmax=250,
-                pmc_only=False, **kwargs):
+                pmc_only=False, datetype=DEFAULT_DATETYPE, **kwargs):
         '''returns list of pmids for given freeform query string plus keyword arguments.
 
         Freeform queries encased in quotes will be considered "exact match" queries.
@@ -245,12 +257,32 @@ class PubMedFetcher(Borg):
         first_250 = fetch.pmids_for_query('some query')
         second_250 = fetch.pmids_for_query('some query', retstart=500, retmax=250)
 
+        The since/until range is searched against the date field named by `datetype`:
+
+            pdat    date of publication (default) -- matches the PubMed website's date filter
+            edat    date the record entered PubMed
+            crdt    date the record was created in PubMed
+            mdat    date the record was last modified / revised
+
+        Note that a record's creation date can be years away from its publication
+        date (back-catalog deposits, ahead-of-print records), so `datetype` materially
+        changes which articles come back.
+
+        Be aware that results can still carry dates outside the range you asked for,
+        because Pubmed's date matching is looser than it looks. See "Date ranges are
+        fuzzier than they look" in docs/examples.rst -- the short version is that
+        imprecise publication dates ("2025 Jul") are normalized to the first of their
+        period, and [DP] matches either the electronic or the print date. Neither is
+        something metapub can tighten without second-guessing Pubmed.
+
         :param: query (string) default ''
         :param: since (string) default None  # Y/m/d format expected. Y alone or Y/m allowed.
         :param: until (string) default None  # Y/m/d format expected. Y alone or Y/m allowed.
+        :param: datetype (string) default 'pdat'  # date field that since/until search.
         :param: retstart (int) default 0
         :param: retmax (int) default 250
         :param: pmc_only (bool) default False  # constructs query to only search Pubmed Central.
+        :raises: MetaPubError if datetype is not one of the values listed above.
         '''
 
         # lowercase all the things.
@@ -272,21 +304,19 @@ class PubMedFetcher(Borg):
                 for m in matches:
                     query += ' "%s"[ALL]' % m
 
-        # Search within date range (since / until)
+        # Search within date range (since / until), against the field named by datetype.
         #
-        # working examples. search by creation date only works within defined ranges (not "< X" or "> Y")
-        # ("2015/3/1"[Date - Create] : "2015/3/3"[Date - Create])
+        # Pubmed date searches only work as bounded ranges (not "< X" or "> Y"), so an
+        # omitted end of the range becomes an open sentinel year:
         # ("2015/2/14"[CRDT] : "2015/3/14"[CRDT])
-        created_date_template = '"%s"[CRDT]'
-        date_range_template = " (%s : %s)"
-        if since:
-            start = created_date_template % since
-            if until:
-                end = created_date_template % until
-            else:
-                end = '"3000"[CRDT]'
+        if since or until:
+            tag = DATETYPE_TAGS.get(datetype.lower())
+            if tag is None:
+                raise MetaPubError('Invalid datetype %r: expected one of %s' % (
+                    datetype, ', '.join(sorted(DATETYPE_TAGS))))
 
-            query += date_range_template % (start, end)
+            date_range_template = ' ("%s"[%s] : "%s"[%s])'
+            query += date_range_template % (since or '1000', tag, until or '3000', tag)
 
         # unique ID referents.
         q['PMID'] = kpick(kwargs, options=['pmid', 'uid', 'pubmed_id'])
@@ -387,7 +417,8 @@ class PubMedFetcher(Borg):
                 raise
 
     def pmids_for_clinical_query(self, query, category, optimization='broad',
-            since=None, until=None, retstart=0, retmax=250, pmc_only=False, **kwargs):
+            since=None, until=None, retstart=0, retmax=250, pmc_only=False,
+            datetype=DEFAULT_DATETYPE, **kwargs):
         '''Takes a query and a category (required, see below) and returns a list
         of pubmed IDs returned by NCBI for that query.
 
@@ -418,10 +449,11 @@ class PubMedFetcher(Borg):
             raise MetaPubError('Query string required for Clinical Query.')
 
         kwargs['clinical_query'] = True
-        return self.pmids_for_query(query, retstart=retstart, retmax=retmax, since=since, until=until, **kwargs)
+        return self.pmids_for_query(query, retstart=retstart, retmax=retmax, since=since, until=until,
+                                    datetype=datetype, **kwargs)
 
     def pmids_for_medical_genetics_query(self, query, category='all', since=None, until=None,
-                    retstart=0, retmax=250, pmc_only=False, **kwargs):
+                    retstart=0, retmax=250, pmc_only=False, datetype=DEFAULT_DATETYPE, **kwargs):
         '''Takes a query and category (see below) and returns a list of pubmed IDs.
         IDs returned by NCBI for that query.
 
@@ -447,7 +479,8 @@ class PubMedFetcher(Borg):
             raise MetaPubError('Query string required for Medical Genetics query.')
 
         kwargs['clinical_query'] = True
-        return self.pmids_for_query(query, retstart=retstart, retmax=retmax, since=since, until=until, **kwargs)
+        return self.pmids_for_query(query, retstart=retstart, retmax=retmax, since=since, until=until,
+                                    datetype=datetype, **kwargs)
 
     def pmids_for_citation(self, **kwargs):
         '''returns list of pmids for given citation. requires at least 3/5 of these keyword arguments:

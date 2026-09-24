@@ -73,7 +73,8 @@ Example Usage
    print(f"Journal: {article.journal}")
    print(f"DOI: {article.doi}")
    
-   # Search for articles
+   # Search for articles. since/until search publication date by default;
+   # pass datetype='crdt'/'edat'/'mdat' to search a different date field.
    pmids = fetch.pmids_for_query(
        query='CRISPR gene editing',
        since='2020/01/01',

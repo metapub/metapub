@@ -1,0 +1,200 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="Publisher" Owner="NLM">
+      <PMID Version="1">42285338</PMID>
+      <DateRevised>
+        <Year>2026</Year>
+        <Month>06</Month>
+        <Day>12</Day>
+      </DateRevised>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISSN IssnType="Electronic">1523-1747</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <PubDate>
+              <Year>2026</Year>
+              <Month>Jun</Month>
+              <Day>12</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>The Journal of investigative dermatology</Title>
+          <ISOAbbreviation>J Invest Dermatol</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>An ITGB4 variant modifies the severity of ITGA3-associated interstitial lung disease, nephrotic syndrome, and epidermolysis bullosa (ILNEB).</ArticleTitle>
+        <ELocationID EIdType="pii" ValidYN="Y">S0022-202X(26)02601-1</ELocationID>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1016/j.jid.2026.04.044</ELocationID>
+        <Abstract>
+          <AbstractText>Biallelic ITGA3 variants cause a rare subtype of junctional epidermolysis bullosa named interstitial lung disease, nephrotic syndrome, and epidermolysis bullosa (ILNEB). ILNEB is characterized by extensive clinical heterogeneity, suggesting the existence of modifier genes. We studied a family with two siblings affected with ILNEB due to a homozygous ITGA3 variant. The disease severity was strikingly different in the two siblings. Whole exome sequencing revealed the presence of two different heterozygous variants in ITGB4 in each of the two patients: p.Arg977Cys in the more severely affected individual and p.Asp285Asn in the milder case. Accordingly, the ITGB4 p.Arg977Cys variant caused a significantly greater reduction in ITGB4 membrane localization compared to the p.Asp285Asn variant. In addition, the ITGB4 p.Arg977Cys variant resulted in significantly diminished activation of the FAK/AKT/mTOR/S6 pathway as compared with the p.Asp285Asn variant. Finally, using co-immunoprecipitation assays as well as confirmatory proximity ligation assays, we identified an hitherto unrecognized direct interaction between ITGA3 and ITGB4 which was more significantly compromised by the ITGB4 p.Arg977Cys than by the p.Asp285Asn variant. Our findings indicate that monoallelic ITGB4 genetic variants may modulate the severity of ITGA3-associated ILNEB.</AbstractText>
+          <CopyrightInformation>Copyright &#169; 2026 The Author(s). Published by Elsevier Inc. All rights reserved.</CopyrightInformation>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Khair</LastName>
+            <ForeName>Lubna Gazi</ForeName>
+            <Initials>LG</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Dermatology, Tel Aviv Medical Center, Tel Aviv, Israel; Gray Faculty of Medicine and Health Sciences, Tel Aviv University, Tel Aviv, Israel.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Sarig</LastName>
+            <ForeName>Ofer</ForeName>
+            <Initials>O</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Dermatology, Tel Aviv Medical Center, Tel Aviv, Israel.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Ishtewy</LastName>
+            <ForeName>Rawaa Fayez</ForeName>
+            <Initials>RF</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Dermatology, Tel Aviv Medical Center, Tel Aviv, Israel; Gray Faculty of Medicine and Health Sciences, Tel Aviv University, Tel Aviv, Israel.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Malovitski</LastName>
+            <ForeName>Kiril</ForeName>
+            <Initials>K</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Dermatology, Tel Aviv Medical Center, Tel Aviv, Israel; Gray Faculty of Medicine and Health Sciences, Tel Aviv University, Tel Aviv, Israel.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Feller</LastName>
+            <ForeName>Yarden</ForeName>
+            <Initials>Y</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Dermatology, Tel Aviv Medical Center, Tel Aviv, Israel; Gray Faculty of Medicine and Health Sciences, Tel Aviv University, Tel Aviv, Israel.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Zenab</LastName>
+            <ForeName>Angi</ForeName>
+            <Initials>A</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Dermatology, Tel Aviv Medical Center, Tel Aviv, Israel.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Moskovitz</LastName>
+            <ForeName>Yoni</ForeName>
+            <Initials>Y</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Dermatology, Tel Aviv Medical Center, Tel Aviv, Israel.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Arad</LastName>
+            <ForeName>May</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Dermatology, Tel Aviv Medical Center, Tel Aviv, Israel; Gray Faculty of Medicine and Health Sciences, Tel Aviv University, Tel Aviv, Israel.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Sharoni</LastName>
+            <ForeName>Eylon</ForeName>
+            <Initials>E</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Dermatology, Tel Aviv Medical Center, Tel Aviv, Israel.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Adam</LastName>
+            <ForeName>Naama</ForeName>
+            <Initials>N</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Dermatology, Tel Aviv Medical Center, Tel Aviv, Israel; Gray Faculty of Medicine and Health Sciences, Tel Aviv University, Tel Aviv, Israel.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Samuelov</LastName>
+            <ForeName>Liat</ForeName>
+            <Initials>L</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Dermatology, Tel Aviv Medical Center, Tel Aviv, Israel; Gray Faculty of Medicine and Health Sciences, Tel Aviv University, Tel Aviv, Israel.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Sprecher</LastName>
+            <ForeName>Eli</ForeName>
+            <Initials>E</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Dermatology, Tel Aviv Medical Center, Tel Aviv, Israel; Gray Faculty of Medicine and Health Sciences, Tel Aviv University, Tel Aviv, Israel. Electronic address: elisp@tlvmc.gov.il.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2026</Year>
+          <Month>06</Month>
+          <Day>12</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>J Invest Dermatol</MedlineTA>
+        <NlmUniqueID>0426720</NlmUniqueID>
+        <ISSNLinking>0022-202X</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">ILNEB</Keyword>
+        <Keyword MajorTopicYN="N">ITGA3</Keyword>
+        <Keyword MajorTopicYN="N">ITGB4</Keyword>
+        <Keyword MajorTopicYN="N">genetic modifiers</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="received">
+          <Year>2026</Year>
+          <Month>3</Month>
+          <Day>5</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="revised">
+          <Year>2026</Year>
+          <Month>4</Month>
+          <Day>29</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="accepted">
+          <Year>2026</Year>
+          <Month>4</Month>
+          <Day>30</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>13</Day>
+          <Hour>0</Hour>
+          <Minute>39</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>13</Day>
+          <Hour>0</Hour>
+          <Minute>39</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>12</Day>
+          <Hour>19</Hour>
+          <Minute>34</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>aheadofprint</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">42285338</ArticleId>
+        <ArticleId IdType="doi">10.1016/j.jid.2026.04.044</ArticleId>
+        <ArticleId IdType="pii">S0022-202X(26)02601-1</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

@@ -9,13 +9,13 @@ dance_function: the_bmc_boogie
 journals:
   simple_list:
   - 3D Print Med
-  - AIDS Res Ther
   - Acta Neuropathol Commun
   - Acta Vet Scand
   - Addict Sci Clin Pract
   - Adv Rheumatol
   - Adv Simul (Lond)
   - Agric Food Secur
+  - AIDS Res Ther
   - Algorithms Mol Biol
   - Allergy Asthma Clin Immunol
   - Alzheimers Res Ther
@@ -38,6 +38,23 @@ journals:
   - Auto Immun Highlights
   - Autom Exp
   - Avian Res
+  - Basic Clin Androl
+  - Behav Brain Funct
+  - Big Data Anal
+  - BioData Min
+  - Bioelectron Med
+  - Biol Direct
+  - Biol Mood Anxiety Disord
+  - Biol Proced Online
+  - Biol Res
+  - Biol Sex Differ
+  - Biomagn Res Technol
+  - Biomark Res
+  - Biomed Digit Libr
+  - Biomed Eng Online
+  - Biopsychosoc Med
+  - Biotechnol Biofuels
+  - Biotechnology
   - BMC Anesthesiol
   - BMC Biochem
   - BMC Bioinformatics
@@ -112,23 +129,6 @@ journals:
   - BMC Urol
   - BMC Vet Res
   - BMC Womens Health
-  - Basic Clin Androl
-  - Behav Brain Funct
-  - Big Data Anal
-  - BioData Min
-  - Bioelectron Med
-  - Biol Direct
-  - Biol Mood Anxiety Disord
-  - Biol Proced Online
-  - Biol Res
-  - Biol Sex Differ
-  - Biomagn Res Technol
-  - Biomark Res
-  - Biomed Digit Libr
-  - Biomed Eng Online
-  - Biopsychosoc Med
-  - Biotechnol Biofuels
-  - Biotechnology
   - Borderline Personal Disord Emot Dysregul
   - Cancer Cell Int
   - Cancer Converg
@@ -178,6 +178,7 @@ journals:
   - Disaster Mil Med
   - Dyn Med
   - Echo Res Pract
+  - eHealth Int
   - Energy Sustain Soc
   - Environ Evid
   - Environ Health
@@ -252,6 +253,7 @@ journals:
   - J Biol Eng
   - J Biol Res (Thessalon)
   - J Biomed Discov Collab
+  - J Biomed Sci
   - J Biomed Semantics
   - J Cannabis Res
   - J Cardiothorac Surg
@@ -316,7 +318,6 @@ journals:
   - Nutr J
   - Nutr Metab (Lond)
   - One Health Outlook
-  - Ophthalmology
   - Oral Health
   - Orphanet J Rare Dis
   - Osteopath Med Prim Care
@@ -333,7 +334,6 @@ journals:
   - Popul Health Metr
   - Porcine Health Manag
   - Proteome Sci
-  - Psychiatry
   - Public Health
   - Radiat Oncol
   - Reprod Biol Endocrinol
@@ -371,7 +371,6 @@ journals:
   - World J Emerg Surg
   - World J Surg Oncol
   - Zoological Lett
-  - eHealth Int
 metadata:
   evidence_date: '2025-08-11'
   verification_notes: ''

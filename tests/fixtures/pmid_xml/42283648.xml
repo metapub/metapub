@@ -1,0 +1,102 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="Publisher" Owner="NLM">
+      <PMID Version="1">42283648</PMID>
+      <DateRevised>
+        <Year>2026</Year>
+        <Month>06</Month>
+        <Day>12</Day>
+      </DateRevised>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISSN IssnType="Electronic">1549-4713</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <PubDate>
+              <Year>2026</Year>
+              <Month>Jun</Month>
+              <Day>12</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>Ophthalmology</Title>
+          <ISOAbbreviation>Ophthalmology</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Re: Liu et al.: Rate and risk of nonarteritic anterior ischemic optic neuropathy with semaglutide use for diabetes and weight loss: a systematic review and meta-analysis (Ophthalmology 2026;133;589-598).</ArticleTitle>
+        <ELocationID EIdType="pii" ValidYN="Y">S0161-6420(26)00365-9</ELocationID>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1016/j.ophtha.2026.05.017</ELocationID>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Nordvall</LastName>
+            <ForeName>Lina-Maria</ForeName>
+            <Initials>LM</Initials>
+            <AffiliationInfo>
+              <Affiliation>Clinical Pharmacology, Department of Medical and Translational Biology, Ume&#229; University Hospital, Ume&#229; University, Sweden. Electronic address: lina-maria.nordvall@umu.se.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016422">Letter</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2026</Year>
+          <Month>06</Month>
+          <Day>12</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>Ophthalmology</MedlineTA>
+        <NlmUniqueID>7802443</NlmUniqueID>
+        <ISSNLinking>0161-6420</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="received">
+          <Year>2026</Year>
+          <Month>4</Month>
+          <Day>23</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="revised">
+          <Year>2026</Year>
+          <Month>5</Month>
+          <Day>7</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="accepted">
+          <Year>2026</Year>
+          <Month>5</Month>
+          <Day>13</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>12</Day>
+          <Hour>13</Hour>
+          <Minute>2</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>12</Day>
+          <Hour>13</Hour>
+          <Minute>2</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>12</Day>
+          <Hour>10</Hour>
+          <Minute>30</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>aheadofprint</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">42283648</ArticleId>
+        <ArticleId IdType="doi">10.1016/j.ophtha.2026.05.017</ArticleId>
+        <ArticleId IdType="pii">S0161-6420(26)00365-9</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

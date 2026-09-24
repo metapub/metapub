@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="Publisher" Owner="NLM">
+      <PMID Version="1">42274351</PMID>
+      <DateRevised>
+        <Year>2026</Year>
+        <Month>06</Month>
+        <Day>11</Day>
+      </DateRevised>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISSN IssnType="Electronic">1529-4242</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <PubDate>
+              <Year>2026</Year>
+              <Month>Jun</Month>
+              <Day>09</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>Plastic and reconstructive surgery</Title>
+          <ISOAbbreviation>Plast Reconstr Surg</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Predictability of brow contour in direct brow lift.</ArticleTitle>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1097/PRS.0000000000013249</ELocationID>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Akaishi</LastName>
+            <ForeName>Patricia M S</ForeName>
+            <Initials>PMS</Initials>
+            <AffiliationInfo>
+              <Affiliation>. Department of Ophthalmology, Clinical Hospital School of Medicine of Ribeir&#227;o Preto - University of S&#227;o Paulo, Ribeir&#227;o Preto, S&#227;o Paulo, Brazil.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Todo</LastName>
+            <ForeName>Marcia C</ForeName>
+            <Initials>MC</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Brassaloti</LastName>
+            <ForeName>Sarah S</ForeName>
+            <Initials>SS</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Garcia</LastName>
+            <ForeName>Denny M</ForeName>
+            <Initials>DM</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2026</Year>
+          <Month>06</Month>
+          <Day>09</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>Plast Reconstr Surg</MedlineTA>
+        <NlmUniqueID>1306050</NlmUniqueID>
+        <ISSNLinking>0032-1052</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">Bezier curve</Keyword>
+        <Keyword MajorTopicYN="N">Brow</Keyword>
+        <Keyword MajorTopicYN="N">contour</Keyword>
+        <Keyword MajorTopicYN="N">surgery</Keyword>
+      </KeywordList>
+      <CoiStatement>The authors have no conflicts of interest.</CoiStatement>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>11</Day>
+          <Hour>12</Hour>
+          <Minute>40</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>11</Day>
+          <Hour>12</Hour>
+          <Minute>40</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2026</Year>
+          <Month>6</Month>
+          <Day>11</Day>
+          <Hour>10</Hour>
+          <Minute>3</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>aheadofprint</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">42274351</ArticleId>
+        <ArticleId IdType="doi">10.1097/PRS.0000000000013249</ArticleId>
+        <ArticleId IdType="pii">00006534-990000000-03303</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

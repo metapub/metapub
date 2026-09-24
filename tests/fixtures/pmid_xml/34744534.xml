@@ -1,0 +1,325 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="PubMed-not-MEDLINE" Owner="NLM">
+      <PMID Version="1">34744534</PMID>
+      <DateRevised>
+        <Year>2025</Year>
+        <Month>05</Month>
+        <Day>30</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">1590-4261</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>71</Volume>
+            <Issue>1</Issue>
+            <PubDate>
+              <Year>2021</Year>
+              <Month>Sep</Month>
+              <Day>21</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>Annals of microbiology</Title>
+          <ISOAbbreviation>Ann Microbiol</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Phylogenetically diverse bacteria isolated from tattoo inks, an azo dye-rich environment, decolorize a wide range of azo dyes.</ArticleTitle>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1186/s13213-021-01648-2</ELocationID>
+        <Abstract>
+          <AbstractText Label="PURPOSE" NlmCategory="OBJECTIVE">There has been an interest in the microbial azo dye degradation as an optional method for the treatment of azo dye-containing wastes. Tattoo ink is an extremely unique azo dye-rich environment, which have never been explored in terms of microorganisms capable of degrading azo dyes. Previously, we isolated 81 phylogenetically diverse bacteria, belonging to 18 genera and 52 species, contaminated in tattoo inks. In this study, we investigated if these bacteria, which can survive in the azo dye-rich environment, have an ability to degrade azo dyes.</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">We conducted a two-step azo dye degradation (or decolorization) assay. In step 1, a high-throughput degradability assay was done for 79 bacterial isolates using Methyl Red and Orange II. In step 2, a further degradation assay was done for 10 selected bacteria with a representative of 11 azo dyes, including 3 commercial tattoo ink azo dyes. Degradation of azo dyes were calculated from measuring optical absorbance of soluble dyes at specific wavelengths.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">The initial high-throughput azo dye assay (step 1) showed that 79 isolates had a complete or partial degradation of azo dyes; &gt; 90% of Methyl Red and Orange II were degraded within 24 h, by 74 and 20 isolates, respectively. A further evaluation of azo dye degradability for 10 selected isolates in step 2 showed that the isolates, belonging to <i>Bacillus</i>, <i>Brevibacillus</i>, <i>Paenibacillus</i>, and <i>Pseudomonas</i>, exhibited an excellent decolorization ability for a wide range of azo dyes.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">This study showed that phylogenetically diverse bacteria, isolated from azo dye-rich tattoo inks, is able to degrade a diverse range of azo dyes, including 3 azo dyes used in commercial tattoo inks. Some of the strains would be good candidates for future studies to provide a systematic understanding of azo dye degradation mechanisms.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Nho</LastName>
+            <ForeName>Seong Won</ForeName>
+            <Initials>SW</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Microbiology, National Center for Toxicological Research, U.S. Food and Drug Administration, Jefferson, AR, USA.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Cui</LastName>
+            <ForeName>Xuewen</ForeName>
+            <Initials>X</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Microbiology, National Center for Toxicological Research, U.S. Food and Drug Administration, Jefferson, AR, USA.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Present address: Sichuan Institute for Food and Drug Control, Chengdu 611731, Sichuan, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Kweon</LastName>
+            <ForeName>Ohgew</ForeName>
+            <Initials>O</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Microbiology, National Center for Toxicological Research, U.S. Food and Drug Administration, Jefferson, AR, USA.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Jin</LastName>
+            <ForeName>Jinshan</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Microbiology, National Center for Toxicological Research, U.S. Food and Drug Administration, Jefferson, AR, USA.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Chen</LastName>
+            <ForeName>Huizhong</ForeName>
+            <Initials>H</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Microbiology, National Center for Toxicological Research, U.S. Food and Drug Administration, Jefferson, AR, USA.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Moon</LastName>
+            <ForeName>Mi Sun</ForeName>
+            <Initials>MS</Initials>
+            <AffiliationInfo>
+              <Affiliation>Office of Cosmetics and Colors, Center for Food Safety and Applied Nutrition, U.S. Food and Drug Administration, College Park, MD, USA.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Kim</LastName>
+            <ForeName>Seong-Jae</ForeName>
+            <Initials>SJ</Initials>
+            <Identifier Source="ORCID">0000-0002-9793-3186</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Division of Microbiology, National Center for Toxicological Research, U.S. Food and Drug Administration, Jefferson, AR, USA.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Cerniglia</LastName>
+            <ForeName>Carl E</ForeName>
+            <Initials>CE</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Microbiology, National Center for Toxicological Research, U.S. Food and Drug Administration, Jefferson, AR, USA.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <GrantList CompleteYN="Y">
+          <Grant>
+            <GrantID>FD999999</GrantID>
+            <Acronym>ImFDA</Acronym>
+            <Agency>Intramural FDA HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+        </GrantList>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Italy</Country>
+        <MedlineTA>Ann Microbiol</MedlineTA>
+        <NlmUniqueID>100959580</NlmUniqueID>
+        <ISSNLinking>1590-4261</ISSNLinking>
+      </MedlineJournalInfo>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">Bacterial azo dye degradation</Keyword>
+        <Keyword MajorTopicYN="N">Microbial contamination</Keyword>
+        <Keyword MajorTopicYN="N">Tattoo ink</Keyword>
+      </KeywordList>
+      <CoiStatement>Competing interests The authors declare that they have no competing interests.</CoiStatement>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2021</Year>
+          <Month>11</Month>
+          <Day>8</Day>
+          <Hour>6</Hour>
+          <Minute>32</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2021</Year>
+          <Month>11</Month>
+          <Day>9</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2021</Year>
+          <Month>11</Month>
+          <Day>9</Day>
+          <Hour>6</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pmc-release">
+          <Year>2021</Year>
+          <Month>11</Month>
+          <Day>5</Day>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">34744534</ArticleId>
+        <ArticleId IdType="mid">NIHMS1751507</ArticleId>
+        <ArticleId IdType="pmc">PMC8569640</ArticleId>
+        <ArticleId IdType="doi">10.1186/s13213-021-01648-2</ArticleId>
+      </ArticleIdList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Alhassani HA, Rauf MA, Ashraf SS (2007) Efficient microbial degradation of toluidine blue dye by <i>Brevibacillus</i> sp. Dyes Pigments
+75(2):395&#8211;400. 10.1016/j.dyepig.2006.06.019</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.dyepig.2006.06.019</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>B&#228;umler W, Eibler ET, Hohenleutner U, Sens B, Sauer J, Landthaler M (2000) Q-switch laser and tattoo pigments: first results of the chemical and photophysical analysis of 41 compounds. Lasers Surg Med 26(1):13&#8211;21. 10.1002/(SICI)1096-9101(2000)26:1&lt;13::AID-LSM4&gt;3.0.CO;2-S</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/(SICI)1096-9101(2000)26:1&lt;13::AID-LSM4&gt;3.0.CO;2-S</ArticleId>
+            <ArticleId IdType="pubmed">10636999</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Carmen Z, Daniela S (2012) Textile organic dyes-characteristics, polluting effects and separation/elimination procedures from industrial effulents - a critical overview. In: Puzyn T (ed) Organic Pollutants Ten Years after the Sockholm Convention - Environmental and Analytical Update, pp 55&#8211;86</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Chung KT (2016) Azo dyes and human health: a review. J Environ Sci Health C Environ Carcinog Ecotoxicol Rev 34:233&#8211;261</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">27635691</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Feng J, Cerniglia CE, Chen H (2012) Toxicological significance of azo dye metabolism by human intestinal microbiota. Front Biosci 4:568&#8211;586</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pmc">PMC5870118</ArticleId>
+            <ArticleId IdType="pubmed">22201895</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Forgacs E, Cserhati T, Oros G (2004) Removal of synthetic dyes from wastewaters: a review. Environ Int 30(7):953&#8211;971. 10.1016/j.envint.2004.02.001</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.envint.2004.02.001</ArticleId>
+            <ArticleId IdType="pubmed">15196844</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Gomare SS, Govindwar SP (2009) <i>Brevibacillus laterosporus</i> MTCC 2298: a potential azo dye degrader. J Appl Microbiol
+106:993&#8211;1004, 3, DOI: 10.1111/j.1365-2672.2008.04066.x</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1111/j.1365-2672.2008.04066.x</ArticleId>
+            <ArticleId IdType="pubmed">19187152</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Jadhav SB, Patil NS, Watharkar AD, Apine OA, Jadhav JP (2013) Batch and continuous biodegradation of Amaranth in plain distilled water by P. aeruginosa BCH and toxicological scrutiny using oxidative stress studies. Environ Sci Pollut Res Int 20(5):2854&#8211;2866. 10.1007/s11356-012-1155-y</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/s11356-012-1155-y</ArticleId>
+            <ArticleId IdType="pubmed">22996819</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Jin XC, Liu GQ, Xu ZH, Tao WY (2007) Decolorization of a dye industry effluent by <i>Aspergillus fumigatus</i> XC6. Appl Microbiol Biotechnol
+74(1):239&#8211;243. 10.1007/s00253-006-0658-1</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/s00253-006-0658-1</ArticleId>
+            <ArticleId IdType="pubmed">17086413</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Meehan C, Bjourson AJ, McMullan G (2001) <i>Paenibacillus azoreducens</i> sp. nov., a synthetic azo dye decolorizing bacterium from industrial wastewater. Int J Syst Evol Microbiol
+51:1681&#8211;1685, 5, DOI: 10.1099/00207713-51-5-1681</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1099/00207713-51-5-1681</ArticleId>
+            <ArticleId IdType="pubmed">11594595</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Nawahwi MZ, Ibrahim Z, Yahya A (2013) Degradation of the azo dye reactive red 195 by <i>Paenibacillus</i> spp. R2. J Bioremed Biodeg
+4:174</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Nho SW, Kim M, Kweon O, Kim SJ, Moon MS, Periz G, Huang MJ, Dewan K, Sadrieh NK, Cerniglia CE (2020) Microbial contamination of tattoo and permanent makeup inks marketed in the US: a follow-up study. Lett Appl Microbiol 71(4):351&#8211;358. 10.1111/lam.13353</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1111/lam.13353</ArticleId>
+            <ArticleId IdType="pubmed">32654157</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Nho SW, Kim SJ, Kweon O, Howard PC, Moon MS, Sadrieh NK, Cerniglia CE (2018) Microbiological survey of commercial tattoo and permanent makeup inks available in the United States. J Appl Microbiol 124(5):1294&#8211;1302. 10.1111/jam.13713</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1111/jam.13713</ArticleId>
+            <ArticleId IdType="pmc">PMC8601000</ArticleId>
+            <ArticleId IdType="pubmed">29388315</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ramya M, Anusha B, Kalavathy S (2008) Decolorization and biodegradation of Indigo carmine by a textile soil isolate <i>Paenibacillus larvae</i>. Biodegradation
+19(2):283&#8211;291. 10.1007/s10532-007-9134-6</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/s10532-007-9134-6</ArticleId>
+            <ArticleId IdType="pubmed">17554499</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Rawat D, Mishra V, Sharma RS (2016) Detoxification of azo dyes in the context of environmental processes. Chemosphere 155:591&#8211;605. 10.1016/j.chemosphere.2016.04.068</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.chemosphere.2016.04.068</ArticleId>
+            <ArticleId IdType="pubmed">27155475</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Robinson T, McMullan G, Marchant R, Nigam P (2001) Remediation of dyes in textile effluent: a critical review on current treatment technologies with a proposed alternative. Bioresour Technol 77(3):247&#8211;255. 10.1016/S0960-8524(00)00080-8</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S0960-8524(00)00080-8</ArticleId>
+            <ArticleId IdType="pubmed">11272011</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Saratale RG, Saratale GD, Chang JS, Govindwar SP (2011) Bacterial decolorization and degradation of azo dyes: A review. J Taiwan Instit Chem Eng 42(1):138&#8211;157. 10.1016/j.jtice.2010.06.006</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.jtice.2010.06.006</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Sol&#237;s M, Sol&#237;s A, P&#233;rez HI, Manjarrez N, Flores M (2012) Microbial decolouration of azo dyes: A review. Process Biochem 47(12):1723&#8211;1748. 10.1016/j.procbio.2012.08.014</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/j.procbio.2012.08.014</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Srinivasan GP, Sikkanthar A, Elamaran A, Delma CR, Subramaniyan K, Somasundaram ST (2014) Biodegradation of carcinogenic textile azo dyes using bacterial isolates of mangrove sediment. J Costal Life Med 2:154&#8211;162</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Stingley RL, Zou W, Heinze TM, Chen H, Cerniglia CE (2010) Metabolism of azo dyes by human skin microbiota. J Med Microbiol 59(1):108&#8211;114. 10.1099/jmm.0.012617-0</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1099/jmm.0.012617-0</ArticleId>
+            <ArticleId IdType="pmc">PMC5868336</ArticleId>
+            <ArticleId IdType="pubmed">19729456</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Stolz A (2001) Basic and applied aspects in the microbial degradation of azo dyes. Appl Microbiol Biotechnol 56(1&#8211;2):69&#8211;80. 10.1007/s002530100686</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/s002530100686</ArticleId>
+            <ArticleId IdType="pubmed">11499949</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Telke AA, Joshi SM, Jadhav SU, Tamboli DP, Govindwar SP (2010) Decolorization and detoxification of Congo red and textile industry effluent by an isolated bacterium <i>Pseudomonas</i> sp. SU-EBT Biodegradation
+21(2):283&#8211;296. 10.1007/s10532-009-9300-0</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/s10532-009-9300-0</ArticleId>
+            <ArticleId IdType="pubmed">19774467</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Xu M, Guo J, Cen Y, Zhong X, Cao W, Sun G (2005) <i>Shewanella decolorationis</i> sp. nov., a dye-decolorizing bacterium isolated from activated sludge of a wastewater treatment plant. Int J Syst Evol Microbiol
+55:363&#8211;368, 1, DOI: 10.1099/ijs.0.63157-0</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1099/ijs.0.63157-0</ArticleId>
+            <ArticleId IdType="pubmed">15653901</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

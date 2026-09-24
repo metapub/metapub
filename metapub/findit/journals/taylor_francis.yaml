@@ -27,13 +27,6 @@ url_patterns:
 dance_function: the_doi_slide
 journals:
   simple_list:
-  - AIDS Care
-  - AIHA J (Fairfax, Va)
-  - AIHAJ
-  - AJOB Empir Bioeth
-  - AJOB Neurosci
-  - AJOB Prim Res
-  - ANQ
   - Account Res
   - Act Adapt Aging
   - Acta Agric Scand A Anim Sci
@@ -74,10 +67,16 @@ journals:
   - Afr J Range Forage Sci
   - Afr Stud
   - Agenda
+  - Aging health
   - Aging Male
   - Aging Ment Health
-  - Aging health
+  - AIDS Care
+  - AIHA J (Fairfax, Va)
+  - AIHAJ
   - Air Waste
+  - AJOB Empir Bioeth
+  - AJOB Neurosci
+  - AJOB Prim Res
   - Alcohol Treat Q
   - Am Ind Hyg Assoc J
   - Am Ind Hyg Assoc Q
@@ -111,6 +110,7 @@ journals:
   - Ann Sci
   - Ann Trop Med Parasitol
   - Ann Trop Paediatr
+  - ANQ
   - Anthropol Archeol Eurasia
   - Anthropol Forum
   - Anthropol Med
@@ -249,14 +249,6 @@ journals:
   - Bull Concern Asian Sch
   - Bull Indones Econ Stud
   - Bus Hist
-  - CNS Oncol
-  - COPD
-  - CRC Crit Rev Biochem
-  - CRC Crit Rev Clin Lab Sci
-  - CRC Crit Rev Food Sci Nutr
-  - CRC Crit Rev Microbiol
-  - CRC Crit Rev Plant Sci
-  - CRC Crit Rev Toxicol
   - Can J Afr Stud
   - Can J Lat Am Caribb Stud
   - Can J Pain
@@ -318,9 +310,10 @@ journals:
   - Clin Superv
   - Clin Toxicol
   - Clin Toxicol (Phila)
-  - CoDesign
+  - CNS Oncol
   - Coast Manage
   - Cochlear Implants Int
+  - CoDesign
   - Coevolution
   - Cogent Arts Humanit
   - Cogent Biol
@@ -383,9 +376,16 @@ journals:
   - Contemp Soc Sci
   - Contemp South Asia
   - Continuum (Mount Lawley)
+  - COPD
   - Corrections
   - Couns Psychol Q
   - Cranio
+  - CRC Crit Rev Biochem
+  - CRC Crit Rev Clin Lab Sci
+  - CRC Crit Rev Food Sci Nutr
+  - CRC Crit Rev Microbiol
+  - CRC Crit Rev Plant Sci
+  - CRC Crit Rev Toxicol
   - Creat Res J
   - Crim Justice Ethics
   - Crim Justice Stud (Abingdon)
@@ -418,8 +418,6 @@ journals:
   - Cutan Ocul Toxicol
   - Cybern Syst
   - Cytokines Cell Mol Ther
-  - DISP
-  - DNA Seq
   - Deafness Educ Int
   - Death Educ
   - Death Stud
@@ -441,6 +439,8 @@ journals:
   - Disabil Soc
   - Disaster Health
   - Discourse Process
+  - DISP
+  - DNA Seq
   - Doc Med Ethics
   - Dress
   - Drug Chem Toxicol
@@ -449,7 +449,6 @@ journals:
   - Drug Metab Rev
   - Drugs (Abingdon Engl)
   - Drugs Soc (New York)
-  - EMI Educ Media Int
   - Early Educ Dev
   - Early Years (Stoke-on-Trent)
   - East Afri Agric For J
@@ -484,6 +483,7 @@ journals:
   - Emerg Health Serv Rev
   - Emerg Health Threats J
   - Emerg Microbes Infect
+  - EMI Educ Media Int
   - Emot Behav Diffic
   - Emu
   - Enantiomer
@@ -606,24 +606,22 @@ journals:
   - Future Oncol
   - Future Sci OA
   - Future Virol
-  - GIsci Remote Sens
-  - GM Crops
-  - GM Crops Food
   - Gend Dev
   - Gend Educ
   - Gend Place Cult
   - Gend Technol Dev
   - Genet Soc Gen Psychol Monogr
   - Geo Spat Inf Sci
-  - GeoHumanities
   - Geocarto Int
   - Geogr Ann Ser B
   - Geogr Rev
   - Geogr Tidsskr
+  - GeoHumanities
   - Geomicrobiol J
   - Ger Polit
   - Gerontol Geriatr Educ
   - Gifted Talent Int
+  - GIsci Remote Sens
   - Glob Bioeth
   - Glob Food Hist
   - Glob Health Action
@@ -631,16 +629,13 @@ journals:
   - Glob Public Health
   - Glob Soc
   - Globalizations
+  - GM Crops
+  - GM Crops Food
   - Grana
   - Green Chem Lett Rev
   - Growth Factors
   - Gut Microbes
   - Gynecol Endocrinol
-  - HFSP J
-  - HIV Clin Trials
-  - HIV Res Clin Pract
-  - HIV Ther
-  - Hemoglobin
   - Health Care Women Int
   - Health Commun
   - Health Mark Q
@@ -652,7 +647,9 @@ journals:
   - Health Syst Reform
   - Hematology
   - Hemoglobin
+  - Hemoglobin
   - Hepat Oncol
+  - HFSP J
   - High Educ Pedagog
   - High Press Res
   - Hist Anthropol
@@ -669,6 +666,9 @@ journals:
   - Hist Technol
   - Historian
   - Historian (Lond)
+  - HIV Clin Trials
+  - HIV Res Clin Pract
+  - HIV Ther
   - Home Health Care Serv Q
   - Hosp J
   - Hosp Pract
@@ -691,6 +691,8 @@ journals:
   - Hum Vaccin Immunother
   - Hydrol Sci J
   - Hypertens Pregnancy
+  - Identities (Yverdon)
+  - Identity (Mahwah, N J)
   - IETE J Res
   - IIE Trans
   - IIE Trans Healthc Syst Eng
@@ -698,9 +700,6 @@ journals:
   - IISE Trans
   - IISE Trans Healthc Syst Eng
   - IISE Trans Occup Ergon Hum Factors
-  - INFOR
-  - Identities (Yverdon)
-  - Identity (Mahwah, N J)
   - Imago Mundi
   - Immigr Minor
   - Immunol Commun
@@ -714,6 +713,7 @@ journals:
   - Inf Technol Dev
   - Infect Dis (Lond)
   - Infect Ecol Epidemiol
+  - INFOR
   - Inform Health Soc Care
   - Inhal Toxicol
   - Inj Control Saf Promot
@@ -818,6 +818,7 @@ journals:
   - Int J Vet Sci Med
   - Int J Water Resour Dev
   - Int Libr Rev
+  - Int multiling res j
   - Int Musculoskelet Med
   - Int Peacekeep
   - Int Plan Stud
@@ -829,7 +830,6 @@ journals:
   - Int Rev Psychiatry
   - Int Rev Sport Exerc Psychol
   - Int Spect (Rome)
-  - Int multiling res j
   - Integral Transform Spec Funct
   - Intellect Hist Rev
   - Interpret Transl Train
@@ -991,7 +991,6 @@ journals:
   - J Forensic Psychol Pract
   - J Forensic Psychol Res Pract
   - J Furth High Educ
-  - J GLBT Fam Stud
   - J Gay Lesbian Ment Health
   - J Gay Lesbian Soc Serv
   - J Gen Psychol
@@ -1000,10 +999,9 @@ journals:
   - J Genocide Res
   - J Geog
   - J Gerontol Soc Work
+  - J GLBT Fam Stud
   - J Glob Ethics
   - J Groups Addict Recover
-  - J HIV AIDS Prev Child Youth
-  - J HIV AIDS Soc Serv
   - J Health Care Chaplain
   - J Health Commun
   - J Health Educ
@@ -1013,6 +1011,8 @@ journals:
   - J Higher Educ
   - J Hist Neurosci
   - J Histotechnol
+  - J HIV AIDS Prev Child Youth
+  - J HIV AIDS Soc Serv
   - J Homosex
   - J Hosp Librariansh
   - J Hosp Mark
@@ -1045,15 +1045,15 @@ journals:
   - J Interprof Care
   - J Invest Surg
   - J Isr Hist
-  - J LGBT Health Res
-  - J LGBT Issues Couns
-  - J LGBT Youth
   - J Land Use Sci
   - J Lat Educ
   - J Leg Med
   - J Legal Hist
   - J Leis Res
   - J Lesbian Stud
+  - J LGBT Health Res
+  - J LGBT Issues Couns
+  - J LGBT Youth
   - J Libr Adm
   - J Libr Metadata
   - J Life Sci
@@ -1213,8 +1213,8 @@ journals:
   - J Workplace Behav Health
   - J Youth Stud
   - JAKSTAT
-  - JBSP
   - Japanese Econ Stud
+  - JBSP
   - Jew Cult Hist
   - Journal Stud
   - Justice Q
@@ -1312,7 +1312,6 @@ journals:
   - N Am Actuar J
   - N Z J Bot
   - N Z Vet J
-  - NHSA Dialog
   - Nano Rev
   - Nano Rev Exp
   - Nanomedicine (Lond)
@@ -1331,9 +1330,10 @@ journals:
   - Neuropsychol Dev Cogn B Aging Neuropsychol Cogn
   - Neuropsychol Rehabil
   - New Bioeth
+  - New community
   - New Rev Bioeth
   - New Rev Hypermedia Multimed
-  - New community
+  - NHSA Dialog
   - Ninet Century Contexts
   - Nor Geogr Tidsskr
   - Nord J Music Ther
@@ -1445,6 +1445,7 @@ journals:
   - Prog Palliat Care
   - Prose Stud
   - Psychiatr Psychol Law
+  - Psychiatry
   - Psychoanal Dialogues
   - Psychoanal Inq
   - Psychoanal Psychother
@@ -1469,8 +1470,6 @@ journals:
   - Qual Technol Quant Manag
   - Quant Finance
   - Quant Infrared Thermogr J
-  - RMLE Online
-  - RNA Biol
   - Race Ethn Educ
   - Radiat Eff
   - Rare Dis
@@ -1506,6 +1505,8 @@ journals:
   - Rev Int Polit Econ
   - Rev Soc Econ
   - Rhetor Soc Q
+  - RMLE Online
+  - RNA Biol
   - Roeper Rev
   - Rorschach Res Exch J Proj Tech
   - Round Table
@@ -1684,10 +1685,10 @@ journals:
   - Virtual Phys Prototyp
   - Virulence
   - Vis Anthropol
+  - Vis cogn
   - Vis Cult Br
   - Vis Impair Res
   - Vis Stud
-  - Vis cogn
   - Voice Speech Rev
   - Vulnerable Child Youth Stud
   - War Soc

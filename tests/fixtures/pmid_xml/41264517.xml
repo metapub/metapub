@@ -1,0 +1,140 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Automated">
+      <PMID Version="1">41264517</PMID>
+      <DateCompleted>
+        <Year>2026</Year>
+        <Month>05</Month>
+        <Day>08</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2026</Year>
+        <Month>05</Month>
+        <Day>08</Day>
+      </DateRevised>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISSN IssnType="Electronic">1943-281X</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>89</Volume>
+            <Issue>2</Issue>
+            <PubDate>
+              <Year>2026</Year>
+              <Season>Summer</Season>
+            </PubDate>
+          </JournalIssue>
+          <Title>Psychiatry</Title>
+          <ISOAbbreviation>Psychiatry</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Digital Social Technology and Social Connection in Youth.</ArticleTitle>
+        <Pagination>
+          <StartPage>206</StartPage>
+          <EndPage>215</EndPage>
+          <MedlinePgn>206-215</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1080/00332747.2025.2580176</ELocationID>
+        <Abstract>
+          <AbstractText Label="OBJECTIVE" NlmCategory="UNASSIGNED">Digital social technologies, such as social media and online multiplayer video games (MVGs), have ushered in an era of peer relationships that evolve online, in addition to in person. This report reviews existing research about the dual role of social media and MVGs in shaping youth social connectedness, recognizing both their potential benefits and their associated risks on youth mental health. By providing evidence-based insights, it aims to inform strategies that optimize these technologies' advantages while safeguarding youth mental health and well-being.</AbstractText>
+          <AbstractText Label="METHOD" NlmCategory="UNASSIGNED">This report reviews peer-reviewed literature, clinical recommendations, reports, and surveys that assess youth usage of social media and MVGs and their associated psychological and physical health outcomes.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="UNASSIGNED">Social media provides many opportunities for peer connection, including self-expression and social support, fostering positive social development and well-being. MVGs combine entertainment with collaboration, further strengthening social bonds. However, the use of these technologies has also been linked to negative outcomes, including social isolation, depression, anxiety, and sleep disorders. Publically-available, evidence-based resources can provide caregivers and professionals with guidance and clinical recommendations regarding youth social media and MVG use.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="UNASSIGNED">Digital social technologies have become increasingly user-specific and immersive as the internet evolves and social media algorithms become more powerful. Additional research is required to understand how current youth usage of these technologies impacts physical and psychological outcomes. Future research should also investigate the differences in usage, outcomes, and the efficacy of treatments across youth sex and age.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Sumberg</LastName>
+            <ForeName>Luke L</ForeName>
+            <Initials>LL</Initials>
+            <Identifier Source="ORCID">0009-0006-3235-9407</Identifier>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Ogle</LastName>
+            <ForeName>Christin M</ForeName>
+            <Initials>CM</Initials>
+            <Identifier Source="ORCID">0000-0002-6264-0594</Identifier>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Fisher</LastName>
+            <ForeName>Joscelyn E</ForeName>
+            <Initials>JE</Initials>
+            <Identifier Source="ORCID">0000-0002-7682-7528</Identifier>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Cozza</LastName>
+            <ForeName>Stephen J</ForeName>
+            <Initials>SJ</Initials>
+            <Identifier Source="ORCID">0000-0001-9597-2758</Identifier>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D016454">Review</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2025</Year>
+          <Month>11</Month>
+          <Day>20</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>Psychiatry</MedlineTA>
+        <NlmUniqueID>0376470</NlmUniqueID>
+        <ISSNLinking>0033-2747</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000293" MajorTopicYN="N">Adolescent</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D061108" MajorTopicYN="Y">Social Media</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D018910" MajorTopicYN="Y">Video Games</DescriptorName>
+          <QualifierName UI="Q000523" MajorTopicYN="N">psychology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000083505" MajorTopicYN="Y">Social Interaction</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D010379" MajorTopicYN="N">Peer Group</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2026</Year>
+          <Month>5</Month>
+          <Day>8</Day>
+          <Hour>18</Hour>
+          <Minute>33</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2025</Year>
+          <Month>11</Month>
+          <Day>20</Day>
+          <Hour>18</Hour>
+          <Minute>28</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2025</Year>
+          <Month>11</Month>
+          <Day>20</Day>
+          <Hour>13</Hour>
+          <Minute>3</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">41264517</ArticleId>
+        <ArticleId IdType="doi">10.1080/00332747.2025.2580176</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

@@ -32,6 +32,77 @@ DATETYPE_TAGS = {
 
 DEFAULT_DATETYPE = 'pdat'
 
+# Maps a PubMed search field tag to the kwarg aliases that populate it, for
+# PubMedFetcher.pmids_for_query. This is the single source of truth both for
+# building the esearch term and for validating caller-supplied kwargs, so an
+# unrecognized kwarg (e.g. a typo or a guessed name like `keyword=`) can't be
+# silently dropped -- see issue #168.
+QUERY_FIELD_ALIASES = {
+    # unique ID referents
+    'PMID': ['pmid', 'uid', 'pubmed_id'],
+    'AID': ['aid', 'doi'],
+    'book': ['book'],
+    'JID': ['jid', 'nlm uid', 'nlm unique id'],
+    'ISBN': ['isbn'],
+    'RN': ['rn', 'rcn', 'ecn'],
+    'GR': ['gr', 'grant number'],
+    # PubMed date features
+    'DA': ['da', 'date created'],
+    'LR': ['lr', 'date revised', 'date last revised'],
+    'EDAT': ['edat', 'entrez date'],
+    # journal name
+    'TA': ['ta', 'journal', 'jtitle', 'journal_title'],
+    # article-level characteristics (title, authors, etc.)
+    'TIAB': ['tiab', 'abstract', 'title/abstract'],
+    'TI': ['ti', 'title', 'atitle', 'article_title'],
+    'TT': ['tt', 'transliterated title'],
+    'AU': ['au', 'author'],
+    '1AU': ['1au', 'aulast', 'author1_lastfm', 'author1_last_fm'],
+    'FAU': ['fau', 'first_author', 'author1'],
+    'LASTAU': ['lastau', 'last author'],
+    'CN': ['cn', 'corporate author'],
+    'FIR': ['fir', 'full investigator name'],
+    'IR': ['ir', 'investigator'],
+    'PG': ['pg', 'pages', 'spage', 'first_page'],
+    # volume / issue characteristics
+    'IP': ['ip', 'issue'],
+    'VTI': ['vta', 'volume title'],
+    'VI': ['vi', 'volume', 'vol'],
+    # content characteristics
+    'LA': ['la', 'language'],
+    'TW': ['tw', 'text', 'keyword', 'kw'],   # text word -- what a hand-written "keyword" search means
+    'PS': ['ps', 'personal name as subject'],
+    'PA': ['pa', 'pharmacological action'],
+    'SB': ['sb', 'subset'],
+    # MeSH characteristics
+    'MHDA': ['mhda', 'mesh date'],
+    'MH': ['mh', 'mesh', 'mesh terms'],
+    'MAJR': ['majr', 'mesh major topic', 'mesh major'],
+    'SH': ['sh', 'mesh subheadings'],
+    # publication characteristics
+    'DCOM': ['dcom', 'completion date'],
+    'DP': ['dp', 'date of publication', 'year', 'pdat'],  # aligns w/ PubMedArticle.year, CrossRef 'year'
+    'LID': ['lid', 'location id', 'location identifier'],
+    'PUBN': ['pubn', 'publisher'],
+    'PT': ['pt', 'pubmed_type', 'publication type'],
+    'PL': ['pl', 'place of publication'],
+    # miscellaneous
+    'AD': ['ad', 'affiliation'],
+    'OT': ['ot', 'other term'],
+    'NM': ['nm', 'supplementary concept', 'substance name'],
+    'SI': ['si', 'secondary source id'],
+}
+
+# Kwargs pmids_for_query accepts that aren't search fields: `clinical_query` is
+# an internal flag set by the clinical/genetics helpers; `debug` is accepted and
+# ignored for backwards compatibility with those same callers.
+QUERY_CONTROL_KWARGS = {'clinical_query', 'debug'}
+
+RECOGNIZED_QUERY_KWARGS = frozenset(
+    alias for aliases in QUERY_FIELD_ALIASES.values() for alias in aliases
+) | QUERY_CONTROL_KWARGS
+
+
 def get_uids_from_esearch_result(xmlstr):
     """Extract unique identifiers from an ESearch XML result.
     
@@ -282,13 +353,29 @@ class PubMedFetcher(Borg):
         :param: retstart (int) default 0
         :param: retmax (int) default 250
         :param: pmc_only (bool) default False  # constructs query to only search Pubmed Central.
-        :raises: MetaPubError if datetype is not one of the values listed above.
+
+        Search fields are supplied as keyword arguments, each mapping to a PubMed
+        field tag -- e.g. author='Smith JA', journal='PLoS One', year=2013,
+        affiliation='Stanford', keyword='crispr' ([TW]). The full set of accepted
+        names is QUERY_FIELD_ALIASES. Unrecognized keyword arguments raise
+        MetaPubError rather than being silently dropped.
+
+        :raises: MetaPubError if datetype is not one of the values listed above,
+                 or if an unrecognized keyword argument is supplied.
         '''
 
         # lowercase all the things.
         kwargs = lowercase_keys(kwargs)
 
-        q = {}
+        # Reject unrecognized kwargs rather than silently dropping them: a typo or
+        # a guessed-but-unsupported name (e.g. `keyword=`) otherwise produces a
+        # query missing that clause, with no indication anything was ignored (#168).
+        unknown = set(kwargs) - RECOGNIZED_QUERY_KWARGS
+        if unknown:
+            raise MetaPubError(
+                'Unrecognized keyword argument(s) for pmids_for_query: %s. '
+                'See QUERY_FIELD_ALIASES for supported search-field kwargs.'
+                % ', '.join(sorted(unknown)))
 
         query = query.strip()
         # if we find brackets in the query string, assume they are query keyword tags.
@@ -318,73 +405,13 @@ class PubMedFetcher(Borg):
             date_range_template = ' ("%s"[%s] : "%s"[%s])'
             query += date_range_template % (since or '1000', tag, until or '3000', tag)
 
-        # unique ID referents.
-        q['PMID'] = kpick(kwargs, options=['pmid', 'uid', 'pubmed_id'])
-        q['AID'] = kpick(kwargs, options=['aid', 'doi'])
-        q['book'] = kwargs.get('book', None)
-        q['JID'] = kpick(kwargs, options=['jid', 'nlm uid', 'nlm unique id'])
-        q['ISBN'] = kwargs.get('ISBN', None)
-        q['RN'] = kpick(kwargs, options=['rn', 'rcn', 'ecn'])
-        q['GR'] = kpick(kwargs, options=['gr', 'grant number'])
-
-        # Pubmed Date features:
-        q['DA'] = kpick(kwargs, options=['da', 'date created'])
-        q['LR'] = kpick(kwargs, options=['lr', 'date revised', 'date last revised'])
-        q['EDAT'] = kpick(kwargs, options=['edat', 'entrez date'])
-
-        # Journal name:
-        q['TA'] = kpick(kwargs, options=['ta', 'journal', 'jtitle', 'journal_title'])
-
-        # Article-level characteristics (title, authors, etc):
-        q['TIAB'] = kpick(kwargs, options=['tiab', 'abstract', 'title/abstract'])
-        q['TI'] = kpick(kwargs, options=['ti', 'title', 'atitle', 'article_title'])
-        q['TT'] = kpick(kwargs, options=['tt', 'transliterated title'])
-
-        q['AU'] = kpick(kwargs, options=['au', 'author'])
-        q['1AU'] = kpick(kwargs, options=['1au', 'aulast', 'author1_lastfm', 'author1_last_fm'])
-        q['FAU'] = kpick(kwargs, options=['fau', 'first_author', 'author1'])
-        q['LASTAU'] = kpick(kwargs, options=['lastau', 'last author'])
-        q['CN'] = kpick(kwargs, options=['cn', 'corporate author'])
-        q['FIR'] = kpick(kwargs, options=['fir', 'full investigator name'])
-        q['IR'] = kpick(kwargs, options=['ir', 'investigator'])
-        q['PG'] = kpick(kwargs, options=['pg', 'pages', 'spage', 'first_page'])
-
-        # Volume / Issue characteristics
-        q['IP'] = kpick(kwargs, options=['ip', 'issue'])
-        q['VTI'] = kpick(kwargs, options=['vta', 'volume title'])
-        q['VI'] = kpick(kwargs, options=['vi', 'volume', 'vol'])
-
-        # Content characteristics
-        q['LA'] = kpick(kwargs, options=['la', 'language'])
-        q['TW'] = kpick(kwargs, options=['tw', 'text'])
-        q['PS'] = kpick(kwargs, options=['ps', 'personal name as subject'])
-        q['PA'] = kpick(kwargs, options=['pa', 'pharmacological action'])
-        q['SB'] = kpick(kwargs, options=['sb', 'subset'])
-        q['NM'] = kpick(kwargs, options=['nm', 'supplementary concept'])
-
-        # MeSH characteristics
-        q['MHDA'] = kpick(kwargs, options=['mhda', 'mesh date'])
-        q['MH'] = kpick(kwargs, options=['mh', 'mesh', 'mesh terms'])
-        q['MAJR'] = kpick(kwargs, options=['majr', 'mesh major topic', 'mesh major'])
-        q['SH'] = kpick(kwargs, options=['sh', 'mesh subheadings'])
-
-        # Publication characteristics
-        q['DCOM'] = kpick(kwargs, options=['dcom', 'completion date'])
-        q['DP'] = kpick(kwargs, options=['dp', 'date of publication', 'year', 'pdat']) #most aligned w/ PubMedArticle.year and CrossRef 'year'
-        q['LID'] = kpick(kwargs, options=['lid', 'location id', 'location identifier'])
-        q['PUBN'] = kpick(kwargs, options=['pubn', 'publisher'])
-        q['PT'] = kpick(kwargs, options=['pt', 'pubmed_type', 'publication type'])
-        q['PL'] = kpick(kwargs, options=['pl', 'place of publication'])
-
-        # Miscellaneous, alphabetized by Medline feature tag.
-        q['AD'] = kpick(kwargs, options=['ad', 'affiliation'])
-        q['OT'] = kpick(kwargs, options=['ot', 'other term'])
-        q['NM'] = kpick(kwargs, options=['nm', 'substance name'])
-        q['SI'] = kpick(kwargs, options=['si', 'secondary source id'])
-
-        for feature in q.keys():
-            if q[feature] != None:
-                query += ' "%s"[%s]' % (q[feature], feature)
+        # Append a "<value>"[TAG] clause for every recognized search field the
+        # caller supplied. QUERY_FIELD_ALIASES is the single source of truth (see
+        # the unrecognized-kwarg guard above).
+        for tag, aliases in QUERY_FIELD_ALIASES.items():
+            value = kpick(kwargs, options=aliases)
+            if value is not None:
+                query += ' "%s"[%s]' % (value, tag)
 
         # option to query pubmed central only:
         # pubmed pmc[sb]

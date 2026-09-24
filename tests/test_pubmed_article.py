@@ -359,6 +359,10 @@ class TestPubMedArticle(unittest.TestCase):
         self.assertTrue(abstract.startswith('BACKGROUND: Epstein-Barr virus (EBV) infection and vitamin D insufficiency'))
         self.assertTrue(abstract.endswith('do not implicate a promoted immune response against EBV as the underlying mechanism.'))
 
+    def test_vernacular_title_when_article_title_not_available(self):
+        article = load_pmid_xml("39653886")
+        self.assertEqual(article.title, "Was bei Knieschmerzen wirklich hilft.")
+
     def test_mesh_heading_parsing_detailed(self):
         """
         Tests the parsing of MeSH headings, specifically checking the new structure

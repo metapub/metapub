@@ -460,9 +460,16 @@ class PubMedFetcher(Borg):
         Strings submitted for journal/jtitle will be run through metapub.utils.remove_chars to deal with HTML-
         encoded characters and to remove punctuation.
         '''
-        # output format in return:
+        # bdata format (pipe-delimited, one citation):
         # journal_title|year|volume|first_page|author_name|your_key|
-        base_uri = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/ecitmatch.cgi?db=pubmed&retmode=xml&bdata={journal_title}|{year}|{volume}|{first_page}|{author_name}|{api_key}|'
+        # The 6th "your_key" field is a caller-supplied label that ecitmatch
+        # echoes back to correlate input with output -- it is NOT authentication.
+        # The NCBI API key must be a query parameter (&api_key=...); putting it in
+        # the bdata label leaves the request keyless (3 req/s), so it gets rate
+        # limited under load. Leave the label empty; pass the key as a query param.
+        base_uri = ('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/ecitmatch.cgi'
+                    '?db=pubmed&retmode=xml{api_key}'
+                    '&bdata={journal_title}|{year}|{volume}|{first_page}|{author_name}||')
 
         kwargs = lowercase_keys(kwargs)
         journal_title = remove_chars(kpick(kwargs, options=['jtitle', 'journal', 'journal_title'], default=''), urldecode=True)
@@ -477,7 +484,7 @@ class PubMedFetcher(Borg):
                      'volume': str(volume),
                      'first_page': str(first_page),
                      'author_name': parameterize(author_name, '+'),
-                     'api_key': API_KEY or ''
+                     'api_key': ('&api_key=%s' % API_KEY) if API_KEY else ''
                    }
 
         # clean up any "n/a" values.  eutils doesn't understand them.
@@ -486,7 +493,9 @@ class PubMedFetcher(Borg):
                 inp_dict[k] = ''
 
         req = base_uri.format(**inp_dict)
-        log.debug('pmids_for_citation: querying with %s', req)
+        # Redact the key from the log line -- req carries it as a query param now.
+        log.debug('pmids_for_citation: querying with %s',
+                  req.replace(API_KEY, '***') if API_KEY else req)
 
         content = requests.get(req, timeout=30).text
         pmids = []

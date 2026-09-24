@@ -82,6 +82,7 @@ class TestDovePressTest(BaseDanceTest):
     # Test removed: Multiple tests - successful PDF access, paywall detection, network error, article not found, HTML parsing error, no PDF link found, journal recognition - functionality now handled by verify_pdf_url
 
 
+@pytest.mark.live_network  # reaches dovepress.com live; run manually, never in CI
 class TestDovepressXMLFixtures:
     """Test Dovepress XML fixtures for evidence-driven testing."""
 

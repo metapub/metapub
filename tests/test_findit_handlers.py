@@ -8,6 +8,8 @@ import unittest
 import os
 from unittest.mock import Mock, patch
 
+import pytest
+
 from metapub import FindIt
 from metapub.findit.handlers import (
     PublisherHandler, PaywallHandler, HandlerFactory,
@@ -255,6 +257,7 @@ class TestRegistryIntegration(unittest.TestCase):
 
 
 @skip_network_tests
+@pytest.mark.live_network
 class TestLiveHandlerBehavior(unittest.TestCase):
     """Test handler behavior with real PMIDs (network required)."""
 

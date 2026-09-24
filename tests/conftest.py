@@ -1,7 +1,73 @@
+import socket
 import requests
 import pytest
 import sys
 from lxml import etree
+
+
+# ---------------------------------------------------------------------------
+# Network guardrail: keep publisher/external HTTP out of the offline (CI) suite.
+#
+# CI runs `pytest -m "not live_network"`. Any test that reaches a publisher site
+# (or any external host other than NCBI eutils) is either a live drift-detector
+# that must be marked @pytest.mark.live_network, or an offline test with a
+# broken mock. Both are bugs when they run in CI: they flake and they turn a
+# drift sensor into a dead one. Per-test marking alone is not enough -- a leak
+# only shows up if the publisher happens to be reachable during the run, so a
+# scan can miss it. This guard makes leaks fail loudly and deterministically.
+#
+# Tests explicitly marked live_network are exempt (they are run by hand, never
+# in CI). NCBI eutils is allowlisted because the project deliberately allows
+# live eutils calls in the offline suite (see CLAUDE.md); localhost is allowed
+# for any local-service tests.
+# ---------------------------------------------------------------------------
+
+_ALLOWED_HOST_SUBSTRINGS = ('ncbi.nlm.nih.gov',)
+_ALLOWED_HOST_EXACT = {'localhost', '127.0.0.1', '::1', '0.0.0.0'}
+
+_real_getaddrinfo = socket.getaddrinfo
+_network_guard = {'active': False, 'nodeid': None}
+
+
+class BlockedNetworkError(Exception):
+    """Raised when an offline test tries to reach a non-allowlisted host."""
+
+
+def _host_is_allowed(host):
+    name = str(host)
+    if name in _ALLOWED_HOST_EXACT:
+        return True
+    return any(substr in name for substr in _ALLOWED_HOST_SUBSTRINGS)
+
+
+def _guarded_getaddrinfo(host, *args, **kwargs):
+    if _network_guard['active'] and not _host_is_allowed(host):
+        raise BlockedNetworkError(
+            "Blocked live network call to %r from offline test %s.\n"
+            "Tests that reach publisher/external sites must be marked "
+            "@pytest.mark.live_network -- they are run manually for drift "
+            "detection and never in CI. If this test is meant to be offline, "
+            "fix its mock target so it does not hit the network." % (
+                host, _network_guard['nodeid'])
+        )
+    return _real_getaddrinfo(host, *args, **kwargs)
+
+
+socket.getaddrinfo = _guarded_getaddrinfo
+
+
+@pytest.fixture(autouse=True)
+def _block_publisher_network(request):
+    """Block non-allowlisted network access unless the test is live_network."""
+    if request.node.get_closest_marker('live_network'):
+        yield
+        return
+    _network_guard['active'] = True
+    _network_guard['nodeid'] = request.node.nodeid
+    try:
+        yield
+    finally:
+        _network_guard['active'] = False
 
 
 def check_ncbi_service():

@@ -1,6 +1,8 @@
 import unittest
 import os
 
+import pytest
+
 from metapub import FindIt
 from metapub.findit.findit import CACHE_FILENAME
 from .test_compat import skip_network_tests
@@ -45,6 +47,7 @@ class TestFindIt(unittest.TestCase):
         #os.rmdir(TEST_CACHEDIR)
         pass
 
+    @pytest.mark.live_network
     def test_skipping_cache(self):
         "Test skipping the cache using cachedir=None"
         # use a known working, non-PMC pubmed ID
@@ -53,6 +56,7 @@ class TestFindIt(unittest.TestCase):
         assert src.url is not None
         assert not src.reason
 
+    @pytest.mark.live_network
     def test_using_cache(self):
         "Test that cached entries provide the same information as freshly pulled ones."
         # Reset global cache so a new one is created at TEST_CACHEDIR
@@ -92,7 +96,7 @@ class TestFindIt(unittest.TestCase):
         # assert src.url is None
         # assert src.reason.startswith('DENIED')
 
-    @skip_network_tests
+    @pytest.mark.live_network
     def test_oxford_journals_handler(self):
         """Test FindIt with Oxford Academic journals using new handler system."""
         for pmid in PUBLISHER_SAMPLE_PMIDS['oxford'][:2]:  # Test first 2 to avoid overloading
@@ -104,7 +108,7 @@ class TestFindIt(unittest.TestCase):
                     # Oxford URLs can be oup.com (Oxford University Press), oxford.com, or europepmc.org for PMC content
                     self.assertTrue(any(domain in src.url.lower() for domain in ['oxford', 'oup.com', 'europepmc.org']))
 
-    @skip_network_tests
+    @pytest.mark.live_network
     def test_nature_journals_handler(self):
         """Test FindIt with Nature Publishing Group journals using new handler system."""
         for pmid in PUBLISHER_SAMPLE_PMIDS['nature'][:2]:  # Test first 2 to avoid overloading
@@ -116,7 +120,7 @@ class TestFindIt(unittest.TestCase):
                     # Nature URLs can be nature.com or europepmc.org for PMC content
                     self.assertTrue('nature.com' in src.url.lower() or 'europepmc.org' in src.url.lower())
 
-    @skip_network_tests
+    @pytest.mark.live_network
     def test_springer_journals_handler(self):
         """Test FindIt with Springer journals using new handler system."""
         for pmid in PUBLISHER_SAMPLE_PMIDS['springer'][:2]:  # Test first 2 to avoid overloading
@@ -127,7 +131,7 @@ class TestFindIt(unittest.TestCase):
                 if src.url:
                     self.assertTrue('springer' in src.url.lower() or 'europepmc.org' in src.url.lower())
 
-    @skip_network_tests
+    @pytest.mark.live_network
     def test_science_journals_handler(self):
         """Test FindIt with Science/AAAS journals."""
         for pmid in PUBLISHER_SAMPLE_PMIDS['science'][:1]:  # Test only 1 to avoid overloading

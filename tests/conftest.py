@@ -1,7 +1,73 @@
+import socket
 import requests
 import pytest
 import sys
 from lxml import etree
+
+
+# ---------------------------------------------------------------------------
+# Network guardrail: keep publisher/external HTTP out of the offline (CI) suite.
+#
+# CI runs `pytest -m "not live_network"`. Any test that reaches a publisher site
+# (or any external host other than NCBI eutils) is either a live drift-detector
+# that must be marked @pytest.mark.live_network, or an offline test with a
+# broken mock. Both are bugs when they run in CI: they flake and they turn a
+# drift sensor into a dead one. Per-test marking alone is not enough -- a leak
+# only shows up if the publisher happens to be reachable during the run, so a
+# scan can miss it. This guard makes leaks fail loudly and deterministically.
+#
+# Tests explicitly marked live_network are exempt (they are run by hand, never
+# in CI). NCBI eutils is allowlisted because the project deliberately allows
+# live eutils calls in the offline suite (see CLAUDE.md); localhost is allowed
+# for any local-service tests.
+# ---------------------------------------------------------------------------
+
+_ALLOWED_HOST_SUBSTRINGS = ('ncbi.nlm.nih.gov',)
+_ALLOWED_HOST_EXACT = {'localhost', '127.0.0.1', '::1', '0.0.0.0'}
+
+_real_getaddrinfo = socket.getaddrinfo
+_network_guard = {'active': False, 'nodeid': None}
+
+
+class BlockedNetworkError(Exception):
+    """Raised when an offline test tries to reach a non-allowlisted host."""
+
+
+def _host_is_allowed(host):
+    name = str(host)
+    if name in _ALLOWED_HOST_EXACT:
+        return True
+    return any(substr in name for substr in _ALLOWED_HOST_SUBSTRINGS)
+
+
+def _guarded_getaddrinfo(host, *args, **kwargs):
+    if _network_guard['active'] and not _host_is_allowed(host):
+        raise BlockedNetworkError(
+            "Blocked live network call to %r from offline test %s.\n"
+            "Tests that reach publisher/external sites must be marked "
+            "@pytest.mark.live_network -- they are run manually for drift "
+            "detection and never in CI. If this test is meant to be offline, "
+            "fix its mock target so it does not hit the network." % (
+                host, _network_guard['nodeid'])
+        )
+    return _real_getaddrinfo(host, *args, **kwargs)
+
+
+socket.getaddrinfo = _guarded_getaddrinfo
+
+
+@pytest.fixture(autouse=True)
+def _block_publisher_network(request):
+    """Block non-allowlisted network access unless the test is live_network."""
+    if request.node.get_closest_marker('live_network'):
+        yield
+        return
+    _network_guard['active'] = True
+    _network_guard['nodeid'] = request.node.nodeid
+    try:
+        yield
+    finally:
+        _network_guard['active'] = False
 
 
 def check_ncbi_service():
@@ -122,67 +188,13 @@ def get_ncbi_service_status():
         _ncbi_service_available = check_ncbi_service()
     return _ncbi_service_available
 
-# Pytest marker for network-dependent tests
-def pytest_configure(config):
-    """Configure pytest markers."""
-    config.addinivalue_line(
-        "markers", "network: mark test as requiring network/NCBI connectivity"
-    )
-
-def pytest_addoption(parser):
-    """Add custom command line options."""
-    parser.addoption(
-        "--skip-network",
-        action="store_true", 
-        default=False,
-        help="Skip all tests that require network/NCBI API calls (useful for offline development)"
-    )
-
-def pytest_collection_modifyitems(config, items):
-    """Add network coordination marker and handle --skip-network option."""
-    skip_network = config.getoption("--skip-network")
-    
-    for item in items:
-        # Mark network-dependent tests for coordination
-        # Note: ncbi_health_check tests are excluded because they use mocked responses  
-        if any(keyword in item.nodeid.lower() for keyword in [
-            'pmid', 'doi', 'fetch', 'pubmed', 'medgen', 'citation',
-            'advquery', 'findit', 'convert', 'mesh_heading', 'random_efetch'
-        ]) and 'ncbi_health_check' not in item.nodeid.lower():
-            item.add_marker(pytest.mark.network)
-            
-            # Skip network tests if --skip-network flag is used
-            if skip_network:
-                item.add_marker(pytest.mark.skip(reason="Skipped network test due to --skip-network flag"))
-
-
-# Global coordination for network tests
-import threading
-import time
-_network_test_lock = threading.Lock()
-_last_network_request = 0
-
-
-@pytest.fixture(autouse=True)
-def coordinate_network_tests(request):
-    """Coordinate network tests to prevent rate limiting."""
-    global _last_network_request
-    
-    # Check if this test is marked as network-dependent
-    if request.node.get_closest_marker('network'):
-        with _network_test_lock:
-            current_time = time.time()
-            time_since_last = current_time - _last_network_request
-            
-            # Ensure at least 0.5 seconds between network tests
-            if time_since_last < 0.5:
-                sleep_time = 0.5 - time_since_last
-                time.sleep(sleep_time)
-            
-            _last_network_request = time.time()
-    
-    yield  # Run the test
-    
-    # Small delay after network tests to be extra conservative
-    if request.node.get_closest_marker('network'):
-        time.sleep(0.1)
+# NOTE: there used to be a `network` marker here, auto-applied to any test whose
+# nodeid contained 'findit'/'doi'/'pmid'/'fetch'/etc., plus a coordinate_network_tests
+# fixture that slept 0.5s before and 0.1s after every such test to avoid NCBI rate
+# limits. That was both wrong and expensive: it marked by filename, so ~600 offline
+# tests that make zero network calls (URL construction, registry lookups, this file's
+# journal-resolution guard) each paid ~0.6s of pure sleep. It was also redundant --
+# get_eutils_client() is an lru_cache(maxsize=1) singleton, so the whole suite shares
+# one NCBIClient whose RateLimiter already paces every eutils call to NCBI's limit,
+# and the client's Retry adapter absorbs transient 429s. NCBI pacing is the client's
+# job; publisher hygiene is the guardrail's (above). The apparatus is gone.

@@ -122,6 +122,7 @@ class TestScieloDance(BaseDanceTest):
         mock_verify.assert_called_once()
         print(f"Test 4 - Successful verified access: {url}")
 
+    @pytest.mark.live_network  # verify step still reaches scielo.br live; drift detector
     @patch('metapub.findit.dances.scielo.unified_uri_get')
     def test_scielo_chula_paywall_detection(self, mock_get):
         """Test 5: Paywall detection.

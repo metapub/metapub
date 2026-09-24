@@ -10,6 +10,7 @@ Based on HTML sample analysis from real AJPH articles showing:
 """
 
 import pytest
+import requests
 from unittest.mock import patch, Mock
 from .common import BaseDanceTest
 from metapub import FindIt
@@ -67,40 +68,42 @@ class TestAJPHDance(BaseDanceTest):
                 self.assertEqual(constructed_url, expected_url)
 
 
-    @patch('metapub.findit.dances.generic.unified_uri_get')
+    # These patch requests.Session.get -- the call verify_pdf_url actually makes.
+    # (the_doi_slide -> verify_pdf_url -> session.get). Patching unified_uri_get
+    # here would be a dead mock: verify_pdf_url never calls it, so the request
+    # would hit ajph.aphapublications.org for real and the assertions would ride
+    # on the live site's behavior instead of our code's.
+    @patch('requests.Session.get')
     def test_ajph_paywall_detection_403(self, mock_get):
-        """Test AJPH paywall detection for 403 responses."""
-        # Mock 403 response (subscription required)
+        """403 from the PDF URL -> AccessDenied (access forbidden)."""
         mock_get.return_value = MockResponse(status_code=403)
-        
+
         pma = load_pmid_xml('34709863')
-        
+
         with self.assertRaises(AccessDenied) as context:
             the_doi_slide(pma, verify=True)
-        
+
         error_msg = str(context.exception)
         self.assertIn('DENIED', error_msg)
         self.assertIn('access forbidden', error_msg)
 
-    @patch('metapub.findit.dances.generic.unified_uri_get')
+    @patch('requests.Session.get')
     def test_ajph_paywall_detection_html(self, mock_get):
-        """Test AJPH paywall detection for HTML responses."""
-        # Mock HTML response (subscription page)
+        """A 200 that is an HTML page (not a PDF) -> NoPDFLink, non-PDF content."""
         mock_get.return_value = MockResponse(
-            status_code=200, 
+            status_code=200,
             content_type='text/html',
             content=b'<html><title>Sign In Required</title></html>'
         )
-        
+
         pma = load_pmid_xml('35679569')
-        
-        with self.assertRaises(AccessDenied) as context:
+
+        with self.assertRaises(NoPDFLink) as context:
             the_doi_slide(pma, verify=True)
-        
+
         error_msg = str(context.exception)
         self.assertIn('DENIED', error_msg)
-        # Generic function may use different message
-        self.assertTrue('subscription' in error_msg.lower() or 'access' in error_msg.lower())
+        self.assertIn('non-pdf', error_msg.lower())
 
     @patch('requests.Session.get')
     def test_ajph_successful_pdf_access(self, mock_get):
@@ -120,37 +123,35 @@ class TestAJPHDance(BaseDanceTest):
         self.assertEqual(result, expected_url)
 
 
-    @patch('metapub.findit.dances.generic.unified_uri_get')
+    @patch('requests.Session.get')
     def test_ajph_network_error_handling(self, mock_get):
-        """Test handling of network errors."""
-        # Mock network exception
-        mock_get.side_effect = ConnectionError("Network unreachable")
-        
+        """A connection error on every strategy -> NoPDFLink (TXERROR)."""
+        # requests.exceptions.ConnectionError is what verify_pdf_url catches;
+        # a builtin ConnectionError would propagate uncaught.
+        mock_get.side_effect = requests.exceptions.ConnectionError("Network unreachable")
+
         pma = load_pmid_xml('34709863')
-        
+
         with self.assertRaises((NoPDFLink, AccessDenied)) as context:
             the_doi_slide(pma, verify=True)
-        
+
         error_msg = str(context.exception)
-        # The generic function may handle network errors differently
         self.assertTrue(
             'DENIED' in error_msg or 'ERROR' in error_msg,
             f"Expected error message, got: {error_msg}"
         )
 
-    @patch('metapub.findit.dances.generic.unified_uri_get')
+    @patch('requests.Session.get')
     def test_ajph_unexpected_http_status(self, mock_get):
-        """Test handling of unexpected HTTP status codes."""
-        # Mock unexpected status code
-        mock_get.return_value = MockResponse(status_code=404)
-        
+        """An unexpected status code (500) -> NoPDFLink (TXERROR)."""
+        mock_get.return_value = MockResponse(status_code=500)
+
         pma = load_pmid_xml('35679569')
-        
+
         with self.assertRaises(NoPDFLink) as context:
             the_doi_slide(pma, verify=True)
-        
+
         error_msg = str(context.exception)
-        # Generic function may handle 404 differently
         self.assertTrue(
             'DENIED' in error_msg or 'ERROR' in error_msg,
             f"Expected error message, got: {error_msg}"

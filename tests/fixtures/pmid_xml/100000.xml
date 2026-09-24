@@ -1,0 +1,102 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">100000</PMID>
+      <DateCompleted>
+        <Year>1978</Year>
+        <Month>11</Month>
+        <Day>18</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2019</Year>
+        <Month>10</Month>
+        <Day>21</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0160-3450</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>18</Volume>
+            <Issue>10</Issue>
+            <PubDate>
+              <Year>1978</Year>
+              <Month>Sep</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>American pharmacy</Title>
+          <ISOAbbreviation>Am Pharm</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Drugs and the high cost of health care.</ArticleTitle>
+        <Pagination>
+          <StartPage>20</StartPage>
+          <EndPage>21</EndPage>
+          <MedlinePgn>20-1</MedlinePgn>
+        </Pagination>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Roffe</LastName>
+            <ForeName>B D</ForeName>
+            <Initials>BD</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Lamy</LastName>
+            <ForeName>P P</ForeName>
+            <Initials>PP</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>Am Pharm</MedlineTA>
+        <NlmUniqueID>7801164</NlmUniqueID>
+        <ISSNLinking>0160-3450</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D004358" MajorTopicYN="N">Drug Therapy</DescriptorName>
+          <QualifierName UI="Q000191" MajorTopicYN="Y">economics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004363" MajorTopicYN="N">Drug Utilization</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005102" MajorTopicYN="Y">Health Expenditures</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>1978</Year>
+          <Month>9</Month>
+          <Day>1</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>1978</Year>
+          <Month>9</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>1978</Year>
+          <Month>9</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">100000</ArticleId>
+        <ArticleId IdType="doi">10.1016/s0160-3450(15)32607-6</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

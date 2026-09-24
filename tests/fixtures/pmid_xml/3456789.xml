@@ -1,0 +1,175 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">3456789</PMID>
+      <DateCompleted>
+        <Year>1986</Year>
+        <Month>05</Month>
+        <Day>02</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2019</Year>
+        <Month>07</Month>
+        <Day>04</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0007-1048</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>62</Volume>
+            <Issue>3</Issue>
+            <PubDate>
+              <Year>1986</Year>
+              <Month>Mar</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>British journal of haematology</Title>
+          <ISOAbbreviation>Br J Haematol</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Changes in the granulocyte membrane following chemotherapy for chronic myelogenous leukaemia.</ArticleTitle>
+        <Pagination>
+          <StartPage>431</StartPage>
+          <EndPage>438</EndPage>
+          <MedlinePgn>431-8</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText>Granulocytes from patients with chronic myelogenous leukaemia (CML) have been previously shown to have aberrant sialylation of membrane glycoproteins. We have examined the granulocytes from CML patients receiving intermittent chemotherapy to determine the relationship of the oligosaccharide changes to treatment. Compared to cells from non-leukaemic patients, granulocytes from untreated CML patients showed less adherence to nylon wool, decreased reactivity with peanut lectin, and decreased binding of the synthetic chemotactic peptide formyl-methionine-leucine-phenylalanine (FMLP). Granulocytes from CML patients treated with chemotherapy showed nylon wool adherence, peanut lectin reactivity and FMLP binding comparable to non-leukaemic cells. Chemotherapeutic agents may interfere with oligosaccharide synthesis with a resulting change in the composition of cell surface glycoconjugates.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Baker</LastName>
+            <ForeName>M A</ForeName>
+            <Initials>MA</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Kanani</LastName>
+            <ForeName>A</ForeName>
+            <Initials>A</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Hindenburg</LastName>
+            <ForeName>A</ForeName>
+            <Initials>A</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Taub</LastName>
+            <ForeName>R N</ForeName>
+            <Initials>RN</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <GrantList CompleteYN="Y">
+          <Grant>
+            <GrantID>CA 31761-03</GrantID>
+            <Acronym>CA</Acronym>
+            <Agency>NCI NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+          <Grant>
+            <GrantID>CA 31762-03</GrantID>
+            <Acronym>CA</Acronym>
+            <Agency>NCI NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+        </GrantList>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+          <PublicationType UI="D013487">Research Support, U.S. Gov't, P.H.S.</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>England</Country>
+        <MedlineTA>Br J Haematol</MedlineTA>
+        <NlmUniqueID>0372544</NlmUniqueID>
+        <ISSNLinking>0007-1048</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D037102">Lectins</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D019887">Peanut Agglutinin</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>59880-97-6</RegistryNumber>
+          <NameOfSubstance UI="D009240">N-Formylmethionine Leucyl-Phenylalanine</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000372" MajorTopicYN="N">Agglutination Tests</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002448" MajorTopicYN="N">Cell Adhesion</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002449" MajorTopicYN="N">Cell Aggregation</DescriptorName>
+          <QualifierName UI="Q000187" MajorTopicYN="N">drug effects</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002462" MajorTopicYN="N">Cell Membrane</DescriptorName>
+          <QualifierName UI="Q000187" MajorTopicYN="N">drug effects</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006098" MajorTopicYN="N">Granulocytes</DescriptorName>
+          <QualifierName UI="Q000187" MajorTopicYN="Y">drug effects</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D037102" MajorTopicYN="N">Lectins</DescriptorName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+          <QualifierName UI="Q000494" MajorTopicYN="N">pharmacology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D007951" MajorTopicYN="N">Leukemia, Myeloid</DescriptorName>
+          <QualifierName UI="Q000097" MajorTopicYN="N">blood</QualifierName>
+          <QualifierName UI="Q000188" MajorTopicYN="Y">drug therapy</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009240" MajorTopicYN="N">N-Formylmethionine Leucyl-Phenylalanine</DescriptorName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+          <QualifierName UI="Q000494" MajorTopicYN="N">pharmacology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D019887" MajorTopicYN="N">Peanut Agglutinin</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>1986</Year>
+          <Month>3</Month>
+          <Day>1</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>1986</Year>
+          <Month>3</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>1986</Year>
+          <Month>3</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">3456789</ArticleId>
+        <ArticleId IdType="doi">10.1111/j.1365-2141.1986.tb02954.x</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

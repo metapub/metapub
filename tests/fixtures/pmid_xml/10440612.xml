@@ -1,0 +1,177 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">10440612</PMID>
+      <DateCompleted>
+        <Year>1999</Year>
+        <Month>09</Month>
+        <Day>27</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2019</Year>
+        <Month>08</Month>
+        <Day>14</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0036-5521</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>34</Volume>
+            <Issue>6</Issue>
+            <PubDate>
+              <Year>1999</Year>
+              <Month>Jun</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Scandinavian journal of gastroenterology</Title>
+          <ISOAbbreviation>Scand J Gastroenterol</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Germline and somatic mutations in exon 15 of the APC gene and K-ras mutations in duodenal adenomas in patients with familial adenomatous polyposis.</ArticleTitle>
+        <Pagination>
+          <StartPage>611</StartPage>
+          <EndPage>617</EndPage>
+          <MedlinePgn>611-7</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">In sporadic colorectal adenomas mutations in the adenomatous polyposis gene (APC) are among the first gene aberrations to appear. In familial adenomatous polyposis (FAP) the patients already have a germline mutation in the APC gene. To investigate the natural history of duodenal adenomas in FAP patients, we examined germline and somatic mutations of the APC gene and K-ras mutations in these lesions.</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">Frozen sections from 54 duodenal polyps from 31 FAP patients were used to histologically verify the presence of adenomatous growth in the mucosa; the rest of each biopsy specimen was processed for DNA extraction. APC exon 15 was investigated with the protein truncation test (PTT), using four overlapping polymerase chain reaction (PCR) fragments, and samples showing an APC mutation were thereafter sequenced. The adenomas were examined for K-ras mutations by use of a combination of the 'enriched PCR method' and temporal temperature gradient electrophoresis.</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">APC germline mutations in exon 15 were found in 19 of 31 (61%) patients, whereas somatic mutations were localized to 12 of 54 (22%) duodenal adenomas. In seven adenomas both the germline and the somatic mutations were found, whereas five small adenomas showed somatic mutations only. There was no tendency for more mutations to be detected in large and severely dysplastic adenomas compared with small and mildly dysplastic ones. K-ras mutations were found in four (7%) duodenal adenomas.</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">The low rate of somatic APC and K-ras mutations in duodenal adenomas may indicate another neoplastic pathway than in FAP adenomas of the large bowel, or that a modifier gene is cosegregating with the disease.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Norheim Andersen</LastName>
+            <ForeName>S</ForeName>
+            <Initials>S</Initials>
+            <AffiliationInfo>
+              <Affiliation>Institute of Forensic Medicine and Medical Dept. A, Rikshospitalet, The National Hospital, University of Oslo, Norway.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>L&#248;vig</LastName>
+            <ForeName>T</ForeName>
+            <Initials>T</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Fausa</LastName>
+            <ForeName>O</ForeName>
+            <Initials>O</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Rognum</LastName>
+            <ForeName>T O</ForeName>
+            <Initials>TO</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>England</Country>
+        <MedlineTA>Scand J Gastroenterol</MedlineTA>
+        <NlmUniqueID>0060105</NlmUniqueID>
+        <ISSNLinking>0036-5521</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <CommentsCorrectionsList>
+        <CommentsCorrections RefType="CommentIn">
+          <RefSource>Scand J Gastroenterol. 1999 Jun;34(6):545. doi: 10.1080/003655299750025976.</RefSource>
+          <PMID Version="1">10440601</PMID>
+        </CommentsCorrections>
+      </CommentsCorrectionsList>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000236" MajorTopicYN="N">Adenoma</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="Y">genetics</QualifierName>
+          <QualifierName UI="Q000473" MajorTopicYN="N">pathology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011125" MajorTopicYN="N">Adenomatous Polyposis Coli</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000293" MajorTopicYN="N">Adolescent</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000328" MajorTopicYN="N">Adult</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004252" MajorTopicYN="N">DNA Mutational Analysis</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004379" MajorTopicYN="N">Duodenal Neoplasms</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="Y">genetics</QualifierName>
+          <QualifierName UI="Q000473" MajorTopicYN="N">pathology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004591" MajorTopicYN="N">Electrophoresis, Polyacrylamide Gel</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005091" MajorTopicYN="N">Exons</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D017491" MajorTopicYN="Y">Genes, APC</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011905" MajorTopicYN="Y">Genes, ras</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D018095" MajorTopicYN="N">Germ-Line Mutation</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D019656" MajorTopicYN="N">Loss of Heterozygosity</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008875" MajorTopicYN="N">Middle Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D016133" MajorTopicYN="N">Polymerase Chain Reaction</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D017384" MajorTopicYN="N">Sequence Deletion</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>1999</Year>
+          <Month>8</Month>
+          <Day>10</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>1999</Year>
+          <Month>8</Month>
+          <Day>10</Day>
+          <Hour>0</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>1999</Year>
+          <Month>8</Month>
+          <Day>10</Day>
+          <Hour>0</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">10440612</ArticleId>
+        <ArticleId IdType="doi">10.1080/003655299750026083</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

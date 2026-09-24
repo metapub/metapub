@@ -1,0 +1,477 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Curated">
+      <PMID Version="1">40195673</PMID>
+      <DateCompleted>
+        <Year>2025</Year>
+        <Month>04</Month>
+        <Day>08</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2025</Year>
+        <Month>04</Month>
+        <Day>17</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">1672-7347</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>49</Volume>
+            <Issue>12</Issue>
+            <PubDate>
+              <Year>2024</Year>
+              <Month>Dec</Month>
+              <Day>28</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>Zhong nan da xue xue bao. Yi xue ban = Journal of Central South University. Medical sciences</Title>
+          <ISOAbbreviation>Zhong Nan Da Xue Xue Bao Yi Xue Ban</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Research progress in postpartum visit competency.</ArticleTitle>
+        <Pagination>
+          <StartPage>1999</StartPage>
+          <EndPage>2004</EndPage>
+          <MedlinePgn>1999-2004</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.11817/j.issn.1672-7347.2024.240414</ELocationID>
+        <ELocationID EIdType="pii" ValidYN="Y">1672-7347(2024)12-1999-06</ELocationID>
+        <Abstract>
+          <AbstractText>Postpartum visit are maternal and child health services provided by primary care workers at the homes of postpartum women within one week after hospital discharge. However, China currently lacks detailed work guidelines and standardized protocols for such services, making it difficult to effectively assess the competency of postpartum visitors and improve service quality. This study reviewed 24 Chinese and English articles retrieved using a combination of subject and free terms, selected based on inclusion and exclusion criteria. The key components of postpartum visit competency were summarized into 3 dimensions: Health assessment, health education, and communication/coordination. While home visitors were generally capable of performing basic physical examinations and providing health education for mothers and newborns, they often lacked the ability to deliver more specialized maternal and infant care. Factors affecting the effectiveness of postpartum visit services included the personal characteristics, technical skills, and training of the visitors. Strategies to improve competencies involve reforming training methods, enhancing home visit skills, and standardizing procedures. Currently, there is a lack of comprehensive tools to assess postpartum visit competency.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Wang</LastName>
+            <ForeName>Guoqing</ForeName>
+            <Initials>G</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Maternal and Child Health, Xiangya School of Public Health, Central South University, Changsha 410013, China. 236912066@csu.edu.cn.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Li</LastName>
+            <ForeName>Xiaoyu</ForeName>
+            <Initials>X</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Maternal and Child Health, Xiangya School of Public Health, Central South University, Changsha 410013, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Xie</LastName>
+            <ForeName>Yimei</ForeName>
+            <Initials>Y</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Maternal and Child Health, Xiangya School of Public Health, Central South University, Changsha 410013, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Gong</LastName>
+            <ForeName>Wenjie</ForeName>
+            <Initials>W</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Maternal and Child Health, Xiangya School of Public Health, Central South University, Changsha 410013, China. gongwenjie@csu.edu.cn.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>FuRong Laboratory, Changsha 410078, China. gongwenjie@csu.edu.cn.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Institute of Applied Health Research, University of Birmingham, Birmingham B15 2TT, UK. gongwenjie@csu.edu.cn.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Department of Psychiatry, University of Rochester, Rochester New York 14642, USA. gongwenjie@csu.edu.cn.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <Language>chi</Language>
+        <GrantList CompleteYN="Y">
+          <Grant>
+            <GrantID>20-368</GrantID>
+            <Agency>the China Medical Board Open Competition Program, USA</Agency>
+            <Country/>
+          </Grant>
+          <Grant>
+            <GrantID>2023ZZTS0909</GrantID>
+            <Agency>the Graduate Innovation and Entrepreneurship Project, Central South University, China</Agency>
+            <Country/>
+          </Grant>
+        </GrantList>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D016454">Review</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>&#20135;&#21518;&#35775;&#35270;&#33021;&#21147;&#30340;&#30740;&#31350;&#36827;&#23637;.</VernacularTitle>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>China</Country>
+        <MedlineTA>Zhong Nan Da Xue Xue Bao Yi Xue Ban</MedlineTA>
+        <NlmUniqueID>101230586</NlmUniqueID>
+        <ISSNLinking>1672-7347</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011181" MajorTopicYN="Y">Postnatal Care</DescriptorName>
+          <QualifierName UI="Q000592" MajorTopicYN="N">standards</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006792" MajorTopicYN="Y">House Calls</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002681" MajorTopicYN="N" Type="Geographic">China</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D049590" MajorTopicYN="N">Postpartum Period</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D007231" MajorTopicYN="N">Infant, Newborn</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011247" MajorTopicYN="N">Pregnancy</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <OtherAbstract Type="Publisher" Language="chi">
+        <AbstractText>&#20135;&#21518;&#35775;&#35270;&#26159;&#22522;&#23618;&#22919;&#24188;&#20445;&#20581;&#20154;&#21592;&#22312;&#20135;&#22919;&#20986;&#38498;&#21518;1&#21608;&#20869;&#21040;&#20854;&#23478;&#20013;&#36827;&#34892;&#30340;&#20445;&#20581;&#26381;&#21153;&#12290;&#28982;&#32780;&#65292;&#20013;&#22269;&#23545;&#27492;&#32570;&#20047;&#20855;&#20307;&#24037;&#20316;&#32454;&#21017;&#21644;&#26631;&#20934;&#65292;&#38590;&#20197;&#26377;&#25928;&#35780;&#20272;&#20135;&#21518;&#35775;&#35270;&#20154;&#21592;&#33021;&#21147;&#65292;&#25552;&#39640;&#20854;&#26381;&#21153;&#36136;&#37327;&#12290;&#26412;&#25991;&#37319;&#29992;&#20027;&#39064;&#35789;&#21152;&#33258;&#30001;&#35789;&#30456;&#32467;&#21512;&#30340;&#26041;&#24335;&#26816;&#32034;&#20013;&#33521;&#25991;&#25968;&#25454;&#24211;&#65292;&#26681;&#25454;&#32435;&#20837;&#21644;&#25490;&#38500;&#26631;&#20934;&#23545;&#26816;&#32034;&#25991;&#29486;&#36827;&#34892;&#31579;&#36873;&#65292;&#32435;&#20837;24&#31687;&#25991;&#29486;&#65292;&#25552;&#21462;&#24182;&#24402;&#32435;&#20135;&#21518;&#35775;&#35270;&#33021;&#21147;&#21450;&#30456;&#20851;&#35201;&#27714;&#12290;&#20135;&#21518;&#35775;&#35270;&#33021;&#21147;&#20869;&#23481;&#21487;&#24402;&#32435;&#20026;&#20581;&#24247;&#35780;&#20272;&#12289;&#20581;&#24247;&#25945;&#32946;&#21644;&#27807;&#36890;&#21327;&#35843;3&#20010;&#32500;&#24230;&#12290;&#35775;&#35270;&#20154;&#21592;&#33021;&#22815;&#23436;&#25104;&#22522;&#26412;&#30340;&#20135;&#22919;&#21644;&#26032;&#29983;&#20799;&#30340;&#36523;&#20307;&#26816;&#26597;&#21450;&#20581;&#24247;&#23459;&#25945;&#65292;&#20294;&#22312;&#25552;&#20379;&#26356;&#20855;&#19987;&#19994;&#24615;&#30340;&#20445;&#20581;&#26381;&#21153;&#26102;&#23384;&#22312;&#19968;&#23450;&#30340;&#19981;&#36275;&#12290;&#35775;&#35270;&#20154;&#21592;&#20010;&#20154;&#29305;&#24449;&#12289;&#25216;&#26415;&#33021;&#21147;&#21450;&#22521;&#35757;&#31561;&#24433;&#21709;&#20135;&#21518;&#35775;&#35270;&#26381;&#21153;&#30340;&#20132;&#20184;&#25928;&#26524;&#12290;&#35775;&#35270;&#33021;&#21147;&#25552;&#21319;&#31574;&#30053;&#21253;&#25324;&#25945;&#23398;&#24418;&#24335;&#25913;&#38761;&#12289;&#23478;&#35775;&#25216;&#33021;&#22521;&#35757;&#12289;&#35268;&#33539;&#35775;&#35270;&#31243;&#24207;&#12290;&#30446;&#21069;&#32570;&#20047;&#20840;&#38754;&#35780;&#20272;&#20135;&#21518;&#35775;&#35270;&#33021;&#21147;&#30340;&#26041;&#27861;&#12290;.</AbstractText>
+      </OtherAbstract>
+      <OtherAbstract Type="Publisher" Language="eng">
+        <AbstractText>Postpartum visit are maternal and child health services provided by primary care workers at the homes of postpartum women within one week after hospital discharge. However, China currently lacks detailed work guidelines and standardized protocols for such services, making it difficult to effectively assess the competency of postpartum visitors and improve service quality. This study reviewed 24 Chinese and English articles retrieved using a combination of subject and free terms, selected based on inclusion and exclusion criteria. The key components of postpartum visit competency were summarized into 3 dimensions: Health assessment, health education, and communication/coordination. While home visitors were generally capable of performing basic physical examinations and providing health education for mothers and newborns, they often lacked the ability to deliver more specialized maternal and infant care. Factors affecting the effectiveness of postpartum visit services included the personal characteristics, technical skills, and training of the visitors. Strategies to improve competencies involve reforming training methods, enhancing home visit skills, and standardizing procedures. Currently, there is a lack of comprehensive tools to assess postpartum visit competency.</AbstractText>
+      </OtherAbstract>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">competency</Keyword>
+        <Keyword MajorTopicYN="N">evaluation methods</Keyword>
+        <Keyword MajorTopicYN="N">improvement strategies</Keyword>
+        <Keyword MajorTopicYN="N">influencing factors</Keyword>
+        <Keyword MajorTopicYN="N">maternal and child health services</Keyword>
+        <Keyword MajorTopicYN="N">postpartum visit</Keyword>
+      </KeywordList>
+      <CoiStatement>&#20316;&#32773;&#22768;&#31216;&#26080;&#20219;&#20309;&#21033;&#30410;&#20914;&#31361;&#12290;</CoiStatement>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2025</Year>
+          <Month>4</Month>
+          <Day>8</Day>
+          <Hour>6</Hour>
+          <Minute>25</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2025</Year>
+          <Month>4</Month>
+          <Day>8</Day>
+          <Hour>6</Hour>
+          <Minute>24</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2025</Year>
+          <Month>4</Month>
+          <Day>8</Day>
+          <Hour>2</Hour>
+          <Minute>59</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pmc-release">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>28</Day>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">40195673</ArticleId>
+        <ArticleId IdType="pmc">PMC11975525</ArticleId>
+        <ArticleId IdType="doi">10.11817/j.issn.1672-7347.2024.240414</ArticleId>
+        <ArticleId IdType="pii">1672-7347(2024)12-1999-06</ArticleId>
+      </ArticleIdList>
+      <ReferenceList>
+        <Reference>
+          <Citation>&#22269;&#23478;&#21355;&#29983;&#35745;&#29983;&#22996; . &#22269;&#23478;&#21355;&#29983;&#35745;&#29983;&#22996;&#20851;&#20110;&#21360;&#21457;&#12298;&#22269;&#23478;&#22522;&#26412;&#20844;&#20849;&#21355;&#29983;&#26381;&#21153;&#35268;&#33539;(&#31532;&#19977;&#29256;)&#12299;&#30340;&#36890;&#30693;[J]. &#20013;&#21326;&#20154;&#27665;&#20849;&#21644;&#22269;&#22269;&#23478;&#21355;&#29983;&#21644;&#35745;&#21010;&#29983;&#32946;&#22996;&#21592;&#20250;&#20844;&#25253;, 2017(3): 21.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>National Health and Family Planning Commission . Circular of the national health and family planning commission on issuing national basic public health service standard(third edition)[J]. Gazette of the National Health and Family Planning Commission of People&#8217;s Republic of China, 2017(3): 21.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>&#21016;&#33738;&#20957;, &#29579;&#24800;&#33521;, &#40858;&#29980;, &#31561;. &#33487;&#24030;&#24066;39806&#20363;&#20135;&#21518;&#35775;&#35270;&#32467;&#26524;&#20998;&#26512;&#21450;&#23545;&#31574;[J]. &#20013;&#22269;&#22919;&#24188;&#21355;&#29983;&#26434;&#24535;, 2016, 7(1): 21-23. 10.19757/j.cnki.issn1674-7763.2016.01.006.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.19757/j.cnki.issn1674-7763.2016.01.006</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>LIU Juning, WANG Huiying, GONG Tian, et al. Analysis of postpartum visits results among 39 806 cases in Suzhou[J]. Chinese Journal of Women and Children Health, 2016, 7(1): 21-23. 10.19757/j.cnki.issn1674-7763.2016.01.006.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.19757/j.cnki.issn1674-7763.2016.01.006</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Li X, Krumholz HM, Yip W, et al. Quality of primary health care in China: challenges and recommendations[J]. Lancet, 2020, 395(10239): 1802-1812. 10.1016/S0140-6736(20)30122-7.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1016/S0140-6736(20)30122-7</ArticleId>
+            <ArticleId IdType="pmc">PMC7272159</ArticleId>
+            <ArticleId IdType="pubmed">32505251</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>&#24352;&#20255;, &#31243;&#21195;&#26480;, &#24352;&#26519;, &#31561;. &#22522;&#20110;&#28246;&#21335;&#30465;&#31532;&#8544;&#27425;&#21355;&#29983;&#26381;&#21153;&#35843;&#26597;&#20998;&#26512;&#23381;&#20135;&#26399;&#22919;&#22899;&#20135;&#21069;&#26816;&#26597;&#21644;&#20135;&#21518;&#35775;&#35270;&#24773;&#20917;&#21450;&#20854;&#24433;&#21709;&#22240;&#32032;[J]. &#20013;&#21335;&#22823;&#23398;&#23398;&#25253;(&#21307;&#23398;&#29256;), 2016, 41(11): 1220-1225. 10.11817/j.issn.1672-7347.2016.11.018.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.11817/j.issn.1672-7347.2016.11.018</ArticleId>
+            <ArticleId IdType="pubmed">27932771</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>ZHANG Wei, CHENG Xunjie, ZHANG Lin, et al. Analysis of the status and influential factors for prenatal care and postpartum visit among pregnant women based on the First Health Service Survey in Hunan Province[J]. Journal of Central South University. Medical Science, 2016, 41(11): 1220-1225. 10.11817/j.issn.1672-7347.2016.11.018.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.11817/j.issn.1672-7347.2016.11.018</ArticleId>
+            <ArticleId IdType="pubmed">27932771</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Bansal SC, Nimbalkar SM, Shah NA, et al. Evaluation of knowledge and skills of home based newborn care among Accredited Social Health Activists (ASHA)[J]. Indian Pediatr, 2016, 53(8): 689-691. 10.1007/s13312-016-0911-3.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1007/s13312-016-0911-3</ArticleId>
+            <ArticleId IdType="pubmed">27395839</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Ikram S, Khandelwal N, Dubey SR. A Study to Assess Newborn Care Practices among Mothers in Bhopal so as to Determine Risk Factors for Unsafe Practices and to Assess the Knowledge and Skills of Ashas during Their Home Visits to Those Newborns and Mothers [J]. J Pathol Clin Res, 2023, 15(4): 927-31.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Phatak AG, Nimbalkar SM, Prabhughate AS, et al. Comparison of knowledge and skills of Home-Based Newborn Care (HBNC) among Accredited Social Health Activists (ASHA) and health workers (SAKHI) of Ambuja Cement Foundation[J]. J Family Med Prim Care, 2021, 10(8): 2865-2878. 10.4103/jfmpc.jfmpc_1761_20.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.4103/jfmpc.jfmpc_1761_20</ArticleId>
+            <ArticleId IdType="pmc">PMC8483107</ArticleId>
+            <ArticleId IdType="pubmed">34660419</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Henderson S. Community Child Health (CCH) nurses&#8217; experience of home visits for new mothers: a quality improvement project[J]. Contemp Nurse, 2009, 34(1): 66-76. 10.5172/conu.2009.34.1.066.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.5172/conu.2009.34.1.066</ArticleId>
+            <ArticleId IdType="pubmed">20230173</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Bradley S, Kamwendo F, Masanja H, et al. District health managers&#8217; perceptions of supervision in Malawi and Tanzania[J]. Hum Resour Health, 2013, 11: 43. 10.1186/1478-4491-11-43.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1186/1478-4491-11-43</ArticleId>
+            <ArticleId IdType="pmc">PMC3849462</ArticleId>
+            <ArticleId IdType="pubmed">24007354</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Jahan F, Foote E, Rahman M, et al. Evaluation of community health worker&#8217;s performance at home-based newborn assessment supported by mHealth in rural Bangladesh[J]. BMC Pediatr, 2022, 22(1): 218. 10.1186/s12887-022-03282-6.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1186/s12887-022-03282-6</ArticleId>
+            <ArticleId IdType="pmc">PMC9027479</ArticleId>
+            <ArticleId IdType="pubmed">35459113</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>&#26446;&#28023;&#33495;, &#26519;&#23270;&#26757;. &#20135;&#21518;&#35775;&#35270;&#20154;&#21592;&#23545;&#27597;&#20083;&#21890;&#20859;&#26680;&#24515;&#25216;&#33021;&#25484;&#25569;&#24773;&#20917;&#35843;&#26597;[J]. &#25252;&#29702;&#30740;&#31350;, 2016, 30(15): 1919-1920. 10.3969/j.issn.1009-6493.2016.15.053.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3969/j.issn.1009-6493.2016.15.053</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>LI Haimiao, LIN Changmei. Investigation on postpartum visitors&#8217; mastery of breast-feeding core skills[J]. Chinese Nursing Research, 2016, 30(15): 1919-1920. 10.3969/j.issn.1009-6493.2016.15.053.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3969/j.issn.1009-6493.2016.15.053</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>&#37329;&#40857;&#22969;, &#23828;&#24013;, &#26472;&#24935;&#23486;, &#31561;. &#19978;&#28023;&#24066;&#38389;&#34892;&#21306;&#20135;&#21518;&#23478;&#24237;&#35775;&#35270;&#20154;&#21592;&#36991;&#23381;&#30693;&#35782;&#21644;&#26381;&#21153;&#33021;&#21147;&#30340;&#35843;&#26597;[J]. &#20013;&#21326;&#20840;&#31185;&#21307;&#24072;&#26434;&#24535;, 2019, 18(8): 742-745. 10.3760/cma.j.issn.1671-7368.2019.08.007.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3760/cma.j.issn.1671-7368.2019.08.007</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>JIN Longmei, CUI Wei, YANG Huibin, et al. Survey on contraceptive knowledge and service ability among postpartum visitors in Shanghai Minhang district[J]. Chinese Journal of General Practitioners, 2019, 18(8): 742-745. 10.3760/cma.j.issn.1671-7368.2019.08.007.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3760/cma.j.issn.1671-7368.2019.08.007</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>&#39532;&#26195;&#38686;, &#30707;&#27982;&#39034;, &#38062;&#21033;&#21326;, &#31561;. &#26032;&#24418;&#21183;&#19979;&#19978;&#28023;&#31038;&#21306;&#27597;&#23156;&#20445;&#20581;&#26381;&#21153;&#24320;&#23637;&#29616;&#29366;&#30340;&#36136;&#24615;&#30740;&#31350;[J]. &#20013;&#22269;&#20840;&#31185;&#21307;&#23398;, 2024, 27(28): 3529-3534 10.12114/j.issn.1007-9572.2023.0807.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.12114/j.issn.1007-9572.2023.0807</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>&#35885;&#29577;&#29618;, &#40644;&#32654;&#29618;, &#37036;&#25935;&#24535;, &#31561;. &#8220;&#20114;&#32852;&#32593;+&#27597;&#23156;&#25252;&#29702;&#8221; &#31934;&#20934;&#26381;&#21153;&#27169;&#24335;&#30340;&#26500;&#24314;&#19982;&#23454;&#36341;[J]. &#25252;&#29702;&#23398;&#25253;, 2021, 28(23): 25-27. 10.16460/j.issn1008-9969.2021.23.025.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.16460/j.issn1008-9969.2021.23.025</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>TAN Yuling, HUANG Meiling, WU Minzhi, et al. Construction and practice of &#8220;Internet plus maternal and child care&#8221; precision service model[J]. Journal of Nursing(China), 2021, 28(23): 25-27. 10.16460/j.issn1008-9969.2021.23.025.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.16460/j.issn1008-9969.2021.23.025</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>&#26446;&#25991;&#20808;, &#26446;&#20912;&#33721;, &#23828;&#26790;&#26228;, &#31561;. &#19978;&#28023;&#24066;&#20135;&#22919;&#20998;&#23081;&#21518;&#26089;&#26399;&#26032;&#29983;&#20799;&#27597;&#20083;&#21890;&#20859;&#24577;&#24230;&#21450;&#20854;&#24433;&#21709;&#22240;&#32032;&#20998;&#26512;[J]. &#20013;&#21326;&#30142;&#30149;&#25511;&#21046;&#26434;&#24535;, 2022, 26(4): 423-429. 10.16462/j.cnki.zhjbkz.2022.04.011.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.16462/j.cnki.zhjbkz.2022.04.011</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>LI Wenxian, LI Bingying, CUI Mengqing, et al. Attitude towards breast feeding and its influencing factors among postpartum women 3 days after delivery in Shanghai[J]. Chinese Journal of Disease Control &amp; Prevention, 2022, 26(4): 423-429. 10.16462/j.cnki.zhjbkz.2022.04.011.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.16462/j.cnki.zhjbkz.2022.04.011</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>&#38047;&#32701;&#35199;, &#38472;&#24565;&#22969;, &#21016;&#22025;, &#31561;. &#19978;&#28023;&#24066;&#26222;&#38464;&#21306;&#20135;&#22919;&#20135;&#21518;&#35775;&#35270;&#30340;&#38656;&#27714;&#21450;&#28385;&#24847;&#24230;[J]. &#19978;&#28023;&#39044;&#38450;&#21307;&#23398;, 2020, 32(5): 421-424. 10.19428/j.cnki.sjpm.2020.18988.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.19428/j.cnki.sjpm.2020.18988</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>ZHONG Yuxi, CHEN Nianmei, LIU Jia, et al. Needs and satisfaction of parturients for postpartum visits in Putuo District, Shanghai[J]. Shanghai Journal of Preventive Medicine, 2020, 32(5): 421-424. 10.19428/j.cnki.sjpm.2020.18988.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.19428/j.cnki.sjpm.2020.18988</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>&#26446;&#34122;, &#30000;&#31574;, &#39532;&#33391;&#22372;, &#31561;. &#38498;&#20869;&#22806;&#22242;&#38431;&#21327;&#20316;&#20837;&#25143;&#23545;&#20135;&#22919;&#23454;&#26045;&#27597;&#20083;&#21890;&#20859;&#19982;&#20135;&#35109;&#26399;&#29031;&#25252;&#25903;&#25345;&#30740;&#31350;[J]. &#25252;&#29702;&#23398;&#26434;&#24535;, 2022, 37(14): 1-4. 10.3870/j.issn.1001-4152.2022.14.001.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3870/j.issn.1001-4152.2022.14.001</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>LI Rui, TIAN Ce, MA Liangkun, et al. In-home breastfeeding and puerperal care support by in- and out-of-hospital teams[J]. Journal of Nursing Science, 2022, 37(14): 1-4. 10.3870/j.issn.1001-4152.2022.14.001.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3870/j.issn.1001-4152.2022.14.001</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Laurenzi CA, Gordon S, Skeen S, et al. The home visit communication skills inventory: Piloting a tool to measure community health worker fidelity to training in rural South Africa[J]. Res Nurs Health, 2020, 43(1): 122-133. 10.1002/nur.22000.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/nur.22000</ArticleId>
+            <ArticleId IdType="pubmed">31793678</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Dana SN, Wambach KA. Patient satisfaction with an early discharge home visit program[J]. J Obstet Gynecol Neonatal Nurs, 2003, 32(2): 190-198. 10.1177/0884217503251733.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1177/0884217503251733</ArticleId>
+            <ArticleId IdType="pubmed">12685670</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Li C, Wu Q, van Velthoven MH, et al. Coverage, quality of and barriers to postnatal care in rural Hebei, China: a mixed method study[J]. BMC Pregnancy Childbirth, 2014, 14: 31. 10.1186/1471-2393-14-31.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1186/1471-2393-14-31</ArticleId>
+            <ArticleId IdType="pmc">PMC3898028</ArticleId>
+            <ArticleId IdType="pubmed">24438644</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Gebretsadik A, Melaku N, Haji Y. Community acceptance and utilization of maternal and community-based neonatal care services provided by health extension workers in rural Sidama zone: barriers and enablers: a qualitative study[J]. Pediatric Health Med Ther, 2020, 11: 203-217. 10.2147/PHMT.S254409.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.2147/PHMT.S254409</ArticleId>
+            <ArticleId IdType="pmc">PMC7335842</ArticleId>
+            <ArticleId IdType="pubmed">32669919</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>&#29579;&#29756;, &#26472;&#21147;, &#27611;&#39062;, &#31561;. &#20113;&#21335;&#30465;&#23381;&#20135;&#22919;&#20581;&#24247;&#31649;&#29702;&#26381;&#21153;&#29616;&#29366;&#20998;&#26512;[J]. &#20013;&#22269;&#22919;&#24188;&#20445;&#20581;, 2016, 31(18): 3655-3657.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>WANG Qiong, YANG Li, MAO Ying, et al. Analysis on the current situation of maternal health management services in Yunnan Province[J]. Maternal and Child Health Care of China, 2016, 31(18): 3655-3657.</Citation>
+        </Reference>
+        <Reference>
+          <Citation>Balakrishnan R, Gopichandran V, Chaturvedi S, et al. Continuum of Care Services for Maternal and Child Health using mobile technology-a health system strengthening strategy in low and middle income countries[J]. BMC Med Inform Decis Mak, 2016, 16: 84. 10.1186/s12911-016-0326-z.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1186/s12911-016-0326-z</ArticleId>
+            <ArticleId IdType="pmc">PMC4937606</ArticleId>
+            <ArticleId IdType="pubmed">27387548</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>&#30000;&#26397;&#38686;, &#26446;&#32418;&#26757;, &#36213;&#25935;, &#31561;. &#26412;&#31185;&#21161;&#20135;&#32508;&#21512;&#23454;&#35757;&#35838;&#31243;&#24605;&#25919;&#30340;&#25945;&#23398;&#35774;&#35745;&#19982;&#23454;&#36341;[J]. &#20013;&#21326;&#25252;&#29702;&#25945;&#32946;, 2024, 21(1): 27-31. 10.3761/j.issn.1672-9234.2024.01.004.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3761/j.issn.1672-9234.2024.01.004</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>TIAN Zhaoxia, LI Hongmei, ZHAO Min, et al. Teaching design and practice of Ideological and Political Theory Education in Comprehensive Training Course for undergraduate midwifery major[J]. Chinese Journal of Nursing Education, 2024, 21(1): 27-31. 10.3761/j.issn.1672-9234.2024.01.004.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3761/j.issn.1672-9234.2024.01.004</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>&#33883;&#22278;, &#37011;&#26376;&#26690;, &#38889;&#21494;&#33452;. &#34394;&#23454;&#20223;&#30495;&#32508;&#21512;&#23454;&#35757;&#23545;&#25252;&#29702;&#26412;&#31185;&#29983;&#27597;&#23156;&#25252;&#29702;&#23703;&#20301;&#32988;&#20219;&#21147;&#30340;&#24433;&#21709;[J]. &#25252;&#29702;&#23398;&#26434;&#24535;, 2021, 36(15): 50-53. 10.3870/j.issn.1001-4152.2021.15.050.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3870/j.issn.1001-4152.2021.15.050</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>GE Yuan, DENG Yuegui, HAN Yefen. Effect of virtual simulation based lab teaching on maternal-infant care core competence of nursing undergraduates[J]. Journal of Nursing Science, 2021, 36(15): 50-53. 10.3870/j.issn.1001-4152.2021.15.050.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3870/j.issn.1001-4152.2021.15.050</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>&#38472;&#20025;&#20025;, &#21608;&#20020;, &#24352;&#26230;, &#31561;. &#20135;&#22919;&#23545;&#20197;&#23478;&#24237;&#20026;&#20013;&#24515;&#30340;&#32676;&#32452;&#24335;&#22260;&#29983;&#26399;&#20445;&#20581;&#30340;&#20307;&#39564;[J]. &#25252;&#29702;&#23398;&#26434;&#24535;, 2022, 37(14): 9-12. 10.3870/j.issn.1001-4152.2022.14.009.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3870/j.issn.1001-4152.2022.14.009</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>CHEN Dandan, ZHOU Lin, ZHANG Jing, et al. Postpartum women&#8217;s experiences of family-centered group-based perinatal care[J]. Journal of Nursing Science, 2022, 37(14): 9-12. 10.3870/j.issn.1001-4152.2022.14.009.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3870/j.issn.1001-4152.2022.14.009</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>&#38047;&#23068;, &#32993;&#29756;&#29141;, &#26753;&#26093;&#38686;, &#31561;. &#21307;&#38498;-&#31038;&#21306;&#27597;&#20083;&#21890;&#20859;&#38142;&#24335;&#31649;&#29702;&#27169;&#24335;&#30340;&#24212;&#29992;&#21450;&#25928;&#26524;&#35780;&#20215;[J]. &#20013;&#21326;&#25252;&#29702;&#26434;&#24535;, 2022, 57(14): 1669-1675. 10.3761/j.issn.0254-1769.2022.14.001.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3761/j.issn.0254-1769.2022.14.001</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>ZHONG Na, HU Qiongyan, LIANG Xuxia, et al. Application and effect evaluation of a hospital-community breastfeeding chain management model[J]. Chinese Journal of Nursing, 2022, 57(14): 1669-1675. 10.3761/j.issn.0254-1769.2022.14.001.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.3761/j.issn.0254-1769.2022.14.001</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Schultz DA, Schacht RL, Shanty LM, et al. The development and evaluation of a statewide training center for home visitors and supervisors[J]. Am J Community Psychol, 2019, 63(3/4): 418-429. 10.1002/ajcp.12320.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.1002/ajcp.12320</ArticleId>
+            <ArticleId IdType="pubmed">30851132</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>&#29579;&#28322;, &#22799;&#32463;&#28828;, &#34203;&#29736;. 2018&#8212;2019&#24180;&#19978;&#28023;&#24066;&#40644;&#28006;&#21306;&#20135;&#21518;&#22919;&#22899;&#27597;&#23156;&#20581;&#24247;&#32032;&#20859;&#27700;&#24179;&#35843;&#26597;&#20998;&#26512;[J]. &#20013;&#22269;&#20581;&#24247;&#25945;&#32946;, 2021, 37(6): 531-535. 10.16168/j.cnki.issn.1002-9982.2021.06.011.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.16168/j.cnki.issn.1002-9982.2021.06.011</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>WANG Yi, XIA Jingwei, XUE Kun. Analysis of health literacy on maternal and infant health among postpartum women in Huangpu District, Shanghai from 2018 to 2019[J]. Chinese Journal of Health Education, 2021, 37(6): 531-535. 10.16168/j.cnki.issn.1002-9982.2021.06.011.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.16168/j.cnki.issn.1002-9982.2021.06.011</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>&#24352;&#33993;, &#38047;&#32701;&#35199;, &#38472;&#24565;&#22969;, &#31561;. &#24320;&#23637;&#35268;&#33539;&#21270;&#22521;&#35757;&#23545;&#31038;&#21306;&#20135;&#21518;&#35775;&#35270;&#36136;&#37327;&#30340;&#24433;&#21709;[J]. &#20013;&#22269;&#22919;&#24188;&#20445;&#20581;, 2020, 35(7): 1186-1188. 10.19829/j.zgfybj.issn.1001-4411.2020.07.005.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.19829/j.zgfybj.issn.1001-4411.2020.07.005</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>ZHANG Rong, ZHONG Yuxi, CHEN Nianmei, et al. Influence of standardized training on the quality of postpartum visit in community[J]. Maternal and Child Health Care of China, 2020, 35(7): 1186-1188. 10.19829/j.zgfybj.issn.1001-4411.2020.07.005.</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="doi">10.19829/j.zgfybj.issn.1001-4411.2020.07.005</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

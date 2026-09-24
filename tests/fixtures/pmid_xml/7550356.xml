@@ -1,0 +1,512 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">7550356</PMID>
+      <DateCompleted>
+        <Year>1995</Year>
+        <Month>11</Month>
+        <Day>02</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2026</Year>
+        <Month>05</Month>
+        <Day>18</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">1061-4036</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>11</Volume>
+            <Issue>2</Issue>
+            <PubDate>
+              <Year>1995</Year>
+              <Month>Oct</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Nature genetics</Title>
+          <ISOAbbreviation>Nat Genet</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>The structure of the presenilin 1 (S182) gene and identification of six novel mutations in early onset AD families.</ArticleTitle>
+        <Pagination>
+          <StartPage>219</StartPage>
+          <EndPage>222</EndPage>
+          <MedlinePgn>219-22</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText>Genetic linkage studies place a gene causing early onset familial Alzheimer's disease (FAD) on chromosome 14q24.3 (refs 1-4). Five mutations within the S182 (Presenilin 1: PS-1) gene, which maps to this region, have recently been reported in several early onset FAD kindreds. We have localized the PS-1 gene to a 75 kb region and present the structure of this gene, evidence for alternative splicing and describe six novel mutations in early onset FAD pedigrees all of which alter residues conserved in the STM2 (Presenilin 2: PS-2) gene.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <CollectiveName>Alzheimer's Disease Collaborative Group</CollectiveName>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <GrantList CompleteYN="Y">
+          <Grant>
+            <GrantID>AG00634</GrantID>
+            <Acronym>AG</Acronym>
+            <Agency>NIA NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+          <Grant>
+            <GrantID>AG1187</GrantID>
+            <Acronym>AG</Acronym>
+            <Agency>NIA NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+          <Grant>
+            <GrantID>AG12028</GrantID>
+            <Acronym>AG</Acronym>
+            <Agency>NIA NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+        </GrantList>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D016448">Multicenter Study</PublicationType>
+          <PublicationType UI="D052061">Research Support, N.I.H., Extramural</PublicationType>
+          <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>Nat Genet</MedlineTA>
+        <NlmUniqueID>9216904</NlmUniqueID>
+        <ISSNLinking>1061-4036</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D017931">DNA Primers</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D008565">Membrane Proteins</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="C508853">PSEN1 protein, human</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D053764">Presenilin-1</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000367" MajorTopicYN="N">Age Factors</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D017668" MajorTopicYN="N">Age of Onset</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D017398" MajorTopicYN="N">Alternative Splicing</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000544" MajorTopicYN="N">Alzheimer Disease</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="Y">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000595" MajorTopicYN="N">Amino Acid Sequence</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D001483" MajorTopicYN="N">Base Sequence</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002874" MajorTopicYN="N">Chromosome Mapping</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002883" MajorTopicYN="Y">Chromosomes, Human, Pair 14</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D017931" MajorTopicYN="N">DNA Primers</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005091" MajorTopicYN="N">Exons</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005190" MajorTopicYN="N">Family</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008040" MajorTopicYN="N">Genetic Linkage</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015698" MajorTopicYN="N">Genomic Library</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D007438" MajorTopicYN="N">Introns</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008565" MajorTopicYN="N">Membrane Proteins</DescriptorName>
+          <QualifierName UI="Q000096" MajorTopicYN="N">biosynthesis</QualifierName>
+          <QualifierName UI="Q000235" MajorTopicYN="Y">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008969" MajorTopicYN="N">Molecular Sequence Data</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D010375" MajorTopicYN="N">Pedigree</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D017354" MajorTopicYN="Y">Point Mutation</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D016133" MajorTopicYN="N">Polymerase Chain Reaction</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D053764" MajorTopicYN="N">Presenilin-1</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <InvestigatorList>
+        <Investigator ValidYN="Y">
+          <LastName>Clark</LastName>
+          <ForeName>R F</ForeName>
+          <Initials>RF</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Hutton</LastName>
+          <ForeName>M</ForeName>
+          <Initials>M</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Fuldner</LastName>
+          <ForeName>R A</ForeName>
+          <Initials>RA</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Froelich</LastName>
+          <ForeName>S</ForeName>
+          <Initials>S</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Karran</LastName>
+          <ForeName>E</ForeName>
+          <Initials>E</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Talbot</LastName>
+          <ForeName>C</ForeName>
+          <Initials>C</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Crook</LastName>
+          <ForeName>R</ForeName>
+          <Initials>R</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Lendon</LastName>
+          <ForeName>C</ForeName>
+          <Initials>C</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Prihar</LastName>
+          <ForeName>G</ForeName>
+          <Initials>G</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>He</LastName>
+          <ForeName>C</ForeName>
+          <Initials>C</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Korenblat</LastName>
+          <ForeName>K</ForeName>
+          <Initials>K</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Martinez</LastName>
+          <ForeName>A</ForeName>
+          <Initials>A</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Wragg</LastName>
+          <ForeName>M</ForeName>
+          <Initials>M</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Busfield</LastName>
+          <ForeName>F</ForeName>
+          <Initials>F</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Behrens</LastName>
+          <ForeName>M I</ForeName>
+          <Initials>MI</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Myers</LastName>
+          <ForeName>A</ForeName>
+          <Initials>A</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Norton</LastName>
+          <ForeName>J</ForeName>
+          <Initials>J</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Morris</LastName>
+          <ForeName>J</ForeName>
+          <Initials>J</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Mehta</LastName>
+          <ForeName>N</ForeName>
+          <Initials>N</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Pearson</LastName>
+          <ForeName>C</ForeName>
+          <Initials>C</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Lincoln</LastName>
+          <ForeName>S</ForeName>
+          <Initials>S</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Baker</LastName>
+          <ForeName>M</ForeName>
+          <Initials>M</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Duff</LastName>
+          <ForeName>K</ForeName>
+          <Initials>K</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Zehr</LastName>
+          <ForeName>C</ForeName>
+          <Initials>C</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Perez-Tur</LastName>
+          <ForeName>J</ForeName>
+          <Initials>J</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Houlden</LastName>
+          <ForeName>H</ForeName>
+          <Initials>H</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Ruiz</LastName>
+          <ForeName>A</ForeName>
+          <Initials>A</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Ossa</LastName>
+          <ForeName>J</ForeName>
+          <Initials>J</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Lopera</LastName>
+          <ForeName>F</ForeName>
+          <Initials>F</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Arcos</LastName>
+          <ForeName>M</ForeName>
+          <Initials>M</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Madrigal</LastName>
+          <ForeName>L</ForeName>
+          <Initials>L</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Collinge</LastName>
+          <ForeName>J</ForeName>
+          <Initials>J</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Humphreys</LastName>
+          <ForeName>C</ForeName>
+          <Initials>C</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Ashworth</LastName>
+          <ForeName>A</ForeName>
+          <Initials>A</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Sarner</LastName>
+          <ForeName>S</ForeName>
+          <Initials>S</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Fox</LastName>
+          <ForeName>N</ForeName>
+          <Initials>N</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Harvey</LastName>
+          <ForeName>R</ForeName>
+          <Initials>R</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Kennedy</LastName>
+          <ForeName>A</ForeName>
+          <Initials>A</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Roques</LastName>
+          <ForeName>P</ForeName>
+          <Initials>P</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Cline</LastName>
+          <ForeName>R T</ForeName>
+          <Initials>RT</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Phillips</LastName>
+          <ForeName>C A</ForeName>
+          <Initials>CA</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Venter</LastName>
+          <ForeName>J C</ForeName>
+          <Initials>JC</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Forsell</LastName>
+          <ForeName>L</ForeName>
+          <Initials>L</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Axelman</LastName>
+          <ForeName>K</ForeName>
+          <Initials>K</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Lilius</LastName>
+          <ForeName>L</ForeName>
+          <Initials>L</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Johnston</LastName>
+          <ForeName>J</ForeName>
+          <Initials>J</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Cowburn</LastName>
+          <ForeName>R</ForeName>
+          <Initials>R</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Vitanen</LastName>
+          <ForeName>M</ForeName>
+          <Initials>M</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Winblad</LastName>
+          <ForeName>B</ForeName>
+          <Initials>B</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Kosik</LastName>
+          <ForeName>K</ForeName>
+          <Initials>K</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Haltia</LastName>
+          <ForeName>M</ForeName>
+          <Initials>M</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Poyhonen</LastName>
+          <ForeName>M</ForeName>
+          <Initials>M</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Dickson</LastName>
+          <ForeName>D</ForeName>
+          <Initials>D</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Mann</LastName>
+          <ForeName>D</ForeName>
+          <Initials>D</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Neary</LastName>
+          <ForeName>D</ForeName>
+          <Initials>D</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Snowden</LastName>
+          <ForeName>J</ForeName>
+          <Initials>J</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Lantos</LastName>
+          <ForeName>P</ForeName>
+          <Initials>P</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Lannfelt</LastName>
+          <ForeName>L</ForeName>
+          <Initials>L</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Rossor</LastName>
+          <ForeName>M</ForeName>
+          <Initials>M</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Roberts</LastName>
+          <ForeName>G W</ForeName>
+          <Initials>GW</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Adams</LastName>
+          <ForeName>M D</ForeName>
+          <Initials>MD</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Hardy</LastName>
+          <ForeName>J</ForeName>
+          <Initials>J</Initials>
+        </Investigator>
+        <Investigator ValidYN="Y">
+          <LastName>Goate</LastName>
+          <ForeName>A</ForeName>
+          <Initials>A</Initials>
+        </Investigator>
+      </InvestigatorList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>1995</Year>
+          <Month>10</Month>
+          <Day>1</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>1995</Year>
+          <Month>10</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>1995</Year>
+          <Month>10</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">7550356</ArticleId>
+        <ArticleId IdType="doi">10.1038/ng1095-219</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

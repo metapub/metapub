@@ -19,13 +19,6 @@ url_patterns:
 dance_function: the_doi_slide
 journals:
   simple_list:
-  - J Matern Fetal Neonatal Med
-  - Ophthalmic Genet
-  - Platelets
-  - Ren Fail
-  - Scand J Rheumatol
-  - Scand J Urol Nephrol
-  - Xenobiotica
 metadata:
   evidence_date: '2025-08-11'
   verification_notes: ''

@@ -1,0 +1,168 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">3000000</PMID>
+      <DateCompleted>
+        <Year>1986</Year>
+        <Month>01</Month>
+        <Day>14</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2019</Year>
+        <Month>10</Month>
+        <Day>22</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0740-7750</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>11</Volume>
+            <Issue>6</Issue>
+            <PubDate>
+              <Year>1985</Year>
+              <Month>Nov</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Somatic cell and molecular genetics</Title>
+          <ISOAbbreviation>Somat Cell Mol Genet</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Defective DNA topoisomerase I activity in a DNAts mutant of Balb/3T3 cells.</ArticleTitle>
+        <Pagination>
+          <StartPage>557</StartPage>
+          <EndPage>569</EndPage>
+          <MedlinePgn>557-69</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText>Cell and polyomavirus DNA synthesis in ts20, a temperature-sensitive mutant derived from Balb/3T3 cells, is inhibited at an early step in chain elongation in vivo and in vitro. Virus DNA synthesized under restrictive conditions, when analyzed by gel electrophoresis and fluorography, contained a series of equally spaced bands migrating between form I and form II. If restrictive conditions were prolonged, the relative amount of these less-supercoiled topoisomers increased while the overall amount of virus DNA decreased. DNA topoisomerase I activity was lower and more heat-labile when prepared from mutant cells compared to wild-type and revertant cells. An assay in which extracts from wild-type cells corrected defective cell DNA synthesis in lysed mutant cells was applied to purification of the active factor from such extracts. Salt fractionation and three cycles of column chromatography resulted in the isolation of the activity in a fraction containing 10 major polypeptides. The specific activity in the final preparation was increased fivefold and was accompanied by the activity of DNA topoisomerase I. Our results provide evidence that DNA topoisomerase I functions at an early step in chain elongation of cell and polyomavirus DNA synthesis and that the enzyme activity may be decreased as a result of the mutation in ts20.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Zeng</LastName>
+            <ForeName>G C</ForeName>
+            <Initials>GC</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Zannis-Hadjopoulos</LastName>
+            <ForeName>M</ForeName>
+            <Initials>M</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Ozer</LastName>
+            <ForeName>H L</ForeName>
+            <Initials>HL</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Hand</LastName>
+            <ForeName>R</ForeName>
+            <Initials>R</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <GrantList CompleteYN="Y">
+          <Grant>
+            <GrantID>CA 23002</GrantID>
+            <Acronym>CA</Acronym>
+            <Agency>NCI NIH HHS</Agency>
+            <Country>United States</Country>
+          </Grant>
+        </GrantList>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+          <PublicationType UI="D013487">Research Support, U.S. Gov't, P.H.S.</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>Somat Cell Mol Genet</MedlineTA>
+        <NlmUniqueID>8403568</NlmUniqueID>
+        <ISSNLinking>0740-7750</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>EC 5.99.1.2</RegistryNumber>
+          <NameOfSubstance UI="D004264">DNA Topoisomerases, Type I</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000818" MajorTopicYN="N">Animals</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002417" MajorTopicYN="N">Cattle</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002471" MajorTopicYN="Y">Cell Transformation, Neoplastic</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002478" MajorTopicYN="N">Cells, Cultured</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004261" MajorTopicYN="Y">DNA Replication</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004264" MajorTopicYN="N">DNA Topoisomerases, Type I</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="Y">genetics</QualifierName>
+          <QualifierName UI="Q000302" MajorTopicYN="N">isolation &amp; purification</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D007700" MajorTopicYN="N">Kinetics</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D051379" MajorTopicYN="N">Mice</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008807" MajorTopicYN="N">Mice, Inbred BALB C</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009154" MajorTopicYN="Y">Mutation</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011120" MajorTopicYN="N">Polyomavirus</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="Y">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D013696" MajorTopicYN="N">Temperature</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D013950" MajorTopicYN="N">Thymus Gland</DescriptorName>
+          <QualifierName UI="Q000201" MajorTopicYN="N">enzymology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D014779" MajorTopicYN="N">Virus Replication</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>1985</Year>
+          <Month>11</Month>
+          <Day>1</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>1985</Year>
+          <Month>11</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>1985</Year>
+          <Month>11</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">3000000</ArticleId>
+        <ArticleId IdType="doi">10.1007/BF01534721</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

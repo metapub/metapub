@@ -1,0 +1,182 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">18393105</PMID>
+      <DateCompleted>
+        <Year>2008</Year>
+        <Month>07</Month>
+        <Day>10</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2008</Year>
+        <Month>04</Month>
+        <Day>08</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">1472-4472</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>9</Volume>
+            <Issue>4</Issue>
+            <PubDate>
+              <Year>2008</Year>
+              <Month>Apr</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Current opinion in investigational drugs (London, England : 2000)</Title>
+          <ISOAbbreviation>Curr Opin Investig Drugs</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Advances in glycogen phosphorylase inhibitor design.</ArticleTitle>
+        <Pagination>
+          <StartPage>379</StartPage>
+          <EndPage>395</EndPage>
+          <MedlinePgn>379-95</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText>The regulation of glycogen metabolism is a major therapeutic strategy for blood glucose control in type 2 diabetes. Because glycogen phosphorylase catalyzes the first step in the phosphorolysis of glycogen, it has become a potential key target for controlling hyperglycemia in this disease. This review focuses on advances in new, mostly synthetic, molecules that inhibit glycogen phosphorylase, and describes progress in our understanding of the mechanism of action of these inhibitors gained through X-ray crystallographic studies.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Oikonomakos</LastName>
+            <ForeName>Nikos G</ForeName>
+            <Initials>NG</Initials>
+            <AffiliationInfo>
+              <Affiliation>National Hellenic Research Foundation, Institute of Organic and Pharmaceutical Chemistry, 48 Vassileos Constantinou Avenue, Athens 11635, Greece. ngo@eie.gr</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Soms&#225;k</LastName>
+            <ForeName>L&#225;szl&#243;</ForeName>
+            <Initials>L</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+          <PublicationType UI="D016454">Review</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>England</Country>
+        <MedlineTA>Curr Opin Investig Drugs</MedlineTA>
+        <NlmUniqueID>100965718</NlmUniqueID>
+        <ISSNLinking>1472-4472</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D004791">Enzyme Inhibitors</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D007004">Hypoglycemic Agents</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>9005-79-2</RegistryNumber>
+          <NameOfSubstance UI="D006003">Glycogen</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>EC 2.4.1.-</RegistryNumber>
+          <NameOfSubstance UI="D024981">Glycogen Phosphorylase</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000494" MajorTopicYN="N">Allosteric Regulation</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000495" MajorTopicYN="N">Allosteric Site</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000818" MajorTopicYN="N">Animals</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D001665" MajorTopicYN="N">Binding Sites</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D018360" MajorTopicYN="N">Crystallography, X-Ray</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015195" MajorTopicYN="Y">Drug Design</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004791" MajorTopicYN="N">Enzyme Inhibitors</DescriptorName>
+          <QualifierName UI="Q000737" MajorTopicYN="Y">chemistry</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+          <QualifierName UI="Q000494" MajorTopicYN="N">pharmacology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006003" MajorTopicYN="N">Glycogen</DescriptorName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D024981" MajorTopicYN="N">Glycogen Phosphorylase</DescriptorName>
+          <QualifierName UI="Q000037" MajorTopicYN="N">antagonists &amp; inhibitors</QualifierName>
+          <QualifierName UI="Q000737" MajorTopicYN="Y">chemistry</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D007004" MajorTopicYN="N">Hypoglycemic Agents</DescriptorName>
+          <QualifierName UI="Q000737" MajorTopicYN="Y">chemistry</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+          <QualifierName UI="Q000494" MajorTopicYN="N">pharmacology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008958" MajorTopicYN="N">Models, Molecular</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015394" MajorTopicYN="N">Molecular Structure</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011485" MajorTopicYN="N">Protein Binding</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011487" MajorTopicYN="N">Protein Conformation</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D013329" MajorTopicYN="N">Structure-Activity Relationship</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D013678" MajorTopicYN="N">Technology, Pharmaceutical</DescriptorName>
+          <QualifierName UI="Q000379" MajorTopicYN="Y">methods</QualifierName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <NumberOfReferences>54</NumberOfReferences>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2008</Year>
+          <Month>4</Month>
+          <Day>9</Day>
+          <Hour>9</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2008</Year>
+          <Month>7</Month>
+          <Day>11</Day>
+          <Hour>9</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2008</Year>
+          <Month>4</Month>
+          <Day>9</Day>
+          <Hour>9</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">18393105</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

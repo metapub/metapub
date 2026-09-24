@@ -1,0 +1,159 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">25532429</PMID>
+      <DateCompleted>
+        <Year>2015</Year>
+        <Month>12</Month>
+        <Day>22</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2015</Year>
+        <Month>04</Month>
+        <Day>16</Day>
+      </DateRevised>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISSN IssnType="Electronic">1744-7631</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>19</Volume>
+            <Issue>5</Issue>
+            <PubDate>
+              <Year>2015</Year>
+              <Month>May</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Expert opinion on therapeutic targets</Title>
+          <ISOAbbreviation>Expert Opin Ther Targets</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Targeting the MET pathway for potential treatment of NSCLC.</ArticleTitle>
+        <Pagination>
+          <StartPage>663</StartPage>
+          <EndPage>674</EndPage>
+          <MedlinePgn>663-74</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1517/14728222.2014.995093</ELocationID>
+        <Abstract>
+          <AbstractText Label="INTRODUCTION" NlmCategory="BACKGROUND">The mesenchymal-epithelial transition (MET) protein is the only known receptor for hepatocyte growth factor and has recently been identified as a novel promising target in several human cancers, including NSCLC. Activation of the MET signaling pathway can occur via different mechanisms. A number of compounds targeting MET have been evaluated in clinical trials, and recent clinical data have begun to afford some insight into the tumor types and patient populations that might benefit from treatment with MET pathway inhibitors.</AbstractText>
+          <AbstractText Label="AREAS COVERED" NlmCategory="METHODS">We review recent publications and information disclosed at public conferences and summarize the epidemiology of dysregulation of MET signaling, and the associations thereof with other driver genes and therapeutic inhibitors useful to treat NSCLC.</AbstractText>
+          <AbstractText Label="EXPERT OPINION" NlmCategory="CONCLUSIONS">The MET pathway is emerging as a target for advanced NSCLC that is either resistant to EGFR tyrosine kinase inhibitors or that arises de novo. MET inhibitors currently being evaluated in clinical trials have yielded compelling evidence of clinical activities when used to treat various solid tumors, especially NSCLC. Remaining challenges are the identification of patient populations who might benefit from the use of MET inhibitors, and the most effective diagnostic methods for such patients.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Li</LastName>
+            <ForeName>Anna</ForeName>
+            <Initials>A</Initials>
+            <AffiliationInfo>
+              <Affiliation>Guangdong Lung Cancer Institute, Guangdong General Hospital and Guangdong Academy of Medical Science , 106 Zhongshan 2nd Road, Guangzhou 510080 , PR China +86 20 83877855 ; +86 20 83827712 ; syylwu@live.cn.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Gao</LastName>
+            <ForeName>Hong-Fei</ForeName>
+            <Initials>HF</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Wu</LastName>
+            <ForeName>Yi-Long</ForeName>
+            <Initials>YL</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D016454">Review</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2014</Year>
+          <Month>12</Month>
+          <Day>23</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>England</Country>
+        <MedlineTA>Expert Opin Ther Targets</MedlineTA>
+        <NlmUniqueID>101127833</NlmUniqueID>
+        <ISSNLinking>1472-8222</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D000970">Antineoplastic Agents</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000970" MajorTopicYN="N">Antineoplastic Agents</DescriptorName>
+          <QualifierName UI="Q000494" MajorTopicYN="Y">pharmacology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002289" MajorTopicYN="N">Carcinoma, Non-Small-Cell Lung</DescriptorName>
+          <QualifierName UI="Q000188" MajorTopicYN="Y">drug therapy</QualifierName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000473" MajorTopicYN="N">pathology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D058750" MajorTopicYN="N">Epithelial-Mesenchymal Transition</DescriptorName>
+          <QualifierName UI="Q000187" MajorTopicYN="N">drug effects</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008175" MajorTopicYN="N">Lung Neoplasms</DescriptorName>
+          <QualifierName UI="Q000188" MajorTopicYN="Y">drug therapy</QualifierName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000473" MajorTopicYN="N">pathology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D058990" MajorTopicYN="N">Molecular Targeted Therapy</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011379" MajorTopicYN="N">Prognosis</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015398" MajorTopicYN="N">Signal Transduction</DescriptorName>
+          <QualifierName UI="Q000187" MajorTopicYN="N">drug effects</QualifierName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">NSCLC</Keyword>
+        <Keyword MajorTopicYN="N">inhibitor</Keyword>
+        <Keyword MajorTopicYN="N">mesenchymal-epithelial transition protein</Keyword>
+        <Keyword MajorTopicYN="N">target treatment</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2014</Year>
+          <Month>12</Month>
+          <Day>24</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2014</Year>
+          <Month>12</Month>
+          <Day>24</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2015</Year>
+          <Month>12</Month>
+          <Day>23</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">25532429</ArticleId>
+        <ArticleId IdType="doi">10.1517/14728222.2014.995093</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

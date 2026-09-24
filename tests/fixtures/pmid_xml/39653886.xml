@@ -1,0 +1,87 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="In-Process" Owner="NLM">
+      <PMID Version="1">39653886</PMID>
+      <DateRevised>
+        <Year>2025</Year>
+        <Month>02</Month>
+        <Day>18</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Electronic">1613-3560</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>166</Volume>
+            <Issue>21-22</Issue>
+            <PubDate>
+              <Year>2024</Year>
+              <Month>Dec</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>MMW Fortschritte der Medizin</Title>
+          <ISOAbbreviation>MMW Fortschr Med</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Not Available].</ArticleTitle>
+        <Pagination>
+          <StartPage>5</StartPage>
+          <MedlinePgn>5</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1007/s15006-024-4251-2</ELocationID>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>von Eisenhart-Rothe</LastName>
+            <ForeName>R&#252;diger</ForeName>
+            <Initials>R</Initials>
+            <AffiliationInfo>
+              <Affiliation>Klinik und Poliklinik f&#252;r Orthop&#228;die und Sportorthop&#228;die, Klinikum rechts der Isar, Technische Universit&#228;t M&#252;nchen, Ismaninger Str. 22, 81675, M&#252;nchen, Deutschland. eisenhart@tum.de.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>ger</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016421">Editorial</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>Was bei Knieschmerzen wirklich hilft.</VernacularTitle>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Germany</Country>
+        <MedlineTA>MMW Fortschr Med</MedlineTA>
+        <NlmUniqueID>100893959</NlmUniqueID>
+        <ISSNLinking>1438-3276</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>10</Day>
+          <Hour>0</Hour>
+          <Minute>22</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>10</Day>
+          <Hour>0</Hour>
+          <Minute>22</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>9</Day>
+          <Hour>23</Hour>
+          <Minute>23</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">39653886</ArticleId>
+        <ArticleId IdType="doi">10.1007/s15006-024-4251-2</ArticleId>
+        <ArticleId IdType="pii">10.1007/s15006-024-4251-2</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

@@ -196,7 +196,7 @@ class TestScieloDance(BaseDanceTest):
         print(f"Test 7 - Correctly handled missing data: {exc_info.value}")
 
     @patch('metapub.findit.dances.scielo.etree.fromstring')
-    @patch('requests.get')
+    @patch('metapub.findit.dances.scielo.unified_uri_get')
     def test_scielo_chula_html_parsing_error(self, mock_get, mock_etree):
         """Test 8: HTML parsing error handling.
         
@@ -213,8 +213,8 @@ class TestScieloDance(BaseDanceTest):
         from lxml import etree
         mock_etree.side_effect = etree.XMLSyntaxError("XML parsing failed", None, 0, 0)
 
-        pma = self.fetch.article_by_pmid('23657305')
-        
+        pma = load_pmid_xml('23657305')
+
         # Test - should handle parsing error
         with pytest.raises(NoPDFLink) as exc_info:
             the_scielo_chula(pma, verify=False)

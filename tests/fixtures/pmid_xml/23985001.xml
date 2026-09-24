@@ -1,0 +1,217 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">23985001</PMID>
+      <DateCompleted>
+        <Year>2014</Year>
+        <Month>03</Month>
+        <Day>21</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2022</Year>
+        <Month>04</Month>
+        <Day>19</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Electronic">1747-4132</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>7</Volume>
+            <Issue>6</Issue>
+            <PubDate>
+              <Year>2013</Year>
+              <Month>Aug</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Expert review of gastroenterology &amp; hepatology</Title>
+          <ISOAbbreviation>Expert Rev Gastroenterol Hepatol</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Diagnosis and treatment of hereditary hemochromatosis: an update.</ArticleTitle>
+        <Pagination>
+          <StartPage>517</StartPage>
+          <EndPage>530</EndPage>
+          <MedlinePgn>517-30</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1586/17474124.2013.816114</ELocationID>
+        <Abstract>
+          <AbstractText>Hereditary hemochromatosis is an inherited iron overload disorder caused by inappropriately low hepcidin secretion leading to increased duodenal absorption of dietary iron, most commonly in C282Y homozygous individuals. This can result in elevated serum ferritin, iron deposition in various organs and ultimately end-organ damage, although there is incomplete biochemical and clinical penetrance and variable phenotypic expression of the HFE mutation in hereditary hemochromatosis. An elevated SF &gt;1000 mg/l [corrected] is associated with an increased risk of cirrhosis and mortality in C282Y homozygotes.Conversely, a SF &lt;1000 &#181;g/l is associated with a very low likelihood of cirrhosis, making liver biopsy unnecessary among C282Y homozygotes in the absence of concomitant risk factors for liver disease. Phlebotomy remains the mainstay of treatment and new treatments being studied include erythrocytapheresis and 'mini-hepcidins'. Iron overload is being recognized to play a carcinogenic role in hepatocellular carcinoma and other cancers, possibly supporting iron depletion in these patients.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Kanwar</LastName>
+            <ForeName>Pushpjeet</ForeName>
+            <Initials>P</Initials>
+            <AffiliationInfo>
+              <Affiliation>Liver Center for Excellence, Digestive Disease Institute, Virginia Mason Medical Center, Seattle, WA, USA.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Kowdley</LastName>
+            <ForeName>Kris V</ForeName>
+            <Initials>KV</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D016454">Review</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>England</Country>
+        <MedlineTA>Expert Rev Gastroenterol Hepatol</MedlineTA>
+        <NlmUniqueID>101278199</NlmUniqueID>
+        <ISSNLinking>1747-4124</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D015415">Biomarkers</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="C103673">HFE protein, human</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D000071020">Hemochromatosis Protein</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D064451">Hepcidins</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D015395">Histocompatibility Antigens Class I</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D008565">Membrane Proteins</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>9007-73-2</RegistryNumber>
+          <NameOfSubstance UI="D005293">Ferritins</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <CommentsCorrectionsList>
+        <CommentsCorrections RefType="ErratumIn">
+          <RefSource>Expert Rev Gastroenterol Hepatol. 2013 Nov;7(8):767</RefSource>
+        </CommentsCorrections>
+      </CommentsCorrectionsList>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D015415" MajorTopicYN="N">Biomarkers</DescriptorName>
+          <QualifierName UI="Q000097" MajorTopicYN="N">blood</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D001706" MajorTopicYN="N">Biopsy</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D019091" MajorTopicYN="N">Critical Pathways</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D016238" MajorTopicYN="N">Cytapheresis</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004252" MajorTopicYN="N">DNA Mutational Analysis</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D003663" MajorTopicYN="N">Decision Trees</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D003952" MajorTopicYN="Y">Diagnostic Imaging</DescriptorName>
+          <QualifierName UI="Q000379" MajorTopicYN="N">methods</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005293" MajorTopicYN="N">Ferritins</DescriptorName>
+          <QualifierName UI="Q000097" MajorTopicYN="N">blood</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D020022" MajorTopicYN="N">Genetic Predisposition to Disease</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005820" MajorTopicYN="Y">Genetic Testing</DescriptorName>
+          <QualifierName UI="Q000379" MajorTopicYN="N">methods</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006432" MajorTopicYN="N">Hemochromatosis</DescriptorName>
+          <QualifierName UI="Q000097" MajorTopicYN="N">blood</QualifierName>
+          <QualifierName UI="Q000175" MajorTopicYN="Y">diagnosis</QualifierName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000628" MajorTopicYN="Y">therapy</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000071020" MajorTopicYN="N">Hemochromatosis Protein</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D064451" MajorTopicYN="N">Hepcidins</DescriptorName>
+          <QualifierName UI="Q000627" MajorTopicYN="N">therapeutic use</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D040941" MajorTopicYN="N">Heredity</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015395" MajorTopicYN="N">Histocompatibility Antigens Class I</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008565" MajorTopicYN="N">Membrane Proteins</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009154" MajorTopicYN="N">Mutation</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D010375" MajorTopicYN="N">Pedigree</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D010641" MajorTopicYN="N">Phenotype</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D018962" MajorTopicYN="Y">Phlebotomy</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011237" MajorTopicYN="N">Predictive Value of Tests</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D016896" MajorTopicYN="N">Treatment Outcome</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2013</Year>
+          <Month>8</Month>
+          <Day>30</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2013</Year>
+          <Month>8</Month>
+          <Day>30</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2014</Year>
+          <Month>3</Month>
+          <Day>22</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">23985001</ArticleId>
+        <ArticleId IdType="doi">10.1586/17474124.2013.816114</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

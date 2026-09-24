@@ -178,8 +178,14 @@ class TestClinVarFetcher(unittest.TestCase):
             if 'submitter_name' in assertion:
                 self.assertIsInstance(assertion['submitter_name'], str)
 
+    @pytest.mark.live_network
     def test_pmids_for_hgvs(self):
-        """Test that pmids_for_hgvs returns a list of PMID strings"""
+        """Test that pmids_for_hgvs returns a list of PMID strings.
+
+        Live NCBI query (ClinVar/eutils): excluded from the offline CI run, like the
+        other live_network tests in this file. Synthetic mocking would only prove the
+        mock works, not the query.
+        """
         pmids = self.fetch.pmids_for_hgvs('NM_000059.4:c.9382C>T')
         self.assertIsInstance(pmids, list)
         for pmid in pmids:

@@ -1,0 +1,133 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Curated">
+      <PMID Version="1">28139132</PMID>
+      <DateCompleted>
+        <Year>2017</Year>
+        <Month>06</Month>
+        <Day>29</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2018</Year>
+        <Month>12</Month>
+        <Day>02</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0042-773X</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>62</Volume>
+            <Issue>12</Issue>
+            <PubDate>
+              <Year>2016</Year>
+              <Season>Winter</Season>
+            </PubDate>
+          </JournalIssue>
+          <Title>Vnitrni lekarstvi</Title>
+          <ISOAbbreviation>Vnitr Lek</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Takotsubo cardiomyopathy: incidence, etiology, complications, therapy and prognosis].</ArticleTitle>
+        <Pagination>
+          <StartPage>1021</StartPage>
+          <EndPage>1027</EndPage>
+          <MedlinePgn>1021-1027</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText>Takotsubo syndrome is presented by acute heart failure and looks like acute coronary syndrome and truly mimics its clinical and ECG features. It is characterised by transient contractility disorder of mostly apical part of left ventricle without any presence of occlusive coronary disease. It is found in 1-2 % patients admitted to the hospital care for acute coronary syndrome. Prognosis is very excellent within complete recovery of left ventricle in several weeks. The etiology is unknown and therapy just symptomatic. Transient dynamic obstruction of left ventricle output tract can be sometimes present as well as hemodynamic instability and arrhythmias. Death was rarely described. We introduce a case of takotsubo syndrome complicated by extreme high transient gradient in left ventricle output tract followed complete recovery in short time.Key words: complication - etiology - incidence - takotsubo syndrome - therapy.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Babick&#253;</LastName>
+            <ForeName>Milan</ForeName>
+            <Initials>M</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Holm</LastName>
+            <ForeName>Franti&#353;ek</ForeName>
+            <Initials>F</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Erbrt</LastName>
+            <ForeName>Miroslav</ForeName>
+            <Initials>M</Initials>
+          </Author>
+        </AuthorList>
+        <Language>cze</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D002363">Case Reports</PublicationType>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>Takotsubo syndrom: incidence, etiologie, komplikace, l&#233;&#269;ba a progn&#243;za.</VernacularTitle>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Czech Republic</Country>
+        <MedlineTA>Vnitr Lek</MedlineTA>
+        <NlmUniqueID>0413602</NlmUniqueID>
+        <ISSNLinking>0042-773X</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D001145" MajorTopicYN="N">Arrhythmias, Cardiac</DescriptorName>
+          <QualifierName UI="Q000150" MajorTopicYN="Y">complications</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004452" MajorTopicYN="N">Echocardiography</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011379" MajorTopicYN="N">Prognosis</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D054549" MajorTopicYN="N">Takotsubo Cardiomyopathy</DescriptorName>
+          <QualifierName UI="Q000150" MajorTopicYN="N">complications</QualifierName>
+          <QualifierName UI="Q000000981" MajorTopicYN="Y">diagnostic imaging</QualifierName>
+          <QualifierName UI="Q000628" MajorTopicYN="Y">therapy</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D016896" MajorTopicYN="N">Treatment Outcome</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D014694" MajorTopicYN="N">Ventricular Outflow Obstruction</DescriptorName>
+          <QualifierName UI="Q000150" MajorTopicYN="Y">complications</QualifierName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2017</Year>
+          <Month>2</Month>
+          <Day>1</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2017</Year>
+          <Month>2</Month>
+          <Day>1</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2017</Year>
+          <Month>7</Month>
+          <Day>1</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">28139132</ArticleId>
+        <ArticleId IdType="pii">60149</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

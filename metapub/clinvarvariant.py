@@ -2,6 +2,8 @@
 
 import logging
 from datetime import datetime
+from typing import Optional, Literal
+from dataclasses import dataclass
 
 from lxml import etree
 
@@ -9,6 +11,32 @@ from .base import MetaPubObject
 from .exceptions import MetaPubError, BaseXMLError
 
 #TODO: Logging
+
+# See: https://www.ncbi.nlm.nih.gov/clinvar/docs/clinsig/
+# All possible clinical significance classes a variant may be classified as
+# by a submitter.
+# 
+# NOTE: here we represent clinical significance classes in lowercase.
+ClinSig = Literal[
+    "pathogenic", "likely pathogenic", "uncertain significance",
+    "likely benign", "benign", "conflicting interpretations",
+    "drug response", "risk factor", "association",
+    "protective", "other", "likely pathogenic, low penetrance",
+    "pathogenic, low penetrance",
+    "uncertain risk allele", "likely risk allele",
+    "established risk allele", "affects", "conflicting data from submitters",
+    "not provided", "vus-high", "vus-mid", "vus-low"
+]
+# Possible types of IDs a user may supply to initialize a variant.
+IdLocations = Literal['clinvar', 'entrez']
+
+@dataclass
+class PathogenicSummary:
+    counts: dict[ClinSig, int]
+    total_submitters: int
+    consensus: Optional[ClinSig]
+    conflicting: bool
+    review_status: Optional[str]
 
 class ClinVarVariant(MetaPubObject):
 
@@ -75,6 +103,7 @@ class ClinVarVariant(MetaPubObject):
         self.date_last_evaluated = self._get_date_last_evaluated()
         self.number_of_submissions = self._get_number_of_submissions()
         self.number_of_submitters = self._get_number_of_submitters()
+        self.pathogenic_summary = self._get_pathogenic_summary()
 
         # VCV record metadata (new in VCV format)
         self.vcv_accession = self._get_vcv_accession()
@@ -404,8 +433,14 @@ class ClinVarVariant(MetaPubObject):
 
     ### NEW VCV FORMAT ENHANCEMENTS ###
 
-    def _get_clinical_significance(self):
-        """Get the clinical significance classification (e.g., 'Pathogenic', 'Benign')"""
+    def _get_clinical_significance(self) -> Optional[ClinSig]:
+        """Get the clinical significance classification (e.g., 'pathogenic', 'benign')
+        
+        A list of all significance classes is available here: https://www.ncbi.nlm.nih.gov/clinvar/docs/clinsig/
+        
+        **Note**: in this version of Metapub, clinical significance is represented in lowercase.
+        Older versions did NOT do this, so make sure to update your code if necessary!
+        """
         if not self._is_vcv_format:
             return None
 
@@ -415,7 +450,7 @@ class ClinVarVariant(MetaPubObject):
             germline_class = classifications.find('GermlineClassification')
             if germline_class is not None:
                 desc_elem = germline_class.find('Description')
-                return desc_elem.text if desc_elem is not None else None
+                return (desc_elem.text).lower() if desc_elem is not None else None
         return None
 
     def _get_review_status(self):
@@ -561,6 +596,69 @@ class ClinVarVariant(MetaPubObject):
                                 pass
                     details.append(detail)
         return details
+    
+    def _get_pathogenic_summary(self) -> Optional[PathogenicSummary]:
+        """ Return the aggregation of per-submitter clinical germline significance classifications 
+        into a readable summary.
+
+        Returns a dataclass in the following format:
+        {
+          counts: {
+            'pathogenic': 3,
+            'likely pathogenic': 1,
+            'uncertain significance': 0,
+          }
+          ...
+          total_submitters: 4,
+          consensus: 'pathogenic',
+          conflicting': False,
+          review_status: 'criteria provided, multiple submitters, no conflicts'
+        }
+        """
+        if not self._is_vcv_format:
+            return None
+        
+        counts: dict[ClinSig, int] = {}
+        total = 0
+        
+        assertion_list = self.variation_archive.find(".//ClinicalAssertionList")
+        if assertion_list is not None:
+            for assertion in assertion_list.findall('ClinicalAssertion'):
+                # TODO: ContributesToAggregateClassification doesn't seem to be inside ClinicalAssertion.
+                classification_info = assertion.find("Classification")
+                if classification_info is None:
+                    continue
+                # TODO: support OncogenicityClassification or SomaticClinicalImpact
+                germline = classification_info.find("GermlineClassification")
+                if germline is not None:
+                    cs = germline.text
+                    if not cs:
+                        continue
+
+                    key = cs.strip().lower()
+                    # if a classification was not provided, skip
+                    if key == "not provided":
+                        continue
+                    counts[key] = counts.get(key, 0) + 1
+                    total += 1
+
+        # Determine consensus
+        consensus = None
+        if counts:
+            max_count = max(counts.values())
+            top_counts: list[ClinSig] = [k for k, v in counts.items() if v == max_count]
+            if len(top_counts) == 1:
+                consensus = top_counts[0]
+
+        conflicting = "conflicting" in (self.clinical_significance or "").lower()
+
+        return PathogenicSummary(
+            counts=counts,
+            total_submitters=total,
+            consensus=consensus if not conflicting else None,
+            conflicting=conflicting,
+            review_status=self.review_status
+        )
 
     def _get_gene_dosage_info(self):
         """Get gene dosage sensitivity information"""

@@ -1,0 +1,118 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="In-Process" Owner="NLM">
+      <PMID Version="1">39607518</PMID>
+      <DateRevised>
+        <Year>2024</Year>
+        <Month>11</Month>
+        <Day>28</Day>
+      </DateRevised>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISSN IssnType="Electronic">1439-0981</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>36</Volume>
+            <Issue>6</Issue>
+            <PubDate>
+              <Year>2024</Year>
+              <Month>Dec</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Operative Orthopadie und Traumatologie</Title>
+          <ISOAbbreviation>Oper Orthop Traumatol</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Microsurgery].</ArticleTitle>
+        <Pagination>
+          <StartPage>305</StartPage>
+          <EndPage>306</EndPage>
+          <MedlinePgn>305-306</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1007/s00064-024-00870-w</ELocationID>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Arkudas</LastName>
+            <ForeName>Andreas</ForeName>
+            <Initials>A</Initials>
+            <AffiliationInfo>
+              <Affiliation>Plastisch- und Handchirurgische Klinik, Universit&#228;tsklinik Erlangen, Krankenhausstr.&#160;12, 91054, Erlangen, Deutschland. andreas.arkudas@uk-erlangen.de.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Unglaub</LastName>
+            <ForeName>F</ForeName>
+            <Initials>F</Initials>
+            <AffiliationInfo>
+              <Affiliation>Handchirurgie, Vulpius Klinik GmbH Bad Rappenau, Bad Rappenau, Deutschland.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Orthop&#228;disch-Unfallchirurgisches Zentrum, Universit&#228;tsklinikum Mannheim, Medizinische Fakult&#228;t Mannheim, Universit&#228;t Heidelberg, Mannheim, Deutschland.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Horch</LastName>
+            <ForeName>R E</ForeName>
+            <Initials>RE</Initials>
+            <AffiliationInfo>
+              <Affiliation>Plastisch- und Handchirurgische Klinik, Universit&#228;tsklinik Erlangen, Krankenhausstr.&#160;12, 91054, Erlangen, Deutschland.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>ger</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016421">Editorial</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>Mikrochirurgie.</VernacularTitle>
+        <ArticleDate DateType="Electronic">
+          <Year>2024</Year>
+          <Month>11</Month>
+          <Day>28</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Germany</Country>
+        <MedlineTA>Oper Orthop Traumatol</MedlineTA>
+        <NlmUniqueID>9604937</NlmUniqueID>
+        <ISSNLinking>0934-6694</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <CoiStatement>Interessenkonflikt: A.&#160;Arkudas, F.&#160;Unglaub und R.E.&#160;Horch geben an, dass kein Interessenkonflikt besteht.</CoiStatement>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="accepted">
+          <Year>2024</Year>
+          <Month>10</Month>
+          <Day>16</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2024</Year>
+          <Month>11</Month>
+          <Day>28</Day>
+          <Hour>12</Hour>
+          <Minute>19</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2024</Year>
+          <Month>11</Month>
+          <Day>28</Day>
+          <Hour>12</Hour>
+          <Minute>19</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2024</Year>
+          <Month>11</Month>
+          <Day>28</Day>
+          <Hour>11</Hour>
+          <Minute>15</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">39607518</ArticleId>
+        <ArticleId IdType="doi">10.1007/s00064-024-00870-w</ArticleId>
+        <ArticleId IdType="pii">10.1007/s00064-024-00870-w</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

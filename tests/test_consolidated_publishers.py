@@ -57,17 +57,21 @@ class TestConsolidatedPublishers:
                 print(f"✓ {journal} → the_doi_slide")
 
     def test_sage_registry_assignment(self):
-        """Test SAGE journals are assigned to the_doi_slide."""
-        test_journals = ['Assessment', 'Angiology', 'Ann Clin Biochem', 'Clin Appl Thromb Hemost']
-        
+        """Test SAGE journals are assigned to the_doi_slide.
+
+        SAGE migrated from legacy per-journal VIP subdomains (now dead/403) to the
+        unified journals.sagepub.com platform using DOI-based PDF URLs (issue #156).
+        """
+        test_journals = ['Assessment', 'Angiology', 'Ann Clin Biochem', 'Clin Appl Thromb Hemost', 'Autism']
+
         for journal in test_journals:
             publisher_info = self.registry.get_publisher_for_journal(journal)
             if publisher_info:
-                assert publisher_info['dance_function'] == 'the_vip_shake', f'{journal} not using the_vip_shake'
+                assert publisher_info['dance_function'] == 'the_doi_slide', f'{journal} not using the_doi_slide'
                 assert publisher_info['name'] == 'Sage', f'{journal} not assigned to SAGE'
-                expected_template = 'http://{host}/content/{volume}/{issue}/{first_page}.full.pdf'
+                expected_template = 'https://journals.sagepub.com/doi/pdf/{doi}'
                 assert publisher_info['format_template'] == expected_template, f'{journal} wrong template'
-                print(f"✓ {journal} → the_vip_shake")
+                print(f"✓ {journal} → the_doi_slide")
 
     def test_bioone_vip_shake_functionality(self):
         """Test that BioOne articles are properly assigned to the_vip_shake."""
@@ -85,15 +89,22 @@ class TestConsolidatedPublishers:
         assert 'frontiersin.org' in publisher_info['format_template']
         print("✓ Frontiers correctly assigned to the_doi_slide with proper template")
 
-    def test_sage_vip_shake_functionality(self):
-        """Test that SAGE articles are properly assigned to the_vip_shake."""
+    def test_sage_doi_slide_functionality(self):
+        """Test that SAGE articles are properly assigned to the_doi_slide."""
         # Just verify the registry assignment and template
         publisher_info = self.registry.get_publisher_for_journal('Assessment')
-        assert publisher_info['dance_function'] == 'the_vip_shake'
-        assert '{volume}' in publisher_info['format_template']
-        assert '{issue}' in publisher_info['format_template']
-        assert '{first_page}' in publisher_info['format_template']
-        print("✓ SAGE correctly assigned to the_vip_shake with proper VIP template")
+        assert publisher_info['dance_function'] == 'the_doi_slide'
+        assert 'journals.sagepub.com' in publisher_info['format_template']
+        assert '{doi}' in publisher_info['format_template']
+        print("✓ SAGE correctly assigned to the_doi_slide with proper DOI template")
+
+    def test_sage_autism_journal_recognized(self):
+        """Regression test for issue #156: journal 'Autism' must resolve to SAGE."""
+        publisher_info = self.registry.get_publisher_for_journal('Autism')
+        assert publisher_info is not None, "journal 'Autism' not recognized (NOFORMAT)"
+        assert publisher_info['name'] == 'Sage'
+        assert publisher_info['dance_function'] == 'the_doi_slide'
+        print("✓ 'Autism' correctly recognized as a SAGE journal")
 
     def test_aip_registry_assignment(self):
         """Test AIP journals are assigned to the_vip_shake."""
@@ -213,7 +224,7 @@ class TestConsolidatedPublishers:
                 'publisher': 'SAGE',
                 'journal': 'Assessment',
                 'doi': '10.1177/0048393118767084',
-                'expected_function': 'the_vip_shake'
+                'expected_function': 'the_doi_slide'
             },
             {
                 'publisher': 'AIP',
@@ -338,7 +349,8 @@ if __name__ == '__main__':
         test_instance.test_wiley_registry_assignment()
         test_instance.test_bioone_vip_shake_functionality()
         test_instance.test_frontiers_doi_slide_functionality()
-        test_instance.test_sage_vip_shake_functionality()
+        test_instance.test_sage_doi_slide_functionality()
+        test_instance.test_sage_autism_journal_recognized()
         test_instance.test_missing_doi_handling()
         test_instance.test_consolidation_maintains_functionality()
         

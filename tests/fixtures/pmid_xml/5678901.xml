@@ -1,0 +1,136 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">5678901</PMID>
+      <DateCompleted>
+        <Year>1968</Year>
+        <Month>11</Month>
+        <Day>20</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2004</Year>
+        <Month>11</Month>
+        <Day>17</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0021-7883</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>49</Volume>
+            <Issue>146</Issue>
+            <PubDate>
+              <Year>1968</Year>
+              <Month>Jul</Month>
+              <Day>05</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>Journal de medecine de Lyon</Title>
+          <ISOAbbreviation>J Med Lyon</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Protected jejunal intubation].</ArticleTitle>
+        <Pagination>
+          <StartPage>1225</StartPage>
+          <EndPage>1235</EndPage>
+          <MedlinePgn>1225-35</MedlinePgn>
+        </Pagination>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Vachon</LastName>
+            <ForeName>A</ForeName>
+            <Initials>A</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Barthe</LastName>
+            <ForeName>J</ForeName>
+            <Initials>J</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>S&#233;dallian</LastName>
+            <ForeName>J</ForeName>
+            <Initials>J</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Abry</LastName>
+            <ForeName>M</ForeName>
+            <Initials>M</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Brunet</LastName>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Khouzan</LastName>
+            <ForeName>T</ForeName>
+            <Initials>T</Initials>
+          </Author>
+        </AuthorList>
+        <Language>fre</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>Le tubage j&#233;junal prot&#233;g&#233;.</VernacularTitle>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>France</Country>
+        <MedlineTA>J Med Lyon</MedlineTA>
+        <NlmUniqueID>2985084R</NlmUniqueID>
+        <ISSNLinking>0021-7883</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D007441" MajorTopicYN="Y">Intubation, Gastrointestinal</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D007583" MajorTopicYN="N">Jejunum</DescriptorName>
+          <QualifierName UI="Q000382" MajorTopicYN="Y">microbiology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008103" MajorTopicYN="N">Liver Cirrhosis</DescriptorName>
+          <QualifierName UI="Q000382" MajorTopicYN="Y">microbiology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008286" MajorTopicYN="N">Malabsorption Syndromes</DescriptorName>
+          <QualifierName UI="Q000382" MajorTopicYN="Y">microbiology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008722" MajorTopicYN="N">Methods</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011178" MajorTopicYN="N">Postgastrectomy Syndromes</DescriptorName>
+          <QualifierName UI="Q000382" MajorTopicYN="Y">microbiology</QualifierName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>1968</Year>
+          <Month>7</Month>
+          <Day>5</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>1968</Year>
+          <Month>7</Month>
+          <Day>5</Day>
+          <Hour>0</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>1968</Year>
+          <Month>7</Month>
+          <Day>5</Day>
+          <Hour>0</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">5678901</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

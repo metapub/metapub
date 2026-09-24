@@ -1,0 +1,130 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Automated">
+      <PMID Version="1">36043633</PMID>
+      <DateCompleted>
+        <Year>2022</Year>
+        <Month>09</Month>
+        <Day>02</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2025</Year>
+        <Month>07</Month>
+        <Day>28</Day>
+      </DateRevised>
+      <Article PubModel="Electronic-eCollection">
+        <Journal>
+          <ISSN IssnType="Electronic">1678-4464</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>38Suppl 2</Volume>
+            <Issue>Suppl 2</Issue>
+            <PubDate>
+              <Year>2022</Year>
+            </PubDate>
+          </JournalIssue>
+          <Title>Cadernos de saude publica</Title>
+          <ISOAbbreviation>Cad Saude Publica</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Funding in health.</ArticleTitle>
+        <Pagination>
+          <StartPage>e00119722</StartPage>
+          <MedlinePgn>e00119722</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1590/0102-311XPT119722</ELocationID>
+        <ELocationID EIdType="pii" ValidYN="Y">S0102-311X2022001400101</ELocationID>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Bahia</LastName>
+            <ForeName>Ligia</ForeName>
+            <Initials>L</Initials>
+            <Identifier Source="ORCID">0000-0001-8730-2244</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Instituto de Estudos em Sa&#250;de Coletiva, Universidade Federal do Rio de Janeiro, Rio de Janeiro, Brasil.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Scheffer</LastName>
+            <ForeName>M&#225;rio</ForeName>
+            <Initials>M</Initials>
+            <Identifier Source="ORCID">0000-0001-8931-6471</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Faculdade de Medicina, Universidade de S&#227;o Paulo, S&#227;o Paulo, Brasil.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <Language>por</Language>
+        <Language>spa</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016421">Editorial</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>Financeiriza&#231;&#227;o na sa&#250;de.</VernacularTitle>
+        <ArticleDate DateType="Electronic">
+          <Year>2022</Year>
+          <Month>08</Month>
+          <Day>26</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Brazil</Country>
+        <MedlineTA>Cad Saude Publica</MedlineTA>
+        <NlmUniqueID>8901573</NlmUniqueID>
+        <ISSNLinking>0102-311X</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D001938" MajorTopicYN="N" Type="Geographic">Brazil</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005380" MajorTopicYN="Y">Financing, Government</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="received">
+          <Year>2022</Year>
+          <Month>6</Month>
+          <Day>28</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="accepted">
+          <Year>2022</Year>
+          <Month>6</Month>
+          <Day>29</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2022</Year>
+          <Month>8</Month>
+          <Day>31</Day>
+          <Hour>7</Hour>
+          <Minute>23</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2022</Year>
+          <Month>9</Month>
+          <Day>1</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2022</Year>
+          <Month>9</Month>
+          <Day>3</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>epublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">36043633</ArticleId>
+        <ArticleId IdType="doi">10.1590/0102-311XPT119722</ArticleId>
+        <ArticleId IdType="pii">S0102-311X2022001400101</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

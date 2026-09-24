@@ -150,6 +150,8 @@ The ClinVarFetcher provides access to NCBI's ClinVar database for clinical signi
 
 **NCBI ClinVar Documentation:** `ClinVar Database <https://www.ncbi.nlm.nih.gov/clinvar/>`_ | `ClinVar API Guide <https://www.ncbi.nlm.nih.gov/clinvar/docs/api/>`_
 
+**Note:** unlike the ClinVar clinical significance classes, `clinical_significance` values are in all lowercase--this was a conscious decision documented futher `here <https://github.com/metapub/metapub/pull/140/>`_
+
 Key Methods
 ~~~~~~~~~~
 

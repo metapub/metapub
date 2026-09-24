@@ -1,0 +1,140 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">4567890</PMID>
+      <DateCompleted>
+        <Year>1973</Year>
+        <Month>03</Month>
+        <Day>23</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2022</Year>
+        <Month>03</Month>
+        <Day>09</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0021-9940</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>82</Volume>
+            <Issue>1</Issue>
+            <PubDate>
+              <Year>1973</Year>
+              <Month>Jan</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Journal of comparative and physiological psychology</Title>
+          <ISOAbbreviation>J Comp Physiol Psychol</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Effects of rostral medial forebrain bundle and olfactory tubercle lesions upon sexual behavior of male rats.</ArticleTitle>
+        <Pagination>
+          <StartPage>30</StartPage>
+          <EndPage>36</EndPage>
+          <MedlinePgn>30-6</MedlinePgn>
+        </Pagination>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Hitt</LastName>
+            <ForeName>J C</ForeName>
+            <Initials>JC</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Bryon</LastName>
+            <ForeName>D M</ForeName>
+            <Initials>DM</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Modianos</LastName>
+            <ForeName>D T</ForeName>
+            <Initials>DT</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>J Comp Physiol Psychol</MedlineTA>
+        <NlmUniqueID>0414612</NlmUniqueID>
+        <ISSNLinking>0021-9940</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000818" MajorTopicYN="N">Animals</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D001835" MajorTopicYN="N">Body Weight</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D003307" MajorTopicYN="N">Copulation</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004542" MajorTopicYN="N">Ejaculation</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005837" MajorTopicYN="N">Genitalia, Male</DescriptorName>
+          <QualifierName UI="Q000033" MajorTopicYN="N">anatomy &amp; histology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D007031" MajorTopicYN="N">Hypothalamus</DescriptorName>
+          <QualifierName UI="Q000502" MajorTopicYN="Y">physiology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008032" MajorTopicYN="N">Limbic System</DescriptorName>
+          <QualifierName UI="Q000502" MajorTopicYN="Y">physiology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009830" MajorTopicYN="N">Olfactory Bulb</DescriptorName>
+          <QualifierName UI="Q000502" MajorTopicYN="N">physiology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009929" MajorTopicYN="N">Organ Size</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D051381" MajorTopicYN="N">Rats</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D012726" MajorTopicYN="Y">Sexual Behavior, Animal</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D013238" MajorTopicYN="N">Stereotaxic Techniques</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>1973</Year>
+          <Month>1</Month>
+          <Day>1</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>1973</Year>
+          <Month>1</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>1973</Year>
+          <Month>1</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">4567890</ArticleId>
+        <ArticleId IdType="doi">10.1037/h0033797</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

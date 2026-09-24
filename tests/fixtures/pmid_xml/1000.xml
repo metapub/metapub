@@ -1,0 +1,279 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">1000</PMID>
+      <DateCompleted>
+        <Year>1976</Year>
+        <Month>02</Month>
+        <Day>21</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2019</Year>
+        <Month>05</Month>
+        <Day>01</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0264-6021</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>149</Volume>
+            <Issue>3</Issue>
+            <PubDate>
+              <Year>1975</Year>
+              <Month>Sep</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>The Biochemical journal</Title>
+          <ISOAbbreviation>Biochem J</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>The amino acid sequence of Neurospora NADP-specific glutamate dehydrogenase. The tryptic peptides.</ArticleTitle>
+        <Pagination>
+          <StartPage>739</StartPage>
+          <EndPage>748</EndPage>
+          <MedlinePgn>739-48</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText>The NADP-specific glutamate dehydrogenase of Neurospora crassa was digested with trypsin, and peptides accounting for 441 out of the 452 residues of the polypeptide chain were isolated and substantially sequenced. Additional experimental detail has been deposited as Supplementary Publication SUP 50052 (11 pages) with the British Library (Lending Division), Boston Spa, Wetherby, W. Yorkshire LS23 7BQ, U.K., from whom copies may be obtained under the terms given in Biochem J. (1975) 145, 5.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Wootton</LastName>
+            <ForeName>J C</ForeName>
+            <Initials>JC</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Taylor</LastName>
+            <ForeName>J G</ForeName>
+            <Initials>JG</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Jackson</LastName>
+            <ForeName>A A</ForeName>
+            <Initials>AA</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Chambers</LastName>
+            <ForeName>G K</ForeName>
+            <Initials>GK</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Fincham</LastName>
+            <ForeName>J R</ForeName>
+            <Initials>JR</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>England</Country>
+        <MedlineTA>Biochem J</MedlineTA>
+        <NlmUniqueID>2984726R</NlmUniqueID>
+        <ISSNLinking>0264-6021</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D000577">Amides</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D000596">Amino Acids</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D010446">Peptide Fragments</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>53-59-8</RegistryNumber>
+          <NameOfSubstance UI="D009249">NADP</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>EC 1.4.1.2</RegistryNumber>
+          <NameOfSubstance UI="D005969">Glutamate Dehydrogenase</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>EC 3.4.21.4</RegistryNumber>
+          <NameOfSubstance UI="D014357">Trypsin</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000577" MajorTopicYN="N">Amides</DescriptorName>
+          <QualifierName UI="Q000032" MajorTopicYN="N">analysis</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000595" MajorTopicYN="N">Amino Acid Sequence</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000596" MajorTopicYN="N">Amino Acids</DescriptorName>
+          <QualifierName UI="Q000032" MajorTopicYN="N">analysis</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005969" MajorTopicYN="N">Glutamate Dehydrogenase</DescriptorName>
+          <QualifierName UI="Q000032" MajorTopicYN="Y">analysis</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009249" MajorTopicYN="N">NADP</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009491" MajorTopicYN="N">Neurospora</DescriptorName>
+          <QualifierName UI="Q000201" MajorTopicYN="Y">enzymology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009492" MajorTopicYN="N">Neurospora crassa</DescriptorName>
+          <QualifierName UI="Q000201" MajorTopicYN="Y">enzymology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D010446" MajorTopicYN="N">Peptide Fragments</DescriptorName>
+          <QualifierName UI="Q000032" MajorTopicYN="N">analysis</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D014357" MajorTopicYN="N">Trypsin</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>1975</Year>
+          <Month>9</Month>
+          <Day>1</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>1975</Year>
+          <Month>9</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>1975</Year>
+          <Month>9</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pmc-release">
+          <Year>1976</Year>
+          <Month>3</Month>
+          <Day>1</Day>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">1000</ArticleId>
+        <ArticleId IdType="pmc">PMC1165682</ArticleId>
+        <ArticleId IdType="doi">10.1042/bj1490739</ArticleId>
+      </ArticleIdList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Biochem J. 1975 Sep;149(3):749-55</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1001</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Mol Biol. 1966 Jun;17(2):503-12</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">5963081</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Mol Biol. 1963 May;6:361-73</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">13945206</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Mol Biol. 1964 Dec;10:423-37</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">14255110</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Biol Chem. 1975 May 25;250(10):3644-54</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">236297</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Biochem Biophys Res Commun. 1970 Sep 10;40(5):1173-8</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">4100801</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Anal Biochem. 1972 Aug;48(2):546-56</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">4115984</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Biol Chem. 1973 Sep 10;248(17):6002-8</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">4146914</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Mol Biol. 1962 Apr;4:257-74</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">13892910</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Genet Res. 1965 Feb;6:121-9</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">14297590</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Biol Chem. 1967 May 10;242(9):2134-8</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">4381526</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Nature. 1966 Aug 6;211(5049):591-3</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">5968723</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Proc Natl Acad Sci U S A. 1974 Nov;71(11):4361-5</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">4155068</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Biochem J. 1974 Nov;143(2):317-29</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">4156826</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Biol Chem. 1972 Oct 25;247(20):6720-6</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">4627743</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Biochem J. 1970 Oct;119(5):805-22</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">4923920</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Biochem J. 1975 Sep;149(3):757-73</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">1002</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

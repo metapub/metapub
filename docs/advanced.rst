@@ -197,8 +197,13 @@ ClinVar Variant Analysis
    
    cv = ClinVarFetcher()
    
-   # Get variant by ID
-   variant = cv.variant('123456')
+   # Get variant by its ClinVar ID
+   variant = cv.variant('810732', id_from='clinvar')
+   """
+   This is the ID you see under "Variation ID" on the ClinVar browser: https://www.ncbi.nlm.nih.gov/clinvar/variation/810732/
+   
+   Specifying id_from='entrez' allows you to query by Entrez's ID.
+   """
    
    print(f"Variation name: {variant.variation_name}")
    print(f"HGVS notation: {variant.hgvs_c}")

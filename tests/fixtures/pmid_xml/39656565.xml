@@ -1,0 +1,86 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="In-Process" Owner="NLM">
+      <PMID Version="1">39656565</PMID>
+      <DateRevised>
+        <Year>2024</Year>
+        <Month>12</Month>
+        <Day>10</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Electronic">1708-3923</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>49</Volume>
+            <Issue>2</Issue>
+            <PubDate>
+              <Year>2024</Year>
+              <Season>Fall</Season>
+            </PubDate>
+          </JournalIssue>
+          <Title>Sante mentale au Quebec</Title>
+          <ISOAbbreviation>Sante Ment Que</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Not Available].</ArticleTitle>
+        <Pagination>
+          <StartPage>11</StartPage>
+          <EndPage>12</EndPage>
+          <MedlinePgn>11-12</MedlinePgn>
+        </Pagination>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Cossette</LastName>
+            <ForeName>Patrick</ForeName>
+            <Initials>P</Initials>
+            <AffiliationInfo>
+              <Affiliation>Facult&#233; de m&#233;decine de l'Universit&#233; de Montr&#233;al, Qu&#233;bec, Canada.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>fre</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016421">Editorial</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>L&#8217;IUSMM et l&#8217;Universit&#233; de Montr&#233;al : 150 ans de synergie au service de la sant&#233; mentale.</VernacularTitle>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Canada</Country>
+        <MedlineTA>Sante Ment Que</MedlineTA>
+        <NlmUniqueID>9424773</NlmUniqueID>
+        <ISSNLinking>0383-6320</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>15</Day>
+          <Hour>19</Hour>
+          <Minute>30</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>15</Day>
+          <Hour>19</Hour>
+          <Minute>30</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2024</Year>
+          <Month>12</Month>
+          <Day>10</Day>
+          <Hour>12</Hour>
+          <Minute>33</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">39656565</ArticleId>
+        <ArticleId IdType="pii">1114400ar</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

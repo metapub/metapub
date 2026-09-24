@@ -1,0 +1,106 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Curated">
+      <PMID Version="1">36890755</PMID>
+      <DateCompleted>
+        <Year>2023</Year>
+        <Month>03</Month>
+        <Day>10</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2023</Year>
+        <Month>03</Month>
+        <Day>10</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">1881-6096</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>75</Volume>
+            <Issue>3</Issue>
+            <PubDate>
+              <Year>2023</Year>
+              <Month>Mar</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Brain and nerve = Shinkei kenkyu no shinpo</Title>
+          <ISOAbbreviation>Brain Nerve</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Chronic Pain: Definition/Conception/Classification of Pain].</ArticleTitle>
+        <Pagination>
+          <StartPage>201</StartPage>
+          <EndPage>205</EndPage>
+          <MedlinePgn>201-205</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.11477/mf.1416202309</ELocationID>
+        <Abstract>
+          <AbstractText>Understanding what pain is necessary to understand the pathomechanisms of chronic pain. The International Association for the Study of Pain (IASP) defines pain as "An unpleasant sensory and emotional experience associated with, or resembling that associated with, actual or potential tissue damage" and its further states that pain is a personal experience, influenced to varying degrees by biological, psychological, and social factors. It also mentions that person learn the concept of the pain through life experiences, and that it does not always play an adaptive role and has a negative impact on our physical, social, and psychological health. In order to classify chronic pain, IASP created a coding system in ICD11 that focuses on chronic secondary pain, which has clear organic factors, and chronic primary pain, which is difficult to explain from the organic aspect alone. When considering pain treatment, it is necessary to consider three pain mechanisms, including nociceptive pain, neuropathic pain, and nociplastic pain, which is a condition in which the patient feels strong pain due to sensitization of the nervous system.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Ushida</LastName>
+            <ForeName>Takahiro</ForeName>
+            <Initials>T</Initials>
+            <AffiliationInfo>
+              <Affiliation>Pain Relief Surgery and Multidisciplinary Pain Center, Aichi Medical University Hospital.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>jpn</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D004740">English Abstract</PublicationType>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Japan</Country>
+        <MedlineTA>Brain Nerve</MedlineTA>
+        <NlmUniqueID>101299709</NlmUniqueID>
+        <ISSNLinking>1881-6096</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D059350" MajorTopicYN="Y">Chronic Pain</DescriptorName>
+          <QualifierName UI="Q000145" MajorTopicYN="N">classification</QualifierName>
+          <QualifierName UI="Q000175" MajorTopicYN="N">diagnosis</QualifierName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2023</Year>
+          <Month>3</Month>
+          <Day>9</Day>
+          <Hour>1</Hour>
+          <Minute>53</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2023</Year>
+          <Month>3</Month>
+          <Day>10</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2023</Year>
+          <Month>3</Month>
+          <Day>11</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">36890755</ArticleId>
+        <ArticleId IdType="doi">10.11477/mf.1416202309</ArticleId>
+        <ArticleId IdType="pii">1416202309</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

@@ -82,23 +82,29 @@ class TestLongdomDance(BaseDanceTest):
         assert url.endswith('.pdf')
         print(f"Test 2 - PDF URL: {url}")
 
+    @patch('metapub.findit.dances.longdom.the_doi_2step')
     @patch('metapub.findit.dances.longdom.verify_pdf_url')
-    def test_verification_success(self, mock_verify):
+    def test_verification_success(self, mock_verify, mock_doi_2step):
         """Test 3: Successful verification using standard verify_pdf_url."""
+        # the_doi_2step does a live dx.doi.org resolve; mock it so this stays a unit test.
+        mock_doi_2step.return_value = 'https://www.longdom.org/open-access/test-article.pdf'
         expected_pdf_url = 'https://www.longdom.org/open-access/test-article.pdf'
         mock_verify.return_value = expected_pdf_url
-        
+
         result = the_longdom_hustle(self.mock_pma, verify=True)
         
         assert result == expected_pdf_url
         mock_verify.assert_called_once()
         print(f"Test 3 - Successful verification: {result}")
 
+    @patch('metapub.findit.dances.longdom.the_doi_2step')
     @patch('metapub.findit.dances.longdom.verify_pdf_url')
-    def test_verification_access_denied_bubbles_up(self, mock_verify):
+    def test_verification_access_denied_bubbles_up(self, mock_verify, mock_doi_2step):
         """Test 4: AccessDenied from verify_pdf_url bubbles up correctly."""
+        # the_doi_2step does a live dx.doi.org resolve; mock it so this stays a unit test.
+        mock_doi_2step.return_value = 'https://www.longdom.org/open-access/test-article.pdf'
         mock_verify.side_effect = AccessDenied('DENIED: Access forbidden')
-        
+
         with pytest.raises(AccessDenied):
             the_longdom_hustle(self.mock_pma, verify=True)
         

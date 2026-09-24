@@ -3,8 +3,7 @@
 # TODO: Add logging
 
 from lxml import etree
-
-from .clinvarvariant import ClinVarVariant
+from .clinvarvariant import ClinVarVariant, IdLocations
 from .exceptions import MetaPubError, BaseXMLError
 from .eutils_common import get_eutils_client
 from .cache_utils import get_cache_path 
@@ -103,16 +102,26 @@ class ClinVarFetcher(Borg):
             else:
                 raise
 
-    def _eutils_get_variant_summary(self, accession_id):
-        """ returns variant summary XML (<ClinVarResult-Set>) for given ClinVar accession ID.
-        (This corresponds to the entry in the clinvar.variant_summary table.)
+    def _eutils_get_variant_summary(self, accession_id, id_from: IdLocations = 'entrez'):
+        """ returns structured, flattened summary for a ClinVar variant given an accession ID.
+        NOTE: By default, this is the Entrez UID that a variant has in E-utilities, NOT its ClinVar ID.
+
+        To specify that you would like this accession_id to be parsed as a clinvar ID, specify 
+        `id_from = 'clinvar'`
+
+        :param: accession_id (integer or string)
+        :param: id_from (string, either 'clinvar' or 'entrez')
+        :return: ClinVarVariant
+        :raises: MetaPubError if variation ID is invalid (empty XML document response)
         """
-        result = self.qs.efetch({'db': 'clinvar', 'id': accession_id, 'rettype': 'vcv'})
+        qs_args = {'db': 'clinvar', 'id': accession_id, 'rettype': 'vcv'}
+        if id_from == 'clinvar':
+            qs_args['is_variationid'] = 'true'
+        result = self.qs.efetch(qs_args)
         try:
             return ClinVarVariant(result)
-        except BaseXMLError as error:
+        except BaseXMLError as _:
             # empty XML document == invalid variant ID
-            print(error)
             raise MetaPubError('Invalid ClinVar Variation ID')
 
     def _eutils_ids_by_gene(self, gene, single_gene=False):

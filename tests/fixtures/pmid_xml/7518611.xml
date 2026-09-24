@@ -1,0 +1,172 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">7518611</PMID>
+      <DateCompleted>
+        <Year>1994</Year>
+        <Month>08</Month>
+        <Day>16</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2019</Year>
+        <Month>08</Month>
+        <Day>21</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0036-5513</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>54</Volume>
+            <Issue>3</Issue>
+            <PubDate>
+              <Year>1994</Year>
+              <Month>May</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Scandinavian journal of clinical and laboratory investigation</Title>
+          <ISOAbbreviation>Scand J Clin Lab Invest</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Serum alpha-fetoprotein and alcohol consumption.</ArticleTitle>
+        <Pagination>
+          <StartPage>215</StartPage>
+          <EndPage>220</EndPage>
+          <MedlinePgn>215-20</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText>Fifty-nine persons, 23 chronic alcoholics and 36 normal healthy persons with a well described alcohol consumption, had the serum concentration of alpha-fetoprotein determined by a sensitive monoclonal immunofluorescent assay. A significant elevation in S-AFP was found in alcoholics, median 4.1 kIU/l as compared to 3.0 kIU/l in near-abstainers (&lt; 12 g ethanol per day) (p &lt; 0.02). This difference was not explained by differences in age. S-AFP correlated positively with age (p = 0.01). In non-alcoholics a borderline significant correlation with S-AFP was found with average daily alcohol consumption (self-reported) (p = 0.09) and a significant correlation with the serum concentration of carbohydrate-deficient transferrin (S-CDT) (p = 0.004). In 11 alcoholics 2 months of abstention from alcohol was accompanied by a median reduction of 21% in S-AFP (p &lt; 10(-5)). In alcoholics, but not in social drinkers, S-AFP correlated with S-ASAT (p = 0.004). The increase of S-AFP with alcohol consumption may reflect reversible alcohol-induced liver affection.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Christiansen</LastName>
+            <ForeName>M</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Clinical Biochemistry, Statens Seruminstitut, Copenhagen.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Andersen</LastName>
+            <ForeName>J R</ForeName>
+            <Initials>JR</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>T&#248;rning</LastName>
+            <ForeName>J</ForeName>
+            <Initials>J</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Overg&#229;rd</LastName>
+            <ForeName>O</ForeName>
+            <Initials>O</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Jensen</LastName>
+            <ForeName>S P</ForeName>
+            <Initials>SP</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Magid</LastName>
+            <ForeName>E</ForeName>
+            <Initials>E</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>N&#248;rgaard-Pedersen</LastName>
+            <ForeName>B</ForeName>
+            <Initials>B</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>England</Country>
+        <MedlineTA>Scand J Clin Lab Invest</MedlineTA>
+        <NlmUniqueID>0404375</NlmUniqueID>
+        <ISSNLinking>0036-5513</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D014168">Transferrin</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D000509">alpha-Fetoproteins</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="C056759">carbohydrate-deficient transferrin</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000328" MajorTopicYN="N">Adult</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000368" MajorTopicYN="N">Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000428" MajorTopicYN="N">Alcohol Drinking</DescriptorName>
+          <QualifierName UI="Q000097" MajorTopicYN="Y">blood</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000437" MajorTopicYN="N">Alcoholism</DescriptorName>
+          <QualifierName UI="Q000097" MajorTopicYN="N">blood</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008875" MajorTopicYN="N">Middle Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D014168" MajorTopicYN="N">Transferrin</DescriptorName>
+          <QualifierName UI="Q000031" MajorTopicYN="N">analogs &amp; derivatives</QualifierName>
+          <QualifierName UI="Q000032" MajorTopicYN="N">analysis</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000509" MajorTopicYN="N">alpha-Fetoproteins</DescriptorName>
+          <QualifierName UI="Q000032" MajorTopicYN="Y">analysis</QualifierName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>1994</Year>
+          <Month>5</Month>
+          <Day>1</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>1994</Year>
+          <Month>5</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>1994</Year>
+          <Month>5</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">7518611</ArticleId>
+        <ArticleId IdType="doi">10.3109/00365519409088427</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

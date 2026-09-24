@@ -3,7 +3,7 @@
 This file provides coding guidelines for Claude when working on the metapub project.
 
 ## Model Selection
-1. **Never use Opus** - Always use Sonnet or Haiku models for this project.
+1. **Any model is fine** - Opus, Sonnet, or Haiku may all be used for this project.
 
 ## Import Guidelines
 2. **All imports at module level** - Every import belongs at the top of the file. No `import` statements inside functions, methods, or closures. The only exception is a genuine circular import that cannot be resolved by restructuring — in that case, document why with a comment at the import site. Standard library modules (`os`, `re`, `logging`, etc.) have no circular-import risk and must always be at module level.

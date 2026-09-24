@@ -1,0 +1,145 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Manual">
+      <PMID Version="1">9012456</PMID>
+      <DateCompleted>
+        <Year>1997</Year>
+        <Month>02</Month>
+        <Day>20</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2015</Year>
+        <Month>11</Month>
+        <Day>19</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0008-5472</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>57</Volume>
+            <Issue>3</Issue>
+            <PubDate>
+              <Year>1997</Year>
+              <Month>Feb</Month>
+              <Day>01</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>Cancer research</Title>
+          <ISOAbbreviation>Cancer Res</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Nitrosated glycine derivatives as a potential source of O6-methylguanine in DNA.</ArticleTitle>
+        <Pagination>
+          <StartPage>366</StartPage>
+          <EndPage>369</EndPage>
+          <MedlinePgn>366-9</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText>The nitrosated bile acid conjugate N-nitrosoglycocholic acid reacts with DNA to give, rise to several adducts including O6-carboxymethylguanine and, unexpectedly, O6-methylguanine (O6-MG). O6-MG is well established as a toxic and promutagenic lesion and is a substrate for the DNA repair protein O6-alkylguanine-DNA-alkyltransferase. In contrast, O6-carboxymethylguanine is not repaired by this protein. Similar results have been obtained for other nitrosated glycine derivatives, which suggests that O6-MG, which has been observed in DNA from human gastrointestinal tissues, may be derived from intragastric nitrosation of glycine or related compounds.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Shuker</LastName>
+            <ForeName>D E</ForeName>
+            <Initials>DE</Initials>
+            <AffiliationInfo>
+              <Affiliation>MRC Toxicology Unit, Hodgkin Building, University of Leicester, United Kingdom.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Margison</LastName>
+            <ForeName>G P</ForeName>
+            <Initials>GP</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>Cancer Res</MedlineTA>
+        <NlmUniqueID>2984705R</NlmUniqueID>
+        <ISSNLinking>0008-5472</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D009602">Nitrosamines</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>5Z93L87A1R</RegistryNumber>
+          <NameOfSubstance UI="D006147">Guanine</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>76757-85-2</RegistryNumber>
+          <NameOfSubstance UI="C034937">N-nitrosoglycocholic acid</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>9007-49-2</RegistryNumber>
+          <NameOfSubstance UI="D004247">DNA</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>9B710FV2AE</RegistryNumber>
+          <NameOfSubstance UI="C008449">O-(6)-methylguanine</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>TE7660XO1C</RegistryNumber>
+          <NameOfSubstance UI="D005998">Glycine</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D004247" MajorTopicYN="N">DNA</DescriptorName>
+          <QualifierName UI="Q000378" MajorTopicYN="Y">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005998" MajorTopicYN="N">Glycine</DescriptorName>
+          <QualifierName UI="Q000378" MajorTopicYN="Y">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006147" MajorTopicYN="N">Guanine</DescriptorName>
+          <QualifierName UI="Q000031" MajorTopicYN="Y">analogs &amp; derivatives</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009602" MajorTopicYN="N">Nitrosamines</DescriptorName>
+          <QualifierName UI="Q000378" MajorTopicYN="Y">metabolism</QualifierName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>1997</Year>
+          <Month>2</Month>
+          <Day>1</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>1997</Year>
+          <Month>2</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>1997</Year>
+          <Month>2</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">9012456</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

@@ -1,0 +1,145 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Automated">
+      <PMID Version="1">36054861</PMID>
+      <DateCompleted>
+        <Year>2022</Year>
+        <Month>09</Month>
+        <Day>07</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2025</Year>
+        <Month>12</Month>
+        <Day>12</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Electronic">1669-9106</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>82 Suppl 3</Volume>
+            <PubDate>
+              <Year>2022</Year>
+              <Month>Aug</Month>
+              <Day>30</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>Medicina</Title>
+          <ISOAbbreviation>Medicina (B Aires)</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>[Autism spectrum disorder and attention-deficit/hyperactivity disorder: challenge in diagnosis and treatment].</ArticleTitle>
+        <Pagination>
+          <StartPage>67</StartPage>
+          <EndPage>70</EndPage>
+          <MedlinePgn>67-70</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText>The coexistence of autism spectrum disorder (ASD) and attention deficit hyperactivity disorder (ADHD) definitely poses new challenges, such as making an early diagnosis, considering that the former is usually diagnosed 2 years later in children with ADHD comorbid with autism compared to those with ASD alone; this is a problem at a personal, family and social level, since they must receive timely intervention. This coexistence raises questions about the efficacy of treatment in ADHD in people with autism, genetic, anatomical and functional concordances, among others; these are the challenges that are currently posed. In this review, we present some responses to the challenges posed by such coexistence, and we highlight some pending issues to be solved, being these of great importance for their better understanding and management. In all patients with ADHD or ASD, a coexistence between them should be sought. There are shared functional brain alterations in both disorders identified by functional brain magnetic resonance imaging; the treatment established for ADHD is also effective in this comorbidity.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Velarde</LastName>
+            <ForeName>Myriam</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Servicio de Neurolog&#237;a, Instituto M&#233;dico de Lenguaje y Aprendizaje, Lima, Per&#250;. E-mail: mvelardei@unmsm.edu.pe.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Facultad de Medicina, Universidad Nacional Mayor de San Marcos UNMSM, Lima, Per&#250;.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>C&#225;rdenas</LastName>
+            <ForeName>Aland</ForeName>
+            <Initials>A</Initials>
+            <AffiliationInfo>
+              <Affiliation>Servicio de Neurolog&#237;a, Hospital Aplao, Arequipa, Per&#250;.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Facultad de Medicina, Universidad Nacional Mayor de San Marcos UNMSM, Lima, Per&#250;.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>spa</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016454">Review</PublicationType>
+        </PublicationTypeList>
+        <VernacularTitle>Trastornos del espectro autista y trastornos por d&#233;ficit de atenci&#243;n con hiperactividad: desaf&#237;os en el diagn&#243;stico y tratamiento.</VernacularTitle>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Argentina</Country>
+        <MedlineTA>Medicina (B Aires)</MedlineTA>
+        <NlmUniqueID>0204271</NlmUniqueID>
+        <ISSNLinking>0025-7680</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D001289" MajorTopicYN="Y">Attention Deficit Disorder with Hyperactivity</DescriptorName>
+          <QualifierName UI="Q000150" MajorTopicYN="N">complications</QualifierName>
+          <QualifierName UI="Q000175" MajorTopicYN="N">diagnosis</QualifierName>
+          <QualifierName UI="Q000628" MajorTopicYN="N">therapy</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000067877" MajorTopicYN="Y">Autism Spectrum Disorder</DescriptorName>
+          <QualifierName UI="Q000150" MajorTopicYN="N">complications</QualifierName>
+          <QualifierName UI="Q000175" MajorTopicYN="N">diagnosis</QualifierName>
+          <QualifierName UI="Q000628" MajorTopicYN="N">therapy</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D001321" MajorTopicYN="Y">Autistic Disorder</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D001921" MajorTopicYN="N">Brain</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002648" MajorTopicYN="N">Child</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015897" MajorTopicYN="N">Comorbidity</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <OtherAbstract Type="Publisher" Language="spa">
+        <AbstractText>La coexistencia del trastorno del espectro autista (TEA) y trastorno por d&#233;ficit de atenci&#243;n con hiperactividad (TDAH) definitivamente plantea nuevos desaf&#237;os, como la realizaci&#243;n de un diagn&#243;stico temprano teniendo en cuenta que el primero generalmente es diagnosticado 2 a&#241;os despu&#233;s en los ni&#241;os con TDAH com&#243;rbidos; esto es un problema a nivel personal, familiar y social, ya que deben recibir intervenci&#243;n oportuna. Esta coexistencia genera interrogantes sobre la eficacia del tratamiento en TDAH en personas con autismo, concordancias gen&#233;ticas, anat&#243;micas y funcionales entre otros; y son los retos que se plantean en la actualidad. En la presente revisi&#243;n exponemos algunas respuestas a los desaf&#237;os dados por tal coexistencia y resaltamos algunos temas pendientes a resolver, siendo estos de gran importancia para su mejor entendimiento y manejo. En todos los pacientes con TDAH o TEA se debe buscar una coexistencia entre ellos. Existen alteraciones funcionales cerebrales compartidas en ambos trastornos identificadas por resonancia magn&#233;tica funcional cerebral; el tratamiento establecido para el TDAH es tambi&#233;n eficaz en esta comorbilidad.</AbstractText>
+      </OtherAbstract>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">attention deficit hyperactivity disorder</Keyword>
+        <Keyword MajorTopicYN="N">autism spectrum disorder</Keyword>
+        <Keyword MajorTopicYN="N">comorbidity</Keyword>
+        <Keyword MajorTopicYN="N">neurodevelopmental disorder</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2022</Year>
+          <Month>9</Month>
+          <Day>2</Day>
+          <Hour>16</Hour>
+          <Minute>2</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2022</Year>
+          <Month>9</Month>
+          <Day>3</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2022</Year>
+          <Month>9</Month>
+          <Day>8</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">36054861</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

@@ -216,6 +216,7 @@ if __name__ == '__main__':
         print("All tests passed! ✅")
 
 
+@pytest.mark.live_network  # dance resolves the DOI via dx.doi.org live; run manually
 class TestMDPIXMLFixtures:
     """Test MDPI XML fixtures for evidence-driven testing."""
 

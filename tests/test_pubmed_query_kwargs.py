@@ -72,6 +72,17 @@ class TestQueryKwargs(unittest.TestCase):
         term = self.term_for(kw='crispr')
         assert '"crispr"[TW]' in term
 
+    def test_keyword_alias_reaches_sibling_query_methods(self):
+        # pmids_for_clinical_query and pmids_for_medical_genetics_query build
+        # their own term and forward **kwargs; the alias has to survive that
+        # too, not just the direct pmids_for_query path.
+        self.fetch.pmids_for_clinical_query('asthma', 'therapy', keyword='steroids')
+        assert '"steroids"[TW]' in self.qs.term
+
+        self.fetch.pmids_for_medical_genetics_query('Brugada Syndrome', 'diagnosis',
+                                                    keyword='mutation')
+        assert '"mutation"[TW]' in self.qs.term
+
     # --- internal control kwargs still accepted ------------------------------
 
     def test_clinical_query_flag_accepted(self):

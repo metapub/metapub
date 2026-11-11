@@ -81,7 +81,34 @@ def _get_lookup_system(cachedir=None):
         using any FindIt functionality.
 """
 
-def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None, 
+def _try_lookup_step(step_name, func, pma, *args, **kwargs):
+    """Run one FindIt lookup step, turning unexpected failures into a reason.
+
+    Lookup steps signal "no PDF here" with MetaPubError subclasses
+    (NoPDFLink / AccessDenied). Anything else -- a transient network error
+    (e.g. requests ChunkedEncodingError / ProxyError), a malformed response,
+    or a bug in a dance (e.g. UnboundLocalError, TypeError) -- must not
+    propagate out of find_article_from_pma and kill a batch run over
+    thousands of PMIDs (metapub/metapub#60). It is recorded as a TXERROR
+    reason instead, and lookup falls through to the next step, exactly as
+    the registry dances already do (see handlers._dispatch_dance_function).
+
+    Returns (url, reason): url is None and reason is a TXERROR string when
+    the step failed unexpectedly; (url, None) on success; (None, str(error))
+    when the step raised a MetaPubError.
+    """
+    try:
+        url = func(pma, *args, **kwargs)
+        return url, None
+    except MetaPubError as error:
+        return None, str(error)
+    except Exception as error:
+        log.error("FindIt lookup step %s failed for PMID %s: %s",
+                  step_name, getattr(pma, 'pmid', '?'), error)
+        return None, 'TXERROR: %s' % error
+
+
+def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None,
                         request_timeout=10, max_redirects=3):
     """ The real workhorse of FindIt.
 
@@ -128,20 +155,19 @@ def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None,
     #   from a publisher link.
 
     if pma.pmc:
-        try:
-            url = the_pmc_twist(pma, verify, use_nih, request_timeout, max_redirects)
+        url, reason = _try_lookup_step('the_pmc_twist', the_pmc_twist,
+                                       pma, verify, use_nih, request_timeout, max_redirects)
+        if url:
             return (url, None)
-        except MetaPubError as error:
-            reason = str(error)
 
     # === PMID-BASED LOOKUPS === #
     # Still use simple_formats_pmid for journals that can be accessed directly via PMID
 
     if jrnl in simple_formats_pmid.keys():
-        try:
-            url = the_pmid_pogo(pma, verify, request_timeout, max_redirects)
-        except MetaPubError as error:
-            reason = str(error)
+        url, step_reason = _try_lookup_step('the_pmid_pogo', the_pmid_pogo,
+                                            pma, verify, request_timeout, max_redirects)
+        if step_reason:
+            reason = step_reason
 
     if url:
         return (url, reason)
@@ -151,10 +177,10 @@ def find_article_from_pma(pma, verify=True, use_nih=False, cachedir=None,
     # Many Biomed Central journals start with "BMC", but many more don't.
     # Registry-based lookup will handle all BMC journals after this section
     if jrnl.find('BMC') == 0:
-        try:
-            url = the_bmc_boogie(pma, verify, request_timeout, max_redirects)
-        except MetaPubError as error:
-            reason = str(error)
+        url, step_reason = _try_lookup_step('the_bmc_boogie', the_bmc_boogie,
+                                            pma, verify, request_timeout, max_redirects)
+        if step_reason:
+            reason = step_reason
 
     if url:
         return (url, reason)

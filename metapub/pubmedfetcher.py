@@ -450,7 +450,7 @@ class PubMedFetcher(Borg):
 
         kwargs['clinical_query'] = True
         return self.pmids_for_query(query, retstart=retstart, retmax=retmax, since=since, until=until,
-                                    datetype=datetype, **kwargs)
+                                    pmc_only=pmc_only, datetype=datetype, **kwargs)
 
     def pmids_for_medical_genetics_query(self, query, category='all', since=None, until=None,
                     retstart=0, retmax=250, pmc_only=False, datetype=DEFAULT_DATETYPE, **kwargs):
@@ -480,7 +480,7 @@ class PubMedFetcher(Borg):
 
         kwargs['clinical_query'] = True
         return self.pmids_for_query(query, retstart=retstart, retmax=retmax, since=since, until=until,
-                                    datetype=datetype, **kwargs)
+                                    pmc_only=pmc_only, datetype=datetype, **kwargs)
 
     def pmids_for_citation(self, **kwargs):
         '''returns list of pmids for given citation. requires at least 3/5 of these keyword arguments:
